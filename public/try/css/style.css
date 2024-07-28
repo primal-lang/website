@@ -5,3 +5,12 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.navbar-icon {
+  color: blue;
+}
+
+.navbar-title {
+  font-family: 'Courier New', Courier, monospace;
+  color: #333333;
+}
