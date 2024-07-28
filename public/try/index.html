@@ -26,77 +26,82 @@
 </head>
 
 <body onload="onInputChange()">
-  <nav class="navbar navbar-expand-lg bg-body-tertiary">
-    <div class="container-fluid">
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item">
-          <a class="nav-link active" href=".." title="Home"><span
-              class="material-symbols-outlined navbar-icon">home</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#load" title="Load file"><span
-              class="material-symbols-outlined navbar-icon">upload_file</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#feedback" title="Feedback"><span
-              class="material-symbols-outlined navbar-icon">comment</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="/docs" title="Documentation"><span
-              class="material-symbols-outlined navbar-icon">description</span></a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" title="Samples">
-            <span class="material-symbols-outlined navbar-icon">library_add</span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" href="#">Factorial</a></li>
-            <li><a class="dropdown-item" href="#">Fibonacci</a></li>
-          </ul>
-        </li>
-      </ul>
 
-      <ul class="navbar-nav me-auto">
-        <li class="nav-item navbar-title">
-          Def v0.0.1
-        </li>
-      </ul>
+  <div class="layout">
 
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" href="#run" title="Run"><span
-              class="material-symbols-outlined navbar-icon">play_arrow</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#copy" title="Copy"><span
-              class="material-symbols-outlined navbar-icon">content_copy</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#brightness" title="Light mode"><span
-              class="material-symbols-outlined navbar-icon">light_mode</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#clear" title="Clear"><span
-              class="material-symbols-outlined navbar-icon">mop</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link active" href="#share" title="Share"><span
-              class="material-symbols-outlined navbar-icon">share</span></a>
-        </li>
-      </ul>
-    </div>
-  </nav>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary">
+      <div class="container-fluid">
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" href=".." title="Home"><span
+                class="material-symbols-outlined navbar-icon">home</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#load" title="Load file"><span
+                class="material-symbols-outlined navbar-icon">upload_file</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#feedback" title="Feedback"><span
+                class="material-symbols-outlined navbar-icon">comment</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/docs" title="Documentation"><span
+                class="material-symbols-outlined navbar-icon">description</span></a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" title="Samples">
+              <span class="material-symbols-outlined navbar-icon">library_add</span>
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Factorial</a></li>
+              <li><a class="dropdown-item" href="#">Fibonacci</a></li>
+            </ul>
+          </li>
+        </ul>
 
-  <div class="split">
-    <div id="split-0"><textarea id="sourceCode" style="width:100%;height:100%;background-color:#fefefe"
-        oninput="onInputChange()">foo(n) = mul(n, 2)
+        <ul class="navbar-nav me-auto">
+          <li class="nav-item navbar-title">
+            Def v0.0.1
+          </li>
+        </ul>
+
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active" href="#run" title="Run"><span
+                class="material-symbols-outlined navbar-icon">play_arrow</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#copy" title="Copy"><span
+                class="material-symbols-outlined navbar-icon">content_copy</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#brightness" title="Light mode"><span
+                class="material-symbols-outlined navbar-icon">light_mode</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#clear" title="Clear"><span
+                class="material-symbols-outlined navbar-icon">mop</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#share" title="Share"><span
+                class="material-symbols-outlined navbar-icon">share</span></a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="split content">
+      <div id="split-0"><textarea id="sourceCode" style="width:100%;height:100%;background-color:#fefefe"
+          oninput="onInputChange()">foo(n) = mul(n, 2)
 
       main = foo(6)</textarea>
-    </div>
-    <div id="split-1">
-      <div id="output" style="width:100%;height:100%;background-color:#f0f0f0;float:right">
+      </div>
+      <div id="split-1">
+        <div id="output" style="width:100%;height:100%;background-color:#f0f0f0;float:right">
+        </div>
       </div>
     </div>
+
   </div>
 
   <script>

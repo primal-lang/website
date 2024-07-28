@@ -6,6 +6,16 @@ body {
   padding: 0;
 }
 
+.layout {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+}
+
 .navbar-icon {
   color: blue;
 }
