@@ -99,6 +99,13 @@ function clearConsole() {
 }
 
 function sendFeedback() {
-  const modal = document.getElementById('exampleModalButton')
-  modal.click()
+  $('#feedbackModal').modal('show')
+}
+
+function onSendFeedback() {
+  const feedbackText = document.getElementById('feedbackText')
+  console.log(feedbackText.value)
+  $('#feedbackModal').modal('hide')
+  feedbackText.value = ''
+  showToast('toastFeedbackSent')
 }

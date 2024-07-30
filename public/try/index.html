@@ -12,6 +12,10 @@
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -130,10 +134,16 @@ main = foo(6)</textarea>
     </div>
   </div>
 
-  <button type="button" style="visibility:none" id="exampleModalButton" data-bs-toggle="modal"
-    data-bs-target="#exampleModal"></button>
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toastFeedbackSent" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">Feedback sent</div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="feedbackModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -142,11 +152,11 @@ main = foo(6)</textarea>
         </div>
         <div class="modal-body">
           <form>
-            <textarea class="form-control" id="message-text"></textarea>
+            <textarea class="form-control" id="feedbackText"></textarea>
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary">Send</button>
+          <button type="button" class="btn btn-primary" onclick="onSendFeedback()">Send</button>
         </div>
       </div>
     </div>
