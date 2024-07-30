@@ -1,3 +1,8 @@
+const SAMPLES = {
+  'factorial': 'factorial(n) = if(isZero(n), 1, mul(n, factorial(dec(n))))\n\nmain = factorial(5)',
+  'fibonacci': 'fibonacci(n) = if(isZero(n), 0, if(eq(n, 1), 1, sum(fibonacci(dec(n)), fibonacci(sub(n, 2)))))\n\nmain = fibonacci(10)',
+}
+
 function compileCode(sourceCode) {
   try {
     const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateCodeEmpty()
@@ -53,8 +58,20 @@ function fileLoaded(e) {
   const file = e.files[0]
   const reader = new FileReader()
   reader.onload = function (e) {
-    const content = e.target.result
-    document.getElementById('sourceCode').value = content
+    replaceSourceCode(e.target.result)
   }
   reader.readAsText(file)
+}
+
+function replaceSourceCode(text) {
+  document.getElementById('sourceCode').value = text
+  onInputChange()
+}
+
+function loadSample(name) {
+  const sample = SAMPLES[name]
+
+  if (sample) {
+    replaceSourceCode(sample)
+  }
 }
