@@ -22,8 +22,10 @@ function compileCode(sourceCode) {
 }
 
 function onInputChange() {
+  const sourceCode = window.editor.getValue()
   clearOutput()
-  compileCode(window.editor.getValue().trim())
+  compileCode(sourceCode.trim())
+  localStorage.setItem('sourceCode', sourceCode)
 }
 
 function onLoadFile() {
