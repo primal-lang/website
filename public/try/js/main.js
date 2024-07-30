@@ -26,34 +26,12 @@ function onInputChange() {
   compileCode(window.editor.getValue().trim())
 }
 
-function clearOutput() {
-  writeOutput('', 'white')
-}
-
-function writeOutputSuccess(text) {
-  writeOutput(text, 'white')
-}
-
-function writeOutputWarning(text) {
-  writeOutput(text, 'yellow')
-}
-
-function writeOutputError(text) {
-  writeOutput(text, 'red')
-}
-
-function writeOutput(text, color) {
-  const output = document.getElementById('output')
-  output.style.color = color
-  output.innerHTML = text
-}
-
 function onLoadFile() {
   const loadFile = document.getElementById('loadFile')
   loadFile.click()
 }
 
-function fileLoaded(e) {
+function onFileLoaded(e) {
   const file = e.files[0]
   const reader = new FileReader()
   reader.onload = function (e) {
@@ -91,11 +69,6 @@ function showToast(name) {
   bootstrap.Toast.getOrCreateInstance(toastTextCopied).show()
 }
 
-function clearConsole() {
-  const output = document.getElementById('output')
-  output.innerHTML = ''
-}
-
 function sendFeedback() {
   $('#feedbackModal').modal('show')
 }
@@ -127,4 +100,28 @@ function sendFeedbackMessage(message) {
     console.log(response)
     showToast('toastFeedbackSent')
   })
+}
+
+// ---------------
+
+function clearOutput() {
+  writeOutput('', 'white')
+}
+
+function writeOutputSuccess(text) {
+  writeOutput(text, 'white')
+}
+
+function writeOutputWarning(text) {
+  writeOutput(text, 'yellow')
+}
+
+function writeOutputError(text) {
+  writeOutput(text, 'red')
+}
+
+function writeOutput(text, color) {
+  const output = document.getElementById('output')
+  output.style.color = color
+  output.innerHTML = text
 }
