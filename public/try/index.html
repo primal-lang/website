@@ -67,7 +67,7 @@
         </ul>
 
         <ul class="navbar-nav me-auto">
-          <li class="nav-item navbar-title" style="margin-right:3em">
+          <li class="nav-item navbar-title" style="margin-right:4em">
             Def v0.0.1
           </li>
         </ul>
@@ -78,15 +78,11 @@
                 class="material-symbols-outlined navbar-icon">content_copy</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#brightness" title="Light mode"><span
-                class="material-symbols-outlined navbar-icon">light_mode</span></a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link active" href="javascript:clearConsole()" title="Clear"><span
                 class="material-symbols-outlined navbar-icon">mop</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#share" title="Share"><span
+            <a class="nav-link active" href="javascript:share()" title="Share"><span
                 class="material-symbols-outlined navbar-icon">share</span></a>
           </li>
         </ul>
@@ -120,6 +116,15 @@ main = foo(6)</textarea>
     <div id="toastTextCopied" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
       <div class="d-flex">
         <div class="toast-body">Text copied to clipboard</div>
+        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div id="toastUrlCopied" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+      <div class="d-flex">
+        <div class="toast-body">URL copied to clipboard</div>
         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
       </div>
     </div>

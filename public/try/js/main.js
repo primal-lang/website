@@ -79,8 +79,17 @@ function loadSample(name) {
 function copySourceCode() {
   const sourceCode = document.getElementById('sourceCode').value
   navigator.clipboard.writeText(sourceCode)
+  showToast('toastTextCopied')
+}
 
-  const toastTextCopied = document.getElementById('toastTextCopied')
+function share() {
+  navigator.clipboard.writeText(window.location.href)
+  showToast('toastUrlCopied')
+}
+
+function showToast(name) {
+  const toastTextCopied = document.getElementById(name)
+  bootstrap.Toast.Default.delay = 2000
   bootstrap.Toast.getOrCreateInstance(toastTextCopied).show()
 }
 
