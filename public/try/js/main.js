@@ -107,5 +107,13 @@ function onSendFeedback() {
   console.log(feedbackText.value)
   $('#feedbackModal').modal('hide')
   feedbackText.value = ''
+  const sendFeedbackButton = document.getElementById('sendFeedbackButton')
+  sendFeedbackButton.disabled = true
   showToast('toastFeedbackSent')
+}
+
+function onFeedbackInputChange() {
+  const sendFeedbackButton = document.getElementById('sendFeedbackButton')
+  const feedbackText = document.getElementById('feedbackText')
+  sendFeedbackButton.disabled = feedbackText.value.trim() == ''
 }

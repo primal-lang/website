@@ -151,10 +151,11 @@ main = foo(6)</textarea>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-          <textarea class="form-control" id="feedbackText" rows="5"></textarea>
+          <textarea class="form-control" id="feedbackText" rows="5" oninput="onFeedbackInputChange()"></textarea>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-primary" onclick="onSendFeedback()">Send</button>
+          <button type="button" class="btn btn-primary" id="sendFeedbackButton" disabled
+            onclick="onSendFeedback()">Send</button>
         </div>
       </div>
     </div>
