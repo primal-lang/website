@@ -121,17 +121,12 @@ function sendFeedbackMessage(message) {
   const settings = {
     async: true,
     crossDomain: true,
-    url: 'URL',
+    url: `https://script.google.com/macros/s/AKfycbwmVnckwqjLccMkLC0Af5hA2dfXra2l6NwISPLGlLXYqQrMB-_8SuwCjwjK2FdrwnHa/exec?message=${message}`,
     method: 'GET',
-    /*headers: {
-      contentType: 'application/x-www-form-urlencoded',
-    },*/
-    /*data: {
-      username: "user@company.com",
-    }*/
   }
 
-  $.ajax(settings).done(function (response) {
+  $.ajax(settings).done((response) => {
+    console.log(response)
     showToast('toastFeedbackSent')
   })
 }
