@@ -97,3 +97,8 @@ function clearConsole() {
   const output = document.getElementById('output')
   output.innerHTML = ''
 }
+
+function sendFeedback() {
+  const modal = document.getElementById('exampleModalButton')
+  modal.click()
+}

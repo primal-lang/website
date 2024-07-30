@@ -48,7 +48,7 @@
                 class="material-symbols-outlined navbar-icon">upload_file</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#feedback" title="Feedback"><span
+            <a class="nav-link active" href="javascript:sendFeedback()" title="Feedback"><span
                 class="material-symbols-outlined navbar-icon">comment</span></a>
           </li>
           <li class="nav-item">
@@ -126,6 +126,28 @@ main = foo(6)</textarea>
       <div class="d-flex">
         <div class="toast-body">URL copied to clipboard</div>
         <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+      </div>
+    </div>
+  </div>
+
+  <button type="button" style="visibility:none" id="exampleModalButton" data-bs-toggle="modal"
+    data-bs-target="#exampleModal"></button>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h6 class="modal-title" id="exampleModalLabel">Feedback</h6>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <textarea class="form-control" id="message-text"></textarea>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Send</button>
+        </div>
       </div>
     </div>
   </div>
