@@ -79,4 +79,7 @@ function loadSample(name) {
 function copySourceCode() {
   const sourceCode = document.getElementById('sourceCode').value
   navigator.clipboard.writeText(sourceCode)
+
+  const toastTextCopied = document.getElementById('toastTextCopied')
+  bootstrap.Toast.getOrCreateInstance(toastTextCopied).show()
 }
