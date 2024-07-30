@@ -51,6 +51,11 @@ body {
   height: auto;
 }
 
+.cm-s-dracula .CodeMirror-gutters,
+.cm-s-dracula.CodeMirror {
+  background-color: #202020 !important;
+}
+
 .CodeMirror-gutters {
   padding-right: 15px;
 }
