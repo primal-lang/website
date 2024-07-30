@@ -104,16 +104,34 @@ function sendFeedback() {
 
 function onSendFeedback() {
   const feedbackText = document.getElementById('feedbackText')
-  console.log(feedbackText.value)
+  sendFeedbackMessage(feedbackText.value)
   $('#feedbackModal').modal('hide')
   feedbackText.value = ''
   const sendFeedbackButton = document.getElementById('sendFeedbackButton')
   sendFeedbackButton.disabled = true
-  showToast('toastFeedbackSent')
 }
 
 function onFeedbackInputChange() {
   const sendFeedbackButton = document.getElementById('sendFeedbackButton')
   const feedbackText = document.getElementById('feedbackText')
   sendFeedbackButton.disabled = feedbackText.value.trim() == ''
+}
+
+function sendFeedbackMessage(message) {
+  const settings = {
+    async: true,
+    crossDomain: true,
+    url: 'URL',
+    method: 'GET',
+    /*headers: {
+      contentType: 'application/x-www-form-urlencoded',
+    },*/
+    /*data: {
+      username: "user@company.com",
+    }*/
+  }
+
+  $.ajax(settings).done(function (response) {
+    showToast('toastFeedbackSent')
+  })
 }
