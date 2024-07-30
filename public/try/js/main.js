@@ -43,3 +43,18 @@ function writeOutput(text, color) {
   output.style.color = color
   output.innerHTML = text
 }
+
+function onLoadFile() {
+  const loadFile = document.getElementById('loadFile')
+  loadFile.click()
+}
+
+function fileLoaded(e) {
+  const file = e.files[0]
+  const reader = new FileReader()
+  reader.onload = function (e) {
+    const content = e.target.result
+    document.getElementById('sourceCode').value = content
+  }
+  reader.readAsText(file)
+}

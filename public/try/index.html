@@ -37,7 +37,7 @@
                 class="material-symbols-outlined navbar-icon">home</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="#load" title="Load file"><span
+            <a class="nav-link active" href="javascript:onLoadFile()" title="Load file"><span
                 class="material-symbols-outlined navbar-icon">upload_file</span></a>
           </li>
           <li class="nav-item">
@@ -103,6 +103,7 @@ main = foo(6)</textarea>
     </div>
 
   </div>
+  <input class="form-control" type="file" id="loadFile" onchange="fileLoaded(this)" style="display: none;">
 
   <script>
     Split(['#split-0', '#split-1'], {
