@@ -28,11 +28,11 @@ function onInputChange() {
 }
 
 function clearOutput() {
-  writeOutput('', 'black')
+  writeOutput('', 'white')
 }
 
 function writeOutputSuccess(text) {
-  writeOutput(text, 'black')
+  writeOutput(text, 'white')
 }
 
 function writeOutputWarning(text) {
@@ -82,4 +82,9 @@ function copySourceCode() {
 
   const toastTextCopied = document.getElementById('toastTextCopied')
   bootstrap.Toast.getOrCreateInstance(toastTextCopied).show()
+}
+
+function clearConsole() {
+  const output = document.getElementById('output')
+  output.innerHTML = ''
 }
