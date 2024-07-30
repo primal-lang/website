@@ -75,3 +75,8 @@ function loadSample(name) {
     replaceSourceCode(sample)
   }
 }
+
+function copySourceCode() {
+  const sourceCode = document.getElementById('sourceCode').value
+  navigator.clipboard.writeText(sourceCode)
+}
