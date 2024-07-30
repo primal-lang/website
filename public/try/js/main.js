@@ -23,8 +23,7 @@ function compileCode(sourceCode) {
 
 function onInputChange() {
   clearOutput()
-  const sourceCode = document.getElementById('sourceCode').value
-  compileCode(sourceCode.trim())
+  compileCode(window.editor.getValue().trim())
 }
 
 function clearOutput() {
@@ -64,7 +63,7 @@ function fileLoaded(e) {
 }
 
 function replaceSourceCode(text) {
-  document.getElementById('sourceCode').value = text
+  window.editor.setValue(text)
   onInputChange()
 }
 
@@ -77,8 +76,7 @@ function loadSample(name) {
 }
 
 function copySourceCode() {
-  const sourceCode = document.getElementById('sourceCode').value
-  navigator.clipboard.writeText(sourceCode)
+  navigator.clipboard.writeText(window.editor.getValue())
   showToast('toastTextCopied')
 }
 
@@ -121,7 +119,7 @@ function sendFeedbackMessage(message) {
   const settings = {
     async: true,
     crossDomain: true,
-    url: `https://script.google.com/macros/s/AKfycbwmVnckwqjLccMkLC0Af5hA2dfXra2l6NwISPLGlLXYqQrMB-_8SuwCjwjK2FdrwnHa/exec?message=${message}`,
+    url: `https://script.google.com/macros/s/AKfycbxkEJf_0bb-BqGQ4RW82KvXZSUrMwcDeFFqd9TtQPS7CQ9nF7O_JcSsGy6OVusSzD4s/exec?message=${message}`,
     method: 'GET',
   }
 
