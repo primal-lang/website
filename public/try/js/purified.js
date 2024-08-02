@@ -41,10 +41,10 @@
   function mixinPropertiesEasy(from, to) {
     Object.assign(to, from);
   }
-  var supportsDirectProtoAccess = function () {
-    var cls = function () {
+  var supportsDirectProtoAccess = function() {
+    var cls = function() {
     };
-    cls.prototype = { p: {} };
+    cls.prototype = {p: {}};
     var object = new cls();
     if (!(Object.getPrototypeOf(object) && Object.getPrototypeOf(object).p === cls.prototype.p))
       return false;
@@ -88,8 +88,8 @@
   function lazyOld(holder, name, getterName, initializer) {
     var uninitializedSentinel = holder;
     holder[name] = uninitializedSentinel;
-    holder[getterName] = function () {
-      holder[getterName] = function () {
+    holder[getterName] = function() {
+      holder[getterName] = function() {
         A.throwCyclicInit(name);
       };
       var result;
@@ -103,7 +103,7 @@
       } finally {
         if (result === sentinelInProgress)
           holder[name] = null;
-        holder[getterName] = function () {
+        holder[getterName] = function() {
           return this[name];
         };
       }
@@ -113,10 +113,10 @@
   function lazy(holder, name, getterName, initializer) {
     var uninitializedSentinel = holder;
     holder[name] = uninitializedSentinel;
-    holder[getterName] = function () {
+    holder[getterName] = function() {
       if (holder[name] === uninitializedSentinel)
         holder[name] = initializer();
-      holder[getterName] = function () {
+      holder[getterName] = function() {
         return this[name];
       };
       return holder[name];
@@ -125,7 +125,7 @@
   function lazyFinal(holder, name, getterName, initializer) {
     var uninitializedSentinel = holder;
     holder[name] = uninitializedSentinel;
-    holder[getterName] = function () {
+    holder[getterName] = function() {
       if (holder[name] === uninitializedSentinel) {
         var value = initializer();
         if (holder[name] !== uninitializedSentinel)
@@ -133,7 +133,7 @@
         holder[name] = value;
       }
       var finalValue = holder[name];
-      holder[getterName] = function () {
+      holder[getterName] = function() {
         return finalValue;
       };
       return finalValue;
@@ -158,11 +158,11 @@
   var functionCounter = 0;
   function instanceTearOffGetter(isIntercepted, parameters) {
     var cache = null;
-    return isIntercepted ? function (receiver) {
+    return isIntercepted ? function(receiver) {
       if (cache === null)
         cache = A.closureFromTearOff(parameters);
       return new cache(receiver, this);
-    } : function () {
+    } : function() {
       if (cache === null)
         cache = A.closureFromTearOff(parameters);
       return new cache(this, null);
@@ -170,7 +170,7 @@
   }
   function staticTearOffGetter(parameters) {
     var cache = null;
-    return function () {
+    return function() {
       if (cache === null)
         cache = A.closureFromTearOff(parameters).prototype;
       return cache;
@@ -180,7 +180,7 @@
   function tearOffParameters(container, isStatic, isIntercepted, requiredParameterCount, optionalParameterDefaultValues, callNames, funsOrNames, funType, applyIndex, needsDirectAccess) {
     if (typeof funType == "number")
       funType += typesOffset;
-    return { co: container, iS: isStatic, iI: isIntercepted, rC: requiredParameterCount, dV: optionalParameterDefaultValues, cs: callNames, fs: funsOrNames, fT: funType, aI: applyIndex || 0, nDA: needsDirectAccess };
+    return {co: container, iS: isStatic, iI: isIntercepted, rC: requiredParameterCount, dV: optionalParameterDefaultValues, cs: callNames, fs: funsOrNames, fT: funType, aI: applyIndex || 0, nDA: needsDirectAccess};
   }
   function installStaticTearOff(holder, getterName, requiredParameterCount, optionalParameterDefaultValues, callNames, funsOrNames, funType, applyIndex) {
     var parameters = tearOffParameters(holder, true, false, requiredParameterCount, optionalParameterDefaultValues, callNames, funsOrNames, funType, applyIndex, false);
@@ -219,25 +219,24 @@
     copyProperties(newHolder, holder);
     return holder;
   }
-  var hunkHelpers = function () {
-    var mkInstance = function (isIntercepted, requiredParameterCount, optionalParameterDefaultValues, callNames, applyIndex) {
-      return function (container, getterName, name, funType) {
-        return installInstanceTearOff(container, getterName, isIntercepted, requiredParameterCount, optionalParameterDefaultValues, callNames, [name], funType, applyIndex, false);
-      };
-    },
-      mkStatic = function (requiredParameterCount, optionalParameterDefaultValues, callNames, applyIndex) {
-        return function (container, getterName, name, funType) {
+  var hunkHelpers = function() {
+    var mkInstance = function(isIntercepted, requiredParameterCount, optionalParameterDefaultValues, callNames, applyIndex) {
+        return function(container, getterName, name, funType) {
+          return installInstanceTearOff(container, getterName, isIntercepted, requiredParameterCount, optionalParameterDefaultValues, callNames, [name], funType, applyIndex, false);
+        };
+      },
+      mkStatic = function(requiredParameterCount, optionalParameterDefaultValues, callNames, applyIndex) {
+        return function(container, getterName, name, funType) {
           return installStaticTearOff(container, getterName, requiredParameterCount, optionalParameterDefaultValues, callNames, [name], funType, applyIndex);
         };
       };
-    return { inherit: inherit, inheritMany: inheritMany, mixin: mixinEasy, mixinHard: mixinHard, installStaticTearOff: installStaticTearOff, installInstanceTearOff: installInstanceTearOff, _instance_0u: mkInstance(0, 0, null, ["call$0"], 0), _instance_1u: mkInstance(0, 1, null, ["call$1"], 0), _instance_2u: mkInstance(0, 2, null, ["call$2"], 0), _instance_0i: mkInstance(1, 0, null, ["call$0"], 0), _instance_1i: mkInstance(1, 1, null, ["call$1"], 0), _instance_2i: mkInstance(1, 2, null, ["call$2"], 0), _static_0: mkStatic(0, null, ["call$0"], 0), _static_1: mkStatic(1, null, ["call$1"], 0), _static_2: mkStatic(2, null, ["call$2"], 0), makeConstList: makeConstList, lazy: lazy, lazyFinal: lazyFinal, lazyOld: lazyOld, updateHolder: updateHolder, convertToFastObject: convertToFastObject, updateTypes: updateTypes, setOrUpdateInterceptorsByTag: setOrUpdateInterceptorsByTag, setOrUpdateLeafTags: setOrUpdateLeafTags };
+    return {inherit: inherit, inheritMany: inheritMany, mixin: mixinEasy, mixinHard: mixinHard, installStaticTearOff: installStaticTearOff, installInstanceTearOff: installInstanceTearOff, _instance_0u: mkInstance(0, 0, null, ["call$0"], 0), _instance_1u: mkInstance(0, 1, null, ["call$1"], 0), _instance_2u: mkInstance(0, 2, null, ["call$2"], 0), _instance_0i: mkInstance(1, 0, null, ["call$0"], 0), _instance_1i: mkInstance(1, 1, null, ["call$1"], 0), _instance_2i: mkInstance(1, 2, null, ["call$2"], 0), _static_0: mkStatic(0, null, ["call$0"], 0), _static_1: mkStatic(1, null, ["call$1"], 0), _static_2: mkStatic(2, null, ["call$2"], 0), makeConstList: makeConstList, lazy: lazy, lazyFinal: lazyFinal, lazyOld: lazyOld, updateHolder: updateHolder, convertToFastObject: convertToFastObject, updateTypes: updateTypes, setOrUpdateInterceptorsByTag: setOrUpdateInterceptorsByTag, setOrUpdateLeafTags: setOrUpdateLeafTags};
   }();
   function initializeDeferredHunk(hunk) {
     typesOffset = init.types.length;
     hunk(hunkHelpers, init, holders, $);
   }
-  var A = {
-    JS_CONST: function JS_CONST() {
+  var A = {JS_CONST: function JS_CONST() {
     },
     checkNotNullable(value, $name, $T) {
       return value;
@@ -556,7 +555,7 @@
       wrapper.dartException = ex;
       t1 = A.toStringWrapper;
       if ("defineProperty" in Object) {
-        Object.defineProperty(wrapper, "message", { get: t1 });
+        Object.defineProperty(wrapper, "message", {get: t1});
         wrapper.name = "";
       } else
         wrapper.toString = t1;
@@ -646,8 +645,8 @@
       if (typeof functionType == "string") {
         if (isStatic)
           throw A.wrapException("Cannot compute signature for static tearoff.");
-        return function (recipe, evalOnReceiver) {
-          return function () {
+        return function(recipe, evalOnReceiver) {
+          return function() {
             return evalOnReceiver(this, recipe);
           };
         }(functionType, A.BoundClosure_evalRecipe);
@@ -658,44 +657,44 @@
       var getReceiver = A.BoundClosure_receiverOf;
       switch (needsDirectAccess ? -1 : arity) {
         case 0:
-          return function (entry, receiverOf) {
-            return function () {
+          return function(entry, receiverOf) {
+            return function() {
               return receiverOf(this)[entry]();
             };
           }(stubName, getReceiver);
         case 1:
-          return function (entry, receiverOf) {
-            return function (a) {
+          return function(entry, receiverOf) {
+            return function(a) {
               return receiverOf(this)[entry](a);
             };
           }(stubName, getReceiver);
         case 2:
-          return function (entry, receiverOf) {
-            return function (a, b) {
+          return function(entry, receiverOf) {
+            return function(a, b) {
               return receiverOf(this)[entry](a, b);
             };
           }(stubName, getReceiver);
         case 3:
-          return function (entry, receiverOf) {
-            return function (a, b, c) {
+          return function(entry, receiverOf) {
+            return function(a, b, c) {
               return receiverOf(this)[entry](a, b, c);
             };
           }(stubName, getReceiver);
         case 4:
-          return function (entry, receiverOf) {
-            return function (a, b, c, d) {
+          return function(entry, receiverOf) {
+            return function(a, b, c, d) {
               return receiverOf(this)[entry](a, b, c, d);
             };
           }(stubName, getReceiver);
         case 5:
-          return function (entry, receiverOf) {
-            return function (a, b, c, d, e) {
+          return function(entry, receiverOf) {
+            return function(a, b, c, d, e) {
               return receiverOf(this)[entry](a, b, c, d, e);
             };
           }(stubName, getReceiver);
         default:
-          return function (f, receiverOf) {
-            return function () {
+          return function(f, receiverOf) {
+            return function() {
               return f.apply(receiverOf(this), arguments);
             };
           }($function, getReceiver);
@@ -716,44 +715,44 @@
         case 0:
           throw A.wrapException(new A.RuntimeError0("Intercepted function with no arguments."));
         case 1:
-          return function (entry, interceptorOf, receiverOf) {
-            return function () {
+          return function(entry, interceptorOf, receiverOf) {
+            return function() {
               return interceptorOf(this)[entry](receiverOf(this));
             };
           }(stubName, getInterceptor, getReceiver);
         case 2:
-          return function (entry, interceptorOf, receiverOf) {
-            return function (a) {
+          return function(entry, interceptorOf, receiverOf) {
+            return function(a) {
               return interceptorOf(this)[entry](receiverOf(this), a);
             };
           }(stubName, getInterceptor, getReceiver);
         case 3:
-          return function (entry, interceptorOf, receiverOf) {
-            return function (a, b) {
+          return function(entry, interceptorOf, receiverOf) {
+            return function(a, b) {
               return interceptorOf(this)[entry](receiverOf(this), a, b);
             };
           }(stubName, getInterceptor, getReceiver);
         case 4:
-          return function (entry, interceptorOf, receiverOf) {
-            return function (a, b, c) {
+          return function(entry, interceptorOf, receiverOf) {
+            return function(a, b, c) {
               return interceptorOf(this)[entry](receiverOf(this), a, b, c);
             };
           }(stubName, getInterceptor, getReceiver);
         case 5:
-          return function (entry, interceptorOf, receiverOf) {
-            return function (a, b, c, d) {
+          return function(entry, interceptorOf, receiverOf) {
+            return function(a, b, c, d) {
               return interceptorOf(this)[entry](receiverOf(this), a, b, c, d);
             };
           }(stubName, getInterceptor, getReceiver);
         case 6:
-          return function (entry, interceptorOf, receiverOf) {
-            return function (a, b, c, d, e) {
+          return function(entry, interceptorOf, receiverOf) {
+            return function(a, b, c, d, e) {
               return interceptorOf(this)[entry](receiverOf(this), a, b, c, d, e);
             };
           }(stubName, getInterceptor, getReceiver);
         default:
-          return function (f, interceptorOf, receiverOf) {
-            return function () {
+          return function(f, interceptorOf, receiverOf) {
+            return function() {
               var a = [receiverOf(this)];
               Array.prototype.push.apply(a, arguments);
               return f.apply(interceptorOf(this), a);
@@ -835,7 +834,7 @@
         u = unicode ? "u" : "",
         s = dotAll ? "s" : "",
         g = global ? "g" : "",
-        regexp = function (source, modifiers) {
+        regexp = function(source, modifiers) {
           try {
             return new RegExp(source, modifiers);
           } catch (e) {
@@ -1932,7 +1931,7 @@
       return A._Universe__installTypeTests(universe, rti);
     },
     _Parser_create(universe, environment, recipe, normalize) {
-      return { u: universe, e: environment, r: recipe, s: [], p: 0, n: normalize };
+      return {u: universe, e: environment, r: recipe, s: [], p: 0, n: normalize};
     },
     _Parser_parse(parser) {
       var t2, i, ch, t3, array, end, item,
@@ -3500,8 +3499,8 @@
         existing = f.$dart_jsFunction;
       if (existing != null)
         return existing;
-      ret = function (_call, f) {
-        return function () {
+      ret = function(_call, f) {
+        return function() {
           return _call(f, Array.prototype.slice.apply(arguments));
         };
       }(A._callDartFunctionFast, f);
@@ -3535,254 +3534,254 @@
       return result;
     }
   },
-    J = {
-      JSArray_JSArray$markFixed(allocation, $E) {
-        return J.JSArray_markFixedList(A._setArrayType(allocation, $E._eval$1("JSArray<0>")), $E);
-      },
-      JSArray_markFixedList(list, $T) {
-        list.fixed$length = Array;
-        return list;
-      },
-      JSString__isWhitespace(codeUnit) {
-        if (codeUnit < 256)
-          switch (codeUnit) {
-            case 9:
-            case 10:
-            case 11:
-            case 12:
-            case 13:
-            case 32:
-            case 133:
-            case 160:
-              return true;
-            default:
-              return false;
-          }
+  J = {
+    JSArray_JSArray$markFixed(allocation, $E) {
+      return J.JSArray_markFixedList(A._setArrayType(allocation, $E._eval$1("JSArray<0>")), $E);
+    },
+    JSArray_markFixedList(list, $T) {
+      list.fixed$length = Array;
+      return list;
+    },
+    JSString__isWhitespace(codeUnit) {
+      if (codeUnit < 256)
         switch (codeUnit) {
-          case 5760:
-          case 8192:
-          case 8193:
-          case 8194:
-          case 8195:
-          case 8196:
-          case 8197:
-          case 8198:
-          case 8199:
-          case 8200:
-          case 8201:
-          case 8202:
-          case 8232:
-          case 8233:
-          case 8239:
-          case 8287:
-          case 12288:
-          case 65279:
+          case 9:
+          case 10:
+          case 11:
+          case 12:
+          case 13:
+          case 32:
+          case 133:
+          case 160:
             return true;
           default:
             return false;
         }
-      },
-      JSString__skipLeadingWhitespace(string, index) {
-        var t1, codeUnit;
-        for (t1 = string.length; index < t1;) {
-          codeUnit = string.charCodeAt(index);
-          if (codeUnit !== 32 && codeUnit !== 13 && !J.JSString__isWhitespace(codeUnit))
-            break;
-          ++index;
-        }
-        return index;
-      },
-      JSString__skipTrailingWhitespace(string, index) {
-        var t1, index0, codeUnit;
-        for (t1 = string.length; index > 0; index = index0) {
-          index0 = index - 1;
-          if (!(index0 < t1))
-            return A.ioore(string, index0);
-          codeUnit = string.charCodeAt(index0);
-          if (codeUnit !== 32 && codeUnit !== 13 && !J.JSString__isWhitespace(codeUnit))
-            break;
-        }
-        return index;
-      },
-      getInterceptor$(receiver) {
-        if (typeof receiver == "number") {
-          if (Math.floor(receiver) == receiver)
-            return J.JSInt.prototype;
-          return J.JSNumNotInt.prototype;
-        }
-        if (typeof receiver == "string")
-          return J.JSString.prototype;
-        if (receiver == null)
-          return J.JSNull.prototype;
-        if (typeof receiver == "boolean")
-          return J.JSBool.prototype;
-        if (Array.isArray(receiver))
-          return J.JSArray.prototype;
-        if (typeof receiver == "function")
-          return J.JavaScriptFunction.prototype;
-        if (typeof receiver == "object")
-          if (receiver instanceof A.Object)
-            return receiver;
-          else
-            return J.JavaScriptObject.prototype;
-        if (!(receiver instanceof A.Object))
-          return J.UnknownJavaScriptObject.prototype;
-        return receiver;
-      },
-      getInterceptor$a(receiver) {
-        if (receiver == null)
-          return receiver;
-        if (Array.isArray(receiver))
-          return J.JSArray.prototype;
-        if (!(receiver instanceof A.Object))
-          return J.UnknownJavaScriptObject.prototype;
-        return receiver;
-      },
-      getInterceptor$as(receiver) {
-        if (typeof receiver == "string")
-          return J.JSString.prototype;
-        if (receiver == null)
-          return receiver;
-        if (Array.isArray(receiver))
-          return J.JSArray.prototype;
-        if (!(receiver instanceof A.Object))
-          return J.UnknownJavaScriptObject.prototype;
-        return receiver;
-      },
-      getInterceptor$in(receiver) {
-        if (typeof receiver == "number") {
-          if (Math.floor(receiver) == receiver)
-            return J.JSInt.prototype;
-          return J.JSNumNotInt.prototype;
-        }
-        if (receiver == null)
-          return receiver;
-        if (!(receiver instanceof A.Object))
-          return J.UnknownJavaScriptObject.prototype;
-        return receiver;
-      },
-      getInterceptor$n(receiver) {
-        if (typeof receiver == "number")
-          return J.JSNumber.prototype;
-        if (receiver == null)
-          return receiver;
-        if (!(receiver instanceof A.Object))
-          return J.UnknownJavaScriptObject.prototype;
-        return receiver;
-      },
-      getInterceptor$s(receiver) {
-        if (typeof receiver == "string")
-          return J.JSString.prototype;
-        if (receiver == null)
-          return receiver;
-        if (!(receiver instanceof A.Object))
-          return J.UnknownJavaScriptObject.prototype;
-        return receiver;
-      },
-      getInterceptor$z(receiver) {
-        if (receiver == null)
-          return receiver;
-        if (!(receiver instanceof A.Object))
-          return J.UnknownJavaScriptObject.prototype;
-        return receiver;
-      },
-      get$hashCode$(receiver) {
-        return J.getInterceptor$(receiver).get$hashCode(receiver);
-      },
-      get$iterator$a(receiver) {
-        return J.getInterceptor$a(receiver).get$iterator(receiver);
-      },
-      get$length$as(receiver) {
-        return J.getInterceptor$as(receiver).get$length(receiver);
-      },
-      get$runtimeType$(receiver) {
-        return J.getInterceptor$(receiver).get$runtimeType(receiver);
-      },
-      $eq$(receiver, a0) {
-        if (receiver == null)
-          return a0 == null;
-        if (typeof receiver != "object")
-          return a0 != null && receiver === a0;
-        return J.getInterceptor$(receiver).$eq(receiver, a0);
-      },
-      abs$0$in(receiver) {
-        if (typeof receiver === "number")
-          return Math.abs(receiver);
-        return J.getInterceptor$in(receiver).abs$0(receiver);
-      },
-      add$1$a(receiver, a0) {
-        return J.getInterceptor$a(receiver).add$1(receiver, a0);
-      },
-      ceil$0$n(receiver) {
-        return J.getInterceptor$n(receiver).ceil$0(receiver);
-      },
-      elementAt$1$a(receiver, a0) {
-        return J.getInterceptor$a(receiver).elementAt$1(receiver, a0);
-      },
-      floor$0$n(receiver) {
-        return J.getInterceptor$n(receiver).floor$0(receiver);
-      },
-      noSuchMethod$1$(receiver, a0) {
-        return J.getInterceptor$(receiver).noSuchMethod$1(receiver, a0);
-      },
-      reduce$0$z(receiver) {
-        return J.getInterceptor$z(receiver).reduce$0(receiver);
-      },
-      round$0$n(receiver) {
-        return J.getInterceptor$n(receiver).round$0(receiver);
-      },
-      split$1$s(receiver, a0) {
-        return J.getInterceptor$s(receiver).split$1(receiver, a0);
-      },
-      toInt$0$n(receiver) {
-        return J.getInterceptor$n(receiver).toInt$0(receiver);
-      },
-      toString$0$(receiver) {
-        return J.getInterceptor$(receiver).toString$0(receiver);
-      },
-      trim$0$s(receiver) {
-        return J.getInterceptor$s(receiver).trim$0(receiver);
-      },
-      Interceptor: function Interceptor() {
-      },
-      JSBool: function JSBool() {
-      },
-      JSNull: function JSNull() {
-      },
-      JavaScriptObject: function JavaScriptObject() {
-      },
-      LegacyJavaScriptObject: function LegacyJavaScriptObject() {
-      },
-      PlainJavaScriptObject: function PlainJavaScriptObject() {
-      },
-      UnknownJavaScriptObject: function UnknownJavaScriptObject() {
-      },
-      JavaScriptFunction: function JavaScriptFunction() {
-      },
-      JSArray: function JSArray(t0) {
-        this.$ti = t0;
-      },
-      JSUnmodifiableArray: function JSUnmodifiableArray(t0) {
-        this.$ti = t0;
-      },
-      ArrayIterator: function ArrayIterator(t0, t1, t2) {
-        var _ = this;
-        _._iterable = t0;
-        _._length = t1;
-        _._index = 0;
-        _._current = null;
-        _.$ti = t2;
-      },
-      JSNumber: function JSNumber() {
-      },
-      JSInt: function JSInt() {
-      },
-      JSNumNotInt: function JSNumNotInt() {
-      },
-      JSString: function JSString() {
+      switch (codeUnit) {
+        case 5760:
+        case 8192:
+        case 8193:
+        case 8194:
+        case 8195:
+        case 8196:
+        case 8197:
+        case 8198:
+        case 8199:
+        case 8200:
+        case 8201:
+        case 8202:
+        case 8232:
+        case 8233:
+        case 8239:
+        case 8287:
+        case 12288:
+        case 65279:
+          return true;
+        default:
+          return false;
       }
     },
-    B = {};
+    JSString__skipLeadingWhitespace(string, index) {
+      var t1, codeUnit;
+      for (t1 = string.length; index < t1;) {
+        codeUnit = string.charCodeAt(index);
+        if (codeUnit !== 32 && codeUnit !== 13 && !J.JSString__isWhitespace(codeUnit))
+          break;
+        ++index;
+      }
+      return index;
+    },
+    JSString__skipTrailingWhitespace(string, index) {
+      var t1, index0, codeUnit;
+      for (t1 = string.length; index > 0; index = index0) {
+        index0 = index - 1;
+        if (!(index0 < t1))
+          return A.ioore(string, index0);
+        codeUnit = string.charCodeAt(index0);
+        if (codeUnit !== 32 && codeUnit !== 13 && !J.JSString__isWhitespace(codeUnit))
+          break;
+      }
+      return index;
+    },
+    getInterceptor$(receiver) {
+      if (typeof receiver == "number") {
+        if (Math.floor(receiver) == receiver)
+          return J.JSInt.prototype;
+        return J.JSNumNotInt.prototype;
+      }
+      if (typeof receiver == "string")
+        return J.JSString.prototype;
+      if (receiver == null)
+        return J.JSNull.prototype;
+      if (typeof receiver == "boolean")
+        return J.JSBool.prototype;
+      if (Array.isArray(receiver))
+        return J.JSArray.prototype;
+      if (typeof receiver == "function")
+        return J.JavaScriptFunction.prototype;
+      if (typeof receiver == "object")
+        if (receiver instanceof A.Object)
+          return receiver;
+        else
+          return J.JavaScriptObject.prototype;
+      if (!(receiver instanceof A.Object))
+        return J.UnknownJavaScriptObject.prototype;
+      return receiver;
+    },
+    getInterceptor$a(receiver) {
+      if (receiver == null)
+        return receiver;
+      if (Array.isArray(receiver))
+        return J.JSArray.prototype;
+      if (!(receiver instanceof A.Object))
+        return J.UnknownJavaScriptObject.prototype;
+      return receiver;
+    },
+    getInterceptor$as(receiver) {
+      if (typeof receiver == "string")
+        return J.JSString.prototype;
+      if (receiver == null)
+        return receiver;
+      if (Array.isArray(receiver))
+        return J.JSArray.prototype;
+      if (!(receiver instanceof A.Object))
+        return J.UnknownJavaScriptObject.prototype;
+      return receiver;
+    },
+    getInterceptor$in(receiver) {
+      if (typeof receiver == "number") {
+        if (Math.floor(receiver) == receiver)
+          return J.JSInt.prototype;
+        return J.JSNumNotInt.prototype;
+      }
+      if (receiver == null)
+        return receiver;
+      if (!(receiver instanceof A.Object))
+        return J.UnknownJavaScriptObject.prototype;
+      return receiver;
+    },
+    getInterceptor$n(receiver) {
+      if (typeof receiver == "number")
+        return J.JSNumber.prototype;
+      if (receiver == null)
+        return receiver;
+      if (!(receiver instanceof A.Object))
+        return J.UnknownJavaScriptObject.prototype;
+      return receiver;
+    },
+    getInterceptor$s(receiver) {
+      if (typeof receiver == "string")
+        return J.JSString.prototype;
+      if (receiver == null)
+        return receiver;
+      if (!(receiver instanceof A.Object))
+        return J.UnknownJavaScriptObject.prototype;
+      return receiver;
+    },
+    getInterceptor$z(receiver) {
+      if (receiver == null)
+        return receiver;
+      if (!(receiver instanceof A.Object))
+        return J.UnknownJavaScriptObject.prototype;
+      return receiver;
+    },
+    get$hashCode$(receiver) {
+      return J.getInterceptor$(receiver).get$hashCode(receiver);
+    },
+    get$iterator$a(receiver) {
+      return J.getInterceptor$a(receiver).get$iterator(receiver);
+    },
+    get$length$as(receiver) {
+      return J.getInterceptor$as(receiver).get$length(receiver);
+    },
+    get$runtimeType$(receiver) {
+      return J.getInterceptor$(receiver).get$runtimeType(receiver);
+    },
+    $eq$(receiver, a0) {
+      if (receiver == null)
+        return a0 == null;
+      if (typeof receiver != "object")
+        return a0 != null && receiver === a0;
+      return J.getInterceptor$(receiver).$eq(receiver, a0);
+    },
+    abs$0$in(receiver) {
+      if (typeof receiver === "number")
+        return Math.abs(receiver);
+      return J.getInterceptor$in(receiver).abs$0(receiver);
+    },
+    add$1$a(receiver, a0) {
+      return J.getInterceptor$a(receiver).add$1(receiver, a0);
+    },
+    ceil$0$n(receiver) {
+      return J.getInterceptor$n(receiver).ceil$0(receiver);
+    },
+    elementAt$1$a(receiver, a0) {
+      return J.getInterceptor$a(receiver).elementAt$1(receiver, a0);
+    },
+    floor$0$n(receiver) {
+      return J.getInterceptor$n(receiver).floor$0(receiver);
+    },
+    noSuchMethod$1$(receiver, a0) {
+      return J.getInterceptor$(receiver).noSuchMethod$1(receiver, a0);
+    },
+    reduce$0$z(receiver) {
+      return J.getInterceptor$z(receiver).reduce$0(receiver);
+    },
+    round$0$n(receiver) {
+      return J.getInterceptor$n(receiver).round$0(receiver);
+    },
+    split$1$s(receiver, a0) {
+      return J.getInterceptor$s(receiver).split$1(receiver, a0);
+    },
+    toInt$0$n(receiver) {
+      return J.getInterceptor$n(receiver).toInt$0(receiver);
+    },
+    toString$0$(receiver) {
+      return J.getInterceptor$(receiver).toString$0(receiver);
+    },
+    trim$0$s(receiver) {
+      return J.getInterceptor$s(receiver).trim$0(receiver);
+    },
+    Interceptor: function Interceptor() {
+    },
+    JSBool: function JSBool() {
+    },
+    JSNull: function JSNull() {
+    },
+    JavaScriptObject: function JavaScriptObject() {
+    },
+    LegacyJavaScriptObject: function LegacyJavaScriptObject() {
+    },
+    PlainJavaScriptObject: function PlainJavaScriptObject() {
+    },
+    UnknownJavaScriptObject: function UnknownJavaScriptObject() {
+    },
+    JavaScriptFunction: function JavaScriptFunction() {
+    },
+    JSArray: function JSArray(t0) {
+      this.$ti = t0;
+    },
+    JSUnmodifiableArray: function JSUnmodifiableArray(t0) {
+      this.$ti = t0;
+    },
+    ArrayIterator: function ArrayIterator(t0, t1, t2) {
+      var _ = this;
+      _._iterable = t0;
+      _._length = t1;
+      _._index = 0;
+      _._current = null;
+      _.$ti = t2;
+    },
+    JSNumber: function JSNumber() {
+    },
+    JSInt: function JSInt() {
+    },
+    JSNumNotInt: function JSNumNotInt() {
+    },
+    JSString: function JSString() {
+    }
+  },
+  B = {};
   var holders = [A, J, B];
   var $ = {};
   A.JS_CONST.prototype = {};
@@ -4222,7 +4221,7 @@
       return J.get$length$as(this.__internal$_iterable);
     }
   };
-  A.EfficientLengthMappedIterable.prototype = { $isEfficientLengthIterable: 1 };
+  A.EfficientLengthMappedIterable.prototype = {$isEfficientLengthIterable: 1};
   A.MappedIterator.prototype = {
     moveNext$0() {
       var _this = this,
@@ -4407,7 +4406,7 @@
     $requiredArgCount: 1,
     $defaultValues: null
   };
-  A.Closure2Args.prototype = { "call*": "call$2", $requiredArgCount: 2 };
+  A.Closure2Args.prototype = {"call*": "call$2", $requiredArgCount: 2};
   A.TearOffClosure.prototype = {};
   A.StaticClosure.prototype = {
     toString$0(_) {
@@ -4983,8 +4982,7 @@
       return "null";
     }
   };
-  A.Object.prototype = {
-    $isObject: 1,
+  A.Object.prototype = {$isObject: 1,
     $eq(_, other) {
       return this === other;
     },
@@ -6838,8 +6836,8 @@
     _mixin(A._UnmodifiableMapView_MapView__UnmodifiableMapMixin, A._UnmodifiableMapMixin);
   })();
   var init = {
-    typeUniverse: { eC: new Map(), tR: {}, eT: {}, tPV: {}, sEA: [] },
-    mangledGlobalNames: { int: "int", double: "double", num: "num", String: "String", bool: "bool", Null: "Null", List: "List" },
+    typeUniverse: {eC: new Map(), tR: {}, eT: {}, tPV: {}, sEA: []},
+    mangledGlobalNames: {int: "int", double: "double", num: "num", String: "String", bool: "bool", Null: "Null", List: "List"},
     mangledNames: {},
     types: ["String(Parameter)", "bool(FunctionPrototype)", "~(String,@)", "~(Object?,Object?)", "~(Symbol0,@)", "IntermediateCode(String)", "Expression(String)", "Reducible(Reducible)", "Reducible(Expression)", "bool(Type)", "String(GenericWarning)", "String(int)", "Parameter(String)", "IntermediateCode()", "List<String>(IntermediateCode)", "bool(IntermediateCode)", "String(IntermediateCode)", "String(IntermediateCode,Expression)"],
     interceptorsByTag: null,
@@ -6929,9 +6927,9 @@
     B.C_BooleanType = new A.BooleanType();
     B.C_Compiler = new A.Compiler();
     B.C_JS_CONST = function getTagFallback(o) {
-      var s = Object.prototype.toString.call(o);
-      return s.substring(8, s.length - 1);
-    };
+  var s = Object.prototype.toString.call(o);
+  return s.substring(8, s.length - 1);
+};
     B.C_NumberType = new A.NumberType();
     B.C__Required = new A._Required();
     B.CommentState_null = new A.CommentState(null);
@@ -6985,19 +6983,19 @@
     _lazyFinal($, "StringExtensions_REGEX_BOOLEAN", "$get$StringExtensions_REGEX_BOOLEAN", () => A.RegExp_RegExp("true|false"));
   })();
   (function nativeSupport() {
-    !function () {
-      var intern = function (s) {
+    !function() {
+      var intern = function(s) {
         var o = {};
         o[s] = 1;
         return Object.keys(hunkHelpers.convertToFastObject(o))[0];
       };
-      init.getIsolateTag = function (name) {
+      init.getIsolateTag = function(name) {
         return intern("___dart_" + name + init.isolateTag);
       };
       var tableProperty = "___dart_isolate_tags_";
       var usedProperties = Object[tableProperty] || (Object[tableProperty] = Object.create(null));
       var rootProperty = "_ZxYxX";
-      for (var i = 0; ; i++) {
+      for (var i = 0;; i++) {
         var property = intern(rootProperty + "_" + i + "_");
         if (!(property in usedProperties)) {
           usedProperties[property] = 1;
@@ -7009,18 +7007,18 @@
     hunkHelpers.setOrUpdateInterceptorsByTag({});
     hunkHelpers.setOrUpdateLeafTags({});
   })();
-  Function.prototype.call$0 = function () {
+  Function.prototype.call$0 = function() {
     return this();
   };
-  Function.prototype.call$1 = function (a) {
+  Function.prototype.call$1 = function(a) {
     return this(a);
   };
-  Function.prototype.call$2 = function (a, b) {
+  Function.prototype.call$2 = function(a, b) {
     return this(a, b);
   };
   convertAllToFastObject(holders);
   convertToFastObject($);
-  (function (callback) {
+  (function(callback) {
     if (typeof document === "undefined") {
       callback(null);
       return;
@@ -7037,9 +7035,9 @@
     }
     for (var i = 0; i < scripts.length; ++i)
       scripts[i].addEventListener("load", onLoad, false);
-  })(function (currentScript) {
+  })(function(currentScript) {
     init.currentScript = currentScript;
-    var callMain = function (args) {
+    var callMain = function(args) {
       return A.main(A.convertMainArgumentList(args));
     };
     if (typeof dartMainRunner === "function")
