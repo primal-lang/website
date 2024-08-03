@@ -101,14 +101,13 @@ function sendFeedbackMessage(message) {
   const settings = {
     async: true,
     crossDomain: true,
-    url: `https://script.google.com/macros/s/AKfycbxkEJf_0bb-BqGQ4RW82KvXZSUrMwcDeFFqd9TtQPS7CQ9nF7O_JcSsGy6OVusSzD4s/exec?message=${message}`,
+    url: `https://script.google.com/macros/s/AKfycbzZzJlz_PxJehvJJdOYarUErF6nL3X3JF7-aFauE2NBFJRhKcpC6j013SDcxCf4Idsx/exec?message=${message}`,
     method: 'GET',
   }
 
-  $.ajax(settings).done((response) => {
-    console.log(response)
-    showToast('toastFeedbackSent')
-  })
+  $.ajax(settings)
+
+  showToast('toastFeedbackSent')
 }
 
 // ---------------

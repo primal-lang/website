@@ -12,8 +12,46 @@
   <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
 
+  <!-- JQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
   <!-- Core theme CSS (includes Bootstrap)-->
   <link href="../css/template.css" rel="stylesheet" />
+
+  <script>
+    function onSendFeedback() {
+      const feedbackText = document.getElementById('feedbackText')
+      sendFeedbackMessage(feedbackText.value)
+      feedbackText.value = ''
+      const sendFeedbackButton = document.getElementById('sendFeedbackButton')
+      sendFeedbackButton.disabled = true
+    }
+
+    function onFeedbackInputChange() {
+      const sendFeedbackButton = document.getElementById('sendFeedbackButton')
+      const feedbackText = document.getElementById('feedbackText')
+      sendFeedbackButton.disabled = feedbackText.value.trim() == ''
+    }
+
+    function sendFeedbackMessage(message) {
+      const settings = {
+        async: true,
+        crossDomain: true,
+        url: `https://script.google.com/macros/s/AKfycbzZzJlz_PxJehvJJdOYarUErF6nL3X3JF7-aFauE2NBFJRhKcpC6j013SDcxCf4Idsx/exec?message=${message}`,
+        method: 'GET',
+      }
+
+      $.ajax(settings)
+
+      const feedbackSentMessage = document.getElementById('feedbackSentMessage')
+      feedbackSentMessage.style.visibility = 'visible'
+
+      setTimeout(() => {
+        feedbackSentMessage.style.visibility = 'hidden'
+      }, 3000)
+    }
+  </script>
 </head>
 
 <body id="page-top" style="background-color: #0d6efd;">
@@ -39,6 +77,21 @@
   <div class="container px-4 px-lg-5" style="margin-top: 8em;">
     <div class="row gx-4 gx-lg-5 justify-content-center">
       <div class="col-lg-8">
+        <h2 class="text-white mb-4">Feedback</h2>
+
+        <form>
+          <div class="form-group">
+            <textarea class="form-control" id="feedbackText" rows="5" oninput="onFeedbackInputChange()"></textarea>
+          </div>
+          <br />
+          <div class="form-group">
+            <button type="button" class="btn btn-primary form-control" id="sendFeedbackButton" disabled
+              onclick="onSendFeedback()">Send</button>
+          </div>
+        </form>
+
+        <h5 class="text-white mb-4 text-center" id="feedbackSentMessage" style="margin-top: 2em; visibility: hidden;">
+          Feedback sent</h5>
       </div>
     </div>
   </div>
