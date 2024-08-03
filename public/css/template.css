@@ -11030,14 +11030,12 @@ body {
     color: #fff;
   }
   #mainNav.navbar-shrink {
-    background-color: #fff;
+    background-color: #095cd6;
   }
-  #mainNav.navbar-shrink .navbar-brand {
+  /*#mainNav.navbar-shrink .navbar-brand {
     color: #000;
   }
   #mainNav.navbar-shrink .nav-link {
-    color: #000;
-    padding: 1.5rem 1.5rem 1.25rem;
     border-bottom: 0.25rem solid transparent;
   }
   #mainNav.navbar-shrink .nav-link:hover {
@@ -11050,7 +11048,7 @@ body {
     color: #64a19d;
     outline: none;
     border-bottom: 0.25rem solid #64a19d;
-  }
+  }*/
 }
 
 .btn {
@@ -11109,4 +11107,15 @@ body {
     max-width: 30rem;
     font-size: 1.25rem;
   }
+}
+
+.reference-title {
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+}
+
+.code-sample {
+  color: rgba(255, 255, 255, 0.7);
+  background-color: black;
+  padding: 0.5rem;
 }

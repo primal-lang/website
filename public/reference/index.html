@@ -1,14 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="declarative, purely functional, esoteric programming language" />
   <title>Purified</title>
+  <link rel="icon" type="image/x-icon" href="../img/icon.png" />
+
+  <!-- Google fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Varela+Round" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+
+  <!-- Core theme CSS (includes Bootstrap)-->
+  <link href="../css/template.css" rel="stylesheet" />
 </head>
 
-<body>
-  REFERENCE
+<body id="page-top" style="background-color: #0d6efd;">
+
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+    <div class="container px-4 px-lg-5">
+      <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse"
+        data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false"
+        aria-label="Toggle navigation">
+        Menu
+        <i class="fas fa-bars"></i>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="..">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="../start">Get started</a></li>
+          <li class="nav-item"><a class="nav-link" href="../feedback">Feedback</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container px-4 px-lg-5" style="margin-top: 8em;">
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+      <div class="col-lg-8">
+        <h2 class="text-white mb-4">Reference</h2>
+
+        <h4 class="text-white reference-title">Generic</h4>
+        <p class="code-sample">eq(a: T, b: T): bool</p>
+        <p class="code-sample">neq(a: T, b: T): bool</p>
+
+        <h4 class="text-white reference-title">Control</h4>
+        <p class="code-sample">if(condition: bool, exp1: T, exp2: T): T</p>
+        <p class="code-sample">try(exp1: T, exp2: T): T</p>
+
+        <h4 class="text-white reference-title">Error</h4>
+        <p class="code-sample">error(a: T)</p>
+
+        <h4 class="text-white reference-title">Debug</h4>
+        <p class="code-sample">debug(a: T): T</p>
+
+        <h4 class="text-white reference-title">Numbers</h4>
+        <p class="code-sample">abs(a: num): num</p>
+        <p class="code-sample">inc(a: num): num</p>
+        <p class="code-sample">dec(a: num): num</p>
+        <p class="code-sample">sum(a: num, b: num, ...): num</p>
+        <p class="code-sample">sub(a: num, b: num): num</p>
+        <p class="code-sample">mul(a: num, b: num): num</p>
+        <p class="code-sample">div(a: num, b: num): num</p>
+        <p class="code-sample">mod(a: num, b: num): num</p>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="../js/template.js"></script>
 </body>
 
 </html>
