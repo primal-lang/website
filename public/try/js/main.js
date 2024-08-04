@@ -101,7 +101,7 @@ function sendFeedbackMessage(message) {
   const settings = {
     async: true,
     crossDomain: true,
-    url: `https://script.google.com/macros/s/AKfycbzZzJlz_PxJehvJJdOYarUErF6nL3X3JF7-aFauE2NBFJRhKcpC6j013SDcxCf4Idsx/exec?message=${message}`,
+    url: `https://script.google.com/macros/s/AKfycbyC85weq4p2Ra2zbfyGrA4wC41s3ev-UumQek7xJMUtRmr-qGuXip6NN9m1k1GFCiT-/exec?message=${message}`,
     method: 'GET',
   }
 
