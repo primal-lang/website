@@ -40,8 +40,17 @@
       <div class="col-lg-8">
 
         <h2 class="text-white mb-4">Reference</h2>
+        <ul class="table-of-contents list-group">
+          <li><a href="#comparison">Comparison</a></li>
+          <li><a href="#control">Control</a></li>
+          <li><a href="#error">Error</a></li>
+          <li><a href="#debugging">Debugging</a></li>
+          <li><a href="#arithmetic">Arithmetic</a></li>
+          <li><a href="#logic">Logic</a></li>
+          <li><a href="#casting">Casting</a></li>
+        </ul>
 
-        <h4 class="text-white reference-title">Comparison</h4>
+        <h4 class="text-white reference-title" id="comparison">Comparison</h4>
 
         <h5 class="text-white reference-title">Equality</h5>
         <p class="reference-text">Receives two arguments of any type and returns true if they are equal.</p>
@@ -51,7 +60,7 @@
         <p class="reference-text">Receives two arguments of any type and returns true if they are not equal.</p>
         <p class="code-sample">neq(a: T, b: T): bool</p>
 
-        <h4 class="text-white reference-title">Control</h4>
+        <h4 class="text-white reference-title" id="control">Control</h4>
 
         <h5 class="text-white reference-title">If-Else</h5>
         <p class="reference-text">Receives a condition and two expressions. The condition must evaluate to a boolean.
@@ -64,20 +73,20 @@
           expression unless it evaluates to an error, in which case, it returns the second expression.</p>
         <p class="code-sample">try(exp1: T, exp2: T): T</p>
 
-        <h4 class="text-white reference-title">Error</h4>
+        <h4 class="text-white reference-title" id="error">Error</h4>
 
         <h5 class="text-white reference-title">Throw error</h5>
         <p class="reference-text">Receives an expression of any type. It returns an error wrapping that expression.</p>
         <p class="code-sample">error(a: T)</p>
 
-        <h4 class="text-white reference-title">Debugging</h4>
+        <h4 class="text-white reference-title" id="debugging">Debugging</h4>
 
         <h5 class="text-white reference-title">Debug</h5>
         <p class="reference-text">Receives an expression of any type. It writes that expression in the standard output
           and returns the same expression.</p>
         <p class="code-sample">debug(a: T): T</p>
 
-        <h4 class="text-white reference-title">Numbers</h4>
+        <h4 class="text-white reference-title" id="arithmetic">Arithmetic</h4>
         <p class="code-sample">abs(a: num): num</p>
         <p class="code-sample">inc(a: num): num</p>
         <p class="code-sample">dec(a: num): num</p>
@@ -107,13 +116,13 @@
         <p class="code-sample">isEven(a: num): bool</p>
         <p class="code-sample">isOdd(a: num): bool</p>
 
-        <h4 class="text-white reference-title">Booleans</h4>
+        <h4 class="text-white reference-title" id="logic">Logic</h4>
         <p class="code-sample">and(a: bool, b: bool): bool</p>
         <p class="code-sample">or(a: bool, b: bool): bool</p>
         <p class="code-sample">not(a: bool): bool</p>
         <p class="code-sample">xor(a: bool, b: bool): bool</p>
 
-        <h4 class="text-white reference-title">Casting</h4>
+        <h4 class="text-white reference-title" id="casting">Casting</h4>
         <p class="code-sample">toNumber(a: T): number</p>
         <p class="code-sample">toInteger(a: T): number</p>
         <p class="code-sample">toDecimal(a: T): number</p>
