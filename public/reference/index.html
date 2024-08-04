@@ -66,12 +66,12 @@
         <p class="reference-text">Receives a condition and two expressions. The condition must evaluate to a boolean.
           Both expressions must evaluate to the same type. If the condition is true, it returns the first expression.
           Otherwise it returns the second expression.</p>
-        <p class="code-sample">if(condition: bool, exp1: T, exp2: T): T</p>
+        <p class="code-sample">if(a: bool, b: T, c: T): T</p>
 
         <h5 class="text-white reference-title">Try-Catch</h5>
         <p class="reference-text">Receives two expressions, which must evaluate to the same type. It returns the first
           expression unless it evaluates to an error, in which case, it returns the second expression.</p>
-        <p class="code-sample">try(exp1: T, exp2: T): T</p>
+        <p class="code-sample">try(a: T, b: T): T</p>
 
         <h4 class="text-white reference-title" id="error">Error</h4>
 
@@ -90,6 +90,7 @@
         <p class="code-sample">abs(a: num): num</p>
         <p class="code-sample">inc(a: num): num</p>
         <p class="code-sample">dec(a: num): num</p>
+        <p class="code-sample">add(a: num, b: num, ...): num</p>
         <p class="code-sample">sum(a: num, b: num, ...): num</p>
         <p class="code-sample">sub(a: num, b: num): num</p>
         <p class="code-sample">mul(a: num, b: num): num</p>
@@ -131,6 +132,7 @@
         <p class="code-sample">isNumber(a: T): bool</p>
         <p class="code-sample">isInteger(a: T): bool</p>
         <p class="code-sample">isDecimal(a: T): bool</p>
+        <p class="code-sample">isInfinite(a: T): bool</p>
         <p class="code-sample">isString(a: T): bool</p>
         <p class="code-sample">isBoolean(a: T): bool</p>
 
