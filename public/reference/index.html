@@ -42,17 +42,39 @@
         <h2 class="text-white mb-4">Reference</h2>
 
         <h4 class="text-white reference-title">Comparison</h4>
+
+        <h5 class="text-white reference-title">Equality</h5>
+        <p class="reference-text">Receives two arguments of any type and returns true if they are equal.</p>
         <p class="code-sample">eq(a: T, b: T): bool</p>
+
+        <h5 class="text-white reference-title">Inequality</h5>
+        <p class="reference-text">Receives two arguments of any type and returns true if they are not equal.</p>
         <p class="code-sample">neq(a: T, b: T): bool</p>
 
         <h4 class="text-white reference-title">Control</h4>
+
+        <h5 class="text-white reference-title">If-Else</h5>
+        <p class="reference-text">Receives a condition and two expressions. The condition must evaluate to a boolean.
+          Both expressions must evaluate to the same type. If the condition is true, it returns the first expression.
+          Otherwise it returns the second expression.</p>
         <p class="code-sample">if(condition: bool, exp1: T, exp2: T): T</p>
+
+        <h5 class="text-white reference-title">Try-Catch</h5>
+        <p class="reference-text">Receives two expressions, which must evaluate to the same type. It returns the first
+          expression unless it evaluates to an error, in which case, it returns the second expression.</p>
         <p class="code-sample">try(exp1: T, exp2: T): T</p>
 
         <h4 class="text-white reference-title">Error</h4>
+
+        <h5 class="text-white reference-title">Throw error</h5>
+        <p class="reference-text">Receives an expression of any type. It returns an error wrapping that expression.</p>
         <p class="code-sample">error(a: T)</p>
 
-        <h4 class="text-white reference-title">Debug</h4>
+        <h4 class="text-white reference-title">Debugging</h4>
+
+        <h5 class="text-white reference-title">Debug</h5>
+        <p class="reference-text">Receives an expression of any type. It writes that expression in the standard output
+          and returns the same expression.</p>
         <p class="code-sample">debug(a: T): T</p>
 
         <h4 class="text-white reference-title">Numbers</h4>

@@ -2170,9 +2170,9 @@ html {
 }
 
 .code-sample {
-  color: rgba(255, 255, 255, .7);
+  color: rgba(255, 255, 255, .8);
   background-color: #000;
-  padding: .5rem;
+  padding: 0.5rem 1rem 0.5rem 1rem;
   font-family: 'Source Code Pro'
 }
 
@@ -2190,4 +2190,9 @@ html {
   color: white;
   font-size: 7em;
   letter-spacing: 0.1em;
+}
+
+.reference-text {
+  color: rgba(255, 255, 255, .5);
+  font-size: 1em;
 }
