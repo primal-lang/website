@@ -3,8 +3,6 @@ const SAMPLES = {
   'fibonacci': 'fibonacci(n) = if(isZero(n), 0, if(eq(n, 1), 1, sum(fibonacci(dec(n)), fibonacci(sub(n, 2)))))\n\nmain = fibonacci(10)',
 }
 
-let timeoutID = null
-
 function compileCode(sourceCode) {
   try {
     const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateCodeEmpty()
@@ -24,8 +22,7 @@ function compileCode(sourceCode) {
 }
 
 function onInputChange() {
-  clearTimeout(timeoutID)
-  timeoutID = setTimeout(recompile, 1000)
+  recompile()
 }
 
 function recompile() {
