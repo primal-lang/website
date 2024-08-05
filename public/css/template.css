@@ -964,7 +964,7 @@ textarea.form-control-lg {
   padding-bottom: var(--bs-navbar-brand-padding-y);
   margin-right: var(--bs-navbar-brand-margin-end);
   font-size: var(--bs-navbar-brand-font-size);
-  color: var(--bs-navbar-brand-color);
+  color: #D5AB79;
   text-decoration: none;
   white-space: nowrap;
   font-family: 'Dalek';
@@ -1548,7 +1548,7 @@ textarea.form-control-lg {
 }
 
 .text-muted {
-  color: rgba(255, 255, 255, .5)
+  color: rgba(255, 255, 255, .7)
 }
 
 .text-white-50 {
@@ -2183,7 +2183,7 @@ html {
 
 .home-title {
   font-family: 'Dalek';
-  color: white;
+  color: #D5AB79;
   font-size: 7em;
   letter-spacing: 0.1em;
 }
