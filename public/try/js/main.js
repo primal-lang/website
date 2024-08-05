@@ -1,6 +1,7 @@
 const SAMPLES = {
   'factorial': 'factorial(n) = if(isZero(n), 1, mul(n, factorial(dec(n))))\n\nmain = factorial(5)',
   'fibonacci': 'fibonacci(n) = if(isZero(n), 0, if(eq(n, 1), 1, sum(fibonacci(dec(n)), fibonacci(sub(n, 2)))))\n\nmain = fibonacci(10)',
+  'isPrime': 'isPrime(n) = if(le(n, 1), false, if(eq(n, 2), true, if(isEven(n), false, isPrimeHelper(n, 3))))\n\nisPrimeHelper(n, divisor) = if(gt(mul(divisor, divisor), n), true, if(eq(mod(n, divisor), 0), false, isPrimeHelper(n, sum(divisor, 2))))\n\nmain = isPrime(97)',
 }
 
 function compileCode(sourceCode) {
