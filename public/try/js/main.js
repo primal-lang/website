@@ -5,6 +5,7 @@ const SAMPLES = {
   'power': 'power(base, exp) = if(isZero(exp), 1, mul(base, power(base, sub(exp, 1))))\n\nmain = power(2, 10)',
   'sumOfDigits': 'sumOfDigits(n) = if(isZero(n), 0, sum(mod(n, 10), sumOfDigits(divInt(n, 10))))\n\nmain = sumOfDigits(12345)',
   'toBinary': 'toBinary(n) = if(isZero(n), "0", if(eq(n, 1), "1", concat(toBinary(divInt(n, 2)), toString(mod(n, 2)))))\n\nmain = toBinary(10)',
+  'isPalindrome': 'isPalindrome(s) = isPalindromeHelper(s, 0, dec(length(s)))\n\nisPalindromeHelper(s, start, end) = if(ge(start, end), true, if(neq(at(s, start), at(s, end)), false, isPalindromeHelper(s, inc(start), dec(end))))\n\nmain = isPalindrome("level")',
 }
 
 function compileCode(sourceCode) {
