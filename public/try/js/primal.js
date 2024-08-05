@@ -845,6 +845,37 @@
         return regexp;
       throw A.wrapException(A.FormatException$("Illegal RegExp pattern (" + String(regexp) + ")", source));
     },
+    escapeReplacement(replacement) {
+      if (replacement.indexOf("$", 0) >= 0)
+        return replacement.replace(/\$/g, "$$$$");
+      return replacement;
+    },
+    quoteStringForRegExp(string) {
+      if (/[[\]{}()*+?.\\^$|]/.test(string))
+        return string.replace(/[[\]{}()*+?.\\^$|]/g, "\\$&");
+      return string;
+    },
+    stringReplaceAllUnchecked(receiver, pattern, replacement) {
+      var t1 = A.stringReplaceAllUncheckedString(receiver, pattern, replacement);
+      return t1;
+    },
+    stringReplaceAllUncheckedString(receiver, pattern, replacement) {
+      var $length, t1, i;
+      if (pattern === "") {
+        if (receiver === "")
+          return replacement;
+        $length = receiver.length;
+        t1 = "" + replacement;
+        for (i = 0; i < $length; ++i)
+          t1 = t1 + receiver[i] + replacement;
+        return t1.charCodeAt(0) == 0 ? t1 : t1;
+      }
+      if (receiver.indexOf(pattern, 0) < 0)
+        return receiver;
+      if (receiver.length < 500 || replacement.indexOf("$", 0) >= 0)
+        return receiver.split(pattern).join(replacement);
+      return receiver.replace(new RegExp(A.quoteStringForRegExp(pattern), "g"), A.escapeReplacement(replacement));
+    },
     ConstantMapView: function ConstantMapView(t0, t1) {
       this._collection$_map = t0;
       this.$ti = t1;
@@ -3227,6 +3258,38 @@
       this.name = t0;
       this.parameters = t1;
     },
+    EndsWith: function EndsWith(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    Lowercase: function Lowercase(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    Match: function Match(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    Replace: function Replace(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    StartsWith: function StartsWith(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    SubString: function SubString(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    Trim: function Trim(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    Uppercase: function Uppercase(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
     Analyzer: function Analyzer() {
     },
     Location: function Location(t0, t1) {
@@ -3245,6 +3308,8 @@
     State: function State() {
     },
     Type0: function Type0() {
+    },
+    StringType: function StringType() {
     },
     NumberType: function NumberType() {
     },
@@ -3531,9 +3596,9 @@
         return $F._as(A._convertDartFunctionFast(f));
     },
     StandardLibrary_get() {
-      var _s1_ = "x", _s1_0 = "y",
+      var _s1_ = "a", _s1_0 = "b",
         t1 = type$.JSArray_Parameter;
-      return A._setArrayType([new A.Eq("eq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Neq("neq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.If("if", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter("z", B.C_AnyType)], t1)), new A.Try("try", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Error("error", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Debug("debug", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Abs("abs", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Inc("inc", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Dec("dec", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Add("add", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sum("sum", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sub("sub", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mul("mul", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Div("div", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mod("mod", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Min("min", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Max("max", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Pow("pow", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sqrt("sqrt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Round("round", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Floor("floor", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Ceil("ceil", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Sin("sin", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Cos("cos", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Tan("tan", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Log("log", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Gt("gt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Lt("lt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Ge("ge", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Le("le", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.IsNegative("isNegative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsPositive("isPositive", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsZero("isZero", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsEven("isEven", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsOdd("isOdd", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.And("and", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Or("or", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Xor("xor", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Not("not", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.ToNumber("toNumber", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToInteger("toInteger", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToDecimal("toDecimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToString("toString", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToBoolean("toBoolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNumber("isNumber", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInteger("isInteger", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsDecimal("isDecimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInfinite("isInfinite", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsString("isString", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsBoolean("isBoolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1))], type$.JSArray_FunctionPrototype);
+      return A._setArrayType([new A.Eq("eq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Neq("neq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.If("if", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter("c", B.C_AnyType)], t1)), new A.Try("try", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Error("error", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Debug("debug", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Abs("abs", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Inc("inc", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Dec("dec", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Add("add", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sum("sum", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sub("sub", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mul("mul", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Div("div", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mod("mod", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Min("min", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Max("max", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Pow("pow", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sqrt("sqrt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Round("round", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Floor("floor", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Ceil("ceil", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Sin("sin", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Cos("cos", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Tan("tan", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Log("log", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Gt("gt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Lt("lt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Ge("ge", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Le("le", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.IsNegative("isNegative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsPositive("isPositive", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsZero("isZero", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsEven("isEven", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsOdd("isOdd", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.And("and", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Or("or", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Xor("xor", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Not("not", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.SubString("subString", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter("c", B.C_NumberType)], t1)), new A.StartsWith("startsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.EndsWith("endsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Replace("replace", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType), new A.Parameter("c", B.C_StringType)], t1)), new A.Uppercase("uppercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Lowercase("lowercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Trim("trim", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Match("match", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.ToNumber("toNumber", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToInteger("toInteger", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToDecimal("toDecimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToString("toString", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToBoolean("toBoolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNumber("isNumber", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInteger("isInteger", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsDecimal("isDecimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInfinite("isInfinite", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsString("isString", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsBoolean("isBoolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1))], type$.JSArray_FunctionPrototype);
     },
     Mapper_toMap(functions) {
       var t1, _i, $function,
@@ -3729,6 +3794,9 @@
     elementAt$1$a(receiver, a0) {
       return J.getInterceptor$a(receiver).elementAt$1(receiver, a0);
     },
+    endsWith$1$s(receiver, a0) {
+      return J.getInterceptor$s(receiver).endsWith$1(receiver, a0);
+    },
     floor$0$n(receiver) {
       return J.getInterceptor$n(receiver).floor$0(receiver);
     },
@@ -3743,6 +3811,12 @@
     },
     split$1$s(receiver, a0) {
       return J.getInterceptor$s(receiver).split$1(receiver, a0);
+    },
+    startsWith$1$s(receiver, a0) {
+      return J.getInterceptor$s(receiver).startsWith$1(receiver, a0);
+    },
+    substring$2$s(receiver, a0, a1) {
+      return J.getInterceptor$s(receiver).substring$2(receiver, a0, a1);
     },
     toInt$0$n(receiver) {
       return J.getInterceptor$n(receiver).toInt$0(receiver);
@@ -4129,12 +4203,29 @@
     $add(receiver, other) {
       return receiver + other;
     },
+    endsWith$1(receiver, other) {
+      var otherLength = other.length,
+        t1 = receiver.length;
+      if (otherLength > t1)
+        return false;
+      return other === this.substring$1(receiver, t1 - otherLength);
+    },
     split$1(receiver, pattern) {
       var t1 = A._setArrayType(receiver.split(pattern), type$.JSArray_String);
       return t1;
     },
+    startsWith$1(receiver, pattern) {
+      var t1 = receiver.length,
+        otherLength = pattern.length;
+      if (otherLength > t1)
+        return false;
+      return pattern === receiver.substring(0, otherLength);
+    },
     substring$2(receiver, start, end) {
       return receiver.substring(start, A.RangeError_checkValidRange(start, end, receiver.length));
+    },
+    substring$1($receiver, start) {
+      return this.substring$2($receiver, start, null);
     },
     trim$0(receiver) {
       var startIndex, t1, endIndex0,
@@ -5475,64 +5566,64 @@
   A.CloseParenthesisToken.prototype = {};
   A.And.prototype = {
     substitute$1($arguments) {
-      var x, y, t1;
+      var a, b, t1;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.BooleanReducibleValue && y instanceof A.BooleanReducibleValue)
-        return new A.BooleanReducibleValue(A.boolConversionCheck(x.value) && A.boolConversionCheck(y.value));
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.BooleanReducibleValue && b instanceof A.BooleanReducibleValue)
+        return new A.BooleanReducibleValue(A.boolConversionCheck(a.value) && A.boolConversionCheck(b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Not.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.BooleanReducibleValue)
-        return new A.BooleanReducibleValue(!A.boolConversionCheck(x.value));
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.BooleanReducibleValue)
+        return new A.BooleanReducibleValue(!A.boolConversionCheck(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Or.prototype = {
     substitute$1($arguments) {
-      var x, y, t1;
+      var a, b, t1;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.BooleanReducibleValue && y instanceof A.BooleanReducibleValue)
-        return new A.BooleanReducibleValue(A.boolConversionCheck(x.value) || A.boolConversionCheck(y.value));
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.BooleanReducibleValue && b instanceof A.BooleanReducibleValue)
+        return new A.BooleanReducibleValue(A.boolConversionCheck(a.value) || A.boolConversionCheck(b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Xor.prototype = {
     substitute$1($arguments) {
-      var x, y, t1;
+      var a, b, t1;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.BooleanReducibleValue && y instanceof A.BooleanReducibleValue) {
-        t1 = x.value;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.BooleanReducibleValue && b instanceof A.BooleanReducibleValue) {
+        t1 = a.value;
         if (typeof t1 !== "boolean")
           return t1.$xor();
-        return new A.BooleanReducibleValue(B.JSBool_methods.$xor(t1, y.value));
+        return new A.BooleanReducibleValue(B.JSBool_methods.$xor(t1, b.value));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.IsBoolean.prototype = {
     substitute$1($arguments) {
-      if (type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0) instanceof A.BooleanReducibleValue)
+      if (type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0) instanceof A.BooleanReducibleValue)
         return B.BooleanReducibleValue_true;
       else
         return B.BooleanReducibleValue_false;
@@ -5541,9 +5632,9 @@
   A.IsDecimal.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue) {
-        t1 = x.value;
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        t1 = a.value;
         return new A.BooleanReducibleValue(t1 !== J.toInt$0$n(t1));
       } else
         return B.BooleanReducibleValue_false;
@@ -5552,9 +5643,9 @@
   A.IsInfinite.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue) {
-        t1 = x.value;
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        t1 = a.value;
         return new A.BooleanReducibleValue(t1 == 1 / 0 || t1 == -1 / 0);
       } else
         return B.BooleanReducibleValue_false;
@@ -5563,9 +5654,9 @@
   A.IsInteger.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue) {
-        t1 = x.value;
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        t1 = a.value;
         return new A.BooleanReducibleValue(t1 === J.toInt$0$n(t1));
       } else
         return B.BooleanReducibleValue_false;
@@ -5573,7 +5664,7 @@
   };
   A.IsNumber.prototype = {
     substitute$1($arguments) {
-      if (type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0) instanceof A.NumberReducibleValue)
+      if (type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0) instanceof A.NumberReducibleValue)
         return B.BooleanReducibleValue_true;
       else
         return B.BooleanReducibleValue_false;
@@ -5581,7 +5672,7 @@
   };
   A.IsString.prototype = {
     substitute$1($arguments) {
-      if (type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0) instanceof A.StringReducibleValue)
+      if (type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0) instanceof A.StringReducibleValue)
         return B.BooleanReducibleValue_true;
       else
         return B.BooleanReducibleValue_false;
@@ -5590,173 +5681,173 @@
   A.ToBoolean.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.StringReducibleValue)
-        return new A.BooleanReducibleValue(J.trim$0$s(x.value).length !== 0);
-      else if (x instanceof A.NumberReducibleValue)
-        return new A.BooleanReducibleValue(x.value !== 0);
-      else if (x instanceof A.BooleanReducibleValue)
-        return new A.BooleanReducibleValue(x.value);
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.StringReducibleValue)
+        return new A.BooleanReducibleValue(J.trim$0$s(a.value).length !== 0);
+      else if (a instanceof A.NumberReducibleValue)
+        return new A.BooleanReducibleValue(a.value !== 0);
+      else if (a instanceof A.BooleanReducibleValue)
+        return new A.BooleanReducibleValue(a.value);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.ToDecimal.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.StringReducibleValue)
-        return new A.NumberReducibleValue(A.double_parse(x.value));
-      else if (x instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(x.value);
-      else if (x instanceof A.BooleanReducibleValue)
-        return new A.NumberReducibleValue(A.boolConversionCheck(x.value) ? 1 : 0);
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.StringReducibleValue)
+        return new A.NumberReducibleValue(A.double_parse(a.value));
+      else if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(a.value);
+      else if (a instanceof A.BooleanReducibleValue)
+        return new A.NumberReducibleValue(A.boolConversionCheck(a.value) ? 1 : 0);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.ToInteger.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.StringReducibleValue)
-        return new A.NumberReducibleValue(A.int_parse(x.value));
-      else if (x instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(J.toInt$0$n(x.value));
-      else if (x instanceof A.BooleanReducibleValue)
-        return new A.NumberReducibleValue(A.boolConversionCheck(x.value) ? 1 : 0);
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.StringReducibleValue)
+        return new A.NumberReducibleValue(A.int_parse(a.value));
+      else if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(J.toInt$0$n(a.value));
+      else if (a instanceof A.BooleanReducibleValue)
+        return new A.NumberReducibleValue(A.boolConversionCheck(a.value) ? 1 : 0);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.ToNumber.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.StringReducibleValue)
-        return new A.NumberReducibleValue(A.num_parse(x.value));
-      else if (x instanceof A.NumberReducibleValue)
-        return x;
-      else if (x instanceof A.BooleanReducibleValue)
-        return new A.NumberReducibleValue(A.boolConversionCheck(x.value) ? 1 : 0);
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.StringReducibleValue)
+        return new A.NumberReducibleValue(A.num_parse(a.value));
+      else if (a instanceof A.NumberReducibleValue)
+        return a;
+      else if (a instanceof A.BooleanReducibleValue)
+        return new A.NumberReducibleValue(A.boolConversionCheck(a.value) ? 1 : 0);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.ToString.prototype = {
     substitute$1($arguments) {
-      return new A.StringReducibleValue(type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0).toString$0(0));
+      return new A.StringReducibleValue(type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0).toString$0(0));
     }
   };
   A.If.prototype = {
     substitute$1($arguments) {
-      var x, y, z, t1;
+      var a, b, c, t1;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y");
-      z = $arguments.$get$1("z");
-      if (x instanceof A.BooleanReducibleValue)
-        if (A.boolConversionCheck(x.value))
-          return y;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b");
+      c = $arguments.$get$1("c");
+      if (a instanceof A.BooleanReducibleValue)
+        if (A.boolConversionCheck(a.value))
+          return b;
         else
-          return z;
+          return c;
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type(), z.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Try.prototype = {
     substitute$1($arguments) {
-      var x, y, t1, exception;
+      var a, b, t1, exception;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x");
-      y = $arguments.$get$1("y");
+      a = $arguments.$get$1("a");
+      b = $arguments.$get$1("b");
       try {
-        t1 = J.reduce$0$z(x);
+        t1 = J.reduce$0$z(a);
         return t1;
       } catch (exception) {
-        return y;
+        return b;
       }
     }
   };
   A.Debug.prototype = {
     substitute$1($arguments) {
-      var x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      A.printString(x.toString$0(0));
-      return x;
+      var a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      A.printString(a.toString$0(0));
+      return a;
     }
   };
   A.Error.prototype = {
     substitute$1($arguments) {
-      throw A.wrapException(A.RuntimeError$(type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0).toString$0(0)));
+      throw A.wrapException(A.RuntimeError$(type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0).toString$0(0)));
     }
   };
   A.Eq.prototype = {
     substitute$1($arguments) {
-      var x, y, t1;
+      var a, b, t1;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue)
-        return new A.BooleanReducibleValue(x.value === y.value);
-      else if (x instanceof A.StringReducibleValue && y instanceof A.StringReducibleValue)
-        return new A.BooleanReducibleValue(x.value === y.value);
-      else if (x instanceof A.BooleanReducibleValue && y instanceof A.BooleanReducibleValue)
-        return new A.BooleanReducibleValue(x.value === y.value);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue)
+        return new A.BooleanReducibleValue(a.value === b.value);
+      else if (a instanceof A.StringReducibleValue && b instanceof A.StringReducibleValue)
+        return new A.BooleanReducibleValue(a.value === b.value);
+      else if (a instanceof A.BooleanReducibleValue && b instanceof A.BooleanReducibleValue)
+        return new A.BooleanReducibleValue(a.value === b.value);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Neq.prototype = {
     substitute$1($arguments) {
-      var x, y, t1;
+      var a, b, t1;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue)
-        return new A.BooleanReducibleValue(x.value !== y.value);
-      else if (x instanceof A.StringReducibleValue && y instanceof A.StringReducibleValue)
-        return new A.BooleanReducibleValue(x.value !== y.value);
-      else if (x instanceof A.BooleanReducibleValue && y instanceof A.BooleanReducibleValue)
-        return new A.BooleanReducibleValue(x.value !== y.value);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue)
+        return new A.BooleanReducibleValue(a.value !== b.value);
+      else if (a instanceof A.StringReducibleValue && b instanceof A.StringReducibleValue)
+        return new A.BooleanReducibleValue(a.value !== b.value);
+      else if (a instanceof A.BooleanReducibleValue && b instanceof A.BooleanReducibleValue)
+        return new A.BooleanReducibleValue(a.value !== b.value);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Abs.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(J.abs$0$in(x.value));
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(J.abs$0$in(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Add.prototype = {
     substitute$1($arguments) {
-      var x, y, t1, t2;
+      var a, b, t1, t2;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue) {
-        t1 = x.value;
-        t2 = y.value;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        t2 = b.value;
         if (typeof t1 !== "number")
           return t1.$add();
         if (typeof t2 !== "number")
@@ -5764,58 +5855,58 @@
         return new A.NumberReducibleValue(t1 + t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Ceil.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(J.ceil$0$n(x.value));
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(J.ceil$0$n(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Cos.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(Math.cos(x.value));
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(Math.cos(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Dec.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue) {
-        t1 = x.value;
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        t1 = a.value;
         if (typeof t1 !== "number")
           return t1.$sub();
         return new A.NumberReducibleValue(t1 - 1);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Div.prototype = {
     substitute$1($arguments) {
-      var x, y, t1, t2;
+      var a, b, t1, t2;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue) {
-        t1 = x.value;
-        t2 = y.value;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        t2 = b.value;
         if (typeof t1 !== "number")
           return t1.$div();
         if (typeof t2 !== "number")
@@ -5823,31 +5914,31 @@
         return new A.NumberReducibleValue(t1 / t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Floor.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(J.floor$0$n(x.value));
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(J.floor$0$n(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Ge.prototype = {
     substitute$1($arguments) {
-      var x, y, t1, t2;
+      var a, b, t1, t2;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue) {
-        t1 = x.value;
-        t2 = y.value;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        t2 = b.value;
         if (typeof t1 !== "number")
           return t1.$ge();
         if (typeof t2 !== "number")
@@ -5855,19 +5946,19 @@
         return new A.BooleanReducibleValue(t1 >= t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Gt.prototype = {
     substitute$1($arguments) {
-      var x, y, t1, t2;
+      var a, b, t1, t2;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue) {
-        t1 = x.value;
-        t2 = y.value;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        t2 = b.value;
         if (typeof t1 !== "number")
           return t1.$gt();
         if (typeof t2 !== "number")
@@ -5875,106 +5966,106 @@
         return new A.BooleanReducibleValue(t1 > t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Inc.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue) {
-        t1 = x.value;
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        t1 = a.value;
         if (typeof t1 !== "number")
           return t1.$add();
         return new A.NumberReducibleValue(t1 + 1);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.IsEven.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue) {
-        t1 = x.value;
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        t1 = a.value;
         if (typeof t1 !== "number")
           return t1.$mod();
         return new A.BooleanReducibleValue(B.JSNumber_methods.$mod(t1, 2) === 0);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.IsNegative.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue) {
-        t1 = x.value;
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        t1 = a.value;
         if (typeof t1 !== "number")
           return t1.$lt();
         return new A.BooleanReducibleValue(t1 < 0);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.IsOdd.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue) {
-        t1 = x.value;
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        t1 = a.value;
         if (typeof t1 !== "number")
           return t1.$mod();
         return new A.BooleanReducibleValue(B.JSNumber_methods.$mod(t1, 2) !== 0);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.IsPositive.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue) {
-        t1 = x.value;
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        t1 = a.value;
         if (typeof t1 !== "number")
           return t1.$gt();
         return new A.BooleanReducibleValue(t1 > 0);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.IsZero.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue)
-        return new A.BooleanReducibleValue(x.value === 0);
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue)
+        return new A.BooleanReducibleValue(a.value === 0);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Le.prototype = {
     substitute$1($arguments) {
-      var x, y, t1, t2;
+      var a, b, t1, t2;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue) {
-        t1 = x.value;
-        t2 = y.value;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        t2 = b.value;
         if (typeof t1 !== "number")
           return t1.$le();
         if (typeof t2 !== "number")
@@ -5982,31 +6073,31 @@
         return new A.BooleanReducibleValue(t1 <= t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Log.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(Math.log(x.value));
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(Math.log(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Lt.prototype = {
     substitute$1($arguments) {
-      var x, y, t1, t2;
+      var a, b, t1, t2;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue) {
-        t1 = x.value;
-        t2 = y.value;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        t2 = b.value;
         if (typeof t1 !== "number")
           return t1.$lt();
         if (typeof t2 !== "number")
@@ -6014,47 +6105,47 @@
         return new A.BooleanReducibleValue(t1 < t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Max.prototype = {
     substitute$1($arguments) {
-      var x, y, t1;
+      var a, b, t1;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(Math.max(A.checkNum(x.value), A.checkNum(y.value)));
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(Math.max(A.checkNum(a.value), A.checkNum(b.value)));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Min.prototype = {
     substitute$1($arguments) {
-      var x, y, t1;
+      var a, b, t1;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(Math.min(A.checkNum(x.value), A.checkNum(y.value)));
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(Math.min(A.checkNum(a.value), A.checkNum(b.value)));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Mod.prototype = {
     substitute$1($arguments) {
-      var x, y, t1, t2;
+      var a, b, t1, t2;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue) {
-        t1 = x.value;
-        t2 = y.value;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        t2 = b.value;
         if (typeof t1 !== "number")
           return t1.$mod();
         if (typeof t2 !== "number")
@@ -6062,19 +6153,19 @@
         return new A.NumberReducibleValue(B.JSNumber_methods.$mod(t1, t2));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Mul.prototype = {
     substitute$1($arguments) {
-      var x, y, t1, t2;
+      var a, b, t1, t2;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue) {
-        t1 = x.value;
-        t2 = y.value;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        t2 = b.value;
         if (typeof t1 !== "number")
           return t1.$mul();
         if (typeof t2 !== "number")
@@ -6082,71 +6173,71 @@
         return new A.NumberReducibleValue(t1 * t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Pow.prototype = {
     substitute$1($arguments) {
-      var x, y, t1;
+      var a, b, t1;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(Math.pow(x.value, y.value));
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(Math.pow(a.value, b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Round.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(J.round$0$n(x.value));
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(J.round$0$n(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Sin.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(Math.sin(x.value));
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(Math.sin(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Sqrt.prototype = {
     substitute$1($arguments) {
       var value, result, t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue) {
-        value = Math.sqrt(x.value);
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        value = Math.sqrt(a.value);
         result = B.JSNumber_methods.toInt$0(value);
         return new A.NumberReducibleValue(value === result ? result : value);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Sub.prototype = {
     substitute$1($arguments) {
-      var x, y, t1, t2;
+      var a, b, t1, t2;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue) {
-        t1 = x.value;
-        t2 = y.value;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        t2 = b.value;
         if (typeof t1 !== "number")
           return t1.$sub();
         if (typeof t2 !== "number")
@@ -6154,19 +6245,19 @@
         return new A.NumberReducibleValue(t1 - t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Sum.prototype = {
     substitute$1($arguments) {
-      var x, y, t1, t2;
+      var a, b, t1, t2;
       type$.Scope_Reducible._as($arguments);
-      x = $arguments.$get$1("x").reduce$0(0);
-      y = $arguments.$get$1("y").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue && y instanceof A.NumberReducibleValue) {
-        t1 = x.value;
-        t2 = y.value;
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        t2 = b.value;
         if (typeof t1 !== "number")
           return t1.$add();
         if (typeof t2 !== "number")
@@ -6174,19 +6265,131 @@
         return new A.NumberReducibleValue(t1 + t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type(), y.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
   A.Tan.prototype = {
     substitute$1($arguments) {
       var t1,
-        x = type$.Scope_Reducible._as($arguments).$get$1("x").reduce$0(0);
-      if (x instanceof A.NumberReducibleValue)
-        return new A.NumberReducibleValue(Math.tan(x.value));
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(Math.tan(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([x.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.EndsWith.prototype = {
+    substitute$1($arguments) {
+      var a, b, t1;
+      type$.Scope_Reducible._as($arguments);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.StringReducibleValue && b instanceof A.StringReducibleValue)
+        return new A.BooleanReducibleValue(J.endsWith$1$s(a.value, b.value));
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.Lowercase.prototype = {
+    substitute$1($arguments) {
+      var t1,
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.StringReducibleValue)
+        return new A.StringReducibleValue(a.value.toLowerCase());
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.Match.prototype = {
+    substitute$1($arguments) {
+      var a, b, t1, t2;
+      type$.Scope_Reducible._as($arguments);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.StringReducibleValue && b instanceof A.StringReducibleValue) {
+        t1 = A.RegExp_RegExp(b.value);
+        t2 = A._asString(a.value);
+        return new A.BooleanReducibleValue(t1._nativeRegExp.test(t2));
+      } else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.Replace.prototype = {
+    substitute$1($arguments) {
+      var a, b, c, t1, t2;
+      type$.Scope_Reducible._as($arguments);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      c = $arguments.$get$1("c").reduce$0(0);
+      if (a instanceof A.StringReducibleValue && b instanceof A.StringReducibleValue && c instanceof A.StringReducibleValue) {
+        t1 = type$.Pattern._as(b.value);
+        t2 = A._asString(c.value);
+        return new A.StringReducibleValue(A.stringReplaceAllUnchecked(a.value, t1, t2));
+      } else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.StartsWith.prototype = {
+    substitute$1($arguments) {
+      var a, b, t1;
+      type$.Scope_Reducible._as($arguments);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.StringReducibleValue && b instanceof A.StringReducibleValue)
+        return new A.BooleanReducibleValue(J.startsWith$1$s(a.value, b.value));
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.SubString.prototype = {
+    substitute$1($arguments) {
+      var a, b, c, t1;
+      type$.Scope_Reducible._as($arguments);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      c = $arguments.$get$1("c").reduce$0(0);
+      if (a instanceof A.StringReducibleValue && b instanceof A.NumberReducibleValue && c instanceof A.NumberReducibleValue)
+        return new A.StringReducibleValue(J.substring$2$s(a.value, J.toInt$0$n(b.value), J.toInt$0$n(c.value)));
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.Trim.prototype = {
+    substitute$1($arguments) {
+      var t1,
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.StringReducibleValue)
+        return new A.StringReducibleValue(J.trim$0$s(a.value));
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.Uppercase.prototype = {
+    substitute$1($arguments) {
+      var t1,
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.StringReducibleValue)
+        return new A.StringReducibleValue(a.value.toUpperCase());
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
@@ -6207,6 +6410,11 @@
     }
   };
   A.Type0.prototype = {};
+  A.StringType.prototype = {
+    toString$0(_) {
+      return "String";
+    }
+  };
   A.NumberType.prototype = {
     toString$0(_) {
       return "Number";
@@ -6869,8 +7077,8 @@
     _inheritMany(A.State, [A.InitState0, A.CommentState, A.StringDoubleQuoteState, A.StringSingleQuoteState, A.NegativeNumberState, A.IntegerState, A.DecimalState, A.SymbolState, A.ResultState0, A.InitState, A.FunctionNameState, A.FunctionWithParametersState, A.FunctionWithNewParametersState, A.FunctionWithNextParametersState, A.FunctionParametrizedState, A.FunctionBodyInitState, A.FunctionBodyExpressionState, A.ResultState]);
     _inheritMany(A.Token, [A.StringToken, A.NumberToken, A.BooleanToken, A.SymbolToken, A.CommaToken, A.EqualsToken, A.OpenParenthesisToken, A.CloseParenthesisToken]);
     _inheritMany(A.FunctionPrototype, [A.NativeFunctionPrototype, A.CustomFunctionPrototype]);
-    _inheritMany(A.NativeFunctionPrototype, [A.And, A.Not, A.Or, A.Xor, A.IsBoolean, A.IsDecimal, A.IsInfinite, A.IsInteger, A.IsNumber, A.IsString, A.ToBoolean, A.ToDecimal, A.ToInteger, A.ToNumber, A.ToString, A.If, A.Try, A.Debug, A.Error, A.Eq, A.Neq, A.Abs, A.Add, A.Ceil, A.Cos, A.Dec, A.Div, A.Floor, A.Ge, A.Gt, A.Inc, A.IsEven, A.IsNegative, A.IsOdd, A.IsPositive, A.IsZero, A.Le, A.Log, A.Lt, A.Max, A.Min, A.Mod, A.Mul, A.Pow, A.Round, A.Sin, A.Sqrt, A.Sub, A.Sum, A.Tan]);
-    _inheritMany(A.Type0, [A.NumberType, A.BooleanType, A.AnyType]);
+    _inheritMany(A.NativeFunctionPrototype, [A.And, A.Not, A.Or, A.Xor, A.IsBoolean, A.IsDecimal, A.IsInfinite, A.IsInteger, A.IsNumber, A.IsString, A.ToBoolean, A.ToDecimal, A.ToInteger, A.ToNumber, A.ToString, A.If, A.Try, A.Debug, A.Error, A.Eq, A.Neq, A.Abs, A.Add, A.Ceil, A.Cos, A.Dec, A.Div, A.Floor, A.Ge, A.Gt, A.Inc, A.IsEven, A.IsNegative, A.IsOdd, A.IsPositive, A.IsZero, A.Le, A.Log, A.Lt, A.Max, A.Min, A.Mod, A.Mul, A.Pow, A.Round, A.Sin, A.Sqrt, A.Sub, A.Sum, A.Tan, A.EndsWith, A.Lowercase, A.Match, A.Replace, A.StartsWith, A.SubString, A.Trim, A.Uppercase]);
+    _inheritMany(A.Type0, [A.StringType, A.NumberType, A.BooleanType, A.AnyType]);
     _inheritMany(A.ReducibleValue, [A.StringReducibleValue, A.NumberReducibleValue, A.BooleanReducibleValue]);
     _inheritMany(A.Reducible, [A.SymbolReducible, A.ExpressionReducible]);
     _inherit(A.AnonymousFunctionPrototype, A.CustomFunctionPrototype);
@@ -6891,7 +7099,7 @@
     leafTags: null,
     arrayRti: Symbol("$ti")
   };
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"_Type":{"Type":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"InputAnalyzer":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState0":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"NegativeNumberState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SymbolState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState0":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"SymbolToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"EqualsToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"And":{"FunctionPrototype":[]},"Not":{"FunctionPrototype":[]},"Or":{"FunctionPrototype":[]},"Xor":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Debug":{"FunctionPrototype":[]},"Error":{"FunctionPrototype":[]},"Eq":{"FunctionPrototype":[]},"Neq":{"FunctionPrototype":[]},"Abs":{"FunctionPrototype":[]},"Add":{"FunctionPrototype":[]},"Ceil":{"FunctionPrototype":[]},"Cos":{"FunctionPrototype":[]},"Dec":{"FunctionPrototype":[]},"Div":{"FunctionPrototype":[]},"Floor":{"FunctionPrototype":[]},"Ge":{"FunctionPrototype":[]},"Gt":{"FunctionPrototype":[]},"Inc":{"FunctionPrototype":[]},"IsEven":{"FunctionPrototype":[]},"IsNegative":{"FunctionPrototype":[]},"IsOdd":{"FunctionPrototype":[]},"IsPositive":{"FunctionPrototype":[]},"IsZero":{"FunctionPrototype":[]},"Le":{"FunctionPrototype":[]},"Log":{"FunctionPrototype":[]},"Lt":{"FunctionPrototype":[]},"Max":{"FunctionPrototype":[]},"Min":{"FunctionPrototype":[]},"Mod":{"FunctionPrototype":[]},"Mul":{"FunctionPrototype":[]},"Pow":{"FunctionPrototype":[]},"Round":{"FunctionPrototype":[]},"Sin":{"FunctionPrototype":[]},"Sqrt":{"FunctionPrototype":[]},"Sub":{"FunctionPrototype":[]},"Sum":{"FunctionPrototype":[]},"Tan":{"FunctionPrototype":[]},"NumberType":{"Type0":[]},"BooleanType":{"Type0":[]},"AnyType":{"Type0":[]},"ReducibleValue":{"Reducible":[]},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"SymbolReducible":{"Reducible":[]},"ExpressionReducible":{"Reducible":[]},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"LiteralExpression":{"Expression":[]},"SymbolExpression":{"Expression":[]},"FunctionCallExpression":{"Expression":[]},"EmptyExpression":{"Expression":[]},"StringExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"NumberExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"BooleanExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"StackLiteral":{"StackExpression":["LiteralExpression<@>"],"StackElement":[],"StackExpression.T":"LiteralExpression<@>"},"StackSymbol":{"StackExpression":["SymbolExpression"],"StackElement":[],"StackExpression.T":"SymbolExpression"},"StackFunctionCall":{"StackExpression":["FunctionCallExpression"],"StackElement":[],"StackExpression.T":"FunctionCallExpression"},"StackOpenParenthesis":{"StackElement":[]},"StackComma":{"StackElement":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionBodyInitState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionBodyExpressionState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"StackExpression":{"StackElement":[]},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]}}'));
+  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"_Type":{"Type":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"InputAnalyzer":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState0":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"NegativeNumberState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SymbolState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState0":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"SymbolToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"EqualsToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"And":{"FunctionPrototype":[]},"Not":{"FunctionPrototype":[]},"Or":{"FunctionPrototype":[]},"Xor":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Debug":{"FunctionPrototype":[]},"Error":{"FunctionPrototype":[]},"Eq":{"FunctionPrototype":[]},"Neq":{"FunctionPrototype":[]},"Abs":{"FunctionPrototype":[]},"Add":{"FunctionPrototype":[]},"Ceil":{"FunctionPrototype":[]},"Cos":{"FunctionPrototype":[]},"Dec":{"FunctionPrototype":[]},"Div":{"FunctionPrototype":[]},"Floor":{"FunctionPrototype":[]},"Ge":{"FunctionPrototype":[]},"Gt":{"FunctionPrototype":[]},"Inc":{"FunctionPrototype":[]},"IsEven":{"FunctionPrototype":[]},"IsNegative":{"FunctionPrototype":[]},"IsOdd":{"FunctionPrototype":[]},"IsPositive":{"FunctionPrototype":[]},"IsZero":{"FunctionPrototype":[]},"Le":{"FunctionPrototype":[]},"Log":{"FunctionPrototype":[]},"Lt":{"FunctionPrototype":[]},"Max":{"FunctionPrototype":[]},"Min":{"FunctionPrototype":[]},"Mod":{"FunctionPrototype":[]},"Mul":{"FunctionPrototype":[]},"Pow":{"FunctionPrototype":[]},"Round":{"FunctionPrototype":[]},"Sin":{"FunctionPrototype":[]},"Sqrt":{"FunctionPrototype":[]},"Sub":{"FunctionPrototype":[]},"Sum":{"FunctionPrototype":[]},"Tan":{"FunctionPrototype":[]},"EndsWith":{"FunctionPrototype":[]},"Lowercase":{"FunctionPrototype":[]},"Match":{"FunctionPrototype":[]},"Replace":{"FunctionPrototype":[]},"StartsWith":{"FunctionPrototype":[]},"SubString":{"FunctionPrototype":[]},"Trim":{"FunctionPrototype":[]},"Uppercase":{"FunctionPrototype":[]},"StringType":{"Type0":[]},"NumberType":{"Type0":[]},"BooleanType":{"Type0":[]},"AnyType":{"Type0":[]},"ReducibleValue":{"Reducible":[]},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"SymbolReducible":{"Reducible":[]},"ExpressionReducible":{"Reducible":[]},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"LiteralExpression":{"Expression":[]},"SymbolExpression":{"Expression":[]},"FunctionCallExpression":{"Expression":[]},"EmptyExpression":{"Expression":[]},"StringExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"NumberExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"BooleanExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"StackLiteral":{"StackExpression":["LiteralExpression<@>"],"StackElement":[],"StackExpression.T":"LiteralExpression<@>"},"StackSymbol":{"StackExpression":["SymbolExpression"],"StackElement":[],"StackExpression.T":"SymbolExpression"},"StackFunctionCall":{"StackExpression":["FunctionCallExpression"],"StackElement":[],"StackExpression.T":"FunctionCallExpression"},"StackOpenParenthesis":{"StackElement":[]},"StackComma":{"StackElement":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionBodyInitState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionBodyExpressionState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"StackExpression":{"StackElement":[]},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]}}'));
   A._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"EfficientLengthIterable":1,"_SetBase":1}'));
   var type$ = (function rtii() {
     var findType = A.findType;
@@ -6931,6 +7139,7 @@
       Null: findType("Null"),
       Object: findType("Object"),
       Parameter: findType("Parameter"),
+      Pattern: findType("Pattern"),
       Record: findType("Record"),
       Reducible: findType("Reducible"),
       Runes: findType("Runes"),
@@ -6978,6 +7187,7 @@
   return s.substring(8, s.length - 1);
 };
     B.C_NumberType = new A.NumberType();
+    B.C_StringType = new A.StringType();
     B.C__Required = new A._Required();
     B.CommentState_null = new A.CommentState(null);
     B.EmptyExpressionEvaluationError_oFO = new A.EmptyExpressionEvaluationError("Cannot reduce empty expression");
