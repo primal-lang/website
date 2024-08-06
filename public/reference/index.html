@@ -59,7 +59,7 @@
           <li><a href="#casting">Casting</a></li>
         </ul>
 
-        <h4 class="text-white reference-title" id="comparison">Comparison</h4>
+        <h4 class="text-white reference-section" id="comparison">Comparison</h4>
 
         <h5 class="text-white reference-title">Equality</h5>
         <p class="reference-text"> Input: Two arguments of any type.</p>
@@ -71,7 +71,7 @@
         <p class="reference-text"> Output: True if they are not equal. False otherwise.</p>
         <p class="code-sample">neq(a: T, b: T): Boolean</p>
 
-        <h4 class="text-white reference-title" id="control">Control</h4>
+        <h4 class="text-white reference-section" id="control">Control</h4>
 
         <h5 class="text-white reference-title">If-Else</h5>
         <p class="reference-text"> Input: One conditional argument (a) and two arguments of any type (b and c). The
@@ -87,21 +87,21 @@
           it returns the second argument.</p>
         <p class="code-sample">try(a: T, b: T): T</p>
 
-        <h4 class="text-white reference-title" id="error">Error</h4>
+        <h4 class="text-white reference-section" id="error">Error</h4>
 
         <h5 class="text-white reference-title">Throw error</h5>
         <p class="reference-text"> Input: An argument of any type.</p>
         <p class="reference-text"> Output: It returns an error wrapping that argument.</p>
         <p class="code-sample">error(a: T): Error</p>
 
-        <h4 class="text-white reference-title" id="debugging">Debugging</h4>
+        <h4 class="text-white reference-section" id="debugging">Debugging</h4>
 
         <h5 class="text-white reference-title">Debug</h5>
         <p class="reference-text"> Input: An argument of any type.</p>
         <p class="reference-text"> Output: It writes that argument in the standard output and returns it.</p>
         <p class="code-sample">debug(a: T): T</p>
 
-        <h4 class="text-white reference-title" id="arithmetic">Arithmetic</h4>
+        <h4 class="text-white reference-section" id="arithmetic">Arithmetic</h4>
         <p class="code-sample">abs(a: Number): Number</p>
         <p class="code-sample">inc(a: Number): Number</p>
         <p class="code-sample">dec(a: Number): Number</p>
@@ -132,13 +132,24 @@
         <p class="code-sample">isEven(a: Number): Boolean</p>
         <p class="code-sample">isOdd(a: Number): Boolean</p>
 
-        <h4 class="text-white reference-title" id="logic">Logic</h4>
+        <h4 class="text-white reference-section" id="logic">Logic</h4>
+        <p class="reference-text"> Input: Two boolean arguments.</p>
+        <p class="reference-text"> Output: True if both arguments are true. False otherwise.</p>
         <p class="code-sample">and(a: Boolean, b: Boolean): Boolean</p>
+
+        <p class="reference-text"> Input: Two boolean arguments.</p>
+        <p class="reference-text"> Output: True if at least one argument is true. False otherwise.</p>
         <p class="code-sample">or(a: Boolean, b: Boolean): Boolean</p>
+
+        <p class="reference-text"> Input: One boolean argument.</p>
+        <p class="reference-text"> Output: True if the argument is false. False if the argument is true.</p>
         <p class="code-sample">not(a: Boolean): Boolean</p>
+
+        <p class="reference-text"> Input: Two boolean arguments.</p>
+        <p class="reference-text"> Output: True if exactly one argument is true. False otherwise.</p>
         <p class="code-sample">xor(a: Boolean, b: Boolean): Boolean</p>
 
-        <h4 class="text-white reference-title" id="string">String</h4>
+        <h4 class="text-white reference-section" id="string">String</h4>
         <p class="code-sample">subString(a: String, b: Number, c: Number): String</p>
         <p class="code-sample">startsWith(a: String, b: String): Boolean</p>
         <p class="code-sample">endsWith(a: String, b: String): Boolean</p>
@@ -162,7 +173,7 @@
         <p class="code-sample">remove(a: String, b: Number): String</p>
         <p class="code-sample">reverse(a: String): String</p>
 
-        <h4 class="text-white reference-title" id="casting">Casting</h4>
+        <h4 class="text-white reference-section" id="casting">Casting</h4>
         <p class="code-sample">toNumber(a: T): Number</p>
         <p class="code-sample">toInteger(a: T): Number</p>
         <p class="code-sample">toDecimal(a: T): Number</p>

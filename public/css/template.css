@@ -1967,9 +1967,14 @@ html {
   border-radius: 1rem !important
 }
 
-.reference-title {
+.reference-section {
+  font-size: 1.4em;
   margin-top: 2em;
-  margin-bottom: .5em
+}
+
+.reference-title {
+  font-size: 1.1em;
+  margin-top: 1.5em;
 }
 
 .code-sample {
