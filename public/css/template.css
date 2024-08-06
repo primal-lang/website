@@ -1,8 +1,6 @@
 @charset "UTF-8";
 
 :root {
-  --bs-blue: #1e30f3;
-  --bs-dark: #0b2d37;
   --bs-white-rgb: 255, 255, 255;
   --bs-primary-rgb: 30, 48, 243;
   --bs-body-font-family: "Nunito";
@@ -180,21 +178,6 @@ a:not([href]):not([class]),
 a:not([href]):not([class]):hover {
   color: inherit;
   text-decoration: none
-}
-
-code {
-  font-family: var(--bs-font-monospace);
-  font-size: 1em
-}
-
-code {
-  font-size: .875em;
-  color: var(--bs-code-color);
-  word-wrap: break-word
-}
-
-a>code {
-  color: inherit
 }
 
 img {
@@ -730,9 +713,9 @@ textarea.form-control-lg {
   -webkit-user-select: none;
   -moz-user-select: none;
   user-select: none;
-  border: var(--bs-btn-border-width) solid var(--bs-btn-border-color);
+  border: 0;
   border-radius: var(--bs-btn-border-radius);
-  background-color: var(--bs-btn-bg);
+  background-color: #a0743e;
   transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out
 }
 
@@ -744,27 +727,13 @@ textarea.form-control-lg {
 
 .btn:hover {
   color: var(--bs-btn-hover-color);
-  background-color: var(--bs-btn-hover-bg);
-  border-color: var(--bs-btn-hover-border-color)
+  background-color: #8C5E26;
 }
 
 .btn:focus-visible {
   color: var(--bs-btn-hover-color);
-  background-color: var(--bs-btn-hover-bg);
-  border-color: var(--bs-btn-hover-border-color);
+  background-color: #8C5E26;
   outline: 0;
-  box-shadow: var(--bs-btn-focus-box-shadow)
-}
-
-.btn:first-child:active,
-:not(.btn-check)+.btn:active {
-  color: var(--bs-btn-active-color);
-  background-color: var(--bs-btn-active-bg);
-  border-color: var(--bs-btn-active-border-color)
-}
-
-.btn:first-child:active:focus-visible,
-:not(.btn-check)+.btn:active:focus-visible {
   box-shadow: var(--bs-btn-focus-box-shadow)
 }
 
@@ -772,7 +741,6 @@ textarea.form-control-lg {
 .btn:disabled {
   color: var(--bs-btn-disabled-color);
   pointer-events: none;
-  background-color: var(--bs-btn-disabled-bg);
   opacity: var(--bs-btn-disabled-opacity)
 }
 
@@ -2173,7 +2141,7 @@ html {
 }
 
 .page-background {
-  background-color: #0b2d37
+  background-color: #1a2c44;
 }
 
 @font-face {
