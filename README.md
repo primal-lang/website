@@ -1,9 +1,7 @@
 # Primal Website
 
 ## TODO
-* Website analytics
 * Todo improve playground output
-* Fix mobile version website
 * Finish *Get started*
   - https://dart.dev/language 
   - https://dart.dev/overview
@@ -19,3 +17,4 @@
   - https://api.dart.dev/stable/3.5.0/index.html
   - https://dart.dev/libraries
 * Finish *Downloads*
+* Fix mobile version website
