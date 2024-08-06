@@ -1,5 +1,24 @@
 @charset "UTF-8";
 
+@font-face {
+  font-family: Dalek;
+  src: url(../fonts/dalek.ttf)
+}
+
+@font-face {
+  font-family: Nunito;
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/nunito/v26/XRXI3I6Li01BKofiOc5wtlZ2di8HDLshdTQ3ig.ttf) format('truetype')
+}
+
+@font-face {
+  font-family: 'Source Code Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/sourcecodepro/v23/HI_diYsKILxRpg3hIP6sJ7fM7PqPMcMnZFqUwX28DMyQhM4.ttf) format('truetype')
+}
+
 :root {
   --bs-body-font-family: "Nunito";
   --bs-body-font-size: 1rem;
@@ -233,7 +252,7 @@ textarea {
 }
 
 [type=search] {
-  outline-offset: -2px;
+  outline-offset: -2px
 }
 
 ::-webkit-search-decoration {
@@ -245,7 +264,7 @@ textarea {
 }
 
 ::file-selector-button {
-  font: inherit;
+  font: inherit
 }
 
 [hidden] {
@@ -717,12 +736,12 @@ textarea.form-control-lg {
 
 .btn:hover {
   color: var(--bs-btn-hover-color);
-  background-color: #8C5E26;
+  background-color: #8c5e26;
 }
 
 .btn:focus-visible {
   color: var(--bs-btn-hover-color);
-  background-color: #8C5E26;
+  background-color: #8c5e26;
   outline: 0;
   box-shadow: var(--bs-btn-focus-box-shadow)
 }
@@ -922,11 +941,11 @@ textarea.form-control-lg {
   padding-bottom: var(--bs-navbar-brand-padding-y);
   margin-right: var(--bs-navbar-brand-margin-end);
   font-size: var(--bs-navbar-brand-font-size);
-  color: #D5AB79;
+  color: #d5ab79;
   text-decoration: none;
   white-space: nowrap;
-  font-family: 'Dalek';
-  letter-spacing: 0.1em;
+  font-family: Dalek;
+  letter-spacing: .1em
 }
 
 .navbar-brand:focus,
@@ -1491,7 +1510,7 @@ textarea.form-control-lg {
 }
 
 .text-white {
-  color: white;
+  color: #fff
 }
 
 .text-muted {
@@ -1548,7 +1567,7 @@ textarea.form-control-lg {
 
 .rounded-circle {
   border-radius: 50% !important;
-  background-color: rgb(0, 0, 0, 0.2);
+  background-color: rgb(0, 0, 0, .2)
 }
 
 .rounded-top {
@@ -2105,24 +2124,19 @@ html {
 .code-sample {
   color: rgba(255, 255, 255, .8);
   background-color: #000;
-  padding: 0.5rem 1rem 0.5rem 1rem;
+  padding: .5rem 1rem .5rem 1rem;
   font-family: 'Source Code Pro'
 }
 
 .page-background {
-  background-color: #1a2c44;
-}
-
-@font-face {
-  font-family: Dalek;
-  src: url('../fonts/dalek.ttf');
+  background-color: #1a2c44
 }
 
 .home-title {
-  font-family: 'Dalek';
-  color: #D5AB79;
+  font-family: Dalek;
+  color: #d5ab79;
   font-size: 7em;
-  letter-spacing: 0.1em;
+  letter-spacing: .1em;
 }
 
 .reference-text {
@@ -2130,12 +2144,13 @@ html {
   font-size: 1em;
 }
 
-.table-of-contents, a {
-  color: white;
+.table-of-contents,
+a {
+  color: #fff;
   text-decoration: none;
   font-size: 1.05em;
 }
 
-.table-of-contents > li > a:hover {
+.table-of-contents>li>a:hover {
   color: rgba(255, 255, 255, .5);
 }
