@@ -4,7 +4,6 @@
 * Website analytics
 * Complementary color of orange
 * Show ger started button
-* Add roadmap
 
 * Todo improve playground output
 * Fix mobile version website
