@@ -2,9 +2,6 @@
 
 ## TODO
 * Website analytics
-* Complementary color of orange
-* Show ger started button
-
 * Todo improve playground output
 * Fix mobile version website
 * Finish *Get started*
