@@ -1968,8 +1968,11 @@ html {
 }
 
 .reference-section {
-  font-size: 1.4em;
+  font-size: 1.6em;
   margin-top: 2em;
+  border-bottom: 1px solid rgb(255, 255, 255, .2);
+  width: 100%;
+  padding-bottom: 0.5em;
 }
 
 .reference-title {
