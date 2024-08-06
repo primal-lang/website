@@ -1984,7 +1984,8 @@ html {
   color: rgba(255, 255, 255, .8);
   background-color: #000;
   padding: .5rem 1rem .5rem 1rem;
-  font-family: 'Source Code Pro'
+  font-family: 'Source Code Pro';
+  border-radius: 0.3rem;
 }
 
 .page-background {
