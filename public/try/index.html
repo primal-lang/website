@@ -185,7 +185,7 @@
         lineNumbers: true,
         mode: 'javascript',
         theme: 'dracula',
-        value: localStorage.getItem('sourceCode') ? localStorage.getItem('sourceCode') : 'foo(n) = mul(n, 2)\n\nmain = foo(6)',
+        value: localStorage.getItem('sourceCode') ? localStorage.getItem('sourceCode') : SAMPLES['default'],
       })
 
       window.editor.on('change', function () {

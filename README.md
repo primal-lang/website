@@ -2,7 +2,6 @@
 
 ## TODO
 * Explain types in reference
-* Create sample code initial
 * Move comparison functions
 * document divInt
 
