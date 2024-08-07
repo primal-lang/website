@@ -3597,14 +3597,14 @@
       return A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("String(1)")._as(new A.runtimeWarningsHelper_closure()), t3), true, t3._eval$1("ListIterable.E"));
     },
     runtimeHasMainHelper(code) {
-      type$.IntermediateCode._as(code);
-      $.Runtime_SCOPE = new A.Scope(code.functions, type$.Scope_dynamic);
-      return new A.Runtime(code).get$main() != null;
+      var t1 = type$.IntermediateCode._as(code).functions;
+      $.Runtime_SCOPE = new A.Scope(t1, type$.Scope_dynamic);
+      return t1.$index(0, "main") != null;
     },
     runtimeExecuteMainHelper(code) {
-      type$.IntermediateCode._as(code);
-      $.Runtime_SCOPE = new A.Scope(code.functions, type$.Scope_dynamic);
-      return new A.Runtime(code).get$main().substitute$1(B.Scope_Map_empty).reduce$0(0).toString$0(0);
+      var t1 = type$.IntermediateCode._as(code).functions;
+      $.Runtime_SCOPE = new A.Scope(t1, type$.Scope_dynamic);
+      return t1.$index(0, "main").substitute$1(B.Scope_Map_empty).reduce$0(0).toString$0(0);
     },
     runtimeReduceHelper(code, expression) {
       type$.IntermediateCode._as(code);
@@ -3676,7 +3676,7 @@
         result = A.LinkedHashMap_LinkedHashMap$_empty(type$.String, type$.FunctionPrototype);
       for (t1 = functions.length, _i = 0; _i < functions.length; functions.length === t1 || (0, A.throwConcurrentModificationError)(functions), ++_i) {
         $function = functions[_i];
-        result.$indexSet(0, $function.name + "/" + $function.parameters.length, $function);
+        result.$indexSet(0, $function.name, $function);
       }
       return result;
     }
@@ -6759,7 +6759,11 @@
     }
   };
   A.Localized.prototype = {};
-  A.Parameter.prototype = {};
+  A.Parameter.prototype = {
+    toString$0(_) {
+      return this.name;
+    }
+  };
   A.State.prototype = {
     process$2(input, next) {
       var t1 = A._instanceType(this);
@@ -6844,9 +6848,8 @@
     },
     reduce$0(_) {
       var t1 = this.name,
-        t2 = this.$arguments,
-        $function = type$.FunctionPrototype._as($.Runtime_SCOPE.$get$1(t1 + "/" + t2.length));
-      return $function.substitute$1(A.Scope_from(t2, t1, this.location, $function.parameters)).reduce$0(0);
+        $function = type$.FunctionPrototype._as($.Runtime_SCOPE.$get$1(t1));
+      return $function.substitute$1(A.Scope_from(this.$arguments, t1, this.location, $function.parameters)).reduce$0(0);
     },
     get$type() {
       return "Function";
@@ -6861,22 +6864,13 @@
     },
     $signature: 7
   };
-  A.Runtime.prototype = {
-    get$main() {
-      var main = this.intermediateCode.functions.$index(0, "main/0");
-      return main != null && main.parameters.length === 0 ? main : null;
-    }
-  };
+  A.Runtime.prototype = {};
   A.Scope.prototype = {
     $get$1($name) {
-      var t1,
-        result = this.data.$index(0, $name);
-      if (result == null) {
-        t1 = $name.split("/");
-        if (0 >= t1.length)
-          return A.ioore(t1, 0);
-        throw A.wrapException(new A.NotFoundInScope('Variable "' + t1[0] + '" not found in scope'));
-      } else
+      var result = this.data.$index(0, $name);
+      if (result == null)
+        throw A.wrapException(new A.NotFoundInScope('Variable "' + $name + '" not found in scope'));
+      else
         return result;
     }
   };
@@ -6919,14 +6913,14 @@
       return result;
     },
     checkDuplicatedFunctions$1(functions) {
-      var t1, t2, i, function1, j, t3, t4, t5, j0, function2;
+      var t1, t2, i, function1, j, t3, j0, function2;
       type$.List_FunctionPrototype._as(functions);
       for (t1 = functions.length, t2 = t1 - 1, i = 0; i < t2; i = j) {
         function1 = functions[i];
-        for (j = i + 1, t3 = function1.name, t4 = function1.parameters, t5 = t4.length, j0 = j; j0 < t1; ++j0) {
+        for (j = i + 1, t3 = function1.name, j0 = j; j0 < t1; ++j0) {
           function2 = functions[j0];
-          if (function2.name === t3 && function2.parameters.length === t5)
-            throw A.wrapException(new A.DuplicatedFunctionError('Duplicated function "' + t3 + '" with paramters (' + B.JSArray_methods.join$1(t4, ", ") + ") and (" + B.JSArray_methods.join$1(function2.parameters, ", ") + ")"));
+          if (function2.name === t3)
+            throw A.wrapException(new A.DuplicatedFunctionError('Duplicated function "' + t3 + '" with paramters (' + B.JSArray_methods.join$1(function1.parameters, ", ") + ") and (" + B.JSArray_methods.join$1(function2.parameters, ", ") + ")"));
         }
       }
     },
