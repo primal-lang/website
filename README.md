@@ -2,7 +2,6 @@
 
 ## TODO
 * Explain types in reference
-* Move comparison functions
 * document divInt
 
 * Todo improve playground output
