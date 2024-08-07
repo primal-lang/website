@@ -1,6 +1,10 @@
 # Primal Website
 
 ## TODO
+* Explain types in reference
+* Create sample code initial
+* Move comparison functions
+
 * Todo improve playground output
 * Finish *Get started*
   - https://dart.dev/language 
