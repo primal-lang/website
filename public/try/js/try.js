@@ -89,6 +89,11 @@ function onSendFeedback() {
   const feedbackText = document.getElementById('feedbackText')
   sendFeedbackMessage(feedbackText.value)
   $('#feedbackModal').modal('hide')
+  onFeedbackModalClosed()
+}
+
+function onFeedbackModalClosed() {
+  const feedbackText = document.getElementById('feedbackText')
   feedbackText.value = ''
   const sendFeedbackButton = document.getElementById('sendFeedbackButton')
   sendFeedbackButton.disabled = true

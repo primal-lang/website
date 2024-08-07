@@ -37,7 +37,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <script type="text/javascript" src="js/primal.js"></script>
-  <script type="text/javascript" src="js/main.js"></script>
+  <script type="text/javascript" src="js/try.js"></script>
 
   <script type="text/javascript" src="https://unpkg.com/split.js@1.6.5/dist/split.min.js"></script>
 
@@ -158,7 +158,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h6 class="modal-title" id="exampleModalLabel">Feedback</h6>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" onclick="onFeedbackModalClosed()"></button>
         </div>
         <div class="modal-body">
           <textarea class="form-control" id="feedbackText" rows="5" oninput="onFeedbackInputChange()"></textarea>
