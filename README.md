@@ -13,6 +13,4 @@
   - https://dart.dev/resources/faq
   - https://dart.dev/resources/glossary
   - https://dart.dev/tutorials/server/get-started
-* Finish *Reference*
-  - https://dart.dev/libraries
 * Fix mobile version website
