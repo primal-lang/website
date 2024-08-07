@@ -4,6 +4,7 @@
 * Explain types in reference
 * Create sample code initial
 * Move comparison functions
+* document divInt
 
 * Todo improve playground output
 * Finish *Get started*
