@@ -1,9 +1,6 @@
 # Primal Website
 
 ## TODO
-* Explain types in reference
-* document divInt
-
 * Todo improve playground output
 * Finish *Get started*
   - https://dart.dev/language 
