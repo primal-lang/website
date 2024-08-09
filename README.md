@@ -5,3 +5,4 @@
 * Todo improve playground output
 * Fix mobile version website
 * Ask someone to ask a question in StackOverflow
+* Create Wikipedia entry
