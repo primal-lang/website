@@ -1369,10 +1369,6 @@ textarea.form-control-lg {
   color: #fff
 }
 
-.text-muted {
-  color: rgba(255, 255, 255, .7)
-}
-
 .text-white-50 {
   --bs-text-opacity: 1;
   color: rgba(255, 255, 255, .5) !important
