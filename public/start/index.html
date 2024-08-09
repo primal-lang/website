@@ -63,7 +63,7 @@
         </p>
 
         <p class="text-white justified-text">
-          It is free and open source. It's available under the MIT license, which means that you can use it for any
+          It is free and open source. And it's available under the MIT license, which means that you can use it for any
           purpose, commercial or non-commercial, without any restrictions. You can also modify the source code and
           distribute it as you see fit.
         </p>
@@ -72,15 +72,15 @@
           It is still under development, so there may be bugs and missing features. If you encounter any issues, please
           report them on <a href="https://github.com/primal-lang/sdk/issues/new" class="custom-link"
             target="_blank">GitHub</a>. If you have any suggestions or ideas for improvement, please let us know by
-          sending us feedback using the <a href="https://primal-lang.org/feedback" class="custom-link">form</a>.
+          sending us feedback using the <a href="https://primal-lang.org/feedback" class="custom-link">web form</a>.
         </p>
 
         <h4 class="text-white start-title">Goal</h4>
         <p class="text-white justified-text">
           Its goal is to be used primarily for educational purposes. It aims to teach programming concepts without the
-          complexity of more advanced languages. It emphasizes simplicity and minimal syntax, making it a good choice
-          for beginners who are learning the fundamentals of programming. It's not intended to be used in production
-          environments, but it can be used for small scripts.
+          complexity of more advanced languages. It emphasizes simplicity and minimalistic syntax, making it a good
+          choice for beginners who are learning the fundamentals of programming. It's not intended to be used in
+          production environments, but it can be used for small scripts.
         </p>
 
         <h4 class="text-white start-title">Technical envelope</h4>
@@ -101,41 +101,40 @@
         <p class="text-white justified-text">
           Everything in Primal is a function, which can be composed to create more complex functions. Functions cannot
           be overloaded (i.e. only one function with a given name can exist in a program). Currently there are no
-          operators. Instead, the language offers a function with equivalent functionality (e.g. the sum function is the
-          equivalent for the + operator).
+          operators. Instead, the language offers a function with equivalent functionality (e.g. the <span
+            class="tagged">sum</span> function is the equivalent of the <span class="tagged">+</span> operator).
         </p>
 
         <p class="text-white justified-text">
           Being a functional language, Primal does not have loop constructions. Instead, it uses recursion to perform
-          repetitive tasks. This allows for a more declarative style of programming.
+          repetitive tasks, allowing for a more declarative style of programming.
         </p>
 
         <h4 class="text-white start-title">Syntax</h4>
 
         <p class="text-white justified-text">
-          The syntax is designed to be simple and easy to read. It is inspired by Lambda Calculus, which uses
-          a minimal set of symbols and keywords to define functions and perform computations. The syntax consists of
-          function declarations, function calls, and expressions that are evaluated to produce a result.
+          The syntax is designed to be simple and easy to read and consists of function declarations, function calls,
+          and expressions that are evaluated to produce a result.
         </p>
 
         <p class="text-white">
-          A function definition is composed by:
+          A function definition is composed of:
         </p>
 
         <ul class="text-white">
-          <li>Function name: which must match the following regular expression <span
+          <li><b>Function name:</b> which must match the regular expression <span
               class="tagged">[a-zA-Z]+[a-zA-Z_]+</span></li>
-          <li>Function parameters: a list of symbols, each of them matching the following regular expression
+          <li><b>Function parameters (optional):</b> a list of symbols, each of them matching the regular expression
             <span class="tagged">[a-zA-Z]+[a-zA-Z_]+</span>
           </li>
-          <li>Function body: an expression which consist in either a constant value or a function call</li>
+          <li><b>Function body:</b> an expression which consist in either a constant value or a function call</li>
         </ul>
 
         <p class="text-white">
           Here is an example of a function with parameters:
         </p>
 
-        <p class="code-sample">isBiggerThan10(a) = gt(a, 10)</p>
+        <p class="code-sample">isPositive(n) = gt(n, 0)</p>
 
         <p class="text-white">
           And here is an example of a function without parameters:
@@ -146,9 +145,9 @@
         <h4 class="text-white start-title">Main function</h4>
 
         <p class="text-white justified-text">
-          There is a special function in the language called main. It is optional and has no arguments. It is the entry
-          point of the program, and it is executed when the program is run. The main function can call other functions
-          and perform computations to produce a result.
+          There is a special function in the language called <span class="tagged">main</span>. It is optional and has no
+          arguments. It is the entry point of the program, and it is executed when the program is run. The main function
+          can call other functions and perform computations to produce a result.
         </p>
 
         <p class="text-white justified-text">
@@ -161,8 +160,8 @@
 
         <p class="text-white justified-text">
           Primal has a dynamic runtime type checking. This means that users cannot explicitly declare types for
-          parameters, return values, or variables in the code. Instead, the system performs type checks during execution
-          to ensure that values match the expected types when passed to functions or operations.
+          parameters or return values in the code. Instead, the system performs type checks during execution to ensure
+          that values match the expected types when passed to functions.
         </p>
 
         <p class="text-white justified-text">
