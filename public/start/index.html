@@ -108,13 +108,35 @@
         <h4 class="text-white start-title">Syntax</h4>
 
         <p class="text-white">
-          The syntax of Primal is designed to be simple and easy to read. It is inspired by Lambda Calculus, which uses
+          The syntax is designed to be simple and easy to read. It is inspired by Lambda Calculus, which uses
           a minimal set of symbols and keywords to define functions and perform computations. The syntax consists of
           function declarations, function calls, and expressions that are evaluated to produce a result.
         </p>
 
-        Function name format: [a-zA-Z]+[a-zA-Z_]+
-        Parameter name format: ???
+        <p class="text-white">
+          A function definition is composed by:
+        </p>
+
+        <ul class="text-white">
+          <li>Function name: which must match the following regular expression <span
+              class="tagged">[a-zA-Z]+[a-zA-Z_]+</span></li>
+          <li>Function parameters: a list of symbols, each of them matching the following regular expression
+            <span class="tagged">[a-zA-Z]+[a-zA-Z_]+</span>
+          </li>
+          <li>Function body: an expression which consist in either a constant value or a function call</li>
+        </ul>
+
+        <p class="text-white">
+          Here is an example of a function with parameters:
+        </p>
+
+        <p class="code-sample">isBiggerThan10(a) = gt(a, 10)</p>
+
+        <p class="text-white">
+          And here is an example of a function without parameters:
+        </p>
+
+        <p class="code-sample">pi = 3.14159</p>
 
         <h4 class="text-white start-title">Main function</h4>
         <p class="text-white">
