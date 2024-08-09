@@ -2034,6 +2034,10 @@ html {
   font-size: 1em;
 }
 
+.justified-text {
+  text-align: justify;
+}
+
 .table-of-contents,
 a {
   color: #fff;
