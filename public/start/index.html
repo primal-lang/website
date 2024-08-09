@@ -96,37 +96,46 @@
         </ul>
 
         <h4 class="text-white start-title">Design</h4>
-        <p class="text-white">
 
-        </p>
+        Everything in Primal is a function.
+        Function can (and should) be composed.
+        Function cannot be overloaded (i.e. only one function with a given name can exist in a program).
+        Currently there are no operators. Instead, the language offers a function with equivalent functionality (e.g.
+        the sum function is the equivalent for the + operator).
 
-        Everything in Primal is a function definition
-        Function can (and should) be composed
-        Function cannot be overloaded (i.e. only one function with a given name can exist in a program)
-        Currently there are no operators. Instead Primal offers a function with equivalent functionality
+        Function name format: [a-zA-Z]+[a-zA-Z_]+
+        Parameter name format: ???
 
-        Primal has a dynamic runtime type checking where:
-        * User-Defined Types: Users cannot explicitly declare types for parameters, return values, or variables in the
-        code.
-        * Runtime Checking: The system performs type checks during execution to ensure that values match the expected
-        types when passed to functions or operations.
-        This approach allows for flexibility and ease of use but relies on runtime checks to catch type-related errors,
-        which can impact performance and may not catch all errors until the code is executed.
 
-        This allows for flexibility in coding but can lead to type-related errors that are only caught
-        during execution. Unlike statically typed languages, where types are explicitly declared and checked at compile
-        time, Primal determines types on the fly as the program runs.
 
         Explain
         * error Handling
         * Syntax rules
         * Language constructs (no loops, only declarations)
 
-        Function name format: [a-zA-Z]+[a-zA-Z_]+
-        Parameter name format: ???
 
-        Primal is interpreted. It comes with a compiler and interpreter
         Explain main function. It's optional. Has no arguments
+
+        <h4 class="text-white start-title">Typing system</h4>
+        <p class="text-white">
+          Primal has a dynamic runtime type checking. This means that users cannot explicitly declare types for
+          parameters, return values, or variables in the code. Instead, the system performs type checks during execution
+          to ensure that values match the expected types when passed to functions or operations.
+        </p>
+
+        <p class="text-white">
+          This approach allows for flexibility and ease of use but relies on runtime checks to catch type-related
+          errors, which can lead to errors that are only caught during execution.
+        </p>
+
+        <h4 class="text-white start-title">Runtime</h4>
+        <p class="text-white">
+          Primal is an interpreted language. The compiler translates the source code into an intermediate representation
+          that is then executed by the interpreter. The interpreter is responsible for executing the intermediate
+          representation and producing the output of the program. This allows for fast development and testing cycles
+          since changes to the source code can be quickly compiled and executed without the need for a separate build
+          step.
+        </p>
 
       </div>
     </div>
