@@ -1976,7 +1976,7 @@ html {
   margin-top: 2em;
 }
 
-.download-title {
+.versions-title {
   font-size: 1.1em;
   margin-top: 2em;
   margin-bottom: 1em;
@@ -1985,10 +1985,13 @@ html {
   padding-bottom: 0.5em;
 }
 
-.download-subtitle {
-  font-size: 1em;
+.start-title {
+  font-size: 1.1em;
   margin-top: 2em;
   margin-bottom: 1em;
+  border-bottom: 1px solid rgb(255, 255, 255, .2);
+  width: 100%;
+  padding-bottom: 0.5em;
 }
 
 .changelog-list {
