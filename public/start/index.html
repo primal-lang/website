@@ -78,6 +78,43 @@
           fundamentals of programming.
         </p>
 
+        Everything in Primal is a function definition
+        Function can (and should) be composed
+        Function cannot be overloaded (i.e. only one function with a given name can exist in a program)
+        Currently there are no operators. Instead Primal offers a function with equivalent functionality
+
+        Primal encourages to write short, very specific function to increase reusability
+
+        Primal has a dynamic runtime type checking where:
+        * User-Defined Types: Users cannot explicitly declare types for parameters, return values, or variables in the
+        code.
+        * Runtime Checking: The system performs type checks during execution to ensure that values match the expected
+        types when passed to functions or operations.
+        This approach allows for flexibility and ease of use but relies on runtime checks to catch type-related errors,
+        which can impact performance and may not catch all errors until the code is executed.
+
+        This allows for flexibility in coding but can lead to type-related errors that are only caught
+        during execution. Unlike statically typed languages, where types are explicitly declared and checked at compile
+        time, Primal determines types on the fly as the program runs.
+
+        Function name format: [a-zA-Z]+[a-zA-Z_]+
+        Parameter name format: ???
+
+        Its goal is to offer a very simple and minimalist syntax for people that want to learn functional programming
+        (or
+        programming in general).
+
+        Technical envelope:
+        • Syntax rules
+        • Lazy evaluated
+        • Dynamic type system
+        • Error Handling
+        • Single threaded
+        • Language constructs (no loops, only declarations)
+
+        Primal is interpreted. It comes with a compiler and interpreter
+        Explain main function. It's optional. Has no arguments
+
         <h2 class="text-white mb-4">FAQ</h2>
         <h2 class="text-white mb-4">Learn</h2>
 
