@@ -16,11 +16,11 @@
 }
 
 .cm-s-dracula span.cm-variable {
-  color: #6A9955;
+  color: #93d176;
 }
 
 .cm-s-dracula span.cm-number {
-  color: #569CD6;
+  color: #61aeec;
 }
 
 .cm-s-dracula span.cm-string,
@@ -47,7 +47,7 @@
 /* ============= Custom ============= */
 
 .cm-custom-keyword {
-  color: #C586C0 !important;
+  color: #ee9fe7 !important;
 }
 
 .cm-custom-type {

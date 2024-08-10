@@ -49,6 +49,7 @@ const basicProperties = {
     "=": "custom-marker",
     ":": "custom-marker",
 
+    "main": "custom-keyword",
     "if": "custom-keyword",
     "try": "custom-keyword",
     "gt": "custom-keyword",
