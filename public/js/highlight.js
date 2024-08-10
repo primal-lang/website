@@ -88,6 +88,19 @@ const basicProperties = (withExtras) => {
     "ge": "custom-keyword",
     "le": "custom-keyword",
 
+    // arithmetic
+    "abs": "custom-keyword",
+    "inc": "custom-keyword",
+    "dec": "custom-keyword",
+    "add": "custom-keyword",
+    "sum": "custom-keyword",
+    "sub": "custom-keyword",
+    "mul": "custom-keyword",
+    "divInt": "custom-keyword",
+    "div": "custom-keyword",
+    "mod": "custom-keyword",
+    "pow": "custom-keyword",
+
     // logic
     "and": "custom-keyword",
     "or": "custom-keyword",

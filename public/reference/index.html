@@ -167,62 +167,52 @@
         <h5 class="text-white reference-title">Absolute</h5>
         <p class="reference-text"> Input: A number.</p>
         <p class="reference-text"> Output: The absolute value of the number.</p>
-        <p class="code-sample">abs(a: Number): Number</p>
+        <div id="arithmetic.abs" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Increment</h5>
         <p class="reference-text"> Input: A number.</p>
         <p class="reference-text"> Output: The number incremented by one.</p>
-        <p class="code-sample">inc(a: Number): Number</p>
+        <div id="arithmetic.inc" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Decrement</h5>
         <p class="reference-text"> Input: A number.</p>
         <p class="reference-text"> Output: The number decremented by one.</p>
-        <p class="code-sample">dec(a: Number): Number</p>
+        <div id="arithmetic.dec" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Add</h5>
-        <p class="reference-text"> Input: Two or more numbers.</p>
+        <p class="reference-text"> Input: Two numbers.</p>
         <p class="reference-text"> Output: The sum of the numbers.</p>
-        <p class="code-sample">add(a: Number, b: Number, ...): Number</p>
+        <div id="arithmetic.add" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Sum</h5>
-        <p class="reference-text"> Input: Two or more numbers.</p>
+        <p class="reference-text"> Input: Two numbers.</p>
         <p class="reference-text"> Output: The sum of the numbers.</p>
-        <p class="code-sample">sum(a: Number, b: Number, ...): Number</p>
+        <div id="arithmetic.sum" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Subtract</h5>
         <p class="reference-text"> Input: Two numbers.</p>
         <p class="reference-text"> Output: The difference of the numbers.</p>
-        <p class="code-sample">sub(a: Number, b: Number): Number</p>
+        <div id="arithmetic.sub" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Multiply</h5>
         <p class="reference-text"> Input: Two numbers.</p>
         <p class="reference-text"> Output: The product of the numbers.</p>
-        <p class="code-sample">mul(a: Number, b: Number): Number</p>
+        <div id="arithmetic.mul" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Divide</h5>
         <p class="reference-text"> Input: Two numbers.</p>
         <p class="reference-text"> Output: The division of the numbers.</p>
-        <p class="code-sample">div(a: Number, b: Number): Number</p>
+        <div id="arithmetic.div" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Divide</h5>
         <p class="reference-text"> Input: Two numbers.</p>
         <p class="reference-text"> Output: The integer value of the division of the numbers.</p>
-        <p class="code-sample">divInt(a: Number, b: Number): Number</p>
+        <div id="arithmetic.divInt" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Modulo</h5>
         <p class="reference-text"> Input: Two numbers.</p>
         <p class="reference-text"> Output: The remainder of the division of the numbers.</p>
-        <p class="code-sample">mod(a: Number, b: Number): Number</p>
-
-        <h5 class="text-white reference-title">Minimum</h5>
-        <p class="reference-text"> Input: Two or more numbers.</p>
-        <p class="reference-text"> Output: The smallest of the numbers.</p>
-        <p class="code-sample">min(a: Number, b: Number, ...): Number</p>
-
-        <h5 class="text-white reference-title">Maximum</h5>
-        <p class="reference-text"> Input: Two or more numbers.</p>
-        <p class="reference-text"> Output: The largest of the numbers.</p>
-        <p class="code-sample">max(a: Number, b: Number, ...): Number</p>
+        <div id="arithmetic.mod" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Power</h5>
         <p class="reference-text"> Input: Two numbers.</p>
@@ -233,6 +223,16 @@
         <p class="reference-text"> Input: A number.</p>
         <p class="reference-text"> Output: The square root of the number.</p>
         <p class="code-sample">sqrt(a: Number): Number</p>
+
+        <h5 class="text-white reference-title">Minimum</h5>
+        <p class="reference-text"> Input: Two numbers.</p>
+        <p class="reference-text"> Output: The smallest of the numbers.</p>
+        <p class="code-sample">min(a: Number, b: Number): Number</p>
+
+        <h5 class="text-white reference-title">Maximum</h5>
+        <p class="reference-text"> Input: Two numbers.</p>
+        <p class="reference-text"> Output: The largest of the numbers.</p>
+        <p class="code-sample">max(a: Number, b: Number): Number</p>
 
         <h5 class="text-white reference-title">Round</h5>
         <p class="reference-text"> Input: A number.</p>
@@ -514,6 +514,18 @@
     setSampleCode('comparison.lt', 'lt(a: Number, b: Number): Boolean')
     setSampleCode('comparison.ge', 'ge(a: Number, b: Number): Boolean')
     setSampleCode('comparison.le', 'le(a: Number, b: Number): Boolean')
+
+    // arithmetic
+    setSampleCode('arithmetic.abs', 'abs(a: Number): Number')
+    setSampleCode('arithmetic.inc', 'inc(a: Number): Number')
+    setSampleCode('arithmetic.dec', 'dec(a: Number): Number')
+    setSampleCode('arithmetic.add', 'add(a: Number, b: Number): Number')
+    setSampleCode('arithmetic.sum', 'sum(a: Number, b: Number): Number')
+    setSampleCode('arithmetic.sub', 'sub(a: Number, b: Number): Number')
+    setSampleCode('arithmetic.mul', 'mul(a: Number, b: Number): Number')
+    setSampleCode('arithmetic.div', 'div(a: Number, b: Number): Number')
+    setSampleCode('arithmetic.divInt', 'divInt(a: Number, b: Number): Number')
+    setSampleCode('arithmetic.mod', 'mod(a: Number, b: Number): Number')
 
     // logic
     setSampleCode('logic.and', 'and(a: Boolean, b: Boolean): Boolean')
