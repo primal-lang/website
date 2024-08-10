@@ -3004,7 +3004,16 @@
     InitState0: function InitState0(t0) {
       this.output = t0;
     },
-    CommentState: function CommentState(t0) {
+    ForwardSlashState: function ForwardSlashState(t0) {
+      this.output = t0;
+    },
+    SingleLineCommentState: function SingleLineCommentState(t0) {
+      this.output = t0;
+    },
+    StartMultiLineCommentState: function StartMultiLineCommentState(t0) {
+      this.output = t0;
+    },
+    ClosingMultiLineCommentState: function ClosingMultiLineCommentState(t0) {
       this.output = t0;
     },
     StringDoubleQuoteState: function StringDoubleQuoteState(t0) {
@@ -3058,6 +3067,10 @@
       this.location = t1;
     },
     EqualsToken: function EqualsToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    SlashToken: function SlashToken(t0, t1) {
       this.value = t0;
       this.location = t1;
     },
@@ -5422,9 +5435,9 @@
               if (t2._nativeRegExp.test(t1))
                 return new A.SymbolState(new A.Lexeme(t1, input.location));
               else {
-                t2 = $.$get$StringExtensions_REGEX_HASHTAG();
+                t2 = $.$get$StringExtensions_REGEX_FORWARD_SLASH();
                 if (t2._nativeRegExp.test(t1))
-                  return B.CommentState_null;
+                  return new A.ForwardSlashState(new A.Lexeme(t1, input.location));
                 else {
                   t2 = $.$get$StringExtensions_REGEX_COMMA();
                   if (!t2._nativeRegExp.test(t1)) {
@@ -5452,14 +5465,58 @@
       }
     }
   };
-  A.CommentState.prototype = {
+  A.ForwardSlashState.prototype = {
+    process$2(input, next) {
+      var t1, t2;
+      type$.Character._as(input);
+      type$.nullable_Character._as(next);
+      t1 = input.value;
+      t2 = $.$get$StringExtensions_REGEX_FORWARD_SLASH();
+      if (t2._nativeRegExp.test(t1))
+        return B.SingleLineCommentState_null;
+      else {
+        t2 = $.$get$StringExtensions_REGEX_ASTERISK();
+        if (t2._nativeRegExp.test(t1))
+          return B.StartMultiLineCommentState_null;
+        else {
+          t1 = this.output;
+          return new A.ResultState0(A._setArrayType([new A.SlashToken(t1.value, t1.location)], type$.JSArray_Token_dynamic));
+        }
+      }
+    }
+  };
+  A.SingleLineCommentState.prototype = {
     process$2(input, next) {
       var t1;
       type$.Character._as(input);
       type$.nullable_Character._as(next);
       t1 = $.$get$StringExtensions_REGEX_NEW_LINE();
       if (!t1._nativeRegExp.test(input.value))
-        return B.CommentState_null;
+        return B.SingleLineCommentState_null;
+      else
+        return B.InitState_null0;
+    }
+  };
+  A.StartMultiLineCommentState.prototype = {
+    process$2(input, next) {
+      var t1;
+      type$.Character._as(input);
+      type$.nullable_Character._as(next);
+      t1 = $.$get$StringExtensions_REGEX_ASTERISK();
+      if (!t1._nativeRegExp.test(input.value))
+        return B.StartMultiLineCommentState_null;
+      else
+        return B.ClosingMultiLineCommentState_null;
+    }
+  };
+  A.ClosingMultiLineCommentState.prototype = {
+    process$2(input, next) {
+      var t1;
+      type$.Character._as(input);
+      type$.nullable_Character._as(next);
+      t1 = $.$get$StringExtensions_REGEX_FORWARD_SLASH();
+      if (!t1._nativeRegExp.test(input.value))
+        return B.StartMultiLineCommentState_null;
       else
         return B.InitState_null0;
     }
@@ -5701,6 +5758,7 @@
   A.SymbolToken.prototype = {};
   A.CommaToken.prototype = {};
   A.EqualsToken.prototype = {};
+  A.SlashToken.prototype = {};
   A.OpenParenthesisToken.prototype = {};
   A.CloseParenthesisToken.prototype = {};
   A.And.prototype = {
@@ -7427,8 +7485,8 @@
     _inheritMany(A.SyntacticError, [A.InvalidTokenError, A.InvalidStackElementError, A.UnexpectedEndOfFileError]);
     _inheritMany(A.Localized, [A.Character, A.Lexeme, A.Token, A.Expression, A.StackElement]);
     _inheritMany(A.Analyzer, [A.InputAnalyzer, A.LexicalAnalyzer, A.SemanticAnalyzer, A.SyntacticAnalyzer]);
-    _inheritMany(A.State, [A.InitState0, A.CommentState, A.StringDoubleQuoteState, A.StringSingleQuoteState, A.NegativeNumberState, A.IntegerState, A.DecimalState, A.SymbolState, A.ResultState0, A.InitState, A.FunctionNameState, A.FunctionWithParametersState, A.FunctionWithNewParametersState, A.FunctionWithNextParametersState, A.FunctionParametrizedState, A.FunctionBodyInitState, A.FunctionBodyExpressionState, A.ResultState]);
-    _inheritMany(A.Token, [A.StringToken, A.NumberToken, A.BooleanToken, A.SymbolToken, A.CommaToken, A.EqualsToken, A.OpenParenthesisToken, A.CloseParenthesisToken]);
+    _inheritMany(A.State, [A.InitState0, A.ForwardSlashState, A.SingleLineCommentState, A.StartMultiLineCommentState, A.ClosingMultiLineCommentState, A.StringDoubleQuoteState, A.StringSingleQuoteState, A.NegativeNumberState, A.IntegerState, A.DecimalState, A.SymbolState, A.ResultState0, A.InitState, A.FunctionNameState, A.FunctionWithParametersState, A.FunctionWithNewParametersState, A.FunctionWithNextParametersState, A.FunctionParametrizedState, A.FunctionBodyInitState, A.FunctionBodyExpressionState, A.ResultState]);
+    _inheritMany(A.Token, [A.StringToken, A.NumberToken, A.BooleanToken, A.SymbolToken, A.CommaToken, A.EqualsToken, A.SlashToken, A.OpenParenthesisToken, A.CloseParenthesisToken]);
     _inheritMany(A.FunctionPrototype, [A.NativeFunctionPrototype, A.CustomFunctionPrototype]);
     _inheritMany(A.NativeFunctionPrototype, [A.And, A.Not, A.Or, A.Xor, A.IsBoolean, A.IsDecimal, A.IsInfinite, A.IsInteger, A.IsNumber, A.IsString, A.ToBoolean, A.ToDecimal, A.ToInteger, A.ToNumber, A.ToString, A.Eq, A.Neq, A.If, A.Try, A.Debug, A.Error, A.At, A.Concat, A.Contains, A.Drop, A.First, A.Init, A.IsEmpty, A.IsNotEmpty, A.Last, A.Length, A.Remove, A.Reverse, A.Tail, A.Take, A.Abs, A.Add, A.Ceil, A.Cos, A.Dec, A.Div, A.DivInt, A.Floor, A.Ge, A.Gt, A.Inc, A.IsEven, A.IsNegative, A.IsOdd, A.IsPositive, A.IsZero, A.Le, A.Log, A.Lt, A.Max, A.Min, A.Mod, A.Mul, A.Pow, A.Round, A.Sin, A.Sqrt, A.Sub, A.Sum, A.Tan, A.EndsWith, A.Lowercase, A.Match, A.Replace, A.StartsWith, A.Substring, A.Trim, A.Uppercase]);
     _inheritMany(A.Type0, [A.StringType, A.NumberType, A.BooleanType, A.AnyType]);
@@ -7452,7 +7510,7 @@
     leafTags: null,
     arrayRti: Symbol("$ti")
   };
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"_Type":{"Type":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"InputAnalyzer":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState0":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"NegativeNumberState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SymbolState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState0":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"SymbolToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"EqualsToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"And":{"FunctionPrototype":[]},"Not":{"FunctionPrototype":[]},"Or":{"FunctionPrototype":[]},"Xor":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"Eq":{"FunctionPrototype":[]},"Neq":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Debug":{"FunctionPrototype":[]},"Error":{"FunctionPrototype":[]},"At":{"FunctionPrototype":[]},"Concat":{"FunctionPrototype":[]},"Contains":{"FunctionPrototype":[]},"Drop":{"FunctionPrototype":[]},"First":{"FunctionPrototype":[]},"Init":{"FunctionPrototype":[]},"IsEmpty":{"FunctionPrototype":[]},"IsNotEmpty":{"FunctionPrototype":[]},"Last":{"FunctionPrototype":[]},"Length":{"FunctionPrototype":[]},"Remove":{"FunctionPrototype":[]},"Reverse":{"FunctionPrototype":[]},"Tail":{"FunctionPrototype":[]},"Take":{"FunctionPrototype":[]},"Abs":{"FunctionPrototype":[]},"Add":{"FunctionPrototype":[]},"Ceil":{"FunctionPrototype":[]},"Cos":{"FunctionPrototype":[]},"Dec":{"FunctionPrototype":[]},"Div":{"FunctionPrototype":[]},"DivInt":{"FunctionPrototype":[]},"Floor":{"FunctionPrototype":[]},"Ge":{"FunctionPrototype":[]},"Gt":{"FunctionPrototype":[]},"Inc":{"FunctionPrototype":[]},"IsEven":{"FunctionPrototype":[]},"IsNegative":{"FunctionPrototype":[]},"IsOdd":{"FunctionPrototype":[]},"IsPositive":{"FunctionPrototype":[]},"IsZero":{"FunctionPrototype":[]},"Le":{"FunctionPrototype":[]},"Log":{"FunctionPrototype":[]},"Lt":{"FunctionPrototype":[]},"Max":{"FunctionPrototype":[]},"Min":{"FunctionPrototype":[]},"Mod":{"FunctionPrototype":[]},"Mul":{"FunctionPrototype":[]},"Pow":{"FunctionPrototype":[]},"Round":{"FunctionPrototype":[]},"Sin":{"FunctionPrototype":[]},"Sqrt":{"FunctionPrototype":[]},"Sub":{"FunctionPrototype":[]},"Sum":{"FunctionPrototype":[]},"Tan":{"FunctionPrototype":[]},"EndsWith":{"FunctionPrototype":[]},"Lowercase":{"FunctionPrototype":[]},"Match":{"FunctionPrototype":[]},"Replace":{"FunctionPrototype":[]},"StartsWith":{"FunctionPrototype":[]},"Substring":{"FunctionPrototype":[]},"Trim":{"FunctionPrototype":[]},"Uppercase":{"FunctionPrototype":[]},"StringType":{"Type0":[]},"NumberType":{"Type0":[]},"BooleanType":{"Type0":[]},"AnyType":{"Type0":[]},"ReducibleValue":{"Reducible":[]},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"SymbolReducible":{"Reducible":[]},"ExpressionReducible":{"Reducible":[]},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"LiteralExpression":{"Expression":[]},"SymbolExpression":{"Expression":[]},"FunctionCallExpression":{"Expression":[]},"EmptyExpression":{"Expression":[]},"StringExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"NumberExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"BooleanExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"StackLiteral":{"StackExpression":["LiteralExpression<@>"],"StackElement":[],"StackExpression.T":"LiteralExpression<@>"},"StackSymbol":{"StackExpression":["SymbolExpression"],"StackElement":[],"StackExpression.T":"SymbolExpression"},"StackFunctionCall":{"StackExpression":["FunctionCallExpression"],"StackElement":[],"StackExpression.T":"FunctionCallExpression"},"StackOpenParenthesis":{"StackElement":[]},"StackComma":{"StackElement":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionBodyInitState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionBodyExpressionState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"StackExpression":{"StackElement":[]},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]}}'));
+  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"_Type":{"Type":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"InputAnalyzer":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState0":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ForwardSlashState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SingleLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StartMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ClosingMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"NegativeNumberState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SymbolState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState0":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"SymbolToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"EqualsToken":{"Token":["String"],"Token.T":"String"},"SlashToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"And":{"FunctionPrototype":[]},"Not":{"FunctionPrototype":[]},"Or":{"FunctionPrototype":[]},"Xor":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"Eq":{"FunctionPrototype":[]},"Neq":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Debug":{"FunctionPrototype":[]},"Error":{"FunctionPrototype":[]},"At":{"FunctionPrototype":[]},"Concat":{"FunctionPrototype":[]},"Contains":{"FunctionPrototype":[]},"Drop":{"FunctionPrototype":[]},"First":{"FunctionPrototype":[]},"Init":{"FunctionPrototype":[]},"IsEmpty":{"FunctionPrototype":[]},"IsNotEmpty":{"FunctionPrototype":[]},"Last":{"FunctionPrototype":[]},"Length":{"FunctionPrototype":[]},"Remove":{"FunctionPrototype":[]},"Reverse":{"FunctionPrototype":[]},"Tail":{"FunctionPrototype":[]},"Take":{"FunctionPrototype":[]},"Abs":{"FunctionPrototype":[]},"Add":{"FunctionPrototype":[]},"Ceil":{"FunctionPrototype":[]},"Cos":{"FunctionPrototype":[]},"Dec":{"FunctionPrototype":[]},"Div":{"FunctionPrototype":[]},"DivInt":{"FunctionPrototype":[]},"Floor":{"FunctionPrototype":[]},"Ge":{"FunctionPrototype":[]},"Gt":{"FunctionPrototype":[]},"Inc":{"FunctionPrototype":[]},"IsEven":{"FunctionPrototype":[]},"IsNegative":{"FunctionPrototype":[]},"IsOdd":{"FunctionPrototype":[]},"IsPositive":{"FunctionPrototype":[]},"IsZero":{"FunctionPrototype":[]},"Le":{"FunctionPrototype":[]},"Log":{"FunctionPrototype":[]},"Lt":{"FunctionPrototype":[]},"Max":{"FunctionPrototype":[]},"Min":{"FunctionPrototype":[]},"Mod":{"FunctionPrototype":[]},"Mul":{"FunctionPrototype":[]},"Pow":{"FunctionPrototype":[]},"Round":{"FunctionPrototype":[]},"Sin":{"FunctionPrototype":[]},"Sqrt":{"FunctionPrototype":[]},"Sub":{"FunctionPrototype":[]},"Sum":{"FunctionPrototype":[]},"Tan":{"FunctionPrototype":[]},"EndsWith":{"FunctionPrototype":[]},"Lowercase":{"FunctionPrototype":[]},"Match":{"FunctionPrototype":[]},"Replace":{"FunctionPrototype":[]},"StartsWith":{"FunctionPrototype":[]},"Substring":{"FunctionPrototype":[]},"Trim":{"FunctionPrototype":[]},"Uppercase":{"FunctionPrototype":[]},"StringType":{"Type0":[]},"NumberType":{"Type0":[]},"BooleanType":{"Type0":[]},"AnyType":{"Type0":[]},"ReducibleValue":{"Reducible":[]},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"SymbolReducible":{"Reducible":[]},"ExpressionReducible":{"Reducible":[]},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"LiteralExpression":{"Expression":[]},"SymbolExpression":{"Expression":[]},"FunctionCallExpression":{"Expression":[]},"EmptyExpression":{"Expression":[]},"StringExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"NumberExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"BooleanExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"StackLiteral":{"StackExpression":["LiteralExpression<@>"],"StackElement":[],"StackExpression.T":"LiteralExpression<@>"},"StackSymbol":{"StackExpression":["SymbolExpression"],"StackElement":[],"StackExpression.T":"SymbolExpression"},"StackFunctionCall":{"StackExpression":["FunctionCallExpression"],"StackElement":[],"StackExpression.T":"FunctionCallExpression"},"StackOpenParenthesis":{"StackElement":[]},"StackComma":{"StackElement":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionBodyInitState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionBodyExpressionState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"StackExpression":{"StackElement":[]},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]}}'));
   A._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"EfficientLengthIterable":1,"_SetBase":1}'));
   var type$ = (function rtii() {
     var findType = A.findType;
@@ -7542,7 +7600,7 @@
     B.C_NumberType = new A.NumberType();
     B.C_StringType = new A.StringType();
     B.C__Required = new A._Required();
-    B.CommentState_null = new A.CommentState(null);
+    B.ClosingMultiLineCommentState_null = new A.ClosingMultiLineCommentState(null);
     B.EmptyExpressionEvaluationError_oFO = new A.EmptyExpressionEvaluationError("Cannot reduce empty expression");
     B.Location_1_1 = new A.Location(1, 1);
     B.EmptyExpression_Location_1_1 = new A.EmptyExpression(B.Location_1_1);
@@ -7558,6 +7616,8 @@
     B.Map_empty0 = new A.ConstantStringMap(B.Object_empty, [], A.findType("ConstantStringMap<String,0&>"));
     B.Scope_Map_empty = new A.Scope(B.Map_empty0, type$.Scope_Reducible);
     B.Scope_Map_empty0 = new A.Scope(B.Map_empty0, type$.Scope_dynamic);
+    B.SingleLineCommentState_null = new A.SingleLineCommentState(null);
+    B.StartMultiLineCommentState_null = new A.StartMultiLineCommentState(null);
     B.Symbol_call = new A.Symbol("call");
     B.Type_StackComma_7N7 = A.typeLiteral("StackComma");
     B.Type_StackFunctionCall_fnH = A.typeLiteral("StackFunctionCall");
@@ -7589,7 +7649,8 @@
     _lazyFinal($, "StringExtensions_REGEX_EQUALS", "$get$StringExtensions_REGEX_EQUALS", () => A.RegExp_RegExp("="));
     _lazyFinal($, "StringExtensions_REGEX_OPEN_PARENTHESIS", "$get$StringExtensions_REGEX_OPEN_PARENTHESIS", () => A.RegExp_RegExp("\\("));
     _lazyFinal($, "StringExtensions_REGEX_CLOSE_PARENTHESIS", "$get$StringExtensions_REGEX_CLOSE_PARENTHESIS", () => A.RegExp_RegExp("\\)"));
-    _lazyFinal($, "StringExtensions_REGEX_HASHTAG", "$get$StringExtensions_REGEX_HASHTAG", () => A.RegExp_RegExp("#"));
+    _lazyFinal($, "StringExtensions_REGEX_FORWARD_SLASH", "$get$StringExtensions_REGEX_FORWARD_SLASH", () => A.RegExp_RegExp("/"));
+    _lazyFinal($, "StringExtensions_REGEX_ASTERISK", "$get$StringExtensions_REGEX_ASTERISK", () => A.RegExp_RegExp("\\*"));
     _lazyFinal($, "StringExtensions_REGEX_BOOLEAN", "$get$StringExtensions_REGEX_BOOLEAN", () => A.RegExp_RegExp("true|false"));
   })();
   (function nativeSupport() {
