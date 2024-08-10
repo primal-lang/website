@@ -111,42 +111,42 @@
         <h5 class="text-white reference-title">Debug</h5>
         <p class="reference-text"> Input: An argument of any type.</p>
         <p class="reference-text"> Output: It writes that argument in the standard output and returns it.</p>
-        <p class="code-sample">debug(a: T): T</p>
+        <div id="debug.debug" class="code-sample"></div>
 
         <h4 class="text-white reference-section" id="comparison">Comparison</h4>
 
         <h5 class="text-white reference-title">Equality</h5>
         <p class="reference-text"> Input: Two arguments of any type.</p>
         <p class="reference-text"> Output: True if they are equal. False otherwise.</p>
-        <p class="code-sample">eq(a: T, b: T): Boolean</p>
+        <div id="comparison.eq" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Inequality</h5>
         <p class="reference-text"> Input: Two arguments of any type.</p>
         <p class="reference-text"> Output: True if they are not equal. False otherwise.</p>
-        <p class="code-sample">neq(a: T, b: T): Boolean</p>
+        <div id="comparison.neq" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Greater than</h5>
         <p class="reference-text"> Input: Two numbers.</p>
         <p class="reference-text"> Output: True if the first number is greater than the second number. False otherwise.
         </p>
-        <p class="code-sample">gt(a: Number, b: Number): Boolean</p>
+        <div id="comparison.gt" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Less than</h5>
         <p class="reference-text"> Input: Two numbers.</p>
         <p class="reference-text"> Output: True if the first number is less than the second number. False otherwise.</p>
-        <p class="code-sample">lt(a: Number, b: Number): Boolean</p>
+        <div id="comparison.lt" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Greater than or equal</h5>
         <p class="reference-text"> Input: Two numbers.</p>
         <p class="reference-text"> Output: True if the first number is greater than or equal to the second number. False
           otherwise.</p>
-        <p class="code-sample">ge(a: Number, b: Number): Boolean</p>
+        <div id="comparison.ge" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Less than or equal</h5>
         <p class="reference-text"> Input: Two numbers.</p>
         <p class="reference-text"> Output: True if the first number is less than or equal to the second number. False
           otherwise.</p>
-        <p class="code-sample">le(a: Number, b: Number): Boolean</p>
+        <div id="comparison.le" class="code-sample"></div>
 
         <h4 class="text-white reference-section" id="arithmetic">Arithmetic</h4>
 
@@ -483,10 +483,23 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
+    // control
     setSampleCode('control.ifelse', 'if(a: Boolean, b: Any, c: Any): Any')
     setSampleCode('control.trycatch', 'try(a: Any, b: Any): Any')
 
+    // error
     setSampleCode('error.error', 'error(a: Any): Error')
+
+    // debug
+    setSampleCode('debug.debug', 'debug(a: Any): Any')
+
+    // comparison
+    setSampleCode('comparison.eq', 'eq(a: Any, b: Any): Boolean')
+    setSampleCode('comparison.neq', 'neq(a: Any, b: Any): Boolean')
+    setSampleCode('comparison.gt', 'gt(a: Number, b: Number): Boolean')
+    setSampleCode('comparison.lt', 'lt(a: Number, b: Number): Boolean')
+    setSampleCode('comparison.ge', 'ge(a: Number, b: Number): Boolean')
+    setSampleCode('comparison.le', 'le(a: Number, b: Number): Boolean')
   </script>
 
 </body>

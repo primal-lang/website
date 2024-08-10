@@ -183,7 +183,7 @@
   <script>
     document.addEventListener('DOMContentLoaded', function () {
       window.editor = CodeMirror(document.getElementById('sourceCode'), {
-        ...basicProperties,
+        ...basicProperties(false),
         lineNumbers: true,
         value: localStorage.getItem('sourceCode') ? localStorage.getItem('sourceCode') : SAMPLES['default'],
       })

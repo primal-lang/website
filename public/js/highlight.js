@@ -1,7 +1,7 @@
 function setSampleCode(id, content) {
   document.addEventListener('DOMContentLoaded', function () {
     window.editor = CodeMirror(document.getElementById(id), {
-      ...basicProperties,
+      ...basicProperties(true),
       lineNumbers: false,
       value: content,
       readOnly: true,
@@ -35,33 +35,51 @@ function setSampleCode(id, content) {
   });
 });
 
-const basicProperties = {
-  mode: 'javascript',
-  theme: 'dracula',
-  keyword: {
+const basicProperties = (withExtras) => {
+  const extras = {
     "Boolean": "custom-type",
     "Number": "custom-type",
     "String": "custom-type",
     "Error": "custom-type",
     "Any": "custom-type",
 
-    "(": "custom-parenthesis",
-    ")": "custom-parenthesis",
-    "[": "custom-parenthesis",
-    "]": "custom-parenthesis",
-    "{": "custom-parenthesis",
-    "}": "custom-parenthesis",
-
-    "=": "custom-marker",
-    ":": "custom-marker",
-
+    // main
     "main": "custom-keyword",
 
+    // control
     "if": "custom-keyword",
     "try": "custom-keyword",
 
+    // error
     "error": "custom-keyword",
 
+    // debug
+    "debug": "custom-keyword",
+
+    // comparison
+    "eq": "custom-keyword",
+    "neq": "custom-keyword",
     "gt": "custom-keyword",
+    "lt": "custom-keyword",
+    "ge": "custom-keyword",
+    "le": "custom-keyword",
+  }
+
+  return {
+    mode: 'javascript',
+    theme: 'dracula',
+    keyword: {
+      "(": "custom-parenthesis",
+      ")": "custom-parenthesis",
+      "[": "custom-parenthesis",
+      "]": "custom-parenthesis",
+      "{": "custom-parenthesis",
+      "}": "custom-parenthesis",
+
+      "=": "custom-marker",
+      ":": "custom-marker",
+
+      ...withExtras && extras,
+    }
   }
 }
