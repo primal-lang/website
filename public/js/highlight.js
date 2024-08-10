@@ -42,6 +42,8 @@ const basicProperties = {
     "Boolean": "custom-type",
     "Number": "custom-type",
     "String": "custom-type",
+    "Error": "custom-type",
+    "Any": "custom-type",
 
     "(": "custom-parenthesis",
     ")": "custom-parenthesis",
@@ -54,8 +56,12 @@ const basicProperties = {
     ":": "custom-marker",
 
     "main": "custom-keyword",
+
     "if": "custom-keyword",
     "try": "custom-keyword",
+
+    "error": "custom-keyword",
+
     "gt": "custom-keyword",
   }
 }

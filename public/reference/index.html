@@ -104,7 +104,7 @@
         <h5 class="text-white reference-title">Throw error</h5>
         <p class="reference-text"> Input: An argument of any type.</p>
         <p class="reference-text"> Output: It returns an error wrapping that argument.</p>
-        <p class="code-sample">error(a: T): Error</p>
+        <div id="error.error" class="code-sample"></div>
 
         <h4 class="text-white reference-section" id="debugging">Debugging</h4>
 
@@ -483,8 +483,10 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    setSampleCode('control.ifelse', 'if(a: Boolean, b: T, c: T): T')
-    setSampleCode('control.trycatch', 'try(a: T, b: T): T')
+    setSampleCode('control.ifelse', 'if(a: Boolean, b: Any, c: Any): Any')
+    setSampleCode('control.trycatch', 'try(a: Any, b: Any): Any')
+
+    setSampleCode('error.error', 'error(a: Any): Error')
   </script>
 
 </body>
