@@ -65,7 +65,7 @@ body {
 }
 
 .cm-s-dracula span.cm-variable {
-  color: #cbe9bb;
+  color: #ade290;
 }
 
 .cm-s-dracula span.cm-number {
@@ -81,7 +81,27 @@ body {
   color: #afafaf;
 }
 
-/*red: CE9178*/
+.cm-s-dracula span.cm-operator {
+  color: #CE9178;
+}
+
+/* ======== Unused ======== */
+
+.cm-s-dracula span.cm-variable-2 {
+  color: #ff0000;
+}
+
+.cm-s-dracula span.cm-def {
+  color: #00ff00;
+}
+
+.cm-s-dracula span.cm-keyword {
+  color: #ff79c6;
+}
+
+/* ======================== */
+
+/*red: */
 
 .console {
   width: 100%;
