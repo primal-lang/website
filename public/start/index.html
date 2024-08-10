@@ -12,6 +12,12 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/theme/dracula.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.5/mode/javascript/javascript.min.js"></script>
 
   <link href="../css/template.css" rel="stylesheet" />
 
@@ -135,13 +141,13 @@
           Here is an example of a function with parameters:
         </p>
 
-        <p class="code-sample">isPositive(n) = gt(n, 0)</p>
+        <div id="sampleFunctionWithParameters" class="code-sample"></div>
 
         <p class="text-white">
           And here is an example of a function without parameters:
         </p>
 
-        <p class="code-sample">pi = 3.14159</p>
+        <div id="sampleFunctionWithoutParameters" class="code-sample"></div>
 
         <h4 class="text-white start-title">Main function</h4>
 
@@ -189,6 +195,28 @@
   </header>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      window.editor = CodeMirror(document.getElementById('sampleFunctionWithParameters'), {
+        lineNumbers: false,
+        mode: 'javascript',
+        theme: 'dracula',
+        value: 'isPositive(n) = gt(n, 0)',
+        readOnly: true,
+      })
+    })
+
+    document.addEventListener('DOMContentLoaded', function () {
+      window.editor = CodeMirror(document.getElementById('sampleFunctionWithoutParameters'), {
+        lineNumbers: false,
+        mode: 'javascript',
+        theme: 'dracula',
+        value: 'pi = 3.14159',
+        readOnly: true,
+      })
+    })
+  </script>
 
 </body>
 
