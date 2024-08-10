@@ -39,6 +39,18 @@ const basicProperties = {
   mode: 'javascript',
   theme: 'dracula',
   keyword: {
+    "Boolean": "custom-type",
+    "Number": "custom-type",
+    "String": "custom-type",
+
+    "(": "custom-parenthesis",
+    ")": "custom-parenthesis",
+
+    "=": "custom-marker",
+    ":": "custom-marker",
+
+    "if": "custom-keyword",
     "try": "custom-keyword",
+    "gt": "custom-keyword",
   }
 }

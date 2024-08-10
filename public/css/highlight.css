@@ -16,11 +16,11 @@
 }
 
 .cm-s-dracula span.cm-variable {
-  color: #ade290;
+  color: #6A9955;
 }
 
 .cm-s-dracula span.cm-number {
-  color: #66c9fa;
+  color: #569CD6;
 }
 
 .cm-s-dracula span.cm-string,
@@ -44,8 +44,22 @@
   color: #ade290;
 }
 
+/* ============= Custom ============= */
+
 .cm-custom-keyword {
-  color: rgb(48, 212, 199) !important;
+  color: #C586C0 !important;
+}
+
+.cm-custom-type {
+  color: #9CDCFE !important;
+}
+
+.cm-custom-marker {
+  color: #e67070 !important;
+}
+
+.cm-custom-parenthesis {
+  color: #ffffff !important;
 }
 
 /* ============= Unused ============= */
