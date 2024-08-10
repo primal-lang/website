@@ -2029,6 +2029,10 @@ html {
   letter-spacing: .1em;
 }
 
+.selected-menu {
+  color: #d5ab79;
+}
+
 .reference-text {
   color: rgba(255, 255, 255, .5);
   font-size: 1em;
