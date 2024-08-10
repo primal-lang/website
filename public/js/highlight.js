@@ -106,6 +106,15 @@ const basicProperties = (withExtras) => {
     "round": "custom-keyword",
     "floor": "custom-keyword",
     "ceil": "custom-keyword",
+    "sin": "custom-keyword",
+    "cos": "custom-keyword",
+    "tan": "custom-keyword",
+    "log": "custom-keyword",
+    "isNegative": "custom-keyword",
+    "isPositive": "custom-keyword",
+    "isZero": "custom-keyword",
+    "isEven": "custom-keyword",
+    "isOdd": "custom-keyword",
 
     // logic
     "and": "custom-keyword",
