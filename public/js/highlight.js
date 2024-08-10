@@ -93,6 +93,13 @@ const basicProperties = (withExtras) => {
     "or": "custom-keyword",
     "xor": "custom-keyword",
     "not": "custom-keyword",
+
+    // casting
+    "toNumber": "custom-keyword",
+    "toInteger": "custom-keyword",
+    "toDecimal": "custom-keyword",
+    "toString": "custom-keyword",
+    "toBoolean": "custom-keyword",
   }
 
   return {
