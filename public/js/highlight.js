@@ -63,6 +63,12 @@ const basicProperties = (withExtras) => {
     "lt": "custom-keyword",
     "ge": "custom-keyword",
     "le": "custom-keyword",
+
+    // logic
+    "and": "custom-keyword",
+    "or": "custom-keyword",
+    "xor": "custom-keyword",
+    "not": "custom-keyword",
   }
 
   return {

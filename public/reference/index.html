@@ -86,6 +86,20 @@
         <h4 class="text-white reference-section" id="control">Control</h4>
 
         <h5 class="text-white reference-title">If-else</h5>
+        <!--<table class="table">
+          <tbody>
+            <tr>
+              <td>Input</td>
+              <td>One conditional argument (a) and two arguments of any type (b and c). The conditional argument must
+                evaluate to a boolean. The other two arguments must evaluate to the same type.</td>
+            </tr>
+            <tr>
+              <td>Output</td>
+              <td>If the condition is true, it returns the first argument. Otherwise it returns the second argument.
+              </td>
+            </tr>
+          </tbody>
+        </table>-->
         <p class="reference-text"> Input: One conditional argument (a) and two arguments of any type (b and c). The
           conditional
           argument must evaluate to a boolean. The other two arguments must evaluate to the same type.</p>
@@ -285,22 +299,22 @@
         <h5 class="text-white reference-title">And</h5>
         <p class="reference-text"> Input: Two boolean arguments.</p>
         <p class="reference-text"> Output: True if both arguments are true. False otherwise.</p>
-        <p class="code-sample">and(a: Boolean, b: Boolean): Boolean</p>
+        <div id="logic.and" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Or</h5>
         <p class="reference-text"> Input: Two boolean arguments.</p>
         <p class="reference-text"> Output: True if at least one argument is true. False otherwise.</p>
-        <p class="code-sample">or(a: Boolean, b: Boolean): Boolean</p>
+        <div id="logic.or" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Xor</h5>
         <p class="reference-text"> Input: Two boolean arguments.</p>
         <p class="reference-text"> Output: True if exactly one argument is true. False otherwise.</p>
-        <p class="code-sample">xor(a: Boolean, b: Boolean): Boolean</p>
+        <div id="logic.xor" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Not</h5>
         <p class="reference-text"> Input: One boolean argument.</p>
         <p class="reference-text"> Output: True if the argument is false. False if the argument is true.</p>
-        <p class="code-sample">not(a: Boolean): Boolean</p>
+        <div id="logic.not" class="code-sample"></div>
 
         <h4 class="text-white reference-section" id="string">String</h4>
 
@@ -500,6 +514,12 @@
     setSampleCode('comparison.lt', 'lt(a: Number, b: Number): Boolean')
     setSampleCode('comparison.ge', 'ge(a: Number, b: Number): Boolean')
     setSampleCode('comparison.le', 'le(a: Number, b: Number): Boolean')
+
+    // logic
+    setSampleCode('logic.and', 'and(a: Boolean, b: Boolean): Boolean')
+    setSampleCode('logic.or', 'or(a: Boolean, b: Boolean): Boolean')
+    setSampleCode('logic.xor', 'xor(a: Boolean, b: Boolean): Boolean')
+    setSampleCode('logic.not', 'not(a: Boolean): Boolean')
   </script>
 
 </body>
