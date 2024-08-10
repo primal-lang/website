@@ -2055,7 +2055,7 @@ a {
   font-size: 0.9em;
 }
 
-.table {
+.reference-table {
   width: 100%;
   color: #404040;
   background-color: #d0d0d0;
@@ -2064,18 +2064,18 @@ a {
   font-size: 0.95em;
 }
 
-.table td {
+.reference-table td {
   vertical-align: top;
   display: table-cell;
   padding: 0.5em;
   margin: 0;
 }
 
-.table .border-bottom {
+.reference-table .border-bottom {
   border-bottom: 1px solid #b0b0b0;
 }
 
-.table-title {
+.reference-table-title {
   color: #404040;
   font-weight: bold;
   width: 6em;
