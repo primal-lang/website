@@ -44,6 +44,10 @@
   color: #ade290;
 }
 
+.cm-custom-keyword {
+  color: rgb(48, 212, 199) !important;
+}
+
 /* ============= Unused ============= */
 
 /*.cm-s-dracula span.cm-variable-2 {
