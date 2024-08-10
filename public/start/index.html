@@ -22,6 +22,8 @@
   <link href="../css/highlight.css" rel="stylesheet" />
   <link href="../css/template.css" rel="stylesheet" />
 
+  <script src="../js/highlight.js"></script>
+
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -198,25 +200,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      window.editor = CodeMirror(document.getElementById('sampleFunctionWithParameters'), {
-        lineNumbers: false,
-        mode: 'javascript',
-        theme: 'dracula',
-        value: 'isPositive(n) = gt(n, 0)',
-        readOnly: true,
-      })
-    })
-
-    document.addEventListener('DOMContentLoaded', function () {
-      window.editor = CodeMirror(document.getElementById('sampleFunctionWithoutParameters'), {
-        lineNumbers: false,
-        mode: 'javascript',
-        theme: 'dracula',
-        value: 'pi = 3.14159',
-        readOnly: true,
-      })
-    })
+    setSampleCode('sampleFunctionWithParameters', 'isPositive(n) = gt(n, 0)')
+    setSampleCode('sampleFunctionWithoutParameters', 'pi = 3.14159')
   </script>
 
 </body>
