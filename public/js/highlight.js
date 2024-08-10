@@ -56,20 +56,6 @@ const basicProperties = (withExtras) => {
     // debug
     "debug": "custom-keyword",
 
-    // comparison
-    "eq": "custom-keyword",
-    "neq": "custom-keyword",
-    "gt": "custom-keyword",
-    "lt": "custom-keyword",
-    "ge": "custom-keyword",
-    "le": "custom-keyword",
-
-    // logic
-    "and": "custom-keyword",
-    "or": "custom-keyword",
-    "xor": "custom-keyword",
-    "not": "custom-keyword",
-
     // string
     "substring": "custom-keyword",
     "startsWith": "custom-keyword",
@@ -93,6 +79,20 @@ const basicProperties = (withExtras) => {
     "drop": "custom-keyword",
     "remove": "custom-keyword",
     "reverse": "custom-keyword",
+
+    // comparison
+    "eq": "custom-keyword",
+    "neq": "custom-keyword",
+    "gt": "custom-keyword",
+    "lt": "custom-keyword",
+    "ge": "custom-keyword",
+    "le": "custom-keyword",
+
+    // logic
+    "and": "custom-keyword",
+    "or": "custom-keyword",
+    "xor": "custom-keyword",
+    "not": "custom-keyword",
   }
 
   return {

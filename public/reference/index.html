@@ -357,77 +357,77 @@
         <h5 class="text-white reference-title">Match</h5>
         <p class="reference-text"> Input: A string and a regex pattern.</p>
         <p class="reference-text"> Output: True if the string matches the regex pattern. False otherwise.</p>
-        <p class="code-sample">match(a: String, b: String): Boolean</p>
+        <div id="string.match" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Length</h5>
         <p class="reference-text"> Input: A string.</p>
         <p class="reference-text"> Output: The length of the string.</p>
-        <p class="code-sample">length(a: String): Number</p>
+        <div id="string.length" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Concat</h5>
         <p class="reference-text"> Input: Two strings.</p>
         <p class="reference-text"> Output: The concatenation of the two strings.</p>
-        <p class="code-sample">concat(a: String, b: String): String</p>
+        <div id="string.concat" class="code-sample"></div>
 
         <h5 class="text-white reference-title">First</h5>
         <p class="reference-text"> Input: A string.</p>
         <p class="reference-text"> Output: The first character of the string.</p>
-        <p class="code-sample">first(a: String): String</p>
+        <div id="string.first" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Last</h5>
         <p class="reference-text"> Input: A string.</p>
         <p class="reference-text"> Output: The last character of the string.</p>
-        <p class="code-sample">last(a: String): String</p>
+        <div id="string.last" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Init</h5>
         <p class="reference-text"> Input: A string.</p>
         <p class="reference-text"> Output: The string without its last character.</p>
-        <p class="code-sample">init(a: String): String</p>
+        <div id="string.init" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Tail</h5>
         <p class="reference-text"> Input: A string.</p>
         <p class="reference-text"> Output: The string without its first character.</p>
-        <p class="code-sample">tail(a: String): String</p>
+        <div id="string.tail" class="code-sample"></div>
 
         <h5 class="text-white reference-title">At</h5>
         <p class="reference-text"> Input: A string and a number representing the index.</p>
         <p class="reference-text"> Output: The character at the specified index.</p>
-        <p class="code-sample">at(a: String, b: Number): String</p>
+        <div id="string.at" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Is empty</h5>
         <p class="reference-text"> Input: A string.</p>
         <p class="reference-text"> Output: True if the string is empty. False otherwise.</p>
-        <p class="code-sample">isEmpty(a: String): Boolean</p>
+        <div id="string.isEmpty" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Is not empty</h5>
         <p class="reference-text"> Input: A string.</p>
         <p class="reference-text"> Output: True if the string is not empty. False otherwise.</p>
-        <p class="code-sample">isNotEmpty(a: String): Boolean</p>
+        <div id="string.isNotEmpty" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Contains</h5>
         <p class="reference-text"> Input: A string and an argument of any type.</p>
         <p class="reference-text"> Output: True if the string contains the argument. False otherwise.</p>
-        <p class="code-sample">contains(a: String, b: T): Boolean</p>
+        <div id="string.contains" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Take</h5>
         <p class="reference-text"> Input: A string and a number representing the number of characters.</p>
         <p class="reference-text"> Output: The first n characters of the string.</p>
-        <p class="code-sample">take(a: String, b: Number): String</p>
+        <div id="string.take" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Drop</h5>
         <p class="reference-text"> Input: A string and a number representing the number of characters.</p>
         <p class="reference-text"> Output: The string without the first n characters.</p>
-        <p class="code-sample">drop(a: String, b: Number): String</p>
+        <div id="string.drop" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Remove</h5>
         <p class="reference-text"> Input: A string and a number representing the index.</p>
         <p class="reference-text"> Output: The string with the character at the specified index removed.</p>
-        <p class="code-sample">remove(a: String, b: Number): String</p>
+        <div id="string.remove" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Reverse</h5>
         <p class="reference-text"> Input: A string.</p>
         <p class="reference-text"> Output: The string with its characters in reverse order.</p>
-        <p class="code-sample">reverse(a: String): String</p>
+        <div id="string.reverse" class="code-sample"></div>
 
         <h4 class="text-white reference-section" id="casting">Casting</h4>
 
@@ -529,6 +529,21 @@
     setSampleCode('string.uppercase', 'uppercase(a: String): String')
     setSampleCode('string.lowercase', 'lowercase(a: String): String')
     setSampleCode('string.trim', 'trim(a: String): String')
+    setSampleCode('string.match', 'match(a: String, b: String): Boolean')
+    setSampleCode('string.length', 'length(a: String): Number')
+    setSampleCode('string.concat', 'concat(a: String, b: String): String')
+    setSampleCode('string.first', 'first(a: String): String')
+    setSampleCode('string.last', 'last(a: String): String')
+    setSampleCode('string.init', 'init(a: String): String')
+    setSampleCode('string.tail', 'tail(a: String): String')
+    setSampleCode('string.at', 'at(a: String, b: Number): String')
+    setSampleCode('string.isEmpty', 'isEmpty(a: String): Boolean')
+    setSampleCode('string.isNotEmpty', 'isNotEmpty(a: String): Boolean')
+    setSampleCode('string.contains', 'contains(a: String, b: Any): Boolean')
+    setSampleCode('string.take', 'take(a: String, b: Number): String')
+    setSampleCode('string.drop', 'drop(a: String, b: Number): String')
+    setSampleCode('string.remove', 'remove(a: String, b: Number): String')
+    setSampleCode('string.reverse', 'reverse(a: String): String')
   </script>
 
 </body>
