@@ -100,6 +100,12 @@ const basicProperties = (withExtras) => {
     "div": "custom-keyword",
     "mod": "custom-keyword",
     "pow": "custom-keyword",
+    "sqrt": "custom-keyword",
+    "min": "custom-keyword",
+    "max": "custom-keyword",
+    "round": "custom-keyword",
+    "floor": "custom-keyword",
+    "ceil": "custom-keyword",
 
     // logic
     "and": "custom-keyword",
