@@ -40,16 +40,18 @@
   color: #bd93f9;
 }
 
+.cm-s-dracula span.cm-keyword {
+  color: #ade290;
+}
+
+/* ============= Unused ============= */
+
 /*.cm-s-dracula span.cm-variable-2 {
   color: #ff0000;
 }
 
 .cm-s-dracula span.cm-def {
   color: #00ff00;
-}
-
-.cm-s-dracula span.cm-keyword {
-  color: #ff79c6;
 }
 
 .cm-s-dracula span.cm-meta {
