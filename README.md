@@ -1,6 +1,6 @@
 # Primal Website
 
 ## TODO
-* Add syntax highlight for reference code blocks
+* Improve input/output in reference
 * Todo improve playground output
 * Fix mobile version website

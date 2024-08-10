@@ -69,6 +69,30 @@ const basicProperties = (withExtras) => {
     "or": "custom-keyword",
     "xor": "custom-keyword",
     "not": "custom-keyword",
+
+    // string
+    "substring": "custom-keyword",
+    "startsWith": "custom-keyword",
+    "endsWith": "custom-keyword",
+    "replace": "custom-keyword",
+    "uppercase": "custom-keyword",
+    "lowercase": "custom-keyword",
+    "trim": "custom-keyword",
+    "match": "custom-keyword",
+    "length": "custom-keyword",
+    "concat": "custom-keyword",
+    "first": "custom-keyword",
+    "last": "custom-keyword",
+    "init": "custom-keyword",
+    "tail": "custom-keyword",
+    "at": "custom-keyword",
+    "isEmpty": "custom-keyword",
+    "isNotEmpty": "custom-keyword",
+    "contains": "custom-keyword",
+    "take": "custom-keyword",
+    "drop": "custom-keyword",
+    "remove": "custom-keyword",
+    "reverse": "custom-keyword",
   }
 
   return {
