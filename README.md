@@ -9,3 +9,4 @@
 * Social media, etc
 * Ask someone to ask a question in StackOverflow
 * Create Wikipedia entry
+* Create custom Gmail account and put it in the feedback page
