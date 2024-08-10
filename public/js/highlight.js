@@ -100,6 +100,12 @@ const basicProperties = (withExtras) => {
     "toDecimal": "custom-keyword",
     "toString": "custom-keyword",
     "toBoolean": "custom-keyword",
+    "isNumber": "custom-keyword",
+    "isInteger": "custom-keyword",
+    "isDecimal": "custom-keyword",
+    "isInfinite": "custom-keyword",
+    "isString": "custom-keyword",
+    "isBoolean": "custom-keyword",
   }
 
   return {
