@@ -45,6 +45,10 @@ const basicProperties = {
 
     "(": "custom-parenthesis",
     ")": "custom-parenthesis",
+    "[": "custom-parenthesis",
+    "]": "custom-parenthesis",
+    "{": "custom-parenthesis",
+    "}": "custom-parenthesis",
 
     "=": "custom-marker",
     ":": "custom-marker",
