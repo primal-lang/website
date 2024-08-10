@@ -6,7 +6,6 @@
 * Todo improve playground output
 * Fix mobile version website
 
-* Social media, etc
 * StackOverflow
   - Ask someone to ask a question (tag it as "primal")
   - Answer the question
