@@ -18,7 +18,7 @@
 
 /* Comment */
 .cm-s-dracula span.cm-comment {
-  color: #A9B7C6;
+  color: #a9b7c6;
 }
 
 /* String */
@@ -41,12 +41,12 @@
 
 /* Variable */
 .cm-s-dracula span.cm-variable {
-  color: #92DF8C;
+  color: #92df8c;
 }
 
 /* Variable */
 .cm-s-dracula span.cm-keyword {
-  color: #92DF8C;
+  color: #92df8c;
 }
 
 /* Operators */
@@ -72,7 +72,7 @@
 
 /* Parenthesis */
 .cm-custom-parenthesis {
-  color: #DBFFFF !important;
+  color: #dbffff !important;
 }
 
 /* ============= Unused ============= */
