@@ -25,6 +25,10 @@
   color: #92DF8C;
 }
 
+.cm-s-dracula span.cm-keyword {
+  color: #92DF8C;
+}
+
 .cm-s-dracula span.cm-number {
   color: #61aeec;
 }
@@ -34,16 +38,12 @@
   color: #f1d086;
 }
 
-.cm-s-dracula span.cm-operator {
-  color: #DA7178;
-}
-
 .cm-s-dracula span.cm-atom {
   color: #bd93f9;
 }
 
-.cm-s-dracula span.cm-keyword {
-  color: #ade290;
+.cm-s-dracula span.cm-operator {
+  color: #DA7178;
 }
 
 /* ============= Custom ============= */
@@ -52,12 +52,12 @@
   color: #ee9fe7 !important;
 }
 
-.cm-custom-type {
-  color: #9CDCFE !important;
-}
-
 .cm-custom-marker {
   color: #DA7178 !important;
+}
+
+.cm-custom-type {
+  color: #9CDCFE !important;
 }
 
 .cm-custom-parenthesis {
