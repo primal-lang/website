@@ -11,12 +11,19 @@
   padding-right: 15px;
 }
 
+/* Line number */
 .cm-s-dracula .CodeMirror-linenumber {
   color: #606060;
 }
 
+/* Comment */
 .cm-s-dracula span.cm-comment {
   color: #A9B7C6;
+}
+
+/* Boolean  */
+.cm-s-dracula span.cm-atom {
+  color: #ae80d5;
 }
 
 /********************************/
@@ -36,10 +43,6 @@
 .cm-s-dracula span.cm-string,
 .cm-s-dracula span.cm-string-2 {
   color: #f1d086;
-}
-
-.cm-s-dracula span.cm-atom {
-  color: #bd93f9;
 }
 
 .cm-s-dracula span.cm-operator {
