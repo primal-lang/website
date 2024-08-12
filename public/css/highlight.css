@@ -39,10 +39,12 @@
 
 /********************************/
 
+/* Variable */
 .cm-s-dracula span.cm-variable {
   color: #92DF8C;
 }
 
+/* Variable */
 .cm-s-dracula span.cm-keyword {
   color: #92DF8C;
 }
@@ -61,11 +63,11 @@
 
 /* Keyword */
 .cm-custom-keyword {
-  color: #ee9fe7 !important;
+  color: #d381cc !important;
 }
 /* Type */
 .cm-custom-type {
-  color: #9CDCFE !important;
+  color: #8ebcfc !important;
 }
 
 /* Parenthesis */
