@@ -52,18 +52,22 @@
 
 /* ============= Custom ============= */
 
+/* Keyword */
 .cm-custom-keyword {
   color: #ee9fe7 !important;
 }
 
+/* Operators */
 .cm-custom-marker {
   color: #DA7178 !important;
 }
 
+/* Type */
 .cm-custom-type {
   color: #9CDCFE !important;
 }
 
+/* Parenthesis */
 .cm-custom-parenthesis {
   color: #DBFFFF !important;
 }
