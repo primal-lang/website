@@ -12,8 +12,14 @@
 }
 
 .cm-s-dracula .CodeMirror-linenumber {
-  color: #9e9e9e;
+  color: #606060;
 }
+
+.cm-s-dracula span.cm-comment {
+  color: #A9B7C6;
+}
+
+/********************************/
 
 .cm-s-dracula span.cm-variable {
   color: #92DF8C;
@@ -26,10 +32,6 @@
 .cm-s-dracula span.cm-string,
 .cm-s-dracula span.cm-string-2 {
   color: #f1d086;
-}
-
-.cm-s-dracula span.cm-comment {
-  color: #afafaf;
 }
 
 .cm-s-dracula span.cm-operator {
