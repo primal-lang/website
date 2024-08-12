@@ -21,15 +21,20 @@
   color: #A9B7C6;
 }
 
-/* Boolean  */
-.cm-s-dracula span.cm-atom {
-  color: #ae80d5;
-}
-
 /* String */
 .cm-s-dracula span.cm-string,
 .cm-s-dracula span.cm-string-2 {
   color: #f1d086;
+}
+
+/* Number */
+.cm-s-dracula span.cm-number {
+  color: #599eff;
+}
+
+/* Boolean  */
+.cm-s-dracula span.cm-atom {
+  color: #ae80d5;
 }
 
 /********************************/
@@ -40,10 +45,6 @@
 
 .cm-s-dracula span.cm-keyword {
   color: #92DF8C;
-}
-
-.cm-s-dracula span.cm-number {
-  color: #61aeec;
 }
 
 .cm-s-dracula span.cm-operator {
