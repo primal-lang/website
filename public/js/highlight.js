@@ -148,7 +148,6 @@ const basicProperties = (withExtras) => {
       "}": "custom-parenthesis",
 
       "=": "custom-marker",
-      ":": "custom-marker",
 
       ...withExtras && extras,
     }
