@@ -47,22 +47,22 @@
   color: #92DF8C;
 }
 
+/* Operators */
 .cm-s-dracula span.cm-operator {
-  color: #DA7178;
+  color: #d46a60;
 }
 
 /* ============= Custom ============= */
+
+/* Operators */
+.cm-custom-marker {
+  color: #d46a60 !important;
+}
 
 /* Keyword */
 .cm-custom-keyword {
   color: #ee9fe7 !important;
 }
-
-/* Operators */
-.cm-custom-marker {
-  color: #DA7178 !important;
-}
-
 /* Type */
 .cm-custom-type {
   color: #9CDCFE !important;
