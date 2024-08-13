@@ -5348,7 +5348,7 @@
     get$lexeme() {
       return new A.Lexeme(this.value, this.location);
     },
-    get$separator() {
+    get$token() {
       var _this = this,
         t1 = _this.value,
         t2 = $.$get$StringExtensions_REGEX_COMMA();
@@ -5439,24 +5439,11 @@
                 if (t2._nativeRegExp.test(t1))
                   return new A.ForwardSlashState(new A.Lexeme(t1, input.location));
                 else {
-                  t2 = $.$get$StringExtensions_REGEX_COMMA();
-                  if (!t2._nativeRegExp.test(t1)) {
-                    t2 = $.$get$StringExtensions_REGEX_EQUALS();
-                    if (!t2._nativeRegExp.test(t1)) {
-                      t2 = $.$get$StringExtensions_REGEX_OPEN_PARENTHESIS();
-                      if (!t2._nativeRegExp.test(t1)) {
-                        t2 = $.$get$StringExtensions_REGEX_CLOSE_PARENTHESIS();
-                        t1 = t2._nativeRegExp.test(t1);
-                      } else
-                        t1 = true;
-                    } else
-                      t1 = true;
-                  } else
-                    t1 = true;
-                  if (t1)
-                    return new A.ResultState0(A._setArrayType([input.get$separator()], type$.JSArray_Token_dynamic));
-                  else
+                  t2 = $.$get$StringExtensions_REGEX_WHITESPACE();
+                  if (t2._nativeRegExp.test(t1))
                     return this;
+                  else
+                    return new A.ResultState0(A._setArrayType([input.get$token()], type$.JSArray_Token_dynamic));
                 }
               }
             }
@@ -5608,7 +5595,7 @@
             } else
               t1 = true;
             if (t1)
-              B.JSArray_methods.add$1(tokens, input.get$separator());
+              B.JSArray_methods.add$1(tokens, input.get$token());
             return new A.ResultState0(tokens);
           } else
             throw A.wrapException(A.InvalidCharacterError$(input));
@@ -5661,7 +5648,7 @@
           } else
             t1 = true;
           if (t1)
-            B.JSArray_methods.add$1(tokens, input.get$separator());
+            B.JSArray_methods.add$1(tokens, input.get$token());
           return new A.ResultState0(tokens);
         } else
           throw A.wrapException(A.InvalidCharacterError$(input));
@@ -5731,7 +5718,7 @@
           } else
             t1 = true;
           if (t1)
-            B.JSArray_methods.add$1(tokens, input.get$separator());
+            B.JSArray_methods.add$1(tokens, input.get$token());
           return new A.ResultState0(tokens);
         } else
           throw A.wrapException(A.InvalidCharacterError$(input));
