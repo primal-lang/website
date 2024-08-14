@@ -165,10 +165,9 @@ function evaluateConsoleInput() {
     writeOutputError(e)
   }
 
-  const consoleElement = document.getElementById('console')
+  const consoleElement = document.getElementById('output')
 
   if (consoleElement) {
-    console.log('aa')
-    consoleElement.scrollBottom = consoleElement.scrollHeight
+    consoleElement.scrollTop = consoleElement.scrollHeight
   }
 }
