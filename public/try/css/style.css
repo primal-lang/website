@@ -61,3 +61,23 @@ body {
   background-color: #e9ecef;
   color: #ABABAB;
 }
+
+.base-output {
+  border-bottom: 1px solid #303030;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+.output-warning {
+  color: #f7d051;
+}
+
+.output-error {
+  color: #f35858;
+}
+
+.output-success {
+  color: #fffcf2;
+}

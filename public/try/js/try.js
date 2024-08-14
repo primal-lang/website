@@ -120,24 +120,34 @@ function sendFeedbackMessage(message) {
 
 // ---------------
 
-function clearOutput() {
-  writeOutput('', 'white')
+function createOutputElement(text, styleClass) {
+  const element = document.createElement('div')
+  element.textContent = text
+  element.classList.add('base-output')
+  element.classList.add(styleClass)
+
+  return element
 }
 
-function writeOutputSuccess(text) {
-  writeOutput(text, 'white')
+function clearOutput() {
+  while (output.hasChildNodes()) {
+    output.removeChild(output.lastChild);
+  }
 }
 
 function writeOutputWarning(text) {
-  writeOutput(text, 'yellow')
+  writeOutput(createOutputElement(text, 'output-warning'))
 }
 
 function writeOutputError(text) {
-  writeOutput(text, 'red')
+  writeOutput(createOutputElement(text, 'output-error'))
 }
 
-function writeOutput(text, color) {
+function writeOutputSuccess(text) {
+  writeOutput(createOutputElement(text, 'output-success'))
+}
+
+function writeOutput(element) {
   const output = document.getElementById('output')
-  output.style.color = color
-  output.innerHTML = text
+  output.appendChild(element)
 }
