@@ -14,10 +14,6 @@ body {
   flex-direction: column;
 }
 
-.content {
-  flex: 1;
-}
-
 .navbar-container {
   background-color: #2a2a2a;
 }
@@ -37,6 +33,7 @@ body {
 
 .split.content {
   height: 0%;
+  flex: 1;
 }
 
 .gutter {
