@@ -9,8 +9,8 @@ const SAMPLES = {
   'isPalindrome': 'isPalindrome(s) = isPalindromeHelper(s, 0, dec(length(s)))\n\nisPalindromeHelper(s, start, end) = if(ge(start, end), true, if(neq(at(s, start), at(s, end)), false, isPalindromeHelper(s, inc(start), dec(end))))\n\nmain = isPalindrome("level")',
 }
 
-const INPUTS = []
-let inputIndex = -1
+const INPUTS = localStorage.getItem('consoleHistory') ? JSON.parse(localStorage.getItem('consoleHistory')) : []
+let inputIndex = (INPUTS.length > 0) ? INPUTS.length : -1
 
 function compileCode(sourceCode) {
   try {
@@ -157,6 +157,7 @@ function evaluateConsoleInput() {
   const inputElement = document.getElementById('consoleInput')
   const inputValue = inputElement.value
   INPUTS.push(inputValue)
+  localStorage.setItem('consoleHistory', JSON.stringify(INPUTS))
   inputIndex = INPUTS.length
   inputElement.value = ''
 
