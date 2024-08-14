@@ -36,6 +36,11 @@ body {
   flex: 1;
 }
 
+#output {
+  flex: 1;
+  overflow-y: auto;
+}
+
 .gutter {
   background-color: #2a2a2a;
   background-repeat: no-repeat;

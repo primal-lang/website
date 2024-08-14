@@ -164,4 +164,11 @@ function evaluateConsoleInput() {
   } catch (e) {
     writeOutputError(e)
   }
+
+  const consoleElement = document.getElementById('console')
+
+  if (consoleElement) {
+    console.log('aa')
+    consoleElement.scrollBottom = consoleElement.scrollHeight
+  }
 }
