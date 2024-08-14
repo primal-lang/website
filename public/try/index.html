@@ -197,6 +197,12 @@
       if (event.key === 'Enter') {
         event.preventDefault()
         evaluateConsoleInput()
+      } else if (event.key === 'ArrowUp') {
+        event.preventDefault()
+        showInputBefore()
+      } else if (event.key === 'ArrowDown') {
+        event.preventDefault()
+        showInputAfter()
       }
     })
   </script>

@@ -9,6 +9,9 @@ const SAMPLES = {
   'isPalindrome': 'isPalindrome(s) = isPalindromeHelper(s, 0, dec(length(s)))\n\nisPalindromeHelper(s, start, end) = if(ge(start, end), true, if(neq(at(s, start), at(s, end)), false, isPalindromeHelper(s, inc(start), dec(end))))\n\nmain = isPalindrome("level")',
 }
 
+const INPUTS = []
+let inputIndex = -1
+
 function compileCode(sourceCode) {
   try {
     const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateCodeEmpty()
@@ -153,6 +156,8 @@ function writeOutput(element) {
 function evaluateConsoleInput() {
   const inputElement = document.getElementById('consoleInput')
   const inputValue = inputElement.value
+  INPUTS.push(inputValue)
+  inputIndex = INPUTS.length
   inputElement.value = ''
 
   try {
@@ -169,5 +174,33 @@ function evaluateConsoleInput() {
 
   if (consoleElement) {
     consoleElement.scrollTop = consoleElement.scrollHeight
+  }
+}
+
+function showInputBefore() {
+  if (inputIndex !== -1) {
+    if (inputIndex > 0) {
+      inputIndex--
+    }
+    showInputHistory()
+  }
+}
+
+function showInputAfter() {
+  if (inputIndex !== -1) {
+    if (inputIndex < INPUTS.length) {
+      inputIndex++
+    }
+    showInputHistory()
+  }
+}
+
+function showInputHistory() {
+  const inputElement = document.getElementById('consoleInput')
+
+  if (inputIndex >= 0 && inputIndex < INPUTS.length) {
+    inputElement.value = INPUTS[inputIndex]
+  } else if (inputIndex === INPUTS.length) {
+    inputElement.value = ''
   }
 }
