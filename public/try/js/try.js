@@ -13,6 +13,8 @@ const INPUTS = localStorage.getItem('consoleHistory') ? JSON.parse(localStorage.
 let inputIndex = (INPUTS.length > 0) ? INPUTS.length : -1
 
 function compileCode(sourceCode) {
+  const consoleInput = document.getElementById('consoleInput')
+
   try {
     const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateCodeEmpty()
     const warnings = runtimeWarnings(intermediateCode)
@@ -25,8 +27,14 @@ function compileCode(sourceCode) {
       const result = runtimeExecuteMain(intermediateCode)
       writeOutputSuccess(result)
     }
+
+    consoleInput.disabled = false
+    consoleInput.placeholder = '>'
   } catch (e) {
     writeOutputError(e)
+
+    consoleInput.disabled = true
+    consoleInput.placeholder = ''
   }
 }
 
@@ -197,11 +205,11 @@ function showInputAfter() {
 }
 
 function showInputHistory() {
-  const inputElement = document.getElementById('consoleInput')
+  const consoleInput = document.getElementById('consoleInput')
 
   if (inputIndex >= 0 && inputIndex < INPUTS.length) {
-    inputElement.value = INPUTS[inputIndex]
+    consoleInput.value = INPUTS[inputIndex]
   } else if (inputIndex === INPUTS.length) {
-    inputElement.value = ''
+    consoleInput.value = ''
   }
 }

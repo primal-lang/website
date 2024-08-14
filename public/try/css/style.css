@@ -85,6 +85,10 @@ body {
   outline: none;
 }
 
+.console-input:disabled {
+  background-color: #202020;
+}
+
 .base-output {
   border-bottom: 1px solid #303030;
   padding-left: 0.8rem;
