@@ -153,6 +153,15 @@ function writeOutput(element) {
 function evaluateConsoleInput() {
   const inputElement = document.getElementById('consoleInput')
   const inputValue = inputElement.value
-  console.log('User entered:', inputValue)
   inputElement.value = ''
+
+  try {
+    const sourceCode = window.editor.getValue().trim()
+    const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateCodeEmpty()
+    const expression = compileExpression(inputValue)
+    const result = runtimeReduce(intermediateCode, expression)
+    writeOutputSuccess(result)
+  } catch (e) {
+    writeOutputError(e)
+  }
 }
