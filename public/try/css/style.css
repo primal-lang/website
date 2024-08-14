@@ -35,6 +35,10 @@ body {
   flex-direction: row;
 }
 
+.split.content {
+  height: 0%;
+}
+
 .gutter {
   background-color: #2a2a2a;
   background-repeat: no-repeat;
