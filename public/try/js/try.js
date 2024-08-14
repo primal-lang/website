@@ -118,8 +118,6 @@ function sendFeedbackMessage(message) {
   showToast('toastFeedbackSent')
 }
 
-// ---------------
-
 function createOutputElement(text, styleClass) {
   const element = document.createElement('div')
   element.textContent = text
