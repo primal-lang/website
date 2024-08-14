@@ -67,15 +67,15 @@ body {
   height: 2.5em;
   border: none;
   background-color: #303030;
-  padding-left: 0.5rem;
+  padding-left: 0.8rem;
   padding-right: 0.5rem;
   padding-top: 0.5rem;
   padding-bottom: 0.5rem;
+  color: #e0e0e0;
 }
 
 .console-input:focus {
-  color: #ffffff;
-  background-color: #404040;
+  background-color: #3a3a3a;
   outline: none;
 }
 
