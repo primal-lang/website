@@ -149,3 +149,10 @@ function writeOutput(element) {
   const output = document.getElementById('output')
   output.appendChild(element)
 }
+
+function evaluateConsoleInput() {
+  const inputElement = document.getElementById('consoleInput')
+  const inputValue = inputElement.value
+  console.log('User entered:', inputValue)
+  inputElement.value = ''
+}
