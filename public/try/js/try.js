@@ -163,26 +163,29 @@ function writeOutput(element) {
 
 function evaluateConsoleInput() {
   const inputElement = document.getElementById('consoleInput')
-  const inputValue = inputElement.value
-  INPUTS.push(inputValue)
-  localStorage.setItem('consoleHistory', JSON.stringify(INPUTS))
-  inputIndex = INPUTS.length
-  inputElement.value = ''
+  const inputValue = inputElement.value.trim()
 
-  try {
-    const sourceCode = window.editor.getValue().trim()
-    const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateCodeEmpty()
-    const expression = compileExpression(inputValue)
-    const result = runtimeReduce(intermediateCode, expression)
-    writeOutputSuccess(result)
-  } catch (e) {
-    writeOutputError(e)
-  }
+  if (inputValue) {
+    INPUTS.push(inputValue)
+    localStorage.setItem('consoleHistory', JSON.stringify(INPUTS))
+    inputIndex = INPUTS.length
+    inputElement.value = ''
 
-  const consoleElement = document.getElementById('output')
+    try {
+      const sourceCode = window.editor.getValue().trim()
+      const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateCodeEmpty()
+      const expression = compileExpression(inputValue)
+      const result = runtimeReduce(intermediateCode, expression)
+      writeOutputSuccess(result)
+    } catch (e) {
+      writeOutputError(e)
+    }
 
-  if (consoleElement) {
-    consoleElement.scrollTop = consoleElement.scrollHeight
+    const consoleElement = document.getElementById('output')
+
+    if (consoleElement) {
+      consoleElement.scrollTop = consoleElement.scrollHeight
+    }
   }
 }
 
