@@ -1342,7 +1342,8 @@ textarea.form-control-lg {
 
 .rounded-circle {
   border-radius: 50% !important;
-  background-color: rgb(0, 0, 0, .2)
+  background-color: rgb(0, 0, 0, .2);
+  border: 0.2em solid #e0e0e0;
 }
 
 .rounded-top {
