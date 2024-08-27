@@ -1,12 +1,12 @@
 const SAMPLES = {
-  'default': 'isBiggerThan10(n) = gt(n, 10)\n\nmain = isBiggerThan10(7)',
-  'factorial': 'factorial(n) = if(isZero(n), 1, mul(n, factorial(dec(n))))\n\nmain = factorial(5)',
-  'fibonacci': 'fibonacci(n) = if(isZero(n), 0, if(eq(n, 1), 1, sum(fibonacci(dec(n)), fibonacci(sub(n, 2)))))\n\nmain = fibonacci(10)',
-  'isPrime': 'isPrime(n) = if(le(n, 1), false, if(eq(n, 2), true, if(isEven(n), false, isPrimeHelper(n, 3))))\n\nisPrimeHelper(n, divisor) = if(gt(mul(divisor, divisor), n), true, if(eq(mod(n, divisor), 0), false, isPrimeHelper(n, sum(divisor, 2))))\n\nmain = isPrime(97)',
-  'power': 'power(base, exp) = if(isZero(exp), 1, mul(base, power(base, sub(exp, 1))))\n\nmain = power(2, 10)',
-  'sumOfDigits': 'sumOfDigits(n) = if(isZero(n), 0, sum(mod(n, 10), sumOfDigits(divInt(n, 10))))\n\nmain = sumOfDigits(12345)',
-  'toBinary': 'toBinary(n) = if(isZero(n), "0", if(eq(n, 1), "1", concat(toBinary(divInt(n, 2)), toString(mod(n, 2)))))\n\nmain = toBinary(10)',
-  'isPalindrome': 'isPalindrome(s) = isPalindromeHelper(s, 0, dec(length(s)))\n\nisPalindromeHelper(s, start, end) = if(ge(start, end), true, if(neq(at(s, start), at(s, end)), false, isPalindromeHelper(s, inc(start), dec(end))))\n\nmain = isPalindrome("level")',
+  'default': 'isBiggerThan10(n) = n > 10\n\nmain = isBiggerThan10(7)',
+  'factorial': 'factorial(n) = if(n == 0, 1, n * factorial(n - 1))\n\nmain = factorial(5)',
+  'fibonacci': 'fibonacci(n) = if(n == 0, 0, if(n == 1, 1, fibonacci(n - 1) + fibonacci(n - 2)))\n\nmain = fibonacci(10)',
+  'isPrime': 'isPrime(n) = if(n <= 1, false, if(n == 2, true, if(isEven(n), false, isPrimeHelper(n, 3))))\n\nisPrimeHelper(n, divisor) = if(divisor * divisor > n, true, if((n % divisor) == 0, false, isPrimeHelper(n, divisor + 2)))\n\nmain = isPrime(97)',
+  'power': 'power(base, exp) = if(exp == 0, 1, base * power(base, exp - 1))\n\nmain = power(2, 10)',
+  'sumOfDigits': 'sumOfDigits(n) = if(n == 0, 0, n % 10 + sumOfDigits(toInteger(n / 10)))\n\nmain = sumOfDigits(12345)',
+  'toBinary': 'toBinary(n) = if(n == 0, "0", if(n == 1, "1", concat(toBinary(toInteger(n / 2)), toString(n % 2))))\n\nmain = toBinary(10)',
+  'isPalindrome': 'isPalindrome(s) = isPalindromeHelper(s, 0, length(s) - 1)\n\nisPalindromeHelper(s, start, end) = if(start >= end, true, if(at(s, start) != at(s, end), false, isPalindromeHelper(s, start + 1, end - 1)))\n\nmain = isPalindrome("level")',
 }
 
 const INPUTS = localStorage.getItem('consoleHistory') ? JSON.parse(localStorage.getItem('consoleHistory')) : []
