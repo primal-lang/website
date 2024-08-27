@@ -541,7 +541,7 @@
       $length = J.get$length$as(indexable);
       if (index < 0 || index >= $length)
         return A.IndexError$withLength(index, $length, indexable, _s5_);
-      return A.RangeError$value(index, _s5_);
+      return new A.RangeError(null, null, true, index, _s5_, "Value not in range");
     },
     argumentErrorValue(object) {
       return new A.ArgumentError(true, object, null, null);
@@ -2685,9 +2685,6 @@
     ArgumentError$(message) {
       return new A.ArgumentError(false, null, null, message);
     },
-    RangeError$value(value, $name) {
-      return new A.RangeError(null, null, true, value, $name, "Value not in range");
-    },
     RangeError$range(invalidValue, minValue, maxValue, $name, message) {
       return new A.RangeError(minValue, maxValue, true, invalidValue, $name, "Invalid value");
     },
@@ -2847,7 +2844,7 @@
       this._box_0 = t0;
       this.sb = t1;
     },
-    Error0: function Error0() {
+    Error: function Error() {
     },
     AssertionError: function AssertionError(t0) {
       this.message = t0;
@@ -2933,9 +2930,6 @@
     InvalidCharacterError: function InvalidCharacterError(t0) {
       this.message = t0;
     },
-    InvalidLexemeError: function InvalidLexemeError(t0) {
-      this.message = t0;
-    },
     RuntimeError$(message) {
       return new A.RuntimeError(message);
     },
@@ -2965,7 +2959,7 @@
     DuplicatedParameterError: function DuplicatedParameterError(t0) {
       this.message = t0;
     },
-    UndefinedSymbolError: function UndefinedSymbolError(t0) {
+    UndefinedIdentifiersError: function UndefinedIdentifiersError(t0) {
       this.message = t0;
     },
     UndefinedFunctionError: function UndefinedFunctionError(t0) {
@@ -2977,65 +2971,120 @@
     InvalidTokenError$(token) {
       return new A.InvalidTokenError("Invalid token " + token.toString$0(0));
     },
-    InvalidStackElementError$(element) {
-      return new A.InvalidStackElementError("Expression malfored at " + element.location.toString$0(0));
-    },
     SyntacticError: function SyntacticError() {
     },
     InvalidTokenError: function InvalidTokenError(t0) {
       this.message = t0;
     },
-    InvalidStackElementError: function InvalidStackElementError(t0) {
+    ExpectedTokenError: function ExpectedTokenError(t0) {
       this.message = t0;
     },
     UnexpectedEndOfFileError: function UnexpectedEndOfFileError(t0) {
       this.message = t0;
     },
-    Character: function Character(t0, t1) {
-      this.value = t0;
-      this.location = t1;
-    },
-    InputAnalyzer: function InputAnalyzer(t0) {
-      this.input = t0;
-    },
     LexicalAnalyzer: function LexicalAnalyzer(t0) {
       this.input = t0;
     },
-    InitState0: function InitState0(t0) {
+    InitState: function InitState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    ForwardSlashState: function ForwardSlashState(t0) {
+    StringDoubleQuoteState: function StringDoubleQuoteState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    SingleLineCommentState: function SingleLineCommentState(t0) {
+    StringSingleQuoteState: function StringSingleQuoteState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    StartMultiLineCommentState: function StartMultiLineCommentState(t0) {
+    IntegerState: function IntegerState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    ClosingMultiLineCommentState: function ClosingMultiLineCommentState(t0) {
+    DecimalInitState: function DecimalInitState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    StringDoubleQuoteState: function StringDoubleQuoteState(t0) {
+    DecimalState: function DecimalState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    StringSingleQuoteState: function StringSingleQuoteState(t0) {
+    IdentifierState: function IdentifierState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    NegativeNumberState: function NegativeNumberState(t0) {
+    MinusState: function MinusState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    IntegerState: function IntegerState(t0) {
+    PlusState: function PlusState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    DecimalState: function DecimalState(t0) {
+    EqualsState: function EqualsState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    SymbolState: function SymbolState(t0) {
+    GreaterState: function GreaterState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    ResultState0: function ResultState0(t0) {
+    LessState: function LessState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
+    },
+    PipeState: function PipeState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    AmpersandState: function AmpersandState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    BangState: function BangState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    ForwardSlashState: function ForwardSlashState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    AsteriskState: function AsteriskState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    PercentState: function PercentState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    SingleLineCommentState: function SingleLineCommentState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    StartMultiLineCommentState: function StartMultiLineCommentState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    ClosingMultiLineCommentState: function ClosingMultiLineCommentState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    CommaState: function CommaState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    OpenParenthesisState: function OpenParenthesisState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    CloseParenthesisState: function CloseParenthesisState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
+    },
+    ResultState: function ResultState(t0, t1, t2) {
+      this.goBack = t0;
+      this.output = t1;
+      this.iterator = t2;
     },
     Lexeme: function Lexeme(t0, t1) {
       this.value = t0;
@@ -3058,19 +3107,71 @@
       this.value = t0;
       this.location = t1;
     },
-    SymbolToken: function SymbolToken(t0, t1) {
+    IdentifierToken: function IdentifierToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    MinusToken: function MinusToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    PlusToken: function PlusToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    ForwardSlashToken: function ForwardSlashToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    AsteriskToken: function AsteriskToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    PercentToken: function PercentToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    PipeToken: function PipeToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    AmpersandToken: function AmpersandToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    BangToken: function BangToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    EqualToken: function EqualToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    NotEqualToken: function NotEqualToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    GreaterThanToken: function GreaterThanToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    GreaterEqualThanToken: function GreaterEqualThanToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    LessThanToken: function LessThanToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    LessEqualThanToken: function LessEqualThanToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    AssignToken: function AssignToken(t0, t1) {
       this.value = t0;
       this.location = t1;
     },
     CommaToken: function CommaToken(t0, t1) {
-      this.value = t0;
-      this.location = t1;
-    },
-    EqualsToken: function EqualsToken(t0, t1) {
-      this.value = t0;
-      this.location = t1;
-    },
-    SlashToken: function SlashToken(t0, t1) {
       this.value = t0;
       this.location = t1;
     },
@@ -3162,7 +3263,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    Error: function Error(t0, t1) {
+    Throw: function Throw(t0, t1) {
       this.name = t0;
       this.parameters = t1;
     },
@@ -3226,10 +3327,6 @@
       this.name = t0;
       this.parameters = t1;
     },
-    Add: function Add(t0, t1) {
-      this.name = t0;
-      this.parameters = t1;
-    },
     Ceil: function Ceil(t0, t1) {
       this.name = t0;
       this.parameters = t1;
@@ -3243,10 +3340,6 @@
       this.parameters = t1;
     },
     Div: function Div(t0, t1) {
-      this.name = t0;
-      this.parameters = t1;
-    },
-    DivInt: function DivInt(t0, t1) {
       this.name = t0;
       this.parameters = t1;
     },
@@ -3414,7 +3507,7 @@
     BooleanReducibleValue: function BooleanReducibleValue(t0) {
       this.value = t0;
     },
-    SymbolReducible: function SymbolReducible(t0, t1) {
+    IdentifierReducible: function IdentifierReducible(t0, t1) {
       this.value = t0;
       this.location = t1;
     },
@@ -3448,6 +3541,13 @@
     Scope: function Scope(t0, t1) {
       this.data = t0;
       this.$ti = t1;
+    },
+    Character: function Character(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    Scanner: function Scanner(t0) {
+      this.input = t0;
     },
     FunctionPrototype: function FunctionPrototype() {
     },
@@ -3485,15 +3585,6 @@
     SemanticAnalyzer_getFunctionByName_closure: function SemanticAnalyzer_getFunctionByName_closure(t0) {
       this.name = t0;
     },
-    StringExpression$(token) {
-      return new A.StringExpression(A._asString(token.value), token.location);
-    },
-    NumberExpression$(token) {
-      return new A.NumberExpression(A._asNum(token.value), token.location);
-    },
-    BooleanExpression$(token) {
-      return new A.BooleanExpression(A._asBool(token.value), token.location);
-    },
     Expression: function Expression() {
     },
     EmptyExpression: function EmptyExpression(t0) {
@@ -3501,28 +3592,31 @@
     },
     LiteralExpression: function LiteralExpression() {
     },
-    StringExpression: function StringExpression(t0, t1) {
+    BooleanLiteralExpression: function BooleanLiteralExpression(t0, t1) {
       this.value = t0;
       this.location = t1;
     },
-    NumberExpression: function NumberExpression(t0, t1) {
+    NumberLiteralExpression: function NumberLiteralExpression(t0, t1) {
       this.value = t0;
       this.location = t1;
     },
-    BooleanExpression: function BooleanExpression(t0, t1) {
+    StringLiteralExpression: function StringLiteralExpression(t0, t1) {
       this.value = t0;
       this.location = t1;
     },
-    SymbolExpression: function SymbolExpression(t0, t1) {
+    IdentifierExpression: function IdentifierExpression(t0, t1) {
       this.value = t0;
       this.location = t1;
     },
-    FunctionCallExpression: function FunctionCallExpression(t0, t1, t2) {
-      this.name = t0;
+    CallExpression: function CallExpression(t0, t1, t2) {
+      this.callee = t0;
       this.$arguments = t1;
       this.location = t2;
     },
-    FunctionCallExpression_toReducible_closure: function FunctionCallExpression_toReducible_closure() {
+    CallExpression_toReducible_closure: function CallExpression_toReducible_closure() {
+    },
+    ExpressionParser: function ExpressionParser(t0) {
+      this.iterator = t0;
     },
     FunctionDefinition: function FunctionDefinition(t0, t1, t2) {
       this.name = t0;
@@ -3532,59 +3626,33 @@
     SyntacticAnalyzer: function SyntacticAnalyzer(t0) {
       this.input = t0;
     },
-    InitState: function InitState(t0) {
+    InitState0: function InitState0(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    FunctionNameState: function FunctionNameState(t0) {
+    FunctionNameState: function FunctionNameState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    FunctionWithParametersState: function FunctionWithParametersState(t0) {
+    FunctionWithParametersState: function FunctionWithParametersState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    FunctionWithNewParametersState: function FunctionWithNewParametersState(t0) {
+    FunctionWithNewParametersState: function FunctionWithNewParametersState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    FunctionWithNextParametersState: function FunctionWithNextParametersState(t0) {
+    FunctionWithNextParametersState: function FunctionWithNextParametersState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    FunctionParametrizedState: function FunctionParametrizedState(t0) {
+    FunctionParametrizedState: function FunctionParametrizedState(t0, t1) {
       this.output = t0;
+      this.iterator = t1;
     },
-    FunctionBodyInitState: function FunctionBodyInitState(t0, t1) {
-      this.stack = t0;
-      this.output = t1;
-    },
-    FunctionBodyExpressionState: function FunctionBodyExpressionState(t0, t1) {
-      this.stack = t0;
-      this.output = t1;
-    },
-    FunctionBodyExpressionState_topIsNot_closure: function FunctionBodyExpressionState_topIsNot_closure(t0) {
-      this.$this = t0;
-    },
-    ResultState: function ResultState(t0) {
+    ResultState0: function ResultState0(t0, t1) {
       this.output = t0;
-    },
-    StackElement: function StackElement() {
-    },
-    StackExpression: function StackExpression() {
-    },
-    StackLiteral: function StackLiteral(t0, t1) {
-      this.expression = t0;
-      this.location = t1;
-    },
-    StackSymbol: function StackSymbol(t0, t1) {
-      this.expression = t0;
-      this.location = t1;
-    },
-    StackFunctionCall: function StackFunctionCall(t0, t1) {
-      this.expression = t0;
-      this.location = t1;
-    },
-    StackOpenParenthesis: function StackOpenParenthesis(t0) {
-      this.location = t0;
-    },
-    StackComma: function StackComma(t0) {
-      this.location = t0;
+      this.iterator = t1;
     },
     GenericWarning: function GenericWarning() {
     },
@@ -3629,10 +3697,6 @@
     },
     ListIterator0: function ListIterator0(t0, t1) {
       this._list_iterator$_index = 0;
-      this._list_iterator$_list = t0;
-      this.$ti = t1;
-    },
-    Stack: function Stack(t0, t1) {
       this._list = t0;
       this.$ti = t1;
     },
@@ -3682,7 +3746,98 @@
     StandardLibrary_get() {
       var _s1_ = "a", _s1_0 = "b",
         t1 = type$.JSArray_Parameter;
-      return A._setArrayType([new A.Eq("eq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Neq("neq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.If("if", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter("c", B.C_AnyType)], t1)), new A.Try("try", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Error("error", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Debug("debug", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Abs("abs", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Inc("inc", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Dec("dec", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Add("add", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sum("sum", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sub("sub", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mul("mul", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Div("div", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.DivInt("divInt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mod("mod", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Min("min", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Max("max", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Pow("pow", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sqrt("sqrt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Round("round", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Floor("floor", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Ceil("ceil", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Sin("sin", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Cos("cos", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Tan("tan", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Log("log", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Gt("gt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Lt("lt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Ge("ge", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Le("le", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.IsNegative("isNegative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsPositive("isPositive", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsZero("isZero", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsEven("isEven", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsOdd("isOdd", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.And("and", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Or("or", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Xor("xor", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Not("not", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.Substring("substring", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter("c", B.C_NumberType)], t1)), new A.StartsWith("startsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.EndsWith("endsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Replace("replace", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType), new A.Parameter("c", B.C_StringType)], t1)), new A.Uppercase("uppercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Lowercase("lowercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Trim("trim", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Match("match", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Length("length", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Concat("concat", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.First("first", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Last("last", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Init("init", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Tail("tail", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.At("at", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.IsEmpty("isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNotEmpty("isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Contains("contains", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Take("take", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Drop("drop", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Remove("remove", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Reverse("reverse", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToNumber("toNumber", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToInteger("toInteger", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToDecimal("toDecimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToString("toString", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToBoolean("toBoolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNumber("isNumber", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInteger("isInteger", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsDecimal("isDecimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInfinite("isInfinite", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsString("isString", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsBoolean("isBoolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1))], type$.JSArray_FunctionPrototype);
+      return A._setArrayType([new A.Eq("==", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Neq("!=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.If("if", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter("c", B.C_AnyType)], t1)), new A.Try("try", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Throw("throw", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Debug("debug", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Abs("abs", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Inc("inc", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Dec("dec", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Sum("+", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sub("-", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mul("*", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Div("/", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mod("%", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Min("min", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Max("max", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Pow("pow", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sqrt("sqrt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Round("round", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Floor("floor", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Ceil("ceil", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Sin("sin", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Cos("cos", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Tan("tan", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Log("log", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Gt(">", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Lt("<", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Ge(">=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Le("<=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.IsNegative("isNegative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsPositive("isPositive", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsZero("isZero", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsEven("isEven", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsOdd("isOdd", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.And("&", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Or("|", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Xor("xor", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Not("!", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.Substring("substring", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter("c", B.C_NumberType)], t1)), new A.StartsWith("startsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.EndsWith("endsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Replace("replace", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType), new A.Parameter("c", B.C_StringType)], t1)), new A.Uppercase("uppercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Lowercase("lowercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Trim("trim", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Match("match", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Length("length", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Concat("concat", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.First("first", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Last("last", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Init("init", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Tail("tail", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.At("at", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.IsEmpty("isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNotEmpty("isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Contains("contains", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Take("take", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Drop("drop", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Remove("remove", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Reverse("reverse", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToNumber("toNumber", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToInteger("toInteger", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToDecimal("toDecimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToString("toString", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToBoolean("toBoolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNumber("isNumber", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInteger("isInteger", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsDecimal("isDecimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInfinite("isInfinite", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsString("isString", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsBoolean("isBoolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1))], type$.JSArray_FunctionPrototype);
+    },
+    StringExtensions_get_isOperandDelimiter(_this) {
+      var t1 = A.RegExp_RegExp("\\s");
+      if (!t1._nativeRegExp.test(_this)) {
+        t1 = A.RegExp_RegExp("-");
+        if (!t1._nativeRegExp.test(_this)) {
+          t1 = A.RegExp_RegExp("\\+");
+          if (!t1._nativeRegExp.test(_this)) {
+            t1 = A.RegExp_RegExp("=");
+            if (!t1._nativeRegExp.test(_this)) {
+              t1 = A.RegExp_RegExp(">");
+              if (!t1._nativeRegExp.test(_this)) {
+                t1 = A.RegExp_RegExp("<");
+                if (!t1._nativeRegExp.test(_this)) {
+                  t1 = A.RegExp_RegExp("\\|");
+                  if (!t1._nativeRegExp.test(_this)) {
+                    t1 = A.RegExp_RegExp("&");
+                    if (!t1._nativeRegExp.test(_this)) {
+                      t1 = A.RegExp_RegExp("!");
+                      if (!t1._nativeRegExp.test(_this)) {
+                        t1 = A.RegExp_RegExp("/");
+                        if (!t1._nativeRegExp.test(_this)) {
+                          t1 = A.RegExp_RegExp("\\*");
+                          if (!t1._nativeRegExp.test(_this)) {
+                            t1 = A.RegExp_RegExp("%");
+                            t1 = t1._nativeRegExp.test(_this);
+                          } else
+                            t1 = true;
+                        } else
+                          t1 = true;
+                      } else
+                        t1 = true;
+                    } else
+                      t1 = true;
+                  } else
+                    t1 = true;
+                } else
+                  t1 = true;
+              } else
+                t1 = true;
+            } else
+              t1 = true;
+          } else
+            t1 = true;
+        } else
+          t1 = true;
+        if (!t1) {
+          t1 = A.RegExp_RegExp(",");
+          if (!t1._nativeRegExp.test(_this)) {
+            t1 = A.RegExp_RegExp("\\(");
+            if (!t1._nativeRegExp.test(_this)) {
+              t1 = A.RegExp_RegExp("\\)");
+              t1 = t1._nativeRegExp.test(_this);
+            } else
+              t1 = true;
+          } else
+            t1 = true;
+        } else
+          t1 = true;
+      } else
+        t1 = true;
+      return t1;
+    },
+    StringExtensions_get_isOperatorDelimiter(_this) {
+      var t1 = A.RegExp_RegExp("\\s");
+      if (!t1._nativeRegExp.test(_this)) {
+        t1 = A.RegExp_RegExp("\\d");
+        if (!t1._nativeRegExp.test(_this)) {
+          t1 = A.RegExp_RegExp("[a-zA-Z]");
+          if (!t1._nativeRegExp.test(_this)) {
+            t1 = A.RegExp_RegExp('"');
+            if (!t1._nativeRegExp.test(_this)) {
+              t1 = A.RegExp_RegExp("'");
+              if (!t1._nativeRegExp.test(_this)) {
+                t1 = A.RegExp_RegExp("\\(");
+                if (!t1._nativeRegExp.test(_this)) {
+                  t1 = A.RegExp_RegExp("\\)");
+                  t1 = t1._nativeRegExp.test(_this);
+                } else
+                  t1 = true;
+              } else
+                t1 = true;
+            } else
+              t1 = true;
+          } else
+            t1 = true;
+        } else
+          t1 = true;
+      } else
+        t1 = true;
+      return t1;
     },
     Mapper_toMap(functions) {
       var t1, _i, $function,
@@ -4049,13 +4204,6 @@
         A.throwExpression(A.UnsupportedError$("add"));
       receiver.push(value);
     },
-    removeLast$0(receiver) {
-      if (!!receiver.fixed$length)
-        A.throwExpression(A.UnsupportedError$("removeLast"));
-      if (receiver.length === 0)
-        throw A.wrapException(A.diagnoseIndexError(receiver, -1));
-      return receiver.pop();
-    },
     addAll$1(receiver, collection) {
       A._arrayInstanceType(receiver)._eval$1("Iterable<1>")._as(collection);
       if (!!receiver.fixed$length)
@@ -4103,12 +4251,6 @@
         return A.ioore(receiver, index);
       return receiver[index];
     },
-    get$last(receiver) {
-      var t1 = receiver.length;
-      if (t1 > 0)
-        return receiver[t1 - 1];
-      throw A.wrapException(A.IterableElementError_noElement());
-    },
     any$1(receiver, test) {
       var end, i;
       A._arrayInstanceType(receiver)._eval$1("bool(1)")._as(test);
@@ -4120,18 +4262,6 @@
           throw A.wrapException(A.ConcurrentModificationError$(receiver));
       }
       return false;
-    },
-    every$1(receiver, test) {
-      var end, i;
-      A._arrayInstanceType(receiver)._eval$1("bool(1)")._as(test);
-      end = receiver.length;
-      for (i = 0; i < end; ++i) {
-        if (!A.boolConversionCheck(test.call$1(receiver[i])))
-          return false;
-        if (receiver.length !== end)
-          throw A.wrapException(A.ConcurrentModificationError$(receiver));
-      }
-      return true;
     },
     contains$1(receiver, other) {
       var i;
@@ -4271,23 +4401,6 @@
         return result - other;
       else
         return result + other;
-    },
-    $tdiv(receiver, other) {
-      if ((receiver | 0) === receiver)
-        if (other >= 1 || other < -1)
-          return receiver / other | 0;
-      return this._tdivSlow$1(receiver, other);
-    },
-    _tdivSlow$1(receiver, other) {
-      var quotient = receiver / other;
-      if (quotient >= -2147483648 && quotient <= 2147483647)
-        return quotient | 0;
-      if (quotient > 0) {
-        if (quotient !== 1 / 0)
-          return Math.floor(quotient);
-      } else if (quotient > -1 / 0)
-        return Math.ceil(quotient);
-      throw A.wrapException(A.UnsupportedError$("Result of truncating division is " + A.S(quotient) + ": " + A.S(receiver) + " ~/ " + A.S(other)));
     },
     _shrOtherPositive$1(receiver, other) {
       var t1;
@@ -4584,11 +4697,11 @@
     get$positionalArguments() {
       var t1, argumentCount, list, index, _this = this;
       if (_this.__js_helper$_kind === 1)
-        return B.List_empty2;
+        return B.List_empty1;
       t1 = _this._arguments;
       argumentCount = t1.length - _this._namedArgumentNames.length - _this._typeArgumentCount;
       if (argumentCount === 0)
-        return B.List_empty2;
+        return B.List_empty1;
       list = [];
       for (index = 0; index < argumentCount; ++index) {
         if (!(index < t1.length))
@@ -5078,7 +5191,7 @@
     },
     $signature: 4
   };
-  A.Error0.prototype = {};
+  A.Error.prototype = {};
   A.AssertionError.prototype = {
     toString$0(_) {
       var t1 = this.message;
@@ -5306,7 +5419,7 @@
   A.Compiler.prototype = {
     compile$1(input) {
       var t1,
-        functions = new A.SyntacticAnalyzer(new A.LexicalAnalyzer(new A.InputAnalyzer(A._asString(input)).analyze$0()).analyze$0()).analyze$0(),
+        functions = new A.SyntacticAnalyzer(new A.LexicalAnalyzer(new A.Scanner(A._asString(input)).analyze$0()).analyze$0()).analyze$0(),
         semanticAnalyzer = new A.SemanticAnalyzer(functions),
         warnings = A._setArrayType([], type$.JSArray_GenericWarning);
       functions = semanticAnalyzer.getPrototypes$1(functions);
@@ -5318,7 +5431,7 @@
       return new A.IntermediateCode(A.Mapper_toMap(functions), warnings);
     },
     expression$1(input) {
-      return new A.SyntacticAnalyzer(new A.LexicalAnalyzer(new A.InputAnalyzer(A._asString(input)).analyze$0()).analyze$0()).get$expression();
+      return new A.ExpressionParser(new A.ListIterator0(new A.LexicalAnalyzer(new A.Scanner(A._asString(input)).analyze$0()).analyze$0(), type$.ListIterator_Token_dynamic)).equality$0();
     }
   };
   A.GenericError.prototype = {
@@ -5328,7 +5441,6 @@
   };
   A.LexicalError.prototype = {};
   A.InvalidCharacterError.prototype = {};
-  A.InvalidLexemeError.prototype = {};
   A.RuntimeError.prototype = {};
   A.InvalidArgumentTypesError.prototype = {};
   A.InvalidArgumentCountError.prototype = {};
@@ -5337,113 +5449,125 @@
   A.SemanticError.prototype = {};
   A.DuplicatedFunctionError.prototype = {};
   A.DuplicatedParameterError.prototype = {};
-  A.UndefinedSymbolError.prototype = {};
+  A.UndefinedIdentifiersError.prototype = {};
   A.UndefinedFunctionError.prototype = {};
   A.InvalidNumberOfArgumentsError.prototype = {};
   A.SyntacticError.prototype = {};
   A.InvalidTokenError.prototype = {};
-  A.InvalidStackElementError.prototype = {};
+  A.ExpectedTokenError.prototype = {};
   A.UnexpectedEndOfFileError.prototype = {};
-  A.Character.prototype = {
-    get$lexeme() {
-      return new A.Lexeme(this.value, this.location);
-    },
-    get$token() {
-      var _this = this,
-        t1 = _this.value,
-        t2 = $.$get$StringExtensions_REGEX_COMMA();
-      if (t2._nativeRegExp.test(t1))
-        return new A.CommaToken(t1, _this.location);
-      else {
-        t2 = $.$get$StringExtensions_REGEX_EQUALS();
-        if (t2._nativeRegExp.test(t1))
-          return new A.EqualsToken(t1, _this.location);
-        else {
-          t2 = $.$get$StringExtensions_REGEX_OPEN_PARENTHESIS();
-          if (t2._nativeRegExp.test(t1))
-            return new A.OpenParenthesisToken(t1, _this.location);
-          else {
-            t2 = $.$get$StringExtensions_REGEX_CLOSE_PARENTHESIS();
-            if (t2._nativeRegExp.test(t1))
-              return new A.CloseParenthesisToken(t1, _this.location);
-            else
-              throw A.wrapException(new A.InvalidLexemeError("Invalid character " + _this.get$lexeme().toString$0(0)));
-          }
-        }
-      }
-    },
-    toString$0(_) {
-      return '"' + this.value + '" at ' + this.location.toString$0(0);
-    }
-  };
-  A.InputAnalyzer.prototype = {
-    analyze$0() {
-      var t1, t2, t3, i, t4, columns, j, j0,
-        result = A._setArrayType([], type$.JSArray_Character),
-        rows = J.split$1$s(this.input, "\n");
-      for (t1 = type$.String, t2 = type$.Runes, t3 = t2._eval$1("String(Iterable.E)"), t2 = t2._eval$1("Iterable.E"), i = 0; i < rows.length;) {
-        t4 = A.MappedIterable_MappedIterable(new A.Runes(rows[i]), t3._as(A.core_String___fromCharCode_tearOff$closure()), t2, t1);
-        columns = A.List_List$of(t4, true, A._instanceType(t4)._eval$1("Iterable.E"));
-        for (++i, j = 0; t4 = columns.length, j < t4; j = j0) {
-          j0 = j + 1;
-          B.JSArray_methods.add$1(result, new A.Character(columns[j], new A.Location(i, j0)));
-        }
-        B.JSArray_methods.add$1(result, new A.Character("\n", new A.Location(i, t4 + 1)));
-      }
-      return result;
-    }
-  };
   A.LexicalAnalyzer.prototype = {
     analyze$0() {
-      var state,
-        result = A._setArrayType([], type$.JSArray_Token_dynamic),
+      var result = A._setArrayType([], type$.JSArray_Token_dynamic),
         t1 = this.input,
-        iterator = new A.ListIterator0(t1, type$.ListIterator_Character);
-      for (state = B.InitState_null0; iterator._list_iterator$_index < t1.length;) {
-        state = state.process$2(iterator.get$next(), iterator.get$peek());
-        if (state instanceof A.ResultState0) {
+        iterator = new A.ListIterator0(t1, type$.ListIterator_Character),
+        state = new A.InitState(null, iterator);
+      for (; iterator._list_iterator$_index < t1.length;) {
+        state = state.process$1(iterator.get$next());
+        if (state instanceof A.ResultState) {
+          if (state.goBack)
+            --iterator._list_iterator$_index;
           B.JSArray_methods.addAll$1(result, state.output);
-          state = B.InitState_null0;
+          state = new A.InitState(null, iterator);
         }
       }
       return result;
     }
   };
-  A.InitState0.prototype = {
-    process$2(input, next) {
-      var t1, t2;
+  A.InitState.prototype = {
+    process$1(input) {
+      var t1, t2, _this = this;
       type$.Character._as(input);
-      type$.nullable_Character._as(next);
       t1 = input.value;
-      t2 = $.$get$StringExtensions_REGEX_DOUBLE_QUOTE();
+      t2 = A.RegExp_RegExp("\\s");
       if (t2._nativeRegExp.test(t1))
-        return new A.StringDoubleQuoteState(new A.Lexeme("", input.location));
+        return _this;
       else {
-        t2 = $.$get$StringExtensions_REGEX_SINGLE_QUOTE();
+        t2 = A.RegExp_RegExp('"');
         if (t2._nativeRegExp.test(t1))
-          return new A.StringSingleQuoteState(new A.Lexeme("", input.location));
+          return new A.StringDoubleQuoteState(new A.Lexeme("", input.location), _this.iterator);
         else {
-          t2 = $.$get$StringExtensions_REGEX_DASH();
+          t2 = A.RegExp_RegExp("'");
           if (t2._nativeRegExp.test(t1))
-            return new A.NegativeNumberState(new A.Lexeme(t1, input.location));
+            return new A.StringSingleQuoteState(new A.Lexeme("", input.location), _this.iterator);
           else {
-            t2 = $.$get$StringExtensions_REGEX_DIGIT();
+            t2 = A.RegExp_RegExp("\\d");
             if (t2._nativeRegExp.test(t1))
-              return new A.IntegerState(new A.Lexeme(t1, input.location));
+              return new A.IntegerState(new A.Lexeme(t1, input.location), _this.iterator);
             else {
-              t2 = $.$get$StringExtensions_REGEX_LETTER();
+              t2 = A.RegExp_RegExp("[a-zA-Z]");
               if (t2._nativeRegExp.test(t1))
-                return new A.SymbolState(new A.Lexeme(t1, input.location));
+                return new A.IdentifierState(new A.Lexeme(t1, input.location), _this.iterator);
               else {
-                t2 = $.$get$StringExtensions_REGEX_FORWARD_SLASH();
+                t2 = A.RegExp_RegExp("-");
                 if (t2._nativeRegExp.test(t1))
-                  return new A.ForwardSlashState(new A.Lexeme(t1, input.location));
+                  return new A.MinusState(new A.Lexeme(t1, input.location), _this.iterator);
                 else {
-                  t2 = $.$get$StringExtensions_REGEX_WHITESPACE();
+                  t2 = A.RegExp_RegExp("\\+");
                   if (t2._nativeRegExp.test(t1))
-                    return this;
-                  else
-                    return new A.ResultState0(A._setArrayType([input.get$token()], type$.JSArray_Token_dynamic));
+                    return new A.PlusState(new A.Lexeme(t1, input.location), _this.iterator);
+                  else {
+                    t2 = A.RegExp_RegExp("=");
+                    if (t2._nativeRegExp.test(t1))
+                      return new A.EqualsState(new A.Lexeme(t1, input.location), _this.iterator);
+                    else {
+                      t2 = A.RegExp_RegExp(">");
+                      if (t2._nativeRegExp.test(t1))
+                        return new A.GreaterState(new A.Lexeme(t1, input.location), _this.iterator);
+                      else {
+                        t2 = A.RegExp_RegExp("<");
+                        if (t2._nativeRegExp.test(t1))
+                          return new A.LessState(new A.Lexeme(t1, input.location), _this.iterator);
+                        else {
+                          t2 = A.RegExp_RegExp("\\|");
+                          if (t2._nativeRegExp.test(t1))
+                            return new A.PipeState(new A.Lexeme(t1, input.location), _this.iterator);
+                          else {
+                            t2 = A.RegExp_RegExp("&");
+                            if (t2._nativeRegExp.test(t1))
+                              return new A.AmpersandState(new A.Lexeme(t1, input.location), _this.iterator);
+                            else {
+                              t2 = A.RegExp_RegExp("!");
+                              if (t2._nativeRegExp.test(t1))
+                                return new A.BangState(new A.Lexeme(t1, input.location), _this.iterator);
+                              else {
+                                t2 = A.RegExp_RegExp("/");
+                                if (t2._nativeRegExp.test(t1))
+                                  return new A.ForwardSlashState(new A.Lexeme(t1, input.location), _this.iterator);
+                                else {
+                                  t2 = A.RegExp_RegExp("\\*");
+                                  if (t2._nativeRegExp.test(t1))
+                                    return new A.AsteriskState(new A.Lexeme(t1, input.location), _this.iterator);
+                                  else {
+                                    t2 = A.RegExp_RegExp("%");
+                                    if (t2._nativeRegExp.test(t1))
+                                      return new A.PercentState(new A.Lexeme(t1, input.location), _this.iterator);
+                                    else {
+                                      t2 = A.RegExp_RegExp(",");
+                                      if (t2._nativeRegExp.test(t1))
+                                        return new A.CommaState(new A.Lexeme(t1, input.location), _this.iterator);
+                                      else {
+                                        t2 = A.RegExp_RegExp("\\(");
+                                        if (t2._nativeRegExp.test(t1))
+                                          return new A.OpenParenthesisState(new A.Lexeme(t1, input.location), _this.iterator);
+                                        else {
+                                          t2 = A.RegExp_RegExp("\\)");
+                                          if (t2._nativeRegExp.test(t1))
+                                            return new A.CloseParenthesisState(new A.Lexeme(t1, input.location), _this.iterator);
+                                          else
+                                            throw A.wrapException(A.InvalidCharacterError$(input));
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
                 }
               }
             }
@@ -5452,280 +5576,349 @@
       }
     }
   };
-  A.ForwardSlashState.prototype = {
-    process$2(input, next) {
-      var t1, t2;
-      type$.Character._as(input);
-      type$.nullable_Character._as(next);
-      t1 = input.value;
-      t2 = $.$get$StringExtensions_REGEX_FORWARD_SLASH();
-      if (t2._nativeRegExp.test(t1))
-        return B.SingleLineCommentState_null;
-      else {
-        t2 = $.$get$StringExtensions_REGEX_ASTERISK();
-        if (t2._nativeRegExp.test(t1))
-          return B.StartMultiLineCommentState_null;
-        else {
-          t1 = this.output;
-          return new A.ResultState0(A._setArrayType([new A.SlashToken(t1.value, t1.location)], type$.JSArray_Token_dynamic));
-        }
-      }
-    }
-  };
-  A.SingleLineCommentState.prototype = {
-    process$2(input, next) {
-      var t1;
-      type$.Character._as(input);
-      type$.nullable_Character._as(next);
-      t1 = $.$get$StringExtensions_REGEX_NEW_LINE();
-      if (!t1._nativeRegExp.test(input.value))
-        return B.SingleLineCommentState_null;
-      else
-        return B.InitState_null0;
-    }
-  };
-  A.StartMultiLineCommentState.prototype = {
-    process$2(input, next) {
-      var t1;
-      type$.Character._as(input);
-      type$.nullable_Character._as(next);
-      t1 = $.$get$StringExtensions_REGEX_ASTERISK();
-      if (!t1._nativeRegExp.test(input.value))
-        return B.StartMultiLineCommentState_null;
-      else
-        return B.ClosingMultiLineCommentState_null;
-    }
-  };
-  A.ClosingMultiLineCommentState.prototype = {
-    process$2(input, next) {
-      var t1;
-      type$.Character._as(input);
-      type$.nullable_Character._as(next);
-      t1 = $.$get$StringExtensions_REGEX_FORWARD_SLASH();
-      if (!t1._nativeRegExp.test(input.value))
-        return B.StartMultiLineCommentState_null;
-      else
-        return B.InitState_null0;
-    }
-  };
   A.StringDoubleQuoteState.prototype = {
-    process$2(input, next) {
-      var t1, t2;
+    process$1(input) {
+      var t1, t2, t3;
       type$.Character._as(input);
-      type$.nullable_Character._as(next);
-      t1 = $.$get$StringExtensions_REGEX_DOUBLE_QUOTE();
-      t2 = this.output;
+      t1 = A.RegExp_RegExp('"');
+      t2 = this.iterator;
+      t3 = this.output;
       if (t1._nativeRegExp.test(input.value))
-        return new A.ResultState0(A._setArrayType([new A.StringToken(t2.value, t2.location)], type$.JSArray_Token_dynamic));
+        return new A.ResultState(false, A._setArrayType([new A.StringToken(t3.value, t3.location)], type$.JSArray_Token_dynamic), t2);
       else
-        return new A.StringDoubleQuoteState(J.add$1$a(t2, input));
+        return new A.StringDoubleQuoteState(J.add$1$a(t3, input), t2);
     }
   };
   A.StringSingleQuoteState.prototype = {
-    process$2(input, next) {
-      var t1, t2;
+    process$1(input) {
+      var t1, t2, t3;
       type$.Character._as(input);
-      type$.nullable_Character._as(next);
-      t1 = $.$get$StringExtensions_REGEX_SINGLE_QUOTE();
-      t2 = this.output;
+      t1 = A.RegExp_RegExp("'");
+      t2 = this.iterator;
+      t3 = this.output;
       if (t1._nativeRegExp.test(input.value))
-        return new A.ResultState0(A._setArrayType([new A.StringToken(t2.value, t2.location)], type$.JSArray_Token_dynamic));
+        return new A.ResultState(false, A._setArrayType([new A.StringToken(t3.value, t3.location)], type$.JSArray_Token_dynamic), t2);
       else
-        return new A.StringSingleQuoteState(J.add$1$a(t2, input));
-    }
-  };
-  A.NegativeNumberState.prototype = {
-    process$2(input, next) {
-      var t1;
-      type$.Character._as(input);
-      type$.nullable_Character._as(next);
-      t1 = $.$get$StringExtensions_REGEX_DIGIT();
-      if (t1._nativeRegExp.test(input.value))
-        return new A.IntegerState(J.add$1$a(this.output, input));
-      else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        return new A.StringSingleQuoteState(J.add$1$a(t3, input), t2);
     }
   };
   A.IntegerState.prototype = {
-    process$2(input, next) {
-      var t1, t2, tokens;
+    process$1(input) {
+      var t1, t2, _this = this;
       type$.Character._as(input);
-      type$.nullable_Character._as(next);
       t1 = input.value;
-      t2 = $.$get$StringExtensions_REGEX_DIGIT();
+      t2 = A.RegExp_RegExp("\\d");
       if (t2._nativeRegExp.test(t1))
-        return new A.IntegerState(J.add$1$a(this.output, input));
+        return new A.IntegerState(J.add$1$a(_this.output, input), _this.iterator);
       else {
-        t2 = $.$get$StringExtensions_REGEX_DOT();
+        t2 = A.RegExp_RegExp("\\.");
         if (t2._nativeRegExp.test(t1))
-          return new A.DecimalState(J.add$1$a(this.output, input));
-        else {
-          t2 = $.$get$StringExtensions_REGEX_WHITESPACE();
-          if (!t2._nativeRegExp.test(t1)) {
-            t2 = $.$get$StringExtensions_REGEX_COMMA();
-            if (!t2._nativeRegExp.test(t1)) {
-              t2 = $.$get$StringExtensions_REGEX_EQUALS();
-              if (!t2._nativeRegExp.test(t1)) {
-                t2 = $.$get$StringExtensions_REGEX_OPEN_PARENTHESIS();
-                if (!t2._nativeRegExp.test(t1)) {
-                  t2 = $.$get$StringExtensions_REGEX_CLOSE_PARENTHESIS();
-                  t2 = t2._nativeRegExp.test(t1);
-                } else
-                  t2 = true;
-              } else
-                t2 = true;
-            } else
-              t2 = true;
-          } else
-            t2 = true;
-          if (t2) {
-            tokens = A._setArrayType([A.NumberToken$(this.output)], type$.JSArray_Token_dynamic);
-            t2 = $.$get$StringExtensions_REGEX_COMMA();
-            if (!t2._nativeRegExp.test(t1)) {
-              t2 = $.$get$StringExtensions_REGEX_EQUALS();
-              if (!t2._nativeRegExp.test(t1)) {
-                t2 = $.$get$StringExtensions_REGEX_OPEN_PARENTHESIS();
-                if (!t2._nativeRegExp.test(t1)) {
-                  t2 = $.$get$StringExtensions_REGEX_CLOSE_PARENTHESIS();
-                  t1 = t2._nativeRegExp.test(t1);
-                } else
-                  t1 = true;
-              } else
-                t1 = true;
-            } else
-              t1 = true;
-            if (t1)
-              B.JSArray_methods.add$1(tokens, input.get$token());
-            return new A.ResultState0(tokens);
-          } else
-            throw A.wrapException(A.InvalidCharacterError$(input));
-        }
-      }
-    }
-  };
-  A.DecimalState.prototype = {
-    process$2(input, next) {
-      var t1, t2, tokens;
-      type$.Character._as(input);
-      type$.nullable_Character._as(next);
-      t1 = input.value;
-      t2 = $.$get$StringExtensions_REGEX_DIGIT();
-      if (t2._nativeRegExp.test(t1))
-        return new A.DecimalState(J.add$1$a(this.output, input));
-      else {
-        t2 = $.$get$StringExtensions_REGEX_WHITESPACE();
-        if (!t2._nativeRegExp.test(t1)) {
-          t2 = $.$get$StringExtensions_REGEX_COMMA();
-          if (!t2._nativeRegExp.test(t1)) {
-            t2 = $.$get$StringExtensions_REGEX_EQUALS();
-            if (!t2._nativeRegExp.test(t1)) {
-              t2 = $.$get$StringExtensions_REGEX_OPEN_PARENTHESIS();
-              if (!t2._nativeRegExp.test(t1)) {
-                t2 = $.$get$StringExtensions_REGEX_CLOSE_PARENTHESIS();
-                t2 = t2._nativeRegExp.test(t1);
-              } else
-                t2 = true;
-            } else
-              t2 = true;
-          } else
-            t2 = true;
-        } else
-          t2 = true;
-        if (t2) {
-          tokens = A._setArrayType([A.NumberToken$(this.output)], type$.JSArray_Token_dynamic);
-          t2 = $.$get$StringExtensions_REGEX_COMMA();
-          if (!t2._nativeRegExp.test(t1)) {
-            t2 = $.$get$StringExtensions_REGEX_EQUALS();
-            if (!t2._nativeRegExp.test(t1)) {
-              t2 = $.$get$StringExtensions_REGEX_OPEN_PARENTHESIS();
-              if (!t2._nativeRegExp.test(t1)) {
-                t2 = $.$get$StringExtensions_REGEX_CLOSE_PARENTHESIS();
-                t1 = t2._nativeRegExp.test(t1);
-              } else
-                t1 = true;
-            } else
-              t1 = true;
-          } else
-            t1 = true;
-          if (t1)
-            B.JSArray_methods.add$1(tokens, input.get$token());
-          return new A.ResultState0(tokens);
-        } else
+          return new A.DecimalInitState(J.add$1$a(_this.output, input), _this.iterator);
+        else if (A.StringExtensions_get_isOperandDelimiter(t1))
+          return new A.ResultState(true, A._setArrayType([A.NumberToken$(_this.output)], type$.JSArray_Token_dynamic), _this.iterator);
+        else
           throw A.wrapException(A.InvalidCharacterError$(input));
       }
     }
   };
-  A.SymbolState.prototype = {
-    process$2(input, next) {
-      var t1, t2, tokens, t3, t4;
+  A.DecimalInitState.prototype = {
+    process$1(input) {
+      var t1;
       type$.Character._as(input);
-      type$.nullable_Character._as(next);
+      t1 = A.RegExp_RegExp("\\d");
+      if (t1._nativeRegExp.test(input.value))
+        return new A.DecimalState(J.add$1$a(this.output, input), this.iterator);
+      else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.DecimalState.prototype = {
+    process$1(input) {
+      var t1, t2, _this = this;
+      type$.Character._as(input);
       t1 = input.value;
-      t2 = $.$get$StringExtensions_REGEX_LETTER();
+      t2 = A.RegExp_RegExp("\\d");
+      if (t2._nativeRegExp.test(t1))
+        return new A.DecimalState(J.add$1$a(_this.output, input), _this.iterator);
+      else if (A.StringExtensions_get_isOperandDelimiter(t1))
+        return new A.ResultState(true, A._setArrayType([A.NumberToken$(_this.output)], type$.JSArray_Token_dynamic), _this.iterator);
+      else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.IdentifierState.prototype = {
+    process$1(input) {
+      var t1, t2, t3, t4, _this = this;
+      type$.Character._as(input);
+      t1 = input.value;
+      t2 = A.RegExp_RegExp("[a-zA-Z]");
       if (!t2._nativeRegExp.test(t1)) {
-        t2 = $.$get$StringExtensions_REGEX_DIGIT();
+        t2 = A.RegExp_RegExp("\\d");
         if (!t2._nativeRegExp.test(t1)) {
-          t2 = $.$get$StringExtensions_REGEX_UNDERSCORE();
-          t2 = t2._nativeRegExp.test(t1);
+          t2 = A.RegExp_RegExp("\\.");
+          if (!t2._nativeRegExp.test(t1)) {
+            t2 = A.RegExp_RegExp("_");
+            t2 = t2._nativeRegExp.test(t1);
+          } else
+            t2 = true;
         } else
           t2 = true;
       } else
         t2 = true;
       if (t2)
-        return new A.SymbolState(J.add$1$a(this.output, input));
-      else {
-        t2 = $.$get$StringExtensions_REGEX_WHITESPACE();
-        if (!t2._nativeRegExp.test(t1)) {
-          t2 = $.$get$StringExtensions_REGEX_COMMA();
-          if (!t2._nativeRegExp.test(t1)) {
-            t2 = $.$get$StringExtensions_REGEX_EQUALS();
-            if (!t2._nativeRegExp.test(t1)) {
-              t2 = $.$get$StringExtensions_REGEX_OPEN_PARENTHESIS();
-              if (!t2._nativeRegExp.test(t1)) {
-                t2 = $.$get$StringExtensions_REGEX_CLOSE_PARENTHESIS();
-                t2 = t2._nativeRegExp.test(t1);
-              } else
-                t2 = true;
-            } else
-              t2 = true;
-          } else
-            t2 = true;
+        return new A.IdentifierState(J.add$1$a(_this.output, input), _this.iterator);
+      else if (A.StringExtensions_get_isOperandDelimiter(t1)) {
+        t1 = A._setArrayType([], type$.JSArray_Token_dynamic);
+        t2 = _this.output;
+        t3 = t2.value;
+        t4 = A.RegExp_RegExp("true|false");
+        if (t4._nativeRegExp.test(t3)) {
+          t4 = A.Primitives_parseBool(t3, true);
+          t3 = t4 == null ? A.throwExpression(A.FormatException$("Invalid boolean", t3)) : t4;
+          t1.push(new A.BooleanToken(t3, t2.location));
         } else
-          t2 = true;
-        if (t2) {
-          tokens = A._setArrayType([], type$.JSArray_Token_dynamic);
-          t2 = this.output;
-          t3 = t2.value;
-          t4 = $.$get$StringExtensions_REGEX_BOOLEAN();
-          if (t4._nativeRegExp.test(t3)) {
-            t4 = A.Primitives_parseBool(t3, true);
-            t3 = t4 == null ? A.throwExpression(A.FormatException$("Invalid boolean", t3)) : t4;
-            B.JSArray_methods.add$1(tokens, new A.BooleanToken(t3, t2.location));
-          } else
-            B.JSArray_methods.add$1(tokens, new A.SymbolToken(t3, t2.location));
-          t2 = $.$get$StringExtensions_REGEX_COMMA();
-          if (!t2._nativeRegExp.test(t1)) {
-            t2 = $.$get$StringExtensions_REGEX_EQUALS();
-            if (!t2._nativeRegExp.test(t1)) {
-              t2 = $.$get$StringExtensions_REGEX_OPEN_PARENTHESIS();
-              if (!t2._nativeRegExp.test(t1)) {
-                t2 = $.$get$StringExtensions_REGEX_CLOSE_PARENTHESIS();
-                t1 = t2._nativeRegExp.test(t1);
-              } else
-                t1 = true;
-            } else
-              t1 = true;
-          } else
-            t1 = true;
-          if (t1)
-            B.JSArray_methods.add$1(tokens, input.get$token());
-          return new A.ResultState0(tokens);
-        } else
-          throw A.wrapException(A.InvalidCharacterError$(input));
+          t1.push(new A.IdentifierToken(t3, t2.location));
+        return new A.ResultState(true, t1, _this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.MinusState.prototype = {
+    process$1(input) {
+      var t1;
+      type$.Character._as(input);
+      if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
+        t1 = this.output;
+        return new A.ResultState(true, A._setArrayType([new A.MinusToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.PlusState.prototype = {
+    process$1(input) {
+      var t1;
+      type$.Character._as(input);
+      if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
+        t1 = this.output;
+        return new A.ResultState(true, A._setArrayType([new A.PlusToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.EqualsState.prototype = {
+    process$1(input) {
+      var t1, t2, _this = this;
+      type$.Character._as(input);
+      t1 = input.value;
+      t2 = A.RegExp_RegExp("=");
+      if (t2._nativeRegExp.test(t1)) {
+        t1 = J.add$1$a(_this.output, input);
+        return new A.ResultState(false, A._setArrayType([new A.EqualToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+      } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
+        t1 = _this.output;
+        return new A.ResultState(true, A._setArrayType([new A.AssignToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.GreaterState.prototype = {
+    process$1(input) {
+      var t1, t2, _this = this;
+      type$.Character._as(input);
+      t1 = input.value;
+      t2 = A.RegExp_RegExp("=");
+      if (t2._nativeRegExp.test(t1)) {
+        t1 = J.add$1$a(_this.output, input);
+        return new A.ResultState(false, A._setArrayType([new A.GreaterEqualThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+      } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
+        t1 = _this.output;
+        return new A.ResultState(true, A._setArrayType([new A.GreaterThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.LessState.prototype = {
+    process$1(input) {
+      var t1, t2, _this = this;
+      type$.Character._as(input);
+      t1 = input.value;
+      t2 = A.RegExp_RegExp("=");
+      if (t2._nativeRegExp.test(t1)) {
+        t1 = J.add$1$a(_this.output, input);
+        return new A.ResultState(false, A._setArrayType([new A.LessEqualThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+      } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
+        t1 = _this.output;
+        return new A.ResultState(true, A._setArrayType([new A.LessThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.PipeState.prototype = {
+    process$1(input) {
+      var t1;
+      type$.Character._as(input);
+      if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
+        t1 = this.output;
+        return new A.ResultState(true, A._setArrayType([new A.PipeToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.AmpersandState.prototype = {
+    process$1(input) {
+      var t1;
+      type$.Character._as(input);
+      if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
+        t1 = this.output;
+        return new A.ResultState(true, A._setArrayType([new A.AmpersandToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.BangState.prototype = {
+    process$1(input) {
+      var t1, t2, _this = this;
+      type$.Character._as(input);
+      t1 = input.value;
+      t2 = A.RegExp_RegExp("=");
+      if (t2._nativeRegExp.test(t1)) {
+        t1 = J.add$1$a(_this.output, input);
+        return new A.ResultState(false, A._setArrayType([new A.NotEqualToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+      } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
+        t1 = _this.output;
+        return new A.ResultState(true, A._setArrayType([new A.BangToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.ForwardSlashState.prototype = {
+    process$1(input) {
+      var t1, t2, _this = this;
+      type$.Character._as(input);
+      t1 = input.value;
+      if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
+        t1 = _this.output;
+        return new A.ResultState(false, A._setArrayType([new A.ForwardSlashToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+      } else {
+        t2 = A.RegExp_RegExp("/");
+        if (t2._nativeRegExp.test(t1))
+          return new A.SingleLineCommentState(null, _this.iterator);
+        else {
+          t2 = A.RegExp_RegExp("\\*");
+          if (t2._nativeRegExp.test(t1))
+            return new A.StartMultiLineCommentState(null, _this.iterator);
+          else
+            throw A.wrapException(A.InvalidCharacterError$(input));
+        }
       }
     }
   };
-  A.ResultState0.prototype = {};
+  A.AsteriskState.prototype = {
+    process$1(input) {
+      var t1;
+      type$.Character._as(input);
+      if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
+        t1 = this.output;
+        return new A.ResultState(true, A._setArrayType([new A.AsteriskToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.PercentState.prototype = {
+    process$1(input) {
+      var t1;
+      type$.Character._as(input);
+      if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
+        t1 = this.output;
+        return new A.ResultState(true, A._setArrayType([new A.PercentToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.SingleLineCommentState.prototype = {
+    process$1(input) {
+      var t1, t2;
+      type$.Character._as(input);
+      t1 = A.RegExp_RegExp("\\n");
+      t2 = this.iterator;
+      if (!t1._nativeRegExp.test(input.value))
+        return new A.SingleLineCommentState(null, t2);
+      else
+        return new A.InitState(null, t2);
+    }
+  };
+  A.StartMultiLineCommentState.prototype = {
+    process$1(input) {
+      var t1, t2;
+      type$.Character._as(input);
+      t1 = A.RegExp_RegExp("\\*");
+      t2 = this.iterator;
+      if (!t1._nativeRegExp.test(input.value))
+        return new A.StartMultiLineCommentState(null, t2);
+      else
+        return new A.ClosingMultiLineCommentState(null, t2);
+    }
+  };
+  A.ClosingMultiLineCommentState.prototype = {
+    process$1(input) {
+      var t1, t2;
+      type$.Character._as(input);
+      t1 = A.RegExp_RegExp("/");
+      t2 = this.iterator;
+      if (!t1._nativeRegExp.test(input.value))
+        return new A.StartMultiLineCommentState(null, t2);
+      else
+        return new A.InitState(null, t2);
+    }
+  };
+  A.CommaState.prototype = {
+    process$1(input) {
+      var t1;
+      type$.Character._as(input);
+      if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
+        t1 = this.output;
+        return new A.ResultState(true, A._setArrayType([new A.CommaToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.OpenParenthesisState.prototype = {
+    process$1(input) {
+      var t1;
+      type$.Character._as(input);
+      if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
+        t1 = this.output;
+        return new A.ResultState(true, A._setArrayType([new A.OpenParenthesisToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.CloseParenthesisState.prototype = {
+    process$1(input) {
+      var t1, t2;
+      type$.Character._as(input);
+      t1 = input.value;
+      if (!A.StringExtensions_get_isOperatorDelimiter(t1)) {
+        t2 = A.RegExp_RegExp(",");
+        if (!t2._nativeRegExp.test(t1)) {
+          t2 = A.RegExp_RegExp("-");
+          if (!t2._nativeRegExp.test(t1)) {
+            t2 = A.RegExp_RegExp("!");
+            t1 = t2._nativeRegExp.test(t1);
+          } else
+            t1 = true;
+        } else
+          t1 = true;
+      } else
+        t1 = true;
+      if (t1) {
+        t1 = this.output;
+        return new A.ResultState(true, A._setArrayType([new A.CloseParenthesisToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+      } else
+        throw A.wrapException(A.InvalidCharacterError$(input));
+    }
+  };
+  A.ResultState.prototype = {};
   A.Lexeme.prototype = {
     add$1(_, character) {
       return new A.Lexeme(this.value + character.value, this.location);
@@ -5742,10 +5935,23 @@
   A.StringToken.prototype = {};
   A.NumberToken.prototype = {};
   A.BooleanToken.prototype = {};
-  A.SymbolToken.prototype = {};
+  A.IdentifierToken.prototype = {};
+  A.MinusToken.prototype = {};
+  A.PlusToken.prototype = {};
+  A.ForwardSlashToken.prototype = {};
+  A.AsteriskToken.prototype = {};
+  A.PercentToken.prototype = {};
+  A.PipeToken.prototype = {};
+  A.AmpersandToken.prototype = {};
+  A.BangToken.prototype = {};
+  A.EqualToken.prototype = {};
+  A.NotEqualToken.prototype = {};
+  A.GreaterThanToken.prototype = {};
+  A.GreaterEqualThanToken.prototype = {};
+  A.LessThanToken.prototype = {};
+  A.LessEqualThanToken.prototype = {};
+  A.AssignToken.prototype = {};
   A.CommaToken.prototype = {};
-  A.EqualsToken.prototype = {};
-  A.SlashToken.prototype = {};
   A.OpenParenthesisToken.prototype = {};
   A.CloseParenthesisToken.prototype = {};
   A.And.prototype = {
@@ -6006,7 +6212,7 @@
       return a;
     }
   };
-  A.Error.prototype = {
+  A.Throw.prototype = {
     substitute$1($arguments) {
       throw A.wrapException(A.RuntimeError$(type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0).toString$0(0)));
     }
@@ -6223,26 +6429,6 @@
       }
     }
   };
-  A.Add.prototype = {
-    substitute$1($arguments) {
-      var a, b, t1, t2;
-      type$.Scope_Reducible._as($arguments);
-      a = $arguments.$get$1("a").reduce$0(0);
-      b = $arguments.$get$1("b").reduce$0(0);
-      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
-        t1 = a.value;
-        t2 = b.value;
-        if (typeof t1 !== "number")
-          return t1.$add();
-        if (typeof t2 !== "number")
-          return A.iae(t2);
-        return new A.NumberReducibleValue(t1 + t2);
-      } else {
-        t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
-      }
-    }
-  };
   A.Ceil.prototype = {
     substitute$1($arguments) {
       var t1,
@@ -6296,26 +6482,6 @@
         if (typeof t2 !== "number")
           return A.iae(t2);
         return new A.NumberReducibleValue(t1 / t2);
-      } else {
-        t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
-      }
-    }
-  };
-  A.DivInt.prototype = {
-    substitute$1($arguments) {
-      var a, b, t1, t2;
-      type$.Scope_Reducible._as($arguments);
-      a = $arguments.$get$1("a").reduce$0(0);
-      b = $arguments.$get$1("b").reduce$0(0);
-      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
-        t1 = a.value;
-        t2 = b.value;
-        if (typeof t1 !== "number")
-          return t1.$tdiv();
-        if (typeof t2 !== "number")
-          return A.iae(t2);
-        return new A.NumberReducibleValue(B.JSNumber_methods.$tdiv(t1, t2));
       } else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
@@ -6810,10 +6976,8 @@
     }
   };
   A.State.prototype = {
-    process$2(input, next) {
-      var t1 = A._instanceType(this);
-      t1._eval$1("State.I")._as(input);
-      t1._eval$1("State.I?")._as(next);
+    process$1(input) {
+      A._instanceType(this)._eval$1("State.I")._as(input);
       return this;
     }
   };
@@ -6870,7 +7034,7 @@
       return "Boolean";
     }
   };
-  A.SymbolReducible.prototype = {
+  A.IdentifierReducible.prototype = {
     substitute$1($arguments) {
       return type$.Scope_Reducible._as($arguments).$get$1(this.value);
     },
@@ -6878,7 +7042,7 @@
       return this;
     },
     get$type() {
-      return "Symbol";
+      return "Identifier";
     },
     toString$0(_) {
       return this.value;
@@ -6917,6 +7081,28 @@
         throw A.wrapException(new A.NotFoundInScope('Variable "' + $name + '" not found in scope'));
       else
         return result;
+    }
+  };
+  A.Character.prototype = {
+    toString$0(_) {
+      return '"' + this.value + '" at ' + this.location.toString$0(0);
+    }
+  };
+  A.Scanner.prototype = {
+    analyze$0() {
+      var t1, t2, t3, i, t4, columns, j, j0,
+        result = A._setArrayType([], type$.JSArray_Character),
+        rows = J.split$1$s(this.input, "\n");
+      for (t1 = type$.String, t2 = type$.Runes, t3 = t2._eval$1("String(Iterable.E)"), t2 = t2._eval$1("Iterable.E"), i = 0; i < rows.length;) {
+        t4 = A.MappedIterable_MappedIterable(new A.Runes(rows[i]), t3._as(A.core_String___fromCharCode_tearOff$closure()), t2, t1);
+        columns = A.List_List$of(t4, true, A._instanceType(t4)._eval$1("Iterable.E"));
+        for (++i, j = 0; t4 = columns.length, j < t4; j = j0) {
+          j0 = j + 1;
+          B.JSArray_methods.add$1(result, new A.Character(columns[j], new A.Location(i, j0)));
+        }
+        B.JSArray_methods.add$1(result, new A.Character("\n", new A.Location(i, t4 + 1)));
+      }
+      return result;
     }
   };
   A.FunctionPrototype.prototype = {
@@ -7029,12 +7215,12 @@
       type$.List_String._as(availableParameters);
       type$.Set_String._as(usedParameters);
       type$.List_FunctionPrototype._as(allFunctions);
-      if (reducible instanceof A.SymbolReducible) {
+      if (reducible instanceof A.IdentifierReducible) {
         t1 = reducible.value;
         if (B.JSArray_methods.contains$1(availableParameters, t1))
           usedParameters.add$1(0, t1);
         else if (!B.JSArray_methods.any$1(allFunctions, new A.SemanticAnalyzer_checkReducible_closure(reducible)))
-          throw A.wrapException(new A.UndefinedSymbolError('Undefined symbol "' + t1 + '" at ' + reducible.location.toString$0(0)));
+          throw A.wrapException(new A.UndefinedIdentifiersError('Undefined identifier "' + t1 + '" at ' + reducible.location.toString$0(0)));
       } else if (reducible instanceof A.ExpressionReducible) {
         t1 = reducible.name;
         $function = this.getFunctionByName$2$functions$name(allFunctions, t1);
@@ -7097,7 +7283,17 @@
       return J.toString$0$(this.value);
     }
   };
-  A.StringExpression.prototype = {
+  A.BooleanLiteralExpression.prototype = {
+    toReducible$0() {
+      return new A.BooleanReducibleValue(this.value);
+    }
+  };
+  A.NumberLiteralExpression.prototype = {
+    toReducible$0() {
+      return new A.NumberReducibleValue(this.value);
+    }
+  };
+  A.StringLiteralExpression.prototype = {
     toString$0(_) {
       return '"' + A.S(this.value) + '"';
     },
@@ -7105,40 +7301,198 @@
       return new A.StringReducibleValue(this.value);
     }
   };
-  A.NumberExpression.prototype = {
-    toReducible$0() {
-      return new A.NumberReducibleValue(this.value);
-    }
-  };
-  A.BooleanExpression.prototype = {
-    toReducible$0() {
-      return new A.BooleanReducibleValue(this.value);
-    }
-  };
-  A.SymbolExpression.prototype = {
+  A.IdentifierExpression.prototype = {
     toString$0(_) {
       return this.value;
     },
     toReducible$0() {
-      return new A.SymbolReducible(this.value, this.location);
+      return new A.IdentifierReducible(this.value, this.location);
     }
   };
-  A.FunctionCallExpression.prototype = {
+  A.CallExpression.prototype = {
     toString$0(_) {
-      return this.name + "(" + B.JSArray_methods.join$1(this.$arguments, ", ") + ")";
+      return this.callee.toString$0(0) + "(" + B.JSArray_methods.join$1(this.$arguments, ", ") + ")";
     },
     toReducible$0() {
       var t1 = this.$arguments,
         t2 = A._arrayInstanceType(t1),
         t3 = t2._eval$1("MappedListIterable<1,Reducible>");
-      return new A.ExpressionReducible(this.name, A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("Reducible(1)")._as(new A.FunctionCallExpression_toReducible_closure()), t3), true, t3._eval$1("ListIterable.E")), this.location);
+      return new A.ExpressionReducible(this.callee.toString$0(0), A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("Reducible(1)")._as(new A.CallExpression_toReducible_closure()), t3), true, t3._eval$1("ListIterable.E")), this.location);
     }
   };
-  A.FunctionCallExpression_toReducible_closure.prototype = {
+  A.CallExpression_toReducible_closure.prototype = {
     call$1(e) {
       return type$.Expression._as(e).toReducible$0();
     },
     $signature: 8
+  };
+  A.ExpressionParser.prototype = {
+    equality$0() {
+      var t1, t2, t3, t4, right, t5, _this = this,
+        expression = _this.comparison$0();
+      for (t1 = type$.JSArray_Type, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_NotEqualToken_AHJ, B.Type_EqualToken_8aB], t1));) {
+        t4 = t2.get$previous();
+        t4.toString;
+        right = _this.comparison$0();
+        t5 = t4.location;
+        expression = new A.CallExpression(new A.IdentifierExpression(A._asString(t4.value), t5), A._setArrayType([expression, right], t3), t5);
+      }
+      return expression;
+    },
+    comparison$0() {
+      var t1, t2, t3, t4, right, t5, _this = this,
+        expression = _this.logic$0();
+      for (t1 = type$.JSArray_Type, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_GreaterThanToken_Gro, B.Type_GreaterEqualThanToken_QBg, B.Type_LessThanToken_4YB, B.Type_LessEqualThanToken_mmM], t1));) {
+        t4 = t2.get$previous();
+        t4.toString;
+        right = _this.logic$0();
+        t5 = t4.location;
+        expression = new A.CallExpression(new A.IdentifierExpression(A._asString(t4.value), t5), A._setArrayType([expression, right], t3), t5);
+      }
+      return expression;
+    },
+    logic$0() {
+      var t1, t2, t3, t4, right, t5, _this = this,
+        expression = _this.term$0();
+      for (t1 = type$.JSArray_Type, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_PipeToken_2Zs, B.Type_AmpersandToken_oqK], t1));) {
+        t4 = t2.get$previous();
+        t4.toString;
+        right = _this.term$0();
+        t5 = t4.location;
+        expression = new A.CallExpression(new A.IdentifierExpression(A._asString(t4.value), t5), A._setArrayType([expression, right], t3), t5);
+      }
+      return expression;
+    },
+    term$0() {
+      var t1, t2, t3, t4, right, t5, _this = this,
+        expression = _this.factor$0();
+      for (t1 = type$.JSArray_Type, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_MinusToken_PaN, B.Type_PlusToken_2Vk], t1));) {
+        t4 = t2.get$previous();
+        t4.toString;
+        right = _this.factor$0();
+        t5 = t4.location;
+        expression = new A.CallExpression(new A.IdentifierExpression(A._asString(t4.value), t5), A._setArrayType([expression, right], t3), t5);
+      }
+      return expression;
+    },
+    factor$0() {
+      var t1, t2, t3, t4, right, t5, _this = this,
+        expression = _this.unary$0();
+      for (t1 = type$.JSArray_Type, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_ForwardSlashToken_PEo, B.Type_AsteriskToken_DXo, B.Type_PercentToken_VUu], t1));) {
+        t4 = t2.get$previous();
+        t4.toString;
+        right = _this.unary$0();
+        t5 = t4.location;
+        expression = new A.CallExpression(new A.IdentifierExpression(A._asString(t4.value), t5), A._setArrayType([expression, right], t3), t5);
+      }
+      return expression;
+    },
+    unary$0() {
+      var t1, right, t2, _this = this;
+      if (_this.match$1(A._setArrayType([B.Type_BangToken_rp8, B.Type_MinusToken_PaN], type$.JSArray_Type))) {
+        t1 = _this.iterator.get$previous();
+        t1.toString;
+        right = _this.unary$0();
+        t2 = t1.location;
+        return new A.CallExpression(new A.IdentifierExpression(A._asString(t1.value), t2), A._setArrayType([right], type$.JSArray_Expression), t2);
+      }
+      return _this.call$0();
+    },
+    call$0() {
+      var t1, _this = this,
+        expression = _this.primary$0();
+      for (t1 = type$.JSArray_Type; true;)
+        if (_this.match$1(A._setArrayType([B.Type_OpenParenthesisToken_UJY], t1)))
+          if (expression instanceof A.IdentifierExpression || expression instanceof A.CallExpression)
+            expression = _this.finishCall$1(expression);
+          else
+            throw A.wrapException(A.InvalidTokenError$(_this.get$peek()));
+        else
+          break;
+      return expression;
+    },
+    finishCall$1(callee) {
+      var t1, _this = this,
+        $arguments = A._setArrayType([], type$.JSArray_Expression);
+      if (!_this.check$1(B.Type_CloseParenthesisToken_z3x)) {
+        t1 = type$.JSArray_Type;
+        do
+          B.JSArray_methods.add$1($arguments, _this.equality$0());
+        while (_this.match$1(A._setArrayType([B.Type_CommaToken_j4A], t1)));
+      }
+      _this.consume$2(B.Type_CloseParenthesisToken_z3x, ")");
+      return new A.CallExpression(callee, $arguments, callee.location);
+    },
+    primary$0() {
+      var expr, _this = this,
+        t1 = type$.JSArray_Type;
+      if (_this.match$1(A._setArrayType([B.Type_BooleanToken_YER], t1))) {
+        t1 = _this.iterator.get$previous();
+        t1.toString;
+        return new A.BooleanLiteralExpression(A._asBool(t1.value), t1.location);
+      } else if (_this.match$1(A._setArrayType([B.Type_NumberToken_4hl], t1))) {
+        t1 = _this.iterator.get$previous();
+        t1.toString;
+        return new A.NumberLiteralExpression(A._asNum(t1.value), t1.location);
+      } else if (_this.match$1(A._setArrayType([B.Type_StringToken_EKj], t1))) {
+        t1 = _this.iterator.get$previous();
+        t1.toString;
+        return new A.StringLiteralExpression(A._asString(t1.value), t1.location);
+      } else if (_this.match$1(A._setArrayType([B.Type_IdentifierToken_KTr], t1))) {
+        t1 = _this.iterator.get$previous();
+        t1.toString;
+        return new A.IdentifierExpression(A._asString(t1.value), t1.location);
+      }
+      if (_this.match$1(A._setArrayType([B.Type_OpenParenthesisToken_UJY], t1))) {
+        expr = _this.equality$0();
+        _this.consume$2(B.Type_CloseParenthesisToken_z3x, ")");
+        return expr;
+      }
+      throw A.wrapException(A.InvalidTokenError$(_this.get$peek()));
+    },
+    match$1(types) {
+      var t1, _i, t2;
+      type$.List_Type._as(types);
+      for (t1 = types.length, _i = 0; _i < types.length; types.length === t1 || (0, A.throwConcurrentModificationError)(types), ++_i)
+        if (this.check$1(types[_i])) {
+          t1 = this.iterator;
+          t2 = t1._list_iterator$_index;
+          if (t2 !== t1._list.length)
+            t1._list_iterator$_index = t2 + 1;
+          t1.get$previous().toString;
+          return true;
+        }
+      return false;
+    },
+    check$1(type) {
+      var t1 = this.iterator;
+      if (t1._list_iterator$_index === t1._list.length)
+        return false;
+      else {
+        t1 = t1.get$peek();
+        t1.toString;
+        return A.getRuntimeTypeOfDartObject(t1) === type;
+      }
+    },
+    consume$2(type, expected) {
+      if (this.check$1(type))
+        return this.advance$0();
+      throw A.wrapException(new A.ExpectedTokenError("Invalid token " + this.get$peek().toString$0(0) + ". Expected: " + expected));
+    },
+    advance$0() {
+      var t1 = this.iterator,
+        t2 = t1._list_iterator$_index;
+      if (t2 !== t1._list.length)
+        t1._list_iterator$_index = t2 + 1;
+      t1 = t1.get$previous();
+      t1.toString;
+      return t1;
+    },
+    get$peek() {
+      var t1 = this.iterator.get$peek();
+      t1.toString;
+      return t1;
+    }
   };
   A.FunctionDefinition.prototype = {
     withParameter$1(parameter) {
@@ -7149,228 +7503,90 @@
   };
   A.SyntacticAnalyzer.prototype = {
     analyze$0() {
-      var state,
-        result = A._setArrayType([], type$.JSArray_FunctionDefinition),
-        t1 = this.input,
-        iterator = new A.ListIterator0(t1, type$.ListIterator_Token_dynamic);
-      for (state = B.InitState_null; iterator._list_iterator$_index < t1.length;) {
-        state = state.process$2(iterator.get$next(), iterator.get$peek());
-        if (state instanceof A.ResultState) {
-          B.JSArray_methods.add$1(result, state.output);
-          state = B.InitState_null;
-        }
-      }
-      if (!(state instanceof A.InitState))
-        throw A.wrapException(B.UnexpectedEndOfFileError_c0h);
-      return result;
-    },
-    get$expression() {
       var result = A._setArrayType([], type$.JSArray_FunctionDefinition),
         t1 = this.input,
         iterator = new A.ListIterator0(t1, type$.ListIterator_Token_dynamic),
-        state = new A.FunctionBodyInitState(new A.Stack(B.List_empty0, type$.Stack_StackElement), B.FunctionDefinition_CVt);
+        state = new A.InitState0(null, iterator);
       for (; iterator._list_iterator$_index < t1.length;) {
-        state = state.process$2(iterator.get$next(), iterator.get$peek());
-        if (state instanceof A.ResultState) {
+        state = state.process$1(iterator.get$next());
+        if (state instanceof A.ResultState0) {
           B.JSArray_methods.add$1(result, state.output);
-          state = B.InitState_null;
+          state = new A.InitState0(null, iterator);
         }
       }
-      if (!(state instanceof A.InitState))
+      if (!(state instanceof A.InitState0))
         throw A.wrapException(B.UnexpectedEndOfFileError_c0h);
-      if (0 >= result.length)
-        return A.ioore(result, 0);
-      return result[0].expression;
+      return result;
     }
   };
-  A.InitState.prototype = {
-    process$2(input, next) {
+  A.InitState0.prototype = {
+    process$1(input) {
       type$.Token_dynamic._as(input);
-      type$.nullable_Token_dynamic._as(next);
-      if (input instanceof A.SymbolToken)
-        return new A.FunctionNameState(new A.FunctionDefinition(input.value, B.List_empty1, B.EmptyExpression_Location_1_1));
+      if (input instanceof A.IdentifierToken)
+        return new A.FunctionNameState(new A.FunctionDefinition(input.value, B.List_empty0, B.EmptyExpression_Location_0_0), this.iterator);
       else
         throw A.wrapException(A.InvalidTokenError$(input));
     }
   };
   A.FunctionNameState.prototype = {
-    process$2(input, next) {
+    process$1(input) {
+      var t1, t2, t3, _this = this;
       type$.Token_dynamic._as(input);
-      type$.nullable_Token_dynamic._as(next);
-      if (input instanceof A.EqualsToken)
-        return new A.FunctionBodyInitState(new A.Stack(B.List_empty0, type$.Stack_StackElement), this.output);
-      else if (input instanceof A.OpenParenthesisToken)
-        return new A.FunctionWithParametersState(this.output);
+      if (input instanceof A.AssignToken) {
+        t1 = _this.iterator;
+        t2 = _this.output;
+        t3 = new A.ExpressionParser(t1).equality$0();
+        return new A.ResultState0(new A.FunctionDefinition(t2.name, t2.parameters, t3), t1);
+      } else if (input instanceof A.OpenParenthesisToken)
+        return new A.FunctionWithParametersState(_this.output, _this.iterator);
       else
         throw A.wrapException(A.InvalidTokenError$(input));
     }
   };
   A.FunctionWithParametersState.prototype = {
-    process$2(input, next) {
+    process$1(input) {
       type$.Token_dynamic._as(input);
-      type$.nullable_Token_dynamic._as(next);
-      if (input instanceof A.SymbolToken)
-        return new A.FunctionWithNewParametersState(this.output.withParameter$1(input.value));
+      if (input instanceof A.IdentifierToken)
+        return new A.FunctionWithNewParametersState(this.output.withParameter$1(input.value), this.iterator);
       else
         throw A.wrapException(A.InvalidTokenError$(input));
     }
   };
   A.FunctionWithNewParametersState.prototype = {
-    process$2(input, next) {
+    process$1(input) {
+      var _this = this;
       type$.Token_dynamic._as(input);
-      type$.nullable_Token_dynamic._as(next);
       if (input instanceof A.CommaToken)
-        return new A.FunctionWithNextParametersState(this.output);
+        return new A.FunctionWithNextParametersState(_this.output, _this.iterator);
       else if (input instanceof A.CloseParenthesisToken)
-        return new A.FunctionParametrizedState(this.output);
+        return new A.FunctionParametrizedState(_this.output, _this.iterator);
       else
         throw A.wrapException(A.InvalidTokenError$(input));
     }
   };
   A.FunctionWithNextParametersState.prototype = {
-    process$2(input, next) {
+    process$1(input) {
       type$.Token_dynamic._as(input);
-      type$.nullable_Token_dynamic._as(next);
-      if (input instanceof A.SymbolToken)
-        return new A.FunctionWithNewParametersState(this.output.withParameter$1(input.value));
+      if (input instanceof A.IdentifierToken)
+        return new A.FunctionWithNewParametersState(this.output.withParameter$1(input.value), this.iterator);
       else
         throw A.wrapException(A.InvalidTokenError$(input));
     }
   };
   A.FunctionParametrizedState.prototype = {
-    process$2(input, next) {
+    process$1(input) {
+      var t1, t2, t3;
       type$.Token_dynamic._as(input);
-      type$.nullable_Token_dynamic._as(next);
-      if (input instanceof A.EqualsToken)
-        return new A.FunctionBodyInitState(new A.Stack(B.List_empty0, type$.Stack_StackElement), this.output);
-      else
-        throw A.wrapException(A.InvalidTokenError$(input));
-    }
-  };
-  A.FunctionBodyInitState.prototype = {
-    process$2(input, next) {
-      var t1, t2, t3, _this = this;
-      type$.Token_dynamic._as(input);
-      type$.nullable_Token_dynamic._as(next);
-      if (input instanceof A.StringToken) {
-        t1 = _this.output;
-        t2 = A.StringExpression$(input);
-        return new A.ResultState(new A.FunctionDefinition(t1.name, t1.parameters, t2));
-      } else if (input instanceof A.NumberToken) {
-        t1 = _this.output;
-        t2 = A.NumberExpression$(input);
-        return new A.ResultState(new A.FunctionDefinition(t1.name, t1.parameters, t2));
-      } else if (input instanceof A.BooleanToken) {
-        t1 = _this.output;
-        t2 = A.BooleanExpression$(input);
-        return new A.ResultState(new A.FunctionDefinition(t1.name, t1.parameters, t2));
-      } else if (input instanceof A.SymbolToken) {
-        t1 = _this.output;
-        t2 = input.value;
-        t3 = input.location;
-        if (next instanceof A.OpenParenthesisToken)
-          return new A.FunctionBodyExpressionState(_this.stack.push$1(new A.StackSymbol(new A.SymbolExpression(A._asString(t2), t3), t3)), t1);
-        else {
-          A._asString(t2);
-          return new A.ResultState(new A.FunctionDefinition(t1.name, t1.parameters, new A.SymbolExpression(t2, t3)));
-        }
+      if (input instanceof A.AssignToken) {
+        t1 = this.iterator;
+        t2 = this.output;
+        t3 = new A.ExpressionParser(t1).equality$0();
+        return new A.ResultState0(new A.FunctionDefinition(t2.name, t2.parameters, t3), t1);
       } else
         throw A.wrapException(A.InvalidTokenError$(input));
     }
   };
-  A.FunctionBodyExpressionState.prototype = {
-    process$2(input, next) {
-      var t1, t2, lastArgumentElement, $arguments, t3, commaElement, expressionElement, t4, openParanthesisElement, symbolElement, functionCall, _this = this;
-      type$.Token_dynamic._as(input);
-      type$.nullable_Token_dynamic._as(next);
-      if (input instanceof A.StringToken) {
-        if (_this.topIsNot$1(A._setArrayType([B.Type_StackOpenParenthesis_Qye, B.Type_StackComma_7N7], type$.JSArray_Type)))
-          throw A.wrapException(A.InvalidTokenError$(input));
-        t1 = A.StringExpression$(input);
-        return new A.FunctionBodyExpressionState(_this.stack.push$1(new A.StackLiteral(t1, t1.location)), _this.output);
-      } else if (input instanceof A.NumberToken) {
-        if (_this.topIsNot$1(A._setArrayType([B.Type_StackOpenParenthesis_Qye, B.Type_StackComma_7N7], type$.JSArray_Type)))
-          throw A.wrapException(A.InvalidTokenError$(input));
-        t1 = A.NumberExpression$(input);
-        return new A.FunctionBodyExpressionState(_this.stack.push$1(new A.StackLiteral(t1, t1.location)), _this.output);
-      } else if (input instanceof A.BooleanToken) {
-        if (_this.topIsNot$1(A._setArrayType([B.Type_StackOpenParenthesis_Qye, B.Type_StackComma_7N7], type$.JSArray_Type)))
-          throw A.wrapException(A.InvalidTokenError$(input));
-        t1 = A.BooleanExpression$(input);
-        return new A.FunctionBodyExpressionState(_this.stack.push$1(new A.StackLiteral(t1, t1.location)), _this.output);
-      } else if (input instanceof A.SymbolToken) {
-        if (_this.topIsNot$1(A._setArrayType([B.Type_StackOpenParenthesis_Qye, B.Type_StackComma_7N7], type$.JSArray_Type)))
-          throw A.wrapException(A.InvalidTokenError$(input));
-        t1 = input.location;
-        return new A.FunctionBodyExpressionState(_this.stack.push$1(new A.StackSymbol(new A.SymbolExpression(A._asString(input.value), t1), t1)), _this.output);
-      } else if (input instanceof A.OpenParenthesisToken) {
-        if (_this.topIsNot$1(A._setArrayType([B.Type_StackSymbol_Ub0], type$.JSArray_Type)))
-          throw A.wrapException(A.InvalidTokenError$(input));
-        return new A.FunctionBodyExpressionState(_this.stack.push$1(new A.StackOpenParenthesis(input.location)), _this.output);
-      } else if (input instanceof A.CommaToken) {
-        if (_this.topIsNot$1(A._setArrayType([B.Type_StackLiteral_O7B, B.Type_StackSymbol_Ub0, B.Type_StackFunctionCall_fnH], type$.JSArray_Type)))
-          throw A.wrapException(A.InvalidTokenError$(input));
-        return new A.FunctionBodyExpressionState(_this.stack.push$1(new A.StackComma(input.location)), _this.output);
-      } else if (input instanceof A.CloseParenthesisToken) {
-        t1 = _this.stack;
-        t2 = t1._list;
-        lastArgumentElement = B.JSArray_methods.removeLast$0(t2);
-        if (!(lastArgumentElement instanceof A.StackExpression))
-          throw A.wrapException(A.InvalidStackElementError$(lastArgumentElement));
-        $arguments = A._setArrayType([lastArgumentElement.expression], type$.JSArray_Expression);
-        t3 = type$.JSArray_Type;
-        while (true) {
-          if (!(t2.length !== 0 && _this.topIsNot$1(A._setArrayType([B.Type_StackOpenParenthesis_Qye], t3))))
-            break;
-          commaElement = B.JSArray_methods.removeLast$0(t2);
-          if (!(commaElement instanceof A.StackComma))
-            throw A.wrapException(A.InvalidStackElementError$(commaElement));
-          expressionElement = B.JSArray_methods.removeLast$0(t2);
-          if (!(expressionElement instanceof A.StackExpression))
-            throw A.wrapException(A.InvalidStackElementError$(expressionElement));
-          t4 = expressionElement.expression;
-          if (!!$arguments.fixed$length)
-            A.throwExpression(A.UnsupportedError$("insert"));
-          $arguments.splice(0, 0, t4);
-        }
-        if (t2.length === 0)
-          throw A.wrapException(A.InvalidTokenError$(input));
-        openParanthesisElement = B.JSArray_methods.removeLast$0(t2);
-        if (!(openParanthesisElement instanceof A.StackOpenParenthesis))
-          throw A.wrapException(A.InvalidStackElementError$(openParanthesisElement));
-        symbolElement = B.JSArray_methods.removeLast$0(t2);
-        if (!(symbolElement instanceof A.StackSymbol))
-          throw A.wrapException(A.InvalidStackElementError$(symbolElement));
-        t3 = symbolElement.expression;
-        t4 = t3.location;
-        functionCall = new A.FunctionCallExpression(t3.value, $arguments, t4);
-        t3 = _this.output;
-        if (t2.length === 0)
-          return new A.ResultState(new A.FunctionDefinition(t3.name, t3.parameters, functionCall));
-        else
-          return new A.FunctionBodyExpressionState(t1.push$1(new A.StackFunctionCall(functionCall, t4)), t3);
-      } else
-        throw A.wrapException(A.InvalidTokenError$(input));
-    },
-    topIsNot$1(types) {
-      return B.JSArray_methods.every$1(type$.List_Type._as(types), new A.FunctionBodyExpressionState_topIsNot_closure(this));
-    }
-  };
-  A.FunctionBodyExpressionState_topIsNot_closure.prototype = {
-    call$1(type) {
-      type$.Type._as(type);
-      return A.getRuntimeTypeOfDartObject(B.JSArray_methods.get$last(this.$this.stack._list)) !== type;
-    },
-    $signature: 9
-  };
-  A.ResultState.prototype = {};
-  A.StackElement.prototype = {};
-  A.StackExpression.prototype = {};
-  A.StackLiteral.prototype = {};
-  A.StackSymbol.prototype = {};
-  A.StackFunctionCall.prototype = {};
-  A.StackOpenParenthesis.prototype = {};
-  A.StackComma.prototype = {};
+  A.ResultState0.prototype = {};
   A.GenericWarning.prototype = {
     toString$0(_) {
       return "Warning: " + this.message;
@@ -7382,38 +7598,43 @@
     call$1(e) {
       return type$.GenericWarning._as(e).message;
     },
-    $signature: 10
+    $signature: 9
   };
   A.ListIterator0.prototype = {
     get$peek() {
       var t1 = this._list_iterator$_index,
-        t2 = this._list_iterator$_list;
-      if (t1 < t2.length)
+        t2 = this._list,
+        t3 = t2.length;
+      if (t1 < t3) {
+        if (!(t1 >= 0))
+          return A.ioore(t2, t1);
         return t2[t1];
-      else
+      } else
+        return null;
+    },
+    get$previous() {
+      var t2,
+        t1 = this._list_iterator$_index;
+      if (t1 > 0) {
+        t2 = this._list;
+        --t1;
+        if (!(t1 < t2.length))
+          return A.ioore(t2, t1);
+        return t2[t1];
+      } else
         return null;
     },
     get$next() {
       var t1 = this._list_iterator$_index,
-        t2 = this._list_iterator$_list;
-      if (t1 < t2.length) {
+        t2 = this._list,
+        t3 = t2.length;
+      if (t1 < t3) {
         this._list_iterator$_index = t1 + 1;
+        if (!(t1 >= 0))
+          return A.ioore(t2, t1);
         return t2[t1];
       } else
         throw A.wrapException(B.UnexpectedEndOfFileError_c0h);
-    }
-  };
-  A.Stack.prototype = {
-    push$1(value) {
-      var t1 = this.$ti,
-        t2 = t1._precomputed1;
-      t2._as(value);
-      t2 = A.List_List$of(this._list, true, t2);
-      t2.push(value);
-      return new A.Stack(t2, t1);
-    },
-    get$length(_) {
-      return this._list.length;
     }
   };
   (function aliases() {
@@ -7425,29 +7646,29 @@
       _instance_1_u = hunkHelpers._instance_1u,
       _static_0 = hunkHelpers._static_0,
       _static_2 = hunkHelpers._static_2;
-    _static_1(A, "core_String___fromCharCode_tearOff$closure", "String___fromCharCode_tearOff", 11);
+    _static_1(A, "core_String___fromCharCode_tearOff$closure", "String___fromCharCode_tearOff", 10);
     var _;
     _instance_1_u(_ = A.Compiler.prototype, "get$compile", "compile$1", 5);
     _instance_1_u(_, "get$expression", "expression$1", 6);
-    _static_1(A, "parameter_Parameter___any_tearOff$closure", "Parameter___any_tearOff", 12);
-    _static_0(A, "intermediate_code_IntermediateCode___empty_tearOff$closure", "IntermediateCode___empty_tearOff", 13);
-    _static_1(A, "main_web__runtimeWarningsHelper$closure", "runtimeWarningsHelper", 14);
-    _static_1(A, "main_web__runtimeHasMainHelper$closure", "runtimeHasMainHelper", 15);
-    _static_1(A, "main_web__runtimeExecuteMainHelper$closure", "runtimeExecuteMainHelper", 16);
-    _static_2(A, "main_web__runtimeReduceHelper$closure", "runtimeReduceHelper", 17);
+    _static_1(A, "parameter_Parameter___any_tearOff$closure", "Parameter___any_tearOff", 11);
+    _static_0(A, "intermediate_code_IntermediateCode___empty_tearOff$closure", "IntermediateCode___empty_tearOff", 12);
+    _static_1(A, "main_web__runtimeWarningsHelper$closure", "runtimeWarningsHelper", 13);
+    _static_1(A, "main_web__runtimeHasMainHelper$closure", "runtimeHasMainHelper", 14);
+    _static_1(A, "main_web__runtimeExecuteMainHelper$closure", "runtimeExecuteMainHelper", 15);
+    _static_2(A, "main_web__runtimeReduceHelper$closure", "runtimeReduceHelper", 16);
   })();
   (function inheritance() {
     var _mixin = hunkHelpers.mixin,
       _inherit = hunkHelpers.inherit,
       _inheritMany = hunkHelpers.inheritMany;
     _inherit(A.Object, null);
-    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, J.ArrayIterator, A.Error0, A.Iterable, A.ListIterator, A.MappedIterator, A.WhereTypeIterator, A.Symbol, A.MapView, A.ConstantMap, A.JSInvocationMirror, A.Closure, A._Required, A.MapBase, A.LinkedHashMapCell, A.LinkedHashMapKeyIterator, A.JSSyntaxRegExp, A.Rti, A._FunctionParameters, A._Type, A.SetBase, A._LinkedHashSetCell, A._LinkedHashSetIterator, A._UnmodifiableMapMixin, A.FormatException, A.MapEntry, A.Null, A.RuneIterator, A.StringBuffer, A.Compiler, A.GenericError, A.Localized, A.Analyzer, A.State, A.FunctionPrototype, A.Location, A.Parameter, A.Type0, A.Reducible, A.ReducibleValue, A.Runtime, A.Scope, A.IntermediateCode, A.FunctionDefinition, A.GenericWarning, A.ListIterator0, A.Stack]);
+    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, J.ArrayIterator, A.Error, A.Iterable, A.ListIterator, A.MappedIterator, A.WhereTypeIterator, A.Symbol, A.MapView, A.ConstantMap, A.JSInvocationMirror, A.Closure, A._Required, A.MapBase, A.LinkedHashMapCell, A.LinkedHashMapKeyIterator, A.JSSyntaxRegExp, A.Rti, A._FunctionParameters, A._Type, A.SetBase, A._LinkedHashSetCell, A._LinkedHashSetIterator, A._UnmodifiableMapMixin, A.FormatException, A.MapEntry, A.Null, A.RuneIterator, A.StringBuffer, A.Compiler, A.GenericError, A.Analyzer, A.State, A.Localized, A.FunctionPrototype, A.Location, A.Parameter, A.Type0, A.Reducible, A.ReducibleValue, A.Runtime, A.Scope, A.IntermediateCode, A.ExpressionParser, A.FunctionDefinition, A.GenericWarning, A.ListIterator0]);
     _inheritMany(J.Interceptor, [J.JSBool, J.JSNull, J.JavaScriptObject, J.JSNumber, J.JSString]);
     _inheritMany(J.JavaScriptObject, [J.LegacyJavaScriptObject, J.JSArray]);
     _inheritMany(J.LegacyJavaScriptObject, [J.PlainJavaScriptObject, J.UnknownJavaScriptObject, J.JavaScriptFunction]);
     _inherit(J.JSUnmodifiableArray, J.JSArray);
     _inheritMany(J.JSNumber, [J.JSInt, J.JSNumNotInt]);
-    _inheritMany(A.Error0, [A.LateError, A._CyclicInitializationError, A.RuntimeError0, A.AssertionError, A._Error, A.TypeError, A.ArgumentError, A.NoSuchMethodError, A.UnsupportedError, A.StateError, A.ConcurrentModificationError]);
+    _inheritMany(A.Error, [A.LateError, A._CyclicInitializationError, A.RuntimeError0, A.AssertionError, A._Error, A.TypeError, A.ArgumentError, A.NoSuchMethodError, A.UnsupportedError, A.StateError, A.ConcurrentModificationError]);
     _inheritMany(A.Iterable, [A.EfficientLengthIterable, A.MappedIterable, A.WhereTypeIterable, A.Runes]);
     _inheritMany(A.EfficientLengthIterable, [A.ListIterable, A.LinkedHashMapKeyIterable]);
     _inherit(A.EfficientLengthMappedIterable, A.MappedIterable);
@@ -7456,7 +7677,7 @@
     _inherit(A.UnmodifiableMapView, A._UnmodifiableMapView_MapView__UnmodifiableMapMixin);
     _inherit(A.ConstantMapView, A.UnmodifiableMapView);
     _inherit(A.ConstantStringMap, A.ConstantMap);
-    _inheritMany(A.Closure, [A.Closure2Args, A.TearOffClosure, A.MapBase_entries_closure, A.ExpressionReducible_substitute_closure, A.FunctionPrototype_parameterTypes_closure, A.SemanticAnalyzer_checkDuplicatedParameters_closure, A.SemanticAnalyzer_checkReducibles_closure, A.SemanticAnalyzer_checkReducible_closure, A.SemanticAnalyzer_getFunctionByName_closure, A.FunctionCallExpression_toReducible_closure, A.FunctionBodyExpressionState_topIsNot_closure, A.runtimeWarningsHelper_closure]);
+    _inheritMany(A.Closure, [A.Closure2Args, A.TearOffClosure, A.MapBase_entries_closure, A.ExpressionReducible_substitute_closure, A.FunctionPrototype_parameterTypes_closure, A.SemanticAnalyzer_checkDuplicatedParameters_closure, A.SemanticAnalyzer_checkReducibles_closure, A.SemanticAnalyzer_checkReducible_closure, A.SemanticAnalyzer_getFunctionByName_closure, A.CallExpression_toReducible_closure, A.runtimeWarningsHelper_closure]);
     _inheritMany(A.Closure2Args, [A.Primitives_functionNoSuchMethod_closure, A.MapBase_mapToString_closure, A.NoSuchMethodError_toString_closure]);
     _inheritMany(A.TearOffClosure, [A.StaticClosure, A.BoundClosure]);
     _inherit(A._AssertionError, A.AssertionError);
@@ -7466,24 +7687,22 @@
     _inherit(A._LinkedHashSet, A._SetBase);
     _inheritMany(A.ArgumentError, [A.RangeError, A.IndexError]);
     _inheritMany(A.GenericError, [A.LexicalError, A.RuntimeError, A.SemanticError, A.UndefinedFunctionError, A.InvalidNumberOfArgumentsError, A.SyntacticError]);
-    _inheritMany(A.LexicalError, [A.InvalidCharacterError, A.InvalidLexemeError]);
+    _inherit(A.InvalidCharacterError, A.LexicalError);
     _inheritMany(A.RuntimeError, [A.InvalidArgumentTypesError, A.InvalidArgumentCountError, A.NotFoundInScope, A.EmptyExpressionEvaluationError]);
-    _inheritMany(A.SemanticError, [A.DuplicatedFunctionError, A.DuplicatedParameterError, A.UndefinedSymbolError]);
-    _inheritMany(A.SyntacticError, [A.InvalidTokenError, A.InvalidStackElementError, A.UnexpectedEndOfFileError]);
-    _inheritMany(A.Localized, [A.Character, A.Lexeme, A.Token, A.Expression, A.StackElement]);
-    _inheritMany(A.Analyzer, [A.InputAnalyzer, A.LexicalAnalyzer, A.SemanticAnalyzer, A.SyntacticAnalyzer]);
-    _inheritMany(A.State, [A.InitState0, A.ForwardSlashState, A.SingleLineCommentState, A.StartMultiLineCommentState, A.ClosingMultiLineCommentState, A.StringDoubleQuoteState, A.StringSingleQuoteState, A.NegativeNumberState, A.IntegerState, A.DecimalState, A.SymbolState, A.ResultState0, A.InitState, A.FunctionNameState, A.FunctionWithParametersState, A.FunctionWithNewParametersState, A.FunctionWithNextParametersState, A.FunctionParametrizedState, A.FunctionBodyInitState, A.FunctionBodyExpressionState, A.ResultState]);
-    _inheritMany(A.Token, [A.StringToken, A.NumberToken, A.BooleanToken, A.SymbolToken, A.CommaToken, A.EqualsToken, A.SlashToken, A.OpenParenthesisToken, A.CloseParenthesisToken]);
+    _inheritMany(A.SemanticError, [A.DuplicatedFunctionError, A.DuplicatedParameterError, A.UndefinedIdentifiersError]);
+    _inheritMany(A.SyntacticError, [A.InvalidTokenError, A.ExpectedTokenError, A.UnexpectedEndOfFileError]);
+    _inheritMany(A.Analyzer, [A.LexicalAnalyzer, A.Scanner, A.SemanticAnalyzer, A.SyntacticAnalyzer]);
+    _inheritMany(A.State, [A.InitState, A.StringDoubleQuoteState, A.StringSingleQuoteState, A.IntegerState, A.DecimalInitState, A.DecimalState, A.IdentifierState, A.MinusState, A.PlusState, A.EqualsState, A.GreaterState, A.LessState, A.PipeState, A.AmpersandState, A.BangState, A.ForwardSlashState, A.AsteriskState, A.PercentState, A.SingleLineCommentState, A.StartMultiLineCommentState, A.ClosingMultiLineCommentState, A.CommaState, A.OpenParenthesisState, A.CloseParenthesisState, A.ResultState, A.InitState0, A.FunctionNameState, A.FunctionWithParametersState, A.FunctionWithNewParametersState, A.FunctionWithNextParametersState, A.FunctionParametrizedState, A.ResultState0]);
+    _inheritMany(A.Localized, [A.Lexeme, A.Token, A.Character, A.Expression]);
+    _inheritMany(A.Token, [A.StringToken, A.NumberToken, A.BooleanToken, A.IdentifierToken, A.MinusToken, A.PlusToken, A.ForwardSlashToken, A.AsteriskToken, A.PercentToken, A.PipeToken, A.AmpersandToken, A.BangToken, A.EqualToken, A.NotEqualToken, A.GreaterThanToken, A.GreaterEqualThanToken, A.LessThanToken, A.LessEqualThanToken, A.AssignToken, A.CommaToken, A.OpenParenthesisToken, A.CloseParenthesisToken]);
     _inheritMany(A.FunctionPrototype, [A.NativeFunctionPrototype, A.CustomFunctionPrototype]);
-    _inheritMany(A.NativeFunctionPrototype, [A.And, A.Not, A.Or, A.Xor, A.IsBoolean, A.IsDecimal, A.IsInfinite, A.IsInteger, A.IsNumber, A.IsString, A.ToBoolean, A.ToDecimal, A.ToInteger, A.ToNumber, A.ToString, A.Eq, A.Neq, A.If, A.Try, A.Debug, A.Error, A.At, A.Concat, A.Contains, A.Drop, A.First, A.Init, A.IsEmpty, A.IsNotEmpty, A.Last, A.Length, A.Remove, A.Reverse, A.Tail, A.Take, A.Abs, A.Add, A.Ceil, A.Cos, A.Dec, A.Div, A.DivInt, A.Floor, A.Ge, A.Gt, A.Inc, A.IsEven, A.IsNegative, A.IsOdd, A.IsPositive, A.IsZero, A.Le, A.Log, A.Lt, A.Max, A.Min, A.Mod, A.Mul, A.Pow, A.Round, A.Sin, A.Sqrt, A.Sub, A.Sum, A.Tan, A.EndsWith, A.Lowercase, A.Match, A.Replace, A.StartsWith, A.Substring, A.Trim, A.Uppercase]);
+    _inheritMany(A.NativeFunctionPrototype, [A.And, A.Not, A.Or, A.Xor, A.IsBoolean, A.IsDecimal, A.IsInfinite, A.IsInteger, A.IsNumber, A.IsString, A.ToBoolean, A.ToDecimal, A.ToInteger, A.ToNumber, A.ToString, A.Eq, A.Neq, A.If, A.Try, A.Debug, A.Throw, A.At, A.Concat, A.Contains, A.Drop, A.First, A.Init, A.IsEmpty, A.IsNotEmpty, A.Last, A.Length, A.Remove, A.Reverse, A.Tail, A.Take, A.Abs, A.Ceil, A.Cos, A.Dec, A.Div, A.Floor, A.Ge, A.Gt, A.Inc, A.IsEven, A.IsNegative, A.IsOdd, A.IsPositive, A.IsZero, A.Le, A.Log, A.Lt, A.Max, A.Min, A.Mod, A.Mul, A.Pow, A.Round, A.Sin, A.Sqrt, A.Sub, A.Sum, A.Tan, A.EndsWith, A.Lowercase, A.Match, A.Replace, A.StartsWith, A.Substring, A.Trim, A.Uppercase]);
     _inheritMany(A.Type0, [A.StringType, A.NumberType, A.BooleanType, A.AnyType]);
     _inheritMany(A.ReducibleValue, [A.StringReducibleValue, A.NumberReducibleValue, A.BooleanReducibleValue]);
-    _inheritMany(A.Reducible, [A.SymbolReducible, A.ExpressionReducible]);
+    _inheritMany(A.Reducible, [A.IdentifierReducible, A.ExpressionReducible]);
     _inherit(A.AnonymousFunctionPrototype, A.CustomFunctionPrototype);
-    _inheritMany(A.Expression, [A.EmptyExpression, A.LiteralExpression, A.SymbolExpression, A.FunctionCallExpression]);
-    _inheritMany(A.LiteralExpression, [A.StringExpression, A.NumberExpression, A.BooleanExpression]);
-    _inheritMany(A.StackElement, [A.StackExpression, A.StackOpenParenthesis, A.StackComma]);
-    _inheritMany(A.StackExpression, [A.StackLiteral, A.StackSymbol, A.StackFunctionCall]);
+    _inheritMany(A.Expression, [A.EmptyExpression, A.LiteralExpression, A.IdentifierExpression, A.CallExpression]);
+    _inheritMany(A.LiteralExpression, [A.BooleanLiteralExpression, A.NumberLiteralExpression, A.StringLiteralExpression]);
     _inherit(A.SemanticWarning, A.GenericWarning);
     _inherit(A.UnusedParameterWarning, A.SemanticWarning);
     _mixin(A._UnmodifiableMapView_MapView__UnmodifiableMapMixin, A._UnmodifiableMapMixin);
@@ -7492,12 +7711,12 @@
     typeUniverse: {eC: new Map(), tR: {}, eT: {}, tPV: {}, sEA: []},
     mangledGlobalNames: {int: "int", double: "double", num: "num", String: "String", bool: "bool", Null: "Null", List: "List"},
     mangledNames: {},
-    types: ["String(Parameter)", "bool(FunctionPrototype)", "~(String,@)", "~(Object?,Object?)", "~(Symbol0,@)", "IntermediateCode(String)", "Expression(String)", "Reducible(Reducible)", "Reducible(Expression)", "bool(Type)", "String(GenericWarning)", "String(int)", "Parameter(String)", "IntermediateCode()", "List<String>(IntermediateCode)", "bool(IntermediateCode)", "String(IntermediateCode)", "String(IntermediateCode,Expression)"],
+    types: ["String(Parameter)", "bool(FunctionPrototype)", "~(String,@)", "~(Object?,Object?)", "~(Symbol0,@)", "IntermediateCode(String)", "Expression(String)", "Reducible(Reducible)", "Reducible(Expression)", "String(GenericWarning)", "String(int)", "Parameter(String)", "IntermediateCode()", "List<String>(IntermediateCode)", "bool(IntermediateCode)", "String(IntermediateCode)", "String(IntermediateCode,Expression)"],
     interceptorsByTag: null,
     leafTags: null,
     arrayRti: Symbol("$ti")
   };
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"_Type":{"Type":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"InputAnalyzer":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState0":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ForwardSlashState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SingleLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StartMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ClosingMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"NegativeNumberState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SymbolState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState0":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"SymbolToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"EqualsToken":{"Token":["String"],"Token.T":"String"},"SlashToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"And":{"FunctionPrototype":[]},"Not":{"FunctionPrototype":[]},"Or":{"FunctionPrototype":[]},"Xor":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"Eq":{"FunctionPrototype":[]},"Neq":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Debug":{"FunctionPrototype":[]},"Error":{"FunctionPrototype":[]},"At":{"FunctionPrototype":[]},"Concat":{"FunctionPrototype":[]},"Contains":{"FunctionPrototype":[]},"Drop":{"FunctionPrototype":[]},"First":{"FunctionPrototype":[]},"Init":{"FunctionPrototype":[]},"IsEmpty":{"FunctionPrototype":[]},"IsNotEmpty":{"FunctionPrototype":[]},"Last":{"FunctionPrototype":[]},"Length":{"FunctionPrototype":[]},"Remove":{"FunctionPrototype":[]},"Reverse":{"FunctionPrototype":[]},"Tail":{"FunctionPrototype":[]},"Take":{"FunctionPrototype":[]},"Abs":{"FunctionPrototype":[]},"Add":{"FunctionPrototype":[]},"Ceil":{"FunctionPrototype":[]},"Cos":{"FunctionPrototype":[]},"Dec":{"FunctionPrototype":[]},"Div":{"FunctionPrototype":[]},"DivInt":{"FunctionPrototype":[]},"Floor":{"FunctionPrototype":[]},"Ge":{"FunctionPrototype":[]},"Gt":{"FunctionPrototype":[]},"Inc":{"FunctionPrototype":[]},"IsEven":{"FunctionPrototype":[]},"IsNegative":{"FunctionPrototype":[]},"IsOdd":{"FunctionPrototype":[]},"IsPositive":{"FunctionPrototype":[]},"IsZero":{"FunctionPrototype":[]},"Le":{"FunctionPrototype":[]},"Log":{"FunctionPrototype":[]},"Lt":{"FunctionPrototype":[]},"Max":{"FunctionPrototype":[]},"Min":{"FunctionPrototype":[]},"Mod":{"FunctionPrototype":[]},"Mul":{"FunctionPrototype":[]},"Pow":{"FunctionPrototype":[]},"Round":{"FunctionPrototype":[]},"Sin":{"FunctionPrototype":[]},"Sqrt":{"FunctionPrototype":[]},"Sub":{"FunctionPrototype":[]},"Sum":{"FunctionPrototype":[]},"Tan":{"FunctionPrototype":[]},"EndsWith":{"FunctionPrototype":[]},"Lowercase":{"FunctionPrototype":[]},"Match":{"FunctionPrototype":[]},"Replace":{"FunctionPrototype":[]},"StartsWith":{"FunctionPrototype":[]},"Substring":{"FunctionPrototype":[]},"Trim":{"FunctionPrototype":[]},"Uppercase":{"FunctionPrototype":[]},"StringType":{"Type0":[]},"NumberType":{"Type0":[]},"BooleanType":{"Type0":[]},"AnyType":{"Type0":[]},"ReducibleValue":{"Reducible":[]},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"SymbolReducible":{"Reducible":[]},"ExpressionReducible":{"Reducible":[]},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"LiteralExpression":{"Expression":[]},"SymbolExpression":{"Expression":[]},"FunctionCallExpression":{"Expression":[]},"EmptyExpression":{"Expression":[]},"StringExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"NumberExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"BooleanExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"StackLiteral":{"StackExpression":["LiteralExpression<@>"],"StackElement":[],"StackExpression.T":"LiteralExpression<@>"},"StackSymbol":{"StackExpression":["SymbolExpression"],"StackElement":[],"StackExpression.T":"SymbolExpression"},"StackFunctionCall":{"StackExpression":["FunctionCallExpression"],"StackElement":[],"StackExpression.T":"FunctionCallExpression"},"StackOpenParenthesis":{"StackElement":[]},"StackComma":{"StackElement":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionBodyInitState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionBodyExpressionState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"StackExpression":{"StackElement":[]},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]}}'));
+  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"_Type":{"Type":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalInitState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IdentifierState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"MinusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PlusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"EqualsState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"GreaterState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"LessState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PipeState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AmpersandState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"BangState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ForwardSlashState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AsteriskState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PercentState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SingleLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StartMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ClosingMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommaState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"IdentifierToken":{"Token":["String"],"Token.T":"String"},"MinusToken":{"Token":["String"],"Token.T":"String"},"PlusToken":{"Token":["String"],"Token.T":"String"},"ForwardSlashToken":{"Token":["String"],"Token.T":"String"},"AsteriskToken":{"Token":["String"],"Token.T":"String"},"PercentToken":{"Token":["String"],"Token.T":"String"},"PipeToken":{"Token":["String"],"Token.T":"String"},"AmpersandToken":{"Token":["String"],"Token.T":"String"},"BangToken":{"Token":["String"],"Token.T":"String"},"EqualToken":{"Token":["String"],"Token.T":"String"},"NotEqualToken":{"Token":["String"],"Token.T":"String"},"GreaterThanToken":{"Token":["String"],"Token.T":"String"},"GreaterEqualThanToken":{"Token":["String"],"Token.T":"String"},"LessThanToken":{"Token":["String"],"Token.T":"String"},"LessEqualThanToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"AssignToken":{"Token":["String"],"Token.T":"String"},"And":{"FunctionPrototype":[]},"Not":{"FunctionPrototype":[]},"Or":{"FunctionPrototype":[]},"Xor":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"Eq":{"FunctionPrototype":[]},"Neq":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Debug":{"FunctionPrototype":[]},"Throw":{"FunctionPrototype":[]},"At":{"FunctionPrototype":[]},"Concat":{"FunctionPrototype":[]},"Contains":{"FunctionPrototype":[]},"Drop":{"FunctionPrototype":[]},"First":{"FunctionPrototype":[]},"Init":{"FunctionPrototype":[]},"IsEmpty":{"FunctionPrototype":[]},"IsNotEmpty":{"FunctionPrototype":[]},"Last":{"FunctionPrototype":[]},"Length":{"FunctionPrototype":[]},"Remove":{"FunctionPrototype":[]},"Reverse":{"FunctionPrototype":[]},"Tail":{"FunctionPrototype":[]},"Take":{"FunctionPrototype":[]},"Abs":{"FunctionPrototype":[]},"Ceil":{"FunctionPrototype":[]},"Cos":{"FunctionPrototype":[]},"Dec":{"FunctionPrototype":[]},"Div":{"FunctionPrototype":[]},"Floor":{"FunctionPrototype":[]},"Ge":{"FunctionPrototype":[]},"Gt":{"FunctionPrototype":[]},"Inc":{"FunctionPrototype":[]},"IsEven":{"FunctionPrototype":[]},"IsNegative":{"FunctionPrototype":[]},"IsOdd":{"FunctionPrototype":[]},"IsPositive":{"FunctionPrototype":[]},"IsZero":{"FunctionPrototype":[]},"Le":{"FunctionPrototype":[]},"Log":{"FunctionPrototype":[]},"Lt":{"FunctionPrototype":[]},"Max":{"FunctionPrototype":[]},"Min":{"FunctionPrototype":[]},"Mod":{"FunctionPrototype":[]},"Mul":{"FunctionPrototype":[]},"Pow":{"FunctionPrototype":[]},"Round":{"FunctionPrototype":[]},"Sin":{"FunctionPrototype":[]},"Sqrt":{"FunctionPrototype":[]},"Sub":{"FunctionPrototype":[]},"Sum":{"FunctionPrototype":[]},"Tan":{"FunctionPrototype":[]},"EndsWith":{"FunctionPrototype":[]},"Lowercase":{"FunctionPrototype":[]},"Match":{"FunctionPrototype":[]},"Replace":{"FunctionPrototype":[]},"StartsWith":{"FunctionPrototype":[]},"Substring":{"FunctionPrototype":[]},"Trim":{"FunctionPrototype":[]},"Uppercase":{"FunctionPrototype":[]},"StringType":{"Type0":[]},"NumberType":{"Type0":[]},"BooleanType":{"Type0":[]},"AnyType":{"Type0":[]},"ReducibleValue":{"Reducible":[]},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"IdentifierReducible":{"Reducible":[]},"ExpressionReducible":{"Reducible":[]},"Scanner":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"EmptyExpression":{"Expression":[]},"LiteralExpression":{"Expression":[]},"BooleanLiteralExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"NumberLiteralExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"StringLiteralExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"IdentifierExpression":{"Expression":[]},"CallExpression":{"Expression":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState0":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState0":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]}}'));
   A._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"EfficientLengthIterable":1,"_SetBase":1}'));
   var type$ = (function rtii() {
     var findType = A.findType;
@@ -7544,12 +7763,10 @@
       Scope_Reducible: findType("Scope<Reducible>"),
       Scope_dynamic: findType("Scope<@>"),
       Set_String: findType("Set<String>"),
-      Stack_StackElement: findType("Stack<StackElement>"),
       String: findType("String"),
       Symbol: findType("Symbol0"),
       Token_dynamic: findType("Token<@>"),
       TrustedGetRuntimeType: findType("TrustedGetRuntimeType"),
-      Type: findType("Type"),
       UnknownJavaScriptObject: findType("UnknownJavaScriptObject"),
       WhereTypeIterable_CustomFunctionPrototype: findType("WhereTypeIterable<CustomFunctionPrototype>"),
       bool: findType("bool"),
@@ -7558,10 +7775,8 @@
       int: findType("int"),
       legacy_Never: findType("0&*"),
       legacy_Object: findType("Object*"),
-      nullable_Character: findType("Character?"),
       nullable_Future_Null: findType("Future<Null>?"),
       nullable_Object: findType("Object?"),
-      nullable_Token_dynamic: findType("Token<@>?"),
       nullable__LinkedHashSetCell: findType("_LinkedHashSetCell?"),
       num: findType("num")
     };
@@ -7587,30 +7802,39 @@
     B.C_NumberType = new A.NumberType();
     B.C_StringType = new A.StringType();
     B.C__Required = new A._Required();
-    B.ClosingMultiLineCommentState_null = new A.ClosingMultiLineCommentState(null);
     B.EmptyExpressionEvaluationError_oFO = new A.EmptyExpressionEvaluationError("Cannot reduce empty expression");
-    B.Location_1_1 = new A.Location(1, 1);
-    B.EmptyExpression_Location_1_1 = new A.EmptyExpression(B.Location_1_1);
-    B.List_empty1 = A._setArrayType(makeConstList([]), type$.JSArray_String);
-    B.FunctionDefinition_CVt = new A.FunctionDefinition("", B.List_empty1, B.EmptyExpression_Location_1_1);
-    B.InitState_null0 = new A.InitState0(null);
-    B.InitState_null = new A.InitState(null);
+    B.Location_0_0 = new A.Location(0, 0);
+    B.EmptyExpression_Location_0_0 = new A.EmptyExpression(B.Location_0_0);
     B.List_empty = A._setArrayType(makeConstList([]), type$.JSArray_Parameter);
-    B.List_empty0 = A._setArrayType(makeConstList([]), A.findType("JSArray<0&>"));
-    B.List_empty2 = A._setArrayType(makeConstList([]), type$.JSArray_dynamic);
+    B.List_empty0 = A._setArrayType(makeConstList([]), type$.JSArray_String);
+    B.List_empty1 = A._setArrayType(makeConstList([]), type$.JSArray_dynamic);
     B.Object_empty = {};
     B.Map_empty = new A.ConstantStringMap(B.Object_empty, [], A.findType("ConstantStringMap<Symbol0,@>"));
     B.Map_empty0 = new A.ConstantStringMap(B.Object_empty, [], A.findType("ConstantStringMap<String,0&>"));
     B.Scope_Map_empty = new A.Scope(B.Map_empty0, type$.Scope_Reducible);
     B.Scope_Map_empty0 = new A.Scope(B.Map_empty0, type$.Scope_dynamic);
-    B.SingleLineCommentState_null = new A.SingleLineCommentState(null);
-    B.StartMultiLineCommentState_null = new A.StartMultiLineCommentState(null);
     B.Symbol_call = new A.Symbol("call");
-    B.Type_StackComma_7N7 = A.typeLiteral("StackComma");
-    B.Type_StackFunctionCall_fnH = A.typeLiteral("StackFunctionCall");
-    B.Type_StackLiteral_O7B = A.typeLiteral("StackLiteral");
-    B.Type_StackOpenParenthesis_Qye = A.typeLiteral("StackOpenParenthesis");
-    B.Type_StackSymbol_Ub0 = A.typeLiteral("StackSymbol");
+    B.Type_AmpersandToken_oqK = A.typeLiteral("AmpersandToken");
+    B.Type_AsteriskToken_DXo = A.typeLiteral("AsteriskToken");
+    B.Type_BangToken_rp8 = A.typeLiteral("BangToken");
+    B.Type_BooleanToken_YER = A.typeLiteral("BooleanToken");
+    B.Type_CloseParenthesisToken_z3x = A.typeLiteral("CloseParenthesisToken");
+    B.Type_CommaToken_j4A = A.typeLiteral("CommaToken");
+    B.Type_EqualToken_8aB = A.typeLiteral("EqualToken");
+    B.Type_ForwardSlashToken_PEo = A.typeLiteral("ForwardSlashToken");
+    B.Type_GreaterEqualThanToken_QBg = A.typeLiteral("GreaterEqualThanToken");
+    B.Type_GreaterThanToken_Gro = A.typeLiteral("GreaterThanToken");
+    B.Type_IdentifierToken_KTr = A.typeLiteral("IdentifierToken");
+    B.Type_LessEqualThanToken_mmM = A.typeLiteral("LessEqualThanToken");
+    B.Type_LessThanToken_4YB = A.typeLiteral("LessThanToken");
+    B.Type_MinusToken_PaN = A.typeLiteral("MinusToken");
+    B.Type_NotEqualToken_AHJ = A.typeLiteral("NotEqualToken");
+    B.Type_NumberToken_4hl = A.typeLiteral("NumberToken");
+    B.Type_OpenParenthesisToken_UJY = A.typeLiteral("OpenParenthesisToken");
+    B.Type_PercentToken_VUu = A.typeLiteral("PercentToken");
+    B.Type_PipeToken_2Zs = A.typeLiteral("PipeToken");
+    B.Type_PlusToken_2Vk = A.typeLiteral("PlusToken");
+    B.Type_StringToken_EKj = A.typeLiteral("StringToken");
     B.UnexpectedEndOfFileError_c0h = new A.UnexpectedEndOfFileError("Unexpected end of file");
   })();
   (function staticFields() {
@@ -7623,22 +7847,6 @@
   (function lazyInitializers() {
     var _lazyFinal = hunkHelpers.lazyFinal;
     _lazyFinal($, "DART_CLOSURE_PROPERTY_NAME", "$get$DART_CLOSURE_PROPERTY_NAME", () => init.getIsolateTag("_$dart_dartClosure"));
-    _lazyFinal($, "StringExtensions_REGEX_DIGIT", "$get$StringExtensions_REGEX_DIGIT", () => A.RegExp_RegExp("\\d"));
-    _lazyFinal($, "StringExtensions_REGEX_LETTER", "$get$StringExtensions_REGEX_LETTER", () => A.RegExp_RegExp("[a-zA-Z]"));
-    _lazyFinal($, "StringExtensions_REGEX_WHITESPACE", "$get$StringExtensions_REGEX_WHITESPACE", () => A.RegExp_RegExp("\\s"));
-    _lazyFinal($, "StringExtensions_REGEX_NEW_LINE", "$get$StringExtensions_REGEX_NEW_LINE", () => A.RegExp_RegExp("\\n"));
-    _lazyFinal($, "StringExtensions_REGEX_DOUBLE_QUOTE", "$get$StringExtensions_REGEX_DOUBLE_QUOTE", () => A.RegExp_RegExp('"'));
-    _lazyFinal($, "StringExtensions_REGEX_SINGLE_QUOTE", "$get$StringExtensions_REGEX_SINGLE_QUOTE", () => A.RegExp_RegExp("'"));
-    _lazyFinal($, "StringExtensions_REGEX_DASH", "$get$StringExtensions_REGEX_DASH", () => A.RegExp_RegExp("-"));
-    _lazyFinal($, "StringExtensions_REGEX_UNDERSCORE", "$get$StringExtensions_REGEX_UNDERSCORE", () => A.RegExp_RegExp("_"));
-    _lazyFinal($, "StringExtensions_REGEX_DOT", "$get$StringExtensions_REGEX_DOT", () => A.RegExp_RegExp("\\."));
-    _lazyFinal($, "StringExtensions_REGEX_COMMA", "$get$StringExtensions_REGEX_COMMA", () => A.RegExp_RegExp(","));
-    _lazyFinal($, "StringExtensions_REGEX_EQUALS", "$get$StringExtensions_REGEX_EQUALS", () => A.RegExp_RegExp("="));
-    _lazyFinal($, "StringExtensions_REGEX_OPEN_PARENTHESIS", "$get$StringExtensions_REGEX_OPEN_PARENTHESIS", () => A.RegExp_RegExp("\\("));
-    _lazyFinal($, "StringExtensions_REGEX_CLOSE_PARENTHESIS", "$get$StringExtensions_REGEX_CLOSE_PARENTHESIS", () => A.RegExp_RegExp("\\)"));
-    _lazyFinal($, "StringExtensions_REGEX_FORWARD_SLASH", "$get$StringExtensions_REGEX_FORWARD_SLASH", () => A.RegExp_RegExp("/"));
-    _lazyFinal($, "StringExtensions_REGEX_ASTERISK", "$get$StringExtensions_REGEX_ASTERISK", () => A.RegExp_RegExp("\\*"));
-    _lazyFinal($, "StringExtensions_REGEX_BOOLEAN", "$get$StringExtensions_REGEX_BOOLEAN", () => A.RegExp_RegExp("true|false"));
   })();
   (function nativeSupport() {
     !function() {
