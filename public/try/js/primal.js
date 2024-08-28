@@ -3150,6 +3150,9 @@
     InvalidCharacterError: function InvalidCharacterError(t0) {
       this.message = t0;
     },
+    MalformedNumberError: function MalformedNumberError(t0) {
+      this.message = t0;
+    },
     RuntimeError$(message) {
       return new A.RuntimeError(message);
     },
@@ -3804,6 +3807,9 @@
     },
     SemanticAnalyzer_getFunctionByName_closure: function SemanticAnalyzer_getFunctionByName_closure(t0) {
       this.name = t0;
+    },
+    NumberLiteralExpression$(token) {
+      return new A.NumberLiteralExpression(A._asNum(token.value), token.location);
     },
     Expression: function Expression() {
     },
@@ -5390,6 +5396,7 @@
   };
   A.LexicalError.prototype = {};
   A.InvalidCharacterError.prototype = {};
+  A.MalformedNumberError.prototype = {};
   A.RuntimeError.prototype = {};
   A.InvalidArgumentTypesError.prototype = {};
   A.InvalidArgumentCountError.prototype = {};
@@ -5578,7 +5585,7 @@
       if (t1._nativeRegExp.test(input.value))
         return new A.DecimalState(J.add$1$a(this.output, input), this.iterator);
       else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(new A.MalformedNumberError("Malformed number at " + input.location.toString$0(0)));
     }
   };
   A.DecimalState.prototype = {
@@ -7102,7 +7109,7 @@
         for (j = i + 1, t3 = function1.name, j0 = j; j0 < t1; ++j0) {
           function2 = functions[j0];
           if (function2.name === t3)
-            throw A.wrapException(new A.DuplicatedFunctionError('Duplicated function "' + t3 + '" with paramters (' + B.JSArray_methods.join$1(function1.parameters, ", ") + ") and (" + B.JSArray_methods.join$1(function2.parameters, ", ") + ")"));
+            throw A.wrapException(new A.DuplicatedFunctionError('Duplicated function "' + t3 + '" with parameters (' + B.JSArray_methods.join$1(function1.parameters, ", ") + ") and (" + B.JSArray_methods.join$1(function2.parameters, ", ") + ")"));
         }
       }
     },
@@ -7339,13 +7346,19 @@
       return expression;
     },
     unary$0() {
-      var t1, right, t2, _this = this;
+      var t1, right, t2, t3, t4, _this = this;
       if (_this.match$1(A._setArrayType([B.Type_BangToken_fw6, B.Type_MinusToken_wEo], type$.JSArray_Type))) {
         t1 = _this.iterator.get$previous();
         t1.toString;
         right = _this.unary$0();
-        t2 = t1.location;
-        return new A.CallExpression(new A.IdentifierExpression(A._asString(t1.value), t2), A._setArrayType([right], type$.JSArray_Expression), t2);
+        t2 = t1.value;
+        t3 = type$.JSArray_Expression;
+        t1 = t1.location;
+        if (t2 === "-") {
+          t4 = A.NumberLiteralExpression$(A.NumberToken$(new A.Lexeme("0", t1)));
+          return new A.CallExpression(new A.IdentifierExpression(A._asString(t2), t1), A._setArrayType([t4, right], t3), t1);
+        } else
+          return new A.CallExpression(new A.IdentifierExpression(A._asString(t2), t1), A._setArrayType([right], t3), t1);
       }
       return _this.call$0();
     },
@@ -7384,7 +7397,7 @@
       } else if (_this.match$1(A._setArrayType([B.Type_NumberToken_ckn], t1))) {
         t1 = _this.iterator.get$previous();
         t1.toString;
-        return new A.NumberLiteralExpression(A._asNum(t1.value), t1.location);
+        return A.NumberLiteralExpression$(t1);
       } else if (_this.match$1(A._setArrayType([B.Type_StringToken_ckG], t1))) {
         t1 = _this.iterator.get$previous();
         t1.toString;
@@ -7638,7 +7651,7 @@
     _inherit(A._LinkedHashSet, A._SetBase);
     _inheritMany(A.ArgumentError, [A.RangeError, A.IndexError]);
     _inheritMany(A.GenericError, [A.LexicalError, A.RuntimeError, A.SemanticError, A.UndefinedFunctionError, A.InvalidNumberOfArgumentsError, A.SyntacticError]);
-    _inherit(A.InvalidCharacterError, A.LexicalError);
+    _inheritMany(A.LexicalError, [A.InvalidCharacterError, A.MalformedNumberError]);
     _inheritMany(A.RuntimeError, [A.InvalidArgumentTypesError, A.InvalidArgumentCountError, A.NotFoundInScope, A.EmptyExpressionEvaluationError]);
     _inheritMany(A.SemanticError, [A.DuplicatedFunctionError, A.DuplicatedParameterError, A.UndefinedIdentifiersError]);
     _inheritMany(A.SyntacticError, [A.InvalidTokenError, A.ExpectedTokenError, A.UnexpectedEndOfFileError]);
