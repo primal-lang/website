@@ -83,6 +83,96 @@
 
         <h4 class="text-white reference-section" id="operators">Operators</h4>
 
+        <h5 class="text-white reference-title">Equality</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two arguments of any type.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if they are equal. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="operators.eq" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Inequality</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two arguments of any type.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if they are not equal. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="operators.neq" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Greater than</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two numbers.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the first number is greater than the second number. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="operators.gt" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Less than</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two numbers.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the first number is less than the second number. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="operators.lt" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Greater than or equal</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two numbers.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the first number is greater than or equal to the second number. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="operators.ge" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Less than or equal</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two numbers.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the first number is less than or equal to the second number. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="operators.le" class="code-sample"></div>
+
         <h5 class="text-white reference-title">Addition</h5>
         <table class="reference-table">
           <tbody>
@@ -112,6 +202,21 @@
           </tbody>
         </table>
         <div id="operators.sub" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Negation</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">One number.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The number negated.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="operators.neg" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Multiplication</h5>
         <table class="reference-table">
@@ -157,6 +262,51 @@
           </tbody>
         </table>
         <div id="operators.mod" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">And</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two boolean arguments.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if both arguments are true. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="operators.and" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Or</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two boolean arguments.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if at least one argument is true. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="operators.or" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Not</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">One boolean argument.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the argument is false. False if the argument is true.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="operators.not" class="code-sample"></div>
 
         <h4 class="text-white reference-section" id="control">Control</h4>
 
@@ -1278,6 +1428,7 @@
     setSampleCode('operators.le', 'Number <= Number')
     setSampleCode('operators.sum', 'Number + Number')
     setSampleCode('operators.sub', 'Number - Number')
+    setSampleCode('operators.neg', '-Number')
     setSampleCode('operators.mul', 'Number * Number')
     setSampleCode('operators.div', 'Number / Number')
     setSampleCode('operators.mod', 'Number % Number')
