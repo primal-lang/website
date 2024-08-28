@@ -92,6 +92,7 @@ const basicProperties = (withExtras) => {
 
     // arithmetic
     "abs\\s*(\?=\\()": "custom-keyword",
+    "negative\\s*(\?=\\()": "custom-keyword",
     "inc\\s*(\?=\\()": "custom-keyword",
     "dec\\s*(\?=\\()": "custom-keyword",
     "add\\s*(\?=\\()": "custom-keyword",
