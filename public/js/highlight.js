@@ -49,7 +49,8 @@ const basicProperties = (withExtras) => {
     "main\\s": "custom-keyword",
 
     // control
-    "if\\s*(\?=\\()": "custom-keyword",
+    "if\\s*": "custom-keyword",
+    "else\\s*": "custom-keyword",
     "try\\s*(\?=\\()": "custom-keyword",
 
     // error

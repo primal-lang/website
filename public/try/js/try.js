@@ -1,8 +1,47 @@
+const DEFAULT_SAMPLE = `isBiggerThan10(n) = n > 10
+
+main = isBiggerThan10(7)`
+
+const FACTORIAL_SAMPLE = `factorial(n) = if (n < 0)
+                   error.throw(0, "Cannot calculate factorial of a negative number")
+               else if (n == 0)
+                   1
+               else
+                   n * factorial(n - 1)
+
+main = factorial(5)`
+
+const FIBONACCI_SAMPLE = `fibonacci(n) = if (n == 0)
+                   0
+               else if (n == 1)
+                   1
+               else
+                   fibonacci(n - 1) + fibonacci(n - 2)
+
+main = fibonacci(10)`
+
+const IS_PRIME_SAMPLE = `isPrime(n) = if (n <= 1)
+                 false
+             else if (n == 2)
+                 true
+             else if (num.isEven(n))
+                 false
+             else
+                 isPrimeHelper(n, 3)
+
+isPrimeHelper(n, divisor) = if (divisor * divisor > n)
+                                true
+                            else if ((n % divisor) == 0)
+                                false
+                            else isPrimeHelper(n, divisor + 2)
+
+main = isPrime(97)`
+
 const SAMPLES = {
-  'default': 'isBiggerThan10(n) = n > 10\n\nmain = isBiggerThan10(7)',
-  'factorial': 'factorial(n) = if(n == 0, 1, n * factorial(n - 1))\n\nmain = factorial(5)',
-  'fibonacci': 'fibonacci(n) = if(n == 0, 0, if(n == 1, 1, fibonacci(n - 1) + fibonacci(n - 2)))\n\nmain = fibonacci(10)',
-  'isPrime': 'isPrime(n) = if(n <= 1, false, if(n == 2, true, if(num.isEven(n), false, isPrimeHelper(n, 3))))\n\nisPrimeHelper(n, divisor) = if(divisor * divisor > n, true, if((n % divisor) == 0, false, isPrimeHelper(n, divisor + 2)))\n\nmain = isPrime(97)',
+  'default': DEFAULT_SAMPLE,
+  'factorial': FACTORIAL_SAMPLE,
+  'fibonacci': FIBONACCI_SAMPLE,
+  'isPrime': IS_PRIME_SAMPLE,
   'power': 'power(base, exp) = if(exp == 0, 1, base * power(base, exp - 1))\n\nmain = power(2, 10)',
   'sumOfDigits': 'sumOfDigits(n) = if(n == 0, 0, n % 10 + sumOfDigits(to.integer(n / 10)))\n\nmain = sumOfDigits(12345)',
   'toBinary': 'toBinary(n) = if(n == 0, "0", if(n == 1, "1", str.concat(toBinary(to.integer(n / 2)), to.string(n % 2))))\n\nmain = toBinary(10)',

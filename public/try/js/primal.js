@@ -983,7 +983,7 @@
         getInterceptor = A.BoundClosure_interceptorOf;
       switch (needsDirectAccess ? -1 : arity) {
         case 0:
-          throw A.wrapException(new A.RuntimeError0("Intercepted function with no arguments."));
+          throw A.wrapException(new A.RuntimeError("Intercepted function with no arguments."));
         case 1:
           return function(entry, interceptorOf, receiverOf) {
             return function() {
@@ -1189,7 +1189,7 @@
     _CyclicInitializationError: function _CyclicInitializationError(t0) {
       this.variableName = t0;
     },
-    RuntimeError0: function RuntimeError0(t0) {
+    RuntimeError: function RuntimeError(t0) {
       this.message = t0;
     },
     _AssertionError: function _AssertionError(t0) {
@@ -3158,14 +3158,10 @@
     MalformedNumberError: function MalformedNumberError(t0) {
       this.message = t0;
     },
-    RuntimeError$(message) {
-      return new A.RuntimeError(message);
-    },
     InvalidArgumentTypesError$(actual, expected, $function) {
       return new A.InvalidArgumentTypesError('Invalid argument types for function "' + $function + '". Expected: (' + B.JSArray_methods.join$1(expected, ", ") + "). Actual: (" + B.JSArray_methods.join$1(actual, ", ") + ")");
     },
-    RuntimeError: function RuntimeError(t0) {
-      this.message = t0;
+    RuntimeError0: function RuntimeError0() {
     },
     InvalidArgumentTypesError: function InvalidArgumentTypesError(t0) {
       this.message = t0;
@@ -3336,6 +3332,14 @@
       this.location = t1;
     },
     IdentifierToken: function IdentifierToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    IfToken: function IfToken(t0, t1) {
+      this.value = t0;
+      this.location = t1;
+    },
+    ElseToken: function ElseToken(t0, t1) {
       this.value = t0;
       this.location = t1;
     },
@@ -3510,6 +3514,9 @@
     Throw: function Throw(t0, t1) {
       this.name = t0;
       this.parameters = t1;
+    },
+    CustomError: function CustomError(t0) {
+      this.message = t0;
     },
     Abs: function Abs(t0, t1) {
       this.name = t0;
@@ -4041,7 +4048,7 @@
     StandardLibrary_get() {
       var _s1_ = "a", _s1_0 = "b",
         t1 = type$.JSArray_Parameter;
-      return A._setArrayType([new A.OperatorEq("==", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorNeq("!=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorGt(">", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorLt("<", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorGe(">=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorLe("<=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorSum("+", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorSub("-", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMul("*", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorDiv("/", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMod("%", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorAnd("&", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorOr("|", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorNot("!", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.If("if", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter("c", B.C_AnyType)], t1)), new A.Try("try", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Throw("throw", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Debug("debug", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Eq("comp.eq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Neq("comp.neq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Gt("comp.gt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Ge("comp.ge", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Lt("comp.lt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Le("comp.le", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Add("num.add", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sum("num.sum", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sub("num.sub", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mul("num.mul", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Div("num.div", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mod("num.mod", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Abs("num.abs", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Negative("num.negative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Inc("num.inc", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Dec("num.dec", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Min("num.min", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Max("num.max", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Pow("num.pow", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sqrt("num.sqrt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Round("num.round", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Floor("num.floor", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Ceil("num.ceil", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Sin("num.sin", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Cos("num.cos", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Tan("num.tan", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Log("num.log", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsNegative("num.isNegative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsPositive("num.isPositive", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsZero("num.isZero", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsEven("num.isEven", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsOdd("num.isOdd", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.And("bool.and", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Or("bool.or", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Xor("bool.xor", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Not("bool.not", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.Substring("str.substring", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter("c", B.C_NumberType)], t1)), new A.StartsWith("str.startsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.EndsWith("str.endsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Replace("str.replace", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType), new A.Parameter("c", B.C_StringType)], t1)), new A.Uppercase("str.uppercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Lowercase("str.lowercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Trim("str.trim", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Match("str.match", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Length("str.length", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Concat("str.concat", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.First("str.first", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Last("str.last", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Init("str.init", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Tail("str.tail", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.At("str.at", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.IsEmpty("str.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNotEmpty("str.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Contains("str.contains", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Take("str.take", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Drop("str.drop", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Remove("str.remove", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Reverse("str.reverse", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToNumber("to.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToInteger("to.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToDecimal("to.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToString("to.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToBoolean("to.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNumber("is.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInteger("is.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsDecimal("is.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInfinite("is.infinite", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsString("is.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsBoolean("is.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1))], type$.JSArray_FunctionPrototype);
+      return A._setArrayType([new A.OperatorEq("==", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorNeq("!=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorGt(">", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorLt("<", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorGe(">=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorLe("<=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorSum("+", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorSub("-", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMul("*", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorDiv("/", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMod("%", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorAnd("&", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorOr("|", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorNot("!", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.If("if", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter("c", B.C_AnyType)], t1)), new A.Try("try", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Throw("error.throw", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Debug("debug", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Eq("comp.eq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Neq("comp.neq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Gt("comp.gt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Ge("comp.ge", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Lt("comp.lt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Le("comp.le", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Add("num.add", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sum("num.sum", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sub("num.sub", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mul("num.mul", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Div("num.div", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mod("num.mod", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Abs("num.abs", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Negative("num.negative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Inc("num.inc", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Dec("num.dec", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Min("num.min", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Max("num.max", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Pow("num.pow", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sqrt("num.sqrt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Round("num.round", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Floor("num.floor", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Ceil("num.ceil", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Sin("num.sin", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Cos("num.cos", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Tan("num.tan", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Log("num.log", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsNegative("num.isNegative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsPositive("num.isPositive", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsZero("num.isZero", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsEven("num.isEven", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsOdd("num.isOdd", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.And("bool.and", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Or("bool.or", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Xor("bool.xor", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Not("bool.not", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.Substring("str.substring", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter("c", B.C_NumberType)], t1)), new A.StartsWith("str.startsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.EndsWith("str.endsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Replace("str.replace", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType), new A.Parameter("c", B.C_StringType)], t1)), new A.Uppercase("str.uppercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Lowercase("str.lowercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Trim("str.trim", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Match("str.match", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Length("str.length", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Concat("str.concat", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.First("str.first", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Last("str.last", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Init("str.init", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Tail("str.tail", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.At("str.at", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.IsEmpty("str.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNotEmpty("str.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Contains("str.contains", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Take("str.take", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Drop("str.drop", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Remove("str.remove", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Reverse("str.reverse", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToNumber("to.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToInteger("to.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToDecimal("to.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToString("to.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToBoolean("to.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNumber("is.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInteger("is.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsDecimal("is.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInfinite("is.infinite", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsString("is.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsBoolean("is.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1))], type$.JSArray_FunctionPrototype);
     },
     StringExtensions_get_isOperandDelimiter(_this) {
       var t3,
@@ -4820,7 +4827,7 @@
       return "Reading static variable '" + this.variableName + "' during its initialization";
     }
   };
-  A.RuntimeError0.prototype = {
+  A.RuntimeError.prototype = {
     toString$0(_) {
       return "RuntimeError: " + this.message;
     }
@@ -5461,7 +5468,7 @@
       return new A.IntermediateCode(A.Mapper_toMap(functions), warnings);
     },
     expression$1(input) {
-      return new A.ExpressionParser(new A.ListIterator0(new A.LexicalAnalyzer(new A.Scanner(A._asString(input)).analyze$0()).analyze$0(), type$.ListIterator_Token_dynamic)).equality$0();
+      return new A.ExpressionParser(new A.ListIterator0(new A.LexicalAnalyzer(new A.Scanner(A._asString(input)).analyze$0()).analyze$0(), type$.ListIterator_Token_dynamic)).ifExpression$0();
     }
   };
   A.GenericError.prototype = {
@@ -5472,7 +5479,7 @@
   A.LexicalError.prototype = {};
   A.InvalidCharacterError.prototype = {};
   A.MalformedNumberError.prototype = {};
-  A.RuntimeError.prototype = {};
+  A.RuntimeError0.prototype = {};
   A.InvalidArgumentTypesError.prototype = {};
   A.InvalidArgumentCountError.prototype = {};
   A.NotFoundInScope.prototype = {};
@@ -5708,8 +5715,18 @@
           t4 = A.Primitives_parseBool(t3, true);
           t3 = t4 == null ? A.throwExpression(A.FormatException$("Invalid boolean", t3)) : t4;
           t1.push(new A.BooleanToken(t3, t2.location));
-        } else
-          t1.push(new A.IdentifierToken(t3, t2.location));
+        } else {
+          t4 = A.RegExp_RegExp("if");
+          if (t4._nativeRegExp.test(t3))
+            t1.push(new A.IfToken(t3, t2.location));
+          else {
+            t4 = A.RegExp_RegExp("else");
+            if (t4._nativeRegExp.test(t3))
+              t1.push(new A.ElseToken(t3, t2.location));
+            else
+              t1.push(new A.IdentifierToken(t3, t2.location));
+          }
+        }
         return new A.ResultState(true, t1, _this.iterator);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
@@ -5916,9 +5933,20 @@
   };
   A.OpenParenthesisState.prototype = {
     process$1(input) {
-      var t1;
+      var t1, t2, t3;
       type$.Character._as(input);
-      if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
+      t1 = input.value;
+      t2 = true;
+      if (!A.StringExtensions_get_isOperatorDelimiter(t1)) {
+        t3 = A.RegExp_RegExp("-");
+        if (!t3._nativeRegExp.test(t1)) {
+          t2 = A.RegExp_RegExp("!");
+          t1 = t2._nativeRegExp.test(t1);
+        } else
+          t1 = t2;
+      } else
+        t1 = t2;
+      if (t1) {
         t1 = this.output;
         return new A.ResultState(true, A._setArrayType([new A.OpenParenthesisToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
       } else
@@ -5969,6 +5997,8 @@
   A.NumberToken.prototype = {};
   A.BooleanToken.prototype = {};
   A.IdentifierToken.prototype = {};
+  A.IfToken.prototype = {};
+  A.ElseToken.prototype = {};
   A.MinusToken.prototype = {};
   A.PlusToken.prototype = {};
   A.ForwardSlashToken.prototype = {};
@@ -6327,9 +6357,12 @@
   };
   A.Throw.prototype = {
     substitute$1($arguments) {
-      throw A.wrapException(A.RuntimeError$(type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0).toString$0(0)));
+      type$.Scope_Reducible._as($arguments);
+      $arguments.$get$1("a").reduce$0(0);
+      throw A.wrapException(new A.CustomError($arguments.$get$1("b").reduce$0(0).toString$0(0)));
     }
   };
+  A.CustomError.prototype = {};
   A.Abs.prototype = {
     substitute$1($arguments) {
       var t1,
@@ -7648,6 +7681,17 @@
     $signature: 8
   };
   A.ExpressionParser.prototype = {
+    ifExpression$0() {
+      var condition, ifTrue, t1, _this = this;
+      if (_this.match$1(A._setArrayType([B.Type_IfToken_8aB], type$.JSArray_Type))) {
+        condition = _this.ifExpression$0();
+        ifTrue = _this.ifExpression$0();
+        _this.consume$2(B.Type_ElseToken_AgZ, "else");
+        t1 = condition.location;
+        return new A.CallExpression(new A.IdentifierExpression("if", t1), A._setArrayType([condition, ifTrue, _this.ifExpression$0()], type$.JSArray_Expression), t1);
+      } else
+        return _this.equality$0();
+    },
     equality$0() {
       var t1, t2, t3, t4, right, t5, _this = this,
         expression = _this.comparison$0();
@@ -7722,20 +7766,17 @@
           return new A.CallExpression(new A.IdentifierExpression(A._asString(t2), t1), A._setArrayType([t4, right], t3), t1);
         } else
           return new A.CallExpression(new A.IdentifierExpression(A._asString(t2), t1), A._setArrayType([right], t3), t1);
-      }
-      return _this.call$0();
+      } else
+        return _this.call$0();
     },
     call$0() {
       var t1, _this = this,
         expression = _this.primary$0();
-      for (t1 = type$.JSArray_Type; true;)
-        if (_this.match$1(A._setArrayType([B.Type_OpenParenthesisToken_E4y], t1)))
-          if (expression instanceof A.IdentifierExpression || expression instanceof A.CallExpression)
-            expression = _this.finishCall$1(expression);
-          else
-            throw A.wrapException(A.InvalidTokenError$(_this.get$peek()));
+      for (t1 = type$.JSArray_Type; _this.match$1(A._setArrayType([B.Type_OpenParenthesisToken_E4y], t1));)
+        if (expression instanceof A.IdentifierExpression || expression instanceof A.CallExpression)
+          expression = _this.finishCall$1(expression);
         else
-          break;
+          throw A.wrapException(A.InvalidTokenError$(_this.get$peek()));
       return expression;
     },
     finishCall$1(callee) {
@@ -7744,7 +7785,7 @@
       if (!_this.check$1(B.Type_CloseParenthesisToken_Ug2)) {
         t1 = type$.JSArray_Type;
         do
-          B.JSArray_methods.add$1($arguments, _this.equality$0());
+          B.JSArray_methods.add$1($arguments, _this.ifExpression$0());
         while (_this.match$1(A._setArrayType([B.Type_CommaToken_iHe], t1)));
       }
       _this.consume$2(B.Type_CloseParenthesisToken_Ug2, ")");
@@ -7769,9 +7810,8 @@
         t1 = _this.iterator.get$previous();
         t1.toString;
         return new A.IdentifierExpression(A._asString(t1.value), t1.location);
-      }
-      if (_this.match$1(A._setArrayType([B.Type_OpenParenthesisToken_E4y], t1))) {
-        expr = _this.equality$0();
+      } else if (_this.match$1(A._setArrayType([B.Type_OpenParenthesisToken_E4y], t1))) {
+        expr = _this.ifExpression$0();
         _this.consume$2(B.Type_CloseParenthesisToken_Ug2, ")");
         return expr;
       }
@@ -7862,7 +7902,7 @@
       if (input instanceof A.AssignToken) {
         t1 = _this.iterator;
         t2 = _this.output;
-        t3 = new A.ExpressionParser(t1).equality$0();
+        t3 = new A.ExpressionParser(t1).ifExpression$0();
         return new A.ResultState0(new A.FunctionDefinition(t2.name, t2.parameters, t3), t1);
       } else if (input instanceof A.OpenParenthesisToken)
         return new A.FunctionWithParametersState(_this.output, _this.iterator);
@@ -7907,7 +7947,7 @@
       if (input instanceof A.AssignToken) {
         t1 = this.iterator;
         t2 = this.output;
-        t3 = new A.ExpressionParser(t1).equality$0();
+        t3 = new A.ExpressionParser(t1).ifExpression$0();
         return new A.ResultState0(new A.FunctionDefinition(t2.name, t2.parameters, t3), t1);
       } else
         throw A.wrapException(A.InvalidTokenError$(input));
@@ -7995,7 +8035,7 @@
     _inheritMany(J.LegacyJavaScriptObject, [J.PlainJavaScriptObject, J.UnknownJavaScriptObject, J.JavaScriptFunction]);
     _inherit(J.JSUnmodifiableArray, J.JSArray);
     _inheritMany(J.JSNumber, [J.JSInt, J.JSNumNotInt]);
-    _inheritMany(A.Error, [A.LateError, A._CyclicInitializationError, A.RuntimeError0, A.AssertionError, A._Error, A.TypeError, A.ArgumentError, A.NoSuchMethodError, A.UnsupportedError, A.StateError, A.ConcurrentModificationError]);
+    _inheritMany(A.Error, [A.LateError, A._CyclicInitializationError, A.RuntimeError, A.AssertionError, A._Error, A.TypeError, A.ArgumentError, A.NoSuchMethodError, A.UnsupportedError, A.StateError, A.ConcurrentModificationError]);
     _inheritMany(A.Iterable, [A.EfficientLengthIterable, A.MappedIterable, A.WhereTypeIterable, A.Runes]);
     _inheritMany(A.EfficientLengthIterable, [A.ListIterable, A.LinkedHashMapKeyIterable]);
     _inherit(A.EfficientLengthMappedIterable, A.MappedIterable);
@@ -8013,15 +8053,15 @@
     _inherit(A._SetBase, A.SetBase);
     _inherit(A._LinkedHashSet, A._SetBase);
     _inheritMany(A.ArgumentError, [A.RangeError, A.IndexError]);
-    _inheritMany(A.GenericError, [A.LexicalError, A.RuntimeError, A.SemanticError, A.UndefinedFunctionError, A.InvalidNumberOfArgumentsError, A.SyntacticError]);
+    _inheritMany(A.GenericError, [A.LexicalError, A.RuntimeError0, A.SemanticError, A.UndefinedFunctionError, A.InvalidNumberOfArgumentsError, A.SyntacticError, A.CustomError]);
     _inheritMany(A.LexicalError, [A.InvalidCharacterError, A.MalformedNumberError]);
-    _inheritMany(A.RuntimeError, [A.InvalidArgumentTypesError, A.InvalidArgumentCountError, A.NotFoundInScope, A.EmptyExpressionEvaluationError]);
+    _inheritMany(A.RuntimeError0, [A.InvalidArgumentTypesError, A.InvalidArgumentCountError, A.NotFoundInScope, A.EmptyExpressionEvaluationError]);
     _inheritMany(A.SemanticError, [A.DuplicatedFunctionError, A.DuplicatedParameterError, A.UndefinedIdentifiersError]);
     _inheritMany(A.SyntacticError, [A.InvalidTokenError, A.ExpectedTokenError, A.UnexpectedEndOfFileError]);
     _inheritMany(A.Analyzer, [A.LexicalAnalyzer, A.Scanner, A.SemanticAnalyzer, A.SyntacticAnalyzer]);
     _inheritMany(A.State, [A.InitState, A.StringDoubleQuoteState, A.StringSingleQuoteState, A.IntegerState, A.DecimalInitState, A.DecimalState, A.IdentifierState, A.MinusState, A.PlusState, A.EqualsState, A.GreaterState, A.LessState, A.PipeState, A.AmpersandState, A.BangState, A.ForwardSlashState, A.AsteriskState, A.PercentState, A.SingleLineCommentState, A.StartMultiLineCommentState, A.ClosingMultiLineCommentState, A.CommaState, A.OpenParenthesisState, A.CloseParenthesisState, A.ResultState, A.InitState0, A.FunctionNameState, A.FunctionWithParametersState, A.FunctionWithNewParametersState, A.FunctionWithNextParametersState, A.FunctionParametrizedState, A.ResultState0]);
     _inheritMany(A.Localized, [A.Lexeme, A.Token, A.Character, A.Expression]);
-    _inheritMany(A.Token, [A.StringToken, A.NumberToken, A.BooleanToken, A.IdentifierToken, A.MinusToken, A.PlusToken, A.ForwardSlashToken, A.AsteriskToken, A.PercentToken, A.PipeToken, A.AmpersandToken, A.BangToken, A.EqualToken, A.NotEqualToken, A.GreaterThanToken, A.GreaterEqualThanToken, A.LessThanToken, A.LessEqualThanToken, A.AssignToken, A.CommaToken, A.OpenParenthesisToken, A.CloseParenthesisToken]);
+    _inheritMany(A.Token, [A.StringToken, A.NumberToken, A.BooleanToken, A.IdentifierToken, A.IfToken, A.ElseToken, A.MinusToken, A.PlusToken, A.ForwardSlashToken, A.AsteriskToken, A.PercentToken, A.PipeToken, A.AmpersandToken, A.BangToken, A.EqualToken, A.NotEqualToken, A.GreaterThanToken, A.GreaterEqualThanToken, A.LessThanToken, A.LessEqualThanToken, A.AssignToken, A.CommaToken, A.OpenParenthesisToken, A.CloseParenthesisToken]);
     _inheritMany(A.FunctionPrototype, [A.NativeFunctionPrototype, A.CustomFunctionPrototype]);
     _inheritMany(A.NativeFunctionPrototype, [A.And, A.Not, A.Or, A.Xor, A.IsBoolean, A.IsDecimal, A.IsInfinite, A.IsInteger, A.IsNumber, A.IsString, A.ToBoolean, A.ToDecimal, A.ToInteger, A.ToNumber, A.ToString, A.Eq, A.Ge, A.Gt, A.Le, A.Lt, A.Neq, A.If, A.Try, A.Debug, A.Throw, A.Abs, A.Add, A.Ceil, A.Cos, A.Dec, A.Div, A.Floor, A.Inc, A.IsEven, A.IsNegative, A.IsOdd, A.IsPositive, A.IsZero, A.Log, A.Max, A.Min, A.Mod, A.Mul, A.Negative, A.Pow, A.Round, A.Sin, A.Sqrt, A.Sub, A.Sum, A.Tan, A.OperatorAnd, A.OperatorDiv, A.OperatorEq, A.OperatorGe, A.OperatorGt, A.OperatorLe, A.OperatorLt, A.OperatorMod, A.OperatorMul, A.OperatorNeq, A.OperatorNot, A.OperatorOr, A.OperatorSub, A.OperatorSum, A.At, A.Concat, A.Contains, A.Drop, A.EndsWith, A.First, A.Init, A.IsEmpty, A.IsNotEmpty, A.Last, A.Length, A.Lowercase, A.Match, A.Remove, A.Replace, A.Reverse, A.StartsWith, A.Substring, A.Tail, A.Take, A.Trim, A.Uppercase]);
     _inheritMany(A.Type0, [A.StringType, A.NumberType, A.BooleanType, A.AnyType]);
@@ -8043,7 +8083,7 @@
     leafTags: null,
     arrayRti: Symbol("$ti")
   };
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"_Type":{"Type":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalInitState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IdentifierState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"MinusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PlusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"EqualsState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"GreaterState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"LessState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PipeState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AmpersandState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"BangState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ForwardSlashState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AsteriskState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PercentState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SingleLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StartMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ClosingMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommaState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"IdentifierToken":{"Token":["String"],"Token.T":"String"},"MinusToken":{"Token":["String"],"Token.T":"String"},"PlusToken":{"Token":["String"],"Token.T":"String"},"ForwardSlashToken":{"Token":["String"],"Token.T":"String"},"AsteriskToken":{"Token":["String"],"Token.T":"String"},"PercentToken":{"Token":["String"],"Token.T":"String"},"PipeToken":{"Token":["String"],"Token.T":"String"},"AmpersandToken":{"Token":["String"],"Token.T":"String"},"BangToken":{"Token":["String"],"Token.T":"String"},"EqualToken":{"Token":["String"],"Token.T":"String"},"NotEqualToken":{"Token":["String"],"Token.T":"String"},"GreaterThanToken":{"Token":["String"],"Token.T":"String"},"GreaterEqualThanToken":{"Token":["String"],"Token.T":"String"},"LessThanToken":{"Token":["String"],"Token.T":"String"},"LessEqualThanToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"AssignToken":{"Token":["String"],"Token.T":"String"},"And":{"FunctionPrototype":[]},"Not":{"FunctionPrototype":[]},"Or":{"FunctionPrototype":[]},"Xor":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"Eq":{"FunctionPrototype":[]},"Ge":{"FunctionPrototype":[]},"Gt":{"FunctionPrototype":[]},"Le":{"FunctionPrototype":[]},"Lt":{"FunctionPrototype":[]},"Neq":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Debug":{"FunctionPrototype":[]},"Throw":{"FunctionPrototype":[]},"Abs":{"FunctionPrototype":[]},"Add":{"FunctionPrototype":[]},"Ceil":{"FunctionPrototype":[]},"Cos":{"FunctionPrototype":[]},"Dec":{"FunctionPrototype":[]},"Div":{"FunctionPrototype":[]},"Floor":{"FunctionPrototype":[]},"Inc":{"FunctionPrototype":[]},"IsEven":{"FunctionPrototype":[]},"IsNegative":{"FunctionPrototype":[]},"IsOdd":{"FunctionPrototype":[]},"IsPositive":{"FunctionPrototype":[]},"IsZero":{"FunctionPrototype":[]},"Log":{"FunctionPrototype":[]},"Max":{"FunctionPrototype":[]},"Min":{"FunctionPrototype":[]},"Mod":{"FunctionPrototype":[]},"Mul":{"FunctionPrototype":[]},"Negative":{"FunctionPrototype":[]},"Pow":{"FunctionPrototype":[]},"Round":{"FunctionPrototype":[]},"Sin":{"FunctionPrototype":[]},"Sqrt":{"FunctionPrototype":[]},"Sub":{"FunctionPrototype":[]},"Sum":{"FunctionPrototype":[]},"Tan":{"FunctionPrototype":[]},"OperatorAnd":{"FunctionPrototype":[]},"OperatorDiv":{"FunctionPrototype":[]},"OperatorEq":{"FunctionPrototype":[]},"OperatorGe":{"FunctionPrototype":[]},"OperatorGt":{"FunctionPrototype":[]},"OperatorLe":{"FunctionPrototype":[]},"OperatorLt":{"FunctionPrototype":[]},"OperatorMod":{"FunctionPrototype":[]},"OperatorMul":{"FunctionPrototype":[]},"OperatorNeq":{"FunctionPrototype":[]},"OperatorNot":{"FunctionPrototype":[]},"OperatorOr":{"FunctionPrototype":[]},"OperatorSub":{"FunctionPrototype":[]},"OperatorSum":{"FunctionPrototype":[]},"At":{"FunctionPrototype":[]},"Concat":{"FunctionPrototype":[]},"Contains":{"FunctionPrototype":[]},"Drop":{"FunctionPrototype":[]},"EndsWith":{"FunctionPrototype":[]},"First":{"FunctionPrototype":[]},"Init":{"FunctionPrototype":[]},"IsEmpty":{"FunctionPrototype":[]},"IsNotEmpty":{"FunctionPrototype":[]},"Last":{"FunctionPrototype":[]},"Length":{"FunctionPrototype":[]},"Lowercase":{"FunctionPrototype":[]},"Match":{"FunctionPrototype":[]},"Remove":{"FunctionPrototype":[]},"Replace":{"FunctionPrototype":[]},"Reverse":{"FunctionPrototype":[]},"StartsWith":{"FunctionPrototype":[]},"Substring":{"FunctionPrototype":[]},"Tail":{"FunctionPrototype":[]},"Take":{"FunctionPrototype":[]},"Trim":{"FunctionPrototype":[]},"Uppercase":{"FunctionPrototype":[]},"StringType":{"Type0":[]},"NumberType":{"Type0":[]},"BooleanType":{"Type0":[]},"AnyType":{"Type0":[]},"ReducibleValue":{"Reducible":[]},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"IdentifierReducible":{"Reducible":[]},"ExpressionReducible":{"Reducible":[]},"Scanner":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"EmptyExpression":{"Expression":[]},"LiteralExpression":{"Expression":[]},"BooleanLiteralExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"NumberLiteralExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"StringLiteralExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"IdentifierExpression":{"Expression":[]},"CallExpression":{"Expression":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState0":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState0":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]}}'));
+  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"_Type":{"Type":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalInitState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IdentifierState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"MinusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PlusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"EqualsState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"GreaterState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"LessState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PipeState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AmpersandState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"BangState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ForwardSlashState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AsteriskState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PercentState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SingleLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StartMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ClosingMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommaState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"IdentifierToken":{"Token":["String"],"Token.T":"String"},"IfToken":{"Token":["String"],"Token.T":"String"},"ElseToken":{"Token":["String"],"Token.T":"String"},"MinusToken":{"Token":["String"],"Token.T":"String"},"PlusToken":{"Token":["String"],"Token.T":"String"},"ForwardSlashToken":{"Token":["String"],"Token.T":"String"},"AsteriskToken":{"Token":["String"],"Token.T":"String"},"PercentToken":{"Token":["String"],"Token.T":"String"},"PipeToken":{"Token":["String"],"Token.T":"String"},"AmpersandToken":{"Token":["String"],"Token.T":"String"},"BangToken":{"Token":["String"],"Token.T":"String"},"EqualToken":{"Token":["String"],"Token.T":"String"},"NotEqualToken":{"Token":["String"],"Token.T":"String"},"GreaterThanToken":{"Token":["String"],"Token.T":"String"},"GreaterEqualThanToken":{"Token":["String"],"Token.T":"String"},"LessThanToken":{"Token":["String"],"Token.T":"String"},"LessEqualThanToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"AssignToken":{"Token":["String"],"Token.T":"String"},"And":{"FunctionPrototype":[]},"Not":{"FunctionPrototype":[]},"Or":{"FunctionPrototype":[]},"Xor":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"Eq":{"FunctionPrototype":[]},"Ge":{"FunctionPrototype":[]},"Gt":{"FunctionPrototype":[]},"Le":{"FunctionPrototype":[]},"Lt":{"FunctionPrototype":[]},"Neq":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Debug":{"FunctionPrototype":[]},"Throw":{"FunctionPrototype":[]},"Abs":{"FunctionPrototype":[]},"Add":{"FunctionPrototype":[]},"Ceil":{"FunctionPrototype":[]},"Cos":{"FunctionPrototype":[]},"Dec":{"FunctionPrototype":[]},"Div":{"FunctionPrototype":[]},"Floor":{"FunctionPrototype":[]},"Inc":{"FunctionPrototype":[]},"IsEven":{"FunctionPrototype":[]},"IsNegative":{"FunctionPrototype":[]},"IsOdd":{"FunctionPrototype":[]},"IsPositive":{"FunctionPrototype":[]},"IsZero":{"FunctionPrototype":[]},"Log":{"FunctionPrototype":[]},"Max":{"FunctionPrototype":[]},"Min":{"FunctionPrototype":[]},"Mod":{"FunctionPrototype":[]},"Mul":{"FunctionPrototype":[]},"Negative":{"FunctionPrototype":[]},"Pow":{"FunctionPrototype":[]},"Round":{"FunctionPrototype":[]},"Sin":{"FunctionPrototype":[]},"Sqrt":{"FunctionPrototype":[]},"Sub":{"FunctionPrototype":[]},"Sum":{"FunctionPrototype":[]},"Tan":{"FunctionPrototype":[]},"OperatorAnd":{"FunctionPrototype":[]},"OperatorDiv":{"FunctionPrototype":[]},"OperatorEq":{"FunctionPrototype":[]},"OperatorGe":{"FunctionPrototype":[]},"OperatorGt":{"FunctionPrototype":[]},"OperatorLe":{"FunctionPrototype":[]},"OperatorLt":{"FunctionPrototype":[]},"OperatorMod":{"FunctionPrototype":[]},"OperatorMul":{"FunctionPrototype":[]},"OperatorNeq":{"FunctionPrototype":[]},"OperatorNot":{"FunctionPrototype":[]},"OperatorOr":{"FunctionPrototype":[]},"OperatorSub":{"FunctionPrototype":[]},"OperatorSum":{"FunctionPrototype":[]},"At":{"FunctionPrototype":[]},"Concat":{"FunctionPrototype":[]},"Contains":{"FunctionPrototype":[]},"Drop":{"FunctionPrototype":[]},"EndsWith":{"FunctionPrototype":[]},"First":{"FunctionPrototype":[]},"Init":{"FunctionPrototype":[]},"IsEmpty":{"FunctionPrototype":[]},"IsNotEmpty":{"FunctionPrototype":[]},"Last":{"FunctionPrototype":[]},"Length":{"FunctionPrototype":[]},"Lowercase":{"FunctionPrototype":[]},"Match":{"FunctionPrototype":[]},"Remove":{"FunctionPrototype":[]},"Replace":{"FunctionPrototype":[]},"Reverse":{"FunctionPrototype":[]},"StartsWith":{"FunctionPrototype":[]},"Substring":{"FunctionPrototype":[]},"Tail":{"FunctionPrototype":[]},"Take":{"FunctionPrototype":[]},"Trim":{"FunctionPrototype":[]},"Uppercase":{"FunctionPrototype":[]},"StringType":{"Type0":[]},"NumberType":{"Type0":[]},"BooleanType":{"Type0":[]},"AnyType":{"Type0":[]},"ReducibleValue":{"Reducible":[]},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"IdentifierReducible":{"Reducible":[]},"ExpressionReducible":{"Reducible":[]},"Scanner":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"EmptyExpression":{"Expression":[]},"LiteralExpression":{"Expression":[]},"BooleanLiteralExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"NumberLiteralExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"StringLiteralExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"IdentifierExpression":{"Expression":[]},"CallExpression":{"Expression":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState0":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState0":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]}}'));
   A._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"EfficientLengthIterable":1,"_SetBase":1}'));
   var type$ = (function rtii() {
     var findType = A.findType;
@@ -8147,11 +8187,13 @@
     B.Type_BooleanToken_SEt = A.typeLiteral("BooleanToken");
     B.Type_CloseParenthesisToken_Ug2 = A.typeLiteral("CloseParenthesisToken");
     B.Type_CommaToken_iHe = A.typeLiteral("CommaToken");
+    B.Type_ElseToken_AgZ = A.typeLiteral("ElseToken");
     B.Type_EqualToken_Qm0 = A.typeLiteral("EqualToken");
     B.Type_ForwardSlashToken_gZu = A.typeLiteral("ForwardSlashToken");
     B.Type_GreaterEqualThanToken_HP5 = A.typeLiteral("GreaterEqualThanToken");
     B.Type_GreaterThanToken_AgZ = A.typeLiteral("GreaterThanToken");
     B.Type_IdentifierToken_DKt = A.typeLiteral("IdentifierToken");
+    B.Type_IfToken_8aB = A.typeLiteral("IfToken");
     B.Type_LessEqualThanToken_2bB = A.typeLiteral("LessEqualThanToken");
     B.Type_LessThanToken_7v8 = A.typeLiteral("LessThanToken");
     B.Type_MinusToken_wEo = A.typeLiteral("MinusToken");
