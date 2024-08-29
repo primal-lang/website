@@ -33,19 +33,54 @@ isPrimeHelper(n, divisor) = if (divisor * divisor > n)
                                 true
                             else if ((n % divisor) == 0)
                                 false
-                            else isPrimeHelper(n, divisor + 2)
+                            else
+                                isPrimeHelper(n, divisor + 2)
 
 main = isPrime(97)`
+
+const POWER_SAMPLE = `power(base, exp) = if (exp == 0)
+                       1
+                   else
+                      base * power(base, exp - 1)
+
+main = power(2, 10)`
+
+const SUM_OF_DIGITS_SAMPLE = `sumOfDigits(n) = if (n == 0)
+                     0
+                 else
+                     n % 10 + sumOfDigits(to.integer(n / 10))
+
+main = sumOfDigits(123456789)`
+
+const TO_BINARY_SAMPLE = `toBinary(n) = if (n == 0)
+                  "0"
+              else if (n == 1)
+                  "1"
+              else
+                  str.concat(toBinary(to.integer(n / 2)), to.string(n % 2))
+
+main = toBinary(10)`
+
+const IS_PALINDROME_SAMPLE = `isPalindrome(s) = isPalindromeHelper(s, 0, str.length(s) - 1)
+
+isPalindromeHelper(s, start, end) = if (start >= end)
+                                        true
+                                    else if (str.at(s, start) != str.at(s, end))
+                                        false
+                                    else
+                                        isPalindromeHelper(s, start + 1, end - 1)
+
+main = isPalindrome("level")`
 
 const SAMPLES = {
   'default': DEFAULT_SAMPLE,
   'factorial': FACTORIAL_SAMPLE,
   'fibonacci': FIBONACCI_SAMPLE,
   'isPrime': IS_PRIME_SAMPLE,
-  'power': 'power(base, exp) = if(exp == 0, 1, base * power(base, exp - 1))\n\nmain = power(2, 10)',
-  'sumOfDigits': 'sumOfDigits(n) = if(n == 0, 0, n % 10 + sumOfDigits(to.integer(n / 10)))\n\nmain = sumOfDigits(12345)',
-  'toBinary': 'toBinary(n) = if(n == 0, "0", if(n == 1, "1", str.concat(toBinary(to.integer(n / 2)), to.string(n % 2))))\n\nmain = toBinary(10)',
-  'isPalindrome': 'isPalindrome(s) = isPalindromeHelper(s, 0, str.length(s) - 1)\n\nisPalindromeHelper(s, start, end) = if(start >= end, true, if(str.at(s, start) != str.at(s, end), false, isPalindromeHelper(s, start + 1, end - 1)))\n\nmain = isPalindrome("level")',
+  'power': POWER_SAMPLE,
+  'sumOfDigits': SUM_OF_DIGITS_SAMPLE,
+  'toBinary': TO_BINARY_SAMPLE,
+  'isPalindrome': IS_PALINDROME_SAMPLE,
 }
 
 const INPUTS = localStorage.getItem('consoleHistory') ? JSON.parse(localStorage.getItem('consoleHistory')) : []

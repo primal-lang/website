@@ -7682,13 +7682,16 @@
   };
   A.ExpressionParser.prototype = {
     ifExpression$0() {
-      var condition, ifTrue, t1, _this = this;
+      var t1, condition, ifTrue, ifFalse, t2, _this = this;
       if (_this.match$1(A._setArrayType([B.Type_IfToken_8aB], type$.JSArray_Type))) {
+        t1 = _this.iterator.get$previous();
+        t1.toString;
         condition = _this.ifExpression$0();
         ifTrue = _this.ifExpression$0();
         _this.consume$2(B.Type_ElseToken_AgZ, "else");
-        t1 = condition.location;
-        return new A.CallExpression(new A.IdentifierExpression("if", t1), A._setArrayType([condition, ifTrue, _this.ifExpression$0()], type$.JSArray_Expression), t1);
+        ifFalse = _this.ifExpression$0();
+        t2 = t1.location;
+        return new A.CallExpression(new A.IdentifierExpression(A._asString(t1.value), t2), A._setArrayType([condition, ifTrue, ifFalse], type$.JSArray_Expression), t2);
       } else
         return _this.equality$0();
     },
