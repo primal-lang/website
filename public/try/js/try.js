@@ -57,7 +57,7 @@ const TO_BINARY_SAMPLE = `toBinary(n) = if (n == 0)
               else if (n == 1)
                   "1"
               else
-                  str.concat(toBinary(to.integer(n / 2)), to.string(n % 2))
+                  toBinary(to.integer(n / 2)) + to.string(n % 2)
 
 main = toBinary(10)`
 
