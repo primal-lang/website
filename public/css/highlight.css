@@ -29,24 +29,24 @@
 
 /* Number */
 .cm-s-dracula span.cm-number {
-  color: #599eff;
+  color: #f1d086;
 }
 
 /* Boolean  */
 .cm-s-dracula span.cm-atom {
-  color: #ae80d5;
+  color: #f1d086;
 }
 
 /********************************/
 
 /* Variable */
 .cm-s-dracula span.cm-variable {
-  color: #92df8c;
+  color: #7dc777;
 }
 
 /* Variable */
 .cm-s-dracula span.cm-keyword {
-  color: #92df8c;
+  color: #7dc777;
 }
 
 /* Operators */
@@ -65,6 +65,12 @@
 .cm-custom-keyword {
   color: #d381cc !important;
 }
+
+/* Native function */
+.cm-custom-native-function {
+  color: #5aa3df !important;
+}
+
 /* Type */
 .cm-custom-type {
   color: #8ebcfc !important;
