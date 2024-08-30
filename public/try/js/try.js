@@ -1,87 +1,15 @@
-const DEFAULT_SAMPLE = `isBiggerThan10(n) = n > 10
-
-main = isBiggerThan10(7)`
-
-const FACTORIAL_SAMPLE = `factorial(n) = if (n < 0)
-                   error.throw(0, "Cannot calculate factorial of a negative number")
-               else if (n == 0)
-                   1
-               else
-                   n * factorial(n - 1)
-
-main = factorial(5)`
-
-const FIBONACCI_SAMPLE = `fibonacci(n) = if (n == 0)
-                   0
-               else if (n == 1)
-                   1
-               else
-                   fibonacci(n - 1) + fibonacci(n - 2)
-
-main = fibonacci(10)`
-
-const IS_PRIME_SAMPLE = `isPrime(n) = if (n <= 1)
-                 false
-             else if (n == 2)
-                 true
-             else if (num.isEven(n))
-                 false
-             else
-                 isPrimeHelper(n, 3)
-
-isPrimeHelper(n, divisor) = if (divisor * divisor > n)
-                                true
-                            else if ((n % divisor) == 0)
-                                false
-                            else
-                                isPrimeHelper(n, divisor + 2)
-
-main = isPrime(97)`
-
-const POWER_SAMPLE = `power(base, exp) = if (exp == 0)
-                       1
-                   else
-                      base * power(base, exp - 1)
-
-main = power(2, 10)`
-
-const SUM_OF_DIGITS_SAMPLE = `sumOfDigits(n) = if (n == 0)
-                     0
-                 else
-                     n % 10 + sumOfDigits(to.integer(n / 10))
-
-main = sumOfDigits(123456789)`
-
-const TO_BINARY_SAMPLE = `toBinary(n) = if (n == 0)
-                  "0"
-              else if (n == 1)
-                  "1"
-              else
-                  toBinary(to.integer(n / 2)) + to.string(n % 2)
-
-main = toBinary(10)`
-
-const IS_PALINDROME_SAMPLE = `isPalindrome(s) = isPalindromeHelper(s, 0, str.length(s) - 1)
-
-isPalindromeHelper(s, start, end) = if (start >= end)
-                                        true
-                                    else if (str.at(s, start) != str.at(s, end))
-                                        false
-                                    else
-                                        isPalindromeHelper(s, start + 1, end - 1)
-
-main = isPalindrome("level")`
 
 const SAMPLES = {
-  'default': DEFAULT_SAMPLE,
-  'factorial': FACTORIAL_SAMPLE,
-  'fibonacci': FIBONACCI_SAMPLE,
-  'isPrime': IS_PRIME_SAMPLE,
-  'power': POWER_SAMPLE,
-  'sumOfDigits': SUM_OF_DIGITS_SAMPLE,
-  'toBinary': TO_BINARY_SAMPLE,
-  'isPalindrome': IS_PALINDROME_SAMPLE,
+  'default': 'isBiggerThan10(n) = n > 10\n\nmain = isBiggerThan10(7)',
 }
+
+getSample('samples/factorial.prm', 'factorial')
+getSample('samples/fibonacci.prm', 'fibonacci')
+getSample('samples/is_prime.prm', 'isPrime')
+getSample('samples/power.prm', 'power')
+getSample('samples/sum_of_digits.prm', 'sumOfDigits')
+getSample('samples/to_binary.prm', 'toBinary')
+getSample('samples/is_palindrome.prm', 'isPalindrome')
 
 const INPUTS = localStorage.getItem('consoleHistory') ? JSON.parse(localStorage.getItem('consoleHistory')) : []
 let inputIndex = (INPUTS.length > 0) ? INPUTS.length : -1
@@ -289,4 +217,10 @@ function showInputHistory() {
   } else if (inputIndex === INPUTS.length) {
     consoleInput.value = ''
   }
+}
+
+function getSample(url, name) {
+  $.get(url, function (data) {
+    SAMPLES[name] = data
+  })
 }
