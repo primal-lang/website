@@ -3155,9 +3155,6 @@
     InvalidCharacterError: function InvalidCharacterError(t0) {
       this.message = t0;
     },
-    MalformedNumberError: function MalformedNumberError(t0) {
-      this.message = t0;
-    },
     InvalidArgumentTypesError$(actual, expected, $function) {
       return new A.InvalidArgumentTypesError('Invalid argument types for function "' + $function + '". Expected: (' + B.JSArray_methods.join$1(expected, ", ") + "). Actual: (" + B.JSArray_methods.join$1(actual, ", ") + ")");
     },
@@ -3305,10 +3302,9 @@
       this.output = t0;
       this.iterator = t1;
     },
-    ResultState: function ResultState(t0, t1, t2) {
-      this.goBack = t0;
-      this.output = t1;
-      this.iterator = t2;
+    ResultState: function ResultState(t0, t1) {
+      this.output = t0;
+      this.iterator = t1;
     },
     Lexeme: function Lexeme(t0, t1) {
       this.value = t0;
@@ -4051,54 +4047,10 @@
       return A._setArrayType([new A.OperatorEq("==", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorNeq("!=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorGt(">", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorLt("<", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorGe(">=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorLe("<=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorAdd("+", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorSub("-", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMul("*", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorDiv("/", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMod("%", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorAnd("&", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorOr("|", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorNot("!", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.If("if", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter("c", B.C_AnyType)], t1)), new A.Try("try", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Throw("error.throw", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Debug("debug", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Eq("comp.eq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Neq("comp.neq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Gt("comp.gt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Ge("comp.ge", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Lt("comp.lt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Le("comp.le", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Add("num.add", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sum("num.sum", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sub("num.sub", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mul("num.mul", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Div("num.div", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Mod("num.mod", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Abs("num.abs", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Negative("num.negative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Inc("num.inc", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Dec("num.dec", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Min("num.min", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Max("num.max", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Pow("num.pow", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Sqrt("num.sqrt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Round("num.round", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Floor("num.floor", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Ceil("num.ceil", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Sin("num.sin", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Cos("num.cos", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Tan("num.tan", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.Log("num.log", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsNegative("num.isNegative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsPositive("num.isPositive", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsZero("num.isZero", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsEven("num.isEven", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsOdd("num.isOdd", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.And("bool.and", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Or("bool.or", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Xor("bool.xor", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.Not("bool.not", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.Substring("str.substring", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter("c", B.C_NumberType)], t1)), new A.StartsWith("str.startsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.EndsWith("str.endsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Replace("str.replace", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType), new A.Parameter("c", B.C_StringType)], t1)), new A.Uppercase("str.uppercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Lowercase("str.lowercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Trim("str.trim", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Match("str.match", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Length("str.length", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Concat("str.concat", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.First("str.first", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Last("str.last", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Init("str.init", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Tail("str.tail", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.At("str.at", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.IsEmpty("str.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNotEmpty("str.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.Contains("str.contains", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Take("str.take", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Drop("str.drop", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Remove("str.remove", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.Reverse("str.reverse", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToNumber("to.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToInteger("to.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToDecimal("to.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToString("to.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToBoolean("to.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNumber("is.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInteger("is.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsDecimal("is.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInfinite("is.infinite", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsString("is.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsBoolean("is.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1))], type$.JSArray_FunctionPrototype);
     },
     StringExtensions_get_isOperandDelimiter(_this) {
-      var t3,
-        t1 = A.RegExp_RegExp("\\s"),
+      var t1 = A.RegExp_RegExp("\\s"),
         t2 = true;
-      if (!t1._nativeRegExp.test(_this)) {
-        t1 = A.RegExp_RegExp("-");
-        t3 = true;
-        if (!t1._nativeRegExp.test(_this)) {
-          t1 = A.RegExp_RegExp("\\+");
-          if (!t1._nativeRegExp.test(_this)) {
-            t1 = A.RegExp_RegExp("=");
-            if (!t1._nativeRegExp.test(_this)) {
-              t1 = A.RegExp_RegExp(">");
-              if (!t1._nativeRegExp.test(_this)) {
-                t1 = A.RegExp_RegExp("<");
-                if (!t1._nativeRegExp.test(_this)) {
-                  t1 = A.RegExp_RegExp("\\|");
-                  if (!t1._nativeRegExp.test(_this)) {
-                    t1 = A.RegExp_RegExp("&");
-                    if (!t1._nativeRegExp.test(_this)) {
-                      t1 = A.RegExp_RegExp("!");
-                      if (!t1._nativeRegExp.test(_this)) {
-                        t1 = A.RegExp_RegExp("/");
-                        if (!t1._nativeRegExp.test(_this)) {
-                          t1 = A.RegExp_RegExp("\\*");
-                          if (!t1._nativeRegExp.test(_this)) {
-                            t1 = A.RegExp_RegExp("%");
-                            t1 = t1._nativeRegExp.test(_this);
-                          } else
-                            t1 = t3;
-                        } else
-                          t1 = t3;
-                      } else
-                        t1 = t3;
-                    } else
-                      t1 = t3;
-                  } else
-                    t1 = t3;
-                } else
-                  t1 = t3;
-              } else
-                t1 = t3;
-            } else
-              t1 = t3;
-          } else
-            t1 = t3;
-        } else
-          t1 = t3;
-        if (!t1) {
+      if (!t1._nativeRegExp.test(_this))
+        if (!A.StringExtensions_get_isBinaryOperator(_this)) {
           t1 = A.RegExp_RegExp(",");
           if (!t1._nativeRegExp.test(_this)) {
             t1 = A.RegExp_RegExp("\\(");
@@ -4111,7 +4063,7 @@
             t1 = t2;
         } else
           t1 = t2;
-      } else
+      else
         t1 = t2;
       return t1;
     },
@@ -4128,9 +4080,51 @@
               t1 = A.RegExp_RegExp("'");
               if (!t1._nativeRegExp.test(_this)) {
                 t1 = A.RegExp_RegExp("\\(");
+                t1 = t1._nativeRegExp.test(_this);
+              } else
+                t1 = t2;
+            } else
+              t1 = t2;
+          } else
+            t1 = t2;
+        } else
+          t1 = t2;
+      } else
+        t1 = t2;
+      return t1;
+    },
+    StringExtensions_get_isBinaryOperator(_this) {
+      var t1 = A.RegExp_RegExp("-"),
+        t2 = true;
+      if (!t1._nativeRegExp.test(_this)) {
+        t1 = A.RegExp_RegExp("\\+");
+        if (!t1._nativeRegExp.test(_this)) {
+          t1 = A.RegExp_RegExp("=");
+          if (!t1._nativeRegExp.test(_this)) {
+            t1 = A.RegExp_RegExp(">");
+            if (!t1._nativeRegExp.test(_this)) {
+              t1 = A.RegExp_RegExp("<");
+              if (!t1._nativeRegExp.test(_this)) {
+                t1 = A.RegExp_RegExp("\\|");
                 if (!t1._nativeRegExp.test(_this)) {
-                  t1 = A.RegExp_RegExp("\\)");
-                  t1 = t1._nativeRegExp.test(_this);
+                  t1 = A.RegExp_RegExp("&");
+                  if (!t1._nativeRegExp.test(_this)) {
+                    t1 = A.RegExp_RegExp("!");
+                    if (!t1._nativeRegExp.test(_this)) {
+                      t1 = A.RegExp_RegExp("/");
+                      if (!t1._nativeRegExp.test(_this)) {
+                        t1 = A.RegExp_RegExp("\\*");
+                        if (!t1._nativeRegExp.test(_this)) {
+                          t1 = A.RegExp_RegExp("%");
+                          t1 = t1._nativeRegExp.test(_this);
+                        } else
+                          t1 = t2;
+                      } else
+                        t1 = t2;
+                    } else
+                      t1 = t2;
+                  } else
+                    t1 = t2;
                 } else
                   t1 = t2;
               } else
@@ -5478,7 +5472,6 @@
   };
   A.LexicalError.prototype = {};
   A.InvalidCharacterError.prototype = {};
-  A.MalformedNumberError.prototype = {};
   A.RuntimeError0.prototype = {};
   A.InvalidArgumentTypesError.prototype = {};
   A.InvalidArgumentCountError.prototype = {};
@@ -5501,10 +5494,8 @@
         iterator = new A.ListIterator0(t1, type$.ListIterator_Character),
         state = new A.InitState(null, iterator);
       for (; iterator._list_iterator$_index < t1.length;) {
-        state = state.process$1(iterator.get$next());
+        state = state.process$1(state.iterator.get$next());
         if (state instanceof A.ResultState) {
-          if (state.goBack)
-            --iterator._list_iterator$_index;
           B.JSArray_methods.addAll$1(result, state.output);
           state = new A.InitState(null, iterator);
         }
@@ -5622,7 +5613,7 @@
       t2 = this.iterator;
       t3 = this.output;
       if (t1._nativeRegExp.test(input.value))
-        return new A.ResultState(false, A._setArrayType([new A.StringToken(t3.value, t3.location)], type$.JSArray_Token_dynamic), t2);
+        return new A.ResultState(A._setArrayType([new A.StringToken(t3.value, t3.location)], type$.JSArray_Token_dynamic), t2);
       else
         return new A.StringDoubleQuoteState(J.add$1$a(t3, input), t2);
     }
@@ -5635,7 +5626,7 @@
       t2 = this.iterator;
       t3 = this.output;
       if (t1._nativeRegExp.test(input.value))
-        return new A.ResultState(false, A._setArrayType([new A.StringToken(t3.value, t3.location)], type$.JSArray_Token_dynamic), t2);
+        return new A.ResultState(A._setArrayType([new A.StringToken(t3.value, t3.location)], type$.JSArray_Token_dynamic), t2);
       else
         return new A.StringSingleQuoteState(J.add$1$a(t3, input), t2);
     }
@@ -5652,9 +5643,11 @@
         t2 = A.RegExp_RegExp("\\.");
         if (t2._nativeRegExp.test(t1))
           return new A.DecimalInitState(J.add$1$a(_this.output, input), _this.iterator);
-        else if (A.StringExtensions_get_isOperandDelimiter(t1))
-          return new A.ResultState(true, A._setArrayType([A.NumberToken$(_this.output)], type$.JSArray_Token_dynamic), _this.iterator);
-        else
+        else if (A.StringExtensions_get_isOperandDelimiter(t1)) {
+          t1 = _this.iterator;
+          --t1._list_iterator$_index;
+          return new A.ResultState(A._setArrayType([A.NumberToken$(_this.output)], type$.JSArray_Token_dynamic), t1);
+        } else
           throw A.wrapException(A.InvalidCharacterError$(input));
       }
     }
@@ -5667,7 +5660,7 @@
       if (t1._nativeRegExp.test(input.value))
         return new A.DecimalState(J.add$1$a(this.output, input), this.iterator);
       else
-        throw A.wrapException(new A.MalformedNumberError("Malformed number at " + input.location.toString$0(0)));
+        throw A.wrapException(A.InvalidCharacterError$(input));
     }
   };
   A.DecimalState.prototype = {
@@ -5678,15 +5671,17 @@
       t2 = A.RegExp_RegExp("\\d");
       if (t2._nativeRegExp.test(t1))
         return new A.DecimalState(J.add$1$a(_this.output, input), _this.iterator);
-      else if (A.StringExtensions_get_isOperandDelimiter(t1))
-        return new A.ResultState(true, A._setArrayType([A.NumberToken$(_this.output)], type$.JSArray_Token_dynamic), _this.iterator);
-      else
+      else if (A.StringExtensions_get_isOperandDelimiter(t1)) {
+        t1 = _this.iterator;
+        --t1._list_iterator$_index;
+        return new A.ResultState(A._setArrayType([A.NumberToken$(_this.output)], type$.JSArray_Token_dynamic), t1);
+      } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
   };
   A.IdentifierState.prototype = {
     process$1(input) {
-      var t1, t2, t3, t4, _this = this;
+      var t1, t2, t3, t4, t5, _this = this;
       type$.Character._as(input);
       t1 = input.value;
       t2 = A.RegExp_RegExp("[a-zA-Z]");
@@ -5707,49 +5702,54 @@
       if (t2)
         return new A.IdentifierState(J.add$1$a(_this.output, input), _this.iterator);
       else if (A.StringExtensions_get_isOperandDelimiter(t1)) {
-        t1 = A._setArrayType([], type$.JSArray_Token_dynamic);
+        t1 = _this.iterator;
+        --t1._list_iterator$_index;
         t2 = _this.output;
         t3 = t2.value;
         t4 = A.RegExp_RegExp("true|false");
         if (t4._nativeRegExp.test(t3)) {
           t4 = A.Primitives_parseBool(t3, true);
           t3 = t4 == null ? A.throwExpression(A.FormatException$("Invalid boolean", t3)) : t4;
-          t1.push(new A.BooleanToken(t3, t2.location));
+          return new A.ResultState(A._setArrayType([new A.BooleanToken(t3, t2.location)], type$.JSArray_Token_dynamic), t1);
         } else {
           t4 = A.RegExp_RegExp("if");
           if (t4._nativeRegExp.test(t3))
-            t1.push(new A.IfToken(t3, t2.location));
+            return new A.ResultState(A._setArrayType([new A.IfToken(t3, t2.location)], type$.JSArray_Token_dynamic), t1);
           else {
             t4 = A.RegExp_RegExp("else");
+            t5 = type$.JSArray_Token_dynamic;
             if (t4._nativeRegExp.test(t3))
-              t1.push(new A.ElseToken(t3, t2.location));
+              return new A.ResultState(A._setArrayType([new A.ElseToken(t3, t2.location)], t5), t1);
             else
-              t1.push(new A.IdentifierToken(t3, t2.location));
+              return new A.ResultState(A._setArrayType([new A.IdentifierToken(t3, t2.location)], t5), t1);
           }
         }
-        return new A.ResultState(true, t1, _this.iterator);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
   };
   A.MinusState.prototype = {
     process$1(input) {
-      var t1;
+      var t1, t2;
       type$.Character._as(input);
       if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
-        t1 = this.output;
-        return new A.ResultState(true, A._setArrayType([new A.MinusToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+        t1 = this.iterator;
+        --t1._list_iterator$_index;
+        t2 = this.output;
+        return new A.ResultState(A._setArrayType([new A.MinusToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
   };
   A.PlusState.prototype = {
     process$1(input) {
-      var t1;
+      var t1, t2;
       type$.Character._as(input);
       if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
-        t1 = this.output;
-        return new A.ResultState(true, A._setArrayType([new A.PlusToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+        t1 = this.iterator;
+        --t1._list_iterator$_index;
+        t2 = this.output;
+        return new A.ResultState(A._setArrayType([new A.PlusToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
@@ -5762,10 +5762,12 @@
       t2 = A.RegExp_RegExp("=");
       if (t2._nativeRegExp.test(t1)) {
         t1 = J.add$1$a(_this.output, input);
-        return new A.ResultState(false, A._setArrayType([new A.EqualToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+        return new A.ResultState(A._setArrayType([new A.EqualToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
       } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
-        t1 = _this.output;
-        return new A.ResultState(true, A._setArrayType([new A.AssignToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+        t1 = _this.iterator;
+        --t1._list_iterator$_index;
+        t2 = _this.output;
+        return new A.ResultState(A._setArrayType([new A.AssignToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
@@ -5778,10 +5780,12 @@
       t2 = A.RegExp_RegExp("=");
       if (t2._nativeRegExp.test(t1)) {
         t1 = J.add$1$a(_this.output, input);
-        return new A.ResultState(false, A._setArrayType([new A.GreaterEqualThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+        return new A.ResultState(A._setArrayType([new A.GreaterEqualThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
       } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
-        t1 = _this.output;
-        return new A.ResultState(true, A._setArrayType([new A.GreaterThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+        t1 = _this.iterator;
+        --t1._list_iterator$_index;
+        t2 = _this.output;
+        return new A.ResultState(A._setArrayType([new A.GreaterThanToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
@@ -5794,32 +5798,38 @@
       t2 = A.RegExp_RegExp("=");
       if (t2._nativeRegExp.test(t1)) {
         t1 = J.add$1$a(_this.output, input);
-        return new A.ResultState(false, A._setArrayType([new A.LessEqualThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+        return new A.ResultState(A._setArrayType([new A.LessEqualThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
       } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
-        t1 = _this.output;
-        return new A.ResultState(true, A._setArrayType([new A.LessThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+        t1 = _this.iterator;
+        --t1._list_iterator$_index;
+        t2 = _this.output;
+        return new A.ResultState(A._setArrayType([new A.LessThanToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
   };
   A.PipeState.prototype = {
     process$1(input) {
-      var t1;
+      var t1, t2;
       type$.Character._as(input);
       if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
-        t1 = this.output;
-        return new A.ResultState(true, A._setArrayType([new A.PipeToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+        t1 = this.iterator;
+        --t1._list_iterator$_index;
+        t2 = this.output;
+        return new A.ResultState(A._setArrayType([new A.PipeToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
   };
   A.AmpersandState.prototype = {
     process$1(input) {
-      var t1;
+      var t1, t2;
       type$.Character._as(input);
       if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
-        t1 = this.output;
-        return new A.ResultState(true, A._setArrayType([new A.AmpersandToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+        t1 = this.iterator;
+        --t1._list_iterator$_index;
+        t2 = this.output;
+        return new A.ResultState(A._setArrayType([new A.AmpersandToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
@@ -5832,10 +5842,12 @@
       t2 = A.RegExp_RegExp("=");
       if (t2._nativeRegExp.test(t1)) {
         t1 = J.add$1$a(_this.output, input);
-        return new A.ResultState(false, A._setArrayType([new A.NotEqualToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+        return new A.ResultState(A._setArrayType([new A.NotEqualToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
       } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
-        t1 = _this.output;
-        return new A.ResultState(true, A._setArrayType([new A.BangToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+        t1 = _this.iterator;
+        --t1._list_iterator$_index;
+        t2 = _this.output;
+        return new A.ResultState(A._setArrayType([new A.BangToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
@@ -5847,7 +5859,7 @@
       t1 = input.value;
       if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
         t1 = _this.output;
-        return new A.ResultState(false, A._setArrayType([new A.ForwardSlashToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
+        return new A.ResultState(A._setArrayType([new A.ForwardSlashToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
       } else {
         t2 = A.RegExp_RegExp("/");
         if (t2._nativeRegExp.test(t1))
@@ -5864,22 +5876,26 @@
   };
   A.AsteriskState.prototype = {
     process$1(input) {
-      var t1;
+      var t1, t2;
       type$.Character._as(input);
       if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
-        t1 = this.output;
-        return new A.ResultState(true, A._setArrayType([new A.AsteriskToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+        t1 = this.iterator;
+        --t1._list_iterator$_index;
+        t2 = this.output;
+        return new A.ResultState(A._setArrayType([new A.AsteriskToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
   };
   A.PercentState.prototype = {
     process$1(input) {
-      var t1;
+      var t1, t2;
       type$.Character._as(input);
       if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
-        t1 = this.output;
-        return new A.ResultState(true, A._setArrayType([new A.PercentToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+        t1 = this.iterator;
+        --t1._list_iterator$_index;
+        t2 = this.output;
+        return new A.ResultState(A._setArrayType([new A.PercentToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
@@ -5922,11 +5938,45 @@
   };
   A.CommaState.prototype = {
     process$1(input) {
-      var t1;
+      var t1, t2, t3;
       type$.Character._as(input);
-      if (A.StringExtensions_get_isOperatorDelimiter(input.value)) {
-        t1 = this.output;
-        return new A.ResultState(true, A._setArrayType([new A.CommaToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+      t1 = input.value;
+      t2 = A.RegExp_RegExp("\\s");
+      t3 = true;
+      if (!t2._nativeRegExp.test(t1)) {
+        t2 = A.RegExp_RegExp("\\d");
+        if (!t2._nativeRegExp.test(t1)) {
+          t2 = A.RegExp_RegExp("[a-zA-Z]");
+          if (!t2._nativeRegExp.test(t1)) {
+            t2 = A.RegExp_RegExp('"');
+            if (!t2._nativeRegExp.test(t1)) {
+              t2 = A.RegExp_RegExp("'");
+              if (!t2._nativeRegExp.test(t1)) {
+                t2 = A.RegExp_RegExp("\\(");
+                if (!t2._nativeRegExp.test(t1)) {
+                  t2 = A.RegExp_RegExp("-");
+                  if (!t2._nativeRegExp.test(t1)) {
+                    t2 = A.RegExp_RegExp("!");
+                    t1 = t2._nativeRegExp.test(t1);
+                  } else
+                    t1 = t3;
+                } else
+                  t1 = t3;
+              } else
+                t1 = t3;
+            } else
+              t1 = t3;
+          } else
+            t1 = t3;
+        } else
+          t1 = t3;
+      } else
+        t1 = t3;
+      if (t1) {
+        t1 = this.iterator;
+        --t1._list_iterator$_index;
+        t2 = this.output;
+        return new A.ResultState(A._setArrayType([new A.CommaToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
@@ -5936,19 +5986,46 @@
       var t1, t2, t3;
       type$.Character._as(input);
       t1 = input.value;
-      t2 = true;
-      if (!A.StringExtensions_get_isOperatorDelimiter(t1)) {
-        t3 = A.RegExp_RegExp("-");
-        if (!t3._nativeRegExp.test(t1)) {
-          t2 = A.RegExp_RegExp("!");
-          t1 = t2._nativeRegExp.test(t1);
+      t2 = A.RegExp_RegExp("\\s");
+      t3 = true;
+      if (!t2._nativeRegExp.test(t1)) {
+        t2 = A.RegExp_RegExp("\\d");
+        if (!t2._nativeRegExp.test(t1)) {
+          t2 = A.RegExp_RegExp("[a-zA-Z]");
+          if (!t2._nativeRegExp.test(t1)) {
+            t2 = A.RegExp_RegExp('"');
+            if (!t2._nativeRegExp.test(t1)) {
+              t2 = A.RegExp_RegExp("'");
+              if (!t2._nativeRegExp.test(t1)) {
+                t2 = A.RegExp_RegExp("\\(");
+                if (!t2._nativeRegExp.test(t1)) {
+                  t2 = A.RegExp_RegExp("\\)");
+                  if (!t2._nativeRegExp.test(t1)) {
+                    t2 = A.RegExp_RegExp("-");
+                    if (!t2._nativeRegExp.test(t1)) {
+                      t2 = A.RegExp_RegExp("!");
+                      t1 = t2._nativeRegExp.test(t1);
+                    } else
+                      t1 = t3;
+                  } else
+                    t1 = t3;
+                } else
+                  t1 = t3;
+              } else
+                t1 = t3;
+            } else
+              t1 = t3;
+          } else
+            t1 = t3;
         } else
-          t1 = t2;
+          t1 = t3;
       } else
-        t1 = t2;
+        t1 = t3;
       if (t1) {
-        t1 = this.output;
-        return new A.ResultState(true, A._setArrayType([new A.OpenParenthesisToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+        t1 = this.iterator;
+        --t1._list_iterator$_index;
+        t2 = this.output;
+        return new A.ResultState(A._setArrayType([new A.OpenParenthesisToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
@@ -5958,23 +6035,26 @@
       var t1, t2, t3;
       type$.Character._as(input);
       t1 = input.value;
-      t2 = true;
-      if (!A.StringExtensions_get_isOperatorDelimiter(t1)) {
-        t3 = A.RegExp_RegExp(",");
-        if (!t3._nativeRegExp.test(t1)) {
-          t3 = A.RegExp_RegExp("-");
-          if (!t3._nativeRegExp.test(t1)) {
-            t2 = A.RegExp_RegExp("!");
-            t1 = t2._nativeRegExp.test(t1);
+      t2 = A.RegExp_RegExp("\\s");
+      t3 = true;
+      if (!t2._nativeRegExp.test(t1)) {
+        t2 = A.RegExp_RegExp(",");
+        if (!t2._nativeRegExp.test(t1)) {
+          t2 = A.RegExp_RegExp("\\(");
+          if (!t2._nativeRegExp.test(t1)) {
+            t2 = A.RegExp_RegExp("\\)");
+            t1 = t2._nativeRegExp.test(t1) || A.StringExtensions_get_isBinaryOperator(t1);
           } else
-            t1 = t2;
+            t1 = t3;
         } else
-          t1 = t2;
+          t1 = t3;
       } else
-        t1 = t2;
+        t1 = t3;
       if (t1) {
-        t1 = this.output;
-        return new A.ResultState(true, A._setArrayType([new A.CloseParenthesisToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), this.iterator);
+        t1 = this.iterator;
+        --t1._list_iterator$_index;
+        t2 = this.output;
+        return new A.ResultState(A._setArrayType([new A.CloseParenthesisToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
@@ -7880,7 +7960,7 @@
         iterator = new A.ListIterator0(t1, type$.ListIterator_Token_dynamic),
         state = new A.InitState0(null, iterator);
       for (; iterator._list_iterator$_index < t1.length;) {
-        state = state.process$1(iterator.get$next());
+        state = state.process$1(state.iterator.get$next());
         if (state instanceof A.ResultState0) {
           B.JSArray_methods.add$1(result, state.output);
           state = new A.InitState0(null, iterator);
@@ -8059,7 +8139,7 @@
     _inherit(A._LinkedHashSet, A._SetBase);
     _inheritMany(A.ArgumentError, [A.RangeError, A.IndexError]);
     _inheritMany(A.GenericError, [A.LexicalError, A.RuntimeError0, A.SemanticError, A.UndefinedFunctionError, A.InvalidNumberOfArgumentsError, A.SyntacticError, A.CustomError]);
-    _inheritMany(A.LexicalError, [A.InvalidCharacterError, A.MalformedNumberError]);
+    _inherit(A.InvalidCharacterError, A.LexicalError);
     _inheritMany(A.RuntimeError0, [A.InvalidArgumentTypesError, A.InvalidArgumentCountError, A.NotFoundInScope, A.EmptyExpressionEvaluationError]);
     _inheritMany(A.SemanticError, [A.DuplicatedFunctionError, A.DuplicatedParameterError, A.UndefinedIdentifiersError]);
     _inheritMany(A.SyntacticError, [A.InvalidTokenError, A.ExpectedTokenError, A.UnexpectedEndOfFileError]);
