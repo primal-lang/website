@@ -57,9 +57,6 @@ const basicProperties = (withExtras) => {
     // error
     "error\\.throw\\s*(\?=\\()": "custom-native-function",
 
-    // debug
-    "debug\\s*(\?=\\()": "custom-native-function",
-
     // comparison
     "comp\\.eq\\s*(\?=\\()": "custom-native-function",
     "comp\\.neq\\s*(\?=\\()": "custom-native-function",
@@ -179,6 +176,10 @@ const basicProperties = (withExtras) => {
     "is\\.string\\s*(\?=\\()": "custom-native-function",
     "is\\.boolean\\s*(\?=\\()": "custom-native-function",
     "is\\.list\\s*(\?=\\()": "custom-native-function",
+
+    // console
+    "console\\.write\\s*(\?=\\()": "custom-native-function",
+    "console\\.writeLn\\s*(\?=\\()": "custom-native-function",
   }
 
   return {
