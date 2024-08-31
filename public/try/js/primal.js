@@ -226,6 +226,69 @@
     hunk(hunkHelpers, init, holders, $);
   }
   var J = {
+    makeDispatchRecord(interceptor, proto, extension, indexability) {
+      return {i: interceptor, p: proto, e: extension, x: indexability};
+    },
+    getNativeInterceptor(object) {
+      var proto, objectProto, $constructor, interceptor, t1,
+        record = object[init.dispatchPropertyName];
+      if (record == null)
+        if ($.initNativeDispatchFlag == null) {
+          A.initNativeDispatch();
+          record = object[init.dispatchPropertyName];
+        }
+      if (record != null) {
+        proto = record.p;
+        if (false === proto)
+          return record.i;
+        if (true === proto)
+          return object;
+        objectProto = Object.getPrototypeOf(object);
+        if (proto === objectProto)
+          return record.i;
+        if (record.e === objectProto)
+          throw A.wrapException(A.UnimplementedError$("Return interceptor for " + A.S(proto(object, record))));
+      }
+      $constructor = object.constructor;
+      if ($constructor == null)
+        interceptor = null;
+      else {
+        t1 = $._JS_INTEROP_INTERCEPTOR_TAG;
+        if (t1 == null)
+          t1 = $._JS_INTEROP_INTERCEPTOR_TAG = init.getIsolateTag("_$dart_js");
+        interceptor = $constructor[t1];
+      }
+      if (interceptor != null)
+        return interceptor;
+      interceptor = A.lookupAndCacheInterceptor(object);
+      if (interceptor != null)
+        return interceptor;
+      if (typeof object == "function")
+        return B.JavaScriptFunction_methods;
+      proto = Object.getPrototypeOf(object);
+      if (proto == null)
+        return B.PlainJavaScriptObject_methods;
+      if (proto === Object.prototype)
+        return B.PlainJavaScriptObject_methods;
+      if (typeof $constructor == "function") {
+        t1 = $._JS_INTEROP_INTERCEPTOR_TAG;
+        if (t1 == null)
+          t1 = $._JS_INTEROP_INTERCEPTOR_TAG = init.getIsolateTag("_$dart_js");
+        Object.defineProperty($constructor, t1, {value: B.UnknownJavaScriptObject_methods, enumerable: false, writable: true, configurable: true});
+        return B.UnknownJavaScriptObject_methods;
+      }
+      return B.UnknownJavaScriptObject_methods;
+    },
+    JSArray_JSArray$fixed($length, $E) {
+      if ($length < 0 || $length > 4294967295)
+        throw A.wrapException(A.RangeError$range($length, 0, 4294967295, "length", null));
+      return J.JSArray_JSArray$markFixed(new Array($length), $E);
+    },
+    JSArray_JSArray$growable($length, $E) {
+      if ($length < 0)
+        throw A.wrapException(A.ArgumentError$("Length must be a non-negative integer: " + $length));
+      return A._setArrayType(new Array($length), $E._eval$1("JSArray<0>"));
+    },
     JSArray_JSArray$markFixed(allocation, $E) {
       return J.JSArray_markFixedList(A._setArrayType(allocation, $E._eval$1("JSArray<0>")), $E);
     },
@@ -308,29 +371,20 @@
         return J.JSBool.prototype;
       if (Array.isArray(receiver))
         return J.JSArray.prototype;
-      if (typeof receiver == "function")
-        return J.JavaScriptFunction.prototype;
-      if (typeof receiver == "object") {
-        if (receiver instanceof A.Object) {
-          return receiver;
-        } else {
-          return J.JavaScriptObject.prototype;
-        }
-      }
-      if (!(receiver instanceof A.Object))
-        return J.UnknownJavaScriptObject.prototype;
-      return receiver;
-    },
-    getInterceptor$a(receiver) {
-      if (receiver == null)
+      if (typeof receiver != "object") {
+        if (typeof receiver == "function")
+          return J.JavaScriptFunction.prototype;
+        if (typeof receiver == "symbol")
+          return J.JavaScriptSymbol.prototype;
+        if (typeof receiver == "bigint")
+          return J.JavaScriptBigInt.prototype;
         return receiver;
-      if (Array.isArray(receiver))
-        return J.JSArray.prototype;
-      if (!(receiver instanceof A.Object))
-        return J.UnknownJavaScriptObject.prototype;
-      return receiver;
+      }
+      if (receiver instanceof A.Object)
+        return receiver;
+      return J.getNativeInterceptor(receiver);
     },
-    getInterceptor$ans(receiver) {
+    getInterceptor$ansx(receiver) {
       if (typeof receiver == "number")
         return J.JSNumber.prototype;
       if (typeof receiver == "string")
@@ -339,20 +393,56 @@
         return receiver;
       if (Array.isArray(receiver))
         return J.JSArray.prototype;
-      if (!(receiver instanceof A.Object))
-        return J.UnknownJavaScriptObject.prototype;
-      return receiver;
+      if (typeof receiver != "object") {
+        if (typeof receiver == "function")
+          return J.JavaScriptFunction.prototype;
+        if (typeof receiver == "symbol")
+          return J.JavaScriptSymbol.prototype;
+        if (typeof receiver == "bigint")
+          return J.JavaScriptBigInt.prototype;
+        return receiver;
+      }
+      if (receiver instanceof A.Object)
+        return receiver;
+      return J.getNativeInterceptor(receiver);
     },
-    getInterceptor$as(receiver) {
+    getInterceptor$asx(receiver) {
       if (typeof receiver == "string")
         return J.JSString.prototype;
       if (receiver == null)
         return receiver;
       if (Array.isArray(receiver))
         return J.JSArray.prototype;
-      if (!(receiver instanceof A.Object))
-        return J.UnknownJavaScriptObject.prototype;
-      return receiver;
+      if (typeof receiver != "object") {
+        if (typeof receiver == "function")
+          return J.JavaScriptFunction.prototype;
+        if (typeof receiver == "symbol")
+          return J.JavaScriptSymbol.prototype;
+        if (typeof receiver == "bigint")
+          return J.JavaScriptBigInt.prototype;
+        return receiver;
+      }
+      if (receiver instanceof A.Object)
+        return receiver;
+      return J.getNativeInterceptor(receiver);
+    },
+    getInterceptor$ax(receiver) {
+      if (receiver == null)
+        return receiver;
+      if (Array.isArray(receiver))
+        return J.JSArray.prototype;
+      if (typeof receiver != "object") {
+        if (typeof receiver == "function")
+          return J.JavaScriptFunction.prototype;
+        if (typeof receiver == "symbol")
+          return J.JavaScriptSymbol.prototype;
+        if (typeof receiver == "bigint")
+          return J.JavaScriptBigInt.prototype;
+        return receiver;
+      }
+      if (receiver instanceof A.Object)
+        return receiver;
+      return J.getNativeInterceptor(receiver);
     },
     getInterceptor$in(receiver) {
       if (typeof receiver == "number") {
@@ -391,28 +481,42 @@
         return J.UnknownJavaScriptObject.prototype;
       return receiver;
     },
-    get$first$a(receiver) {
-      return J.getInterceptor$a(receiver).get$first(receiver);
+    get$first$ax(receiver) {
+      return J.getInterceptor$ax(receiver).get$first(receiver);
     },
     get$hashCode$(receiver) {
       return J.getInterceptor$(receiver).get$hashCode(receiver);
     },
-    get$iterator$a(receiver) {
-      return J.getInterceptor$a(receiver).get$iterator(receiver);
+    get$isEmpty$asx(receiver) {
+      return J.getInterceptor$asx(receiver).get$isEmpty(receiver);
     },
-    get$last$a(receiver) {
-      return J.getInterceptor$a(receiver).get$last(receiver);
+    get$isNotEmpty$asx(receiver) {
+      return J.getInterceptor$asx(receiver).get$isNotEmpty(receiver);
     },
-    get$length$as(receiver) {
-      return J.getInterceptor$as(receiver).get$length(receiver);
+    get$iterator$ax(receiver) {
+      return J.getInterceptor$ax(receiver).get$iterator(receiver);
+    },
+    get$last$ax(receiver) {
+      return J.getInterceptor$ax(receiver).get$last(receiver);
+    },
+    get$length$asx(receiver) {
+      return J.getInterceptor$asx(receiver).get$length(receiver);
+    },
+    get$reversed$ax(receiver) {
+      return J.getInterceptor$ax(receiver).get$reversed(receiver);
     },
     get$runtimeType$(receiver) {
       return J.getInterceptor$(receiver).get$runtimeType(receiver);
     },
-    $add$ans(receiver, a0) {
+    get$sign$in(receiver) {
+      if (typeof receiver === "number")
+        return receiver > 0 ? 1 : receiver < 0 ? -1 : receiver;
+      return J.getInterceptor$in(receiver).get$sign(receiver);
+    },
+    $add$ansx(receiver, a0) {
       if (typeof receiver == "number" && typeof a0 == "number")
         return receiver + a0;
-      return J.getInterceptor$ans(receiver).$add(receiver, a0);
+      return J.getInterceptor$ansx(receiver).$add(receiver, a0);
     },
     $eq$(receiver, a0) {
       if (receiver == null)
@@ -421,26 +525,29 @@
         return a0 != null && receiver === a0;
       return J.getInterceptor$(receiver).$eq(receiver, a0);
     },
-    $index$as(receiver, a0) {
+    $index$asx(receiver, a0) {
       if (typeof a0 === "number")
-        if (Array.isArray(receiver) || typeof receiver == "string")
+        if (Array.isArray(receiver) || typeof receiver == "string" || A.isJsIndexable(receiver, receiver[init.dispatchPropertyName]))
           if (a0 >>> 0 === a0 && a0 < receiver.length)
             return receiver[a0];
-      return J.getInterceptor$as(receiver).$index(receiver, a0);
+      return J.getInterceptor$asx(receiver).$index(receiver, a0);
     },
     abs$0$in(receiver) {
       if (typeof receiver === "number")
         return Math.abs(receiver);
       return J.getInterceptor$in(receiver).abs$0(receiver);
     },
-    add$1$a(receiver, a0) {
-      return J.getInterceptor$a(receiver).add$1(receiver, a0);
+    add$1$ax(receiver, a0) {
+      return J.getInterceptor$ax(receiver).add$1(receiver, a0);
     },
     ceil$0$n(receiver) {
       return J.getInterceptor$n(receiver).ceil$0(receiver);
     },
-    elementAt$1$a(receiver, a0) {
-      return J.getInterceptor$a(receiver).elementAt$1(receiver, a0);
+    clamp$2$n(receiver, a0, a1) {
+      return J.getInterceptor$n(receiver).clamp$2(receiver, a0, a1);
+    },
+    elementAt$1$ax(receiver, a0) {
+      return J.getInterceptor$ax(receiver).elementAt$1(receiver, a0);
     },
     endsWith$1$s(receiver, a0) {
       return J.getInterceptor$s(receiver).endsWith$1(receiver, a0);
@@ -448,11 +555,23 @@
     floor$0$n(receiver) {
       return J.getInterceptor$n(receiver).floor$0(receiver);
     },
-    join$1$a(receiver, a0) {
-      return J.getInterceptor$a(receiver).join$1(receiver, a0);
+    indexOf$1$s(receiver, a0) {
+      return J.getInterceptor$s(receiver).indexOf$1(receiver, a0);
+    },
+    join$1$ax(receiver, a0) {
+      return J.getInterceptor$ax(receiver).join$1(receiver, a0);
+    },
+    map$1$1$ax(receiver, a0, $T1) {
+      return J.getInterceptor$ax(receiver).map$1$1(receiver, a0, $T1);
     },
     noSuchMethod$1$(receiver, a0) {
       return J.getInterceptor$(receiver).noSuchMethod$1(receiver, a0);
+    },
+    padLeft$2$s(receiver, a0, a1) {
+      return J.getInterceptor$s(receiver).padLeft$2(receiver, a0, a1);
+    },
+    padRight$2$s(receiver, a0, a1) {
+      return J.getInterceptor$s(receiver).padRight$2(receiver, a0, a1);
     },
     reduce$0$z(receiver) {
       return J.getInterceptor$z(receiver).reduce$0(receiver);
@@ -466,8 +585,8 @@
     startsWith$1$s(receiver, a0) {
       return J.getInterceptor$s(receiver).startsWith$1(receiver, a0);
     },
-    sublist$2$a(receiver, a0, a1) {
-      return J.getInterceptor$a(receiver).sublist$2(receiver, a0, a1);
+    sublist$2$ax(receiver, a0, a1) {
+      return J.getInterceptor$ax(receiver).sublist$2(receiver, a0, a1);
     },
     substring$2$s(receiver, a0, a1) {
       return J.getInterceptor$s(receiver).substring$2(receiver, a0, a1);
@@ -496,6 +615,10 @@
     UnknownJavaScriptObject: function UnknownJavaScriptObject() {
     },
     JavaScriptFunction: function JavaScriptFunction() {
+    },
+    JavaScriptBigInt: function JavaScriptBigInt() {
+    },
+    JavaScriptSymbol: function JavaScriptSymbol() {
     },
     JSArray: function JSArray(t0) {
       this.$ti = t0;
@@ -585,6 +708,8 @@
       this._source = t0;
       this.$ti = t1;
     },
+    FixedLengthListMixin: function FixedLengthListMixin() {
+    },
     ReversedListIterable: function ReversedListIterable(t0, t1) {
       this._source = t0;
       this.$ti = t1;
@@ -597,6 +722,15 @@
       if (preserved != null)
         return preserved;
       return rawClassName;
+    },
+    isJsIndexable(object, record) {
+      var result;
+      if (record != null) {
+        result = record.x;
+        if (result != null)
+          return result;
+      }
+      return type$.JavaScriptIndexingBehavior_dynamic._is(object);
     },
     S(value) {
       var result;
@@ -718,8 +852,11 @@
       return J.noSuchMethod$1$($function, new A.JSInvocationMirror(B.Symbol_call, 0, $arguments, namedArgumentList, 0));
     },
     Primitives_applyFunction($function, positionalArguments, namedArguments) {
-      var argumentCount, jsStub,
+      var t1, argumentCount, jsStub;
+      if (Array.isArray(positionalArguments))
         t1 = namedArguments == null || namedArguments.__js_helper$_length === 0;
+      else
+        t1 = false;
       if (t1) {
         argumentCount = positionalArguments.length;
         if (argumentCount === 0) {
@@ -747,11 +884,12 @@
       return A.Primitives__generalApplyFunction($function, positionalArguments, namedArguments);
     },
     Primitives__generalApplyFunction($function, positionalArguments, namedArguments) {
-      var defaultValuesClosure, t1, defaultValues, interceptor, jsFunction, maxArguments, missingDefaults, $arguments, keys, _i, defaultValue, used, key,
-        argumentCount = positionalArguments.length,
+      var defaultValuesClosure, t1, defaultValues, interceptor, jsFunction, maxArguments, missingDefaults, keys, _i, defaultValue, used, key,
+        $arguments = Array.isArray(positionalArguments) ? positionalArguments : A.List_List$of(positionalArguments, true, type$.dynamic),
+        argumentCount = $arguments.length,
         requiredParameterCount = $function.$requiredArgCount;
       if (argumentCount < requiredParameterCount)
-        return A.Primitives_functionNoSuchMethod($function, positionalArguments, namedArguments);
+        return A.Primitives_functionNoSuchMethod($function, $arguments, namedArguments);
       defaultValuesClosure = $function.$defaultValues;
       t1 = defaultValuesClosure == null;
       defaultValues = !t1 ? defaultValuesClosure() : null;
@@ -761,28 +899,29 @@
         jsFunction = interceptor[jsFunction];
       if (t1) {
         if (namedArguments != null && namedArguments.__js_helper$_length !== 0)
-          return A.Primitives_functionNoSuchMethod($function, positionalArguments, namedArguments);
+          return A.Primitives_functionNoSuchMethod($function, $arguments, namedArguments);
         if (argumentCount === requiredParameterCount)
-          return jsFunction.apply($function, positionalArguments);
-        return A.Primitives_functionNoSuchMethod($function, positionalArguments, namedArguments);
+          return jsFunction.apply($function, $arguments);
+        return A.Primitives_functionNoSuchMethod($function, $arguments, namedArguments);
       }
       if (Array.isArray(defaultValues)) {
         if (namedArguments != null && namedArguments.__js_helper$_length !== 0)
-          return A.Primitives_functionNoSuchMethod($function, positionalArguments, namedArguments);
+          return A.Primitives_functionNoSuchMethod($function, $arguments, namedArguments);
         maxArguments = requiredParameterCount + defaultValues.length;
         if (argumentCount > maxArguments)
-          return A.Primitives_functionNoSuchMethod($function, positionalArguments, null);
+          return A.Primitives_functionNoSuchMethod($function, $arguments, null);
         if (argumentCount < maxArguments) {
           missingDefaults = defaultValues.slice(argumentCount - requiredParameterCount);
-          $arguments = A.List_List$of(positionalArguments, true, type$.dynamic);
+          if ($arguments === positionalArguments)
+            $arguments = A.List_List$of($arguments, true, type$.dynamic);
           B.JSArray_methods.addAll$1($arguments, missingDefaults);
-        } else
-          $arguments = positionalArguments;
+        }
         return jsFunction.apply($function, $arguments);
       } else {
         if (argumentCount > requiredParameterCount)
-          return A.Primitives_functionNoSuchMethod($function, positionalArguments, namedArguments);
-        $arguments = A.List_List$of(positionalArguments, true, type$.dynamic);
+          return A.Primitives_functionNoSuchMethod($function, $arguments, namedArguments);
+        if ($arguments === positionalArguments)
+          $arguments = A.List_List$of($arguments, true, type$.dynamic);
         keys = Object.keys(defaultValues);
         if (namedArguments == null)
           for (t1 = keys.length, _i = 0; _i < keys.length; keys.length === t1 || (0, A.throwConcurrentModificationError)(keys), ++_i) {
@@ -815,17 +954,25 @@
     },
     ioore(receiver, index) {
       if (receiver == null)
-        J.get$length$as(receiver);
+        J.get$length$asx(receiver);
       throw A.wrapException(A.diagnoseIndexError(receiver, index));
     },
     diagnoseIndexError(indexable, index) {
       var $length, _s5_ = "index";
       if (!A._isInt(index))
         return new A.ArgumentError(true, index, _s5_, null);
-      $length = J.get$length$as(indexable);
+      $length = J.get$length$asx(indexable);
       if (index < 0 || index >= $length)
         return A.IndexError$withLength(index, $length, indexable, _s5_);
       return new A.RangeError(null, null, true, index, _s5_, "Value not in range");
+    },
+    diagnoseRangeError(start, end, $length) {
+      if (start < 0 || start > $length)
+        return A.RangeError$range(start, 0, $length, "start", null);
+      if (end != null)
+        if (end < start || end > $length)
+          return A.RangeError$range(end, start, $length, "end", null);
+      return new A.ArgumentError(true, end, "end", null);
     },
     argumentErrorValue(object) {
       return new A.ArgumentError(true, object, null, null);
@@ -1086,6 +1233,9 @@
     throwCyclicInit(staticName) {
       throw A.wrapException(new A._CyclicInitializationError(staticName));
     },
+    getIsolateAffinityTag($name) {
+      return init.getIsolateTag($name);
+    },
     convertMainArgumentList(args) {
       var i,
         result = A._setArrayType([], type$.JSArray_String);
@@ -1098,6 +1248,144 @@
       }
       result.push(String(args));
       return result;
+    },
+    lookupAndCacheInterceptor(obj) {
+      var interceptor, interceptorClass, altTag, mark, t1,
+        tag = A._asString($.getTagFunction.call$1(obj)),
+        record = $.dispatchRecordsForInstanceTags[tag];
+      if (record != null) {
+        Object.defineProperty(obj, init.dispatchPropertyName, {value: record, enumerable: false, writable: true, configurable: true});
+        return record.i;
+      }
+      interceptor = $.interceptorsForUncacheableTags[tag];
+      if (interceptor != null)
+        return interceptor;
+      interceptorClass = init.interceptorsByTag[tag];
+      if (interceptorClass == null) {
+        altTag = A._asStringQ($.alternateTagFunction.call$2(obj, tag));
+        if (altTag != null) {
+          record = $.dispatchRecordsForInstanceTags[altTag];
+          if (record != null) {
+            Object.defineProperty(obj, init.dispatchPropertyName, {value: record, enumerable: false, writable: true, configurable: true});
+            return record.i;
+          }
+          interceptor = $.interceptorsForUncacheableTags[altTag];
+          if (interceptor != null)
+            return interceptor;
+          interceptorClass = init.interceptorsByTag[altTag];
+          tag = altTag;
+        }
+      }
+      if (interceptorClass == null)
+        return null;
+      interceptor = interceptorClass.prototype;
+      mark = tag[0];
+      if (mark === "!") {
+        record = A.makeLeafDispatchRecord(interceptor);
+        $.dispatchRecordsForInstanceTags[tag] = record;
+        Object.defineProperty(obj, init.dispatchPropertyName, {value: record, enumerable: false, writable: true, configurable: true});
+        return record.i;
+      }
+      if (mark === "~") {
+        $.interceptorsForUncacheableTags[tag] = interceptor;
+        return interceptor;
+      }
+      if (mark === "-") {
+        t1 = A.makeLeafDispatchRecord(interceptor);
+        Object.defineProperty(Object.getPrototypeOf(obj), init.dispatchPropertyName, {value: t1, enumerable: false, writable: true, configurable: true});
+        return t1.i;
+      }
+      if (mark === "+")
+        return A.patchInteriorProto(obj, interceptor);
+      if (mark === "*")
+        throw A.wrapException(A.UnimplementedError$(tag));
+      if (init.leafTags[tag] === true) {
+        t1 = A.makeLeafDispatchRecord(interceptor);
+        Object.defineProperty(Object.getPrototypeOf(obj), init.dispatchPropertyName, {value: t1, enumerable: false, writable: true, configurable: true});
+        return t1.i;
+      } else
+        return A.patchInteriorProto(obj, interceptor);
+    },
+    patchInteriorProto(obj, interceptor) {
+      var proto = Object.getPrototypeOf(obj);
+      Object.defineProperty(proto, init.dispatchPropertyName, {value: J.makeDispatchRecord(interceptor, proto, null, null), enumerable: false, writable: true, configurable: true});
+      return interceptor;
+    },
+    makeLeafDispatchRecord(interceptor) {
+      return J.makeDispatchRecord(interceptor, false, null, !!interceptor.$isJavaScriptIndexingBehavior);
+    },
+    makeDefaultDispatchRecord(tag, interceptorClass, proto) {
+      var interceptor = interceptorClass.prototype;
+      if (init.leafTags[tag] === true)
+        return A.makeLeafDispatchRecord(interceptor);
+      else
+        return J.makeDispatchRecord(interceptor, proto, null, null);
+    },
+    initNativeDispatch() {
+      if (true === $.initNativeDispatchFlag)
+        return;
+      $.initNativeDispatchFlag = true;
+      A.initNativeDispatchContinue();
+    },
+    initNativeDispatchContinue() {
+      var map, tags, fun, i, tag, proto, record, interceptorClass;
+      $.dispatchRecordsForInstanceTags = Object.create(null);
+      $.interceptorsForUncacheableTags = Object.create(null);
+      A.initHooks();
+      map = init.interceptorsByTag;
+      tags = Object.getOwnPropertyNames(map);
+      if (typeof window != "undefined") {
+        window;
+        fun = function() {
+        };
+        for (i = 0; i < tags.length; ++i) {
+          tag = tags[i];
+          proto = $.prototypeForTagFunction.call$1(tag);
+          if (proto != null) {
+            record = A.makeDefaultDispatchRecord(tag, map[tag], proto);
+            if (record != null) {
+              Object.defineProperty(proto, init.dispatchPropertyName, {value: record, enumerable: false, writable: true, configurable: true});
+              fun.prototype = proto;
+            }
+          }
+        }
+      }
+      for (i = 0; i < tags.length; ++i) {
+        tag = tags[i];
+        if (/^[A-Za-z_]/.test(tag)) {
+          interceptorClass = map[tag];
+          map["!" + tag] = interceptorClass;
+          map["~" + tag] = interceptorClass;
+          map["-" + tag] = interceptorClass;
+          map["+" + tag] = interceptorClass;
+          map["*" + tag] = interceptorClass;
+        }
+      }
+    },
+    initHooks() {
+      var transformers, i, transformer, getTag, getUnknownTag, prototypeForTag,
+        hooks = B.C_JS_CONST0();
+      hooks = A.applyHooksTransformer(B.C_JS_CONST1, A.applyHooksTransformer(B.C_JS_CONST2, A.applyHooksTransformer(B.C_JS_CONST3, A.applyHooksTransformer(B.C_JS_CONST3, A.applyHooksTransformer(B.C_JS_CONST4, A.applyHooksTransformer(B.C_JS_CONST5, A.applyHooksTransformer(B.C_JS_CONST6(B.C_JS_CONST), hooks)))))));
+      if (typeof dartNativeDispatchHooksTransformer != "undefined") {
+        transformers = dartNativeDispatchHooksTransformer;
+        if (typeof transformers == "function")
+          transformers = [transformers];
+        if (Array.isArray(transformers))
+          for (i = 0; i < transformers.length; ++i) {
+            transformer = transformers[i];
+            if (typeof transformer == "function")
+              hooks = transformer(hooks) || hooks;
+          }
+      }
+      getTag = hooks.getTag;
+      getUnknownTag = hooks.getUnknownTag;
+      prototypeForTag = hooks.prototypeForTag;
+      $.getTagFunction = new A.initHooks_closure(getTag);
+      $.alternateTagFunction = new A.initHooks_closure0(getUnknownTag);
+      $.prototypeForTagFunction = new A.initHooks_closure1(prototypeForTag);
+    },
+    applyHooksTransformer(transformer, hooks) {
+      return transformer(hooks) || hooks;
     },
     createRecordTypePredicate(shape, fieldRtis) {
       var $length = fieldRtis.length,
@@ -1232,11 +1520,54 @@
       _.__js_helper$_current = _.__js_helper$_cell = null;
       _.$ti = t2;
     },
+    initHooks_closure: function initHooks_closure(t0) {
+      this.getTag = t0;
+    },
+    initHooks_closure0: function initHooks_closure0(t0) {
+      this.getUnknownTag = t0;
+    },
+    initHooks_closure1: function initHooks_closure1(t0) {
+      this.prototypeForTag = t0;
+    },
     JSSyntaxRegExp: function JSSyntaxRegExp(t0, t1) {
       var _ = this;
       _.pattern = t0;
       _._nativeRegExp = t1;
       _._nativeAnchoredRegExp = _._nativeGlobalRegExp = null;
+    },
+    _ensureNativeList(list) {
+      return list;
+    },
+    _checkValidIndex(index, list, $length) {
+      if (index >>> 0 !== index || index >= $length)
+        throw A.wrapException(A.diagnoseIndexError(list, index));
+    },
+    _checkValidRange(start, end, $length) {
+      var t1;
+      if (!(start >>> 0 !== start))
+        if (end == null)
+          t1 = start > $length;
+        else
+          t1 = end >>> 0 !== end || start > end || end > $length;
+      else
+        t1 = true;
+      if (t1)
+        throw A.wrapException(A.diagnoseRangeError(start, end, $length));
+      if (end == null)
+        return $length;
+      return end;
+    },
+    NativeTypedData: function NativeTypedData() {
+    },
+    NativeTypedArray: function NativeTypedArray() {
+    },
+    NativeTypedArrayOfInt: function NativeTypedArrayOfInt() {
+    },
+    NativeUint8List: function NativeUint8List() {
+    },
+    _NativeTypedArrayOfInt_NativeTypedArray_ListMixin: function _NativeTypedArrayOfInt_NativeTypedArray_ListMixin() {
+    },
+    _NativeTypedArrayOfInt_NativeTypedArray_ListMixin_FixedLengthListMixin: function _NativeTypedArrayOfInt_NativeTypedArray_ListMixin_FixedLengthListMixin() {
     },
     Rti__getQuestionFromStar(universe, rti) {
       var question = rti._precomputed1;
@@ -2826,6 +3157,8 @@
       _._collection$_current = _._cell = null;
       _.$ti = t2;
     },
+    ListBase: function ListBase() {
+    },
     MapBase: function MapBase() {
     },
     MapBase_entries_closure: function MapBase_entries_closure(t0) {
@@ -2847,6 +3180,14 @@
     },
     _UnmodifiableMapView_MapView__UnmodifiableMapMixin: function _UnmodifiableMapView_MapView__UnmodifiableMapMixin() {
     },
+    Converter: function Converter() {
+    },
+    Utf8Encoder: function Utf8Encoder() {
+    },
+    _Utf8Encoder: function _Utf8Encoder(t0) {
+      this._bufferIndex = 0;
+      this._buffer = t0;
+    },
     int_parse(source) {
       var value = A.Primitives_parseInt(source, null);
       if (value != null)
@@ -2859,12 +3200,10 @@
         return value;
       throw A.wrapException(A.FormatException$("Invalid double", source));
     },
-    List_List$filled($length, fill, $E) {
-      var result, i;
-      if ($length < 0 || $length > 4294967295)
-        A.throwExpression(A.RangeError$range($length, 0, 4294967295, "length", null));
-      result = J.JSArray_JSArray$markFixed(new Array($length), $E);
-      if ($length !== 0)
+    List_List$filled($length, fill, growable, $E) {
+      var i,
+        result = growable ? J.JSArray_JSArray$growable($length, $E) : J.JSArray_JSArray$fixed($length, $E);
+      if ($length !== 0 && fill != null)
         for (i = 0; i < result.length; ++i)
           result[i] = fill;
       return result;
@@ -2878,7 +3217,7 @@
       if (Array.isArray(elements))
         return A._setArrayType(elements.slice(0), $E._eval$1("JSArray<0>"));
       list = A._setArrayType([], $E._eval$1("JSArray<0>"));
-      for (t1 = J.get$iterator$a(elements); t1.moveNext$0();)
+      for (t1 = J.get$iterator$ax(elements); t1.moveNext$0();)
         B.JSArray_methods.add$1(list, t1.get$current());
       return list;
     },
@@ -2889,7 +3228,7 @@
       return new A.JSSyntaxRegExp(source, A.JSSyntaxRegExp_makeNative(source, false, true, false, false, false));
     },
     StringBuffer__writeAll(string, objects, separator) {
-      var iterator = J.get$iterator$a(objects);
+      var iterator = J.get$iterator$ax(objects);
       if (!iterator.moveNext$0())
         return string;
       if (separator.length === 0) {
@@ -2919,6 +3258,10 @@
     ArgumentError$(message) {
       return new A.ArgumentError(false, null, null, message);
     },
+    RangeError$(message) {
+      var _null = null;
+      return new A.RangeError(_null, _null, false, _null, _null, message);
+    },
     RangeError$range(invalidValue, minValue, maxValue, $name, message) {
       return new A.RangeError(minValue, maxValue, true, invalidValue, $name, "Invalid value");
     },
@@ -2940,6 +3283,9 @@
     },
     UnsupportedError$(message) {
       return new A.UnsupportedError(message);
+    },
+    UnimplementedError$(message) {
+      return new A.UnimplementedError(message);
     },
     ConcurrentModificationError$(modifiedObject) {
       return new A.ConcurrentModificationError(modifiedObject);
@@ -3119,11 +3465,16 @@
     UnsupportedError: function UnsupportedError(t0) {
       this.message = t0;
     },
+    UnimplementedError: function UnimplementedError(t0) {
+      this.message = t0;
+    },
     StateError: function StateError(t0) {
       this.message = t0;
     },
     ConcurrentModificationError: function ConcurrentModificationError(t0) {
       this.modifiedObject = t0;
+    },
+    OutOfMemoryError: function OutOfMemoryError() {
     },
     FormatException: function FormatException(t0, t1) {
       this.message = t0;
@@ -3151,6 +3502,8 @@
     },
     StringBuffer: function StringBuffer(t0) {
       this._contents = t0;
+    },
+    _JSRandom: function _JSRandom() {
     },
     Compiler: function Compiler() {
     },
@@ -3444,7 +3797,19 @@
       this.name = t0;
       this.parameters = t1;
     },
+    NumAsDegrees: function NumAsDegrees(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NumAsRadians: function NumAsRadians(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
     NumCeil: function NumCeil(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NumClamp: function NumClamp(t0, t1) {
       this.name = t0;
       this.parameters = t1;
     },
@@ -3453,6 +3818,10 @@
       this.parameters = t1;
     },
     NumDec: function NumDec(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NumDecimalRandom: function NumDecimalRandom(t0, t1) {
       this.name = t0;
       this.parameters = t1;
     },
@@ -3467,7 +3836,19 @@
       this.name = t0;
       this.parameters = t1;
     },
+    NumFraction: function NumFraction(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
     NumInc: function NumInc(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NumInfinity: function NumInfinity(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NumIntegerRandom: function NumIntegerRandom(t0, t1) {
       this.name = t0;
       this.parameters = t1;
     },
@@ -3526,6 +3907,10 @@
       this.parameters = t1;
     },
     NumRound: function NumRound(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NumSign: function NumSign(t0, t1) {
       this.name = t0;
       this.parameters = t1;
     },
@@ -3842,6 +4227,10 @@
       this.name = t0;
       this.parameters = t1;
     },
+    StrBytes: function StrBytes(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
     StrConcat: function StrConcat(t0, t1) {
       this.name = t0;
       this.parameters = t1;
@@ -3859,6 +4248,10 @@
       this.parameters = t1;
     },
     StrFirst: function StrFirst(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    StrIndexOf: function StrIndexOf(t0, t1) {
       this.name = t0;
       this.parameters = t1;
     },
@@ -3890,6 +4283,14 @@
       this.name = t0;
       this.parameters = t1;
     },
+    StrPadLeft: function StrPadLeft(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    StrPadRight: function StrPadRight(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
     StrRemoveAt: function StrRemoveAt(t0, t1) {
       this.name = t0;
       this.parameters = t1;
@@ -3899,6 +4300,10 @@
       this.parameters = t1;
     },
     StrReverse: function StrReverse(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    StrSplit: function StrSplit(t0, t1) {
       this.name = t0;
       this.parameters = t1;
     },
@@ -3954,6 +4359,12 @@
     ListType: function ListType() {
     },
     AnyType: function AnyType() {
+    },
+    StringReducibleValue___new_tearOff(value) {
+      return new A.StringReducibleValue(A._asString(value));
+    },
+    NumberReducibleValue___new_tearOff(value) {
+      return new A.NumberReducibleValue(A._asNum(value));
     },
     Reducible: function Reducible() {
     },
@@ -4226,7 +4637,7 @@
     StandardLibrary_get() {
       var _s1_ = "a", _s1_0 = "b", _s1_1 = "c",
         t1 = type$.JSArray_Parameter;
-      return A._setArrayType([new A.OperatorEq("==", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorNeq("!=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorGt(">", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorLt("<", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorGe(">=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorLe("<=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorAdd("+", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorSub("-", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMul("*", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorDiv("/", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMod("%", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorAnd("&", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorOr("|", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorNot("!", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.If("if", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter(_s1_1, B.C_AnyType)], t1)), new A.Try("try", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Throw("error.throw", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Debug("debug", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), A.CompEq$(), A.CompNeq$(), A.CompGt$(), A.CompGe$(), A.CompLt$(), A.CompLe$(), new A.NumAdd("num.add", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumSum("num.sum", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), A.NumSub$(), A.NumMul$(), A.NumDiv$(), A.NumMod$(), new A.NumAbs("num.abs", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumNegative("num.negative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumInc("num.inc", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumDec("num.dec", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumMin("num.min", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumMax("num.max", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumPow("num.pow", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumSqrt("num.sqrt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumRound("num.round", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumFloor("num.floor", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumCeil("num.ceil", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumSin("num.sin", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumCos("num.cos", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumTan("num.tan", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumLog("num.log", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsNegative("num.isNegative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsPositive("num.isPositive", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsZero("num.isZero", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsEven("num.isEven", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsOdd("num.isOdd", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), A.BoolAnd$(), A.BoolOr$(), new A.BoolXor("bool.xor", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), A.BoolNot$(), new A.ElementAt("element.at", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrSubstring("str.substring", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.StrStartsWith("str.startsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrEndsWith("str.endsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrReplace("str.replace", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType), new A.Parameter(_s1_1, B.C_StringType)], t1)), new A.StrUppercase("str.uppercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrLowercase("str.lowercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrTrim("str.trim", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrMatch("str.match", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrLength("str.length", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrConcat("str.concat", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrFirst("str.first", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrLast("str.last", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrInit("str.init", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrTail("str.tail", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrAt("str.at", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrIsEmpty("str.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrIsNotEmpty("str.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrContains("str.contains", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrTake("str.take", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrDrop("str.drop", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrRemoveAt("str.removeAt", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrReverse("str.reverse", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.ListInsertStart("list.insertStart", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListInsertEnd("list.insertEnd", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListAt("list.at", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListSet("list.set", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_AnyType)], t1)), new A.ListJoin("list.join", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.ListLength("list.length", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListConcat("list.concat", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_ListType)], t1)), new A.ListIsEmpty("list.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListIsNotEmpty("list.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListContains("list.contains", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListFirst("list.first", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListLast("list.last", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListInit("list.init", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListTail("list.tail", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListTake("list.take", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListDrop("list.drop", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListRemove("list.remove", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListRemoveAt("list.removeAt", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListReverse("list.reverse", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListFilled("list.filled", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListIndexOf("list.indexOf", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListSwap("list.swap", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.ListSublist("list.sublist", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.IsNumber("is.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInteger("is.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsDecimal("is.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInfinite("is.infinite", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsString("is.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsBoolean("is.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsList("is.list", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToNumber("to.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToInteger("to.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToDecimal("to.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToString("to.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToBoolean("to.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1))], type$.JSArray_FunctionPrototype);
+      return A._setArrayType([new A.OperatorEq("==", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorNeq("!=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorGt(">", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorLt("<", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorGe(">=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorLe("<=", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorAdd("+", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorSub("-", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMul("*", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorDiv("/", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMod("%", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorAnd("&", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorOr("|", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorNot("!", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.If("if", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter(_s1_1, B.C_AnyType)], t1)), new A.Try("try", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.Throw("error.throw", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.Debug("debug", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), A.CompEq$(), A.CompNeq$(), A.CompGt$(), A.CompGe$(), A.CompLt$(), A.CompLe$(), new A.NumAdd("num.add", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumSum("num.sum", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), A.NumSub$(), A.NumMul$(), A.NumDiv$(), A.NumMod$(), new A.NumAbs("num.abs", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumNegative("num.negative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumInc("num.inc", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumDec("num.dec", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumMin("num.min", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumMax("num.max", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumPow("num.pow", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumSqrt("num.sqrt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumRound("num.round", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumFloor("num.floor", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumCeil("num.ceil", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumSin("num.sin", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumCos("num.cos", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumTan("num.tan", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumLog("num.log", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsNegative("num.isNegative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsPositive("num.isPositive", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsZero("num.isZero", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsEven("num.isEven", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsOdd("num.isOdd", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumAsRadians("num.asRadians", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumAsDegrees("num.asDegrees", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumInfinity("num.infinity", A._setArrayType([], t1)), new A.NumFraction("num.fraction", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumClamp("num.clamp", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.NumSign("num.sign", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIntegerRandom("num.integerRandom", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumDecimalRandom("num.decimalRandom", A._setArrayType([], t1)), A.BoolAnd$(), A.BoolOr$(), new A.BoolXor("bool.xor", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), A.BoolNot$(), new A.ElementAt("element.at", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrSubstring("str.substring", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.StrStartsWith("str.startsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrEndsWith("str.endsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrReplace("str.replace", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType), new A.Parameter(_s1_1, B.C_StringType)], t1)), new A.StrUppercase("str.uppercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrLowercase("str.lowercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrTrim("str.trim", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrMatch("str.match", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrLength("str.length", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrConcat("str.concat", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrFirst("str.first", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrLast("str.last", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrInit("str.init", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrTail("str.tail", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrAt("str.at", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrIsEmpty("str.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrIsNotEmpty("str.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrContains("str.contains", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrTake("str.take", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrDrop("str.drop", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrRemoveAt("str.removeAt", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrReverse("str.reverse", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrBytes("str.bytes", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrIndexOf("str.indexOf", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrPadLeft("str.padLeft", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_StringType)], t1)), new A.StrPadRight("str.padRight", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_StringType)], t1)), new A.StrSplit("str.split", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.ListInsertStart("list.insertStart", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListInsertEnd("list.insertEnd", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListAt("list.at", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListSet("list.set", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_AnyType)], t1)), new A.ListJoin("list.join", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.ListLength("list.length", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListConcat("list.concat", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_ListType)], t1)), new A.ListIsEmpty("list.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListIsNotEmpty("list.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListContains("list.contains", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListFirst("list.first", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListLast("list.last", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListInit("list.init", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListTail("list.tail", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListTake("list.take", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListDrop("list.drop", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListRemove("list.remove", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListRemoveAt("list.removeAt", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListReverse("list.reverse", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListFilled("list.filled", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListIndexOf("list.indexOf", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListSwap("list.swap", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.ListSublist("list.sublist", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.IsNumber("is.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInteger("is.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsDecimal("is.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInfinite("is.infinite", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsString("is.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsBoolean("is.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsList("is.list", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToNumber("to.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToInteger("to.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToDecimal("to.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToString("to.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToBoolean("to.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1))], type$.JSArray_FunctionPrototype);
     },
     StringExtensions_get_isOperandDelimiter(_this) {
       var t1 = A.RegExp_RegExp("\\s"),
@@ -4412,6 +4823,22 @@
     },
     $isFunction: 1
   };
+  J.JavaScriptBigInt.prototype = {
+    get$hashCode(receiver) {
+      return 0;
+    },
+    toString$0(receiver) {
+      return String(receiver);
+    }
+  };
+  J.JavaScriptSymbol.prototype = {
+    get$hashCode(receiver) {
+      return 0;
+    },
+    toString$0(receiver) {
+      return String(receiver);
+    }
+  };
   J.JSArray.prototype = {
     add$1(receiver, value) {
       A._arrayInstanceType(receiver)._precomputed1._as(value);
@@ -4420,11 +4847,16 @@
       receiver.push(value);
     },
     addAll$1(receiver, collection) {
+      var t1, _i;
       A._arrayInstanceType(receiver)._eval$1("Iterable<1>")._as(collection);
       if (!!receiver.fixed$length)
         A.throwExpression(A.UnsupportedError$("addAll"));
-      this._addAllFromArray$1(receiver, collection);
-      return;
+      if (Array.isArray(collection)) {
+        this._addAllFromArray$1(receiver, collection);
+        return;
+      }
+      for (t1 = collection.length, _i = 0; _i < collection.length; collection.length === t1 || (0, A.throwConcurrentModificationError)(collection), ++_i)
+        receiver.push(collection[_i]);
     },
     _addAllFromArray$1(receiver, array) {
       var len, i;
@@ -4443,7 +4875,7 @@
     },
     join$1(receiver, separator) {
       var i,
-        list = A.List_List$filled(receiver.length, "", type$.String);
+        list = A.List_List$filled(receiver.length, "", false, type$.String);
       for (i = 0; i < receiver.length; ++i)
         this.$indexSet(list, i, A.S(receiver[i]));
       return list.join(separator);
@@ -4503,12 +4935,21 @@
       }
       return false;
     },
+    get$reversed(receiver) {
+      return new A.ReversedListIterable(receiver, A._arrayInstanceType(receiver)._eval$1("ReversedListIterable<1>"));
+    },
     contains$1(receiver, other) {
       var i;
       for (i = 0; i < receiver.length; ++i)
         if (J.$eq$(receiver[i], other))
           return true;
       return false;
+    },
+    get$isEmpty(receiver) {
+      return receiver.length === 0;
+    },
+    get$isNotEmpty(receiver) {
+      return receiver.length !== 0;
     },
     toString$0(receiver) {
       return A.Iterable_iterableToFullString(receiver, "[", "]");
@@ -4577,8 +5018,42 @@
     $isIterator: 1
   };
   J.JSNumber.prototype = {
+    compareTo$1(receiver, b) {
+      var bIsNegative;
+      if (receiver < b)
+        return -1;
+      else if (receiver > b)
+        return 1;
+      else if (receiver === b) {
+        if (receiver === 0) {
+          bIsNegative = this.get$isNegative(b);
+          if (this.get$isNegative(receiver) === bIsNegative)
+            return 0;
+          if (this.get$isNegative(receiver))
+            return -1;
+          return 1;
+        }
+        return 0;
+      } else if (isNaN(receiver)) {
+        if (isNaN(b))
+          return 0;
+        return 1;
+      } else
+        return -1;
+    },
+    get$isNegative(receiver) {
+      return receiver === 0 ? 1 / receiver < 0 : receiver < 0;
+    },
     abs$0(receiver) {
       return Math.abs(receiver);
+    },
+    get$sign(receiver) {
+      var t1;
+      if (receiver > 0)
+        t1 = 1;
+      else
+        t1 = receiver < 0 ? -1 : receiver;
+      return t1;
     },
     toInt$0(receiver) {
       var t1;
@@ -4625,6 +5100,15 @@
       } else if (receiver > -1 / 0)
         return 0 - Math.round(0 - receiver);
       throw A.wrapException(A.UnsupportedError$("" + receiver + ".round()"));
+    },
+    clamp$2(receiver, lowerLimit, upperLimit) {
+      if (this.compareTo$1(lowerLimit, upperLimit) > 0)
+        throw A.wrapException(A.argumentErrorValue(lowerLimit));
+      if (this.compareTo$1(receiver, lowerLimit) < 0)
+        return lowerLimit;
+      if (this.compareTo$1(receiver, upperLimit) > 0)
+        return upperLimit;
+      return receiver;
     },
     toString$0(receiver) {
       if (receiver === 0 && 1 / receiver < 0)
@@ -4675,6 +5159,14 @@
   J.JSInt.prototype = {
     abs$0(receiver) {
       return Math.abs(receiver);
+    },
+    get$sign(receiver) {
+      var t1;
+      if (receiver > 0)
+        t1 = 1;
+      else
+        t1 = receiver < 0 ? -1 : receiver;
+      return t1;
     },
     get$runtimeType(receiver) {
       return A.createRuntimeType(type$.int);
@@ -4737,6 +5229,40 @@
         return result;
       return result.substring(startIndex, endIndex0);
     },
+    $mul(receiver, times) {
+      var s, result;
+      if (0 >= times)
+        return "";
+      if (times === 1 || receiver.length === 0)
+        return receiver;
+      if (times !== times >>> 0)
+        throw A.wrapException(B.C_OutOfMemoryError);
+      for (s = receiver, result = ""; true;) {
+        if ((times & 1) === 1)
+          result = s + result;
+        times = times >>> 1;
+        if (times === 0)
+          break;
+        s += s;
+      }
+      return result;
+    },
+    padLeft$2(receiver, width, padding) {
+      var delta = width - receiver.length;
+      if (delta <= 0)
+        return receiver;
+      return this.$mul(padding, delta) + receiver;
+    },
+    padRight$2(receiver, width, padding) {
+      var delta = width - receiver.length;
+      if (delta <= 0)
+        return receiver;
+      return receiver + this.$mul(padding, delta);
+    },
+    indexOf$1(receiver, pattern) {
+      var t1 = receiver.indexOf(pattern, 0);
+      return t1;
+    },
     toString$0(receiver) {
       return receiver;
     },
@@ -4787,17 +5313,18 @@
       return t1 == null ? this.$ti._precomputed1._as(t1) : t1;
     },
     moveNext$0() {
-      var t2, _this = this,
+      var t3, _this = this,
         t1 = _this.__internal$_iterable,
-        $length = t1.get$length(t1);
+        t2 = J.getInterceptor$asx(t1),
+        $length = t2.get$length(t1);
       if (_this.__internal$_length !== $length)
         throw A.wrapException(A.ConcurrentModificationError$(t1));
-      t2 = _this.__internal$_index;
-      if (t2 >= $length) {
+      t3 = _this.__internal$_index;
+      if (t3 >= $length) {
         _this.set$__internal$_current(null);
         return false;
       }
-      _this.set$__internal$_current(t1.elementAt$1(0, t2));
+      _this.set$__internal$_current(t2.elementAt$1(t1, t3));
       ++_this.__internal$_index;
       return true;
     },
@@ -4808,10 +5335,10 @@
   };
   A.MappedIterable.prototype = {
     get$iterator(_) {
-      return new A.MappedIterator(J.get$iterator$a(this.__internal$_iterable), this._f, A._instanceType(this)._eval$1("MappedIterator<1,2>"));
+      return new A.MappedIterator(J.get$iterator$ax(this.__internal$_iterable), this._f, A._instanceType(this)._eval$1("MappedIterator<1,2>"));
     },
     get$length(_) {
-      return J.get$length$as(this.__internal$_iterable);
+      return J.get$length$asx(this.__internal$_iterable);
     }
   };
   A.EfficientLengthMappedIterable.prototype = {$isEfficientLengthIterable: 1};
@@ -4837,47 +5364,38 @@
   };
   A.MappedListIterable.prototype = {
     get$length(_) {
-      return J.get$length$as(this._source);
+      return J.get$length$asx(this._source);
     },
     elementAt$1(_, index) {
-      return this._f.call$1(J.elementAt$1$a(this._source, index));
+      return this._f.call$1(J.elementAt$1$ax(this._source, index));
     }
   };
   A.WhereTypeIterable.prototype = {
     get$iterator(_) {
-      var t1 = this._source;
-      return new A.WhereTypeIterator(new J.ArrayIterator(t1, t1.length, A._arrayInstanceType(t1)._eval$1("ArrayIterator<1>")), this.$ti._eval$1("WhereTypeIterator<1>"));
+      return new A.WhereTypeIterator(J.get$iterator$ax(this._source), this.$ti._eval$1("WhereTypeIterator<1>"));
     }
   };
   A.WhereTypeIterator.prototype = {
     moveNext$0() {
-      var t1, t2, t3, t4;
-      for (t1 = this._source, t2 = this.$ti._precomputed1, t3 = t1.$ti._precomputed1; t1.moveNext$0();) {
-        t4 = t1._current;
-        if (t2._is(t4 == null ? t3._as(t4) : t4))
+      var t1, t2;
+      for (t1 = this._source, t2 = this.$ti._precomputed1; t1.moveNext$0();)
+        if (t2._is(t1.get$current()))
           return true;
-      }
       return false;
     },
     get$current() {
-      var t1 = this._source,
-        t2 = t1._current;
-      t1 = t2 == null ? t1.$ti._precomputed1._as(t2) : t2;
-      return this.$ti._precomputed1._as(t1);
+      return this.$ti._precomputed1._as(this._source.get$current());
     },
     $isIterator: 1
   };
+  A.FixedLengthListMixin.prototype = {};
   A.ReversedListIterable.prototype = {
     get$length(_) {
       return this._source.length;
     },
     elementAt$1(_, index) {
-      var t1 = this._source,
-        t2 = t1.length,
-        t3 = t2 - 1 - index;
-      if (!(t3 >= 0))
-        return A.ioore(t1, t3);
-      return t1[t3];
+      var t1 = this._source;
+      return J.elementAt$1$ax(t1, t1.length - 1 - index);
     }
   };
   A.Symbol.prototype = {
@@ -4947,43 +5465,36 @@
       return this._memberName = new A.Symbol(A._asString(t1));
     },
     get$positionalArguments() {
-      var t1, argumentCount, list, index, _this = this;
+      var t1, t2, argumentCount, list, index, _this = this;
       if (_this.__js_helper$_kind === 1)
         return B.List_empty1;
       t1 = _this._arguments;
-      argumentCount = t1.length - _this._namedArgumentNames.length - _this._typeArgumentCount;
+      t2 = J.getInterceptor$asx(t1);
+      argumentCount = t2.get$length(t1) - J.get$length$asx(_this._namedArgumentNames) - _this._typeArgumentCount;
       if (argumentCount === 0)
         return B.List_empty1;
       list = [];
-      for (index = 0; index < argumentCount; ++index) {
-        if (!(index < t1.length))
-          return A.ioore(t1, index);
-        list.push(t1[index]);
-      }
+      for (index = 0; index < argumentCount; ++index)
+        list.push(t2.$index(t1, index));
       list.fixed$length = Array;
       list.immutable$list = Array;
       return list;
     },
     get$namedArguments() {
-      var t1, namedArgumentCount, t2, namedArgumentsStartIndex, map, i, t3, t4, _this = this;
+      var t1, t2, namedArgumentCount, t3, t4, namedArgumentsStartIndex, map, i, _this = this;
       if (_this.__js_helper$_kind !== 0)
         return B.Map_empty;
       t1 = _this._namedArgumentNames;
-      namedArgumentCount = t1.length;
-      t2 = _this._arguments;
-      namedArgumentsStartIndex = t2.length - namedArgumentCount - _this._typeArgumentCount;
+      t2 = J.getInterceptor$asx(t1);
+      namedArgumentCount = t2.get$length(t1);
+      t3 = _this._arguments;
+      t4 = J.getInterceptor$asx(t3);
+      namedArgumentsStartIndex = t4.get$length(t3) - namedArgumentCount - _this._typeArgumentCount;
       if (namedArgumentCount === 0)
         return B.Map_empty;
       map = new A.JsLinkedHashMap(type$.JsLinkedHashMap_Symbol_dynamic);
-      for (i = 0; i < namedArgumentCount; ++i) {
-        if (!(i < t1.length))
-          return A.ioore(t1, i);
-        t3 = A._asString(t1[i]);
-        t4 = namedArgumentsStartIndex + i;
-        if (!(t4 >= 0 && t4 < t2.length))
-          return A.ioore(t2, t4);
-        map.$indexSet(0, new A.Symbol(t3), t2[t4]);
-      }
+      for (i = 0; i < namedArgumentCount; ++i)
+        map.$indexSet(0, new A.Symbol(A._asString(t2.$index(t1, i))), t4.$index(t3, namedArgumentsStartIndex + i));
       return new A.ConstantMapView(map, type$.ConstantMapView_Symbol_dynamic);
     },
     $isInvocation: 1
@@ -5219,12 +5730,60 @@
     },
     $isIterator: 1
   };
+  A.initHooks_closure.prototype = {
+    call$1(o) {
+      return this.getTag(o);
+    },
+    $signature: 5
+  };
+  A.initHooks_closure0.prototype = {
+    call$2(o, tag) {
+      return this.getUnknownTag(o, tag);
+    },
+    $signature: 6
+  };
+  A.initHooks_closure1.prototype = {
+    call$1(tag) {
+      return this.prototypeForTag(A._asString(tag));
+    },
+    $signature: 7
+  };
   A.JSSyntaxRegExp.prototype = {
     toString$0(_) {
       return "RegExp/" + this.pattern + "/" + this._nativeRegExp.flags;
     },
     $isPattern: 1
   };
+  A.NativeTypedData.prototype = {};
+  A.NativeTypedArray.prototype = {
+    get$length(receiver) {
+      return receiver.length;
+    },
+    $isJavaScriptIndexingBehavior: 1
+  };
+  A.NativeTypedArrayOfInt.prototype = {$isEfficientLengthIterable: 1, $isIterable: 1, $isList: 1};
+  A.NativeUint8List.prototype = {
+    get$runtimeType(receiver) {
+      return B.Type_Uint8List_CSc;
+    },
+    get$length(receiver) {
+      return receiver.length;
+    },
+    $index(receiver, index) {
+      A._checkValidIndex(index, receiver, receiver.length);
+      return receiver[index];
+    },
+    sublist$2(receiver, start, end) {
+      return new Uint8Array(receiver.subarray(start, A._checkValidRange(start, end, receiver.length)));
+    },
+    sublist$1(receiver, start) {
+      return this.sublist$2(receiver, start, null);
+    },
+    $isTrustedGetRuntimeType: 1,
+    $isUint8List: 1
+  };
+  A._NativeTypedArrayOfInt_NativeTypedArray_ListMixin.prototype = {};
+  A._NativeTypedArrayOfInt_NativeTypedArray_ListMixin_FixedLengthListMixin.prototype = {};
   A.Rti.prototype = {
     _eval$1(recipe) {
       return A._Universe_evalInEnvironment(init.typeUniverse, this, recipe);
@@ -5358,6 +5917,64 @@
     },
     $isIterator: 1
   };
+  A.ListBase.prototype = {
+    get$iterator(receiver) {
+      return new A.ListIterator(receiver, receiver.length, A.instanceType(receiver)._eval$1("ListIterator<ListBase.E>"));
+    },
+    elementAt$1(receiver, index) {
+      if (!(index >= 0 && index < receiver.length))
+        return A.ioore(receiver, index);
+      return receiver[index];
+    },
+    get$isEmpty(receiver) {
+      return receiver.length === 0;
+    },
+    get$isNotEmpty(receiver) {
+      return receiver.length !== 0;
+    },
+    get$first(receiver) {
+      var t1 = receiver.length;
+      if (t1 === 0)
+        throw A.wrapException(A.IterableElementError_noElement());
+      if (0 >= t1)
+        return A.ioore(receiver, 0);
+      return receiver[0];
+    },
+    get$last(receiver) {
+      var t2,
+        t1 = receiver.length;
+      if (t1 === 0)
+        throw A.wrapException(A.IterableElementError_noElement());
+      t2 = t1 - 1;
+      if (!(t2 >= 0))
+        return A.ioore(receiver, t2);
+      return receiver[t2];
+    },
+    join$1(receiver, separator) {
+      var t1;
+      if (receiver.length === 0)
+        return "";
+      t1 = A.StringBuffer__writeAll("", receiver, separator);
+      return t1.charCodeAt(0) == 0 ? t1 : t1;
+    },
+    map$1$1(receiver, f, $T) {
+      var t1 = A.instanceType(receiver);
+      return new A.MappedListIterable(receiver, t1._bind$1($T)._eval$1("1(ListBase.E)")._as(f), t1._eval$1("@<ListBase.E>")._bind$1($T)._eval$1("MappedListIterable<1,2>"));
+    },
+    $add(receiver, other) {
+      var t1 = A.instanceType(receiver);
+      t1._eval$1("List<ListBase.E>")._as(other);
+      t1 = A.List_List$of(receiver, true, t1._eval$1("ListBase.E"));
+      B.JSArray_methods.addAll$1(t1, other);
+      return t1;
+    },
+    get$reversed(receiver) {
+      return new A.ReversedListIterable(receiver, A.instanceType(receiver)._eval$1("ReversedListIterable<ListBase.E>"));
+    },
+    toString$0(receiver) {
+      return A.Iterable_iterableToFullString(receiver, "[", "]");
+    }
+  };
   A.MapBase.prototype = {
     get$entries() {
       var t1 = A._instanceType(this),
@@ -5401,7 +6018,7 @@
       t2 = A.S(v);
       t1._contents += t2;
     },
-    $signature: 5
+    $signature: 8
   };
   A._UnmodifiableMapMixin.prototype = {};
   A.MapView.prototype = {
@@ -5430,6 +6047,141 @@
   };
   A._SetBase.prototype = {};
   A._UnmodifiableMapView_MapView__UnmodifiableMapMixin.prototype = {};
+  A.Converter.prototype = {};
+  A.Utf8Encoder.prototype = {
+    convert$1(string) {
+      var t1, encoder, t2,
+        stringLength = string.length,
+        end = A.RangeError_checkValidRange(0, null, stringLength);
+      if (end === 0)
+        return new Uint8Array(0);
+      t1 = new Uint8Array(end * 3);
+      encoder = new A._Utf8Encoder(t1);
+      if (encoder._fillBuffer$3(string, 0, end) !== end) {
+        t2 = end - 1;
+        if (!(t2 >= 0 && t2 < stringLength))
+          return A.ioore(string, t2);
+        encoder._writeReplacementCharacter$0();
+      }
+      return B.NativeUint8List_methods.sublist$2(t1, 0, encoder._bufferIndex);
+    }
+  };
+  A._Utf8Encoder.prototype = {
+    _writeReplacementCharacter$0() {
+      var _this = this,
+        t1 = _this._buffer,
+        t2 = _this._bufferIndex,
+        t3 = _this._bufferIndex = t2 + 1,
+        t4 = t1.length;
+      if (!(t2 < t4))
+        return A.ioore(t1, t2);
+      t1[t2] = 239;
+      t2 = _this._bufferIndex = t3 + 1;
+      if (!(t3 < t4))
+        return A.ioore(t1, t3);
+      t1[t3] = 191;
+      _this._bufferIndex = t2 + 1;
+      if (!(t2 < t4))
+        return A.ioore(t1, t2);
+      t1[t2] = 189;
+    },
+    _writeSurrogate$2(leadingSurrogate, nextCodeUnit) {
+      var rune, t1, t2, t3, t4, _this = this;
+      if ((nextCodeUnit & 64512) === 56320) {
+        rune = 65536 + ((leadingSurrogate & 1023) << 10) | nextCodeUnit & 1023;
+        t1 = _this._buffer;
+        t2 = _this._bufferIndex;
+        t3 = _this._bufferIndex = t2 + 1;
+        t4 = t1.length;
+        if (!(t2 < t4))
+          return A.ioore(t1, t2);
+        t1[t2] = rune >>> 18 | 240;
+        t2 = _this._bufferIndex = t3 + 1;
+        if (!(t3 < t4))
+          return A.ioore(t1, t3);
+        t1[t3] = rune >>> 12 & 63 | 128;
+        t3 = _this._bufferIndex = t2 + 1;
+        if (!(t2 < t4))
+          return A.ioore(t1, t2);
+        t1[t2] = rune >>> 6 & 63 | 128;
+        _this._bufferIndex = t3 + 1;
+        if (!(t3 < t4))
+          return A.ioore(t1, t3);
+        t1[t3] = rune & 63 | 128;
+        return true;
+      } else {
+        _this._writeReplacementCharacter$0();
+        return false;
+      }
+    },
+    _fillBuffer$3(str, start, end) {
+      var t1, t2, t3, stringIndex, codeUnit, t4, t5, _this = this;
+      if (start !== end) {
+        t1 = end - 1;
+        if (!(t1 >= 0 && t1 < str.length))
+          return A.ioore(str, t1);
+        t1 = (str.charCodeAt(t1) & 64512) === 55296;
+      } else
+        t1 = false;
+      if (t1)
+        --end;
+      for (t1 = _this._buffer, t2 = t1.length, t3 = str.length, stringIndex = start; stringIndex < end; ++stringIndex) {
+        if (!(stringIndex < t3))
+          return A.ioore(str, stringIndex);
+        codeUnit = str.charCodeAt(stringIndex);
+        if (codeUnit <= 127) {
+          t4 = _this._bufferIndex;
+          if (t4 >= t2)
+            break;
+          _this._bufferIndex = t4 + 1;
+          t1[t4] = codeUnit;
+        } else {
+          t4 = codeUnit & 64512;
+          if (t4 === 55296) {
+            if (_this._bufferIndex + 4 > t2)
+              break;
+            t4 = stringIndex + 1;
+            if (!(t4 < t3))
+              return A.ioore(str, t4);
+            if (_this._writeSurrogate$2(codeUnit, str.charCodeAt(t4)))
+              stringIndex = t4;
+          } else if (t4 === 56320) {
+            if (_this._bufferIndex + 3 > t2)
+              break;
+            _this._writeReplacementCharacter$0();
+          } else if (codeUnit <= 2047) {
+            t4 = _this._bufferIndex;
+            t5 = t4 + 1;
+            if (t5 >= t2)
+              break;
+            _this._bufferIndex = t5;
+            if (!(t4 < t2))
+              return A.ioore(t1, t4);
+            t1[t4] = codeUnit >>> 6 | 192;
+            _this._bufferIndex = t5 + 1;
+            t1[t5] = codeUnit & 63 | 128;
+          } else {
+            t4 = _this._bufferIndex;
+            if (t4 + 2 >= t2)
+              break;
+            t5 = _this._bufferIndex = t4 + 1;
+            if (!(t4 < t2))
+              return A.ioore(t1, t4);
+            t1[t4] = codeUnit >>> 12 | 224;
+            t4 = _this._bufferIndex = t5 + 1;
+            if (!(t5 < t2))
+              return A.ioore(t1, t5);
+            t1[t5] = codeUnit >>> 6 & 63 | 128;
+            _this._bufferIndex = t4 + 1;
+            if (!(t4 < t2))
+              return A.ioore(t1, t4);
+            t1[t4] = codeUnit & 63 | 128;
+          }
+        }
+      }
+      return stringIndex;
+    }
+  };
   A.NoSuchMethodError_toString_closure.prototype = {
     call$2(key, value) {
       var t1, t2, t3;
@@ -5444,7 +6196,7 @@
       t1._contents += t3;
       t2.comma = ", ";
     },
-    $signature: 6
+    $signature: 9
   };
   A.Error.prototype = {};
   A.AssertionError.prototype = {
@@ -5543,6 +6295,11 @@
       return "Unsupported operation: " + this.message;
     }
   };
+  A.UnimplementedError.prototype = {
+    toString$0(_) {
+      return "UnimplementedError: " + this.message;
+    }
+  };
   A.StateError.prototype = {
     toString$0(_) {
       return "Bad state: " + this.message;
@@ -5554,6 +6311,11 @@
       if (t1 == null)
         return "Concurrent modification during iteration.";
       return "Concurrent modification during iteration: " + A.Error_safeToString(t1) + ".";
+    }
+  };
+  A.OutOfMemoryError.prototype = {
+    toString$0(_) {
+      return "Out of Memory";
     }
   };
   A.FormatException.prototype = {
@@ -5670,6 +6432,16 @@
     toString$0(_) {
       var t1 = this._contents;
       return t1.charCodeAt(0) == 0 ? t1 : t1;
+    }
+  };
+  A._JSRandom.prototype = {
+    nextInt$1(max) {
+      if (max <= 0 || max > 4294967296)
+        throw A.wrapException(A.RangeError$("max must be in range 0 < max \u2264 2^32, was " + max));
+      return Math.random() * max >>> 0;
+    },
+    nextDouble$0() {
+      return Math.random();
     }
   };
   A.Compiler.prototype = {
@@ -5850,7 +6622,7 @@
       if (t1._nativeRegExp.test(input.value))
         return new A.ResultState(A._setArrayType([new A.StringToken(t3.value, t3.location)], type$.JSArray_Token_dynamic), t2);
       else
-        return new A.StringDoubleQuoteState(J.add$1$a(t3, input), t2);
+        return new A.StringDoubleQuoteState(J.add$1$ax(t3, input), t2);
     }
   };
   A.StringSingleQuoteState.prototype = {
@@ -5863,7 +6635,7 @@
       if (t1._nativeRegExp.test(input.value))
         return new A.ResultState(A._setArrayType([new A.StringToken(t3.value, t3.location)], type$.JSArray_Token_dynamic), t2);
       else
-        return new A.StringSingleQuoteState(J.add$1$a(t3, input), t2);
+        return new A.StringSingleQuoteState(J.add$1$ax(t3, input), t2);
     }
   };
   A.IntegerState.prototype = {
@@ -5873,11 +6645,11 @@
       t1 = input.value;
       t2 = A.RegExp_RegExp("\\d");
       if (t2._nativeRegExp.test(t1))
-        return new A.IntegerState(J.add$1$a(_this.output, input), _this.iterator);
+        return new A.IntegerState(J.add$1$ax(_this.output, input), _this.iterator);
       else {
         t2 = A.RegExp_RegExp("\\.");
         if (t2._nativeRegExp.test(t1))
-          return new A.DecimalInitState(J.add$1$a(_this.output, input), _this.iterator);
+          return new A.DecimalInitState(J.add$1$ax(_this.output, input), _this.iterator);
         else if (A.StringExtensions_get_isOperandDelimiter(t1)) {
           t1 = _this.iterator;
           --t1._list_iterator$_index;
@@ -5893,7 +6665,7 @@
       type$.Character._as(input);
       t1 = A.RegExp_RegExp("\\d");
       if (t1._nativeRegExp.test(input.value))
-        return new A.DecimalState(J.add$1$a(this.output, input), this.iterator);
+        return new A.DecimalState(J.add$1$ax(this.output, input), this.iterator);
       else
         throw A.wrapException(A.InvalidCharacterError$(input));
     }
@@ -5905,7 +6677,7 @@
       t1 = input.value;
       t2 = A.RegExp_RegExp("\\d");
       if (t2._nativeRegExp.test(t1))
-        return new A.DecimalState(J.add$1$a(_this.output, input), _this.iterator);
+        return new A.DecimalState(J.add$1$ax(_this.output, input), _this.iterator);
       else if (A.StringExtensions_get_isOperandDelimiter(t1)) {
         t1 = _this.iterator;
         --t1._list_iterator$_index;
@@ -5935,7 +6707,7 @@
       } else
         t2 = t3;
       if (t2)
-        return new A.IdentifierState(J.add$1$a(_this.output, input), _this.iterator);
+        return new A.IdentifierState(J.add$1$ax(_this.output, input), _this.iterator);
       else if (A.StringExtensions_get_isOperandDelimiter(t1)) {
         t1 = _this.iterator;
         --t1._list_iterator$_index;
@@ -5996,7 +6768,7 @@
       t1 = input.value;
       t2 = A.RegExp_RegExp("=");
       if (t2._nativeRegExp.test(t1)) {
-        t1 = J.add$1$a(_this.output, input);
+        t1 = J.add$1$ax(_this.output, input);
         return new A.ResultState(A._setArrayType([new A.EqualToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
       } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
         t1 = _this.iterator;
@@ -6014,7 +6786,7 @@
       t1 = input.value;
       t2 = A.RegExp_RegExp("=");
       if (t2._nativeRegExp.test(t1)) {
-        t1 = J.add$1$a(_this.output, input);
+        t1 = J.add$1$ax(_this.output, input);
         return new A.ResultState(A._setArrayType([new A.GreaterEqualThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
       } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
         t1 = _this.iterator;
@@ -6032,7 +6804,7 @@
       t1 = input.value;
       t2 = A.RegExp_RegExp("=");
       if (t2._nativeRegExp.test(t1)) {
-        t1 = J.add$1$a(_this.output, input);
+        t1 = J.add$1$ax(_this.output, input);
         return new A.ResultState(A._setArrayType([new A.LessEqualThanToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
       } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
         t1 = _this.iterator;
@@ -6076,7 +6848,7 @@
       t1 = input.value;
       t2 = A.RegExp_RegExp("=");
       if (t2._nativeRegExp.test(t1)) {
-        t1 = J.add$1$a(_this.output, input);
+        t1 = J.add$1$ax(_this.output, input);
         return new A.ResultState(A._setArrayType([new A.NotEqualToken(t1.value, t1.location)], type$.JSArray_Token_dynamic), _this.iterator);
       } else if (A.StringExtensions_get_isOperatorDelimiter(t1)) {
         t1 = _this.iterator;
@@ -6474,6 +7246,36 @@
       }
     }
   };
+  A.NumAsDegrees.prototype = {
+    substitute$1($arguments) {
+      var t1,
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        if (typeof t1 !== "number")
+          return t1.$mul();
+        return new A.NumberReducibleValue(t1 * 57.29577951308232);
+      } else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.NumAsRadians.prototype = {
+    substitute$1($arguments) {
+      var t1,
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        if (typeof t1 !== "number")
+          return t1.$mul();
+        return new A.NumberReducibleValue(t1 * 0.017453292519943295);
+      } else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
   A.NumCeil.prototype = {
     substitute$1($arguments) {
       var t1,
@@ -6483,6 +7285,21 @@
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.NumClamp.prototype = {
+    substitute$1($arguments) {
+      var a, b, c, t1;
+      type$.Scope_Reducible._as($arguments);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      c = $arguments.$get$1("c").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue && c instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(J.clamp$2$n(a.value, b.value, c.value));
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
@@ -6511,6 +7328,12 @@
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
+    }
+  };
+  A.NumDecimalRandom.prototype = {
+    substitute$1($arguments) {
+      type$.Scope_Reducible._as($arguments);
+      return new A.NumberReducibleValue(B.C__JSRandom.nextDouble$0());
     }
   };
   A.NumDiv.prototype = {
@@ -6545,6 +7368,18 @@
       }
     }
   };
+  A.NumFraction.prototype = {
+    substitute$1($arguments) {
+      var t1,
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(B.JSNumber_methods.$mod(J.abs$0$in(a.value), 1));
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
   A.NumInc.prototype = {
     substitute$1($arguments) {
       var t1,
@@ -6557,6 +7392,32 @@
       } else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.NumInfinity.prototype = {
+    substitute$1($arguments) {
+      type$.Scope_Reducible._as($arguments);
+      return B.NumberReducibleValue_6LA;
+    }
+  };
+  A.NumIntegerRandom.prototype = {
+    substitute$1($arguments) {
+      var a, b, t1, t2;
+      type$.Scope_Reducible._as($arguments);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue && b instanceof A.NumberReducibleValue) {
+        t1 = a.value;
+        t2 = b.value;
+        if (typeof t2 !== "number")
+          return t2.$sub();
+        if (typeof t1 !== "number")
+          return A.iae(t1);
+        return new A.NumberReducibleValue(t1 + B.C__JSRandom.nextInt$1(B.JSNumber_methods.toInt$0(t2 - t1 + 1)));
+      } else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
@@ -6744,6 +7605,18 @@
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.NumberReducibleValue)
         return new A.NumberReducibleValue(J.round$0$n(a.value));
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.NumSign.prototype = {
+    substitute$1($arguments) {
+      var t1,
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.NumberReducibleValue)
+        return new A.NumberReducibleValue(B.JSNumber_methods.toInt$0(J.get$sign$in(a.value)));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -6961,9 +7834,9 @@
         return new A.BooleanReducibleValue(a.value === b.value);
       else if (a instanceof A.ListReducibleValue && b instanceof A.ListReducibleValue) {
         t1 = a.value;
-        t2 = J.getInterceptor$as(t1);
+        t2 = J.getInterceptor$asx(t1);
         t3 = b.value;
-        t4 = J.getInterceptor$as(t3);
+        t4 = J.getInterceptor$asx(t3);
         if (t2.get$length(t1) !== t4.get$length(t3))
           return B.BooleanReducibleValue_false;
         else {
@@ -7124,9 +7997,9 @@
       a = $arguments.$get$1("a").reduce$0(0);
       b = $arguments.$get$1("b").reduce$0(0);
       if (a instanceof A.ListReducibleValue && b instanceof A.NumberReducibleValue)
-        return J.$index$as(a.value, J.toInt$0$n(b.value));
+        return J.$index$asx(a.value, J.toInt$0$n(b.value));
       else if (a instanceof A.StringReducibleValue && b instanceof A.NumberReducibleValue)
-        return new A.StringReducibleValue(J.$index$as(a.value, J.toInt$0$n(b.value)));
+        return new A.StringReducibleValue(J.$index$asx(a.value, J.toInt$0$n(b.value)));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
@@ -7177,7 +8050,7 @@
       b = $arguments.$get$1("b").reduce$0(0);
       if (a instanceof A.ListReducibleValue && b instanceof A.NumberReducibleValue) {
         t1 = a.value;
-        t2 = J.getInterceptor$as(t1);
+        t2 = J.getInterceptor$asx(t1);
         return new A.ListReducibleValue(t2.sublist$2(t1, J.toInt$0$n(b.value), t2.get$length(t1)));
       } else {
         t1 = this.get$parameterTypes();
@@ -7192,7 +8065,7 @@
       a = $arguments.$get$1("a").reduce$0(0);
       b = $arguments.$get$1("b").reduce$0(0);
       if (a instanceof A.NumberReducibleValue)
-        return new A.ListReducibleValue(A.List_List$filled(J.toInt$0$n(a.value), b, type$.Reducible));
+        return new A.ListReducibleValue(A.List_List$filled(J.toInt$0$n(a.value), b, false, type$.Reducible));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
@@ -7204,7 +8077,7 @@
       var t1,
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.ListReducibleValue)
-        return J.get$first$a(a.value);
+        return J.get$first$ax(a.value);
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -7218,7 +8091,7 @@
       a = $arguments.$get$1("a").reduce$0(0);
       b = $arguments.$get$1("b").reduce$0(0);
       if (a instanceof A.ListReducibleValue && b instanceof A.NumberReducibleValue)
-        return J.$index$as(a.value, J.toInt$0$n(b.value));
+        return J.$index$asx(a.value, J.toInt$0$n(b.value));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
@@ -7233,7 +8106,7 @@
       b = $arguments.$get$1("b").reduce$0(0);
       if (a instanceof A.ListReducibleValue) {
         eq = A.CompEq$();
-        for (t1 = a.value, t2 = J.getInterceptor$as(t1), i = 0; i < t2.get$length(t1); ++i) {
+        for (t1 = a.value, t2 = J.getInterceptor$asx(t1), i = 0; i < t2.get$length(t1); ++i) {
           t3 = A.boolConversionCheck(eq.compare$2(J.reduce$0$z(t2.$index(t1, i)), b).value);
           if (t3)
             return new A.NumberReducibleValue(i);
@@ -7251,8 +8124,8 @@
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.ListReducibleValue) {
         t1 = a.value;
-        t2 = J.getInterceptor$as(t1);
-        return new A.ListReducibleValue(t2.get$length(t1) !== 0 ? t2.sublist$2(t1, 0, t2.get$length(t1) - 1) : A._setArrayType([], type$.JSArray_Reducible));
+        t2 = J.getInterceptor$asx(t1);
+        return new A.ListReducibleValue(t2.get$isNotEmpty(t1) ? t2.sublist$2(t1, 0, t2.get$length(t1) - 1) : A._setArrayType([], type$.JSArray_Reducible));
       } else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -7296,7 +8169,7 @@
       var t1,
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.ListReducibleValue)
-        return new A.BooleanReducibleValue(J.get$length$as(a.value) === 0);
+        return new A.BooleanReducibleValue(J.get$isEmpty$asx(a.value));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -7308,7 +8181,7 @@
       var t1,
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.ListReducibleValue)
-        return new A.BooleanReducibleValue(J.get$length$as(a.value) !== 0);
+        return new A.BooleanReducibleValue(J.get$isNotEmpty$asx(a.value));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -7322,7 +8195,7 @@
       a = $arguments.$get$1("a").reduce$0(0);
       b = $arguments.$get$1("b").reduce$0(0);
       if (a instanceof A.ListReducibleValue && b instanceof A.StringReducibleValue)
-        return new A.StringReducibleValue(J.join$1$a(a.value, b.value));
+        return new A.StringReducibleValue(J.join$1$ax(a.value, b.value));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
@@ -7334,7 +8207,7 @@
       var t1,
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.ListReducibleValue)
-        return J.get$last$a(a.value);
+        return J.get$last$ax(a.value);
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -7346,7 +8219,7 @@
       var t1,
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.ListReducibleValue)
-        return new A.NumberReducibleValue(J.get$length$as(a.value));
+        return new A.NumberReducibleValue(J.get$length$asx(a.value));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -7385,8 +8258,8 @@
         t1 = a.value;
         t2 = b.value;
         t3 = J.getInterceptor$n(t2);
-        t4 = J.getInterceptor$a(t1);
-        return new A.ListReducibleValue(B.JSArray_methods.$add(t4.sublist$2(t1, 0, t3.toInt$0(t2)), t4.sublist$1(t1, t3.toInt$0(t2) + 1)));
+        t4 = J.getInterceptor$ax(t1);
+        return new A.ListReducibleValue(J.$add$ansx(t4.sublist$2(t1, 0, t3.toInt$0(t2)), t4.sublist$1(t1, t3.toInt$0(t2) + 1)));
       } else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
@@ -7395,12 +8268,11 @@
   };
   A.ListReverse.prototype = {
     substitute$1($arguments) {
-      var t1, t2,
+      var t1,
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.ListReducibleValue) {
-        t1 = a.value;
-        t2 = A._arrayInstanceType(t1)._eval$1("ReversedListIterable<1>");
-        return new A.ListReducibleValue(A.List_List$of(new A.ReversedListIterable(t1, t2), true, t2._eval$1("ListIterable.E")));
+        t1 = J.get$reversed$ax(a.value);
+        return new A.ListReducibleValue(A.List_List$of(t1, true, t1.$ti._eval$1("ListIterable.E")));
       } else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -7418,7 +8290,7 @@
         t1 = a.value;
         t2 = b.value;
         t3 = J.getInterceptor$n(t2);
-        t4 = J.getInterceptor$a(t1);
+        t4 = J.getInterceptor$ax(t1);
         head = t4.sublist$2(t1, 0, t3.toInt$0(t2));
         tail = t4.sublist$2(t1, t3.toInt$0(t2), t4.get$length(t1));
         t1 = A.List_List$of(head, true, type$.Reducible);
@@ -7427,7 +8299,7 @@
         return new A.ListReducibleValue(t1);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
@@ -7439,7 +8311,7 @@
       b = $arguments.$get$1("b").reduce$0(0);
       c = $arguments.$get$1("c").reduce$0(0);
       if (a instanceof A.ListReducibleValue && b instanceof A.NumberReducibleValue && c instanceof A.NumberReducibleValue)
-        return new A.ListReducibleValue(J.sublist$2$a(a.value, J.toInt$0$n(b.value), J.toInt$0$n(c.value)));
+        return new A.ListReducibleValue(J.sublist$2$ax(a.value, J.toInt$0$n(b.value), J.toInt$0$n(c.value)));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
@@ -7458,7 +8330,7 @@
         t1 = a.value;
         t2 = b.value;
         t3 = J.getInterceptor$n(t2);
-        t4 = J.getInterceptor$as(t1);
+        t4 = J.getInterceptor$asx(t1);
         valueAtB = t4.$index(t1, t3.toInt$0(t2));
         t5 = c.value;
         t6 = J.getInterceptor$n(t5);
@@ -7475,7 +8347,7 @@
         return new A.ListReducibleValue(result);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
@@ -7485,8 +8357,8 @@
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.ListReducibleValue) {
         t1 = a.value;
-        t2 = J.getInterceptor$as(t1);
-        return new A.ListReducibleValue(t2.get$length(t1) !== 0 ? t2.sublist$1(t1, 1) : A._setArrayType([], type$.JSArray_Reducible));
+        t2 = J.getInterceptor$asx(t1);
+        return new A.ListReducibleValue(t2.get$isNotEmpty(t1) ? t2.sublist$1(t1, 1) : A._setArrayType([], type$.JSArray_Reducible));
       } else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -7500,7 +8372,7 @@
       a = $arguments.$get$1("a").reduce$0(0);
       b = $arguments.$get$1("b").reduce$0(0);
       if (a instanceof A.ListReducibleValue && b instanceof A.NumberReducibleValue)
-        return new A.ListReducibleValue(J.sublist$2$a(a.value, 0, J.toInt$0$n(b.value)));
+        return new A.ListReducibleValue(J.sublist$2$ax(a.value, 0, J.toInt$0$n(b.value)));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
@@ -7579,7 +8451,7 @@
           return A.iae(t2);
         return new A.NumberReducibleValue(t1 + t2);
       } else if (a instanceof A.StringReducibleValue && b instanceof A.StringReducibleValue)
-        return new A.StringReducibleValue(J.$add$ans(a.value, b.value));
+        return new A.StringReducibleValue(J.$add$ansx(a.value, b.value));
       else {
         t1 = a instanceof A.ListReducibleValue;
         if (t1 && b instanceof A.ListReducibleValue) {
@@ -7686,10 +8558,25 @@
       a = $arguments.$get$1("a").reduce$0(0);
       b = $arguments.$get$1("b").reduce$0(0);
       if (a instanceof A.StringReducibleValue && b instanceof A.NumberReducibleValue)
-        return new A.StringReducibleValue(J.$index$as(a.value, J.toInt$0$n(b.value)));
+        return new A.StringReducibleValue(J.$index$asx(a.value, J.toInt$0$n(b.value)));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.StrBytes.prototype = {
+    substitute$1($arguments) {
+      var bytes, t1, t2,
+        a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
+      if (a instanceof A.StringReducibleValue) {
+        bytes = new Uint8Array(A._ensureNativeList(B.C_Utf8Encoder.convert$1(A._asString(a.value))));
+        t1 = A.instanceType(bytes);
+        t2 = t1._eval$1("MappedListIterable<ListBase.E,NumberReducibleValue>");
+        return new A.ListReducibleValue(A.List_List$of(new A.MappedListIterable(bytes, t1._eval$1("NumberReducibleValue(ListBase.E)")._as(A.reducible_NumberReducibleValue___new_tearOff$closure()), t2), true, t2._eval$1("ListIterable.E")));
+      } else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
@@ -7700,7 +8587,7 @@
       a = $arguments.$get$1("a").reduce$0(0);
       b = $arguments.$get$1("b").reduce$0(0);
       if (a instanceof A.StringReducibleValue && b instanceof A.StringReducibleValue)
-        return new A.StringReducibleValue(J.$add$ans(a.value, b.value));
+        return new A.StringReducibleValue(J.$add$ansx(a.value, b.value));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
@@ -7716,7 +8603,7 @@
       if (a instanceof A.StringReducibleValue && b instanceof A.StringReducibleValue) {
         t1 = a.value;
         t2 = type$.Pattern._as(b.value);
-        t3 = J.getInterceptor$as(t1);
+        t3 = J.getInterceptor$asx(t1);
         t4 = t3.get$length(t1);
         if (0 > t4)
           A.throwExpression(A.RangeError$range(0, 0, t3.get$length(t1), null, null));
@@ -7735,7 +8622,7 @@
       b = $arguments.$get$1("b").reduce$0(0);
       if (a instanceof A.StringReducibleValue && b instanceof A.NumberReducibleValue) {
         t1 = a.value;
-        t2 = J.getInterceptor$as(t1);
+        t2 = J.getInterceptor$asx(t1);
         return new A.StringReducibleValue(t2.substring$2(t1, J.toInt$0$n(b.value), t2.get$length(t1)));
       } else {
         t1 = this.get$parameterTypes();
@@ -7762,10 +8649,24 @@
       var t1,
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.StringReducibleValue)
-        return new A.StringReducibleValue(J.$index$as(a.value, 0));
+        return new A.StringReducibleValue(J.$index$asx(a.value, 0));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.StrIndexOf.prototype = {
+    substitute$1($arguments) {
+      var a, b, t1;
+      type$.Scope_Reducible._as($arguments);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.StringReducibleValue && b instanceof A.StringReducibleValue)
+        return new A.NumberReducibleValue(J.indexOf$1$s(a.value, b.value));
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
@@ -7775,7 +8676,7 @@
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.StringReducibleValue) {
         t1 = a.value;
-        t2 = J.getInterceptor$as(t1);
+        t2 = J.getInterceptor$asx(t1);
         return new A.StringReducibleValue(t2.get$length(t1) !== 0 ? t2.substring$2(t1, 0, t2.get$length(t1) - 1) : "");
       } else {
         t1 = this.get$parameterTypes();
@@ -7788,7 +8689,7 @@
       var t1,
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.StringReducibleValue)
-        return new A.BooleanReducibleValue(J.get$length$as(a.value) === 0);
+        return new A.BooleanReducibleValue(J.get$length$asx(a.value) === 0);
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -7800,7 +8701,7 @@
       var t1,
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.StringReducibleValue)
-        return new A.BooleanReducibleValue(J.get$length$as(a.value) !== 0);
+        return new A.BooleanReducibleValue(J.get$length$asx(a.value) !== 0);
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -7813,7 +8714,7 @@
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.StringReducibleValue) {
         t1 = a.value;
-        t2 = J.getInterceptor$as(t1);
+        t2 = J.getInterceptor$asx(t1);
         return new A.StringReducibleValue(t2.$index(t1, t2.get$length(t1) - 1));
       } else {
         t1 = this.get$parameterTypes();
@@ -7826,7 +8727,7 @@
       var t1,
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.StringReducibleValue)
-        return new A.NumberReducibleValue(J.get$length$as(a.value));
+        return new A.NumberReducibleValue(J.get$length$asx(a.value));
       else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
@@ -7858,6 +8759,36 @@
       } else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.StrPadLeft.prototype = {
+    substitute$1($arguments) {
+      var a, b, c, t1;
+      type$.Scope_Reducible._as($arguments);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      c = $arguments.$get$1("c").reduce$0(0);
+      if (a instanceof A.StringReducibleValue && b instanceof A.NumberReducibleValue && c instanceof A.StringReducibleValue)
+        return new A.StringReducibleValue(J.padLeft$2$s(a.value, J.toInt$0$n(b.value), c.value));
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
+  A.StrPadRight.prototype = {
+    substitute$1($arguments) {
+      var a, b, c, t1;
+      type$.Scope_Reducible._as($arguments);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      c = $arguments.$get$1("c").reduce$0(0);
+      if (a instanceof A.StringReducibleValue && b instanceof A.NumberReducibleValue && c instanceof A.StringReducibleValue)
+        return new A.StringReducibleValue(J.padRight$2$s(a.value, J.toInt$0$n(b.value), c.value));
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
       }
     }
   };
@@ -7910,6 +8841,23 @@
       }
     }
   };
+  A.StrSplit.prototype = {
+    substitute$1($arguments) {
+      var a, b, t1, t2, t3;
+      type$.Scope_Reducible._as($arguments);
+      a = $arguments.$get$1("a").reduce$0(0);
+      b = $arguments.$get$1("b").reduce$0(0);
+      if (a instanceof A.StringReducibleValue && b instanceof A.StringReducibleValue) {
+        t1 = J.split$1$s(a.value, b.value);
+        t2 = A._arrayInstanceType(t1);
+        t3 = t2._eval$1("MappedListIterable<1,StringReducibleValue>");
+        return new A.ListReducibleValue(A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("StringReducibleValue(1)")._as(A.reducible_StringReducibleValue___new_tearOff$closure()), t3), true, t3._eval$1("ListIterable.E")));
+      } else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+      }
+    }
+  };
   A.StrStartsWith.prototype = {
     substitute$1($arguments) {
       var a, b, t1;
@@ -7945,7 +8893,7 @@
         a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
       if (a instanceof A.StringReducibleValue) {
         t1 = a.value;
-        t2 = J.getInterceptor$as(t1);
+        t2 = J.getInterceptor$asx(t1);
         return new A.StringReducibleValue(t2.get$length(t1) !== 0 ? t2.substring$1(t1, 1) : "");
       } else {
         t1 = this.get$parameterTypes();
@@ -8072,10 +9020,8 @@
       return "List";
     },
     substitute$1($arguments) {
-      var t1 = this.value,
-        t2 = A._arrayInstanceType(t1),
-        t3 = t2._eval$1("MappedListIterable<1,Reducible>");
-      return new A.ListReducibleValue(A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("Reducible(1)")._as(new A.ListReducibleValue_substitute_closure(type$.Scope_Reducible._as($arguments))), t3), true, t3._eval$1("ListIterable.E")));
+      var t1 = J.map$1$1$ax(this.value, new A.ListReducibleValue_substitute_closure(type$.Scope_Reducible._as($arguments)), type$.Reducible);
+      return new A.ListReducibleValue(A.List_List$of(t1, true, t1.$ti._eval$1("ListIterable.E")));
     }
   };
   A.ListReducibleValue_substitute_closure.prototype = {
@@ -8128,13 +9074,11 @@
       return this.fullReduce$1($function.substitute$1(B.Scope_Map_empty).reduce$0(0)).toString$0(0);
     },
     fullReduce$1(reducible) {
-      var t1, t2, t3;
-      type$.Reducible._as(reducible);
+      var t1 = type$.Reducible;
+      t1._as(reducible);
       if (reducible instanceof A.ListReducibleValue) {
-        t1 = reducible.value;
-        t2 = A._arrayInstanceType(t1);
-        t3 = t2._eval$1("MappedListIterable<1,Reducible>");
-        return new A.ListReducibleValue(A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("Reducible(1)")._as(this.get$fullReduce()), t3), true, t3._eval$1("ListIterable.E")));
+        t1 = J.map$1$1$ax(reducible.value, this.get$fullReduce(), t1);
+        return new A.ListReducibleValue(A.List_List$of(t1, true, t1.$ti._eval$1("ListIterable.E")));
       } else if (reducible instanceof A.StringReducibleValue)
         return new A.StringReducibleValue('"' + A.S(reducible.value) + '"');
       else
@@ -8227,7 +9171,7 @@
       type$.List_FunctionPrototype._as(functions);
       for (t1 = functions.length, _i = 0; _i < functions.length; functions.length === t1 || (0, A.throwConcurrentModificationError)(functions), ++_i) {
         $function = functions[_i];
-        for (t2 = this.parametersCount$1($function).get$entries(), t3 = A._instanceType(t2), t2 = new A.MappedIterator(J.get$iterator$a(t2.__internal$_iterable), t2._f, t3._eval$1("MappedIterator<1,2>")), t3 = t3._rest[1]; t2.moveNext$0();) {
+        for (t2 = this.parametersCount$1($function).get$entries(), t3 = A._instanceType(t2), t2 = new A.MappedIterator(J.get$iterator$ax(t2.__internal$_iterable), t2._f, t3._eval$1("MappedIterator<1,2>")), t3 = t3._rest[1]; t2.moveNext$0();) {
           t4 = t2.__internal$_current;
           if (t4 == null)
             t4 = t3._as(t4);
@@ -8727,7 +9671,7 @@
     call$1(e) {
       return type$.GenericWarning._as(e).message;
     },
-    $signature: 9
+    $signature: 12
   };
   A.ListIterator0.prototype = {
     get$peek() {
@@ -8775,30 +9719,32 @@
       _instance_1_u = hunkHelpers._instance_1u,
       _static_0 = hunkHelpers._static_0,
       _static_2 = hunkHelpers._static_2;
-    _static_1(A, "core_String___fromCharCode_tearOff$closure", "String___fromCharCode_tearOff", 10);
+    _static_1(A, "core_String___fromCharCode_tearOff$closure", "String___fromCharCode_tearOff", 13);
     var _;
-    _instance_1_u(_ = A.Compiler.prototype, "get$compile", "compile$1", 7);
-    _instance_1_u(_, "get$expression", "expression$1", 8);
-    _static_1(A, "parameter_Parameter___any_tearOff$closure", "Parameter___any_tearOff", 11);
+    _instance_1_u(_ = A.Compiler.prototype, "get$compile", "compile$1", 10);
+    _instance_1_u(_, "get$expression", "expression$1", 11);
+    _static_1(A, "parameter_Parameter___any_tearOff$closure", "Parameter___any_tearOff", 14);
+    _static_1(A, "reducible_StringReducibleValue___new_tearOff$closure", "StringReducibleValue___new_tearOff", 15);
+    _static_1(A, "reducible_NumberReducibleValue___new_tearOff$closure", "NumberReducibleValue___new_tearOff", 16);
     _instance_1_u(A.Runtime.prototype, "get$fullReduce", "fullReduce$1", 0);
-    _static_0(A, "intermediate_code_IntermediateCode___empty_tearOff$closure", "IntermediateCode___empty_tearOff", 12);
-    _static_1(A, "main_web__runtimeWarningsHelper$closure", "runtimeWarningsHelper", 13);
-    _static_1(A, "main_web__runtimeHasMainHelper$closure", "runtimeHasMainHelper", 14);
-    _static_1(A, "main_web__runtimeExecuteMainHelper$closure", "runtimeExecuteMainHelper", 15);
-    _static_2(A, "main_web__runtimeReduceHelper$closure", "runtimeReduceHelper", 16);
+    _static_0(A, "intermediate_code_IntermediateCode___empty_tearOff$closure", "IntermediateCode___empty_tearOff", 17);
+    _static_1(A, "main_web__runtimeWarningsHelper$closure", "runtimeWarningsHelper", 18);
+    _static_1(A, "main_web__runtimeHasMainHelper$closure", "runtimeHasMainHelper", 19);
+    _static_1(A, "main_web__runtimeExecuteMainHelper$closure", "runtimeExecuteMainHelper", 20);
+    _static_2(A, "main_web__runtimeReduceHelper$closure", "runtimeReduceHelper", 21);
   })();
   (function inheritance() {
     var _mixin = hunkHelpers.mixin,
       _inherit = hunkHelpers.inherit,
       _inheritMany = hunkHelpers.inheritMany;
     _inherit(A.Object, null);
-    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, J.ArrayIterator, A.Error, A.Iterable, A.ListIterator, A.MappedIterator, A.WhereTypeIterator, A.Symbol, A.MapView, A.ConstantMap, A.JSInvocationMirror, A.Closure, A._Required, A.MapBase, A.LinkedHashMapCell, A.LinkedHashMapKeyIterator, A.JSSyntaxRegExp, A.Rti, A._FunctionParameters, A._Type, A.SetBase, A._LinkedHashSetCell, A._LinkedHashSetIterator, A._UnmodifiableMapMixin, A.FormatException, A.MapEntry, A.Null, A.RuneIterator, A.StringBuffer, A.Compiler, A.GenericError, A.Analyzer, A.State, A.Localized, A.FunctionPrototype, A.Location, A.Parameter, A.Type0, A.Reducible, A.ReducibleValue, A.Runtime, A.Scope, A.IntermediateCode, A.ExpressionParser, A.FunctionDefinition, A.GenericWarning, A.ListIterator0]);
-    _inheritMany(J.Interceptor, [J.JSBool, J.JSNull, J.JavaScriptObject, J.JSNumber, J.JSString]);
-    _inheritMany(J.JavaScriptObject, [J.LegacyJavaScriptObject, J.JSArray]);
+    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, J.ArrayIterator, A.Error, A.Iterable, A.ListIterator, A.MappedIterator, A.WhereTypeIterator, A.FixedLengthListMixin, A.Symbol, A.MapView, A.ConstantMap, A.JSInvocationMirror, A.Closure, A._Required, A.MapBase, A.LinkedHashMapCell, A.LinkedHashMapKeyIterator, A.JSSyntaxRegExp, A.Rti, A._FunctionParameters, A._Type, A.SetBase, A._LinkedHashSetCell, A._LinkedHashSetIterator, A.ListBase, A._UnmodifiableMapMixin, A.Converter, A._Utf8Encoder, A.OutOfMemoryError, A.FormatException, A.MapEntry, A.Null, A.RuneIterator, A.StringBuffer, A._JSRandom, A.Compiler, A.GenericError, A.Analyzer, A.State, A.Localized, A.FunctionPrototype, A.Location, A.Parameter, A.Type0, A.Reducible, A.ReducibleValue, A.Runtime, A.Scope, A.IntermediateCode, A.ExpressionParser, A.FunctionDefinition, A.GenericWarning, A.ListIterator0]);
+    _inheritMany(J.Interceptor, [J.JSBool, J.JSNull, J.JavaScriptObject, J.JavaScriptBigInt, J.JavaScriptSymbol, J.JSNumber, J.JSString]);
+    _inheritMany(J.JavaScriptObject, [J.LegacyJavaScriptObject, J.JSArray, A.NativeTypedData]);
     _inheritMany(J.LegacyJavaScriptObject, [J.PlainJavaScriptObject, J.UnknownJavaScriptObject, J.JavaScriptFunction]);
     _inherit(J.JSUnmodifiableArray, J.JSArray);
     _inheritMany(J.JSNumber, [J.JSInt, J.JSNumNotInt]);
-    _inheritMany(A.Error, [A.LateError, A._CyclicInitializationError, A.RuntimeError, A.AssertionError, A._Error, A.TypeError, A.ArgumentError, A.NoSuchMethodError, A.UnsupportedError, A.StateError, A.ConcurrentModificationError]);
+    _inheritMany(A.Error, [A.LateError, A._CyclicInitializationError, A.RuntimeError, A.AssertionError, A._Error, A.TypeError, A.ArgumentError, A.NoSuchMethodError, A.UnsupportedError, A.UnimplementedError, A.StateError, A.ConcurrentModificationError]);
     _inheritMany(A.Iterable, [A.EfficientLengthIterable, A.MappedIterable, A.WhereTypeIterable, A.Runes]);
     _inheritMany(A.EfficientLengthIterable, [A.ListIterable, A.LinkedHashMapKeyIterable]);
     _inherit(A.EfficientLengthMappedIterable, A.MappedIterable);
@@ -8807,14 +9753,20 @@
     _inherit(A.UnmodifiableMapView, A._UnmodifiableMapView_MapView__UnmodifiableMapMixin);
     _inherit(A.ConstantMapView, A.UnmodifiableMapView);
     _inherit(A.ConstantStringMap, A.ConstantMap);
-    _inheritMany(A.Closure, [A.Closure2Args, A.TearOffClosure, A.MapBase_entries_closure, A.ListReducibleValue_substitute_closure, A.ExpressionReducible_substitute_closure, A.FunctionPrototype_parameterTypes_closure, A.SemanticAnalyzer_checkDuplicatedParameters_closure, A.SemanticAnalyzer_checkReducibles_closure, A.SemanticAnalyzer_checkReducible_closure, A.SemanticAnalyzer_getFunctionByName_closure, A.ListLiteralExpression_toReducible_closure, A.CallExpression_toReducible_closure, A.runtimeWarningsHelper_closure]);
-    _inheritMany(A.Closure2Args, [A.Primitives_functionNoSuchMethod_closure, A.MapBase_mapToString_closure, A.NoSuchMethodError_toString_closure]);
+    _inheritMany(A.Closure, [A.Closure2Args, A.TearOffClosure, A.initHooks_closure, A.initHooks_closure1, A.MapBase_entries_closure, A.ListReducibleValue_substitute_closure, A.ExpressionReducible_substitute_closure, A.FunctionPrototype_parameterTypes_closure, A.SemanticAnalyzer_checkDuplicatedParameters_closure, A.SemanticAnalyzer_checkReducibles_closure, A.SemanticAnalyzer_checkReducible_closure, A.SemanticAnalyzer_getFunctionByName_closure, A.ListLiteralExpression_toReducible_closure, A.CallExpression_toReducible_closure, A.runtimeWarningsHelper_closure]);
+    _inheritMany(A.Closure2Args, [A.Primitives_functionNoSuchMethod_closure, A.initHooks_closure0, A.MapBase_mapToString_closure, A.NoSuchMethodError_toString_closure]);
     _inheritMany(A.TearOffClosure, [A.StaticClosure, A.BoundClosure]);
     _inherit(A._AssertionError, A.AssertionError);
     _inherit(A.JsLinkedHashMap, A.MapBase);
+    _inherit(A.NativeTypedArray, A.NativeTypedData);
+    _inherit(A._NativeTypedArrayOfInt_NativeTypedArray_ListMixin, A.NativeTypedArray);
+    _inherit(A._NativeTypedArrayOfInt_NativeTypedArray_ListMixin_FixedLengthListMixin, A._NativeTypedArrayOfInt_NativeTypedArray_ListMixin);
+    _inherit(A.NativeTypedArrayOfInt, A._NativeTypedArrayOfInt_NativeTypedArray_ListMixin_FixedLengthListMixin);
+    _inherit(A.NativeUint8List, A.NativeTypedArrayOfInt);
     _inherit(A._TypeError, A._Error);
     _inherit(A._SetBase, A.SetBase);
     _inherit(A._LinkedHashSet, A._SetBase);
+    _inherit(A.Utf8Encoder, A.Converter);
     _inheritMany(A.ArgumentError, [A.RangeError, A.IndexError]);
     _inheritMany(A.GenericError, [A.LexicalError, A.RuntimeError0, A.SemanticError, A.UndefinedFunctionError, A.InvalidNumberOfArgumentsError, A.SyntacticError, A.CustomError]);
     _inherit(A.InvalidCharacterError, A.LexicalError);
@@ -8826,7 +9778,7 @@
     _inheritMany(A.Localized, [A.Lexeme, A.Token, A.Character, A.Expression]);
     _inheritMany(A.Token, [A.StringToken, A.NumberToken, A.BooleanToken, A.IdentifierToken, A.IfToken, A.ElseToken, A.MinusToken, A.PlusToken, A.ForwardSlashToken, A.AsteriskToken, A.PercentToken, A.PipeToken, A.AmpersandToken, A.BangToken, A.EqualToken, A.NotEqualToken, A.GreaterThanToken, A.GreaterEqualThanToken, A.LessThanToken, A.LessEqualThanToken, A.AssignToken, A.CommaToken, A.OpenParenthesisToken, A.CloseParenthesisToken, A.OpenBracketToken, A.CloseBracketToken]);
     _inheritMany(A.FunctionPrototype, [A.NativeFunctionPrototype, A.CustomFunctionPrototype]);
-    _inheritMany(A.NativeFunctionPrototype, [A.NumAbs, A.NumAdd, A.NumCeil, A.NumCos, A.NumDec, A.NumDiv, A.NumFloor, A.NumInc, A.NumIsEven, A.NumIsNegative, A.NumIsOdd, A.NumIsPositive, A.NumIsZero, A.NumLog, A.NumMax, A.NumMin, A.NumMod, A.NumMul, A.NumNegative, A.NumPow, A.NumRound, A.NumSin, A.NumSqrt, A.NumSub, A.NumSum, A.NumTan, A.IsBoolean, A.IsDecimal, A.IsInfinite, A.IsInteger, A.IsList, A.IsNumber, A.IsString, A.ToBoolean, A.ToDecimal, A.ToInteger, A.ToNumber, A.ToString, A.CompEq, A.CompGe, A.CompGt, A.CompLe, A.CompLt, A.CompNeq, A.If, A.Try, A.Debug, A.Throw, A.ElementAt, A.ListConcat, A.ListContains, A.ListDrop, A.ListFilled, A.ListFirst, A.ListAt, A.ListIndexOf, A.ListInit, A.ListInsertEnd, A.ListInsertStart, A.ListIsEmpty, A.ListIsNotEmpty, A.ListJoin, A.ListLast, A.ListLength, A.ListRemove, A.ListRemoveAt, A.ListReverse, A.ListSet, A.ListSublist, A.ListSwap, A.ListTail, A.ListTake, A.BoolAnd, A.BoolNot, A.BoolOr, A.BoolXor, A.OperatorAdd, A.OperatorAnd, A.OperatorDiv, A.OperatorEq, A.OperatorGe, A.OperatorGt, A.OperatorLe, A.OperatorLt, A.OperatorMod, A.OperatorMul, A.OperatorNeq, A.OperatorNot, A.OperatorOr, A.OperatorSub, A.StrAt, A.StrConcat, A.StrContains, A.StrDrop, A.StrEndsWith, A.StrFirst, A.StrInit, A.StrIsEmpty, A.StrIsNotEmpty, A.StrLast, A.StrLength, A.StrLowercase, A.StrMatch, A.StrRemoveAt, A.StrReplace, A.StrReverse, A.StrStartsWith, A.StrSubstring, A.StrTail, A.StrTake, A.StrTrim, A.StrUppercase]);
+    _inheritMany(A.NativeFunctionPrototype, [A.NumAbs, A.NumAdd, A.NumAsDegrees, A.NumAsRadians, A.NumCeil, A.NumClamp, A.NumCos, A.NumDec, A.NumDecimalRandom, A.NumDiv, A.NumFloor, A.NumFraction, A.NumInc, A.NumInfinity, A.NumIntegerRandom, A.NumIsEven, A.NumIsNegative, A.NumIsOdd, A.NumIsPositive, A.NumIsZero, A.NumLog, A.NumMax, A.NumMin, A.NumMod, A.NumMul, A.NumNegative, A.NumPow, A.NumRound, A.NumSign, A.NumSin, A.NumSqrt, A.NumSub, A.NumSum, A.NumTan, A.IsBoolean, A.IsDecimal, A.IsInfinite, A.IsInteger, A.IsList, A.IsNumber, A.IsString, A.ToBoolean, A.ToDecimal, A.ToInteger, A.ToNumber, A.ToString, A.CompEq, A.CompGe, A.CompGt, A.CompLe, A.CompLt, A.CompNeq, A.If, A.Try, A.Debug, A.Throw, A.ElementAt, A.ListConcat, A.ListContains, A.ListDrop, A.ListFilled, A.ListFirst, A.ListAt, A.ListIndexOf, A.ListInit, A.ListInsertEnd, A.ListInsertStart, A.ListIsEmpty, A.ListIsNotEmpty, A.ListJoin, A.ListLast, A.ListLength, A.ListRemove, A.ListRemoveAt, A.ListReverse, A.ListSet, A.ListSublist, A.ListSwap, A.ListTail, A.ListTake, A.BoolAnd, A.BoolNot, A.BoolOr, A.BoolXor, A.OperatorAdd, A.OperatorAnd, A.OperatorDiv, A.OperatorEq, A.OperatorGe, A.OperatorGt, A.OperatorLe, A.OperatorLt, A.OperatorMod, A.OperatorMul, A.OperatorNeq, A.OperatorNot, A.OperatorOr, A.OperatorSub, A.StrAt, A.StrBytes, A.StrConcat, A.StrContains, A.StrDrop, A.StrEndsWith, A.StrFirst, A.StrIndexOf, A.StrInit, A.StrIsEmpty, A.StrIsNotEmpty, A.StrLast, A.StrLength, A.StrLowercase, A.StrMatch, A.StrPadLeft, A.StrPadRight, A.StrRemoveAt, A.StrReplace, A.StrReverse, A.StrSplit, A.StrStartsWith, A.StrSubstring, A.StrTail, A.StrTake, A.StrTrim, A.StrUppercase]);
     _inheritMany(A.Type0, [A.StringType, A.NumberType, A.BooleanType, A.ListType, A.AnyType]);
     _inheritMany(A.ReducibleValue, [A.StringReducibleValue, A.NumberReducibleValue, A.BooleanReducibleValue, A.ListReducibleValue]);
     _inheritMany(A.Reducible, [A.IdentifierReducible, A.ExpressionReducible]);
@@ -8835,19 +9787,21 @@
     _inheritMany(A.LiteralExpression, [A.BooleanLiteralExpression, A.NumberLiteralExpression, A.StringLiteralExpression, A.ListLiteralExpression]);
     _inherit(A.SemanticWarning, A.GenericWarning);
     _inherit(A.UnusedParameterWarning, A.SemanticWarning);
+    _mixin(A._NativeTypedArrayOfInt_NativeTypedArray_ListMixin, A.ListBase);
+    _mixin(A._NativeTypedArrayOfInt_NativeTypedArray_ListMixin_FixedLengthListMixin, A.FixedLengthListMixin);
     _mixin(A._UnmodifiableMapView_MapView__UnmodifiableMapMixin, A._UnmodifiableMapMixin);
   })();
   var init = {
     typeUniverse: {eC: new Map(), tR: {}, eT: {}, tPV: {}, sEA: []},
     mangledGlobalNames: {int: "int", double: "double", num: "num", String: "String", bool: "bool", Null: "Null", List: "List", Object: "Object", Map: "Map"},
     mangledNames: {},
-    types: ["Reducible(Reducible)", "String(Parameter)", "bool(FunctionPrototype)", "Reducible(Expression)", "~(String,@)", "~(Object?,Object?)", "~(Symbol0,@)", "IntermediateCode(String)", "Expression(String)", "String(GenericWarning)", "String(int)", "Parameter(String)", "IntermediateCode()", "List<String>(IntermediateCode)", "bool(IntermediateCode)", "String(IntermediateCode)", "String(IntermediateCode,Expression)"],
+    types: ["Reducible(Reducible)", "String(Parameter)", "bool(FunctionPrototype)", "Reducible(Expression)", "~(String,@)", "@(@)", "@(@,String)", "@(String)", "~(Object?,Object?)", "~(Symbol0,@)", "IntermediateCode(String)", "Expression(String)", "String(GenericWarning)", "String(int)", "Parameter(String)", "StringReducibleValue(String)", "NumberReducibleValue(num)", "IntermediateCode()", "List<String>(IntermediateCode)", "bool(IntermediateCode)", "String(IntermediateCode)", "String(IntermediateCode,Expression)"],
     interceptorsByTag: null,
     leafTags: null,
     arrayRti: Symbol("$ti")
   };
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"_Type":{"Type":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalInitState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IdentifierState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"MinusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PlusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"EqualsState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"GreaterState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"LessState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PipeState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AmpersandState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"BangState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ForwardSlashState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AsteriskState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PercentState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SingleLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StartMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ClosingMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommaState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"IdentifierToken":{"Token":["String"],"Token.T":"String"},"IfToken":{"Token":["String"],"Token.T":"String"},"ElseToken":{"Token":["String"],"Token.T":"String"},"MinusToken":{"Token":["String"],"Token.T":"String"},"PlusToken":{"Token":["String"],"Token.T":"String"},"ForwardSlashToken":{"Token":["String"],"Token.T":"String"},"AsteriskToken":{"Token":["String"],"Token.T":"String"},"PercentToken":{"Token":["String"],"Token.T":"String"},"PipeToken":{"Token":["String"],"Token.T":"String"},"AmpersandToken":{"Token":["String"],"Token.T":"String"},"BangToken":{"Token":["String"],"Token.T":"String"},"EqualToken":{"Token":["String"],"Token.T":"String"},"NotEqualToken":{"Token":["String"],"Token.T":"String"},"GreaterThanToken":{"Token":["String"],"Token.T":"String"},"GreaterEqualThanToken":{"Token":["String"],"Token.T":"String"},"LessThanToken":{"Token":["String"],"Token.T":"String"},"LessEqualThanToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"OpenBracketToken":{"Token":["String"],"Token.T":"String"},"CloseBracketToken":{"Token":["String"],"Token.T":"String"},"AssignToken":{"Token":["String"],"Token.T":"String"},"NumAbs":{"FunctionPrototype":[]},"NumAdd":{"FunctionPrototype":[]},"NumCeil":{"FunctionPrototype":[]},"NumCos":{"FunctionPrototype":[]},"NumDec":{"FunctionPrototype":[]},"NumDiv":{"FunctionPrototype":[]},"NumFloor":{"FunctionPrototype":[]},"NumInc":{"FunctionPrototype":[]},"NumIsEven":{"FunctionPrototype":[]},"NumIsNegative":{"FunctionPrototype":[]},"NumIsOdd":{"FunctionPrototype":[]},"NumIsPositive":{"FunctionPrototype":[]},"NumIsZero":{"FunctionPrototype":[]},"NumLog":{"FunctionPrototype":[]},"NumMax":{"FunctionPrototype":[]},"NumMin":{"FunctionPrototype":[]},"NumMod":{"FunctionPrototype":[]},"NumMul":{"FunctionPrototype":[]},"NumNegative":{"FunctionPrototype":[]},"NumPow":{"FunctionPrototype":[]},"NumRound":{"FunctionPrototype":[]},"NumSin":{"FunctionPrototype":[]},"NumSqrt":{"FunctionPrototype":[]},"NumSub":{"FunctionPrototype":[]},"NumSum":{"FunctionPrototype":[]},"NumTan":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsList":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"CompEq":{"FunctionPrototype":[]},"CompGe":{"FunctionPrototype":[]},"CompGt":{"FunctionPrototype":[]},"CompLe":{"FunctionPrototype":[]},"CompLt":{"FunctionPrototype":[]},"CompNeq":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Debug":{"FunctionPrototype":[]},"Throw":{"FunctionPrototype":[]},"ElementAt":{"FunctionPrototype":[]},"ListConcat":{"FunctionPrototype":[]},"ListContains":{"FunctionPrototype":[]},"ListDrop":{"FunctionPrototype":[]},"ListFilled":{"FunctionPrototype":[]},"ListFirst":{"FunctionPrototype":[]},"ListAt":{"FunctionPrototype":[]},"ListIndexOf":{"FunctionPrototype":[]},"ListInit":{"FunctionPrototype":[]},"ListInsertEnd":{"FunctionPrototype":[]},"ListInsertStart":{"FunctionPrototype":[]},"ListIsEmpty":{"FunctionPrototype":[]},"ListIsNotEmpty":{"FunctionPrototype":[]},"ListJoin":{"FunctionPrototype":[]},"ListLast":{"FunctionPrototype":[]},"ListLength":{"FunctionPrototype":[]},"ListRemove":{"FunctionPrototype":[]},"ListRemoveAt":{"FunctionPrototype":[]},"ListReverse":{"FunctionPrototype":[]},"ListSet":{"FunctionPrototype":[]},"ListSublist":{"FunctionPrototype":[]},"ListSwap":{"FunctionPrototype":[]},"ListTail":{"FunctionPrototype":[]},"ListTake":{"FunctionPrototype":[]},"BoolAnd":{"FunctionPrototype":[]},"BoolNot":{"FunctionPrototype":[]},"BoolOr":{"FunctionPrototype":[]},"BoolXor":{"FunctionPrototype":[]},"OperatorAdd":{"FunctionPrototype":[]},"OperatorAnd":{"FunctionPrototype":[]},"OperatorDiv":{"FunctionPrototype":[]},"OperatorEq":{"FunctionPrototype":[]},"OperatorGe":{"FunctionPrototype":[]},"OperatorGt":{"FunctionPrototype":[]},"OperatorLe":{"FunctionPrototype":[]},"OperatorLt":{"FunctionPrototype":[]},"OperatorMod":{"FunctionPrototype":[]},"OperatorMul":{"FunctionPrototype":[]},"OperatorNeq":{"FunctionPrototype":[]},"OperatorNot":{"FunctionPrototype":[]},"OperatorOr":{"FunctionPrototype":[]},"OperatorSub":{"FunctionPrototype":[]},"StrAt":{"FunctionPrototype":[]},"StrConcat":{"FunctionPrototype":[]},"StrContains":{"FunctionPrototype":[]},"StrDrop":{"FunctionPrototype":[]},"StrEndsWith":{"FunctionPrototype":[]},"StrFirst":{"FunctionPrototype":[]},"StrInit":{"FunctionPrototype":[]},"StrIsEmpty":{"FunctionPrototype":[]},"StrIsNotEmpty":{"FunctionPrototype":[]},"StrLast":{"FunctionPrototype":[]},"StrLength":{"FunctionPrototype":[]},"StrLowercase":{"FunctionPrototype":[]},"StrMatch":{"FunctionPrototype":[]},"StrRemoveAt":{"FunctionPrototype":[]},"StrReplace":{"FunctionPrototype":[]},"StrReverse":{"FunctionPrototype":[]},"StrStartsWith":{"FunctionPrototype":[]},"StrSubstring":{"FunctionPrototype":[]},"StrTail":{"FunctionPrototype":[]},"StrTake":{"FunctionPrototype":[]},"StrTrim":{"FunctionPrototype":[]},"StrUppercase":{"FunctionPrototype":[]},"StringType":{"Type0":[]},"NumberType":{"Type0":[]},"BooleanType":{"Type0":[]},"ListType":{"Type0":[]},"AnyType":{"Type0":[]},"ReducibleValue":{"Reducible":[]},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"ListReducibleValue":{"ReducibleValue":["List<Reducible>"],"Reducible":[],"ReducibleValue.T":"List<Reducible>"},"IdentifierReducible":{"Reducible":[]},"ExpressionReducible":{"Reducible":[]},"Scanner":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"EmptyExpression":{"Expression":[]},"LiteralExpression":{"Expression":[]},"BooleanLiteralExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"NumberLiteralExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"StringLiteralExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"ListLiteralExpression":{"LiteralExpression":["List<Expression>"],"Expression":[],"LiteralExpression.T":"List<Expression>"},"IdentifierExpression":{"Expression":[]},"CallExpression":{"Expression":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState0":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState0":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]}}'));
-  A._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"EfficientLengthIterable":1,"_SetBase":1}'));
+  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"NativeTypedArray":{"JavaScriptIndexingBehavior":["1"]},"NativeTypedArrayOfInt":{"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"]},"NativeUint8List":{"Uint8List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"_Type":{"Type":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalInitState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IdentifierState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"MinusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PlusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"EqualsState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"GreaterState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"LessState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PipeState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AmpersandState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"BangState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ForwardSlashState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AsteriskState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PercentState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SingleLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StartMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ClosingMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommaState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"IdentifierToken":{"Token":["String"],"Token.T":"String"},"IfToken":{"Token":["String"],"Token.T":"String"},"ElseToken":{"Token":["String"],"Token.T":"String"},"MinusToken":{"Token":["String"],"Token.T":"String"},"PlusToken":{"Token":["String"],"Token.T":"String"},"ForwardSlashToken":{"Token":["String"],"Token.T":"String"},"AsteriskToken":{"Token":["String"],"Token.T":"String"},"PercentToken":{"Token":["String"],"Token.T":"String"},"PipeToken":{"Token":["String"],"Token.T":"String"},"AmpersandToken":{"Token":["String"],"Token.T":"String"},"BangToken":{"Token":["String"],"Token.T":"String"},"EqualToken":{"Token":["String"],"Token.T":"String"},"NotEqualToken":{"Token":["String"],"Token.T":"String"},"GreaterThanToken":{"Token":["String"],"Token.T":"String"},"GreaterEqualThanToken":{"Token":["String"],"Token.T":"String"},"LessThanToken":{"Token":["String"],"Token.T":"String"},"LessEqualThanToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"OpenBracketToken":{"Token":["String"],"Token.T":"String"},"CloseBracketToken":{"Token":["String"],"Token.T":"String"},"AssignToken":{"Token":["String"],"Token.T":"String"},"NumAbs":{"FunctionPrototype":[]},"NumAdd":{"FunctionPrototype":[]},"NumAsDegrees":{"FunctionPrototype":[]},"NumAsRadians":{"FunctionPrototype":[]},"NumCeil":{"FunctionPrototype":[]},"NumClamp":{"FunctionPrototype":[]},"NumCos":{"FunctionPrototype":[]},"NumDec":{"FunctionPrototype":[]},"NumDecimalRandom":{"FunctionPrototype":[]},"NumDiv":{"FunctionPrototype":[]},"NumFloor":{"FunctionPrototype":[]},"NumFraction":{"FunctionPrototype":[]},"NumInc":{"FunctionPrototype":[]},"NumInfinity":{"FunctionPrototype":[]},"NumIntegerRandom":{"FunctionPrototype":[]},"NumIsEven":{"FunctionPrototype":[]},"NumIsNegative":{"FunctionPrototype":[]},"NumIsOdd":{"FunctionPrototype":[]},"NumIsPositive":{"FunctionPrototype":[]},"NumIsZero":{"FunctionPrototype":[]},"NumLog":{"FunctionPrototype":[]},"NumMax":{"FunctionPrototype":[]},"NumMin":{"FunctionPrototype":[]},"NumMod":{"FunctionPrototype":[]},"NumMul":{"FunctionPrototype":[]},"NumNegative":{"FunctionPrototype":[]},"NumPow":{"FunctionPrototype":[]},"NumRound":{"FunctionPrototype":[]},"NumSign":{"FunctionPrototype":[]},"NumSin":{"FunctionPrototype":[]},"NumSqrt":{"FunctionPrototype":[]},"NumSub":{"FunctionPrototype":[]},"NumSum":{"FunctionPrototype":[]},"NumTan":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsList":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"CompEq":{"FunctionPrototype":[]},"CompGe":{"FunctionPrototype":[]},"CompGt":{"FunctionPrototype":[]},"CompLe":{"FunctionPrototype":[]},"CompLt":{"FunctionPrototype":[]},"CompNeq":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Debug":{"FunctionPrototype":[]},"Throw":{"FunctionPrototype":[]},"ElementAt":{"FunctionPrototype":[]},"ListConcat":{"FunctionPrototype":[]},"ListContains":{"FunctionPrototype":[]},"ListDrop":{"FunctionPrototype":[]},"ListFilled":{"FunctionPrototype":[]},"ListFirst":{"FunctionPrototype":[]},"ListAt":{"FunctionPrototype":[]},"ListIndexOf":{"FunctionPrototype":[]},"ListInit":{"FunctionPrototype":[]},"ListInsertEnd":{"FunctionPrototype":[]},"ListInsertStart":{"FunctionPrototype":[]},"ListIsEmpty":{"FunctionPrototype":[]},"ListIsNotEmpty":{"FunctionPrototype":[]},"ListJoin":{"FunctionPrototype":[]},"ListLast":{"FunctionPrototype":[]},"ListLength":{"FunctionPrototype":[]},"ListRemove":{"FunctionPrototype":[]},"ListRemoveAt":{"FunctionPrototype":[]},"ListReverse":{"FunctionPrototype":[]},"ListSet":{"FunctionPrototype":[]},"ListSublist":{"FunctionPrototype":[]},"ListSwap":{"FunctionPrototype":[]},"ListTail":{"FunctionPrototype":[]},"ListTake":{"FunctionPrototype":[]},"BoolAnd":{"FunctionPrototype":[]},"BoolNot":{"FunctionPrototype":[]},"BoolOr":{"FunctionPrototype":[]},"BoolXor":{"FunctionPrototype":[]},"OperatorAdd":{"FunctionPrototype":[]},"OperatorAnd":{"FunctionPrototype":[]},"OperatorDiv":{"FunctionPrototype":[]},"OperatorEq":{"FunctionPrototype":[]},"OperatorGe":{"FunctionPrototype":[]},"OperatorGt":{"FunctionPrototype":[]},"OperatorLe":{"FunctionPrototype":[]},"OperatorLt":{"FunctionPrototype":[]},"OperatorMod":{"FunctionPrototype":[]},"OperatorMul":{"FunctionPrototype":[]},"OperatorNeq":{"FunctionPrototype":[]},"OperatorNot":{"FunctionPrototype":[]},"OperatorOr":{"FunctionPrototype":[]},"OperatorSub":{"FunctionPrototype":[]},"StrAt":{"FunctionPrototype":[]},"StrBytes":{"FunctionPrototype":[]},"StrConcat":{"FunctionPrototype":[]},"StrContains":{"FunctionPrototype":[]},"StrDrop":{"FunctionPrototype":[]},"StrEndsWith":{"FunctionPrototype":[]},"StrFirst":{"FunctionPrototype":[]},"StrIndexOf":{"FunctionPrototype":[]},"StrInit":{"FunctionPrototype":[]},"StrIsEmpty":{"FunctionPrototype":[]},"StrIsNotEmpty":{"FunctionPrototype":[]},"StrLast":{"FunctionPrototype":[]},"StrLength":{"FunctionPrototype":[]},"StrLowercase":{"FunctionPrototype":[]},"StrMatch":{"FunctionPrototype":[]},"StrPadLeft":{"FunctionPrototype":[]},"StrPadRight":{"FunctionPrototype":[]},"StrRemoveAt":{"FunctionPrototype":[]},"StrReplace":{"FunctionPrototype":[]},"StrReverse":{"FunctionPrototype":[]},"StrSplit":{"FunctionPrototype":[]},"StrStartsWith":{"FunctionPrototype":[]},"StrSubstring":{"FunctionPrototype":[]},"StrTail":{"FunctionPrototype":[]},"StrTake":{"FunctionPrototype":[]},"StrTrim":{"FunctionPrototype":[]},"StrUppercase":{"FunctionPrototype":[]},"StringType":{"Type0":[]},"NumberType":{"Type0":[]},"BooleanType":{"Type0":[]},"ListType":{"Type0":[]},"AnyType":{"Type0":[]},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"ReducibleValue":{"Reducible":[]},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"ListReducibleValue":{"ReducibleValue":["List<Reducible>"],"Reducible":[],"ReducibleValue.T":"List<Reducible>"},"IdentifierReducible":{"Reducible":[]},"ExpressionReducible":{"Reducible":[]},"Scanner":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"EmptyExpression":{"Expression":[]},"LiteralExpression":{"Expression":[]},"BooleanLiteralExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"NumberLiteralExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"StringLiteralExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"ListLiteralExpression":{"LiteralExpression":["List<Expression>"],"Expression":[],"LiteralExpression.T":"List<Expression>"},"IdentifierExpression":{"Expression":[]},"CallExpression":{"Expression":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState0":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState0":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]},"Uint8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]}}'));
+  A._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"EfficientLengthIterable":1,"NativeTypedArray":1,"_SetBase":1,"Converter":2}'));
   var type$ = (function rtii() {
     var findType = A.findType;
     return {
@@ -8874,6 +9828,7 @@
       JSArray_dynamic: findType("JSArray<@>"),
       JSNull: findType("JSNull"),
       JavaScriptFunction: findType("JavaScriptFunction"),
+      JavaScriptIndexingBehavior_dynamic: findType("JavaScriptIndexingBehavior<@>"),
       JsLinkedHashMap_Symbol_dynamic: findType("JsLinkedHashMap<Symbol0,@>"),
       ListIterator_Character: findType("ListIterator0<Character>"),
       ListIterator_Token_dynamic: findType("ListIterator0<Token<@>>"),
@@ -8920,7 +9875,11 @@
     B.JSInt_methods = J.JSInt.prototype;
     B.JSNumber_methods = J.JSNumber.prototype;
     B.JSString_methods = J.JSString.prototype;
+    B.JavaScriptFunction_methods = J.JavaScriptFunction.prototype;
     B.JavaScriptObject_methods = J.JavaScriptObject.prototype;
+    B.NativeUint8List_methods = A.NativeUint8List.prototype;
+    B.PlainJavaScriptObject_methods = J.PlainJavaScriptObject.prototype;
+    B.UnknownJavaScriptObject_methods = J.UnknownJavaScriptObject.prototype;
     B.BooleanReducibleValue_false = new A.BooleanReducibleValue(false);
     B.BooleanReducibleValue_true = new A.BooleanReducibleValue(true);
     B.C_AnyType = new A.AnyType();
@@ -8930,9 +9889,133 @@
   var s = Object.prototype.toString.call(o);
   return s.substring(8, s.length - 1);
 };
+    B.C_JS_CONST0 = function() {
+  var toStringFunction = Object.prototype.toString;
+  function getTag(o) {
+    var s = toStringFunction.call(o);
+    return s.substring(8, s.length - 1);
+  }
+  function getUnknownTag(object, tag) {
+    if (/^HTML[A-Z].*Element$/.test(tag)) {
+      var name = toStringFunction.call(object);
+      if (name == "[object Object]") return null;
+      return "HTMLElement";
+    }
+  }
+  function getUnknownTagGenericBrowser(object, tag) {
+    if (object instanceof HTMLElement) return "HTMLElement";
+    return getUnknownTag(object, tag);
+  }
+  function prototypeForTag(tag) {
+    if (typeof window == "undefined") return null;
+    if (typeof window[tag] == "undefined") return null;
+    var constructor = window[tag];
+    if (typeof constructor != "function") return null;
+    return constructor.prototype;
+  }
+  function discriminator(tag) { return null; }
+  var isBrowser = typeof HTMLElement == "function";
+  return {
+    getTag: getTag,
+    getUnknownTag: isBrowser ? getUnknownTagGenericBrowser : getUnknownTag,
+    prototypeForTag: prototypeForTag,
+    discriminator: discriminator };
+};
+    B.C_JS_CONST6 = function(getTagFallback) {
+  return function(hooks) {
+    if (typeof navigator != "object") return hooks;
+    var userAgent = navigator.userAgent;
+    if (typeof userAgent != "string") return hooks;
+    if (userAgent.indexOf("DumpRenderTree") >= 0) return hooks;
+    if (userAgent.indexOf("Chrome") >= 0) {
+      function confirm(p) {
+        return typeof window == "object" && window[p] && window[p].name == p;
+      }
+      if (confirm("Window") && confirm("HTMLElement")) return hooks;
+    }
+    hooks.getTag = getTagFallback;
+  };
+};
+    B.C_JS_CONST1 = function(hooks) {
+  if (typeof dartExperimentalFixupGetTag != "function") return hooks;
+  hooks.getTag = dartExperimentalFixupGetTag(hooks.getTag);
+};
+    B.C_JS_CONST5 = function(hooks) {
+  if (typeof navigator != "object") return hooks;
+  var userAgent = navigator.userAgent;
+  if (typeof userAgent != "string") return hooks;
+  if (userAgent.indexOf("Firefox") == -1) return hooks;
+  var getTag = hooks.getTag;
+  var quickMap = {
+    "BeforeUnloadEvent": "Event",
+    "DataTransfer": "Clipboard",
+    "GeoGeolocation": "Geolocation",
+    "Location": "!Location",
+    "WorkerMessageEvent": "MessageEvent",
+    "XMLDocument": "!Document"};
+  function getTagFirefox(o) {
+    var tag = getTag(o);
+    return quickMap[tag] || tag;
+  }
+  hooks.getTag = getTagFirefox;
+};
+    B.C_JS_CONST4 = function(hooks) {
+  if (typeof navigator != "object") return hooks;
+  var userAgent = navigator.userAgent;
+  if (typeof userAgent != "string") return hooks;
+  if (userAgent.indexOf("Trident/") == -1) return hooks;
+  var getTag = hooks.getTag;
+  var quickMap = {
+    "BeforeUnloadEvent": "Event",
+    "DataTransfer": "Clipboard",
+    "HTMLDDElement": "HTMLElement",
+    "HTMLDTElement": "HTMLElement",
+    "HTMLPhraseElement": "HTMLElement",
+    "Position": "Geoposition"
+  };
+  function getTagIE(o) {
+    var tag = getTag(o);
+    var newTag = quickMap[tag];
+    if (newTag) return newTag;
+    if (tag == "Object") {
+      if (window.DataView && (o instanceof window.DataView)) return "DataView";
+    }
+    return tag;
+  }
+  function prototypeForTagIE(tag) {
+    var constructor = window[tag];
+    if (constructor == null) return null;
+    return constructor.prototype;
+  }
+  hooks.getTag = getTagIE;
+  hooks.prototypeForTag = prototypeForTagIE;
+};
+    B.C_JS_CONST2 = function(hooks) {
+  var getTag = hooks.getTag;
+  var prototypeForTag = hooks.prototypeForTag;
+  function getTagFixed(o) {
+    var tag = getTag(o);
+    if (tag == "Document") {
+      if (!!o.xmlVersion) return "!Document";
+      return "!HTMLDocument";
+    }
+    return tag;
+  }
+  function prototypeForTagFixed(tag) {
+    if (tag == "Document") return null;
+    return prototypeForTag(tag);
+  }
+  hooks.getTag = getTagFixed;
+  hooks.prototypeForTag = prototypeForTagFixed;
+};
+    B.C_JS_CONST3 = function(hooks) { return hooks; }
+;
     B.C_ListType = new A.ListType();
     B.C_NumberType = new A.NumberType();
+    B.C_OutOfMemoryError = new A.OutOfMemoryError();
     B.C_StringType = new A.StringType();
+    B.C_Utf8Encoder = new A.Utf8Encoder();
+    B.C__JSRandom = new A._JSRandom();
     B.C__Required = new A._Required();
     B.EmptyExpressionEvaluationError_DrA = new A.EmptyExpressionEvaluationError("Cannot reduce empty expression");
     B.Location_0_0 = new A.Location(0, 0);
@@ -8942,6 +10025,7 @@
     B.List_empty1 = A._setArrayType(makeConstList([]), type$.JSArray_dynamic);
     B.Object_empty = {};
     B.Map_empty = new A.ConstantStringMap(B.Object_empty, [], A.findType("ConstantStringMap<Symbol0,@>"));
+    B.NumberReducibleValue_6LA = new A.NumberReducibleValue(1 / 0);
     B.NumberReducibleValue_m1 = new A.NumberReducibleValue(-1);
     B.Map_empty0 = new A.ConstantStringMap(B.Object_empty, [], A.findType("ConstantStringMap<String,0&>"));
     B.Scope_Map_empty = new A.Scope(B.Map_empty0, type$.Scope_Reducible);
@@ -8972,18 +10056,26 @@
     B.Type_PipeToken_srm = A.typeLiteral("PipeToken");
     B.Type_PlusToken_iHz = A.typeLiteral("PlusToken");
     B.Type_StringToken_ckG = A.typeLiteral("StringToken");
+    B.Type_Uint8List_CSc = A.typeLiteral("Uint8List");
     B.UnexpectedEndOfFileError_Qi2 = new A.UnexpectedEndOfFileError("Unexpected end of file");
   })();
   (function staticFields() {
+    $._JS_INTEROP_INTERCEPTOR_TAG = null;
     $.toStringVisiting = A._setArrayType([], A.findType("JSArray<Object>"));
     $.Primitives__identityHashCodeProperty = null;
     $.BoundClosure__receiverFieldNameCache = null;
     $.BoundClosure__interceptorFieldNameCache = null;
+    $.getTagFunction = null;
+    $.alternateTagFunction = null;
+    $.prototypeForTagFunction = null;
+    $.dispatchRecordsForInstanceTags = null;
+    $.interceptorsForUncacheableTags = null;
+    $.initNativeDispatchFlag = null;
     $.Runtime_SCOPE = B.Scope_Map_empty0;
   })();
   (function lazyInitializers() {
     var _lazyFinal = hunkHelpers.lazyFinal;
-    _lazyFinal($, "DART_CLOSURE_PROPERTY_NAME", "$get$DART_CLOSURE_PROPERTY_NAME", () => init.getIsolateTag("_$dart_dartClosure"));
+    _lazyFinal($, "DART_CLOSURE_PROPERTY_NAME", "$get$DART_CLOSURE_PROPERTY_NAME", () => A.getIsolateAffinityTag("_$dart_dartClosure"));
   })();
   (function nativeSupport() {
     !function() {
@@ -9006,9 +10098,14 @@
           break;
         }
       }
+      init.dispatchPropertyName = init.getIsolateTag("dispatch_record");
     }();
-    hunkHelpers.setOrUpdateInterceptorsByTag({});
-    hunkHelpers.setOrUpdateLeafTags({});
+    hunkHelpers.setOrUpdateInterceptorsByTag({ArrayBufferView: A.NativeTypedData, Uint8Array: A.NativeUint8List});
+    hunkHelpers.setOrUpdateLeafTags({ArrayBufferView: false, Uint8Array: false});
+    A.NativeTypedArray.$nativeSuperclassTag = "ArrayBufferView";
+    A._NativeTypedArrayOfInt_NativeTypedArray_ListMixin.$nativeSuperclassTag = "ArrayBufferView";
+    A._NativeTypedArrayOfInt_NativeTypedArray_ListMixin_FixedLengthListMixin.$nativeSuperclassTag = "ArrayBufferView";
+    A.NativeTypedArrayOfInt.$nativeSuperclassTag = "ArrayBufferView";
   })();
   Function.prototype.call$0 = function() {
     return this();
@@ -9018,6 +10115,9 @@
   };
   Function.prototype.call$2 = function(a, b) {
     return this(a, b);
+  };
+  Function.prototype.call$1$1 = function(a) {
+    return this(a);
   };
   convertAllToFastObject(holders);
   convertToFastObject($);

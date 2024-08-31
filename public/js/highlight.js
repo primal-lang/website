@@ -133,6 +133,11 @@ const basicProperties = (withExtras) => {
     "str\\.drop\\s*(\?=\\()": "custom-native-function",
     "str\\.remove\\s*(\?=\\()": "custom-native-function",
     "str\\.reverse\\s*(\?=\\()": "custom-native-function",
+    "str\\.bytes\\s*(\?=\\()": "custom-native-function",
+    "str\\.indexOf\\s*(\?=\\()": "custom-native-function",
+    "str\\.padLeft\\s*(\?=\\()": "custom-native-function",
+    "str\\.padRight\\s*(\?=\\()": "custom-native-function",
+    "str\\.split\\s*(\?=\\()": "custom-native-function",
 
     // list
     "list\\.sublist\\s*(?=\\()": "custom-native-function",
