@@ -42,6 +42,7 @@ const basicProperties = (withExtras) => {
     "Boolean": "custom-type",
     "Number": "custom-type",
     "String": "custom-type",
+    "List": "custom-type",
     "Error": "custom-type",
     "Any": "custom-type",
 
@@ -139,6 +140,7 @@ const basicProperties = (withExtras) => {
     "is\\.infinite\\s*(\?=\\()": "custom-native-function",
     "is\\.string\\s*(\?=\\()": "custom-native-function",
     "is\\.boolean\\s*(\?=\\()": "custom-native-function",
+    "is\\.list\\s*(\?=\\()": "custom-native-function",
   }
 
   return {
