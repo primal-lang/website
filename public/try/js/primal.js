@@ -3509,61 +3509,80 @@
     },
     GenericError: function GenericError() {
     },
-    InvalidCharacterError$(character) {
-      return new A.InvalidCharacterError("Invalid character " + character.toString$0(0));
+    CompilationError: function CompilationError() {
+    },
+    InvalidCharacterError$(character, expected) {
+      var t1 = character.toString$0(0),
+        t2 = expected != null ? ". Expected: " + expected : "";
+      return new A.InvalidCharacterError("Compilation error", "Invalid character " + t1 + t2);
     },
     LexicalError: function LexicalError() {
     },
-    InvalidCharacterError: function InvalidCharacterError(t0) {
-      this.message = t0;
+    InvalidCharacterError: function InvalidCharacterError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
     InvalidArgumentTypesError$(actual, expected, $function) {
-      return new A.InvalidArgumentTypesError('Invalid argument types for function "' + $function + '". Expected: (' + B.JSArray_methods.join$1(expected, ", ") + "). Actual: (" + B.JSArray_methods.join$1(actual, ", ") + ")");
+      return new A.InvalidArgumentTypesError("Runtime error", 'Invalid argument types for function "' + $function + '". Expected: (' + B.JSArray_methods.join$1(expected, ", ") + "). Actual: (" + B.JSArray_methods.join$1(actual, ", ") + ")");
     },
     RuntimeError0: function RuntimeError0() {
     },
-    InvalidArgumentTypesError: function InvalidArgumentTypesError(t0) {
-      this.message = t0;
+    InvalidArgumentTypesError: function InvalidArgumentTypesError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
-    InvalidArgumentCountError: function InvalidArgumentCountError(t0) {
-      this.message = t0;
+    InvalidArgumentCountError: function InvalidArgumentCountError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
-    NotFoundInScope: function NotFoundInScope(t0) {
-      this.message = t0;
+    NotFoundInScope: function NotFoundInScope(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
-    EmptyExpressionEvaluationError: function EmptyExpressionEvaluationError(t0) {
-      this.message = t0;
+    EmptyExpressionEvaluationError: function EmptyExpressionEvaluationError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
     SemanticError: function SemanticError() {
     },
-    DuplicatedFunctionError: function DuplicatedFunctionError(t0) {
-      this.message = t0;
+    DuplicatedFunctionError: function DuplicatedFunctionError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
-    DuplicatedParameterError: function DuplicatedParameterError(t0) {
-      this.message = t0;
+    DuplicatedParameterError: function DuplicatedParameterError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
-    UndefinedIdentifiersError: function UndefinedIdentifiersError(t0) {
-      this.message = t0;
+    UndefinedIdentifiersError: function UndefinedIdentifiersError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
-    UndefinedFunctionError: function UndefinedFunctionError(t0) {
-      this.message = t0;
+    UndefinedFunctionError: function UndefinedFunctionError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
-    InvalidNumberOfArgumentsError: function InvalidNumberOfArgumentsError(t0) {
-      this.message = t0;
+    InvalidNumberOfArgumentsError: function InvalidNumberOfArgumentsError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
-    InvalidTokenError$(token) {
-      return new A.InvalidTokenError("Invalid token " + token.toString$0(0));
+    InvalidTokenError$(token, expected) {
+      var t1 = token.toString$0(0),
+        t2 = expected != null ? ". Expected: " + expected : "";
+      return new A.InvalidTokenError("Compilation error", "Invalid token " + t1 + t2);
     },
     SyntacticError: function SyntacticError() {
     },
-    InvalidTokenError: function InvalidTokenError(t0) {
-      this.message = t0;
+    InvalidTokenError: function InvalidTokenError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
-    ExpectedTokenError: function ExpectedTokenError(t0) {
-      this.message = t0;
+    ExpectedTokenError: function ExpectedTokenError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
-    UnexpectedEndOfFileError: function UnexpectedEndOfFileError(t0) {
-      this.message = t0;
+    UnexpectedEndOfFileError: function UnexpectedEndOfFileError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
     LexicalAnalyzer: function LexicalAnalyzer(t0) {
       this.input = t0;
@@ -4043,8 +4062,9 @@
       this.name = t0;
       this.parameters = t1;
     },
-    CustomError: function CustomError(t0) {
-      this.message = t0;
+    CustomError: function CustomError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
     },
     ElementAt: function ElementAt(t0, t1) {
       this.name = t0;
@@ -4406,7 +4426,7 @@
         t1 = parameters.length,
         t2 = $arguments.length;
       if (t1 !== t2)
-        throw A.wrapException(new A.InvalidArgumentCountError('Invalid argument count for function "' + functionName + '" at ' + $location.toString$0(0) + ". Expected: " + t1 + ". Actual: " + t2));
+        throw A.wrapException(new A.InvalidArgumentCountError("Runtime error", 'Invalid argument count for function "' + functionName + '" at ' + $location.toString$0(0) + ". Expected: " + t1 + ". Actual: " + t2));
       else
         for (i = 0; i < parameters.length; ++i) {
           t1 = parameters[i].name;
@@ -6464,9 +6484,10 @@
   };
   A.GenericError.prototype = {
     toString$0(_) {
-      return "Error: " + this.message;
+      return this.errorType + ": " + this.message;
     }
   };
+  A.CompilationError.prototype = {};
   A.LexicalError.prototype = {};
   A.InvalidCharacterError.prototype = {};
   A.RuntimeError0.prototype = {};
@@ -6589,7 +6610,7 @@
                                               if (t2._nativeRegExp.test(t1))
                                                 return new A.CloseBracketState(new A.Lexeme(t1, input.location), _this.iterator);
                                               else
-                                                throw A.wrapException(A.InvalidCharacterError$(input));
+                                                throw A.wrapException(A.InvalidCharacterError$(input, null));
                                             }
                                           }
                                         }
@@ -6655,7 +6676,7 @@
           --t1._list_iterator$_index;
           return new A.ResultState(A._setArrayType([A.NumberToken$(_this.output)], type$.JSArray_Token_dynamic), t1);
         } else
-          throw A.wrapException(A.InvalidCharacterError$(input));
+          throw A.wrapException(A.InvalidCharacterError$(input, "digit or dot"));
       }
     }
   };
@@ -6667,7 +6688,7 @@
       if (t1._nativeRegExp.test(input.value))
         return new A.DecimalState(J.add$1$ax(this.output, input), this.iterator);
       else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, "digit"));
     }
   };
   A.DecimalState.prototype = {
@@ -6683,7 +6704,7 @@
         --t1._list_iterator$_index;
         return new A.ResultState(A._setArrayType([A.NumberToken$(_this.output)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, "digit"));
     }
   };
   A.IdentifierState.prototype = {
@@ -6732,7 +6753,7 @@
           }
         }
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.MinusState.prototype = {
@@ -6745,7 +6766,7 @@
         t2 = this.output;
         return new A.ResultState(A._setArrayType([new A.MinusToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.PlusState.prototype = {
@@ -6758,7 +6779,7 @@
         t2 = this.output;
         return new A.ResultState(A._setArrayType([new A.PlusToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.EqualsState.prototype = {
@@ -6776,7 +6797,7 @@
         t2 = _this.output;
         return new A.ResultState(A._setArrayType([new A.AssignToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.GreaterState.prototype = {
@@ -6794,7 +6815,7 @@
         t2 = _this.output;
         return new A.ResultState(A._setArrayType([new A.GreaterThanToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.LessState.prototype = {
@@ -6812,7 +6833,7 @@
         t2 = _this.output;
         return new A.ResultState(A._setArrayType([new A.LessThanToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.PipeState.prototype = {
@@ -6825,7 +6846,7 @@
         t2 = this.output;
         return new A.ResultState(A._setArrayType([new A.PipeToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.AmpersandState.prototype = {
@@ -6838,7 +6859,7 @@
         t2 = this.output;
         return new A.ResultState(A._setArrayType([new A.AmpersandToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.BangState.prototype = {
@@ -6856,7 +6877,7 @@
         t2 = _this.output;
         return new A.ResultState(A._setArrayType([new A.BangToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.ForwardSlashState.prototype = {
@@ -6878,7 +6899,7 @@
           if (t2._nativeRegExp.test(t1))
             return new A.StartMultiLineCommentState(null, _this.iterator);
           else
-            throw A.wrapException(A.InvalidCharacterError$(input));
+            throw A.wrapException(A.InvalidCharacterError$(input, null));
         }
       }
     }
@@ -6893,7 +6914,7 @@
         t2 = this.output;
         return new A.ResultState(A._setArrayType([new A.AsteriskToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.PercentState.prototype = {
@@ -6906,7 +6927,7 @@
         t2 = this.output;
         return new A.ResultState(A._setArrayType([new A.PercentToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.SingleLineCommentState.prototype = {
@@ -6991,7 +7012,7 @@
         t2 = this.output;
         return new A.ResultState(A._setArrayType([new A.CommaToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.OpenParenthesisState.prototype = {
@@ -7044,7 +7065,7 @@
         t2 = this.output;
         return new A.ResultState(A._setArrayType([new A.OpenParenthesisToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.CloseParenthesisState.prototype = {
@@ -7081,7 +7102,7 @@
         t2 = this.output;
         return new A.ResultState(A._setArrayType([new A.CloseParenthesisToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.OpenBracketState.prototype = {
@@ -7134,7 +7155,7 @@
         t2 = this.output;
         return new A.ResultState(A._setArrayType([new A.OpenBracketToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.CloseBracketState.prototype = {
@@ -7171,7 +7192,7 @@
         t2 = this.output;
         return new A.ResultState(A._setArrayType([new A.CloseBracketToken(t2.value, t2.location)], type$.JSArray_Token_dynamic), t1);
       } else
-        throw A.wrapException(A.InvalidCharacterError$(input));
+        throw A.wrapException(A.InvalidCharacterError$(input, null));
     }
   };
   A.ResultState.prototype = {};
@@ -7986,7 +8007,7 @@
     substitute$1($arguments) {
       type$.Scope_Reducible._as($arguments);
       $arguments.$get$1("a").reduce$0(0);
-      throw A.wrapException(new A.CustomError($arguments.$get$1("b").reduce$0(0).toString$0(0)));
+      throw A.wrapException(new A.CustomError("Runtime error", $arguments.$get$1("b").reduce$0(0).toString$0(0)));
     }
   };
   A.CustomError.prototype = {};
@@ -9089,7 +9110,7 @@
     $get$1($name) {
       var result = this.data.$index(0, $name);
       if (result == null)
-        throw A.wrapException(new A.NotFoundInScope('Variable "' + $name + '" not found in scope'));
+        throw A.wrapException(new A.NotFoundInScope("Runtime error", 'Variable "' + $name + '" not found in scope'));
       else
         return result;
     }
@@ -9162,7 +9183,7 @@
         for (j = i + 1, t3 = function1.name, j0 = j; j0 < t1; ++j0) {
           function2 = functions[j0];
           if (function2.name === t3)
-            throw A.wrapException(new A.DuplicatedFunctionError('Duplicated function "' + t3 + '" with parameters (' + B.JSArray_methods.join$1(function1.parameters, ", ") + ") and (" + B.JSArray_methods.join$1(function2.parameters, ", ") + ")"));
+            throw A.wrapException(new A.DuplicatedFunctionError("Compilation error", 'Duplicated function "' + t3 + '" with parameters (' + B.JSArray_methods.join$1(function1.parameters, ", ") + ") and (" + B.JSArray_methods.join$1(function2.parameters, ", ") + ")"));
         }
       }
     },
@@ -9180,7 +9201,7 @@
             return t5.$gt();
           if (t5 > 1) {
             t1 = $function.name;
-            throw A.wrapException(new A.DuplicatedParameterError('Duplicated parameter "' + t4.key + '" in function "' + t1 + "(" + B.JSArray_methods.join$1(B.JSArray_methods.map$1$1($function.parameters, new A.SemanticAnalyzer_checkDuplicatedParameters_closure(), type$.String).toList$0(0), ", ") + ')"'));
+            throw A.wrapException(new A.DuplicatedParameterError("Compilation error", 'Duplicated parameter "' + t4.key + '" in function "' + t1 + "(" + B.JSArray_methods.join$1(B.JSArray_methods.map$1$1($function.parameters, new A.SemanticAnalyzer_checkDuplicatedParameters_closure(), type$.String).toList$0(0), ", ") + ')"'));
           }
         }
       }
@@ -9222,7 +9243,8 @@
       }
     },
     checkReducible$4$allFunctions$availableParameters$reducible$usedParameters(allFunctions, availableParameters, reducible, usedParameters) {
-      var t1, $function, t2, t3, t4, _i;
+      var t1, $function, t2, t3, t4, _i,
+        _s17_ = "Compilation error";
       type$.List_String._as(availableParameters);
       type$.Set_String._as(usedParameters);
       type$.List_FunctionPrototype._as(allFunctions);
@@ -9231,18 +9253,18 @@
         if (B.JSArray_methods.contains$1(availableParameters, t1))
           usedParameters.add$1(0, t1);
         else if (!B.JSArray_methods.any$1(allFunctions, new A.SemanticAnalyzer_checkReducible_closure(reducible)))
-          throw A.wrapException(new A.UndefinedIdentifiersError('Undefined identifier "' + t1 + '" at ' + reducible.location.toString$0(0)));
+          throw A.wrapException(new A.UndefinedIdentifiersError(_s17_, 'Undefined identifier "' + t1 + '" at ' + reducible.location.toString$0(0)));
       } else if (reducible instanceof A.ExpressionReducible) {
         t1 = reducible.name;
         $function = this.getFunctionByName$2$functions$name(allFunctions, t1);
         if ($function == null)
-          throw A.wrapException(new A.UndefinedFunctionError('Undefined function "' + t1 + '" at ' + reducible.location.toString$0(0)));
+          throw A.wrapException(new A.UndefinedFunctionError(_s17_, 'Undefined function "' + t1 + '" at ' + reducible.location.toString$0(0)));
         else {
           t2 = $function.parameters.length;
           t3 = reducible.$arguments;
           t4 = t3.length;
           if (t2 !== t4)
-            throw A.wrapException(new A.InvalidNumberOfArgumentsError('Invalid number of arguments calling function "' + t1 + '" at ' + reducible.location.toString$0(0)));
+            throw A.wrapException(new A.InvalidNumberOfArgumentsError(_s17_, 'Invalid number of arguments calling function "' + t1 + '" at ' + reducible.location.toString$0(0)));
         }
         for (_i = 0; _i < t3.length; t3.length === t4 || (0, A.throwConcurrentModificationError)(t3), ++_i)
           this.checkReducible$4$allFunctions$availableParameters$reducible$usedParameters(allFunctions, availableParameters, t3[_i], usedParameters);
@@ -9286,7 +9308,7 @@
   A.Expression.prototype = {};
   A.EmptyExpression.prototype = {
     toReducible$0() {
-      return A.throwExpression(B.EmptyExpressionEvaluationError_DrA);
+      return A.throwExpression(B.EmptyExpressionEvaluationError_EVU);
     }
   };
   A.LiteralExpression.prototype = {
@@ -9456,7 +9478,7 @@
           if (exp instanceof A.IdentifierExpression || exp instanceof A.CallExpression)
             exp = _this.finishCall$1(exp);
           else
-            throw A.wrapException(A.InvalidTokenError$(_this.get$peek()));
+            throw A.wrapException(A.InvalidTokenError$(_this.get$peek(), null));
       else if (_this.match$1(A._setArrayType([B.Type_OpenBracketToken_Cxl], type$.JSArray_Type)))
         if (exp instanceof A.IdentifierExpression || exp instanceof A.CallExpression || exp instanceof A.StringLiteralExpression || exp instanceof A.ListLiteralExpression) {
           t1 = _this.iterator.get$previous();
@@ -9466,7 +9488,7 @@
           _this.consume$2(B.Type_CloseBracketToken_ECL, "]");
           exp = new A.CallExpression(new A.IdentifierExpression("element.at", t1), A._setArrayType([exp, index], type$.JSArray_Expression), t1);
         } else
-          throw A.wrapException(A.InvalidTokenError$(_this.get$peek()));
+          throw A.wrapException(A.InvalidTokenError$(_this.get$peek(), null));
       return exp;
     },
     finishCall$1(callee) {
@@ -9509,7 +9531,7 @@
         t1.toString;
         return _this.list$1(t1);
       }
-      throw A.wrapException(A.InvalidTokenError$(_this.get$peek()));
+      throw A.wrapException(A.InvalidTokenError$(_this.get$peek(), null));
     },
     list$1(token) {
       var t1, _this = this,
@@ -9550,7 +9572,7 @@
     consume$2(type, expected) {
       if (this.check$1(type))
         return this.advance$0();
-      throw A.wrapException(new A.ExpectedTokenError("Invalid token " + this.get$peek().toString$0(0) + ". Expected: " + expected));
+      throw A.wrapException(new A.ExpectedTokenError("Compilation error", "Invalid token " + this.get$peek().toString$0(0) + ". Expected: " + expected));
     },
     advance$0() {
       var t1 = this.iterator,
@@ -9588,7 +9610,7 @@
         }
       }
       if (!(state instanceof A.InitState0))
-        throw A.wrapException(B.UnexpectedEndOfFileError_Qi2);
+        throw A.wrapException(B.UnexpectedEndOfFileError_7BY);
       return result;
     }
   };
@@ -9598,7 +9620,7 @@
       if (input instanceof A.IdentifierToken)
         return new A.FunctionNameState(new A.FunctionDefinition(input.value, B.List_empty0, B.EmptyExpression_Location_0_0), this.iterator);
       else
-        throw A.wrapException(A.InvalidTokenError$(input));
+        throw A.wrapException(A.InvalidTokenError$(input, "identifier"));
     }
   };
   A.FunctionNameState.prototype = {
@@ -9613,7 +9635,7 @@
       } else if (input instanceof A.OpenParenthesisToken)
         return new A.FunctionWithParametersState(_this.output, _this.iterator);
       else
-        throw A.wrapException(A.InvalidTokenError$(input));
+        throw A.wrapException(A.InvalidTokenError$(input, "'=' or parameters list"));
     }
   };
   A.FunctionWithParametersState.prototype = {
@@ -9622,7 +9644,7 @@
       if (input instanceof A.IdentifierToken)
         return new A.FunctionWithNewParametersState(this.output.withParameter$1(input.value), this.iterator);
       else
-        throw A.wrapException(A.InvalidTokenError$(input));
+        throw A.wrapException(A.InvalidTokenError$(input, "parameters list"));
     }
   };
   A.FunctionWithNewParametersState.prototype = {
@@ -9634,7 +9656,7 @@
       else if (input instanceof A.CloseParenthesisToken)
         return new A.FunctionParametrizedState(_this.output, _this.iterator);
       else
-        throw A.wrapException(A.InvalidTokenError$(input));
+        throw A.wrapException(A.InvalidTokenError$(input, "',' or ')'"));
     }
   };
   A.FunctionWithNextParametersState.prototype = {
@@ -9643,7 +9665,7 @@
       if (input instanceof A.IdentifierToken)
         return new A.FunctionWithNewParametersState(this.output.withParameter$1(input.value), this.iterator);
       else
-        throw A.wrapException(A.InvalidTokenError$(input));
+        throw A.wrapException(A.InvalidTokenError$(input, "identifier"));
     }
   };
   A.FunctionParametrizedState.prototype = {
@@ -9656,7 +9678,7 @@
         t3 = new A.ExpressionParser(t1).ifExpression$0();
         return new A.ResultState0(new A.FunctionDefinition(t2.name, t2.parameters, t3), t1);
       } else
-        throw A.wrapException(A.InvalidTokenError$(input));
+        throw A.wrapException(A.InvalidTokenError$(input, "'='"));
     }
   };
   A.ResultState0.prototype = {};
@@ -9669,7 +9691,7 @@
   A.UnusedParameterWarning.prototype = {};
   A.runtimeWarningsHelper_closure.prototype = {
     call$1(e) {
-      return type$.GenericWarning._as(e).message;
+      return "Warning: " + type$.GenericWarning._as(e).message;
     },
     $signature: 12
   };
@@ -9707,7 +9729,7 @@
           return A.ioore(t2, t1);
         return t2[t1];
       } else
-        throw A.wrapException(B.UnexpectedEndOfFileError_Qi2);
+        throw A.wrapException(B.UnexpectedEndOfFileError_7BY);
     }
   };
   (function aliases() {
@@ -9768,10 +9790,11 @@
     _inherit(A._LinkedHashSet, A._SetBase);
     _inherit(A.Utf8Encoder, A.Converter);
     _inheritMany(A.ArgumentError, [A.RangeError, A.IndexError]);
-    _inheritMany(A.GenericError, [A.LexicalError, A.RuntimeError0, A.SemanticError, A.UndefinedFunctionError, A.InvalidNumberOfArgumentsError, A.SyntacticError, A.CustomError]);
+    _inheritMany(A.GenericError, [A.CompilationError, A.RuntimeError0]);
+    _inheritMany(A.CompilationError, [A.LexicalError, A.SemanticError, A.SyntacticError]);
     _inherit(A.InvalidCharacterError, A.LexicalError);
-    _inheritMany(A.RuntimeError0, [A.InvalidArgumentTypesError, A.InvalidArgumentCountError, A.NotFoundInScope, A.EmptyExpressionEvaluationError]);
-    _inheritMany(A.SemanticError, [A.DuplicatedFunctionError, A.DuplicatedParameterError, A.UndefinedIdentifiersError]);
+    _inheritMany(A.RuntimeError0, [A.InvalidArgumentTypesError, A.InvalidArgumentCountError, A.NotFoundInScope, A.EmptyExpressionEvaluationError, A.CustomError]);
+    _inheritMany(A.SemanticError, [A.DuplicatedFunctionError, A.DuplicatedParameterError, A.UndefinedIdentifiersError, A.UndefinedFunctionError, A.InvalidNumberOfArgumentsError]);
     _inheritMany(A.SyntacticError, [A.InvalidTokenError, A.ExpectedTokenError, A.UnexpectedEndOfFileError]);
     _inheritMany(A.Analyzer, [A.LexicalAnalyzer, A.Scanner, A.SemanticAnalyzer, A.SyntacticAnalyzer]);
     _inheritMany(A.State, [A.InitState, A.StringDoubleQuoteState, A.StringSingleQuoteState, A.IntegerState, A.DecimalInitState, A.DecimalState, A.IdentifierState, A.MinusState, A.PlusState, A.EqualsState, A.GreaterState, A.LessState, A.PipeState, A.AmpersandState, A.BangState, A.ForwardSlashState, A.AsteriskState, A.PercentState, A.SingleLineCommentState, A.StartMultiLineCommentState, A.ClosingMultiLineCommentState, A.CommaState, A.OpenParenthesisState, A.CloseParenthesisState, A.OpenBracketState, A.CloseBracketState, A.ResultState, A.InitState0, A.FunctionNameState, A.FunctionWithParametersState, A.FunctionWithNewParametersState, A.FunctionWithNextParametersState, A.FunctionParametrizedState, A.ResultState0]);
@@ -10017,7 +10040,7 @@
     B.C_Utf8Encoder = new A.Utf8Encoder();
     B.C__JSRandom = new A._JSRandom();
     B.C__Required = new A._Required();
-    B.EmptyExpressionEvaluationError_DrA = new A.EmptyExpressionEvaluationError("Cannot reduce empty expression");
+    B.EmptyExpressionEvaluationError_EVU = new A.EmptyExpressionEvaluationError("Runtime error", "Cannot reduce empty expression");
     B.Location_0_0 = new A.Location(0, 0);
     B.EmptyExpression_Location_0_0 = new A.EmptyExpression(B.Location_0_0);
     B.List_empty = A._setArrayType(makeConstList([]), type$.JSArray_Parameter);
@@ -10057,7 +10080,7 @@
     B.Type_PlusToken_iHz = A.typeLiteral("PlusToken");
     B.Type_StringToken_ckG = A.typeLiteral("StringToken");
     B.Type_Uint8List_CSc = A.typeLiteral("Uint8List");
-    B.UnexpectedEndOfFileError_Qi2 = new A.UnexpectedEndOfFileError("Unexpected end of file");
+    B.UnexpectedEndOfFileError_7BY = new A.UnexpectedEndOfFileError("Compilation error", "Unexpected end of file");
   })();
   (function staticFields() {
     $._JS_INTEROP_INTERCEPTOR_TAG = null;
