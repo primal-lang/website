@@ -95,6 +95,14 @@ const basicProperties = (withExtras) => {
     "num\\.isZero\\s*(\?=\\()": "custom-native-function",
     "num\\.isEven\\s*(\?=\\()": "custom-native-function",
     "num\\.isOdd\\s*(\?=\\()": "custom-native-function",
+    "num\\.asRadians\\s*(\?=\\()": "custom-native-function",
+    "num\\.asDegrees\\s*(\?=\\()": "custom-native-function",
+    "num\\.infinity\\s*(\?=\\()": "custom-native-function",
+    "num\\.fraction\\s*(\?=\\()": "custom-native-function",
+    "num\\.clamp\\s*(\?=\\()": "custom-native-function",
+    "num\\.sign\\s*(\?=\\()": "custom-native-function",
+    "num\\.integerRandom\\s*(\?=\\()": "custom-native-function",
+    "num\\.decimalRandom\\s*(\?=\\()": "custom-native-function",
 
     // logic
     "bool\\.and\\s*(\?=\\()": "custom-native-function",

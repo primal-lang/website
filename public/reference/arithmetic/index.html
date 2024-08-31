@@ -444,6 +444,118 @@
         </table>
         <div id="num.isOdd" class="code-sample"></div>
 
+        <h5 class="text-white reference-title">As radians</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">An angle in degrees.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The angle converted to radians.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="num.asRadians" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">As degrees</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">An angle in radians.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The angle converted to degrees.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="num.asDegrees" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Infinity</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Output</td>
+              <td>Positive infinity.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="num.infinity" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Fractional part</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A number.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The fractional part of the number.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="num.fraction" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Clamp</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Inputs</td>
+              <td class="border-bottom">Three numbers.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The first number clamped to be in the range of the second and third number.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="num.clamp" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Sign of a number</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A number.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>1 if the number is positive. -1 if the number is negative. 0 if the number is zero.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="num.sign" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Random integer</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Inputs</td>
+              <td class="border-bottom">Two numbers.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A random integer between the two numbers (inclusive).</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="num.integerRandom" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Random decimal</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A random decimal number between 0 and 1.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="num.decimalRandom" class="code-sample"></div>
+
         <br />
         <br />
         <br />
@@ -482,6 +594,14 @@
     setSampleCode('num.isZero', 'num.isZero(a: Number): Boolean')
     setSampleCode('num.isEven', 'num.isEven(a: Number): Boolean')
     setSampleCode('num.isOdd', 'num.isOdd(a: Number): Boolean')
+    setSampleCode('num.asRadians', 'num.asRadians(a: Number): Number')
+    setSampleCode('num.asDegrees', 'num.asDegrees(a: Number): Number')
+    setSampleCode('num.infinity', 'num.infinity(): Number')
+    setSampleCode('num.fraction', 'num.fraction(a: Number): Number')
+    setSampleCode('num.clamp', 'num.clamp(a: Number, b: Number, c: Number): Number')
+    setSampleCode('num.sign', 'num.sign(a: Number): Number')
+    setSampleCode('num.integerRandom', 'num.integerRandom(a: Number, b: Number): Number')
+    setSampleCode('num.decimalRandom', 'num.decimalRandom(): Number')
   </script>
 
 </body>
