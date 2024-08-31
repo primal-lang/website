@@ -119,27 +119,28 @@
         <h4 class="text-white start-title">Syntax</h4>
 
         <p class="text-white justified-text">
-          The syntax is designed to be simple and easy to read and consists of function declarations and expressions
-          that are evaluated to produce a result.
+          The syntax is designed to be simple and easy to read and consists of function declarations that are evaluated
+          to produce a result.
         </p>
 
         <p class="text-white">
-          A function definition is composed of:
+          A function declaration is composed of:
         </p>
 
         <ul class="text-white">
-          <li><b>Function name:</b> which must match the regular expression <span class="tagged">[a-zA-Z][\w\.]*</span>
+          <li><b>Name:</b> which must match the regular expression <span class="tagged">[a-zA-Z][\w\.]*</span>
           </li>
-          <li><b>Function parameters (optional):</b> a list of expressions, each of them matching the regular expression
+          <li><b>Parameters (optional):</b> a list of identifiers, each matching the regular expression
             <span class="tagged">[a-zA-Z][\w\.]*</span>
           </li>
-          <li><b>Function body:</b> an expression which consist of combinations of:</li>
+          <li><b>Body:</b> an expression which consist of combinations of:</li>
           <ul class="text-white">
             <li>Constants: <span class="tagged">"Hello"</span>, <span class="tagged">42</span>, <span
-                class="tagged">true</span>, etc</li>
-            <li>Operations: <span class="tagged">foo * 3</span>, <span class="tagged">!foo</span>, <span
+                class="tagged">true</span>, <span class="tagged">[1, 2, 3]</span>, etc</li>
+            <li>Operations: <span class="tagged">foo + 3</span>, <span class="tagged">!foo</span>, <span
                 class="tagged">foo >= bar</span>, etc</li>
-            <li>Function calls: <span class="tagged">foo(x)</span>, etc</li>
+            <li>Function calls: <span class="tagged">foo(x)</span>, <span class="tagged">bar(10)</span>, etc</li>
+            <li>Conditionals: <span class="tagged">if (foo) bar else baz</span></li>
           </ul>
         </ul>
 
