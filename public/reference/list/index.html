@@ -54,12 +54,42 @@
 
         <h2 class="text-white mb-4">List</h2>
 
+        <h5 class="text-white reference-title">Constructor</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A list of elements separated by comma.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A list containing all the elements.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="list.new" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Indexing</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A list an a number representing the index.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The element at the specified index in the list.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="list.index" class="code-sample"></div>
+
         <h5 class="text-white reference-title">At</h5>
         <table class="reference-table">
           <tbody>
             <tr>
               <td class="border-bottom reference-table-title">Input</td>
-              <td class="border-bottom">A list and a number.</td>
+              <td class="border-bottom">A list and a number representing the index.</td>
             </tr>
             <tr>
               <td class="reference-table-title">Output</td>
@@ -397,6 +427,8 @@
 
   <script>
     // list
+    setSampleCode('list.new', '[Any, Any, Any, ...]: List')
+    setSampleCode('list.index', 'List[Number]: Any')
     setSampleCode('list.at', 'list.at(a: List, b: Number): Any')
     setSampleCode('list.set', 'list.set(a: List, b: Number, c: Any): List')
     setSampleCode('list.join', 'list.join(a: List, b: String): String')

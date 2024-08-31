@@ -54,6 +54,36 @@
 
         <h2 class="text-white mb-4">String</h2>
 
+        <h5 class="text-white reference-title">Constructor</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A text surrounded by single or double quotes.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A string containing the text.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="str.new" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Indexing</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A string and a number representing the index.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The character at the specified index.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="str.index" class="code-sample"></div>
+
         <h5 class="text-white reference-title">Substring</h5>
         <table class="reference-table">
           <tbody>
@@ -396,6 +426,8 @@
 
   <script>
     // string
+    setSampleCode('str.new', '"...": String')
+    setSampleCode('str.index', 'String[Number]: String')
     setSampleCode('str.substring', 'str.substring(a: String, b: Number, c: Number): String')
     setSampleCode('str.startsWith', 'str.startsWith(a: String, b: String): Boolean')
     setSampleCode('str.endsWith', 'str.endsWith(a: String, b: String): Boolean')
