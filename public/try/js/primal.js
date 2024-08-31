@@ -3420,6 +3420,9 @@
         return result;
       throw A.wrapException(A.FormatException$(input, null));
     },
+    print(object) {
+      A.printString(object);
+    },
     NoSuchMethodError_toString_closure: function NoSuchMethodError_toString_closure(t0, t1) {
       this._box_0 = t0;
       this.sb = t1;
@@ -4615,16 +4618,23 @@
       this._list = t0;
       this.$ti = t1;
     },
+    printString(string) {
+      if (typeof dartPrint == "function") {
+        dartPrint(string);
+        return;
+      }
+      if (typeof console == "object" && typeof console.log != "undefined") {
+        console.log(string);
+        return;
+      }
+      if (typeof print == "function") {
+        print(string);
+        return;
+      }
+      throw "Unable to print message: " + String(string);
+    },
     throwLateFieldADI(fieldName) {
       A.throwExpressionWithWrapper(new A.LateError("Field '" + fieldName + "' has been assigned during initialization."), new Error());
-    },
-    _StdIOUtils__getStdioOutputStream(fd) {
-      throw A.wrapException(A.UnsupportedError$("StdIOUtils._getStdioOutputStream"));
-    },
-    stdout() {
-      $.$get$_ioOverridesToken();
-      var t1 = $.$get$_stdout();
-      return t1;
     },
     _convertDartFunctionFast(f) {
       var ret,
@@ -7964,13 +7974,15 @@
   A.ConsoleWrite.prototype = {
     substitute$1($arguments) {
       var a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
-      A.stdout().write$1(a.toString$0(0));
+      A.print(a.toString$0(0));
+      return a;
     }
   };
   A.ConsoleWriteLn.prototype = {
     substitute$1($arguments) {
       var a = type$.Scope_Reducible._as($arguments).$get$1("a").reduce$0(0);
-      A.stdout().writeln$1(a.toString$0(0));
+      A.print(a.toString$0(0));
+      return a;
     }
   };
   A.If.prototype = {
@@ -10101,8 +10113,6 @@
   (function lazyInitializers() {
     var _lazyFinal = hunkHelpers.lazyFinal;
     _lazyFinal($, "DART_CLOSURE_PROPERTY_NAME", "$get$DART_CLOSURE_PROPERTY_NAME", () => A.getIsolateAffinityTag("_$dart_dartClosure"));
-    _lazyFinal($, "_ioOverridesToken", "$get$_ioOverridesToken", () => new A.Object());
-    _lazyFinal($, "_stdout", "$get$_stdout", () => A._StdIOUtils__getStdioOutputStream(1));
   })();
   (function nativeSupport() {
     !function() {
