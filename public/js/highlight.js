@@ -127,6 +127,7 @@ const basicProperties = (withExtras) => {
     "str\\.reverse\\s*(\?=\\()": "custom-native-function",
 
     // list
+    "list\\.sublist\\s*(?=\\()": "custom-native-function",
     "list\\.at\\s*(?=\\()": "custom-native-function",
     "list\\.set\\s*(?=\\()": "custom-native-function",
     "list\\.join\\s*(?=\\()": "custom-native-function",
