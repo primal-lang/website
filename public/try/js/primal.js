@@ -3542,10 +3542,6 @@
       this.errorType = t0;
       this.message = t1;
     },
-    EmptyExpressionEvaluationError: function EmptyExpressionEvaluationError(t0, t1) {
-      this.errorType = t0;
-      this.message = t1;
-    },
     SemanticError: function SemanticError() {
     },
     DuplicatedFunctionError: function DuplicatedFunctionError(t0, t1) {
@@ -4339,7 +4335,7 @@
     },
     State: function State() {
     },
-    Type0: function Type0() {
+    Type: function Type() {
     },
     StringType: function StringType() {
     },
@@ -4349,25 +4345,27 @@
     },
     ListType: function ListType() {
     },
-    AnyType: function AnyType() {
+    FunctionType: function FunctionType() {
     },
-    StringReducibleValue___new_tearOff(value) {
-      return new A.StringReducibleValue(A._asString(value));
+    AnyType: function AnyType() {
     },
     NumberReducibleValue___new_tearOff(value) {
       return new A.NumberReducibleValue(A._asNum(value));
+    },
+    StringReducibleValue___new_tearOff(value) {
+      return new A.StringReducibleValue(A._asString(value));
     },
     Reducible: function Reducible() {
     },
     ReducibleValue: function ReducibleValue() {
     },
-    StringReducibleValue: function StringReducibleValue(t0) {
+    BooleanReducibleValue: function BooleanReducibleValue(t0) {
       this.value = t0;
     },
     NumberReducibleValue: function NumberReducibleValue(t0) {
       this.value = t0;
     },
-    BooleanReducibleValue: function BooleanReducibleValue(t0) {
+    StringReducibleValue: function StringReducibleValue(t0) {
       this.value = t0;
     },
     ListReducibleValue: function ListReducibleValue(t0) {
@@ -4380,12 +4378,12 @@
       this.value = t0;
       this.location = t1;
     },
-    ExpressionReducible: function ExpressionReducible(t0, t1, t2) {
+    CallReducible: function CallReducible(t0, t1, t2) {
       this.name = t0;
       this.$arguments = t1;
       this.location = t2;
     },
-    ExpressionReducible_substitute_closure: function ExpressionReducible_substitute_closure(t0) {
+    CallReducible_substitute_closure: function CallReducible_substitute_closure(t0) {
       this.$arguments = t0;
     },
     Runtime: function Runtime(t0) {
@@ -4458,9 +4456,6 @@
       return new A.NumberLiteralExpression(A._asNum(token.value), token.location);
     },
     Expression: function Expression() {
-    },
-    EmptyExpression: function EmptyExpression(t0) {
-      this.location = t0;
     },
     LiteralExpression: function LiteralExpression() {
     },
@@ -5788,7 +5783,7 @@
     toString$0(_) {
       return A._rtiToString(this._rti, null);
     },
-    $isType: 1
+    $isType0: 1
   };
   A._Error.prototype = {
     toString$0(_) {
@@ -6465,7 +6460,6 @@
   A.InvalidArgumentTypesError.prototype = {};
   A.InvalidArgumentCountError.prototype = {};
   A.NotFoundInScope.prototype = {};
-  A.EmptyExpressionEvaluationError.prototype = {};
   A.SemanticError.prototype = {};
   A.DuplicatedFunctionError.prototype = {};
   A.DuplicatedParameterError.prototype = {};
@@ -7214,7 +7208,7 @@
         return new A.NumberReducibleValue(J.abs$0$in(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7234,7 +7228,7 @@
         return new A.NumberReducibleValue(t1 + t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7249,7 +7243,7 @@
         return new A.NumberReducibleValue(t1 * 57.29577951308232);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7264,7 +7258,7 @@
         return new A.NumberReducibleValue(t1 * 0.017453292519943295);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7276,7 +7270,7 @@
         return new A.NumberReducibleValue(J.ceil$0$n(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7291,7 +7285,7 @@
         return new A.NumberReducibleValue(J.clamp$2$n(a.value, b.value, c.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7303,7 +7297,7 @@
         return new A.NumberReducibleValue(Math.cos(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7318,7 +7312,7 @@
         return new A.NumberReducibleValue(t1 - 1);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7344,7 +7338,7 @@
         return new A.NumberReducibleValue(t1 / t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7356,7 +7350,7 @@
         return new A.NumberReducibleValue(J.floor$0$n(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7368,7 +7362,7 @@
         return new A.NumberReducibleValue(B.JSNumber_methods.$mod(J.abs$0$in(a.value), 1));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7383,7 +7377,7 @@
         return new A.NumberReducibleValue(t1 + 1);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7409,7 +7403,7 @@
         return new A.NumberReducibleValue(t1 + B.C__JSRandom.nextInt$1(B.JSNumber_methods.toInt$0(t2 - t1 + 1)));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7424,7 +7418,7 @@
         return new A.BooleanReducibleValue(B.JSNumber_methods.$mod(t1, 2) === 0);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7439,7 +7433,7 @@
         return new A.BooleanReducibleValue(t1 < 0);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7454,7 +7448,7 @@
         return new A.BooleanReducibleValue(B.JSNumber_methods.$mod(t1, 2) !== 0);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7469,7 +7463,7 @@
         return new A.BooleanReducibleValue(t1 > 0);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7481,7 +7475,7 @@
         return new A.BooleanReducibleValue(a.value === 0);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7493,7 +7487,7 @@
         return new A.NumberReducibleValue(Math.log(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7507,7 +7501,7 @@
         return new A.NumberReducibleValue(Math.max(A.checkNum(a.value), A.checkNum(b.value)));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7521,7 +7515,7 @@
         return new A.NumberReducibleValue(Math.min(A.checkNum(a.value), A.checkNum(b.value)));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7541,7 +7535,7 @@
         return new A.NumberReducibleValue(B.JSNumber_methods.$mod(t1, t2));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7561,7 +7555,7 @@
         return new A.NumberReducibleValue(t1 * t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7573,7 +7567,7 @@
         return new A.NumberReducibleValue(-J.abs$0$in(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7587,7 +7581,7 @@
         return new A.NumberReducibleValue(Math.pow(a.value, b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7599,7 +7593,7 @@
         return new A.NumberReducibleValue(J.round$0$n(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7611,7 +7605,7 @@
         return new A.NumberReducibleValue(B.JSNumber_methods.toInt$0(J.get$sign$in(a.value)));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7623,7 +7617,7 @@
         return new A.NumberReducibleValue(Math.sin(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7637,7 +7631,7 @@
         return new A.NumberReducibleValue(value === result ? result : value);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7657,7 +7651,7 @@
         return new A.NumberReducibleValue(t1 - t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7677,7 +7671,7 @@
         return new A.NumberReducibleValue(t1 + t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7689,7 +7683,7 @@
         return new A.NumberReducibleValue(Math.tan(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7756,7 +7750,7 @@
         return new A.BooleanReducibleValue(a.value);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7770,7 +7764,7 @@
         return new A.NumberReducibleValue(a.value);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7784,7 +7778,7 @@
         return new A.NumberReducibleValue(J.toInt$0$n(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7798,7 +7792,7 @@
         return a;
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7841,7 +7835,7 @@
         }
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7861,7 +7855,7 @@
         return new A.BooleanReducibleValue(t1 >= t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7881,7 +7875,7 @@
         return new A.BooleanReducibleValue(t1 > t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7901,7 +7895,7 @@
         return new A.BooleanReducibleValue(t1 <= t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7921,7 +7915,7 @@
         return new A.BooleanReducibleValue(t1 < t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -7963,7 +7957,7 @@
           return c;
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8001,7 +7995,7 @@
         return new A.StringReducibleValue(J.$index$asx(a.value, J.toInt$0$n(b.value)));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8017,7 +8011,7 @@
         return new A.ListReducibleValue(t1);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8037,7 +8031,7 @@
         return B.BooleanReducibleValue_false;
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8053,7 +8047,7 @@
         return new A.ListReducibleValue(t2.sublist$2(t1, J.toInt$0$n(b.value), t2.get$length(t1)));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8067,7 +8061,7 @@
         return new A.ListReducibleValue(A.List_List$filled(J.toInt$0$n(a.value), b, false, type$.Reducible));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8079,7 +8073,7 @@
         return J.get$first$ax(a.value);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8093,7 +8087,7 @@
         return J.$index$asx(a.value, J.toInt$0$n(b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8113,7 +8107,7 @@
         return B.NumberReducibleValue_m1;
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8127,7 +8121,7 @@
         return new A.ListReducibleValue(t2.get$isNotEmpty(t1) ? t2.sublist$2(t1, 0, t2.get$length(t1) - 1) : A._setArrayType([], type$.JSArray_Reducible));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8143,7 +8137,7 @@
         return new A.ListReducibleValue(t1);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8159,7 +8153,7 @@
         return new A.ListReducibleValue(t1);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8171,7 +8165,7 @@
         return new A.BooleanReducibleValue(J.get$isEmpty$asx(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8183,7 +8177,7 @@
         return new A.BooleanReducibleValue(J.get$isNotEmpty$asx(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8197,7 +8191,7 @@
         return new A.StringReducibleValue(J.join$1$ax(a.value, b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8209,7 +8203,7 @@
         return J.get$last$ax(a.value);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8221,7 +8215,7 @@
         return new A.NumberReducibleValue(J.get$length$asx(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8243,7 +8237,7 @@
         return new A.ListReducibleValue(result);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8261,7 +8255,7 @@
         return new A.ListReducibleValue(J.$add$ansx(t4.sublist$2(t1, 0, t3.toInt$0(t2)), t4.sublist$1(t1, t3.toInt$0(t2) + 1)));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8274,7 +8268,7 @@
         return new A.ListReducibleValue(A.List_List$of(t1, true, t1.$ti._eval$1("ListIterable.E")));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8298,7 +8292,7 @@
         return new A.ListReducibleValue(t1);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8313,7 +8307,7 @@
         return new A.ListReducibleValue(J.sublist$2$ax(a.value, J.toInt$0$n(b.value), J.toInt$0$n(c.value)));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8346,7 +8340,7 @@
         return new A.ListReducibleValue(result);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8360,7 +8354,7 @@
         return new A.ListReducibleValue(t2.get$isNotEmpty(t1) ? t2.sublist$1(t1, 1) : A._setArrayType([], type$.JSArray_Reducible));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8374,7 +8368,7 @@
         return new A.ListReducibleValue(J.sublist$2$ax(a.value, 0, J.toInt$0$n(b.value)));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8388,7 +8382,7 @@
         return new A.BooleanReducibleValue(A.boolConversionCheck(a.value) && A.boolConversionCheck(b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8400,7 +8394,7 @@
         return new A.BooleanReducibleValue(!A.boolConversionCheck(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8414,7 +8408,7 @@
         return new A.BooleanReducibleValue(A.boolConversionCheck(a.value) || A.boolConversionCheck(b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8431,7 +8425,7 @@
         return new A.BooleanReducibleValue(B.JSBool_methods.$xor(t1, b.value));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8467,7 +8461,7 @@
           return new A.ListReducibleValue(t1);
         } else {
           t1 = this.get$parameterTypes();
-          throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+          throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
         }
       }
     }
@@ -8482,7 +8476,7 @@
         return new A.BooleanReducibleValue(A.boolConversionCheck(a.value) && A.boolConversionCheck(b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8502,7 +8496,7 @@
         return new A.NumberReducibleValue(t1 / t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8528,7 +8522,7 @@
         return new A.BooleanReducibleValue(t1 >= t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8548,7 +8542,7 @@
         return new A.BooleanReducibleValue(t1 > t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8568,7 +8562,7 @@
         return new A.BooleanReducibleValue(t1 <= t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8588,7 +8582,7 @@
         return new A.BooleanReducibleValue(t1 < t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8608,7 +8602,7 @@
         return new A.NumberReducibleValue(B.JSNumber_methods.$mod(t1, t2));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8628,7 +8622,7 @@
         return new A.NumberReducibleValue(t1 * t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8650,7 +8644,7 @@
         return new A.BooleanReducibleValue(!A.boolConversionCheck(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8664,7 +8658,7 @@
         return new A.BooleanReducibleValue(A.boolConversionCheck(a.value) || A.boolConversionCheck(b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8684,7 +8678,7 @@
         return new A.NumberReducibleValue(t1 - t2);
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8698,7 +8692,7 @@
         return new A.StringReducibleValue(J.$index$asx(a.value, J.toInt$0$n(b.value)));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8713,7 +8707,7 @@
         return new A.ListReducibleValue(A.List_List$of(new A.MappedListIterable(bytes, t1._eval$1("NumberReducibleValue(ListBase.E)")._as(A.reducible_NumberReducibleValue___new_tearOff$closure()), t2), true, t2._eval$1("ListIterable.E")));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8727,7 +8721,7 @@
         return new A.StringReducibleValue(J.$add$ansx(a.value, b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8747,7 +8741,7 @@
         return new A.BooleanReducibleValue(A.stringContainsUnchecked(t1, t2, 0));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8763,7 +8757,7 @@
         return new A.StringReducibleValue(t2.substring$2(t1, J.toInt$0$n(b.value), t2.get$length(t1)));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8777,7 +8771,7 @@
         return new A.BooleanReducibleValue(J.endsWith$1$s(a.value, b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8789,7 +8783,7 @@
         return new A.StringReducibleValue(J.$index$asx(a.value, 0));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8803,7 +8797,7 @@
         return new A.NumberReducibleValue(J.indexOf$1$s(a.value, b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8817,7 +8811,7 @@
         return new A.StringReducibleValue(t2.get$length(t1) !== 0 ? t2.substring$2(t1, 0, t2.get$length(t1) - 1) : "");
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8829,7 +8823,7 @@
         return new A.BooleanReducibleValue(J.get$length$asx(a.value) === 0);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8841,7 +8835,7 @@
         return new A.BooleanReducibleValue(J.get$length$asx(a.value) !== 0);
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8855,7 +8849,7 @@
         return new A.StringReducibleValue(t2.$index(t1, t2.get$length(t1) - 1));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8867,7 +8861,7 @@
         return new A.NumberReducibleValue(J.get$length$asx(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8879,7 +8873,7 @@
         return new A.StringReducibleValue(a.value.toLowerCase());
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8895,7 +8889,7 @@
         return new A.BooleanReducibleValue(t1._nativeRegExp.test(t2));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8910,7 +8904,7 @@
         return new A.StringReducibleValue(J.padLeft$2$s(a.value, J.toInt$0$n(b.value), c.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8925,7 +8919,7 @@
         return new A.StringReducibleValue(J.padRight$2$s(a.value, J.toInt$0$n(b.value), c.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8943,7 +8937,7 @@
         return new A.StringReducibleValue(t4.substring$2(t1, 0, t3.toInt$0(t2)) + t4.substring$1(t1, t3.toInt$0(t2) + 1));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8960,7 +8954,7 @@
         return new A.StringReducibleValue(A.stringReplaceAllUnchecked(a.value, t1, t2));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8974,7 +8968,7 @@
         return new A.StringReducibleValue(B.JSArray_methods.join$1(A.List_List$of(new A.ReversedListIterable(t1, t2), true, t2._eval$1("ListIterable.E")), ""));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -8991,7 +8985,7 @@
         return new A.ListReducibleValue(A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("StringReducibleValue(1)")._as(A.reducible_StringReducibleValue___new_tearOff$closure()), t3), true, t3._eval$1("ListIterable.E")));
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -9005,7 +8999,7 @@
         return new A.BooleanReducibleValue(J.startsWith$1$s(a.value, b.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -9020,7 +9014,7 @@
         return new A.StringReducibleValue(J.substring$2$s(a.value, J.toInt$0$n(b.value), J.toInt$0$n(c.value)));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type(), c.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -9034,7 +9028,7 @@
         return new A.StringReducibleValue(t2.get$length(t1) !== 0 ? t2.substring$1(t1, 1) : "");
       } else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -9048,7 +9042,7 @@
         return new A.StringReducibleValue(J.substring$2$s(a.value, 0, J.toInt$0$n(b.value)));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -9060,7 +9054,7 @@
         return new A.StringReducibleValue(J.trim$0$s(a.value));
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -9072,7 +9066,7 @@
         return new A.StringReducibleValue(a.value.toUpperCase());
       else {
         t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_String), t1, this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
       }
     }
   };
@@ -9094,7 +9088,7 @@
       return this;
     }
   };
-  A.Type0.prototype = {};
+  A.Type.prototype = {};
   A.StringType.prototype = {
     toString$0(_) {
       return "String";
@@ -9113,6 +9107,11 @@
   A.ListType.prototype = {
     toString$0(_) {
       return "List";
+    }
+  };
+  A.FunctionType.prototype = {
+    toString$0(_) {
+      return "Function";
     }
   };
   A.AnyType.prototype = {
@@ -9134,27 +9133,24 @@
     },
     $isReducible: 1
   };
-  A.StringReducibleValue.prototype = {
+  A.BooleanReducibleValue.prototype = {
     get$type() {
-      return "String";
-    },
-    toString$0(_) {
-      return this.value;
+      return B.C_BooleanType;
     }
   };
   A.NumberReducibleValue.prototype = {
     get$type() {
-      return "Number";
+      return B.C_NumberType;
     }
   };
-  A.BooleanReducibleValue.prototype = {
+  A.StringReducibleValue.prototype = {
     get$type() {
-      return "Boolean";
+      return B.C_StringType;
     }
   };
   A.ListReducibleValue.prototype = {
     get$type() {
-      return "List";
+      return B.C_ListType;
     },
     substitute$1($arguments) {
       var t1 = J.map$1$1$ax(this.value, new A.ListReducibleValue_substitute_closure(type$.Scope_Reducible._as($arguments)), type$.Reducible);
@@ -9175,18 +9171,18 @@
       return this;
     },
     get$type() {
-      return "Identifier";
+      return B.C_AnyType;
     },
     toString$0(_) {
       return this.value;
     }
   };
-  A.ExpressionReducible.prototype = {
+  A.CallReducible.prototype = {
     substitute$1($arguments) {
       var t1 = this.$arguments,
         t2 = A._arrayInstanceType(t1),
         t3 = t2._eval$1("MappedListIterable<1,Reducible>");
-      return new A.ExpressionReducible(this.name, A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("Reducible(1)")._as(new A.ExpressionReducible_substitute_closure(type$.Scope_Reducible._as($arguments))), t3), true, t3._eval$1("ListIterable.E")), this.location);
+      return new A.CallReducible(this.name, A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("Reducible(1)")._as(new A.CallReducible_substitute_closure(type$.Scope_Reducible._as($arguments))), t3), true, t3._eval$1("ListIterable.E")), this.location);
     },
     reduce$0(_) {
       var t1 = this.name,
@@ -9194,13 +9190,13 @@
       return $function.substitute$1(A.Scope_from(this.$arguments, t1, this.location, $function.parameters)).reduce$0(0);
     },
     get$type() {
-      return "Function";
+      return B.C_FunctionType;
     },
     toString$0(_) {
       return this.name + "(" + B.JSArray_methods.join$1(this.$arguments, ", ") + ")";
     }
   };
-  A.ExpressionReducible_substitute_closure.prototype = {
+  A.CallReducible_substitute_closure.prototype = {
     call$1(e) {
       return type$.Reducible._as(e).substitute$1(this.$arguments);
     },
@@ -9257,15 +9253,15 @@
     get$parameterTypes() {
       var t1 = this.parameters,
         t2 = A._arrayInstanceType(t1),
-        t3 = t2._eval$1("MappedListIterable<1,String>");
-      return A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("String(1)")._as(new A.FunctionPrototype_parameterTypes_closure()), t3), true, t3._eval$1("ListIterable.E"));
+        t3 = t2._eval$1("MappedListIterable<1,Type>");
+      return A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("Type(1)")._as(new A.FunctionPrototype_parameterTypes_closure()), t3), true, t3._eval$1("ListIterable.E"));
     }
   };
   A.FunctionPrototype_parameterTypes_closure.prototype = {
     call$1(e) {
-      return type$.Parameter._as(e).type.toString$0(0);
+      return type$.Parameter._as(e).type;
     },
-    $signature: 1
+    $signature: 12
   };
   A.CustomFunctionPrototype.prototype = {
     substitute$1($arguments) {
@@ -9370,7 +9366,7 @@
           usedParameters.add$1(0, t1);
         else if (!B.JSArray_methods.any$1(allFunctions, new A.SemanticAnalyzer_checkReducible_closure(reducible)))
           throw A.wrapException(new A.UndefinedIdentifiersError(_s17_, 'Undefined identifier "' + t1 + '" at ' + reducible.location.toString$0(0)));
-      } else if (reducible instanceof A.ExpressionReducible) {
+      } else if (reducible instanceof A.CallReducible) {
         t1 = reducible.name;
         $function = this.getFunctionByName$2$functions$name(allFunctions, t1);
         if ($function == null)
@@ -9422,11 +9418,6 @@
     $signature: 2
   };
   A.Expression.prototype = {};
-  A.EmptyExpression.prototype = {
-    toReducible$0() {
-      return A.throwExpression(B.EmptyExpressionEvaluationError_EVU);
-    }
-  };
   A.LiteralExpression.prototype = {
     toString$0(_) {
       return J.toString$0$(this.value);
@@ -9483,7 +9474,7 @@
       var t1 = this.$arguments,
         t2 = A._arrayInstanceType(t1),
         t3 = t2._eval$1("MappedListIterable<1,Reducible>");
-      return new A.ExpressionReducible(this.callee.toString$0(0), A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("Reducible(1)")._as(new A.CallExpression_toReducible_closure()), t3), true, t3._eval$1("ListIterable.E")), this.location);
+      return new A.CallReducible(this.callee.toString$0(0), A.List_List$of(new A.MappedListIterable(t1, t2._eval$1("Reducible(1)")._as(new A.CallExpression_toReducible_closure()), t3), true, t3._eval$1("ListIterable.E")), this.location);
     }
   };
   A.CallExpression_toReducible_closure.prototype = {
@@ -9495,7 +9486,7 @@
   A.ExpressionParser.prototype = {
     ifExpression$0() {
       var t1, condition, ifTrue, ifFalse, t2, _this = this;
-      if (_this.match$1(A._setArrayType([B.Type_IfToken_8aB], type$.JSArray_Type))) {
+      if (_this.match$1(A._setArrayType([B.Type_IfToken_8aB], type$.JSArray_Type_2))) {
         t1 = _this.iterator.get$previous();
         t1.toString;
         _this.consume$2(B.Type_OpenParenthesisToken_E4y, "(");
@@ -9512,7 +9503,7 @@
     equality$0() {
       var t1, t2, t3, t4, right, t5, _this = this,
         expression = _this.comparison$0();
-      for (t1 = type$.JSArray_Type, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_NotEqualToken_EyN, B.Type_EqualToken_Qm0], t1));) {
+      for (t1 = type$.JSArray_Type_2, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_NotEqualToken_EyN, B.Type_EqualToken_Qm0], t1));) {
         t4 = t2.get$previous();
         t4.toString;
         right = _this.comparison$0();
@@ -9524,7 +9515,7 @@
     comparison$0() {
       var t1, t2, t3, t4, right, t5, _this = this,
         expression = _this.logic$0();
-      for (t1 = type$.JSArray_Type, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_GreaterThanToken_AgZ, B.Type_GreaterEqualThanToken_HP5, B.Type_LessThanToken_7v8, B.Type_LessEqualThanToken_2bB], t1));) {
+      for (t1 = type$.JSArray_Type_2, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_GreaterThanToken_AgZ, B.Type_GreaterEqualThanToken_HP5, B.Type_LessThanToken_7v8, B.Type_LessEqualThanToken_2bB], t1));) {
         t4 = t2.get$previous();
         t4.toString;
         right = _this.logic$0();
@@ -9536,7 +9527,7 @@
     logic$0() {
       var t1, t2, t3, t4, right, t5, _this = this,
         expression = _this.term$0();
-      for (t1 = type$.JSArray_Type, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_PipeToken_srm, B.Type_AmpersandToken_EOZ], t1));) {
+      for (t1 = type$.JSArray_Type_2, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_PipeToken_srm, B.Type_AmpersandToken_EOZ], t1));) {
         t4 = t2.get$previous();
         t4.toString;
         right = _this.term$0();
@@ -9548,7 +9539,7 @@
     term$0() {
       var t1, t2, t3, t4, right, t5, _this = this,
         expression = _this.factor$0();
-      for (t1 = type$.JSArray_Type, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_MinusToken_wEo, B.Type_PlusToken_iHz], t1));) {
+      for (t1 = type$.JSArray_Type_2, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_MinusToken_wEo, B.Type_PlusToken_iHz], t1));) {
         t4 = t2.get$previous();
         t4.toString;
         right = _this.factor$0();
@@ -9560,7 +9551,7 @@
     factor$0() {
       var t1, t2, t3, t4, right, t5, _this = this,
         expression = _this.unary$0();
-      for (t1 = type$.JSArray_Type, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_ForwardSlashToken_gZu, B.Type_AsteriskToken_kQR, B.Type_PercentToken_ibp], t1));) {
+      for (t1 = type$.JSArray_Type_2, t2 = _this.iterator, t3 = type$.JSArray_Expression; _this.match$1(A._setArrayType([B.Type_ForwardSlashToken_gZu, B.Type_AsteriskToken_kQR, B.Type_PercentToken_ibp], t1));) {
         t4 = t2.get$previous();
         t4.toString;
         right = _this.unary$0();
@@ -9571,7 +9562,7 @@
     },
     unary$0() {
       var t1, right, t2, t3, t4, _this = this;
-      if (_this.match$1(A._setArrayType([B.Type_BangToken_fw6, B.Type_MinusToken_wEo], type$.JSArray_Type))) {
+      if (_this.match$1(A._setArrayType([B.Type_BangToken_fw6, B.Type_MinusToken_wEo], type$.JSArray_Type_2))) {
         t1 = _this.iterator.get$previous();
         t1.toString;
         right = _this.unary$0();
@@ -9590,12 +9581,12 @@
       var t1, index, _this = this,
         exp = _this.primary$0();
       if (_this.check$1(B.Type_OpenParenthesisToken_E4y))
-        for (t1 = type$.JSArray_Type; _this.match$1(A._setArrayType([B.Type_OpenParenthesisToken_E4y], t1));)
+        for (t1 = type$.JSArray_Type_2; _this.match$1(A._setArrayType([B.Type_OpenParenthesisToken_E4y], t1));)
           if (exp instanceof A.IdentifierExpression || exp instanceof A.CallExpression)
             exp = _this.finishCall$1(exp);
           else
             throw A.wrapException(A.InvalidTokenError$(_this.get$peek(), null));
-      else if (_this.match$1(A._setArrayType([B.Type_OpenBracketToken_Cxl], type$.JSArray_Type)))
+      else if (_this.match$1(A._setArrayType([B.Type_OpenBracketToken_Cxl], type$.JSArray_Type_2)))
         if (exp instanceof A.IdentifierExpression || exp instanceof A.CallExpression || exp instanceof A.StringLiteralExpression || exp instanceof A.ListLiteralExpression) {
           t1 = _this.iterator.get$previous();
           t1.toString;
@@ -9611,7 +9602,7 @@
       var t1, _this = this,
         $arguments = A._setArrayType([], type$.JSArray_Expression);
       if (!_this.check$1(B.Type_CloseParenthesisToken_Ug2)) {
-        t1 = type$.JSArray_Type;
+        t1 = type$.JSArray_Type_2;
         do
           B.JSArray_methods.add$1($arguments, _this.ifExpression$0());
         while (_this.match$1(A._setArrayType([B.Type_CommaToken_iHe], t1)));
@@ -9621,7 +9612,7 @@
     },
     primary$0() {
       var expr, _this = this,
-        t1 = type$.JSArray_Type;
+        t1 = type$.JSArray_Type_2;
       if (_this.match$1(A._setArrayType([B.Type_BooleanToken_SEt], t1))) {
         t1 = _this.iterator.get$previous();
         t1.toString;
@@ -9653,7 +9644,7 @@
       var t1, _this = this,
         $arguments = A._setArrayType([], type$.JSArray_Expression);
       if (!_this.check$1(B.Type_CloseBracketToken_ECL)) {
-        t1 = type$.JSArray_Type;
+        t1 = type$.JSArray_Type_2;
         do
           B.JSArray_methods.add$1($arguments, _this.ifExpression$0());
         while (_this.match$1(A._setArrayType([B.Type_CommaToken_iHe], t1)));
@@ -9734,7 +9725,7 @@
     process$1(input) {
       type$.Token_dynamic._as(input);
       if (input instanceof A.IdentifierToken)
-        return new A.FunctionNameState(new A.FunctionDefinition(input.value, B.List_empty0, B.EmptyExpression_Location_0_0), this.iterator);
+        return new A.FunctionNameState(new A.FunctionDefinition(input.value, B.List_empty0, null), this.iterator);
       else
         throw A.wrapException(A.InvalidTokenError$(input, "identifier"));
     }
@@ -9809,7 +9800,7 @@
     call$1(e) {
       return "Warning: " + type$.GenericWarning._as(e).message;
     },
-    $signature: 12
+    $signature: 13
   };
   A.ListIterator0.prototype = {
     get$peek() {
@@ -9857,26 +9848,26 @@
       _instance_1_u = hunkHelpers._instance_1u,
       _static_0 = hunkHelpers._static_0,
       _static_2 = hunkHelpers._static_2;
-    _static_1(A, "core_String___fromCharCode_tearOff$closure", "String___fromCharCode_tearOff", 13);
+    _static_1(A, "core_String___fromCharCode_tearOff$closure", "String___fromCharCode_tearOff", 14);
     var _;
     _instance_1_u(_ = A.Compiler.prototype, "get$compile", "compile$1", 10);
     _instance_1_u(_, "get$expression", "expression$1", 11);
-    _static_1(A, "parameter_Parameter___any_tearOff$closure", "Parameter___any_tearOff", 14);
-    _static_1(A, "reducible_StringReducibleValue___new_tearOff$closure", "StringReducibleValue___new_tearOff", 15);
+    _static_1(A, "parameter_Parameter___any_tearOff$closure", "Parameter___any_tearOff", 15);
     _static_1(A, "reducible_NumberReducibleValue___new_tearOff$closure", "NumberReducibleValue___new_tearOff", 16);
+    _static_1(A, "reducible_StringReducibleValue___new_tearOff$closure", "StringReducibleValue___new_tearOff", 17);
     _instance_1_u(A.Runtime.prototype, "get$fullReduce", "fullReduce$1", 0);
-    _static_0(A, "intermediate_code_IntermediateCode___empty_tearOff$closure", "IntermediateCode___empty_tearOff", 17);
-    _static_1(A, "main_web__runtimeWarningsHelper$closure", "runtimeWarningsHelper", 18);
-    _static_1(A, "main_web__runtimeHasMainHelper$closure", "runtimeHasMainHelper", 19);
-    _static_1(A, "main_web__runtimeExecuteMainHelper$closure", "runtimeExecuteMainHelper", 20);
-    _static_2(A, "main_web__runtimeReduceHelper$closure", "runtimeReduceHelper", 21);
+    _static_0(A, "intermediate_code_IntermediateCode___empty_tearOff$closure", "IntermediateCode___empty_tearOff", 18);
+    _static_1(A, "main_web__runtimeWarningsHelper$closure", "runtimeWarningsHelper", 19);
+    _static_1(A, "main_web__runtimeHasMainHelper$closure", "runtimeHasMainHelper", 20);
+    _static_1(A, "main_web__runtimeExecuteMainHelper$closure", "runtimeExecuteMainHelper", 21);
+    _static_2(A, "main_web__runtimeReduceHelper$closure", "runtimeReduceHelper", 22);
   })();
   (function inheritance() {
     var _mixin = hunkHelpers.mixin,
       _inherit = hunkHelpers.inherit,
       _inheritMany = hunkHelpers.inheritMany;
     _inherit(A.Object, null);
-    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, J.ArrayIterator, A.Error, A.Iterable, A.ListIterator, A.MappedIterator, A.WhereTypeIterator, A.FixedLengthListMixin, A.Symbol, A.MapView, A.ConstantMap, A.JSInvocationMirror, A.Closure, A._Required, A.MapBase, A.LinkedHashMapCell, A.LinkedHashMapKeyIterator, A.JSSyntaxRegExp, A.Rti, A._FunctionParameters, A._Type, A.SetBase, A._LinkedHashSetCell, A._LinkedHashSetIterator, A.ListBase, A._UnmodifiableMapMixin, A.Converter, A._Utf8Encoder, A.OutOfMemoryError, A.FormatException, A.MapEntry, A.Null, A.RuneIterator, A.StringBuffer, A._JSRandom, A.Compiler, A.GenericError, A.Analyzer, A.State, A.Localized, A.FunctionPrototype, A.Location, A.Parameter, A.Type0, A.Reducible, A.ReducibleValue, A.Runtime, A.Scope, A.IntermediateCode, A.ExpressionParser, A.FunctionDefinition, A.GenericWarning, A.ListIterator0]);
+    _inheritMany(A.Object, [A.JS_CONST, J.Interceptor, J.ArrayIterator, A.Error, A.Iterable, A.ListIterator, A.MappedIterator, A.WhereTypeIterator, A.FixedLengthListMixin, A.Symbol, A.MapView, A.ConstantMap, A.JSInvocationMirror, A.Closure, A._Required, A.MapBase, A.LinkedHashMapCell, A.LinkedHashMapKeyIterator, A.JSSyntaxRegExp, A.Rti, A._FunctionParameters, A._Type, A.SetBase, A._LinkedHashSetCell, A._LinkedHashSetIterator, A.ListBase, A._UnmodifiableMapMixin, A.Converter, A._Utf8Encoder, A.OutOfMemoryError, A.FormatException, A.MapEntry, A.Null, A.RuneIterator, A.StringBuffer, A._JSRandom, A.Compiler, A.GenericError, A.Analyzer, A.State, A.Localized, A.FunctionPrototype, A.Location, A.Parameter, A.Type, A.Reducible, A.ReducibleValue, A.Runtime, A.Scope, A.IntermediateCode, A.ExpressionParser, A.FunctionDefinition, A.GenericWarning, A.ListIterator0]);
     _inheritMany(J.Interceptor, [J.JSBool, J.JSNull, J.JavaScriptObject, J.JavaScriptBigInt, J.JavaScriptSymbol, J.JSNumber, J.JSString]);
     _inheritMany(J.JavaScriptObject, [J.LegacyJavaScriptObject, J.JSArray, A.NativeTypedData]);
     _inheritMany(J.LegacyJavaScriptObject, [J.PlainJavaScriptObject, J.UnknownJavaScriptObject, J.JavaScriptFunction]);
@@ -9891,7 +9882,7 @@
     _inherit(A.UnmodifiableMapView, A._UnmodifiableMapView_MapView__UnmodifiableMapMixin);
     _inherit(A.ConstantMapView, A.UnmodifiableMapView);
     _inherit(A.ConstantStringMap, A.ConstantMap);
-    _inheritMany(A.Closure, [A.Closure2Args, A.TearOffClosure, A.initHooks_closure, A.initHooks_closure1, A.MapBase_entries_closure, A.ListReducibleValue_substitute_closure, A.ExpressionReducible_substitute_closure, A.FunctionPrototype_parameterTypes_closure, A.SemanticAnalyzer_checkDuplicatedParameters_closure, A.SemanticAnalyzer_checkReducibles_closure, A.SemanticAnalyzer_checkReducible_closure, A.SemanticAnalyzer_getFunctionByName_closure, A.ListLiteralExpression_toReducible_closure, A.CallExpression_toReducible_closure, A.runtimeWarningsHelper_closure]);
+    _inheritMany(A.Closure, [A.Closure2Args, A.TearOffClosure, A.initHooks_closure, A.initHooks_closure1, A.MapBase_entries_closure, A.ListReducibleValue_substitute_closure, A.CallReducible_substitute_closure, A.FunctionPrototype_parameterTypes_closure, A.SemanticAnalyzer_checkDuplicatedParameters_closure, A.SemanticAnalyzer_checkReducibles_closure, A.SemanticAnalyzer_checkReducible_closure, A.SemanticAnalyzer_getFunctionByName_closure, A.ListLiteralExpression_toReducible_closure, A.CallExpression_toReducible_closure, A.runtimeWarningsHelper_closure]);
     _inheritMany(A.Closure2Args, [A.Primitives_functionNoSuchMethod_closure, A.initHooks_closure0, A.MapBase_mapToString_closure, A.NoSuchMethodError_toString_closure]);
     _inheritMany(A.TearOffClosure, [A.StaticClosure, A.BoundClosure]);
     _inherit(A._AssertionError, A.AssertionError);
@@ -9909,7 +9900,7 @@
     _inheritMany(A.GenericError, [A.CompilationError, A.RuntimeError0]);
     _inheritMany(A.CompilationError, [A.LexicalError, A.SemanticError, A.SyntacticError]);
     _inherit(A.InvalidCharacterError, A.LexicalError);
-    _inheritMany(A.RuntimeError0, [A.InvalidArgumentTypesError, A.InvalidArgumentCountError, A.NotFoundInScope, A.EmptyExpressionEvaluationError, A.CustomError]);
+    _inheritMany(A.RuntimeError0, [A.InvalidArgumentTypesError, A.InvalidArgumentCountError, A.NotFoundInScope, A.CustomError]);
     _inheritMany(A.SemanticError, [A.DuplicatedFunctionError, A.DuplicatedParameterError, A.UndefinedIdentifiersError, A.UndefinedFunctionError, A.InvalidNumberOfArgumentsError]);
     _inheritMany(A.SyntacticError, [A.InvalidTokenError, A.ExpectedTokenError, A.UnexpectedEndOfFileError]);
     _inheritMany(A.Analyzer, [A.LexicalAnalyzer, A.Scanner, A.SemanticAnalyzer, A.SyntacticAnalyzer]);
@@ -9918,11 +9909,11 @@
     _inheritMany(A.Token, [A.StringToken, A.NumberToken, A.BooleanToken, A.IdentifierToken, A.IfToken, A.ElseToken, A.MinusToken, A.PlusToken, A.ForwardSlashToken, A.AsteriskToken, A.PercentToken, A.PipeToken, A.AmpersandToken, A.BangToken, A.EqualToken, A.NotEqualToken, A.GreaterThanToken, A.GreaterEqualThanToken, A.LessThanToken, A.LessEqualThanToken, A.AssignToken, A.CommaToken, A.OpenParenthesisToken, A.CloseParenthesisToken, A.OpenBracketToken, A.CloseBracketToken]);
     _inheritMany(A.FunctionPrototype, [A.NativeFunctionPrototype, A.CustomFunctionPrototype]);
     _inheritMany(A.NativeFunctionPrototype, [A.NumAbs, A.NumAdd, A.NumAsDegrees, A.NumAsRadians, A.NumCeil, A.NumClamp, A.NumCos, A.NumDec, A.NumDecimalRandom, A.NumDiv, A.NumFloor, A.NumFraction, A.NumInc, A.NumInfinity, A.NumIntegerRandom, A.NumIsEven, A.NumIsNegative, A.NumIsOdd, A.NumIsPositive, A.NumIsZero, A.NumLog, A.NumMax, A.NumMin, A.NumMod, A.NumMul, A.NumNegative, A.NumPow, A.NumRound, A.NumSign, A.NumSin, A.NumSqrt, A.NumSub, A.NumSum, A.NumTan, A.IsBoolean, A.IsDecimal, A.IsInfinite, A.IsInteger, A.IsList, A.IsNumber, A.IsString, A.ToBoolean, A.ToDecimal, A.ToInteger, A.ToNumber, A.ToString, A.CompEq, A.CompGe, A.CompGt, A.CompLe, A.CompLt, A.CompNeq, A.ConsoleWrite, A.ConsoleWriteLn, A.If, A.Try, A.Throw, A.ElementAt, A.ListConcat, A.ListContains, A.ListDrop, A.ListFilled, A.ListFirst, A.ListAt, A.ListIndexOf, A.ListInit, A.ListInsertEnd, A.ListInsertStart, A.ListIsEmpty, A.ListIsNotEmpty, A.ListJoin, A.ListLast, A.ListLength, A.ListRemove, A.ListRemoveAt, A.ListReverse, A.ListSet, A.ListSublist, A.ListSwap, A.ListTail, A.ListTake, A.BoolAnd, A.BoolNot, A.BoolOr, A.BoolXor, A.OperatorAdd, A.OperatorAnd, A.OperatorDiv, A.OperatorEq, A.OperatorGe, A.OperatorGt, A.OperatorLe, A.OperatorLt, A.OperatorMod, A.OperatorMul, A.OperatorNeq, A.OperatorNot, A.OperatorOr, A.OperatorSub, A.StrAt, A.StrBytes, A.StrConcat, A.StrContains, A.StrDrop, A.StrEndsWith, A.StrFirst, A.StrIndexOf, A.StrInit, A.StrIsEmpty, A.StrIsNotEmpty, A.StrLast, A.StrLength, A.StrLowercase, A.StrMatch, A.StrPadLeft, A.StrPadRight, A.StrRemoveAt, A.StrReplace, A.StrReverse, A.StrSplit, A.StrStartsWith, A.StrSubstring, A.StrTail, A.StrTake, A.StrTrim, A.StrUppercase]);
-    _inheritMany(A.Type0, [A.StringType, A.NumberType, A.BooleanType, A.ListType, A.AnyType]);
-    _inheritMany(A.ReducibleValue, [A.StringReducibleValue, A.NumberReducibleValue, A.BooleanReducibleValue, A.ListReducibleValue]);
-    _inheritMany(A.Reducible, [A.IdentifierReducible, A.ExpressionReducible]);
+    _inheritMany(A.Type, [A.StringType, A.NumberType, A.BooleanType, A.ListType, A.FunctionType, A.AnyType]);
+    _inheritMany(A.ReducibleValue, [A.BooleanReducibleValue, A.NumberReducibleValue, A.StringReducibleValue, A.ListReducibleValue]);
+    _inheritMany(A.Reducible, [A.IdentifierReducible, A.CallReducible]);
     _inherit(A.AnonymousFunctionPrototype, A.CustomFunctionPrototype);
-    _inheritMany(A.Expression, [A.EmptyExpression, A.LiteralExpression, A.IdentifierExpression, A.CallExpression]);
+    _inheritMany(A.Expression, [A.LiteralExpression, A.IdentifierExpression, A.CallExpression]);
     _inheritMany(A.LiteralExpression, [A.BooleanLiteralExpression, A.NumberLiteralExpression, A.StringLiteralExpression, A.ListLiteralExpression]);
     _inherit(A.SemanticWarning, A.GenericWarning);
     _inherit(A.UnusedParameterWarning, A.SemanticWarning);
@@ -9934,12 +9925,12 @@
     typeUniverse: {eC: new Map(), tR: {}, eT: {}, tPV: {}, sEA: []},
     mangledGlobalNames: {int: "int", double: "double", num: "num", String: "String", bool: "bool", Null: "Null", List: "List", Object: "Object", Map: "Map"},
     mangledNames: {},
-    types: ["Reducible(Reducible)", "String(Parameter)", "bool(FunctionPrototype)", "Reducible(Expression)", "~(String,@)", "@(@)", "@(@,String)", "@(String)", "~(Object?,Object?)", "~(Symbol0,@)", "IntermediateCode(String)", "Expression(String)", "String(GenericWarning)", "String(int)", "Parameter(String)", "StringReducibleValue(String)", "NumberReducibleValue(num)", "IntermediateCode()", "List<String>(IntermediateCode)", "bool(IntermediateCode)", "String(IntermediateCode)", "String(IntermediateCode,Expression)"],
+    types: ["Reducible(Reducible)", "String(Parameter)", "bool(FunctionPrototype)", "Reducible(Expression)", "~(String,@)", "@(@)", "@(@,String)", "@(String)", "~(Object?,Object?)", "~(Symbol0,@)", "IntermediateCode(String)", "Expression(String)", "Type(Parameter)", "String(GenericWarning)", "String(int)", "Parameter(String)", "NumberReducibleValue(num)", "StringReducibleValue(String)", "IntermediateCode()", "List<String>(IntermediateCode)", "bool(IntermediateCode)", "String(IntermediateCode)", "String(IntermediateCode,Expression)"],
     interceptorsByTag: null,
     leafTags: null,
     arrayRti: Symbol("$ti")
   };
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"NativeTypedArray":{"JavaScriptIndexingBehavior":["1"]},"NativeTypedArrayOfInt":{"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"]},"NativeUint8List":{"Uint8List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"_Type":{"Type":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalInitState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IdentifierState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"MinusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PlusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"EqualsState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"GreaterState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"LessState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PipeState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AmpersandState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"BangState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ForwardSlashState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AsteriskState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PercentState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SingleLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StartMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ClosingMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommaState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"IdentifierToken":{"Token":["String"],"Token.T":"String"},"IfToken":{"Token":["String"],"Token.T":"String"},"ElseToken":{"Token":["String"],"Token.T":"String"},"MinusToken":{"Token":["String"],"Token.T":"String"},"PlusToken":{"Token":["String"],"Token.T":"String"},"ForwardSlashToken":{"Token":["String"],"Token.T":"String"},"AsteriskToken":{"Token":["String"],"Token.T":"String"},"PercentToken":{"Token":["String"],"Token.T":"String"},"PipeToken":{"Token":["String"],"Token.T":"String"},"AmpersandToken":{"Token":["String"],"Token.T":"String"},"BangToken":{"Token":["String"],"Token.T":"String"},"EqualToken":{"Token":["String"],"Token.T":"String"},"NotEqualToken":{"Token":["String"],"Token.T":"String"},"GreaterThanToken":{"Token":["String"],"Token.T":"String"},"GreaterEqualThanToken":{"Token":["String"],"Token.T":"String"},"LessThanToken":{"Token":["String"],"Token.T":"String"},"LessEqualThanToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"OpenBracketToken":{"Token":["String"],"Token.T":"String"},"CloseBracketToken":{"Token":["String"],"Token.T":"String"},"AssignToken":{"Token":["String"],"Token.T":"String"},"NumAbs":{"FunctionPrototype":[]},"NumAdd":{"FunctionPrototype":[]},"NumAsDegrees":{"FunctionPrototype":[]},"NumAsRadians":{"FunctionPrototype":[]},"NumCeil":{"FunctionPrototype":[]},"NumClamp":{"FunctionPrototype":[]},"NumCos":{"FunctionPrototype":[]},"NumDec":{"FunctionPrototype":[]},"NumDecimalRandom":{"FunctionPrototype":[]},"NumDiv":{"FunctionPrototype":[]},"NumFloor":{"FunctionPrototype":[]},"NumFraction":{"FunctionPrototype":[]},"NumInc":{"FunctionPrototype":[]},"NumInfinity":{"FunctionPrototype":[]},"NumIntegerRandom":{"FunctionPrototype":[]},"NumIsEven":{"FunctionPrototype":[]},"NumIsNegative":{"FunctionPrototype":[]},"NumIsOdd":{"FunctionPrototype":[]},"NumIsPositive":{"FunctionPrototype":[]},"NumIsZero":{"FunctionPrototype":[]},"NumLog":{"FunctionPrototype":[]},"NumMax":{"FunctionPrototype":[]},"NumMin":{"FunctionPrototype":[]},"NumMod":{"FunctionPrototype":[]},"NumMul":{"FunctionPrototype":[]},"NumNegative":{"FunctionPrototype":[]},"NumPow":{"FunctionPrototype":[]},"NumRound":{"FunctionPrototype":[]},"NumSign":{"FunctionPrototype":[]},"NumSin":{"FunctionPrototype":[]},"NumSqrt":{"FunctionPrototype":[]},"NumSub":{"FunctionPrototype":[]},"NumSum":{"FunctionPrototype":[]},"NumTan":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsList":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"CompEq":{"FunctionPrototype":[]},"CompGe":{"FunctionPrototype":[]},"CompGt":{"FunctionPrototype":[]},"CompLe":{"FunctionPrototype":[]},"CompLt":{"FunctionPrototype":[]},"CompNeq":{"FunctionPrototype":[]},"ConsoleWrite":{"FunctionPrototype":[]},"ConsoleWriteLn":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Throw":{"FunctionPrototype":[]},"ElementAt":{"FunctionPrototype":[]},"ListConcat":{"FunctionPrototype":[]},"ListContains":{"FunctionPrototype":[]},"ListDrop":{"FunctionPrototype":[]},"ListFilled":{"FunctionPrototype":[]},"ListFirst":{"FunctionPrototype":[]},"ListAt":{"FunctionPrototype":[]},"ListIndexOf":{"FunctionPrototype":[]},"ListInit":{"FunctionPrototype":[]},"ListInsertEnd":{"FunctionPrototype":[]},"ListInsertStart":{"FunctionPrototype":[]},"ListIsEmpty":{"FunctionPrototype":[]},"ListIsNotEmpty":{"FunctionPrototype":[]},"ListJoin":{"FunctionPrototype":[]},"ListLast":{"FunctionPrototype":[]},"ListLength":{"FunctionPrototype":[]},"ListRemove":{"FunctionPrototype":[]},"ListRemoveAt":{"FunctionPrototype":[]},"ListReverse":{"FunctionPrototype":[]},"ListSet":{"FunctionPrototype":[]},"ListSublist":{"FunctionPrototype":[]},"ListSwap":{"FunctionPrototype":[]},"ListTail":{"FunctionPrototype":[]},"ListTake":{"FunctionPrototype":[]},"BoolAnd":{"FunctionPrototype":[]},"BoolNot":{"FunctionPrototype":[]},"BoolOr":{"FunctionPrototype":[]},"BoolXor":{"FunctionPrototype":[]},"OperatorAdd":{"FunctionPrototype":[]},"OperatorAnd":{"FunctionPrototype":[]},"OperatorDiv":{"FunctionPrototype":[]},"OperatorEq":{"FunctionPrototype":[]},"OperatorGe":{"FunctionPrototype":[]},"OperatorGt":{"FunctionPrototype":[]},"OperatorLe":{"FunctionPrototype":[]},"OperatorLt":{"FunctionPrototype":[]},"OperatorMod":{"FunctionPrototype":[]},"OperatorMul":{"FunctionPrototype":[]},"OperatorNeq":{"FunctionPrototype":[]},"OperatorNot":{"FunctionPrototype":[]},"OperatorOr":{"FunctionPrototype":[]},"OperatorSub":{"FunctionPrototype":[]},"StrAt":{"FunctionPrototype":[]},"StrBytes":{"FunctionPrototype":[]},"StrConcat":{"FunctionPrototype":[]},"StrContains":{"FunctionPrototype":[]},"StrDrop":{"FunctionPrototype":[]},"StrEndsWith":{"FunctionPrototype":[]},"StrFirst":{"FunctionPrototype":[]},"StrIndexOf":{"FunctionPrototype":[]},"StrInit":{"FunctionPrototype":[]},"StrIsEmpty":{"FunctionPrototype":[]},"StrIsNotEmpty":{"FunctionPrototype":[]},"StrLast":{"FunctionPrototype":[]},"StrLength":{"FunctionPrototype":[]},"StrLowercase":{"FunctionPrototype":[]},"StrMatch":{"FunctionPrototype":[]},"StrPadLeft":{"FunctionPrototype":[]},"StrPadRight":{"FunctionPrototype":[]},"StrRemoveAt":{"FunctionPrototype":[]},"StrReplace":{"FunctionPrototype":[]},"StrReverse":{"FunctionPrototype":[]},"StrSplit":{"FunctionPrototype":[]},"StrStartsWith":{"FunctionPrototype":[]},"StrSubstring":{"FunctionPrototype":[]},"StrTail":{"FunctionPrototype":[]},"StrTake":{"FunctionPrototype":[]},"StrTrim":{"FunctionPrototype":[]},"StrUppercase":{"FunctionPrototype":[]},"StringType":{"Type0":[]},"NumberType":{"Type0":[]},"BooleanType":{"Type0":[]},"ListType":{"Type0":[]},"AnyType":{"Type0":[]},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"ReducibleValue":{"Reducible":[]},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"ListReducibleValue":{"ReducibleValue":["List<Reducible>"],"Reducible":[],"ReducibleValue.T":"List<Reducible>"},"IdentifierReducible":{"Reducible":[]},"ExpressionReducible":{"Reducible":[]},"Scanner":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"EmptyExpression":{"Expression":[]},"LiteralExpression":{"Expression":[]},"BooleanLiteralExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"NumberLiteralExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"StringLiteralExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"ListLiteralExpression":{"LiteralExpression":["List<Expression>"],"Expression":[],"LiteralExpression.T":"List<Expression>"},"IdentifierExpression":{"Expression":[]},"CallExpression":{"Expression":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState0":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState0":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]},"Uint8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]}}'));
+  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"WhereTypeIterable":{"Iterable":["1"],"Iterable.E":"1"},"WhereTypeIterator":{"Iterator":["1"]},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"JSInvocationMirror":{"Invocation":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"]},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"Pattern":[]},"NativeTypedArray":{"JavaScriptIndexingBehavior":["1"]},"NativeTypedArrayOfInt":{"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"]},"NativeUint8List":{"Uint8List":[],"ListBase":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"_Type":{"Type0":[]},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalInitState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IdentifierState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"MinusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PlusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"EqualsState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"GreaterState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"LessState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PipeState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AmpersandState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"BangState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ForwardSlashState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AsteriskState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PercentState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SingleLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StartMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ClosingMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommaState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"IdentifierToken":{"Token":["String"],"Token.T":"String"},"IfToken":{"Token":["String"],"Token.T":"String"},"ElseToken":{"Token":["String"],"Token.T":"String"},"MinusToken":{"Token":["String"],"Token.T":"String"},"PlusToken":{"Token":["String"],"Token.T":"String"},"ForwardSlashToken":{"Token":["String"],"Token.T":"String"},"AsteriskToken":{"Token":["String"],"Token.T":"String"},"PercentToken":{"Token":["String"],"Token.T":"String"},"PipeToken":{"Token":["String"],"Token.T":"String"},"AmpersandToken":{"Token":["String"],"Token.T":"String"},"BangToken":{"Token":["String"],"Token.T":"String"},"EqualToken":{"Token":["String"],"Token.T":"String"},"NotEqualToken":{"Token":["String"],"Token.T":"String"},"GreaterThanToken":{"Token":["String"],"Token.T":"String"},"GreaterEqualThanToken":{"Token":["String"],"Token.T":"String"},"LessThanToken":{"Token":["String"],"Token.T":"String"},"LessEqualThanToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"OpenBracketToken":{"Token":["String"],"Token.T":"String"},"CloseBracketToken":{"Token":["String"],"Token.T":"String"},"AssignToken":{"Token":["String"],"Token.T":"String"},"NumAbs":{"FunctionPrototype":[]},"NumAdd":{"FunctionPrototype":[]},"NumAsDegrees":{"FunctionPrototype":[]},"NumAsRadians":{"FunctionPrototype":[]},"NumCeil":{"FunctionPrototype":[]},"NumClamp":{"FunctionPrototype":[]},"NumCos":{"FunctionPrototype":[]},"NumDec":{"FunctionPrototype":[]},"NumDecimalRandom":{"FunctionPrototype":[]},"NumDiv":{"FunctionPrototype":[]},"NumFloor":{"FunctionPrototype":[]},"NumFraction":{"FunctionPrototype":[]},"NumInc":{"FunctionPrototype":[]},"NumInfinity":{"FunctionPrototype":[]},"NumIntegerRandom":{"FunctionPrototype":[]},"NumIsEven":{"FunctionPrototype":[]},"NumIsNegative":{"FunctionPrototype":[]},"NumIsOdd":{"FunctionPrototype":[]},"NumIsPositive":{"FunctionPrototype":[]},"NumIsZero":{"FunctionPrototype":[]},"NumLog":{"FunctionPrototype":[]},"NumMax":{"FunctionPrototype":[]},"NumMin":{"FunctionPrototype":[]},"NumMod":{"FunctionPrototype":[]},"NumMul":{"FunctionPrototype":[]},"NumNegative":{"FunctionPrototype":[]},"NumPow":{"FunctionPrototype":[]},"NumRound":{"FunctionPrototype":[]},"NumSign":{"FunctionPrototype":[]},"NumSin":{"FunctionPrototype":[]},"NumSqrt":{"FunctionPrototype":[]},"NumSub":{"FunctionPrototype":[]},"NumSum":{"FunctionPrototype":[]},"NumTan":{"FunctionPrototype":[]},"IsBoolean":{"FunctionPrototype":[]},"IsDecimal":{"FunctionPrototype":[]},"IsInfinite":{"FunctionPrototype":[]},"IsInteger":{"FunctionPrototype":[]},"IsList":{"FunctionPrototype":[]},"IsNumber":{"FunctionPrototype":[]},"IsString":{"FunctionPrototype":[]},"ToBoolean":{"FunctionPrototype":[]},"ToDecimal":{"FunctionPrototype":[]},"ToInteger":{"FunctionPrototype":[]},"ToNumber":{"FunctionPrototype":[]},"ToString":{"FunctionPrototype":[]},"CompEq":{"FunctionPrototype":[]},"CompGe":{"FunctionPrototype":[]},"CompGt":{"FunctionPrototype":[]},"CompLe":{"FunctionPrototype":[]},"CompLt":{"FunctionPrototype":[]},"CompNeq":{"FunctionPrototype":[]},"ConsoleWrite":{"FunctionPrototype":[]},"ConsoleWriteLn":{"FunctionPrototype":[]},"If":{"FunctionPrototype":[]},"Try":{"FunctionPrototype":[]},"Throw":{"FunctionPrototype":[]},"ElementAt":{"FunctionPrototype":[]},"ListConcat":{"FunctionPrototype":[]},"ListContains":{"FunctionPrototype":[]},"ListDrop":{"FunctionPrototype":[]},"ListFilled":{"FunctionPrototype":[]},"ListFirst":{"FunctionPrototype":[]},"ListAt":{"FunctionPrototype":[]},"ListIndexOf":{"FunctionPrototype":[]},"ListInit":{"FunctionPrototype":[]},"ListInsertEnd":{"FunctionPrototype":[]},"ListInsertStart":{"FunctionPrototype":[]},"ListIsEmpty":{"FunctionPrototype":[]},"ListIsNotEmpty":{"FunctionPrototype":[]},"ListJoin":{"FunctionPrototype":[]},"ListLast":{"FunctionPrototype":[]},"ListLength":{"FunctionPrototype":[]},"ListRemove":{"FunctionPrototype":[]},"ListRemoveAt":{"FunctionPrototype":[]},"ListReverse":{"FunctionPrototype":[]},"ListSet":{"FunctionPrototype":[]},"ListSublist":{"FunctionPrototype":[]},"ListSwap":{"FunctionPrototype":[]},"ListTail":{"FunctionPrototype":[]},"ListTake":{"FunctionPrototype":[]},"BoolAnd":{"FunctionPrototype":[]},"BoolNot":{"FunctionPrototype":[]},"BoolOr":{"FunctionPrototype":[]},"BoolXor":{"FunctionPrototype":[]},"OperatorAdd":{"FunctionPrototype":[]},"OperatorAnd":{"FunctionPrototype":[]},"OperatorDiv":{"FunctionPrototype":[]},"OperatorEq":{"FunctionPrototype":[]},"OperatorGe":{"FunctionPrototype":[]},"OperatorGt":{"FunctionPrototype":[]},"OperatorLe":{"FunctionPrototype":[]},"OperatorLt":{"FunctionPrototype":[]},"OperatorMod":{"FunctionPrototype":[]},"OperatorMul":{"FunctionPrototype":[]},"OperatorNeq":{"FunctionPrototype":[]},"OperatorNot":{"FunctionPrototype":[]},"OperatorOr":{"FunctionPrototype":[]},"OperatorSub":{"FunctionPrototype":[]},"StrAt":{"FunctionPrototype":[]},"StrBytes":{"FunctionPrototype":[]},"StrConcat":{"FunctionPrototype":[]},"StrContains":{"FunctionPrototype":[]},"StrDrop":{"FunctionPrototype":[]},"StrEndsWith":{"FunctionPrototype":[]},"StrFirst":{"FunctionPrototype":[]},"StrIndexOf":{"FunctionPrototype":[]},"StrInit":{"FunctionPrototype":[]},"StrIsEmpty":{"FunctionPrototype":[]},"StrIsNotEmpty":{"FunctionPrototype":[]},"StrLast":{"FunctionPrototype":[]},"StrLength":{"FunctionPrototype":[]},"StrLowercase":{"FunctionPrototype":[]},"StrMatch":{"FunctionPrototype":[]},"StrPadLeft":{"FunctionPrototype":[]},"StrPadRight":{"FunctionPrototype":[]},"StrRemoveAt":{"FunctionPrototype":[]},"StrReplace":{"FunctionPrototype":[]},"StrReverse":{"FunctionPrototype":[]},"StrSplit":{"FunctionPrototype":[]},"StrStartsWith":{"FunctionPrototype":[]},"StrSubstring":{"FunctionPrototype":[]},"StrTail":{"FunctionPrototype":[]},"StrTake":{"FunctionPrototype":[]},"StrTrim":{"FunctionPrototype":[]},"StrUppercase":{"FunctionPrototype":[]},"StringType":{"Type":[]},"NumberType":{"Type":[]},"BooleanType":{"Type":[]},"ListType":{"Type":[]},"FunctionType":{"Type":[]},"AnyType":{"Type":[]},"NumberReducibleValue":{"ReducibleValue":["num"],"Reducible":[],"ReducibleValue.T":"num"},"StringReducibleValue":{"ReducibleValue":["String"],"Reducible":[],"ReducibleValue.T":"String"},"ReducibleValue":{"Reducible":[]},"BooleanReducibleValue":{"ReducibleValue":["bool"],"Reducible":[],"ReducibleValue.T":"bool"},"ListReducibleValue":{"ReducibleValue":["List<Reducible>"],"Reducible":[],"ReducibleValue.T":"List<Reducible>"},"IdentifierReducible":{"Reducible":[]},"CallReducible":{"Reducible":[]},"Scanner":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"CustomFunctionPrototype":{"FunctionPrototype":[]},"AnonymousFunctionPrototype":{"CustomFunctionPrototype":[],"FunctionPrototype":[]},"NativeFunctionPrototype":{"FunctionPrototype":[]},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"LiteralExpression":{"Expression":[]},"BooleanLiteralExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"NumberLiteralExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"StringLiteralExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"ListLiteralExpression":{"LiteralExpression":["List<Expression>"],"Expression":[],"LiteralExpression.T":"List<Expression>"},"IdentifierExpression":{"Expression":[]},"CallExpression":{"Expression":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState0":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState0":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]},"Uint8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]}}'));
   A._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"EfficientLengthIterable":1,"NativeTypedArray":1,"_SetBase":1,"Converter":2}'));
   var type$ = (function rtii() {
     var findType = A.findType;
@@ -9964,6 +9955,7 @@
       JSArray_String: findType("JSArray<String>"),
       JSArray_Token_dynamic: findType("JSArray<Token<@>>"),
       JSArray_Type: findType("JSArray<Type>"),
+      JSArray_Type_2: findType("JSArray<Type0>"),
       JSArray_dynamic: findType("JSArray<@>"),
       JSNull: findType("JSNull"),
       JavaScriptFunction: findType("JavaScriptFunction"),
@@ -9976,7 +9968,7 @@
       List_FunctionPrototype: findType("List<FunctionPrototype>"),
       List_GenericWarning: findType("List<GenericWarning>"),
       List_String: findType("List<String>"),
-      List_Type: findType("List<Type>"),
+      List_Type: findType("List<Type0>"),
       List_dynamic: findType("List<@>"),
       Null: findType("Null"),
       Object: findType("Object"),
@@ -10024,6 +10016,7 @@
     B.C_AnyType = new A.AnyType();
     B.C_BooleanType = new A.BooleanType();
     B.C_Compiler = new A.Compiler();
+    B.C_FunctionType = new A.FunctionType();
     B.C_JS_CONST = function getTagFallback(o) {
   var s = Object.prototype.toString.call(o);
   return s.substring(8, s.length - 1);
@@ -10156,9 +10149,6 @@
     B.C_Utf8Encoder = new A.Utf8Encoder();
     B.C__JSRandom = new A._JSRandom();
     B.C__Required = new A._Required();
-    B.EmptyExpressionEvaluationError_EVU = new A.EmptyExpressionEvaluationError("Runtime error", "Cannot reduce empty expression");
-    B.Location_0_0 = new A.Location(0, 0);
-    B.EmptyExpression_Location_0_0 = new A.EmptyExpression(B.Location_0_0);
     B.List_empty = A._setArrayType(makeConstList([]), type$.JSArray_Parameter);
     B.List_empty0 = A._setArrayType(makeConstList([]), type$.JSArray_String);
     B.List_empty1 = A._setArrayType(makeConstList([]), type$.JSArray_dynamic);
