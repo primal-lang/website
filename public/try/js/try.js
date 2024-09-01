@@ -1,4 +1,3 @@
-
 const SAMPLES = {
   'default': 'isBiggerThan10(n) = n > 10\n\nmain = isBiggerThan10(7)',
 }
@@ -31,6 +30,8 @@ function compileCode(sourceCode) {
       writeOutputSuccess(result)
     }
 
+    localStorage.setItem('sourceCode', sourceCode)
+
     consoleInput.disabled = false
     consoleInput.placeholder = '>'
   } catch (e) {
@@ -47,9 +48,8 @@ function onInputChange() {
 
 function recompile() {
   const sourceCode = window.editor.getValue()
-  localStorage.setItem('sourceCode', sourceCode)
   clearOutput()
-  compileCode(sourceCode.trim())
+  compileCode(sourceCode)
 }
 
 function onLoadFile() {
