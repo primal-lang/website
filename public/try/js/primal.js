@@ -1025,7 +1025,7 @@
         case 4:
           return closure.call$4(arg1, arg2, arg3, arg4);
       }
-      throw A.wrapException(A.Exception_Exception("Unsupported number of arguments for wrapped closure"));
+      throw A.wrapException(new A._Exception("Unsupported number of arguments for wrapped closure"));
     },
     convertDartClosureToJS(closure, arity) {
       var $function = closure.$identity;
@@ -3346,9 +3346,6 @@
     ConcurrentModificationError$(modifiedObject) {
       return new A.ConcurrentModificationError(modifiedObject);
     },
-    Exception_Exception(message) {
-      return new A._Exception(message);
-    },
     FormatException$(message, source) {
       return new A.FormatException(message, source);
     },
@@ -3590,6 +3587,12 @@
     InvalidArgumentTypesError$(actual, expected, $function) {
       return new A.InvalidArgumentTypesError("Runtime error", 'Invalid argument types for function "' + $function + '". Expected: (' + B.JSArray_methods.join$1(expected, ", ") + "). Actual: (" + B.JSArray_methods.join$1(actual, ", ") + ")");
     },
+    NotFoundInScopeError$(variable) {
+      return new A.NotFoundInScopeError("Runtime error", 'Variable "' + variable + '" not found in scope');
+    },
+    InvalidFunctionError$(variable) {
+      return new A.InvalidFunctionError("Runtime error", '"' + variable + '" is not a function');
+    },
     RuntimeError0: function RuntimeError0() {
     },
     InvalidArgumentTypesError: function InvalidArgumentTypesError(t0, t1) {
@@ -3600,7 +3603,11 @@
       this.errorType = t0;
       this.message = t1;
     },
-    NotFoundInScope: function NotFoundInScope(t0, t1) {
+    NotFoundInScopeError: function NotFoundInScopeError(t0, t1) {
+      this.errorType = t0;
+      this.message = t1;
+    },
+    InvalidFunctionError: function InvalidFunctionError(t0, t1) {
       this.errorType = t0;
       this.message = t1;
     },
@@ -5354,9 +5361,12 @@
       return t1.containsKey$1("main");
     },
     runtimeExecuteMainHelper(code) {
+      var runtime, t1;
       type$.IntermediateCode._as(code);
+      runtime = new A.Runtime(code);
       $.Runtime_SCOPE = new A.Scope(code.functions, type$.Scope_FunctionNode);
-      return new A.Runtime(code).fullReduce$1(B.C_Compiler.expression$1("main()").toNode$0()).toString$0(0);
+      t1 = A._setArrayType([], type$.JSArray_String);
+      return runtime.fullReduce$1(runtime.mainExpression$1(t1).toNode$0()).toString$0(0);
     },
     runtimeReduceHelper(code, expression) {
       type$.IntermediateCode._as(code);
@@ -7269,7 +7279,8 @@
   A.RuntimeError0.prototype = {};
   A.InvalidArgumentTypesError.prototype = {};
   A.InvalidArgumentCountError.prototype = {};
-  A.NotFoundInScope.prototype = {};
+  A.NotFoundInScopeError.prototype = {};
+  A.InvalidFunctionError.prototype = {};
   A.SemanticError.prototype = {};
   A.DuplicatedFunctionError.prototype = {};
   A.DuplicatedParameterError.prototype = {};
@@ -11314,7 +11325,7 @@
         t1.toString;
         return t1;
       } else
-        throw A.wrapException(A.Exception_Exception("Variable not found: " + $name));
+        throw A.wrapException(A.NotFoundInScopeError$($name));
     }
   };
   A.Node.prototype = {
@@ -11372,7 +11383,7 @@
       var t1 = this.value,
         result = $.Runtime_SCOPE.data.$index(0, t1);
       if (result == null) {
-        A.throwExpression(new A.NotFoundInScope("Runtime error", 'Variable "' + t1 + '" not found in scope'));
+        A.throwExpression(A.NotFoundInScopeError$(t1));
         result = null;
       }
       return result;
@@ -11407,7 +11418,7 @@
       else if (callee instanceof A.FreeVariableNode)
         return callee.functionNode$0();
       else
-        throw A.wrapException(A.Exception_Exception("Cannot apply arguments to: " + callee.toString$0(0)));
+        throw A.wrapException(A.InvalidFunctionError$(callee.toString$0(0)));
     },
     get$type() {
       return B.C_FunctionCallType;
@@ -11479,6 +11490,15 @@
   };
   A.NativeFunctionNodeWithArguments.prototype = {};
   A.Runtime.prototype = {
+    mainExpression$1($arguments) {
+      var main;
+      type$.List_String._as($arguments);
+      main = this.intermediateCode.functions.$index(0, "main");
+      if (main != null && main.parameters.length !== 0)
+        return B.C_Compiler.expression$1("main(" + A.S($arguments) + ")");
+      else
+        return B.C_Compiler.expression$1("main()");
+    },
     fullReduce$1(node) {
       var t1 = type$.Node;
       t1._as(node);
@@ -12144,7 +12164,7 @@
     _inheritMany(A.GenericError, [A.CompilationError, A.RuntimeError0]);
     _inheritMany(A.CompilationError, [A.LexicalError, A.SemanticError, A.SyntacticError]);
     _inherit(A.InvalidCharacterError, A.LexicalError);
-    _inheritMany(A.RuntimeError0, [A.InvalidArgumentTypesError, A.InvalidArgumentCountError, A.NotFoundInScope, A.CustomError]);
+    _inheritMany(A.RuntimeError0, [A.InvalidArgumentTypesError, A.InvalidArgumentCountError, A.NotFoundInScopeError, A.InvalidFunctionError, A.CustomError]);
     _inheritMany(A.SemanticError, [A.DuplicatedFunctionError, A.DuplicatedParameterError, A.UndefinedIdentifierError, A.UndefinedFunctionError, A.InvalidNumberOfArgumentsError]);
     _inheritMany(A.SyntacticError, [A.InvalidTokenError, A.ExpectedTokenError, A.UnexpectedEndOfFileError]);
     _inheritMany(A.Analyzer, [A.LexicalAnalyzer, A.Scanner, A.SemanticAnalyzer, A.SyntacticAnalyzer]);
