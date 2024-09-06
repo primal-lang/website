@@ -11495,7 +11495,7 @@
       type$.List_String._as($arguments);
       main = this.intermediateCode.functions.$index(0, "main");
       if (main != null && main.parameters.length !== 0)
-        return B.C_Compiler.expression$1("main(" + A.S($arguments) + ")");
+        return B.C_Compiler.expression$1("main(" + B.JSArray_methods.join$1($arguments, ", ") + ")");
       else
         return B.C_Compiler.expression$1("main()");
     },
