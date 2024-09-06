@@ -162,6 +162,14 @@ const basicProperties = (withExtras) => {
     "list\\.filled\\s*(?=\\()": "custom-native-function",
     "list\\.indexOf\\s*(?=\\()": "custom-native-function",
     "list\\.swap\\s*(?=\\()": "custom-native-function",
+    "list\\.map\\s*(?=\\()": "custom-native-function",
+    "list\\.filter\\s*(?=\\()": "custom-native-function",
+    "list\\.reduce\\s*(?=\\()": "custom-native-function",
+    "list\\.all\\s*(?=\\()": "custom-native-function",
+    "list\\.none\\s*(?=\\()": "custom-native-function",
+    "list\\.any\\s*(?=\\()": "custom-native-function",
+    "list\\.zip\\s*(?=\\()": "custom-native-function",
+    "list\\.sort\\s*(?=\\()": "custom-native-function",
 
     // casting
     "to\\.number\\s*(\?=\\()": "custom-native-function",

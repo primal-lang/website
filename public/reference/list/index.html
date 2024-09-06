@@ -430,6 +430,144 @@
         </table>
         <div id="list.swap" class="code-sample"></div>
 
+        <h5 class="text-white reference-title">Map</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">
+                A list and a function that takes an element of the list as input and returns a new value.
+              </td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A new list with the function applied to each element of the input list.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="list.map" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Filter</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">
+                A list and a function that takes an element of the list as input and returns a boolean.
+              </td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A new list containing only the elements of the input list for which the function returns true.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="list.filter" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Reduce</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">
+                A list, an initial value, and a function that takes the current value and an element of the list as
+                input
+                and returns a new value.
+              </td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The result of applying the function to each element of the list, starting with the initial value.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="list.reduce" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">All</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">
+                A list and a function that takes an element of the list as input and returns a boolean.
+              </td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the function returns true for all elements of the list. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="list.all" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">None</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">
+                A list and a function that takes an element of the list as input and returns a boolean.
+              </td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the function returns false for all elements of the list. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="list.none" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Any</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">
+                A list and a function that takes an element of the list as input and returns a boolean.
+              </td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the function returns true for at least one element of the list. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="list.any" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Zip</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">
+                Two lists and a function that takes an element from each list as input and returns a new value.
+              </td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A new list with the function applied to each pair of elements from the input lists.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="list.zip" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Sort</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">
+                A list and a function that takes two elements of the list as input and compared them.
+              </td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A new list with the elements sorted according to the function.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="list.sort" class="code-sample"></div>
+
         <br />
         <br />
         <br />
@@ -467,6 +605,15 @@
     setSampleCode('list.filled', 'list.filled(b: Number, c: Any): List')
     setSampleCode('list.indexOf', 'list.indexOf(a: List, b: Any): Number')
     setSampleCode('list.swap', 'list.swap(a: List, b: Number, c: Number): Number')
+    setSampleCode('list.map', 'list.map(a: List, b: Function): List')
+    setSampleCode('list.filter', 'list.filter(a: List, b: Function): List')
+    setSampleCode('list.reduce', 'list.reduce(a: List, b: Any, c: Function): Any')
+    setSampleCode('list.all', 'list.all(a: List, b: Function): Boolean')
+    setSampleCode('list.none', 'list.none(a: List, b: Function): Boolean')
+    setSampleCode('list.any', 'list.any(a: List, b: Function): Boolean')
+    setSampleCode('list.zip', 'list.zip(a: List, b: List, c: Function): List')
+    setSampleCode('list.sort', 'list.sort(a: List, b: Function): List')
+
   </script>
 
 </body>
