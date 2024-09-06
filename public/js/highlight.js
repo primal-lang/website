@@ -100,6 +100,7 @@ const basicProperties = (withExtras) => {
     "num\\.sign\\s*(\?=\\()": "custom-native-function",
     "num\\.integerRandom\\s*(\?=\\()": "custom-native-function",
     "num\\.decimalRandom\\s*(\?=\\()": "custom-native-function",
+    "num\\.compare\\s*(\?=\\()": "custom-native-function",
 
     // logic
     "bool\\.and\\s*(\?=\\()": "custom-native-function",
@@ -135,6 +136,7 @@ const basicProperties = (withExtras) => {
     "str\\.padLeft\\s*(\?=\\()": "custom-native-function",
     "str\\.padRight\\s*(\?=\\()": "custom-native-function",
     "str\\.split\\s*(\?=\\()": "custom-native-function",
+    "str\\.compare\\s*(\?=\\()": "custom-native-function",
 
     // list
     "list\\.sublist\\s*(?=\\()": "custom-native-function",
