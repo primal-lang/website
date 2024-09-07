@@ -43,6 +43,7 @@ const basicProperties = (withExtras) => {
     "Number": "custom-type",
     "String": "custom-type",
     "List": "custom-type",
+    "Map": "custom-type",
     "Error": "custom-type",
     "Any": "custom-type",
 
@@ -171,6 +172,17 @@ const basicProperties = (withExtras) => {
     "list\\.zip\\s*(?=\\()": "custom-native-function",
     "list\\.sort\\s*(?=\\()": "custom-native-function",
 
+    // map
+    "map\\.at\\s*(?=\\()": "custom-native-function",
+    "map\\.set\\s*(?=\\()": "custom-native-function",
+    "map\\.keys\\s*(?=\\()": "custom-native-function",
+    "map\\.values\\s*(?=\\()": "custom-native-function",
+    "map\\.containsKey\\s*(?=\\()": "custom-native-function",
+    "map\\.isEmpty\\s*(?=\\()": "custom-native-function",
+    "map\\.isNotEmpty\\s*(?=\\()": "custom-native-function",
+    "map\\.removeAt\\s*(?=\\()": "custom-native-function",
+    "map\\.length\\s*(?=\\()": "custom-native-function",
+
     // casting
     "to\\.number\\s*(\?=\\()": "custom-native-function",
     "to\\.integer\\s*(\?=\\()": "custom-native-function",
@@ -186,6 +198,7 @@ const basicProperties = (withExtras) => {
     "is\\.string\\s*(\?=\\()": "custom-native-function",
     "is\\.boolean\\s*(\?=\\()": "custom-native-function",
     "is\\.list\\s*(\?=\\()": "custom-native-function",
+    "is\\.map\\s*(\?=\\()": "custom-native-function",
 
     // console
     "console\\.write\\s*(\?=\\()": "custom-native-function",
