@@ -11559,17 +11559,21 @@
   };
   A.Scanner.prototype = {
     analyze$0() {
-      var t1, t2, t3, i, t4, columns, j, j0,
+      var t1, t2, t3, i, t4, columns, j, t5, j0,
         result = A._setArrayType([], type$.JSArray_Character),
         rows = J.split$1$s(this.input, "\n");
-      for (t1 = type$.String, t2 = type$.Runes, t3 = t2._eval$1("String(Iterable.E)"), t2 = t2._eval$1("Iterable.E"), i = 0; i < rows.length;) {
+      for (t1 = type$.String, t2 = type$.Runes, t3 = t2._eval$1("String(Iterable.E)"), t2 = t2._eval$1("Iterable.E"), i = 0; i < rows.length; ++i) {
+        if (i === 0 && J.startsWith$1$s(rows[i], "#!"))
+          continue;
+        if (!(i < rows.length))
+          return A.ioore(rows, i);
         t4 = A.MappedIterable_MappedIterable(new A.Runes(rows[i]), t3._as(A.core_String___fromCharCode_tearOff$closure()), t2, t1);
         columns = A.List_List$of(t4, true, A._instanceType(t4)._eval$1("Iterable.E"));
-        for (++i, j = 0; t4 = columns.length, j < t4; j = j0) {
+        for (t4 = i + 1, j = 0; t5 = columns.length, j < t5; j = j0) {
           j0 = j + 1;
-          B.JSArray_methods.add$1(result, new A.Character(columns[j], new A.Location(i, j0)));
+          B.JSArray_methods.add$1(result, new A.Character(columns[j], new A.Location(t4, j0)));
         }
-        B.JSArray_methods.add$1(result, new A.Character("\n", new A.Location(i, t4 + 1)));
+        B.JSArray_methods.add$1(result, new A.Character("\n", new A.Location(t4, t5 + 1)));
       }
       return result;
     }
