@@ -10859,13 +10859,12 @@
   };
   A.NodeWithArguments60.prototype = {
     evaluate$0() {
-      var a, b, c, t3, t4, head, tail,
-        t1 = this.$arguments,
-        t2 = t1.length;
-      if (0 >= t2)
+      var a, b, c, t2, t3, t4, head, tail,
+        t1 = this.$arguments;
+      if (0 >= t1.length)
         return A.ioore(t1, 0);
-      a = t1[0];
-      if (1 >= t2)
+      a = t1[0].evaluate$0();
+      if (1 >= t1.length)
         return A.ioore(t1, 1);
       b = t1[1].evaluate$0();
       if (2 >= t1.length)
@@ -10879,7 +10878,7 @@
         head = t4.sublist$2(t1, 0, t3.toInt$0(t2));
         tail = t4.sublist$2(t1, t3.toInt$0(t2), t4.get$length(t1));
         t1 = A.List_List$of(head, true, type$.Node);
-        t1.push(c);
+        t1.push(c.evaluate$0());
         B.JSArray_methods.addAll$1(t1, tail);
         return new A.ListNode(t1);
       } else {
@@ -11353,12 +11352,11 @@
   A.NodeWithArguments42.prototype = {
     evaluate$0() {
       var a, b, c, map, newMap,
-        t1 = this.$arguments,
-        t2 = t1.length;
-      if (0 >= t2)
+        t1 = this.$arguments;
+      if (0 >= t1.length)
         return A.ioore(t1, 0);
-      a = t1[0];
-      if (1 >= t2)
+      a = t1[0].evaluate$0();
+      if (1 >= t1.length)
         return A.ioore(t1, 1);
       b = t1[1].evaluate$0();
       if (2 >= t1.length)
@@ -11366,7 +11364,7 @@
       c = t1[2];
       if (a instanceof A.MapNode && b instanceof A.LiteralNode) {
         map = a.evaluateKeys$0();
-        map.$indexSet(0, b.value, c);
+        map.$indexSet(0, b.value, c.evaluate$0());
         t1 = type$.Node;
         newMap = A.LinkedHashMap_LinkedHashMap$_empty(t1, t1);
         map.forEach$1(0, new A.NodeWithArguments_evaluate_closure(newMap));
