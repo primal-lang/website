@@ -200,6 +200,10 @@ const basicProperties = (withExtras) => {
     "is\\.list\\s*(\?=\\()": "custom-native-function",
     "is\\.map\\s*(\?=\\()": "custom-native-function",
 
+    // json
+    "json\\.encode\\s*(\?=\\()": "custom-native-function",
+    "json\\.decode\\s*(\?=\\()": "custom-native-function",
+
     // console
     "console\\.write\\s*(\?=\\()": "custom-native-function",
     "console\\.writeLn\\s*(\?=\\()": "custom-native-function",
