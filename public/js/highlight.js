@@ -229,6 +229,9 @@ const basicProperties = (withExtras) => {
     "console\\.write\\s*(\?=\\()": "custom-native-function",
     "console\\.writeLn\\s*(\?=\\()": "custom-native-function",
     "console\\.read\\s*(\?=\\()": "custom-native-function",
+
+    // environment
+    "env\\.get\\s*(\?=\\()": "custom-native-function",
   }
 
   return {
