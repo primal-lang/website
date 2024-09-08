@@ -15636,11 +15636,8 @@
       var t1 = this.iterator;
       if (t1._list_iterator$_index === t1._list.length)
         return false;
-      else {
-        t1 = t1.get$peek();
-        t1.toString;
-        return A.getRuntimeTypeOfDartObject(t1) === type;
-      }
+      else
+        return A.getRuntimeTypeOfDartObject(this.get$peek()) === type;
     },
     consume$2(type, expected) {
       if (this.check$1(type))
@@ -15657,9 +15654,11 @@
       return t1;
     },
     get$peek() {
-      var t1 = this.iterator.get$peek();
-      t1.toString;
-      return t1;
+      var token = this.iterator.get$peek();
+      if (token != null)
+        return token;
+      else
+        throw A.wrapException(B.UnexpectedEndOfFileError_7BY);
     }
   };
   A.FunctionDefinition.prototype = {
