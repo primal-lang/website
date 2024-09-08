@@ -42,6 +42,7 @@ const basicProperties = (withExtras) => {
     "Boolean": "custom-type",
     "Number": "custom-type",
     "String": "custom-type",
+    "Timestamp": "custom-type",
     "List": "custom-type",
     "Map": "custom-type",
     "Error": "custom-type",
@@ -209,6 +210,20 @@ const basicProperties = (withExtras) => {
     "hash\\.sha1\\s*(\?=\\()": "custom-native-function",
     "hash\\.sha256\\s*(\?=\\()": "custom-native-function",
     "hash\\.sha512\\s*(\?=\\()": "custom-native-function",
+
+    // timestamp
+    "time\\.now\\s*(\?=\\()": "custom-native-function",
+    "time\\.toIso\\s*(\?=\\()": "custom-native-function",
+    "time\\.fromIso\\s*(\?=\\()": "custom-native-function",
+    "time\\.year\\s*(\?=\\()": "custom-native-function",
+    "time\\.month\\s*(\?=\\()": "custom-native-function",
+    "time\\.day\\s*(\?=\\()": "custom-native-function",
+    "time\\.hour\\s*(\?=\\()": "custom-native-function",
+    "time\\.minute\\s*(\?=\\()": "custom-native-function",
+    "time\\.second\\s*(\?=\\()": "custom-native-function",
+    "time\\.millisecond\\s*(\?=\\()": "custom-native-function",
+    "time\\.epoch\\s*(\?=\\()": "custom-native-function",
+    "time\\.compare\\s*(\?=\\()": "custom-native-function",
 
     // console
     "console\\.write\\s*(\?=\\()": "custom-native-function",
