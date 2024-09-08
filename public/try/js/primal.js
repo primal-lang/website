@@ -6505,17 +6505,6 @@
     throwLateFieldADI(fieldName) {
       A.throwExpressionWithWrapper(new A.LateError("Field '" + fieldName + "' has been assigned during initialization."), new Error());
     },
-    _Platform__environment() {
-      throw A.wrapException(A.UnsupportedError$("Platform._environment"));
-    },
-    _Platform_environment() {
-      var t1 = $._Platform__environmentCache;
-      if (t1 == null)
-        A._Platform__environment();
-      t1.toString;
-      type$.Map_String_String._as(t1);
-      return t1;
-    },
     _convertDartFunctionFast(f) {
       var ret,
         existing = f.$dart_jsFunction;
@@ -8551,22 +8540,19 @@
       return this._collection$_map.$index(0, key);
     },
     forEach$1(_, action) {
-      this._collection$_map.forEach$1(0, A._instanceType(this)._eval$1("~(1,2)")._as(action));
+      this._collection$_map.forEach$1(0, this.$ti._eval$1("~(1,2)")._as(action));
     },
     get$isEmpty(_) {
-      var t1 = this._collection$_map;
-      return t1.get$isEmpty(t1);
+      return this._collection$_map.__js_helper$_length === 0;
     },
     get$isNotEmpty(_) {
-      var t1 = this._collection$_map;
-      return t1.get$isNotEmpty(t1);
+      return this._collection$_map.__js_helper$_length !== 0;
     },
     get$length(_) {
-      var t1 = this._collection$_map;
-      return t1.get$length(t1);
+      return this._collection$_map.__js_helper$_length;
     },
     toString$0(_) {
-      return this._collection$_map.toString$0(0);
+      return A.MapBase_mapToString(this._collection$_map);
     },
     get$entries() {
       return this._collection$_map.get$entries();
@@ -12273,8 +12259,8 @@
         return A.ioore(t1, 0);
       a = t1[0].evaluate$0();
       if (a instanceof A.StringNode) {
-        t1 = A._Platform_environment()._collection$_map.$index(0, a.value);
-        return new A.StringNode(t1 == null ? "" : t1);
+        new A.PlatformInterface().getEnvironmentVariable$1(a.value);
+        return void 1;
       } else {
         t1 = this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
@@ -14901,6 +14887,9 @@
   A.PlatformInterface.prototype = {
     readLine$0() {
       return A.throwExpression(B.UnimplementedFunctionWebError_zPV);
+    },
+    getEnvironmentVariable$1($name) {
+      return A.throwExpression(B.UnimplementedFunctionWebError_OPt);
     }
   };
   A.Bindings.prototype = {
@@ -16082,7 +16071,6 @@
       MapEntry_Node_Node: findType("MapEntry<Node,Node>"),
       Map_Node_Node: findType("Map<Node,Node>"),
       Map_String_FunctionNode: findType("Map<String,FunctionNode>"),
-      Map_String_String: findType("Map<String,String>"),
       Map_dynamic_dynamic: findType("Map<@,@>"),
       Node: findType("Node"),
       Null: findType("Null"),
@@ -16327,6 +16315,7 @@
     B.Type_Uint32List_2mh = A.typeLiteral("Uint32List");
     B.Type_Uint8List_CSc = A.typeLiteral("Uint8List");
     B.UnexpectedEndOfFileError_7BY = new A.UnexpectedEndOfFileError("Compilation error", "Unexpected end of file");
+    B.UnimplementedFunctionWebError_OPt = new A.UnimplementedFunctionWebError("Runtime error", 'Function "env.get" is not implemented on the web platform');
     B.UnimplementedFunctionWebError_zPV = new A.UnimplementedFunctionWebError("Runtime error", 'Function "console.read" is not implemented on the web platform');
   })();
   (function staticFields() {
@@ -16341,7 +16330,6 @@
     $.dispatchRecordsForInstanceTags = null;
     $.interceptorsForUncacheableTags = null;
     $.initNativeDispatchFlag = null;
-    $._Platform__environmentCache = null;
     $.Runtime_SCOPE = B.Scope_Map_empty;
   })();
   (function lazyInitializers() {
