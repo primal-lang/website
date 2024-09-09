@@ -5625,6 +5625,29 @@
       this.name = t1;
       this.parameters = t2;
     },
+    BoolAnd_execute($arguments, $function) {
+      var a, b, t1;
+      if (0 >= $arguments.length)
+        return A.ioore($arguments, 0);
+      a = $arguments[0].evaluate$0();
+      if (a instanceof A.BooleanNode)
+        if (A.boolConversionCheck(a.value)) {
+          if (1 >= $arguments.length)
+            return A.ioore($arguments, 1);
+          b = $arguments[1].evaluate$0();
+          if (b instanceof A.BooleanNode)
+            return b;
+          else {
+            t1 = $function.get$parameterTypes();
+            throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([B.C_BooleanType, b.get$type()], type$.JSArray_Type), t1, $function.name));
+          }
+        } else
+          return B.BooleanNode_false;
+      else {
+        t1 = $function.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, $function.name));
+      }
+    },
     BoolAnd: function BoolAnd(t0, t1) {
       this.name = t0;
       this.parameters = t1;
@@ -5642,6 +5665,30 @@
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
+    },
+    BoolOr_execute($arguments, $function) {
+      var a, b, t1;
+      if (0 >= $arguments.length)
+        return A.ioore($arguments, 0);
+      a = $arguments[0].evaluate$0();
+      if (a instanceof A.BooleanNode)
+        if (A.boolConversionCheck(a.value))
+          return B.BooleanNode_true;
+        else {
+          if (1 >= $arguments.length)
+            return A.ioore($arguments, 1);
+          b = $arguments[1].evaluate$0();
+          if (b instanceof A.BooleanNode)
+            return b;
+          else {
+            t1 = $function.get$parameterTypes();
+            throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([B.C_BooleanType, b.get$type()], type$.JSArray_Type), t1, $function.name));
+          }
+        }
+      else {
+        t1 = $function.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, $function.name));
+      }
     },
     BoolOr: function BoolOr(t0, t1) {
       this.name = t0;
@@ -13838,20 +13885,7 @@
   };
   A.NodeWithArguments95.prototype = {
     evaluate$0() {
-      var a, b,
-        t1 = this.$arguments;
-      if (0 >= t1.length)
-        return A.ioore(t1, 0);
-      a = t1[0].evaluate$0();
-      if (1 >= t1.length)
-        return A.ioore(t1, 1);
-      b = t1[1].evaluate$0();
-      if (a instanceof A.BooleanNode && b instanceof A.BooleanNode)
-        return new A.BooleanNode(A.boolConversionCheck(a.value) && A.boolConversionCheck(b.value));
-      else {
-        t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
-      }
+      return A.BoolAnd_execute(this.$arguments, this);
     }
   };
   A.BoolNot.prototype = {
@@ -13881,20 +13915,7 @@
   };
   A.NodeWithArguments93.prototype = {
     evaluate$0() {
-      var a, b,
-        t1 = this.$arguments;
-      if (0 >= t1.length)
-        return A.ioore(t1, 0);
-      a = t1[0].evaluate$0();
-      if (1 >= t1.length)
-        return A.ioore(t1, 1);
-      b = t1[1].evaluate$0();
-      if (a instanceof A.BooleanNode && b instanceof A.BooleanNode)
-        return new A.BooleanNode(A.boolConversionCheck(a.value) || A.boolConversionCheck(b.value));
-      else {
-        t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
-      }
+      return A.BoolOr_execute(this.$arguments, this);
     }
   };
   A.BoolXor.prototype = {
@@ -14214,20 +14235,7 @@
   };
   A.NodeWithArguments81.prototype = {
     evaluate$0() {
-      var a, b,
-        t1 = this.$arguments;
-      if (0 >= t1.length)
-        return A.ioore(t1, 0);
-      a = t1[0].evaluate$0();
-      if (1 >= t1.length)
-        return A.ioore(t1, 1);
-      b = t1[1].evaluate$0();
-      if (a instanceof A.BooleanNode && b instanceof A.BooleanNode)
-        return new A.BooleanNode(A.boolConversionCheck(a.value) && A.boolConversionCheck(b.value));
-      else {
-        t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
-      }
+      return A.BoolAnd_execute(this.$arguments, this);
     }
   };
   A.OperatorDiv.prototype = {
@@ -14446,20 +14454,7 @@
   };
   A.NodeWithArguments70.prototype = {
     evaluate$0() {
-      var a, b,
-        t1 = this.$arguments;
-      if (0 >= t1.length)
-        return A.ioore(t1, 0);
-      a = t1[0].evaluate$0();
-      if (1 >= t1.length)
-        return A.ioore(t1, 1);
-      b = t1[1].evaluate$0();
-      if (a instanceof A.BooleanNode && b instanceof A.BooleanNode)
-        return new A.BooleanNode(A.boolConversionCheck(a.value) || A.boolConversionCheck(b.value));
-      else {
-        t1 = this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
-      }
+      return A.BoolOr_execute(this.$arguments, this);
     }
   };
   A.OperatorSub.prototype = {
