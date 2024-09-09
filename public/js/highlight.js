@@ -184,6 +184,14 @@ const basicProperties = (withExtras) => {
     "map\\.removeAt\\s*(?=\\()": "custom-native-function",
     "map\\.length\\s*(?=\\()": "custom-native-function",
 
+    // vector
+    "vector\\.new\\s*(?=\\()": "custom-native-function",
+    "vector\\.normalize\\s*(?=\\()": "custom-native-function",
+    "vector\\.add\\s*(?=\\()": "custom-native-function",
+    "vector\\.sub\\s*(?=\\()": "custom-native-function",
+    "vector\\.magnitude\\s*(?=\\()": "custom-native-function",
+    "vector\\.angle\\s*(?=\\()": "custom-native-function",
+
     // casting
     "to\\.number\\s*(\?=\\()": "custom-native-function",
     "to\\.integer\\s*(\?=\\()": "custom-native-function",
@@ -200,6 +208,7 @@ const basicProperties = (withExtras) => {
     "is\\.boolean\\s*(\?=\\()": "custom-native-function",
     "is\\.list\\s*(\?=\\()": "custom-native-function",
     "is\\.map\\s*(\?=\\()": "custom-native-function",
+    "is\\.vector\\s*(\?=\\()": "custom-native-function",
 
     // json
     "json\\.encode\\s*(\?=\\()": "custom-native-function",
