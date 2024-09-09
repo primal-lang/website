@@ -184,6 +184,17 @@ const basicProperties = (withExtras) => {
     "map\\.removeAt\\s*(?=\\()": "custom-native-function",
     "map\\.length\\s*(?=\\()": "custom-native-function",
 
+    // set
+    "set\\.new\\s*(?=\\()": "custom-native-function",
+    "set\\.add\\s*(?=\\()": "custom-native-function",
+    "set\\.remove\\s*(?=\\()": "custom-native-function",
+    "set\\.contains\\s*(?=\\()": "custom-native-function",
+    "set\\.isEmpty\\s*(?=\\()": "custom-native-function",
+    "set\\.isNotEmpty\\s*(?=\\()": "custom-native-function",
+    "set\\.length\\s*(?=\\()": "custom-native-function",
+    "set\\.union\\s*(?=\\()": "custom-native-function",
+    "set\\.intersection\\s*(?=\\()": "custom-native-function",
+
     // vector
     "vector\\.new\\s*(?=\\()": "custom-native-function",
     "vector\\.normalize\\s*(?=\\()": "custom-native-function",

@@ -1521,11 +1521,6 @@
       result.push(String(args));
       return result;
     },
-    LinkedHashMapKeyIterator$(_map, _modifications, $E) {
-      var t1 = new A.LinkedHashMapKeyIterator(_map, _modifications, $E._eval$1("LinkedHashMapKeyIterator<0>"));
-      t1._cell = _map._first;
-      return t1;
-    },
     lookupAndCacheInterceptor(obj) {
       var interceptor, interceptorClass, altTag, mark, t1,
         tag = A._asString($.getTagFunction.call$1(obj)),
@@ -3481,6 +3476,11 @@
       t1._collection$_cell = _set._collection$_first;
       return t1;
     },
+    LinkedHashSet_LinkedHashSet$of(elements, $E) {
+      var t1 = A.LinkedHashSet_LinkedHashSet($E);
+      t1.addAll$1(0, elements);
+      return t1;
+    },
     MapBase_mapToString(m) {
       var result, t1 = {};
       if (A.isToStringVisiting(m))
@@ -4583,7 +4583,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments167: function NodeWithArguments167(t0, t1, t2) {
+    NodeWithArguments177: function NodeWithArguments177(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4592,7 +4592,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments166: function NodeWithArguments166(t0, t1, t2) {
+    NodeWithArguments176: function NodeWithArguments176(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4601,7 +4601,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments165: function NodeWithArguments165(t0, t1, t2) {
+    NodeWithArguments175: function NodeWithArguments175(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4610,7 +4610,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments164: function NodeWithArguments164(t0, t1, t2) {
+    NodeWithArguments174: function NodeWithArguments174(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4619,7 +4619,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments163: function NodeWithArguments163(t0, t1, t2) {
+    NodeWithArguments173: function NodeWithArguments173(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4628,7 +4628,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments162: function NodeWithArguments162(t0, t1, t2) {
+    NodeWithArguments172: function NodeWithArguments172(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4637,7 +4637,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments161: function NodeWithArguments161(t0, t1, t2) {
+    NodeWithArguments171: function NodeWithArguments171(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4646,7 +4646,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments160: function NodeWithArguments160(t0, t1, t2) {
+    NodeWithArguments170: function NodeWithArguments170(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4655,7 +4655,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments159: function NodeWithArguments159(t0, t1, t2) {
+    NodeWithArguments169: function NodeWithArguments169(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4668,7 +4668,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments158: function NodeWithArguments158(t0, t1, t2) {
+    NodeWithArguments168: function NodeWithArguments168(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4677,7 +4677,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments157: function NodeWithArguments157(t0, t1, t2) {
+    NodeWithArguments167: function NodeWithArguments167(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4686,7 +4686,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments156: function NodeWithArguments156(t0, t1, t2) {
+    NodeWithArguments166: function NodeWithArguments166(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4695,7 +4695,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments155: function NodeWithArguments155(t0, t1, t2) {
+    NodeWithArguments165: function NodeWithArguments165(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4708,7 +4708,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments154: function NodeWithArguments154(t0, t1, t2) {
+    NodeWithArguments164: function NodeWithArguments164(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4717,7 +4717,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments153: function NodeWithArguments153(t0, t1, t2) {
+    NodeWithArguments163: function NodeWithArguments163(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4726,7 +4726,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments152: function NodeWithArguments152(t0, t1, t2) {
+    NodeWithArguments162: function NodeWithArguments162(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4735,7 +4735,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments151: function NodeWithArguments151(t0, t1, t2) {
+    NodeWithArguments161: function NodeWithArguments161(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4744,7 +4744,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments150: function NodeWithArguments150(t0, t1, t2) {
+    NodeWithArguments160: function NodeWithArguments160(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4753,7 +4753,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments149: function NodeWithArguments149(t0, t1, t2) {
+    NodeWithArguments159: function NodeWithArguments159(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4762,7 +4762,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments148: function NodeWithArguments148(t0, t1, t2) {
+    NodeWithArguments158: function NodeWithArguments158(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4771,7 +4771,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments147: function NodeWithArguments147(t0, t1, t2) {
+    NodeWithArguments157: function NodeWithArguments157(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4780,7 +4780,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments146: function NodeWithArguments146(t0, t1, t2) {
+    NodeWithArguments156: function NodeWithArguments156(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4789,7 +4789,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments145: function NodeWithArguments145(t0, t1, t2) {
+    NodeWithArguments155: function NodeWithArguments155(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4798,7 +4798,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments144: function NodeWithArguments144(t0, t1, t2) {
+    NodeWithArguments154: function NodeWithArguments154(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4807,7 +4807,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments143: function NodeWithArguments143(t0, t1, t2) {
+    NodeWithArguments153: function NodeWithArguments153(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4816,7 +4816,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments142: function NodeWithArguments142(t0, t1, t2) {
+    NodeWithArguments152: function NodeWithArguments152(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4825,7 +4825,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments141: function NodeWithArguments141(t0, t1, t2) {
+    NodeWithArguments151: function NodeWithArguments151(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4834,7 +4834,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments140: function NodeWithArguments140(t0, t1, t2) {
+    NodeWithArguments150: function NodeWithArguments150(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4843,7 +4843,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments139: function NodeWithArguments139(t0, t1, t2) {
+    NodeWithArguments149: function NodeWithArguments149(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4852,7 +4852,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments138: function NodeWithArguments138(t0, t1, t2) {
+    NodeWithArguments148: function NodeWithArguments148(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4861,7 +4861,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments137: function NodeWithArguments137(t0, t1, t2) {
+    NodeWithArguments147: function NodeWithArguments147(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4870,7 +4870,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments136: function NodeWithArguments136(t0, t1, t2) {
+    NodeWithArguments146: function NodeWithArguments146(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4879,7 +4879,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments135: function NodeWithArguments135(t0, t1, t2) {
+    NodeWithArguments145: function NodeWithArguments145(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4888,7 +4888,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments134: function NodeWithArguments134(t0, t1, t2) {
+    NodeWithArguments144: function NodeWithArguments144(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4897,7 +4897,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments133: function NodeWithArguments133(t0, t1, t2) {
+    NodeWithArguments143: function NodeWithArguments143(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4906,7 +4906,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments132: function NodeWithArguments132(t0, t1, t2) {
+    NodeWithArguments142: function NodeWithArguments142(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4915,7 +4915,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments131: function NodeWithArguments131(t0, t1, t2) {
+    NodeWithArguments141: function NodeWithArguments141(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4924,7 +4924,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments130: function NodeWithArguments130(t0, t1, t2) {
+    NodeWithArguments140: function NodeWithArguments140(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4933,7 +4933,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments129: function NodeWithArguments129(t0, t1, t2) {
+    NodeWithArguments139: function NodeWithArguments139(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4942,7 +4942,16 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments128: function NodeWithArguments128(t0, t1, t2) {
+    NodeWithArguments138: function NodeWithArguments138(t0, t1, t2) {
+      this.$arguments = t0;
+      this.name = t1;
+      this.parameters = t2;
+    },
+    IsSet: function IsSet(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NodeWithArguments137: function NodeWithArguments137(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4951,7 +4960,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments127: function NodeWithArguments127(t0, t1, t2) {
+    NodeWithArguments136: function NodeWithArguments136(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4960,7 +4969,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments126: function NodeWithArguments126(t0, t1, t2) {
+    NodeWithArguments135: function NodeWithArguments135(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4969,7 +4978,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments125: function NodeWithArguments125(t0, t1, t2) {
+    NodeWithArguments134: function NodeWithArguments134(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4978,7 +4987,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments124: function NodeWithArguments124(t0, t1, t2) {
+    NodeWithArguments133: function NodeWithArguments133(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4987,7 +4996,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments123: function NodeWithArguments123(t0, t1, t2) {
+    NodeWithArguments132: function NodeWithArguments132(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -4996,7 +5005,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments122: function NodeWithArguments122(t0, t1, t2) {
+    NodeWithArguments131: function NodeWithArguments131(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5005,7 +5014,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments121: function NodeWithArguments121(t0, t1, t2) {
+    NodeWithArguments130: function NodeWithArguments130(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5039,8 +5048,7 @@
         else {
           mapA = a.asMapWithKeys$0();
           mapB = b.asMapWithKeys$0();
-          t1 = A.LinkedHashSet_LinkedHashSet(type$.dynamic);
-          t1.addAll$1(0, new A.LinkedHashMapKeyIterable(mapA, A._instanceType(mapA)._eval$1("LinkedHashMapKeyIterable<1>")));
+          t1 = A.LinkedHashSet_LinkedHashSet$of(new A.LinkedHashMapKeyIterable(mapA, A._instanceType(mapA)._eval$1("LinkedHashMapKeyIterable<1>")), type$.dynamic);
           t1.addAll$1(0, new A.LinkedHashMapKeyIterable(mapB, A._instanceType(mapB)._eval$1("LinkedHashMapKeyIterable<1>")));
           for (t1 = A._LinkedHashSetIterator$(t1, t1._collection$_modifications, A._instanceType(t1)._precomputed1), t2 = t1.$ti._precomputed1; t1.moveNext$0();) {
             key = t1._collection$_current;
@@ -5062,7 +5070,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments120: function NodeWithArguments120(t0, t1, t2) {
+    NodeWithArguments129: function NodeWithArguments129(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5090,7 +5098,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments117: function NodeWithArguments117(t0, t1, t2) {
+    NodeWithArguments126: function NodeWithArguments126(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5118,7 +5126,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments118: function NodeWithArguments118(t0, t1, t2) {
+    NodeWithArguments127: function NodeWithArguments127(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5146,7 +5154,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments115: function NodeWithArguments115(t0, t1, t2) {
+    NodeWithArguments124: function NodeWithArguments124(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5174,7 +5182,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments116: function NodeWithArguments116(t0, t1, t2) {
+    NodeWithArguments125: function NodeWithArguments125(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5183,7 +5191,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments119: function NodeWithArguments119(t0, t1, t2) {
+    NodeWithArguments128: function NodeWithArguments128(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5196,7 +5204,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments114: function NodeWithArguments114(t0, t1, t2) {
+    NodeWithArguments123: function NodeWithArguments123(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5205,7 +5213,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments113: function NodeWithArguments113(t0, t1, t2) {
+    NodeWithArguments122: function NodeWithArguments122(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5214,7 +5222,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments112: function NodeWithArguments112(t0, t1, t2) {
+    NodeWithArguments121: function NodeWithArguments121(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5223,7 +5231,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments111: function NodeWithArguments111(t0, t1, t2) {
+    NodeWithArguments120: function NodeWithArguments120(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5232,7 +5240,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments110: function NodeWithArguments110(t0, t1, t2) {
+    NodeWithArguments119: function NodeWithArguments119(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5241,7 +5249,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments109: function NodeWithArguments109(t0, t1, t2) {
+    NodeWithArguments118: function NodeWithArguments118(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5254,7 +5262,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments108: function NodeWithArguments108(t0, t1, t2) {
+    NodeWithArguments117: function NodeWithArguments117(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5263,7 +5271,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments107: function NodeWithArguments107(t0, t1, t2) {
+    NodeWithArguments116: function NodeWithArguments116(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5272,7 +5280,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments106: function NodeWithArguments106(t0, t1, t2) {
+    NodeWithArguments115: function NodeWithArguments115(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5281,7 +5289,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments105: function NodeWithArguments105(t0, t1, t2) {
+    NodeWithArguments114: function NodeWithArguments114(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5290,7 +5298,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments104: function NodeWithArguments104(t0, t1, t2) {
+    NodeWithArguments113: function NodeWithArguments113(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5299,7 +5307,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments103: function NodeWithArguments103(t0, t1, t2) {
+    NodeWithArguments112: function NodeWithArguments112(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5312,7 +5320,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments102: function NodeWithArguments102(t0, t1, t2) {
+    NodeWithArguments111: function NodeWithArguments111(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5321,7 +5329,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments101: function NodeWithArguments101(t0, t1, t2) {
+    NodeWithArguments110: function NodeWithArguments110(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5330,7 +5338,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments100: function NodeWithArguments100(t0, t1, t2) {
+    NodeWithArguments109: function NodeWithArguments109(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5339,7 +5347,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments99: function NodeWithArguments99(t0, t1, t2) {
+    NodeWithArguments108: function NodeWithArguments108(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5348,7 +5356,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments98: function NodeWithArguments98(t0, t1, t2) {
+    NodeWithArguments107: function NodeWithArguments107(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5357,7 +5365,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments97: function NodeWithArguments97(t0, t1, t2) {
+    NodeWithArguments106: function NodeWithArguments106(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5366,7 +5374,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments96: function NodeWithArguments96(t0, t1, t2) {
+    NodeWithArguments105: function NodeWithArguments105(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5375,7 +5383,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments95: function NodeWithArguments95(t0, t1, t2) {
+    NodeWithArguments104: function NodeWithArguments104(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5384,7 +5392,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments94: function NodeWithArguments94(t0, t1, t2) {
+    NodeWithArguments103: function NodeWithArguments103(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5393,7 +5401,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments93: function NodeWithArguments93(t0, t1, t2) {
+    NodeWithArguments102: function NodeWithArguments102(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5402,7 +5410,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments92: function NodeWithArguments92(t0, t1, t2) {
+    NodeWithArguments101: function NodeWithArguments101(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5411,7 +5419,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments91: function NodeWithArguments91(t0, t1, t2) {
+    NodeWithArguments100: function NodeWithArguments100(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5420,7 +5428,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments90: function NodeWithArguments90(t0, t1, t2) {
+    NodeWithArguments99: function NodeWithArguments99(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5429,7 +5437,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments89: function NodeWithArguments89(t0, t1, t2) {
+    NodeWithArguments98: function NodeWithArguments98(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5438,7 +5446,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments88: function NodeWithArguments88(t0, t1, t2) {
+    NodeWithArguments97: function NodeWithArguments97(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5447,7 +5455,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments87: function NodeWithArguments87(t0, t1, t2) {
+    NodeWithArguments96: function NodeWithArguments96(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5456,7 +5464,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments86: function NodeWithArguments86(t0, t1, t2) {
+    NodeWithArguments95: function NodeWithArguments95(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5465,7 +5473,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments85: function NodeWithArguments85(t0, t1, t2) {
+    NodeWithArguments94: function NodeWithArguments94(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5474,7 +5482,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments84: function NodeWithArguments84(t0, t1, t2) {
+    NodeWithArguments93: function NodeWithArguments93(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5483,7 +5491,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments83: function NodeWithArguments83(t0, t1, t2) {
+    NodeWithArguments92: function NodeWithArguments92(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5492,7 +5500,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments82: function NodeWithArguments82(t0, t1, t2) {
+    NodeWithArguments91: function NodeWithArguments91(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5501,7 +5509,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments81: function NodeWithArguments81(t0, t1, t2) {
+    NodeWithArguments90: function NodeWithArguments90(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5510,7 +5518,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments79: function NodeWithArguments79(t0, t1, t2) {
+    NodeWithArguments88: function NodeWithArguments88(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5519,7 +5527,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments80: function NodeWithArguments80(t0, t1, t2) {
+    NodeWithArguments89: function NodeWithArguments89(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5528,7 +5536,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments78: function NodeWithArguments78(t0, t1, t2) {
+    NodeWithArguments87: function NodeWithArguments87(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5537,7 +5545,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments77: function NodeWithArguments77(t0, t1, t2) {
+    NodeWithArguments86: function NodeWithArguments86(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5546,7 +5554,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments76: function NodeWithArguments76(t0, t1, t2) {
+    NodeWithArguments85: function NodeWithArguments85(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5555,7 +5563,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments75: function NodeWithArguments75(t0, t1, t2) {
+    NodeWithArguments84: function NodeWithArguments84(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5567,7 +5575,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments74: function NodeWithArguments74(t0, t1, t2) {
+    NodeWithArguments83: function NodeWithArguments83(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5576,7 +5584,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments73: function NodeWithArguments73(t0, t1, t2) {
+    NodeWithArguments82: function NodeWithArguments82(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5585,7 +5593,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments72: function NodeWithArguments72(t0, t1, t2) {
+    NodeWithArguments81: function NodeWithArguments81(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5594,7 +5602,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments71: function NodeWithArguments71(t0, t1, t2) {
+    NodeWithArguments80: function NodeWithArguments80(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5603,7 +5611,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments70: function NodeWithArguments70(t0, t1, t2) {
+    NodeWithArguments79: function NodeWithArguments79(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5612,7 +5620,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments69: function NodeWithArguments69(t0, t1, t2) {
+    NodeWithArguments78: function NodeWithArguments78(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5621,7 +5629,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments68: function NodeWithArguments68(t0, t1, t2) {
+    NodeWithArguments77: function NodeWithArguments77(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5630,7 +5638,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments67: function NodeWithArguments67(t0, t1, t2) {
+    NodeWithArguments76: function NodeWithArguments76(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5639,7 +5647,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments66: function NodeWithArguments66(t0, t1, t2) {
+    NodeWithArguments75: function NodeWithArguments75(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5648,7 +5656,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments65: function NodeWithArguments65(t0, t1, t2) {
+    NodeWithArguments74: function NodeWithArguments74(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5657,7 +5665,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments64: function NodeWithArguments64(t0, t1, t2) {
+    NodeWithArguments73: function NodeWithArguments73(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5666,7 +5674,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments63: function NodeWithArguments63(t0, t1, t2) {
+    NodeWithArguments72: function NodeWithArguments72(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5675,7 +5683,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments62: function NodeWithArguments62(t0, t1, t2) {
+    NodeWithArguments71: function NodeWithArguments71(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5684,7 +5692,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments61: function NodeWithArguments61(t0, t1, t2) {
+    NodeWithArguments70: function NodeWithArguments70(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5693,7 +5701,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments60: function NodeWithArguments60(t0, t1, t2) {
+    NodeWithArguments69: function NodeWithArguments69(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5705,7 +5713,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments59: function NodeWithArguments59(t0, t1, t2) {
+    NodeWithArguments68: function NodeWithArguments68(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5717,7 +5725,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments58: function NodeWithArguments58(t0, t1, t2) {
+    NodeWithArguments67: function NodeWithArguments67(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5726,7 +5734,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments57: function NodeWithArguments57(t0, t1, t2) {
+    NodeWithArguments66: function NodeWithArguments66(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5735,7 +5743,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments56: function NodeWithArguments56(t0, t1, t2) {
+    NodeWithArguments65: function NodeWithArguments65(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5744,7 +5752,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments55: function NodeWithArguments55(t0, t1, t2) {
+    NodeWithArguments64: function NodeWithArguments64(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5753,7 +5761,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments54: function NodeWithArguments54(t0, t1, t2) {
+    NodeWithArguments63: function NodeWithArguments63(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5762,7 +5770,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments53: function NodeWithArguments53(t0, t1, t2) {
+    NodeWithArguments62: function NodeWithArguments62(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5771,7 +5779,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments52: function NodeWithArguments52(t0, t1, t2) {
+    NodeWithArguments61: function NodeWithArguments61(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5780,7 +5788,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments51: function NodeWithArguments51(t0, t1, t2) {
+    NodeWithArguments60: function NodeWithArguments60(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5789,7 +5797,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments50: function NodeWithArguments50(t0, t1, t2) {
+    NodeWithArguments59: function NodeWithArguments59(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5798,7 +5806,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments49: function NodeWithArguments49(t0, t1, t2) {
+    NodeWithArguments58: function NodeWithArguments58(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5807,7 +5815,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments48: function NodeWithArguments48(t0, t1, t2) {
+    NodeWithArguments57: function NodeWithArguments57(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5816,7 +5824,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments47: function NodeWithArguments47(t0, t1, t2) {
+    NodeWithArguments56: function NodeWithArguments56(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5825,7 +5833,7 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments46: function NodeWithArguments46(t0, t1, t2) {
+    NodeWithArguments55: function NodeWithArguments55(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
@@ -5834,12 +5842,142 @@
       this.name = t0;
       this.parameters = t1;
     },
-    NodeWithArguments45: function NodeWithArguments45(t0, t1, t2) {
+    NodeWithArguments54: function NodeWithArguments54(t0, t1, t2) {
       this.$arguments = t0;
       this.name = t1;
       this.parameters = t2;
     },
     OperatorSub: function OperatorSub(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NodeWithArguments53: function NodeWithArguments53(t0, t1, t2) {
+      this.$arguments = t0;
+      this.name = t1;
+      this.parameters = t2;
+    },
+    SetAdd_execute(a, b, $function) {
+      var t1;
+      if (a instanceof A.SetNode)
+        if (a.native$0().contains$1(0, b.native$0()))
+          return a;
+        else {
+          t1 = A.LinkedHashSet_LinkedHashSet$of(a.value, type$.Node);
+          t1.add$1(0, b);
+          return new A.SetNode(t1);
+        }
+      else {
+        t1 = $function.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, $function.name));
+      }
+    },
+    SetAdd: function SetAdd(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NodeWithArguments52: function NodeWithArguments52(t0, t1, t2) {
+      this.$arguments = t0;
+      this.name = t1;
+      this.parameters = t2;
+    },
+    SetContains: function SetContains(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NodeWithArguments51: function NodeWithArguments51(t0, t1, t2) {
+      this.$arguments = t0;
+      this.name = t1;
+      this.parameters = t2;
+    },
+    SetIntersection: function SetIntersection(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NodeWithArguments50: function NodeWithArguments50(t0, t1, t2) {
+      this.$arguments = t0;
+      this.name = t1;
+      this.parameters = t2;
+    },
+    SetIsEmpty: function SetIsEmpty(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NodeWithArguments49: function NodeWithArguments49(t0, t1, t2) {
+      this.$arguments = t0;
+      this.name = t1;
+      this.parameters = t2;
+    },
+    SetIsNotEmpty: function SetIsNotEmpty(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NodeWithArguments48: function NodeWithArguments48(t0, t1, t2) {
+      this.$arguments = t0;
+      this.name = t1;
+      this.parameters = t2;
+    },
+    SetLength: function SetLength(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NodeWithArguments47: function NodeWithArguments47(t0, t1, t2) {
+      this.$arguments = t0;
+      this.name = t1;
+      this.parameters = t2;
+    },
+    SetNew: function SetNew(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NodeWithArguments46: function NodeWithArguments46(t0, t1, t2) {
+      this.$arguments = t0;
+      this.name = t1;
+      this.parameters = t2;
+    },
+    SetRemove_execute(a, b, $function) {
+      var set, t1, t2, t3;
+      if (a instanceof A.SetNode) {
+        set = A.LinkedHashSet_LinkedHashSet$_empty(type$.Node);
+        for (t1 = a.value, t1 = A._LinkedHashSetIterator$(t1, t1._collection$_modifications, A._instanceType(t1)._precomputed1), t2 = t1.$ti._precomputed1; t1.moveNext$0();) {
+          t3 = t1._collection$_current;
+          if (t3 == null)
+            t3 = t2._as(t3);
+          if (!A.boolConversionCheck(A.CompEq_execute(t3.evaluate$0(), b, $function).value))
+            set.add$1(0, t3);
+        }
+        return new A.SetNode(set);
+      } else {
+        t1 = $function.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, $function.name));
+      }
+    },
+    SetRemove: function SetRemove(t0, t1) {
+      this.name = t0;
+      this.parameters = t1;
+    },
+    NodeWithArguments45: function NodeWithArguments45(t0, t1, t2) {
+      this.$arguments = t0;
+      this.name = t1;
+      this.parameters = t2;
+    },
+    SetUnion_execute(a, b, $function) {
+      var t1, t2, t3, t4;
+      if (a instanceof A.SetNode && b instanceof A.SetNode) {
+        t1 = A.LinkedHashSet_LinkedHashSet$of(a.value, type$.Node);
+        for (t2 = b.value, t2 = A._LinkedHashSetIterator$(t2, t2._collection$_modifications, A._instanceType(t2)._precomputed1), t3 = t2.$ti._precomputed1; t2.moveNext$0();) {
+          t4 = t2._collection$_current;
+          if (t4 == null)
+            t4 = t3._as(t4);
+          if (!t1.contains$1(0, t4.native$0()))
+            t1.add$1(0, t4);
+        }
+        return new A.SetNode(t1);
+      } else {
+        t1 = $function.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, $function.name));
+      }
+    },
+    SetUnion: function SetUnion(t0, t1) {
       this.name = t0;
       this.parameters = t1;
     },
@@ -6339,6 +6477,8 @@
     },
     VectorType: function VectorType() {
     },
+    SetType: function SetType() {
+    },
     ListType: function ListType() {
     },
     MapType: function MapType() {
@@ -6418,6 +6558,14 @@
       this.bindings = t0;
     },
     VectorNode_native_closure: function VectorNode_native_closure() {
+    },
+    SetNode: function SetNode(t0) {
+      this.value = t0;
+    },
+    SetNode_substitute_closure: function SetNode_substitute_closure(t0) {
+      this.bindings = t0;
+    },
+    SetNode_native_closure: function SetNode_native_closure() {
     },
     MapNode: function MapNode(t0) {
       this.value = t0;
@@ -6676,7 +6824,7 @@
     StandardLibrary_get() {
       var _s1_ = "a", _s1_0 = "b", _s1_1 = "c",
         t1 = type$.JSArray_Parameter;
-      return A._setArrayType([new A.NumAbs("num.abs", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumAdd("num.add", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumAsDegrees("num.asDegrees", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumAsRadians("num.asRadians", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumCeil("num.ceil", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumClamp("num.clamp", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.NumCompare("num.compare", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumCos("num.cos", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumDec("num.dec", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumDecimalRandom("num.decimalRandom", A._setArrayType([], t1)), new A.NumDiv("num.div", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumFloor("num.floor", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumFraction("num.fraction", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumInc("num.inc", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumInfinity("num.infinity", A._setArrayType([], t1)), new A.NumIntegerRandom("num.integerRandom", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumIsEven("num.isEven", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsNegative("num.isNegative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsOdd("num.isOdd", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsPositive("num.isPositive", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsZero("num.isZero", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumLog("num.log", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumMax("num.max", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumMin("num.min", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumMod("num.mod", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumMul("num.mul", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumNegative("num.negative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumPow("num.pow", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumRound("num.round", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumSign("num.sign", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumSin("num.sin", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumSqrt("num.sqrt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumSub("num.sub", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumSum("num.sum", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumTan("num.tan", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsBoolean("is.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsDecimal("is.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInfinite("is.infinite", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInteger("is.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsList("is.list", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsMap("is.map", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNumber("is.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsString("is.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsVector("is.vector", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToBoolean("to.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToDecimal("to.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToInteger("to.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToNumber("to.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToString("to.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.CompEq("comp.eq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.CompNeq("comp.neq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.CompGt("comp.gt", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.CompGe("comp.ge", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.CompLt("comp.lt", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.CompLe("comp.le", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ConsoleRead("console.read", A._setArrayType([], t1)), new A.ConsoleWrite("console.write", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ConsoleWriteLn("console.writeLn", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.If("if", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter(_s1_1, B.C_AnyType)], t1)), new A.Try("try", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.EnvGet("env.get", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Throw("error.throw", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.HashMd5("hash.md5", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.HashSha1("hash.sha1", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.HashSha256("hash.sha256", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.HashSha512("hash.sha512", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.ElementAt("element.at", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.JsonDecode("json.decode", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.JsonEncode("json.encode", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ListAll("list.all", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListAny("list.any", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListAt("list.at", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListConcat("list.concat", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_ListType)], t1)), new A.ListContains("list.contains", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListDrop("list.drop", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListFilled("list.filled", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListFilter("list.filter", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListFirst("list.first", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListIndexOf("list.indexOf", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListInit("list.init", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListInsertEnd("list.insertEnd", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListInsertStart("list.insertStart", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListIsEmpty("list.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListIsNotEmpty("list.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListJoin("list.join", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.ListLast("list.last", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListLength("list.length", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListMap("list.map", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListNone("list.none", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListReduce("list.reduce", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter(_s1_1, B.C_FunctionType)], t1)), new A.ListRemoveAt("list.removeAt", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListRemove("list.remove", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListRest("list.rest", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListReverse("list.reverse", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListSet("list.set", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_AnyType)], t1)), new A.ListSort("list.sort", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListSublist("list.sublist", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.ListSwap("list.swap", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.ListTake("list.take", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListZip("list.zip", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_ListType), new A.Parameter(_s1_1, B.C_FunctionType)], t1)), new A.BoolAnd("bool.and", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.BoolNot("bool.not", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.BoolOr("bool.or", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.BoolXor("bool.xor", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.MapAt("map.at", A._setArrayType([new A.Parameter(_s1_, B.C_MapType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.MapContainsKey("map.containsKey", A._setArrayType([new A.Parameter(_s1_, B.C_MapType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.MapIsEmpty("map.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_MapType)], t1)), new A.MapIsNotEmpty("map.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_MapType)], t1)), new A.MapKeys("map.keys", A._setArrayType([new A.Parameter(_s1_, B.C_MapType)], t1)), new A.MapLength("map.length", A._setArrayType([new A.Parameter(_s1_, B.C_MapType)], t1)), new A.MapRemoveAt("map.removeAt", A._setArrayType([new A.Parameter(_s1_, B.C_MapType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.MapSet("map.set", A._setArrayType([new A.Parameter(_s1_, B.C_MapType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter(_s1_1, B.C_AnyType)], t1)), new A.MapValues("map.values", A._setArrayType([new A.Parameter(_s1_, B.C_MapType)], t1)), new A.OperatorAdd("+", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorAnd("&", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorDiv("/", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorEq("==", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorGe(">=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorGt(">", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorLe("<=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorLt("<", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorMod("%", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMul("*", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorNeq("!=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorNot("!", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.OperatorOr("|", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorSub("-", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrAt("str.at", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrBytes("str.bytes", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrCompare("str.compare", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrConcat("str.concat", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrContains("str.contains", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrDrop("str.drop", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrEndsWith("str.endsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrFirst("str.first", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrIndexOf("str.indexOf", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrInit("str.init", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrIsEmpty("str.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrIsNotEmpty("str.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrLast("str.last", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrLength("str.length", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrLowercase("str.lowercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrMatch("str.match", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrPadLeft("str.padLeft", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_StringType)], t1)), new A.StrPadRight("str.padRight", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_StringType)], t1)), new A.StrRemoveAt("str.removeAt", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrReplace("str.replace", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType), new A.Parameter(_s1_1, B.C_StringType)], t1)), new A.StrRest("str.rest", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrReverse("str.reverse", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrSplit("str.split", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrStartsWith("str.startsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrSubstring("str.substring", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.StrTake("str.take", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrTrim("str.trim", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrUppercase("str.uppercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.TimeCompare("time.compare", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType), new A.Parameter(_s1_0, B.C_TimestampType)], t1)), new A.TimeDay("time.day", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeEpoch("time.epoch", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeFromIso("time.fromIso", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.TimeHour("time.hour", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeMillisecond("time.millisecond", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeMinute("time.minute", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeMonth("time.month", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeNow("time.now", A._setArrayType([], t1)), new A.TimeSecond("time.second", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeToIso("time.toIso", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeYear("time.year", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.VectorAdd("vector.add", A._setArrayType([new A.Parameter(_s1_, B.C_VectorType), new A.Parameter(_s1_0, B.C_VectorType)], t1)), new A.VectorAngle("vector.angle", A._setArrayType([new A.Parameter(_s1_, B.C_VectorType), new A.Parameter(_s1_0, B.C_VectorType)], t1)), new A.VectorMagnitude("vector.magnitude", A._setArrayType([new A.Parameter(_s1_, B.C_VectorType)], t1)), new A.VectorNew("vector.new", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.VectorNormalize("vector.normalize", A._setArrayType([new A.Parameter(_s1_, B.C_VectorType)], t1)), new A.VectorSub("vector.sub", A._setArrayType([new A.Parameter(_s1_, B.C_VectorType), new A.Parameter(_s1_0, B.C_VectorType)], t1))], type$.JSArray_FunctionNode);
+      return A._setArrayType([new A.NumAbs("num.abs", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumAdd("num.add", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumAsDegrees("num.asDegrees", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumAsRadians("num.asRadians", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumCeil("num.ceil", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumClamp("num.clamp", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.NumCompare("num.compare", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumCos("num.cos", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumDec("num.dec", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumDecimalRandom("num.decimalRandom", A._setArrayType([], t1)), new A.NumDiv("num.div", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumFloor("num.floor", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumFraction("num.fraction", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumInc("num.inc", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumInfinity("num.infinity", A._setArrayType([], t1)), new A.NumIntegerRandom("num.integerRandom", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumIsEven("num.isEven", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsNegative("num.isNegative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsOdd("num.isOdd", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsPositive("num.isPositive", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumIsZero("num.isZero", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumLog("num.log", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumMax("num.max", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumMin("num.min", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumMod("num.mod", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumMul("num.mul", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumNegative("num.negative", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumPow("num.pow", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumRound("num.round", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumSign("num.sign", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumSin("num.sin", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumSqrt("num.sqrt", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.NumSub("num.sub", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumSum("num.sum", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.NumTan("num.tan", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType)], t1)), new A.IsBoolean("is.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsDecimal("is.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInfinite("is.infinite", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsInteger("is.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsList("is.list", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsMap("is.map", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsNumber("is.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsSet("is.set", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsString("is.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.IsVector("is.vector", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToBoolean("to.boolean", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToDecimal("to.decimal", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToInteger("to.integer", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToNumber("to.number", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ToString("to.string", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.CompEq("comp.eq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.CompNeq("comp.neq", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.CompGt("comp.gt", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.CompGe("comp.ge", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.CompLt("comp.lt", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.CompLe("comp.le", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ConsoleRead("console.read", A._setArrayType([], t1)), new A.ConsoleWrite("console.write", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ConsoleWriteLn("console.writeLn", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.If("if", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter(_s1_1, B.C_AnyType)], t1)), new A.Try("try", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.EnvGet("env.get", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.Throw("error.throw", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.HashMd5("hash.md5", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.HashSha1("hash.sha1", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.HashSha256("hash.sha256", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.HashSha512("hash.sha512", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.ElementAt("element.at", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.JsonDecode("json.decode", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.JsonEncode("json.encode", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType)], t1)), new A.ListAll("list.all", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListAny("list.any", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListAt("list.at", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListConcat("list.concat", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_ListType)], t1)), new A.ListContains("list.contains", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListDrop("list.drop", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListFilled("list.filled", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListFilter("list.filter", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListFirst("list.first", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListIndexOf("list.indexOf", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListInit("list.init", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListInsertEnd("list.insertEnd", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListInsertStart("list.insertStart", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListIsEmpty("list.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListIsNotEmpty("list.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListJoin("list.join", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.ListLast("list.last", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListLength("list.length", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListMap("list.map", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListNone("list.none", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListReduce("list.reduce", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter(_s1_1, B.C_FunctionType)], t1)), new A.ListRemoveAt("list.removeAt", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListRemove("list.remove", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.ListRest("list.rest", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListReverse("list.reverse", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.ListSet("list.set", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_AnyType)], t1)), new A.ListSort("list.sort", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_FunctionType)], t1)), new A.ListSublist("list.sublist", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.ListSwap("list.swap", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.ListTake("list.take", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.ListZip("list.zip", A._setArrayType([new A.Parameter(_s1_, B.C_ListType), new A.Parameter(_s1_0, B.C_ListType), new A.Parameter(_s1_1, B.C_FunctionType)], t1)), new A.BoolAnd("bool.and", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.BoolNot("bool.not", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.BoolOr("bool.or", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.BoolXor("bool.xor", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.MapAt("map.at", A._setArrayType([new A.Parameter(_s1_, B.C_MapType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.MapContainsKey("map.containsKey", A._setArrayType([new A.Parameter(_s1_, B.C_MapType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.MapIsEmpty("map.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_MapType)], t1)), new A.MapIsNotEmpty("map.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_MapType)], t1)), new A.MapKeys("map.keys", A._setArrayType([new A.Parameter(_s1_, B.C_MapType)], t1)), new A.MapLength("map.length", A._setArrayType([new A.Parameter(_s1_, B.C_MapType)], t1)), new A.MapRemoveAt("map.removeAt", A._setArrayType([new A.Parameter(_s1_, B.C_MapType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.MapSet("map.set", A._setArrayType([new A.Parameter(_s1_, B.C_MapType), new A.Parameter(_s1_0, B.C_AnyType), new A.Parameter(_s1_1, B.C_AnyType)], t1)), new A.MapValues("map.values", A._setArrayType([new A.Parameter(_s1_, B.C_MapType)], t1)), new A.OperatorAdd("+", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorAnd("&", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorDiv("/", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorEq("==", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorGe(">=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorGt(">", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorLe("<=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorLt("<", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorMod("%", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorMul("*", A._setArrayType([new A.Parameter(_s1_, B.C_NumberType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.OperatorNeq("!=", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.OperatorNot("!", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType)], t1)), new A.OperatorOr("|", A._setArrayType([new A.Parameter(_s1_, B.C_BooleanType), new A.Parameter(_s1_0, B.C_BooleanType)], t1)), new A.OperatorSub("-", A._setArrayType([new A.Parameter(_s1_, B.C_AnyType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.SetAdd("set.add", A._setArrayType([new A.Parameter(_s1_, B.C_SetType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.SetContains("set.contains", A._setArrayType([new A.Parameter(_s1_, B.C_SetType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.SetIntersection("set.intersection", A._setArrayType([new A.Parameter(_s1_, B.C_SetType), new A.Parameter(_s1_0, B.C_SetType)], t1)), new A.SetIsEmpty("set.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_SetType)], t1)), new A.SetIsNotEmpty("set.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_SetType)], t1)), new A.SetLength("set.length", A._setArrayType([new A.Parameter(_s1_, B.C_SetType)], t1)), new A.SetNew("set.new", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.SetRemove("set.remove", A._setArrayType([new A.Parameter(_s1_, B.C_SetType), new A.Parameter(_s1_0, B.C_AnyType)], t1)), new A.SetUnion("set.union", A._setArrayType([new A.Parameter(_s1_, B.C_SetType), new A.Parameter(_s1_0, B.C_SetType)], t1)), new A.StrAt("str.at", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrBytes("str.bytes", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrCompare("str.compare", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrConcat("str.concat", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrContains("str.contains", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrDrop("str.drop", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrEndsWith("str.endsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrFirst("str.first", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrIndexOf("str.indexOf", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrInit("str.init", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrIsEmpty("str.isEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrIsNotEmpty("str.isNotEmpty", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrLast("str.last", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrLength("str.length", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrLowercase("str.lowercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrMatch("str.match", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrPadLeft("str.padLeft", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_StringType)], t1)), new A.StrPadRight("str.padRight", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_StringType)], t1)), new A.StrRemoveAt("str.removeAt", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrReplace("str.replace", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType), new A.Parameter(_s1_1, B.C_StringType)], t1)), new A.StrRest("str.rest", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrReverse("str.reverse", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrSplit("str.split", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrStartsWith("str.startsWith", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_StringType)], t1)), new A.StrSubstring("str.substring", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType), new A.Parameter(_s1_1, B.C_NumberType)], t1)), new A.StrTake("str.take", A._setArrayType([new A.Parameter(_s1_, B.C_StringType), new A.Parameter(_s1_0, B.C_NumberType)], t1)), new A.StrTrim("str.trim", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.StrUppercase("str.uppercase", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.TimeCompare("time.compare", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType), new A.Parameter(_s1_0, B.C_TimestampType)], t1)), new A.TimeDay("time.day", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeEpoch("time.epoch", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeFromIso("time.fromIso", A._setArrayType([new A.Parameter(_s1_, B.C_StringType)], t1)), new A.TimeHour("time.hour", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeMillisecond("time.millisecond", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeMinute("time.minute", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeMonth("time.month", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeNow("time.now", A._setArrayType([], t1)), new A.TimeSecond("time.second", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeToIso("time.toIso", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.TimeYear("time.year", A._setArrayType([new A.Parameter(_s1_, B.C_TimestampType)], t1)), new A.VectorAdd("vector.add", A._setArrayType([new A.Parameter(_s1_, B.C_VectorType), new A.Parameter(_s1_0, B.C_VectorType)], t1)), new A.VectorAngle("vector.angle", A._setArrayType([new A.Parameter(_s1_, B.C_VectorType), new A.Parameter(_s1_0, B.C_VectorType)], t1)), new A.VectorMagnitude("vector.magnitude", A._setArrayType([new A.Parameter(_s1_, B.C_VectorType)], t1)), new A.VectorNew("vector.new", A._setArrayType([new A.Parameter(_s1_, B.C_ListType)], t1)), new A.VectorNormalize("vector.normalize", A._setArrayType([new A.Parameter(_s1_, B.C_VectorType)], t1)), new A.VectorSub("vector.sub", A._setArrayType([new A.Parameter(_s1_, B.C_VectorType), new A.Parameter(_s1_0, B.C_VectorType)], t1))], type$.JSArray_FunctionNode);
     },
     StringExtensions_get_isOperandDelimiter(_this) {
       var t1 = A.RegExp_RegExp("\\s"),
@@ -8164,7 +8312,7 @@
     call$1(o) {
       return this.getTag(o);
     },
-    $signature: 0
+    $signature: 1
   };
   A.initHooks_closure0.prototype = {
     call$2(o, tag) {
@@ -8449,16 +8597,19 @@
       return this._collection$_length;
     },
     contains$1(_, object) {
-      var strings, t1;
-      if (object !== "__proto__") {
+      var strings, nums;
+      if (typeof object == "string" && object !== "__proto__") {
         strings = this._collection$_strings;
         if (strings == null)
           return false;
         return type$.nullable__LinkedHashSetCell._as(strings[object]) != null;
-      } else {
-        t1 = this._contains$1(object);
-        return t1;
-      }
+      } else if (typeof object == "number" && (object & 1073741823) === object) {
+        nums = this._collection$_nums;
+        if (nums == null)
+          return false;
+        return type$.nullable__LinkedHashSetCell._as(nums[object]) != null;
+      } else
+        return this._contains$1(object);
     },
     _contains$1(object) {
       var rest = this._collection$_rest;
@@ -8692,7 +8843,7 @@
       t2 = A.S(v);
       t1._contents += t2;
     },
-    $signature: 3
+    $signature: 4
   };
   A._UnmodifiableMapMixin.prototype = {};
   A.MapView.prototype = {
@@ -8723,9 +8874,8 @@
   A.SetBase.prototype = {
     addAll$1(_, elements) {
       var t1;
-      A._instanceType(this)._eval$1("Iterable<1>")._as(elements);
-      for (t1 = elements._map, t1 = A.LinkedHashMapKeyIterator$(t1, t1._modifications, elements.$ti._precomputed1); t1.moveNext$0();)
-        this.add$1(0, t1.__js_helper$_current);
+      for (t1 = J.get$iterator$ax(A._instanceType(this)._eval$1("Iterable<1>")._as(elements)); t1.moveNext$0();)
+        this.add$1(0, t1.get$current());
     },
     toString$0(_) {
       return A.Iterable_iterableToFullString(this, "{", "}");
@@ -9126,7 +9276,7 @@
       B.JSArray_methods.$indexSet(t1, t2.i++, key);
       B.JSArray_methods.$indexSet(t1, t2.i++, value);
     },
-    $signature: 3
+    $signature: 4
   };
   A._JsonStringStringifier.prototype = {
     get$_partialResult() {
@@ -9342,7 +9492,7 @@
         return 0;
       return A.int_parse(matched);
     },
-    $signature: 4
+    $signature: 5
   };
   A.DateTime_parse_parseMilliAndMicroseconds.prototype = {
     call$1(matched) {
@@ -9359,7 +9509,7 @@
       }
       return result;
     },
-    $signature: 4
+    $signature: 5
   };
   A.Error.prototype = {};
   A.AssertionError.prototype = {
@@ -11192,10 +11342,10 @@
   A.CloseBracesToken.prototype = {};
   A.NumAbs.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments167(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments177(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments167.prototype = {
+  A.NodeWithArguments177.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11212,10 +11362,10 @@
   };
   A.NumAdd.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments166(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments176(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments166.prototype = {
+  A.NodeWithArguments176.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -11241,10 +11391,10 @@
   };
   A.NumAsDegrees.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments165(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments175(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments165.prototype = {
+  A.NodeWithArguments175.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11264,10 +11414,10 @@
   };
   A.NumAsRadians.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments164(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments174(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments164.prototype = {
+  A.NodeWithArguments174.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11287,10 +11437,10 @@
   };
   A.NumCeil.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments163(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments173(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments163.prototype = {
+  A.NodeWithArguments173.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11307,10 +11457,10 @@
   };
   A.NumClamp.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments162(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments172(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments162.prototype = {
+  A.NodeWithArguments172.prototype = {
     evaluate$0() {
       var a, b, c,
         t1 = this.$arguments;
@@ -11333,10 +11483,10 @@
   };
   A.NumCompare.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments161(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments171(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments161.prototype = {
+  A.NodeWithArguments171.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -11369,10 +11519,10 @@
   };
   A.NumCos.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments160(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments170(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments160.prototype = {
+  A.NodeWithArguments170.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11389,10 +11539,10 @@
   };
   A.NumDec.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments159(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments169(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments159.prototype = {
+  A.NodeWithArguments169.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11418,10 +11568,10 @@
   };
   A.NumDiv.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments158(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments168(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments158.prototype = {
+  A.NodeWithArguments168.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -11447,10 +11597,10 @@
   };
   A.NumFloor.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments157(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments167(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments157.prototype = {
+  A.NodeWithArguments167.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11467,10 +11617,10 @@
   };
   A.NumFraction.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments156(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments166(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments156.prototype = {
+  A.NodeWithArguments166.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11487,10 +11637,10 @@
   };
   A.NumInc.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments155(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments165(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments155.prototype = {
+  A.NodeWithArguments165.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11516,10 +11666,10 @@
   };
   A.NumIntegerRandom.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments154(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments164(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments154.prototype = {
+  A.NodeWithArguments164.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -11545,10 +11695,10 @@
   };
   A.NumIsEven.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments153(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments163(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments153.prototype = {
+  A.NodeWithArguments163.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11568,10 +11718,10 @@
   };
   A.NumIsNegative.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments152(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments162(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments152.prototype = {
+  A.NodeWithArguments162.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11591,10 +11741,10 @@
   };
   A.NumIsOdd.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments151(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments161(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments151.prototype = {
+  A.NodeWithArguments161.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11614,10 +11764,10 @@
   };
   A.NumIsPositive.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments150(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments160(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments150.prototype = {
+  A.NodeWithArguments160.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11637,10 +11787,10 @@
   };
   A.NumIsZero.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments149(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments159(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments149.prototype = {
+  A.NodeWithArguments159.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11657,10 +11807,10 @@
   };
   A.NumLog.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments148(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments158(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments148.prototype = {
+  A.NodeWithArguments158.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11677,10 +11827,10 @@
   };
   A.NumMax.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments147(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments157(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments147.prototype = {
+  A.NodeWithArguments157.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -11700,10 +11850,10 @@
   };
   A.NumMin.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments146(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments156(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments146.prototype = {
+  A.NodeWithArguments156.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -11723,10 +11873,10 @@
   };
   A.NumMod.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments145(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments155(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments145.prototype = {
+  A.NodeWithArguments155.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -11752,10 +11902,10 @@
   };
   A.NumMul.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments144(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments154(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments144.prototype = {
+  A.NodeWithArguments154.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -11781,10 +11931,10 @@
   };
   A.NumNegative.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments143(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments153(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments143.prototype = {
+  A.NodeWithArguments153.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11801,10 +11951,10 @@
   };
   A.NumPow.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments142(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments152(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments142.prototype = {
+  A.NodeWithArguments152.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -11824,10 +11974,10 @@
   };
   A.NumRound.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments141(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments151(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments141.prototype = {
+  A.NodeWithArguments151.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11844,10 +11994,10 @@
   };
   A.NumSign.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments140(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments150(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments140.prototype = {
+  A.NodeWithArguments150.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11864,10 +12014,10 @@
   };
   A.NumSin.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments139(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments149(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments139.prototype = {
+  A.NodeWithArguments149.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11884,10 +12034,10 @@
   };
   A.NumSqrt.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments138(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments148(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments138.prototype = {
+  A.NodeWithArguments148.prototype = {
     evaluate$0() {
       var a, value, result,
         t1 = this.$arguments;
@@ -11906,10 +12056,10 @@
   };
   A.NumSub.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments137(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments147(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments137.prototype = {
+  A.NodeWithArguments147.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -11935,10 +12085,10 @@
   };
   A.NumSum.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments136(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments146(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments136.prototype = {
+  A.NodeWithArguments146.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -11964,10 +12114,10 @@
   };
   A.NumTan.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments135(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments145(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments135.prototype = {
+  A.NodeWithArguments145.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -11984,10 +12134,10 @@
   };
   A.IsBoolean.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments134(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments144(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments134.prototype = {
+  A.NodeWithArguments144.prototype = {
     evaluate$0() {
       var t1 = this.$arguments;
       if (0 >= t1.length)
@@ -11997,10 +12147,10 @@
   };
   A.IsDecimal.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments133(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments143(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments133.prototype = {
+  A.NodeWithArguments143.prototype = {
     evaluate$0() {
       var a, t2,
         t1 = this.$arguments;
@@ -12017,10 +12167,10 @@
   };
   A.IsInfinite.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments132(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments142(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments132.prototype = {
+  A.NodeWithArguments142.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12036,10 +12186,10 @@
   };
   A.IsInteger.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments131(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments141(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments131.prototype = {
+  A.NodeWithArguments141.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12054,10 +12204,10 @@
   };
   A.IsList.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments130(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments140(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments130.prototype = {
+  A.NodeWithArguments140.prototype = {
     evaluate$0() {
       var t1 = this.$arguments;
       if (0 >= t1.length)
@@ -12067,10 +12217,10 @@
   };
   A.IsMap.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments129(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments139(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments129.prototype = {
+  A.NodeWithArguments139.prototype = {
     evaluate$0() {
       var t1 = this.$arguments;
       if (0 >= t1.length)
@@ -12080,10 +12230,10 @@
   };
   A.IsNumber.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments128(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments138(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments128.prototype = {
+  A.NodeWithArguments138.prototype = {
     evaluate$0() {
       var t1 = this.$arguments;
       if (0 >= t1.length)
@@ -12091,12 +12241,25 @@
       return new A.BooleanNode(t1[0].evaluate$0() instanceof A.NumberNode);
     }
   };
-  A.IsString.prototype = {
+  A.IsSet.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments127(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments137(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments127.prototype = {
+  A.NodeWithArguments137.prototype = {
+    evaluate$0() {
+      var t1 = this.$arguments;
+      if (0 >= t1.length)
+        return A.ioore(t1, 0);
+      return new A.BooleanNode(t1[0].evaluate$0() instanceof A.SetNode);
+    }
+  };
+  A.IsString.prototype = {
+    node$1($arguments) {
+      return new A.NodeWithArguments136(type$.List_Node._as($arguments), this.name, this.parameters);
+    }
+  };
+  A.NodeWithArguments136.prototype = {
     evaluate$0() {
       var t1 = this.$arguments;
       if (0 >= t1.length)
@@ -12106,10 +12269,10 @@
   };
   A.IsVector.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments126(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments135(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments126.prototype = {
+  A.NodeWithArguments135.prototype = {
     evaluate$0() {
       var t1 = this.$arguments;
       if (0 >= t1.length)
@@ -12119,10 +12282,10 @@
   };
   A.ToBoolean.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments125(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments134(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments125.prototype = {
+  A.NodeWithArguments134.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12143,10 +12306,10 @@
   };
   A.ToDecimal.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments124(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments133(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments124.prototype = {
+  A.NodeWithArguments133.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12165,10 +12328,10 @@
   };
   A.ToInteger.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments123(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments132(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments123.prototype = {
+  A.NodeWithArguments132.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12187,10 +12350,10 @@
   };
   A.ToNumber.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments122(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments131(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments122.prototype = {
+  A.NodeWithArguments131.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12209,10 +12372,10 @@
   };
   A.ToString.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments121(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments130(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments121.prototype = {
+  A.NodeWithArguments130.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12227,10 +12390,10 @@
   };
   A.CompEq.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments120(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments129(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments120.prototype = {
+  A.NodeWithArguments129.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12244,10 +12407,10 @@
   };
   A.CompGe.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments117(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments126(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments117.prototype = {
+  A.NodeWithArguments126.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12261,10 +12424,10 @@
   };
   A.CompGt.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments118(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments127(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments118.prototype = {
+  A.NodeWithArguments127.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12278,10 +12441,10 @@
   };
   A.CompLe.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments115(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments124(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments115.prototype = {
+  A.NodeWithArguments124.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12295,10 +12458,10 @@
   };
   A.CompLt.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments116(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments125(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments116.prototype = {
+  A.NodeWithArguments125.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12312,10 +12475,10 @@
   };
   A.CompNeq.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments119(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments128(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments119.prototype = {
+  A.NodeWithArguments128.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12336,10 +12499,10 @@
   };
   A.ConsoleWrite.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments114(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments123(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments114.prototype = {
+  A.NodeWithArguments123.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12352,10 +12515,10 @@
   };
   A.ConsoleWriteLn.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments113(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments122(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments113.prototype = {
+  A.NodeWithArguments122.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12368,10 +12531,10 @@
   };
   A.If.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments112(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments121(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments112.prototype = {
+  A.NodeWithArguments121.prototype = {
     evaluate$0() {
       var a, t2, b, c,
         t1 = this.$arguments;
@@ -12398,10 +12561,10 @@
   };
   A.Try.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments111(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments120(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments111.prototype = {
+  A.NodeWithArguments120.prototype = {
     evaluate$0() {
       var a, b, exception,
         t1 = this.$arguments,
@@ -12422,10 +12585,10 @@
   };
   A.EnvGet.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments110(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments119(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments110.prototype = {
+  A.NodeWithArguments119.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12443,10 +12606,10 @@
   };
   A.Throw.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments109(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments118(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments109.prototype = {
+  A.NodeWithArguments118.prototype = {
     evaluate$0() {
       var t1 = this.$arguments;
       if (0 >= t1.length)
@@ -12460,10 +12623,10 @@
   A.CustomError.prototype = {};
   A.HashMd5.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments108(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments117(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments108.prototype = {
+  A.NodeWithArguments117.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12480,10 +12643,10 @@
   };
   A.HashSha1.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments107(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments116(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments107.prototype = {
+  A.NodeWithArguments116.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12500,10 +12663,10 @@
   };
   A.HashSha256.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments106(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments115(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments106.prototype = {
+  A.NodeWithArguments115.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12520,10 +12683,10 @@
   };
   A.HashSha512.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments105(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments114(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments105.prototype = {
+  A.NodeWithArguments114.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12540,10 +12703,10 @@
   };
   A.ElementAt.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments104(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments113(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments104.prototype = {
+  A.NodeWithArguments113.prototype = {
     evaluate$0() {
       var a, b, node,
         t1 = this.$arguments;
@@ -12572,10 +12735,10 @@
   };
   A.JsonDecode.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments103(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments112(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments103.prototype = {
+  A.NodeWithArguments112.prototype = {
     evaluate$0() {
       var a, _this = this,
         t1 = _this.$arguments;
@@ -12616,14 +12779,14 @@
     call$2(key, value) {
       this.result.$indexSet(0, A.LiteralNode_from(key), this.$this.getValue$1(value));
     },
-    $signature: 5
+    $signature: 6
   };
   A.JsonEncode.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments102(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments111(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments102.prototype = {
+  A.NodeWithArguments111.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12642,10 +12805,10 @@
   };
   A.ListAll.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments101(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments110(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments101.prototype = {
+  A.NodeWithArguments110.prototype = {
     evaluate$0() {
       var a, b, t2, value,
         t1 = this.$arguments;
@@ -12670,10 +12833,10 @@
   };
   A.ListAny.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments100(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments109(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments100.prototype = {
+  A.NodeWithArguments109.prototype = {
     evaluate$0() {
       var a, b, t2, value,
         t1 = this.$arguments;
@@ -12698,10 +12861,10 @@
   };
   A.ListAt.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments99(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments108(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments99.prototype = {
+  A.NodeWithArguments108.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -12721,10 +12884,10 @@
   };
   A.ListConcat.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments98(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments107(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments98.prototype = {
+  A.NodeWithArguments107.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -12746,10 +12909,10 @@
   };
   A.ListContains.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments97(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments106(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments97.prototype = {
+  A.NodeWithArguments106.prototype = {
     evaluate$0() {
       var a, b, _this = this,
         t1 = _this.$arguments;
@@ -12772,10 +12935,10 @@
   };
   A.ListDrop.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments96(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments105(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments96.prototype = {
+  A.NodeWithArguments105.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -12797,10 +12960,10 @@
   };
   A.ListFilled.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments95(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments104(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments95.prototype = {
+  A.NodeWithArguments104.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -12820,10 +12983,10 @@
   };
   A.ListFilter.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments94(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments103(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments94.prototype = {
+  A.NodeWithArguments103.prototype = {
     evaluate$0() {
       var a, b, result, t2, t3, value,
         t1 = this.$arguments;
@@ -12851,10 +13014,10 @@
   };
   A.ListFirst.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments93(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments102(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments93.prototype = {
+  A.NodeWithArguments102.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12871,10 +13034,10 @@
   };
   A.ListIndexOf.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments92(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments101(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments92.prototype = {
+  A.NodeWithArguments101.prototype = {
     evaluate$0() {
       var a, b, t2, i, _this = this,
         t1 = _this.$arguments;
@@ -12897,10 +13060,10 @@
   };
   A.ListInit.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments91(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments100(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments91.prototype = {
+  A.NodeWithArguments100.prototype = {
     evaluate$0() {
       var a, t2,
         t1 = this.$arguments;
@@ -12919,10 +13082,10 @@
   };
   A.ListInsertEnd.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments90(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments99(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments90.prototype = {
+  A.NodeWithArguments99.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -12944,10 +13107,10 @@
   };
   A.ListInsertStart.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments89(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments98(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments89.prototype = {
+  A.NodeWithArguments98.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -12969,10 +13132,10 @@
   };
   A.ListIsEmpty.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments88(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments97(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments88.prototype = {
+  A.NodeWithArguments97.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -12989,10 +13152,10 @@
   };
   A.ListIsNotEmpty.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments87(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments96(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments87.prototype = {
+  A.NodeWithArguments96.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13009,10 +13172,10 @@
   };
   A.ListJoin.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments86(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments95(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments86.prototype = {
+  A.NodeWithArguments95.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -13032,10 +13195,10 @@
   };
   A.ListLast.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments85(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments94(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments85.prototype = {
+  A.NodeWithArguments94.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13052,10 +13215,10 @@
   };
   A.ListLength.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments84(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments93(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments84.prototype = {
+  A.NodeWithArguments93.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13072,10 +13235,10 @@
   };
   A.ListMap.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments83(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments92(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments83.prototype = {
+  A.NodeWithArguments92.prototype = {
     evaluate$0() {
       var a, b, result, t2,
         t1 = this.$arguments;
@@ -13099,10 +13262,10 @@
   };
   A.ListNone.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments82(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments91(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments82.prototype = {
+  A.NodeWithArguments91.prototype = {
     evaluate$0() {
       var a, b, t2, value,
         t1 = this.$arguments;
@@ -13127,10 +13290,10 @@
   };
   A.ListReduce.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments81(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments90(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments81.prototype = {
+  A.NodeWithArguments90.prototype = {
     evaluate$0() {
       var a, b, c, t2, accumulated,
         t1 = this.$arguments;
@@ -13155,10 +13318,10 @@
   };
   A.ListRemove.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments79(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments88(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments79.prototype = {
+  A.NodeWithArguments88.prototype = {
     evaluate$0() {
       var a, b, result, elementReduced, _this = this,
         t1 = _this.$arguments;
@@ -13184,10 +13347,10 @@
   };
   A.ListRemoveAt.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments80(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments89(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments80.prototype = {
+  A.NodeWithArguments89.prototype = {
     evaluate$0() {
       var a, b, t2, t3, t4,
         t1 = this.$arguments;
@@ -13211,10 +13374,10 @@
   };
   A.ListRest.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments78(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments87(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments78.prototype = {
+  A.NodeWithArguments87.prototype = {
     evaluate$0() {
       var a, t2,
         t1 = this.$arguments;
@@ -13233,10 +13396,10 @@
   };
   A.ListReverse.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments77(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments86(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments77.prototype = {
+  A.NodeWithArguments86.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13254,10 +13417,10 @@
   };
   A.ListSet.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments76(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments85(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments76.prototype = {
+  A.NodeWithArguments85.prototype = {
     evaluate$0() {
       var a, b, c, t2, t3, t4, head, rest,
         t1 = this.$arguments;
@@ -13289,10 +13452,10 @@
   };
   A.ListSort.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments75(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments84(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments75.prototype = {
+  A.NodeWithArguments84.prototype = {
     evaluate$0() {
       var a, b, result,
         t1 = this.$arguments;
@@ -13325,10 +13488,10 @@
   };
   A.ListSublist.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments74(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments83(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments74.prototype = {
+  A.NodeWithArguments83.prototype = {
     evaluate$0() {
       var a, b, c,
         t1 = this.$arguments;
@@ -13351,10 +13514,10 @@
   };
   A.ListSwap.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments73(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments82(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments73.prototype = {
+  A.NodeWithArguments82.prototype = {
     evaluate$0() {
       var a, b, c, result, t2, t3, t4, valueAtB, t5, t6, valueAtC, i, element,
         t1 = this.$arguments;
@@ -13395,10 +13558,10 @@
   };
   A.ListTake.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments72(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments81(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments72.prototype = {
+  A.NodeWithArguments81.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -13418,10 +13581,10 @@
   };
   A.ListZip.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments71(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments80(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments71.prototype = {
+  A.NodeWithArguments80.prototype = {
     evaluate$0() {
       var a, b, c, result, t2, t3, t4, t5, maxLength, i, elementA, elementB, t6,
         t1 = this.$arguments;
@@ -13462,10 +13625,10 @@
   };
   A.BoolAnd.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments70(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments79(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments70.prototype = {
+  A.NodeWithArguments79.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -13485,10 +13648,10 @@
   };
   A.BoolNot.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments69(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments78(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments69.prototype = {
+  A.NodeWithArguments78.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13505,10 +13668,10 @@
   };
   A.BoolOr.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments68(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments77(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments68.prototype = {
+  A.NodeWithArguments77.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -13528,10 +13691,10 @@
   };
   A.BoolXor.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments67(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments76(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments67.prototype = {
+  A.NodeWithArguments76.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -13551,10 +13714,10 @@
   };
   A.MapAt.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments66(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments75(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments66.prototype = {
+  A.NodeWithArguments75.prototype = {
     evaluate$0() {
       var a, b, map, key,
         t1 = this.$arguments;
@@ -13581,10 +13744,10 @@
   };
   A.MapContainsKey.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments65(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments74(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments65.prototype = {
+  A.NodeWithArguments74.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -13604,10 +13767,10 @@
   };
   A.MapIsEmpty.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments64(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments73(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments64.prototype = {
+  A.NodeWithArguments73.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13624,10 +13787,10 @@
   };
   A.MapIsNotEmpty.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments63(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments72(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments63.prototype = {
+  A.NodeWithArguments72.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13644,10 +13807,10 @@
   };
   A.MapKeys.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments62(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments71(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments62.prototype = {
+  A.NodeWithArguments71.prototype = {
     evaluate$0() {
       var a, map,
         t1 = this.$arguments;
@@ -13667,10 +13830,10 @@
   };
   A.MapLength.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments61(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments70(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments61.prototype = {
+  A.NodeWithArguments70.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13687,10 +13850,10 @@
   };
   A.MapRemoveAt.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments60(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments69(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments60.prototype = {
+  A.NodeWithArguments69.prototype = {
     evaluate$0() {
       var a, b, map, newMap,
         t1 = this.$arguments;
@@ -13718,14 +13881,14 @@
       type$.Node._as(value);
       this.newMap.$indexSet(0, A.LiteralNode_from(key), value);
     },
-    $signature: 6
+    $signature: 7
   };
   A.MapSet.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments59(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments68(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments59.prototype = {
+  A.NodeWithArguments68.prototype = {
     evaluate$0() {
       var a, b, c, map, newMap,
         t1 = this.$arguments;
@@ -13756,14 +13919,14 @@
       type$.Node._as(value);
       this.newMap.$indexSet(0, A.LiteralNode_from(key), value);
     },
-    $signature: 6
+    $signature: 7
   };
   A.MapValues.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments58(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments67(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments58.prototype = {
+  A.NodeWithArguments67.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13781,10 +13944,10 @@
   };
   A.OperatorAdd.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments57(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments66(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments57.prototype = {
+  A.NodeWithArguments66.prototype = {
     evaluate$0() {
       var a, b, t2, _this = this,
         t1 = _this.$arguments;
@@ -13812,27 +13975,36 @@
           t1 = A.List_List$of(a.value, true, type$.Node);
           B.JSArray_methods.addAll$1(t1, b.value);
           return new A.ListNode(t1);
-        } else if (t1) {
+        } else if (t1 && !(b instanceof A.ListNode)) {
           t1 = A.List_List$of(a.value, true, type$.Node);
           t1.push(b);
           return new A.ListNode(t1);
-        } else if (b instanceof A.ListNode) {
+        } else if (!t1 && b instanceof A.ListNode) {
           t1 = A._setArrayType([a], type$.JSArray_Node);
           B.JSArray_methods.addAll$1(t1, b.value);
           return new A.ListNode(t1);
         } else {
-          t1 = _this.get$parameterTypes();
-          throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, _this.name));
+          t1 = a instanceof A.SetNode;
+          if (t1 && b instanceof A.SetNode)
+            return A.SetUnion_execute(a, b, _this);
+          else if (t1 && !(b instanceof A.SetNode))
+            return A.SetAdd_execute(a, b, _this);
+          else if (!t1 && b instanceof A.SetNode)
+            return A.SetAdd_execute(b, a, _this);
+          else {
+            t1 = _this.get$parameterTypes();
+            throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, _this.name));
+          }
         }
       }
     }
   };
   A.OperatorAnd.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments56(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments65(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments56.prototype = {
+  A.NodeWithArguments65.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -13852,10 +14024,10 @@
   };
   A.OperatorDiv.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments55(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments64(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments55.prototype = {
+  A.NodeWithArguments64.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -13881,10 +14053,10 @@
   };
   A.OperatorEq.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments54(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments63(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments54.prototype = {
+  A.NodeWithArguments63.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13898,10 +14070,10 @@
   };
   A.OperatorGe.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments53(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments62(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments53.prototype = {
+  A.NodeWithArguments62.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13915,10 +14087,10 @@
   };
   A.OperatorGt.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments52(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments61(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments52.prototype = {
+  A.NodeWithArguments61.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13932,10 +14104,10 @@
   };
   A.OperatorLe.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments51(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments60(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments51.prototype = {
+  A.NodeWithArguments60.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13949,10 +14121,10 @@
   };
   A.OperatorLt.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments50(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments59(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments50.prototype = {
+  A.NodeWithArguments59.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -13966,10 +14138,10 @@
   };
   A.OperatorMod.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments49(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments58(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments49.prototype = {
+  A.NodeWithArguments58.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -13995,10 +14167,10 @@
   };
   A.OperatorMul.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments48(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments57(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments48.prototype = {
+  A.NodeWithArguments57.prototype = {
     evaluate$0() {
       var a, b, t2,
         t1 = this.$arguments;
@@ -14024,10 +14196,10 @@
   };
   A.OperatorNeq.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments47(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments56(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments47.prototype = {
+  A.NodeWithArguments56.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -14041,10 +14213,10 @@
   };
   A.OperatorNot.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments46(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments55(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments46.prototype = {
+  A.NodeWithArguments55.prototype = {
     evaluate$0() {
       var a,
         t1 = this.$arguments;
@@ -14061,10 +14233,10 @@
   };
   A.OperatorOr.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments45(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments54(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments45.prototype = {
+  A.NodeWithArguments54.prototype = {
     evaluate$0() {
       var a, b,
         t1 = this.$arguments;
@@ -14084,10 +14256,10 @@
   };
   A.OperatorSub.prototype = {
     node$1($arguments) {
-      return new A.NodeWithArguments44(type$.List_Node._as($arguments), this.name, this.parameters);
+      return new A.NodeWithArguments53(type$.List_Node._as($arguments), this.name, this.parameters);
     }
   };
-  A.NodeWithArguments44.prototype = {
+  A.NodeWithArguments53.prototype = {
     evaluate$0() {
       var a, b, t2, _this = this,
         t1 = _this.$arguments;
@@ -14108,9 +14280,217 @@
       } else if (a instanceof A.VectorNode && b instanceof A.VectorNode)
         return A.VectorSub_execute(a, b, _this);
       else {
+        t1 = a instanceof A.SetNode;
+        if (t1 && !(b instanceof A.SetNode))
+          return A.SetRemove_execute(a, b, _this);
+        else if (!t1 && b instanceof A.SetNode)
+          return A.SetRemove_execute(b, a, _this);
+        else {
+          t1 = _this.get$parameterTypes();
+          throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, _this.name));
+        }
+      }
+    }
+  };
+  A.SetAdd.prototype = {
+    node$1($arguments) {
+      return new A.NodeWithArguments52(type$.List_Node._as($arguments), this.name, this.parameters);
+    }
+  };
+  A.NodeWithArguments52.prototype = {
+    evaluate$0() {
+      var a,
+        t1 = this.$arguments;
+      if (0 >= t1.length)
+        return A.ioore(t1, 0);
+      a = t1[0].evaluate$0();
+      if (1 >= t1.length)
+        return A.ioore(t1, 1);
+      return A.SetAdd_execute(a, t1[1].evaluate$0(), this);
+    }
+  };
+  A.SetContains.prototype = {
+    node$1($arguments) {
+      return new A.NodeWithArguments51(type$.List_Node._as($arguments), this.name, this.parameters);
+    }
+  };
+  A.NodeWithArguments51.prototype = {
+    evaluate$0() {
+      var a, b, t2, t3, _this = this,
+        t1 = _this.$arguments;
+      if (0 >= t1.length)
+        return A.ioore(t1, 0);
+      a = t1[0].evaluate$0();
+      if (1 >= t1.length)
+        return A.ioore(t1, 1);
+      b = t1[1].evaluate$0();
+      if (a instanceof A.SetNode) {
+        for (t1 = a.value, t1 = A._LinkedHashSetIterator$(t1, t1._collection$_modifications, A._instanceType(t1)._precomputed1), t2 = t1.$ti._precomputed1; t1.moveNext$0();) {
+          t3 = t1._collection$_current;
+          if (A.boolConversionCheck(A.CompEq_execute((t3 == null ? t2._as(t3) : t3).evaluate$0(), b, _this).value))
+            return B.BooleanNode_true;
+        }
+        return B.BooleanNode_false;
+      } else {
         t1 = _this.get$parameterTypes();
         throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, _this.name));
       }
+    }
+  };
+  A.SetIntersection.prototype = {
+    node$1($arguments) {
+      return new A.NodeWithArguments50(type$.List_Node._as($arguments), this.name, this.parameters);
+    }
+  };
+  A.NodeWithArguments50.prototype = {
+    evaluate$0() {
+      var a, b, setA, set, t2, t3,
+        t1 = this.$arguments;
+      if (0 >= t1.length)
+        return A.ioore(t1, 0);
+      a = t1[0].evaluate$0();
+      if (1 >= t1.length)
+        return A.ioore(t1, 1);
+      b = t1[1].evaluate$0();
+      if (a instanceof A.SetNode && b instanceof A.SetNode) {
+        setA = a.native$0();
+        set = A.LinkedHashSet_LinkedHashSet$_empty(type$.Node);
+        for (t1 = b.value, t1 = A._LinkedHashSetIterator$(t1, t1._collection$_modifications, A._instanceType(t1)._precomputed1), t2 = t1.$ti._precomputed1; t1.moveNext$0();) {
+          t3 = t1._collection$_current;
+          if (t3 == null)
+            t3 = t2._as(t3);
+          if (setA.contains$1(0, t3.native$0()))
+            set.add$1(0, t3);
+        }
+        return new A.SetNode(set);
+      } else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, this.name));
+      }
+    }
+  };
+  A.SetIsEmpty.prototype = {
+    node$1($arguments) {
+      return new A.NodeWithArguments49(type$.List_Node._as($arguments), this.name, this.parameters);
+    }
+  };
+  A.NodeWithArguments49.prototype = {
+    evaluate$0() {
+      var a,
+        t1 = this.$arguments;
+      if (0 >= t1.length)
+        return A.ioore(t1, 0);
+      a = t1[0].evaluate$0();
+      if (a instanceof A.SetNode)
+        return new A.BooleanNode(a.value._collection$_length === 0);
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
+      }
+    }
+  };
+  A.SetIsNotEmpty.prototype = {
+    node$1($arguments) {
+      return new A.NodeWithArguments48(type$.List_Node._as($arguments), this.name, this.parameters);
+    }
+  };
+  A.NodeWithArguments48.prototype = {
+    evaluate$0() {
+      var a,
+        t1 = this.$arguments;
+      if (0 >= t1.length)
+        return A.ioore(t1, 0);
+      a = t1[0].evaluate$0();
+      if (a instanceof A.SetNode)
+        return new A.BooleanNode(a.value._collection$_length !== 0);
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
+      }
+    }
+  };
+  A.SetLength.prototype = {
+    node$1($arguments) {
+      return new A.NodeWithArguments47(type$.List_Node._as($arguments), this.name, this.parameters);
+    }
+  };
+  A.NodeWithArguments47.prototype = {
+    evaluate$0() {
+      var a,
+        t1 = this.$arguments;
+      if (0 >= t1.length)
+        return A.ioore(t1, 0);
+      a = t1[0].evaluate$0();
+      if (a instanceof A.SetNode)
+        return new A.NumberNode(a.value._collection$_length);
+      else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
+      }
+    }
+  };
+  A.SetNew.prototype = {
+    node$1($arguments) {
+      return new A.NodeWithArguments46(type$.List_Node._as($arguments), this.name, this.parameters);
+    }
+  };
+  A.NodeWithArguments46.prototype = {
+    evaluate$0() {
+      var a, nodeElements, nativeElements, t2, native,
+        t1 = this.$arguments;
+      if (0 >= t1.length)
+        return A.ioore(t1, 0);
+      a = t1[0].evaluate$0();
+      if (a instanceof A.ListNode) {
+        nodeElements = A.LinkedHashSet_LinkedHashSet$_empty(type$.Node);
+        nativeElements = A.LinkedHashSet_LinkedHashSet$_empty(type$.dynamic);
+        for (t1 = J.get$iterator$ax(a.value); t1.moveNext$0();) {
+          t2 = t1.get$current();
+          native = t2.native$0();
+          if (!nativeElements.contains$1(0, native)) {
+            nodeElements.add$1(0, t2);
+            nativeElements.add$1(0, native);
+          }
+        }
+        return new A.SetNode(nodeElements);
+      } else {
+        t1 = this.get$parameterTypes();
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, this.name));
+      }
+    }
+  };
+  A.SetRemove.prototype = {
+    node$1($arguments) {
+      return new A.NodeWithArguments45(type$.List_Node._as($arguments), this.name, this.parameters);
+    }
+  };
+  A.NodeWithArguments45.prototype = {
+    evaluate$0() {
+      var a,
+        t1 = this.$arguments;
+      if (0 >= t1.length)
+        return A.ioore(t1, 0);
+      a = t1[0].evaluate$0();
+      if (1 >= t1.length)
+        return A.ioore(t1, 1);
+      return A.SetRemove_execute(a, t1[1].evaluate$0(), this);
+    }
+  };
+  A.SetUnion.prototype = {
+    node$1($arguments) {
+      return new A.NodeWithArguments44(type$.List_Node._as($arguments), this.name, this.parameters);
+    }
+  };
+  A.NodeWithArguments44.prototype = {
+    evaluate$0() {
+      var a,
+        t1 = this.$arguments;
+      if (0 >= t1.length)
+        return A.ioore(t1, 0);
+      a = t1[0].evaluate$0();
+      if (1 >= t1.length)
+        return A.ioore(t1, 1);
+      return A.SetUnion_execute(a, t1[1].evaluate$0(), this);
     }
   };
   A.StrAt.prototype = {
@@ -15046,7 +15426,7 @@
         return new A.NumberNode(Math.acos(dotProduct / (A._asNum(A.VectorMagnitude_execute(a, _this).value) * A._asNum(A.VectorMagnitude_execute(b, _this).value))));
       } else {
         t1 = _this.get$parameterTypes();
-        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type()], type$.JSArray_Type), t1, _this.name));
+        throw A.wrapException(A.InvalidArgumentTypesError$(A._setArrayType([a.get$type(), b.get$type()], type$.JSArray_Type), t1, _this.name));
       }
     }
   };
@@ -15179,6 +15559,11 @@
       return "Vector";
     }
   };
+  A.SetType.prototype = {
+    toString$0(_) {
+      return "Set";
+    }
+  };
   A.ListType.prototype = {
     toString$0(_) {
       return "List";
@@ -15284,13 +15669,13 @@
     call$1(e) {
       return type$.Node._as(e).substitute$1(this.bindings);
     },
-    $signature: 1
+    $signature: 0
   };
   A.ListNode_native_closure.prototype = {
     call$1(e) {
       return type$.Node._as(e).native$0();
     },
-    $signature: 7
+    $signature: 2
   };
   A.VectorNode.prototype = {
     get$type() {
@@ -15309,13 +15694,42 @@
     call$1(e) {
       return type$.Node._as(e).substitute$1(this.bindings);
     },
-    $signature: 1
+    $signature: 0
   };
   A.VectorNode_native_closure.prototype = {
     call$1(e) {
       return type$.Node._as(e).native$0();
     },
-    $signature: 7
+    $signature: 2
+  };
+  A.SetNode.prototype = {
+    get$type() {
+      return B.C_SetType;
+    },
+    substitute$1(bindings) {
+      var t1 = this.value,
+        t2 = A._instanceType(t1),
+        t3 = t2._eval$1("EfficientLengthMappedIterable<1,Node>");
+      return new A.SetNode(A.LinkedHashSet_LinkedHashSet$of(new A.EfficientLengthMappedIterable(t1, t2._eval$1("Node(1)")._as(new A.SetNode_substitute_closure(bindings)), t3), t3._eval$1("Iterable.E")));
+    },
+    native$0() {
+      var t1 = this.value,
+        t2 = A._instanceType(t1),
+        t3 = t2._eval$1("EfficientLengthMappedIterable<1,@>");
+      return A.LinkedHashSet_LinkedHashSet$of(new A.EfficientLengthMappedIterable(t1, t2._eval$1("@(1)")._as(new A.SetNode_native_closure()), t3), t3._eval$1("Iterable.E"));
+    }
+  };
+  A.SetNode_substitute_closure.prototype = {
+    call$1(e) {
+      return type$.Node._as(e).substitute$1(this.bindings);
+    },
+    $signature: 0
+  };
+  A.SetNode_native_closure.prototype = {
+    call$1(e) {
+      return type$.Node._as(e).native$0();
+    },
+    $signature: 2
   };
   A.MapNode.prototype = {
     get$type() {
@@ -15414,7 +15828,7 @@
     call$1(e) {
       return type$.Node._as(e).substitute$1(this.bindings);
     },
-    $signature: 1
+    $signature: 0
   };
   A.FunctionNode.prototype = {
     get$parameterTypes() {
@@ -15456,7 +15870,7 @@
       type$.Parameter._as(e);
       return e.name + ": " + e.type.toString$0(0);
     },
-    $signature: 2
+    $signature: 3
   };
   A.CustomFunctionNode.prototype = {
     substitute$1(bindings) {
@@ -15498,7 +15912,7 @@
       return J.toString$0$(this.format$1(expression.toNode$0().evaluate$0().native$0()));
     },
     format$1(value) {
-      var t1;
+      var t1, t2;
       if (A._isBool(value))
         return value;
       else if (typeof value == "number")
@@ -15507,7 +15921,11 @@
         return '"' + value + '"';
       else if (value instanceof A.DateTime)
         return '"' + value.toIso8601String$0() + '"';
-      else if (type$.List_dynamic._is(value)) {
+      else if (value instanceof A._LinkedHashSet) {
+        t1 = A._instanceType(value);
+        t2 = t1._eval$1("EfficientLengthMappedIterable<1,@>");
+        return A.LinkedHashSet_LinkedHashSet$of(new A.EfficientLengthMappedIterable(value, t1._eval$1("@(1)")._as(this.get$format()), t2), t2._eval$1("Iterable.E"));
+      } else if (type$.List_dynamic._is(value)) {
         t1 = J.map$1$1$ax(value, this.get$format(), type$.dynamic);
         return A.List_List$of(t1, true, t1.$ti._eval$1("ListIterable.E"));
       } else if (type$.Map_dynamic_dynamic._is(value))
@@ -15527,7 +15945,7 @@
       var t1 = this.$this;
       this.result.$indexSet(0, t1.format$1(key), t1.format$1(value));
     },
-    $signature: 5
+    $signature: 6
   };
   A.Scope.prototype = {};
   A.Character.prototype = {
@@ -15696,13 +16114,13 @@
     call$1(e) {
       return type$.Parameter._as(e).name;
     },
-    $signature: 2
+    $signature: 3
   };
   A.SemanticAnalyzer_checkCustomFunctions_closure.prototype = {
     call$1(e) {
       return type$.Parameter._as(e).name;
     },
-    $signature: 2
+    $signature: 3
   };
   A.Expression.prototype = {};
   A.LiteralExpression.prototype = {
@@ -16265,17 +16683,17 @@
       _instance_1_u = hunkHelpers._instance_1u,
       _static_0 = hunkHelpers._static_0,
       _static_2 = hunkHelpers._static_2;
-    _static_1(A, "convert___defaultToEncodable$closure", "_defaultToEncodable", 0);
+    _static_1(A, "convert___defaultToEncodable$closure", "_defaultToEncodable", 1);
     _static_1(A, "core_String___fromCharCode_tearOff$closure", "String___fromCharCode_tearOff", 23);
     var _;
     _instance_1_u(_ = A.Compiler.prototype, "get$compile", "compile$1", 13);
     _instance_1_u(_, "get$expression", "expression$1", 14);
-    _instance_1_u(A.NodeWithArguments103.prototype, "get$getValue", "getValue$1", 15);
+    _instance_1_u(A.NodeWithArguments112.prototype, "get$getValue", "getValue$1", 15);
     _static_1(A, "parameter_Parameter___any_tearOff$closure", "Parameter___any_tearOff", 24);
     _static_1(A, "node_LiteralNode_from$closure", "LiteralNode_from", 25);
     _static_1(A, "node_NumberNode___new_tearOff$closure", "NumberNode___new_tearOff", 26);
     _static_1(A, "node_StringNode___new_tearOff$closure", "StringNode___new_tearOff", 27);
-    _instance_1_u(A.Runtime.prototype, "get$format", "format$1", 0);
+    _instance_1_u(A.Runtime.prototype, "get$format", "format$1", 1);
     _static_0(A, "intermediate_code_IntermediateCode___empty_tearOff$closure", "IntermediateCode___empty_tearOff", 28);
     _static_1(A, "main_web__runtimeWarningsHelper$closure", "runtimeWarningsHelper", 29);
     _static_1(A, "main_web__runtimeHasMainHelper$closure", "runtimeHasMainHelper", 30);
@@ -16302,7 +16720,7 @@
     _inherit(A.UnmodifiableMapView, A._UnmodifiableMapView_MapView__UnmodifiableMapMixin);
     _inherit(A.ConstantMapView, A.UnmodifiableMapView);
     _inherit(A.ConstantStringMap, A.ConstantMap);
-    _inheritMany(A.Closure, [A.Closure2Args, A.TearOffClosure, A.JsLinkedHashMap_values_closure, A.initHooks_closure, A.initHooks_closure1, A.MapBase_entries_closure, A.DateTime_parse_parseIntOrZero, A.DateTime_parse_parseMilliAndMicroseconds, A.NodeWithArguments_evaluate_closure, A.ListNode_substitute_closure, A.ListNode_native_closure, A.VectorNode_substitute_closure, A.VectorNode_native_closure, A.MapNode_substitute_closure, A.CallNode_substitute_closure, A.FunctionNode_parameterTypes_closure, A.FunctionNode_toString_closure, A.NativeFunctionNode_substitute_closure, A.SemanticAnalyzer_checkDuplicatedParameters_closure, A.SemanticAnalyzer_checkCustomFunctions_closure, A.ListExpression_toNode_closure, A.MapExpression_toNode_closure, A.CallExpression_toNode_closure, A.runtimeWarningsHelper_closure]);
+    _inheritMany(A.Closure, [A.Closure2Args, A.TearOffClosure, A.JsLinkedHashMap_values_closure, A.initHooks_closure, A.initHooks_closure1, A.MapBase_entries_closure, A.DateTime_parse_parseIntOrZero, A.DateTime_parse_parseMilliAndMicroseconds, A.NodeWithArguments_evaluate_closure, A.ListNode_substitute_closure, A.ListNode_native_closure, A.VectorNode_substitute_closure, A.VectorNode_native_closure, A.SetNode_substitute_closure, A.SetNode_native_closure, A.MapNode_substitute_closure, A.CallNode_substitute_closure, A.FunctionNode_parameterTypes_closure, A.FunctionNode_toString_closure, A.NativeFunctionNode_substitute_closure, A.SemanticAnalyzer_checkDuplicatedParameters_closure, A.SemanticAnalyzer_checkCustomFunctions_closure, A.ListExpression_toNode_closure, A.MapExpression_toNode_closure, A.CallExpression_toNode_closure, A.runtimeWarningsHelper_closure]);
     _inheritMany(A.Closure2Args, [A.Primitives_functionNoSuchMethod_closure, A.initHooks_closure0, A.MapBase_mapToString_closure, A._JsonStringifier_writeMap_closure, A.NoSuchMethodError_toString_closure, A.NodeWithArguments_getMap_closure, A.NodeWithArguments_evaluate_closure2, A.NodeWithArguments_evaluate_closure1, A.NodeWithArguments_evaluate_closure0, A.Runtime_getMap_closure]);
     _inherit(A.NullError, A.TypeError);
     _inheritMany(A.TearOffClosure, [A.StaticClosure, A.BoundClosure]);
@@ -16338,11 +16756,11 @@
     _inheritMany(A.Token, [A.StringToken, A.NumberToken, A.BooleanToken, A.IdentifierToken, A.IfToken, A.ElseToken, A.MinusToken, A.PlusToken, A.ForwardSlashToken, A.AsteriskToken, A.PercentToken, A.PipeToken, A.AmpersandToken, A.BangToken, A.EqualToken, A.NotEqualToken, A.GreaterThanToken, A.GreaterEqualThanToken, A.LessThanToken, A.LessEqualThanToken, A.AssignToken, A.CommaToken, A.ColonToken, A.OpenParenthesisToken, A.CloseParenthesisToken, A.OpenBracketToken, A.CloseBracketToken, A.OpenBracesToken, A.CloseBracesToken]);
     _inheritMany(A.Node, [A.FunctionNode, A.FreeVariableNode, A.CallNode]);
     _inheritMany(A.FunctionNode, [A.NativeFunctionNode, A.NativeFunctionNodeWithArguments, A.CustomFunctionNode]);
-    _inheritMany(A.NativeFunctionNode, [A.NumAbs, A.NumAdd, A.NumAsDegrees, A.NumAsRadians, A.NumCeil, A.NumClamp, A.NumCompare, A.NumCos, A.NumDec, A.NumDecimalRandom, A.NumDiv, A.NumFloor, A.NumFraction, A.NumInc, A.NumInfinity, A.NumIntegerRandom, A.NumIsEven, A.NumIsNegative, A.NumIsOdd, A.NumIsPositive, A.NumIsZero, A.NumLog, A.NumMax, A.NumMin, A.NumMod, A.NumMul, A.NumNegative, A.NumPow, A.NumRound, A.NumSign, A.NumSin, A.NumSqrt, A.NumSub, A.NumSum, A.NumTan, A.IsBoolean, A.IsDecimal, A.IsInfinite, A.IsInteger, A.IsList, A.IsMap, A.IsNumber, A.IsString, A.IsVector, A.ToBoolean, A.ToDecimal, A.ToInteger, A.ToNumber, A.ToString, A.CompEq, A.CompGe, A.CompGt, A.CompLe, A.CompLt, A.CompNeq, A.ConsoleRead, A.ConsoleWrite, A.ConsoleWriteLn, A.If, A.Try, A.EnvGet, A.Throw, A.HashMd5, A.HashSha1, A.HashSha256, A.HashSha512, A.ElementAt, A.JsonDecode, A.JsonEncode, A.ListAll, A.ListAny, A.ListAt, A.ListConcat, A.ListContains, A.ListDrop, A.ListFilled, A.ListFilter, A.ListFirst, A.ListIndexOf, A.ListInit, A.ListInsertEnd, A.ListInsertStart, A.ListIsEmpty, A.ListIsNotEmpty, A.ListJoin, A.ListLast, A.ListLength, A.ListMap, A.ListNone, A.ListReduce, A.ListRemove, A.ListRemoveAt, A.ListRest, A.ListReverse, A.ListSet, A.ListSort, A.ListSublist, A.ListSwap, A.ListTake, A.ListZip, A.BoolAnd, A.BoolNot, A.BoolOr, A.BoolXor, A.MapAt, A.MapContainsKey, A.MapIsEmpty, A.MapIsNotEmpty, A.MapKeys, A.MapLength, A.MapRemoveAt, A.MapSet, A.MapValues, A.OperatorAdd, A.OperatorAnd, A.OperatorDiv, A.OperatorEq, A.OperatorGe, A.OperatorGt, A.OperatorLe, A.OperatorLt, A.OperatorMod, A.OperatorMul, A.OperatorNeq, A.OperatorNot, A.OperatorOr, A.OperatorSub, A.StrAt, A.StrBytes, A.StrCompare, A.StrConcat, A.StrContains, A.StrDrop, A.StrEndsWith, A.StrFirst, A.StrIndexOf, A.StrInit, A.StrIsEmpty, A.StrIsNotEmpty, A.StrLast, A.StrLength, A.StrLowercase, A.StrMatch, A.StrPadLeft, A.StrPadRight, A.StrRemoveAt, A.StrReplace, A.StrRest, A.StrReverse, A.StrSplit, A.StrStartsWith, A.StrSubstring, A.StrTake, A.StrTrim, A.StrUppercase, A.TimeCompare, A.TimeDay, A.TimeEpoch, A.TimeFromIso, A.TimeHour, A.TimeMillisecond, A.TimeMinute, A.TimeMonth, A.TimeNow, A.TimeSecond, A.TimeToIso, A.TimeYear, A.VectorAdd, A.VectorAngle, A.VectorMagnitude, A.VectorNew, A.VectorNormalize, A.VectorSub]);
-    _inheritMany(A.NativeFunctionNodeWithArguments, [A.NodeWithArguments167, A.NodeWithArguments166, A.NodeWithArguments165, A.NodeWithArguments164, A.NodeWithArguments163, A.NodeWithArguments162, A.NodeWithArguments161, A.NodeWithArguments160, A.NodeWithArguments159, A.NodeWithArguments158, A.NodeWithArguments157, A.NodeWithArguments156, A.NodeWithArguments155, A.NodeWithArguments154, A.NodeWithArguments153, A.NodeWithArguments152, A.NodeWithArguments151, A.NodeWithArguments150, A.NodeWithArguments149, A.NodeWithArguments148, A.NodeWithArguments147, A.NodeWithArguments146, A.NodeWithArguments145, A.NodeWithArguments144, A.NodeWithArguments143, A.NodeWithArguments142, A.NodeWithArguments141, A.NodeWithArguments140, A.NodeWithArguments139, A.NodeWithArguments138, A.NodeWithArguments137, A.NodeWithArguments136, A.NodeWithArguments135, A.NodeWithArguments134, A.NodeWithArguments133, A.NodeWithArguments132, A.NodeWithArguments131, A.NodeWithArguments130, A.NodeWithArguments129, A.NodeWithArguments128, A.NodeWithArguments127, A.NodeWithArguments126, A.NodeWithArguments125, A.NodeWithArguments124, A.NodeWithArguments123, A.NodeWithArguments122, A.NodeWithArguments121, A.NodeWithArguments120, A.NodeWithArguments117, A.NodeWithArguments118, A.NodeWithArguments115, A.NodeWithArguments116, A.NodeWithArguments119, A.NodeWithArguments114, A.NodeWithArguments113, A.NodeWithArguments112, A.NodeWithArguments111, A.NodeWithArguments110, A.NodeWithArguments109, A.NodeWithArguments108, A.NodeWithArguments107, A.NodeWithArguments106, A.NodeWithArguments105, A.NodeWithArguments104, A.NodeWithArguments103, A.NodeWithArguments102, A.NodeWithArguments101, A.NodeWithArguments100, A.NodeWithArguments99, A.NodeWithArguments98, A.NodeWithArguments97, A.NodeWithArguments96, A.NodeWithArguments95, A.NodeWithArguments94, A.NodeWithArguments93, A.NodeWithArguments92, A.NodeWithArguments91, A.NodeWithArguments90, A.NodeWithArguments89, A.NodeWithArguments88, A.NodeWithArguments87, A.NodeWithArguments86, A.NodeWithArguments85, A.NodeWithArguments84, A.NodeWithArguments83, A.NodeWithArguments82, A.NodeWithArguments81, A.NodeWithArguments79, A.NodeWithArguments80, A.NodeWithArguments78, A.NodeWithArguments77, A.NodeWithArguments76, A.NodeWithArguments75, A.NodeWithArguments74, A.NodeWithArguments73, A.NodeWithArguments72, A.NodeWithArguments71, A.NodeWithArguments70, A.NodeWithArguments69, A.NodeWithArguments68, A.NodeWithArguments67, A.NodeWithArguments66, A.NodeWithArguments65, A.NodeWithArguments64, A.NodeWithArguments63, A.NodeWithArguments62, A.NodeWithArguments61, A.NodeWithArguments60, A.NodeWithArguments59, A.NodeWithArguments58, A.NodeWithArguments57, A.NodeWithArguments56, A.NodeWithArguments55, A.NodeWithArguments54, A.NodeWithArguments53, A.NodeWithArguments52, A.NodeWithArguments51, A.NodeWithArguments50, A.NodeWithArguments49, A.NodeWithArguments48, A.NodeWithArguments47, A.NodeWithArguments46, A.NodeWithArguments45, A.NodeWithArguments44, A.NodeWithArguments43, A.NodeWithArguments42, A.NodeWithArguments41, A.NodeWithArguments40, A.NodeWithArguments39, A.NodeWithArguments38, A.NodeWithArguments37, A.NodeWithArguments36, A.NodeWithArguments35, A.NodeWithArguments34, A.NodeWithArguments33, A.NodeWithArguments32, A.NodeWithArguments31, A.NodeWithArguments30, A.NodeWithArguments29, A.NodeWithArguments28, A.NodeWithArguments27, A.NodeWithArguments26, A.NodeWithArguments25, A.NodeWithArguments24, A.NodeWithArguments23, A.NodeWithArguments22, A.NodeWithArguments21, A.NodeWithArguments20, A.NodeWithArguments19, A.NodeWithArguments18, A.NodeWithArguments17, A.NodeWithArguments16, A.NodeWithArguments15, A.NodeWithArguments14, A.NodeWithArguments13, A.NodeWithArguments12, A.NodeWithArguments11, A.NodeWithArguments10, A.NodeWithArguments9, A.NodeWithArguments8, A.NodeWithArguments7, A.NodeWithArguments6, A.NodeWithArguments5, A.NodeWithArguments4, A.NodeWithArguments3, A.NodeWithArguments2, A.NodeWithArguments1, A.NodeWithArguments0, A.NodeWithArguments]);
-    _inheritMany(A.Type, [A.BooleanType, A.NumberType, A.StringType, A.TimestampType, A.VectorType, A.ListType, A.MapType, A.FunctionCallType, A.FunctionType, A.AnyType]);
+    _inheritMany(A.NativeFunctionNode, [A.NumAbs, A.NumAdd, A.NumAsDegrees, A.NumAsRadians, A.NumCeil, A.NumClamp, A.NumCompare, A.NumCos, A.NumDec, A.NumDecimalRandom, A.NumDiv, A.NumFloor, A.NumFraction, A.NumInc, A.NumInfinity, A.NumIntegerRandom, A.NumIsEven, A.NumIsNegative, A.NumIsOdd, A.NumIsPositive, A.NumIsZero, A.NumLog, A.NumMax, A.NumMin, A.NumMod, A.NumMul, A.NumNegative, A.NumPow, A.NumRound, A.NumSign, A.NumSin, A.NumSqrt, A.NumSub, A.NumSum, A.NumTan, A.IsBoolean, A.IsDecimal, A.IsInfinite, A.IsInteger, A.IsList, A.IsMap, A.IsNumber, A.IsSet, A.IsString, A.IsVector, A.ToBoolean, A.ToDecimal, A.ToInteger, A.ToNumber, A.ToString, A.CompEq, A.CompGe, A.CompGt, A.CompLe, A.CompLt, A.CompNeq, A.ConsoleRead, A.ConsoleWrite, A.ConsoleWriteLn, A.If, A.Try, A.EnvGet, A.Throw, A.HashMd5, A.HashSha1, A.HashSha256, A.HashSha512, A.ElementAt, A.JsonDecode, A.JsonEncode, A.ListAll, A.ListAny, A.ListAt, A.ListConcat, A.ListContains, A.ListDrop, A.ListFilled, A.ListFilter, A.ListFirst, A.ListIndexOf, A.ListInit, A.ListInsertEnd, A.ListInsertStart, A.ListIsEmpty, A.ListIsNotEmpty, A.ListJoin, A.ListLast, A.ListLength, A.ListMap, A.ListNone, A.ListReduce, A.ListRemove, A.ListRemoveAt, A.ListRest, A.ListReverse, A.ListSet, A.ListSort, A.ListSublist, A.ListSwap, A.ListTake, A.ListZip, A.BoolAnd, A.BoolNot, A.BoolOr, A.BoolXor, A.MapAt, A.MapContainsKey, A.MapIsEmpty, A.MapIsNotEmpty, A.MapKeys, A.MapLength, A.MapRemoveAt, A.MapSet, A.MapValues, A.OperatorAdd, A.OperatorAnd, A.OperatorDiv, A.OperatorEq, A.OperatorGe, A.OperatorGt, A.OperatorLe, A.OperatorLt, A.OperatorMod, A.OperatorMul, A.OperatorNeq, A.OperatorNot, A.OperatorOr, A.OperatorSub, A.SetAdd, A.SetContains, A.SetIntersection, A.SetIsEmpty, A.SetIsNotEmpty, A.SetLength, A.SetNew, A.SetRemove, A.SetUnion, A.StrAt, A.StrBytes, A.StrCompare, A.StrConcat, A.StrContains, A.StrDrop, A.StrEndsWith, A.StrFirst, A.StrIndexOf, A.StrInit, A.StrIsEmpty, A.StrIsNotEmpty, A.StrLast, A.StrLength, A.StrLowercase, A.StrMatch, A.StrPadLeft, A.StrPadRight, A.StrRemoveAt, A.StrReplace, A.StrRest, A.StrReverse, A.StrSplit, A.StrStartsWith, A.StrSubstring, A.StrTake, A.StrTrim, A.StrUppercase, A.TimeCompare, A.TimeDay, A.TimeEpoch, A.TimeFromIso, A.TimeHour, A.TimeMillisecond, A.TimeMinute, A.TimeMonth, A.TimeNow, A.TimeSecond, A.TimeToIso, A.TimeYear, A.VectorAdd, A.VectorAngle, A.VectorMagnitude, A.VectorNew, A.VectorNormalize, A.VectorSub]);
+    _inheritMany(A.NativeFunctionNodeWithArguments, [A.NodeWithArguments177, A.NodeWithArguments176, A.NodeWithArguments175, A.NodeWithArguments174, A.NodeWithArguments173, A.NodeWithArguments172, A.NodeWithArguments171, A.NodeWithArguments170, A.NodeWithArguments169, A.NodeWithArguments168, A.NodeWithArguments167, A.NodeWithArguments166, A.NodeWithArguments165, A.NodeWithArguments164, A.NodeWithArguments163, A.NodeWithArguments162, A.NodeWithArguments161, A.NodeWithArguments160, A.NodeWithArguments159, A.NodeWithArguments158, A.NodeWithArguments157, A.NodeWithArguments156, A.NodeWithArguments155, A.NodeWithArguments154, A.NodeWithArguments153, A.NodeWithArguments152, A.NodeWithArguments151, A.NodeWithArguments150, A.NodeWithArguments149, A.NodeWithArguments148, A.NodeWithArguments147, A.NodeWithArguments146, A.NodeWithArguments145, A.NodeWithArguments144, A.NodeWithArguments143, A.NodeWithArguments142, A.NodeWithArguments141, A.NodeWithArguments140, A.NodeWithArguments139, A.NodeWithArguments138, A.NodeWithArguments137, A.NodeWithArguments136, A.NodeWithArguments135, A.NodeWithArguments134, A.NodeWithArguments133, A.NodeWithArguments132, A.NodeWithArguments131, A.NodeWithArguments130, A.NodeWithArguments129, A.NodeWithArguments126, A.NodeWithArguments127, A.NodeWithArguments124, A.NodeWithArguments125, A.NodeWithArguments128, A.NodeWithArguments123, A.NodeWithArguments122, A.NodeWithArguments121, A.NodeWithArguments120, A.NodeWithArguments119, A.NodeWithArguments118, A.NodeWithArguments117, A.NodeWithArguments116, A.NodeWithArguments115, A.NodeWithArguments114, A.NodeWithArguments113, A.NodeWithArguments112, A.NodeWithArguments111, A.NodeWithArguments110, A.NodeWithArguments109, A.NodeWithArguments108, A.NodeWithArguments107, A.NodeWithArguments106, A.NodeWithArguments105, A.NodeWithArguments104, A.NodeWithArguments103, A.NodeWithArguments102, A.NodeWithArguments101, A.NodeWithArguments100, A.NodeWithArguments99, A.NodeWithArguments98, A.NodeWithArguments97, A.NodeWithArguments96, A.NodeWithArguments95, A.NodeWithArguments94, A.NodeWithArguments93, A.NodeWithArguments92, A.NodeWithArguments91, A.NodeWithArguments90, A.NodeWithArguments88, A.NodeWithArguments89, A.NodeWithArguments87, A.NodeWithArguments86, A.NodeWithArguments85, A.NodeWithArguments84, A.NodeWithArguments83, A.NodeWithArguments82, A.NodeWithArguments81, A.NodeWithArguments80, A.NodeWithArguments79, A.NodeWithArguments78, A.NodeWithArguments77, A.NodeWithArguments76, A.NodeWithArguments75, A.NodeWithArguments74, A.NodeWithArguments73, A.NodeWithArguments72, A.NodeWithArguments71, A.NodeWithArguments70, A.NodeWithArguments69, A.NodeWithArguments68, A.NodeWithArguments67, A.NodeWithArguments66, A.NodeWithArguments65, A.NodeWithArguments64, A.NodeWithArguments63, A.NodeWithArguments62, A.NodeWithArguments61, A.NodeWithArguments60, A.NodeWithArguments59, A.NodeWithArguments58, A.NodeWithArguments57, A.NodeWithArguments56, A.NodeWithArguments55, A.NodeWithArguments54, A.NodeWithArguments53, A.NodeWithArguments52, A.NodeWithArguments51, A.NodeWithArguments50, A.NodeWithArguments49, A.NodeWithArguments48, A.NodeWithArguments47, A.NodeWithArguments46, A.NodeWithArguments45, A.NodeWithArguments44, A.NodeWithArguments43, A.NodeWithArguments42, A.NodeWithArguments41, A.NodeWithArguments40, A.NodeWithArguments39, A.NodeWithArguments38, A.NodeWithArguments37, A.NodeWithArguments36, A.NodeWithArguments35, A.NodeWithArguments34, A.NodeWithArguments33, A.NodeWithArguments32, A.NodeWithArguments31, A.NodeWithArguments30, A.NodeWithArguments29, A.NodeWithArguments28, A.NodeWithArguments27, A.NodeWithArguments26, A.NodeWithArguments25, A.NodeWithArguments24, A.NodeWithArguments23, A.NodeWithArguments22, A.NodeWithArguments21, A.NodeWithArguments20, A.NodeWithArguments19, A.NodeWithArguments18, A.NodeWithArguments17, A.NodeWithArguments16, A.NodeWithArguments15, A.NodeWithArguments14, A.NodeWithArguments13, A.NodeWithArguments12, A.NodeWithArguments11, A.NodeWithArguments10, A.NodeWithArguments9, A.NodeWithArguments8, A.NodeWithArguments7, A.NodeWithArguments6, A.NodeWithArguments5, A.NodeWithArguments4, A.NodeWithArguments3, A.NodeWithArguments2, A.NodeWithArguments1, A.NodeWithArguments0, A.NodeWithArguments]);
+    _inheritMany(A.Type, [A.BooleanType, A.NumberType, A.StringType, A.TimestampType, A.VectorType, A.SetType, A.ListType, A.MapType, A.FunctionCallType, A.FunctionType, A.AnyType]);
     _inherit(A.PlatformInterface, A.PlatformBase);
-    _inheritMany(A.LiteralNode, [A.BooleanNode, A.NumberNode, A.StringNode, A.TimestampNode, A.ListNode, A.VectorNode, A.MapNode]);
+    _inheritMany(A.LiteralNode, [A.BooleanNode, A.NumberNode, A.StringNode, A.TimestampNode, A.ListNode, A.VectorNode, A.SetNode, A.MapNode]);
     _inherit(A.BoundedVariableNode, A.FreeVariableNode);
     _inheritMany(A.Expression, [A.LiteralExpression, A.CallExpression]);
     _inheritMany(A.LiteralExpression, [A.BooleanExpression, A.NumberExpression, A.StringExpression, A.ListExpression, A.MapExpression, A.IdentifierExpression]);
@@ -16359,12 +16777,12 @@
     typeUniverse: {eC: new Map(), tR: {}, eT: {}, tPV: {}, sEA: []},
     mangledGlobalNames: {int: "int", double: "double", num: "num", String: "String", bool: "bool", Null: "Null", List: "List", Object: "Object", Map: "Map"},
     mangledNames: {},
-    types: ["@(@)", "Node(Node)", "String(Parameter)", "~(Object?,Object?)", "int(String?)", "~(@,@)", "~(@,Node)", "@(Node)", "Node(Expression)", "~(String,@)", "@(@,String)", "@(String)", "~(Symbol0,@)", "IntermediateCode(String)", "Expression(String)", "Node(@)", "int(Node,Node)", "NumberNode(@)", "MapEntry<Node,Node>(MapEntry<Node,Node>)", "Type(Parameter)", "Node(Parameter)", "MapEntry<Node,Node>(MapEntry<Expression,Expression>)", "String(GenericWarning)", "String(int)", "Parameter(String)", "LiteralNode<@>(@)", "NumberNode(num)", "StringNode(String)", "IntermediateCode()", "List<String>(IntermediateCode)", "bool(IntermediateCode)", "String(IntermediateCode)", "String(IntermediateCode,Expression)"],
+    types: ["Node(Node)", "@(@)", "@(Node)", "String(Parameter)", "~(Object?,Object?)", "int(String?)", "~(@,@)", "~(@,Node)", "Node(Expression)", "~(String,@)", "@(@,String)", "@(String)", "~(Symbol0,@)", "IntermediateCode(String)", "Expression(String)", "Node(@)", "int(Node,Node)", "NumberNode(@)", "MapEntry<Node,Node>(MapEntry<Node,Node>)", "Type(Parameter)", "Node(Parameter)", "MapEntry<Node,Node>(MapEntry<Expression,Expression>)", "String(GenericWarning)", "String(int)", "Parameter(String)", "LiteralNode<@>(@)", "NumberNode(num)", "StringNode(String)", "IntermediateCode()", "List<String>(IntermediateCode)", "bool(IntermediateCode)", "String(IntermediateCode)", "String(IntermediateCode,Expression)"],
     interceptorsByTag: null,
     leafTags: null,
     arrayRti: Symbol("$ti")
   };
-  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"LateError":{"Error":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"SubListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"_KeysOrValues":{"Iterable":["1"],"Iterable.E":"1"},"_KeysOrValuesOrElementsIterator":{"Iterator":["1"]},"JSInvocationMirror":{"Invocation":[]},"NullError":{"Error":[]},"JsNoSuchMethodError":{"Error":[]},"UnknownJsTypeError":{"Error":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"_CyclicInitializationError":{"Error":[]},"RuntimeError":{"Error":[]},"_AssertionError":{"Error":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"],"MapBase.K":"1","MapBase.V":"2"},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"RegExp":[],"Pattern":[]},"NativeByteBuffer":{"TrustedGetRuntimeType":[]},"NativeByteData":{"TrustedGetRuntimeType":[]},"NativeTypedArray":{"JavaScriptIndexingBehavior":["1"]},"NativeTypedArrayOfInt":{"ListBase":["int"],"NativeTypedArray":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"]},"NativeUint16List":{"ListBase":["int"],"NativeTypedArray":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint32List":{"Uint32List":[],"ListBase":["int"],"NativeTypedArray":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint8List":{"Uint8List":[],"ListBase":["int"],"NativeTypedArray":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"_Type":{"Type0":[]},"_Error":{"Error":[]},"_TypeError":{"Error":[]},"_SyncStarIterator":{"Iterator":["1"]},"_SyncStarIterable":{"Iterable":["1"],"Iterable.E":"1"},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"ListBase":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_JsonMap":{"MapBase":["String","@"],"Map":["String","@"],"MapBase.K":"String","MapBase.V":"@"},"_JsonMapKeyIterable":{"ListIterable":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"ListIterable.E":"String","Iterable.E":"String"},"ByteConversionSink":{"Sink":["List<int>"]},"_ByteAdapterSink":{"Sink":["List<int>"]},"JsonUnsupportedObjectError":{"Error":[]},"JsonCyclicError":{"Error":[]},"JsonCodec":{"Codec":["Object?","String"]},"JsonEncoder":{"Converter":["Object?","String"],"Converter.T":"String"},"JsonDecoder":{"Converter":["String","Object?"],"Converter.T":"Object?"},"Utf8Encoder":{"Converter":["String","List<int>"],"Converter.T":"List<int>"},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"AssertionError":{"Error":[]},"TypeError":{"Error":[]},"ArgumentError":{"Error":[]},"RangeError":{"Error":[]},"IndexError":{"Error":[]},"NoSuchMethodError":{"Error":[]},"UnsupportedError":{"Error":[]},"UnimplementedError":{"Error":[]},"StateError":{"Error":[]},"ConcurrentModificationError":{"Error":[]},"OutOfMemoryError":{"Error":[]},"StackOverflowError":{"Error":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"StringBuffer":{"StringSink":[]},"Uint8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint16List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint32List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"DigestSink":{"Sink":["Digest"]},"Hash":{"Converter":["List<int>","Digest"]},"HashSink":{"Sink":["List<int>"]},"_MD5":{"Converter":["List<int>","Digest"],"Converter.T":"Digest"},"_MD5Sink":{"Sink":["List<int>"]},"_Sha1":{"Converter":["List<int>","Digest"],"Converter.T":"Digest"},"_Sha1Sink":{"Sink":["List<int>"]},"_Sha256":{"Converter":["List<int>","Digest"],"Converter.T":"Digest"},"_Sha32BitSink":{"Sink":["List<int>"]},"_Sha256Sink":{"Sink":["List<int>"]},"_Sha512":{"Converter":["List<int>","Digest"],"Converter.T":"Digest"},"_Sha64BitSink":{"Sink":["List<int>"]},"Sha512Sink":{"Sink":["List<int>"]},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalInitState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IdentifierState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"MinusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PlusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"EqualsState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"GreaterState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"LessState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PipeState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AmpersandState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"BangState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ForwardSlashState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AsteriskState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PercentState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SingleLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StartMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ClosingMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommaState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ColonState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenBracesState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseBracesState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"IdentifierToken":{"Token":["String"],"Token.T":"String"},"IfToken":{"Token":["String"],"Token.T":"String"},"ElseToken":{"Token":["String"],"Token.T":"String"},"MinusToken":{"Token":["String"],"Token.T":"String"},"PlusToken":{"Token":["String"],"Token.T":"String"},"ForwardSlashToken":{"Token":["String"],"Token.T":"String"},"AsteriskToken":{"Token":["String"],"Token.T":"String"},"PercentToken":{"Token":["String"],"Token.T":"String"},"PipeToken":{"Token":["String"],"Token.T":"String"},"AmpersandToken":{"Token":["String"],"Token.T":"String"},"BangToken":{"Token":["String"],"Token.T":"String"},"EqualToken":{"Token":["String"],"Token.T":"String"},"NotEqualToken":{"Token":["String"],"Token.T":"String"},"GreaterThanToken":{"Token":["String"],"Token.T":"String"},"GreaterEqualThanToken":{"Token":["String"],"Token.T":"String"},"LessThanToken":{"Token":["String"],"Token.T":"String"},"LessEqualThanToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"ColonToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"OpenBracketToken":{"Token":["String"],"Token.T":"String"},"CloseBracketToken":{"Token":["String"],"Token.T":"String"},"OpenBracesToken":{"Token":["String"],"Token.T":"String"},"CloseBracesToken":{"Token":["String"],"Token.T":"String"},"AssignToken":{"Token":["String"],"Token.T":"String"},"NumAbs":{"FunctionNode":[],"Node":[]},"NodeWithArguments167":{"FunctionNode":[],"Node":[]},"NumAdd":{"FunctionNode":[],"Node":[]},"NodeWithArguments166":{"FunctionNode":[],"Node":[]},"NumAsDegrees":{"FunctionNode":[],"Node":[]},"NodeWithArguments165":{"FunctionNode":[],"Node":[]},"NumAsRadians":{"FunctionNode":[],"Node":[]},"NodeWithArguments164":{"FunctionNode":[],"Node":[]},"NumCeil":{"FunctionNode":[],"Node":[]},"NodeWithArguments163":{"FunctionNode":[],"Node":[]},"NumClamp":{"FunctionNode":[],"Node":[]},"NodeWithArguments162":{"FunctionNode":[],"Node":[]},"NumCompare":{"FunctionNode":[],"Node":[]},"NodeWithArguments161":{"FunctionNode":[],"Node":[]},"NumCos":{"FunctionNode":[],"Node":[]},"NodeWithArguments160":{"FunctionNode":[],"Node":[]},"NumDec":{"FunctionNode":[],"Node":[]},"NodeWithArguments159":{"FunctionNode":[],"Node":[]},"NumDecimalRandom":{"FunctionNode":[],"Node":[]},"NumDiv":{"FunctionNode":[],"Node":[]},"NodeWithArguments158":{"FunctionNode":[],"Node":[]},"NumFloor":{"FunctionNode":[],"Node":[]},"NodeWithArguments157":{"FunctionNode":[],"Node":[]},"NumFraction":{"FunctionNode":[],"Node":[]},"NodeWithArguments156":{"FunctionNode":[],"Node":[]},"NumInc":{"FunctionNode":[],"Node":[]},"NodeWithArguments155":{"FunctionNode":[],"Node":[]},"NumInfinity":{"FunctionNode":[],"Node":[]},"NumIntegerRandom":{"FunctionNode":[],"Node":[]},"NodeWithArguments154":{"FunctionNode":[],"Node":[]},"NumIsEven":{"FunctionNode":[],"Node":[]},"NodeWithArguments153":{"FunctionNode":[],"Node":[]},"NumIsNegative":{"FunctionNode":[],"Node":[]},"NodeWithArguments152":{"FunctionNode":[],"Node":[]},"NumIsOdd":{"FunctionNode":[],"Node":[]},"NodeWithArguments151":{"FunctionNode":[],"Node":[]},"NumIsPositive":{"FunctionNode":[],"Node":[]},"NodeWithArguments150":{"FunctionNode":[],"Node":[]},"NumIsZero":{"FunctionNode":[],"Node":[]},"NodeWithArguments149":{"FunctionNode":[],"Node":[]},"NumLog":{"FunctionNode":[],"Node":[]},"NodeWithArguments148":{"FunctionNode":[],"Node":[]},"NumMax":{"FunctionNode":[],"Node":[]},"NodeWithArguments147":{"FunctionNode":[],"Node":[]},"NumMin":{"FunctionNode":[],"Node":[]},"NodeWithArguments146":{"FunctionNode":[],"Node":[]},"NumMod":{"FunctionNode":[],"Node":[]},"NodeWithArguments145":{"FunctionNode":[],"Node":[]},"NumMul":{"FunctionNode":[],"Node":[]},"NodeWithArguments144":{"FunctionNode":[],"Node":[]},"NumNegative":{"FunctionNode":[],"Node":[]},"NodeWithArguments143":{"FunctionNode":[],"Node":[]},"NumPow":{"FunctionNode":[],"Node":[]},"NodeWithArguments142":{"FunctionNode":[],"Node":[]},"NumRound":{"FunctionNode":[],"Node":[]},"NodeWithArguments141":{"FunctionNode":[],"Node":[]},"NumSign":{"FunctionNode":[],"Node":[]},"NodeWithArguments140":{"FunctionNode":[],"Node":[]},"NumSin":{"FunctionNode":[],"Node":[]},"NodeWithArguments139":{"FunctionNode":[],"Node":[]},"NumSqrt":{"FunctionNode":[],"Node":[]},"NodeWithArguments138":{"FunctionNode":[],"Node":[]},"NumSub":{"FunctionNode":[],"Node":[]},"NodeWithArguments137":{"FunctionNode":[],"Node":[]},"NumSum":{"FunctionNode":[],"Node":[]},"NodeWithArguments136":{"FunctionNode":[],"Node":[]},"NumTan":{"FunctionNode":[],"Node":[]},"NodeWithArguments135":{"FunctionNode":[],"Node":[]},"IsBoolean":{"FunctionNode":[],"Node":[]},"NodeWithArguments134":{"FunctionNode":[],"Node":[]},"IsDecimal":{"FunctionNode":[],"Node":[]},"NodeWithArguments133":{"FunctionNode":[],"Node":[]},"IsInfinite":{"FunctionNode":[],"Node":[]},"NodeWithArguments132":{"FunctionNode":[],"Node":[]},"IsInteger":{"FunctionNode":[],"Node":[]},"NodeWithArguments131":{"FunctionNode":[],"Node":[]},"IsList":{"FunctionNode":[],"Node":[]},"NodeWithArguments130":{"FunctionNode":[],"Node":[]},"IsMap":{"FunctionNode":[],"Node":[]},"NodeWithArguments129":{"FunctionNode":[],"Node":[]},"IsNumber":{"FunctionNode":[],"Node":[]},"NodeWithArguments128":{"FunctionNode":[],"Node":[]},"IsString":{"FunctionNode":[],"Node":[]},"NodeWithArguments127":{"FunctionNode":[],"Node":[]},"IsVector":{"FunctionNode":[],"Node":[]},"NodeWithArguments126":{"FunctionNode":[],"Node":[]},"ToBoolean":{"FunctionNode":[],"Node":[]},"NodeWithArguments125":{"FunctionNode":[],"Node":[]},"ToDecimal":{"FunctionNode":[],"Node":[]},"NodeWithArguments124":{"FunctionNode":[],"Node":[]},"ToInteger":{"FunctionNode":[],"Node":[]},"NodeWithArguments123":{"FunctionNode":[],"Node":[]},"ToNumber":{"FunctionNode":[],"Node":[]},"NodeWithArguments122":{"FunctionNode":[],"Node":[]},"ToString":{"FunctionNode":[],"Node":[]},"NodeWithArguments121":{"FunctionNode":[],"Node":[]},"CompEq":{"FunctionNode":[],"Node":[]},"NodeWithArguments120":{"FunctionNode":[],"Node":[]},"CompGe":{"FunctionNode":[],"Node":[]},"NodeWithArguments117":{"FunctionNode":[],"Node":[]},"CompGt":{"FunctionNode":[],"Node":[]},"NodeWithArguments118":{"FunctionNode":[],"Node":[]},"CompLe":{"FunctionNode":[],"Node":[]},"NodeWithArguments115":{"FunctionNode":[],"Node":[]},"CompLt":{"FunctionNode":[],"Node":[]},"NodeWithArguments116":{"FunctionNode":[],"Node":[]},"CompNeq":{"FunctionNode":[],"Node":[]},"NodeWithArguments119":{"FunctionNode":[],"Node":[]},"ConsoleRead":{"FunctionNode":[],"Node":[]},"ConsoleWrite":{"FunctionNode":[],"Node":[]},"NodeWithArguments114":{"FunctionNode":[],"Node":[]},"ConsoleWriteLn":{"FunctionNode":[],"Node":[]},"NodeWithArguments113":{"FunctionNode":[],"Node":[]},"If":{"FunctionNode":[],"Node":[]},"NodeWithArguments112":{"FunctionNode":[],"Node":[]},"Try":{"FunctionNode":[],"Node":[]},"NodeWithArguments111":{"FunctionNode":[],"Node":[]},"EnvGet":{"FunctionNode":[],"Node":[]},"NodeWithArguments110":{"FunctionNode":[],"Node":[]},"Throw":{"FunctionNode":[],"Node":[]},"NodeWithArguments109":{"FunctionNode":[],"Node":[]},"HashMd5":{"FunctionNode":[],"Node":[]},"NodeWithArguments108":{"FunctionNode":[],"Node":[]},"HashSha1":{"FunctionNode":[],"Node":[]},"NodeWithArguments107":{"FunctionNode":[],"Node":[]},"HashSha256":{"FunctionNode":[],"Node":[]},"NodeWithArguments106":{"FunctionNode":[],"Node":[]},"HashSha512":{"FunctionNode":[],"Node":[]},"NodeWithArguments105":{"FunctionNode":[],"Node":[]},"ElementAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments104":{"FunctionNode":[],"Node":[]},"JsonDecode":{"FunctionNode":[],"Node":[]},"NodeWithArguments103":{"FunctionNode":[],"Node":[]},"JsonEncode":{"FunctionNode":[],"Node":[]},"NodeWithArguments102":{"FunctionNode":[],"Node":[]},"ListAll":{"FunctionNode":[],"Node":[]},"NodeWithArguments101":{"FunctionNode":[],"Node":[]},"ListAny":{"FunctionNode":[],"Node":[]},"NodeWithArguments100":{"FunctionNode":[],"Node":[]},"ListAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments99":{"FunctionNode":[],"Node":[]},"ListConcat":{"FunctionNode":[],"Node":[]},"NodeWithArguments98":{"FunctionNode":[],"Node":[]},"ListContains":{"FunctionNode":[],"Node":[]},"NodeWithArguments97":{"FunctionNode":[],"Node":[]},"ListDrop":{"FunctionNode":[],"Node":[]},"NodeWithArguments96":{"FunctionNode":[],"Node":[]},"ListFilled":{"FunctionNode":[],"Node":[]},"NodeWithArguments95":{"FunctionNode":[],"Node":[]},"ListFilter":{"FunctionNode":[],"Node":[]},"NodeWithArguments94":{"FunctionNode":[],"Node":[]},"ListFirst":{"FunctionNode":[],"Node":[]},"NodeWithArguments93":{"FunctionNode":[],"Node":[]},"ListIndexOf":{"FunctionNode":[],"Node":[]},"NodeWithArguments92":{"FunctionNode":[],"Node":[]},"ListInit":{"FunctionNode":[],"Node":[]},"NodeWithArguments91":{"FunctionNode":[],"Node":[]},"ListInsertEnd":{"FunctionNode":[],"Node":[]},"NodeWithArguments90":{"FunctionNode":[],"Node":[]},"ListInsertStart":{"FunctionNode":[],"Node":[]},"NodeWithArguments89":{"FunctionNode":[],"Node":[]},"ListIsEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments88":{"FunctionNode":[],"Node":[]},"ListIsNotEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments87":{"FunctionNode":[],"Node":[]},"ListJoin":{"FunctionNode":[],"Node":[]},"NodeWithArguments86":{"FunctionNode":[],"Node":[]},"ListLast":{"FunctionNode":[],"Node":[]},"NodeWithArguments85":{"FunctionNode":[],"Node":[]},"ListLength":{"FunctionNode":[],"Node":[]},"NodeWithArguments84":{"FunctionNode":[],"Node":[]},"ListMap":{"FunctionNode":[],"Node":[]},"NodeWithArguments83":{"FunctionNode":[],"Node":[]},"ListNone":{"FunctionNode":[],"Node":[]},"NodeWithArguments82":{"FunctionNode":[],"Node":[]},"ListReduce":{"FunctionNode":[],"Node":[]},"NodeWithArguments81":{"FunctionNode":[],"Node":[]},"ListRemove":{"FunctionNode":[],"Node":[]},"NodeWithArguments79":{"FunctionNode":[],"Node":[]},"ListRemoveAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments80":{"FunctionNode":[],"Node":[]},"ListRest":{"FunctionNode":[],"Node":[]},"NodeWithArguments78":{"FunctionNode":[],"Node":[]},"ListReverse":{"FunctionNode":[],"Node":[]},"NodeWithArguments77":{"FunctionNode":[],"Node":[]},"ListSet":{"FunctionNode":[],"Node":[]},"NodeWithArguments76":{"FunctionNode":[],"Node":[]},"ListSort":{"FunctionNode":[],"Node":[]},"NodeWithArguments75":{"FunctionNode":[],"Node":[]},"ListSublist":{"FunctionNode":[],"Node":[]},"NodeWithArguments74":{"FunctionNode":[],"Node":[]},"ListSwap":{"FunctionNode":[],"Node":[]},"NodeWithArguments73":{"FunctionNode":[],"Node":[]},"ListTake":{"FunctionNode":[],"Node":[]},"NodeWithArguments72":{"FunctionNode":[],"Node":[]},"ListZip":{"FunctionNode":[],"Node":[]},"NodeWithArguments71":{"FunctionNode":[],"Node":[]},"BoolAnd":{"FunctionNode":[],"Node":[]},"NodeWithArguments70":{"FunctionNode":[],"Node":[]},"BoolNot":{"FunctionNode":[],"Node":[]},"NodeWithArguments69":{"FunctionNode":[],"Node":[]},"BoolOr":{"FunctionNode":[],"Node":[]},"NodeWithArguments68":{"FunctionNode":[],"Node":[]},"BoolXor":{"FunctionNode":[],"Node":[]},"NodeWithArguments67":{"FunctionNode":[],"Node":[]},"MapAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments66":{"FunctionNode":[],"Node":[]},"MapContainsKey":{"FunctionNode":[],"Node":[]},"NodeWithArguments65":{"FunctionNode":[],"Node":[]},"MapIsEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments64":{"FunctionNode":[],"Node":[]},"MapIsNotEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments63":{"FunctionNode":[],"Node":[]},"MapKeys":{"FunctionNode":[],"Node":[]},"NodeWithArguments62":{"FunctionNode":[],"Node":[]},"MapLength":{"FunctionNode":[],"Node":[]},"NodeWithArguments61":{"FunctionNode":[],"Node":[]},"MapRemoveAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments60":{"FunctionNode":[],"Node":[]},"MapSet":{"FunctionNode":[],"Node":[]},"NodeWithArguments59":{"FunctionNode":[],"Node":[]},"MapValues":{"FunctionNode":[],"Node":[]},"NodeWithArguments58":{"FunctionNode":[],"Node":[]},"OperatorAdd":{"FunctionNode":[],"Node":[]},"NodeWithArguments57":{"FunctionNode":[],"Node":[]},"OperatorAnd":{"FunctionNode":[],"Node":[]},"NodeWithArguments56":{"FunctionNode":[],"Node":[]},"OperatorDiv":{"FunctionNode":[],"Node":[]},"NodeWithArguments55":{"FunctionNode":[],"Node":[]},"OperatorEq":{"FunctionNode":[],"Node":[]},"NodeWithArguments54":{"FunctionNode":[],"Node":[]},"OperatorGe":{"FunctionNode":[],"Node":[]},"NodeWithArguments53":{"FunctionNode":[],"Node":[]},"OperatorGt":{"FunctionNode":[],"Node":[]},"NodeWithArguments52":{"FunctionNode":[],"Node":[]},"OperatorLe":{"FunctionNode":[],"Node":[]},"NodeWithArguments51":{"FunctionNode":[],"Node":[]},"OperatorLt":{"FunctionNode":[],"Node":[]},"NodeWithArguments50":{"FunctionNode":[],"Node":[]},"OperatorMod":{"FunctionNode":[],"Node":[]},"NodeWithArguments49":{"FunctionNode":[],"Node":[]},"OperatorMul":{"FunctionNode":[],"Node":[]},"NodeWithArguments48":{"FunctionNode":[],"Node":[]},"OperatorNeq":{"FunctionNode":[],"Node":[]},"NodeWithArguments47":{"FunctionNode":[],"Node":[]},"OperatorNot":{"FunctionNode":[],"Node":[]},"NodeWithArguments46":{"FunctionNode":[],"Node":[]},"OperatorOr":{"FunctionNode":[],"Node":[]},"NodeWithArguments45":{"FunctionNode":[],"Node":[]},"OperatorSub":{"FunctionNode":[],"Node":[]},"NodeWithArguments44":{"FunctionNode":[],"Node":[]},"StrAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments43":{"FunctionNode":[],"Node":[]},"StrBytes":{"FunctionNode":[],"Node":[]},"NodeWithArguments42":{"FunctionNode":[],"Node":[]},"StrCompare":{"FunctionNode":[],"Node":[]},"NodeWithArguments41":{"FunctionNode":[],"Node":[]},"StrConcat":{"FunctionNode":[],"Node":[]},"NodeWithArguments40":{"FunctionNode":[],"Node":[]},"StrContains":{"FunctionNode":[],"Node":[]},"NodeWithArguments39":{"FunctionNode":[],"Node":[]},"StrDrop":{"FunctionNode":[],"Node":[]},"NodeWithArguments38":{"FunctionNode":[],"Node":[]},"StrEndsWith":{"FunctionNode":[],"Node":[]},"NodeWithArguments37":{"FunctionNode":[],"Node":[]},"StrFirst":{"FunctionNode":[],"Node":[]},"NodeWithArguments36":{"FunctionNode":[],"Node":[]},"StrIndexOf":{"FunctionNode":[],"Node":[]},"NodeWithArguments35":{"FunctionNode":[],"Node":[]},"StrInit":{"FunctionNode":[],"Node":[]},"NodeWithArguments34":{"FunctionNode":[],"Node":[]},"StrIsEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments33":{"FunctionNode":[],"Node":[]},"StrIsNotEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments32":{"FunctionNode":[],"Node":[]},"StrLast":{"FunctionNode":[],"Node":[]},"NodeWithArguments31":{"FunctionNode":[],"Node":[]},"StrLength":{"FunctionNode":[],"Node":[]},"NodeWithArguments30":{"FunctionNode":[],"Node":[]},"StrLowercase":{"FunctionNode":[],"Node":[]},"NodeWithArguments29":{"FunctionNode":[],"Node":[]},"StrMatch":{"FunctionNode":[],"Node":[]},"NodeWithArguments28":{"FunctionNode":[],"Node":[]},"StrPadLeft":{"FunctionNode":[],"Node":[]},"NodeWithArguments27":{"FunctionNode":[],"Node":[]},"StrPadRight":{"FunctionNode":[],"Node":[]},"NodeWithArguments26":{"FunctionNode":[],"Node":[]},"StrRemoveAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments25":{"FunctionNode":[],"Node":[]},"StrReplace":{"FunctionNode":[],"Node":[]},"NodeWithArguments24":{"FunctionNode":[],"Node":[]},"StrRest":{"FunctionNode":[],"Node":[]},"NodeWithArguments23":{"FunctionNode":[],"Node":[]},"StrReverse":{"FunctionNode":[],"Node":[]},"NodeWithArguments22":{"FunctionNode":[],"Node":[]},"StrSplit":{"FunctionNode":[],"Node":[]},"NodeWithArguments21":{"FunctionNode":[],"Node":[]},"StrStartsWith":{"FunctionNode":[],"Node":[]},"NodeWithArguments20":{"FunctionNode":[],"Node":[]},"StrSubstring":{"FunctionNode":[],"Node":[]},"NodeWithArguments19":{"FunctionNode":[],"Node":[]},"StrTake":{"FunctionNode":[],"Node":[]},"NodeWithArguments18":{"FunctionNode":[],"Node":[]},"StrTrim":{"FunctionNode":[],"Node":[]},"NodeWithArguments17":{"FunctionNode":[],"Node":[]},"StrUppercase":{"FunctionNode":[],"Node":[]},"NodeWithArguments16":{"FunctionNode":[],"Node":[]},"TimeCompare":{"FunctionNode":[],"Node":[]},"NodeWithArguments15":{"FunctionNode":[],"Node":[]},"TimeDay":{"FunctionNode":[],"Node":[]},"NodeWithArguments14":{"FunctionNode":[],"Node":[]},"TimeEpoch":{"FunctionNode":[],"Node":[]},"NodeWithArguments13":{"FunctionNode":[],"Node":[]},"TimeFromIso":{"FunctionNode":[],"Node":[]},"NodeWithArguments12":{"FunctionNode":[],"Node":[]},"TimeHour":{"FunctionNode":[],"Node":[]},"NodeWithArguments11":{"FunctionNode":[],"Node":[]},"TimeMillisecond":{"FunctionNode":[],"Node":[]},"NodeWithArguments10":{"FunctionNode":[],"Node":[]},"TimeMinute":{"FunctionNode":[],"Node":[]},"NodeWithArguments9":{"FunctionNode":[],"Node":[]},"TimeMonth":{"FunctionNode":[],"Node":[]},"NodeWithArguments8":{"FunctionNode":[],"Node":[]},"TimeNow":{"FunctionNode":[],"Node":[]},"TimeSecond":{"FunctionNode":[],"Node":[]},"NodeWithArguments7":{"FunctionNode":[],"Node":[]},"TimeToIso":{"FunctionNode":[],"Node":[]},"NodeWithArguments6":{"FunctionNode":[],"Node":[]},"TimeYear":{"FunctionNode":[],"Node":[]},"NodeWithArguments5":{"FunctionNode":[],"Node":[]},"VectorAdd":{"FunctionNode":[],"Node":[]},"NodeWithArguments4":{"FunctionNode":[],"Node":[]},"VectorAngle":{"FunctionNode":[],"Node":[]},"NodeWithArguments3":{"FunctionNode":[],"Node":[]},"VectorMagnitude":{"FunctionNode":[],"Node":[]},"NodeWithArguments2":{"FunctionNode":[],"Node":[]},"VectorNew":{"FunctionNode":[],"Node":[]},"NodeWithArguments1":{"FunctionNode":[],"Node":[]},"VectorNormalize":{"FunctionNode":[],"Node":[]},"NodeWithArguments0":{"FunctionNode":[],"Node":[]},"VectorSub":{"FunctionNode":[],"Node":[]},"NodeWithArguments":{"FunctionNode":[],"Node":[]},"BooleanType":{"Type":[]},"NumberType":{"Type":[]},"StringType":{"Type":[]},"TimestampType":{"Type":[]},"VectorType":{"Type":[]},"ListType":{"Type":[]},"MapType":{"Type":[]},"FunctionCallType":{"Type":[]},"FunctionType":{"Type":[]},"AnyType":{"Type":[]},"LiteralNode":{"Node":[]},"NumberNode":{"LiteralNode":["num"],"Node":[],"LiteralNode.T":"num"},"StringNode":{"LiteralNode":["String"],"Node":[],"LiteralNode.T":"String"},"FunctionNode":{"Node":[]},"CustomFunctionNode":{"FunctionNode":[],"Node":[]},"BooleanNode":{"LiteralNode":["bool"],"Node":[],"LiteralNode.T":"bool"},"TimestampNode":{"LiteralNode":["DateTime"],"Node":[],"LiteralNode.T":"DateTime"},"ListNode":{"LiteralNode":["List<Node>"],"Node":[],"LiteralNode.T":"List<Node>"},"VectorNode":{"LiteralNode":["List<Node>"],"Node":[],"LiteralNode.T":"List<Node>"},"MapNode":{"LiteralNode":["Map<Node,Node>"],"Node":[],"LiteralNode.T":"Map<Node,Node>"},"FreeVariableNode":{"Node":[]},"BoundedVariableNode":{"FreeVariableNode":[],"Node":[]},"CallNode":{"Node":[]},"NativeFunctionNode":{"FunctionNode":[],"Node":[]},"NativeFunctionNodeWithArguments":{"FunctionNode":[],"Node":[]},"Scanner":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"LiteralExpression":{"Expression":[]},"BooleanExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"NumberExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"StringExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"ListExpression":{"LiteralExpression":["List<Expression>"],"Expression":[],"LiteralExpression.T":"List<Expression>"},"MapExpression":{"LiteralExpression":["Map<Expression,Expression>"],"Expression":[],"LiteralExpression.T":"Map<Expression,Expression>"},"IdentifierExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"CallExpression":{"Expression":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState0":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState0":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]},"TypedDataBuffer":{"ListBase":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_IntBuffer":{"TypedDataBuffer":["int"],"ListBase":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint8Buffer":{"TypedDataBuffer":["int"],"ListBase":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"ListBase.E":"int","TypedDataBuffer.E":"int"}}'));
+  A._Universe_addRules(init.typeUniverse, JSON.parse('{"PlainJavaScriptObject":"LegacyJavaScriptObject","UnknownJavaScriptObject":"LegacyJavaScriptObject","JavaScriptFunction":"LegacyJavaScriptObject","JSBool":{"bool":[],"TrustedGetRuntimeType":[]},"JSNull":{"TrustedGetRuntimeType":[]},"JSArray":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"JSUnmodifiableArray":{"JSArray":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"ArrayIterator":{"Iterator":["1"]},"JSNumber":{"num":[]},"JSInt":{"int":[],"num":[],"TrustedGetRuntimeType":[]},"JSNumNotInt":{"num":[],"TrustedGetRuntimeType":[]},"JSString":{"String":[],"Pattern":[],"TrustedGetRuntimeType":[]},"LateError":{"Error":[]},"EfficientLengthIterable":{"Iterable":["1"]},"ListIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"SubListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"ListIterator":{"Iterator":["1"]},"MappedIterable":{"Iterable":["2"],"Iterable.E":"2"},"EfficientLengthMappedIterable":{"MappedIterable":["1","2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"Iterable.E":"2"},"MappedIterator":{"Iterator":["2"]},"MappedListIterable":{"ListIterable":["2"],"EfficientLengthIterable":["2"],"Iterable":["2"],"ListIterable.E":"2","Iterable.E":"2"},"ReversedListIterable":{"ListIterable":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"],"ListIterable.E":"1","Iterable.E":"1"},"Symbol":{"Symbol0":[]},"ConstantMapView":{"UnmodifiableMapView":["1","2"],"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"ConstantMap":{"Map":["1","2"]},"ConstantStringMap":{"ConstantMap":["1","2"],"Map":["1","2"]},"_KeysOrValues":{"Iterable":["1"],"Iterable.E":"1"},"_KeysOrValuesOrElementsIterator":{"Iterator":["1"]},"JSInvocationMirror":{"Invocation":[]},"NullError":{"Error":[]},"JsNoSuchMethodError":{"Error":[]},"UnknownJsTypeError":{"Error":[]},"Closure":{"Function":[]},"Closure2Args":{"Function":[]},"TearOffClosure":{"Function":[]},"StaticClosure":{"Function":[]},"BoundClosure":{"Function":[]},"_CyclicInitializationError":{"Error":[]},"RuntimeError":{"Error":[]},"_AssertionError":{"Error":[]},"JsLinkedHashMap":{"MapBase":["1","2"],"Map":["1","2"],"MapBase.K":"1","MapBase.V":"2"},"LinkedHashMapKeyIterable":{"EfficientLengthIterable":["1"],"Iterable":["1"],"Iterable.E":"1"},"LinkedHashMapKeyIterator":{"Iterator":["1"]},"JSSyntaxRegExp":{"RegExp":[],"Pattern":[]},"NativeByteBuffer":{"TrustedGetRuntimeType":[]},"NativeByteData":{"TrustedGetRuntimeType":[]},"NativeTypedArray":{"JavaScriptIndexingBehavior":["1"]},"NativeTypedArrayOfInt":{"ListBase":["int"],"NativeTypedArray":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"]},"NativeUint16List":{"ListBase":["int"],"NativeTypedArray":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint32List":{"Uint32List":[],"ListBase":["int"],"NativeTypedArray":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"NativeUint8List":{"Uint8List":[],"ListBase":["int"],"NativeTypedArray":["int"],"List":["int"],"JavaScriptIndexingBehavior":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"FixedLengthListMixin":["int"],"TrustedGetRuntimeType":[],"ListBase.E":"int"},"_Type":{"Type0":[]},"_Error":{"Error":[]},"_TypeError":{"Error":[]},"_SyncStarIterator":{"Iterator":["1"]},"_SyncStarIterable":{"Iterable":["1"],"Iterable.E":"1"},"_LinkedHashSet":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_LinkedHashSetIterator":{"Iterator":["1"]},"ListBase":{"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"MapBase":{"Map":["1","2"]},"MapView":{"Map":["1","2"]},"UnmodifiableMapView":{"_UnmodifiableMapView_MapView__UnmodifiableMapMixin":["1","2"],"MapView":["1","2"],"_UnmodifiableMapMixin":["1","2"],"Map":["1","2"]},"SetBase":{"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_SetBase":{"SetBase":["1"],"Set":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_JsonMap":{"MapBase":["String","@"],"Map":["String","@"],"MapBase.K":"String","MapBase.V":"@"},"_JsonMapKeyIterable":{"ListIterable":["String"],"EfficientLengthIterable":["String"],"Iterable":["String"],"ListIterable.E":"String","Iterable.E":"String"},"ByteConversionSink":{"Sink":["List<int>"]},"_ByteAdapterSink":{"Sink":["List<int>"]},"JsonUnsupportedObjectError":{"Error":[]},"JsonCyclicError":{"Error":[]},"JsonCodec":{"Codec":["Object?","String"]},"JsonEncoder":{"Converter":["Object?","String"],"Converter.T":"String"},"JsonDecoder":{"Converter":["String","Object?"],"Converter.T":"Object?"},"Utf8Encoder":{"Converter":["String","List<int>"],"Converter.T":"List<int>"},"int":{"num":[]},"List":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"Set":{"EfficientLengthIterable":["1"],"Iterable":["1"]},"String":{"Pattern":[]},"AssertionError":{"Error":[]},"TypeError":{"Error":[]},"ArgumentError":{"Error":[]},"RangeError":{"Error":[]},"IndexError":{"Error":[]},"NoSuchMethodError":{"Error":[]},"UnsupportedError":{"Error":[]},"UnimplementedError":{"Error":[]},"StateError":{"Error":[]},"ConcurrentModificationError":{"Error":[]},"OutOfMemoryError":{"Error":[]},"StackOverflowError":{"Error":[]},"Runes":{"Iterable":["int"],"Iterable.E":"int"},"RuneIterator":{"Iterator":["int"]},"StringBuffer":{"StringSink":[]},"Uint8List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint16List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint32List":{"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"DigestSink":{"Sink":["Digest"]},"Hash":{"Converter":["List<int>","Digest"]},"HashSink":{"Sink":["List<int>"]},"_MD5":{"Converter":["List<int>","Digest"],"Converter.T":"Digest"},"_MD5Sink":{"Sink":["List<int>"]},"_Sha1":{"Converter":["List<int>","Digest"],"Converter.T":"Digest"},"_Sha1Sink":{"Sink":["List<int>"]},"_Sha256":{"Converter":["List<int>","Digest"],"Converter.T":"Digest"},"_Sha32BitSink":{"Sink":["List<int>"]},"_Sha256Sink":{"Sink":["List<int>"]},"_Sha512":{"Converter":["List<int>","Digest"],"Converter.T":"Digest"},"_Sha64BitSink":{"Sink":["List<int>"]},"Sha512Sink":{"Sink":["List<int>"]},"LexicalAnalyzer":{"Analyzer":["List<Character>","List<Token<@>>"],"Analyzer.I":"List<Character>"},"InitState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StringDoubleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"StringSingleQuoteState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IntegerState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalInitState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"DecimalState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"IdentifierState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"MinusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PlusState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"EqualsState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"GreaterState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"LessState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PipeState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AmpersandState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"BangState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ForwardSlashState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"AsteriskState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"PercentState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"SingleLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"StartMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"ClosingMultiLineCommentState":{"State":["Character","~"],"State.I":"Character","State.O":"~"},"CommaState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ColonState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseParenthesisState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseBracketState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"OpenBracesState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"CloseBracesState":{"State":["Character","Lexeme"],"State.I":"Character","State.O":"Lexeme"},"ResultState":{"State":["~","List<Token<@>>"],"State.I":"~","State.O":"List<Token<@>>"},"StringToken":{"Token":["String"],"Token.T":"String"},"NumberToken":{"Token":["num"],"Token.T":"num"},"BooleanToken":{"Token":["bool"],"Token.T":"bool"},"IdentifierToken":{"Token":["String"],"Token.T":"String"},"IfToken":{"Token":["String"],"Token.T":"String"},"ElseToken":{"Token":["String"],"Token.T":"String"},"MinusToken":{"Token":["String"],"Token.T":"String"},"PlusToken":{"Token":["String"],"Token.T":"String"},"ForwardSlashToken":{"Token":["String"],"Token.T":"String"},"AsteriskToken":{"Token":["String"],"Token.T":"String"},"PercentToken":{"Token":["String"],"Token.T":"String"},"PipeToken":{"Token":["String"],"Token.T":"String"},"AmpersandToken":{"Token":["String"],"Token.T":"String"},"BangToken":{"Token":["String"],"Token.T":"String"},"EqualToken":{"Token":["String"],"Token.T":"String"},"NotEqualToken":{"Token":["String"],"Token.T":"String"},"GreaterThanToken":{"Token":["String"],"Token.T":"String"},"GreaterEqualThanToken":{"Token":["String"],"Token.T":"String"},"LessThanToken":{"Token":["String"],"Token.T":"String"},"LessEqualThanToken":{"Token":["String"],"Token.T":"String"},"CommaToken":{"Token":["String"],"Token.T":"String"},"ColonToken":{"Token":["String"],"Token.T":"String"},"OpenParenthesisToken":{"Token":["String"],"Token.T":"String"},"CloseParenthesisToken":{"Token":["String"],"Token.T":"String"},"OpenBracketToken":{"Token":["String"],"Token.T":"String"},"CloseBracketToken":{"Token":["String"],"Token.T":"String"},"OpenBracesToken":{"Token":["String"],"Token.T":"String"},"CloseBracesToken":{"Token":["String"],"Token.T":"String"},"AssignToken":{"Token":["String"],"Token.T":"String"},"NumAbs":{"FunctionNode":[],"Node":[]},"NodeWithArguments177":{"FunctionNode":[],"Node":[]},"NumAdd":{"FunctionNode":[],"Node":[]},"NodeWithArguments176":{"FunctionNode":[],"Node":[]},"NumAsDegrees":{"FunctionNode":[],"Node":[]},"NodeWithArguments175":{"FunctionNode":[],"Node":[]},"NumAsRadians":{"FunctionNode":[],"Node":[]},"NodeWithArguments174":{"FunctionNode":[],"Node":[]},"NumCeil":{"FunctionNode":[],"Node":[]},"NodeWithArguments173":{"FunctionNode":[],"Node":[]},"NumClamp":{"FunctionNode":[],"Node":[]},"NodeWithArguments172":{"FunctionNode":[],"Node":[]},"NumCompare":{"FunctionNode":[],"Node":[]},"NodeWithArguments171":{"FunctionNode":[],"Node":[]},"NumCos":{"FunctionNode":[],"Node":[]},"NodeWithArguments170":{"FunctionNode":[],"Node":[]},"NumDec":{"FunctionNode":[],"Node":[]},"NodeWithArguments169":{"FunctionNode":[],"Node":[]},"NumDecimalRandom":{"FunctionNode":[],"Node":[]},"NumDiv":{"FunctionNode":[],"Node":[]},"NodeWithArguments168":{"FunctionNode":[],"Node":[]},"NumFloor":{"FunctionNode":[],"Node":[]},"NodeWithArguments167":{"FunctionNode":[],"Node":[]},"NumFraction":{"FunctionNode":[],"Node":[]},"NodeWithArguments166":{"FunctionNode":[],"Node":[]},"NumInc":{"FunctionNode":[],"Node":[]},"NodeWithArguments165":{"FunctionNode":[],"Node":[]},"NumInfinity":{"FunctionNode":[],"Node":[]},"NumIntegerRandom":{"FunctionNode":[],"Node":[]},"NodeWithArguments164":{"FunctionNode":[],"Node":[]},"NumIsEven":{"FunctionNode":[],"Node":[]},"NodeWithArguments163":{"FunctionNode":[],"Node":[]},"NumIsNegative":{"FunctionNode":[],"Node":[]},"NodeWithArguments162":{"FunctionNode":[],"Node":[]},"NumIsOdd":{"FunctionNode":[],"Node":[]},"NodeWithArguments161":{"FunctionNode":[],"Node":[]},"NumIsPositive":{"FunctionNode":[],"Node":[]},"NodeWithArguments160":{"FunctionNode":[],"Node":[]},"NumIsZero":{"FunctionNode":[],"Node":[]},"NodeWithArguments159":{"FunctionNode":[],"Node":[]},"NumLog":{"FunctionNode":[],"Node":[]},"NodeWithArguments158":{"FunctionNode":[],"Node":[]},"NumMax":{"FunctionNode":[],"Node":[]},"NodeWithArguments157":{"FunctionNode":[],"Node":[]},"NumMin":{"FunctionNode":[],"Node":[]},"NodeWithArguments156":{"FunctionNode":[],"Node":[]},"NumMod":{"FunctionNode":[],"Node":[]},"NodeWithArguments155":{"FunctionNode":[],"Node":[]},"NumMul":{"FunctionNode":[],"Node":[]},"NodeWithArguments154":{"FunctionNode":[],"Node":[]},"NumNegative":{"FunctionNode":[],"Node":[]},"NodeWithArguments153":{"FunctionNode":[],"Node":[]},"NumPow":{"FunctionNode":[],"Node":[]},"NodeWithArguments152":{"FunctionNode":[],"Node":[]},"NumRound":{"FunctionNode":[],"Node":[]},"NodeWithArguments151":{"FunctionNode":[],"Node":[]},"NumSign":{"FunctionNode":[],"Node":[]},"NodeWithArguments150":{"FunctionNode":[],"Node":[]},"NumSin":{"FunctionNode":[],"Node":[]},"NodeWithArguments149":{"FunctionNode":[],"Node":[]},"NumSqrt":{"FunctionNode":[],"Node":[]},"NodeWithArguments148":{"FunctionNode":[],"Node":[]},"NumSub":{"FunctionNode":[],"Node":[]},"NodeWithArguments147":{"FunctionNode":[],"Node":[]},"NumSum":{"FunctionNode":[],"Node":[]},"NodeWithArguments146":{"FunctionNode":[],"Node":[]},"NumTan":{"FunctionNode":[],"Node":[]},"NodeWithArguments145":{"FunctionNode":[],"Node":[]},"IsBoolean":{"FunctionNode":[],"Node":[]},"NodeWithArguments144":{"FunctionNode":[],"Node":[]},"IsDecimal":{"FunctionNode":[],"Node":[]},"NodeWithArguments143":{"FunctionNode":[],"Node":[]},"IsInfinite":{"FunctionNode":[],"Node":[]},"NodeWithArguments142":{"FunctionNode":[],"Node":[]},"IsInteger":{"FunctionNode":[],"Node":[]},"NodeWithArguments141":{"FunctionNode":[],"Node":[]},"IsList":{"FunctionNode":[],"Node":[]},"NodeWithArguments140":{"FunctionNode":[],"Node":[]},"IsMap":{"FunctionNode":[],"Node":[]},"NodeWithArguments139":{"FunctionNode":[],"Node":[]},"IsNumber":{"FunctionNode":[],"Node":[]},"NodeWithArguments138":{"FunctionNode":[],"Node":[]},"IsSet":{"FunctionNode":[],"Node":[]},"NodeWithArguments137":{"FunctionNode":[],"Node":[]},"IsString":{"FunctionNode":[],"Node":[]},"NodeWithArguments136":{"FunctionNode":[],"Node":[]},"IsVector":{"FunctionNode":[],"Node":[]},"NodeWithArguments135":{"FunctionNode":[],"Node":[]},"ToBoolean":{"FunctionNode":[],"Node":[]},"NodeWithArguments134":{"FunctionNode":[],"Node":[]},"ToDecimal":{"FunctionNode":[],"Node":[]},"NodeWithArguments133":{"FunctionNode":[],"Node":[]},"ToInteger":{"FunctionNode":[],"Node":[]},"NodeWithArguments132":{"FunctionNode":[],"Node":[]},"ToNumber":{"FunctionNode":[],"Node":[]},"NodeWithArguments131":{"FunctionNode":[],"Node":[]},"ToString":{"FunctionNode":[],"Node":[]},"NodeWithArguments130":{"FunctionNode":[],"Node":[]},"CompEq":{"FunctionNode":[],"Node":[]},"NodeWithArguments129":{"FunctionNode":[],"Node":[]},"CompGe":{"FunctionNode":[],"Node":[]},"NodeWithArguments126":{"FunctionNode":[],"Node":[]},"CompGt":{"FunctionNode":[],"Node":[]},"NodeWithArguments127":{"FunctionNode":[],"Node":[]},"CompLe":{"FunctionNode":[],"Node":[]},"NodeWithArguments124":{"FunctionNode":[],"Node":[]},"CompLt":{"FunctionNode":[],"Node":[]},"NodeWithArguments125":{"FunctionNode":[],"Node":[]},"CompNeq":{"FunctionNode":[],"Node":[]},"NodeWithArguments128":{"FunctionNode":[],"Node":[]},"ConsoleRead":{"FunctionNode":[],"Node":[]},"ConsoleWrite":{"FunctionNode":[],"Node":[]},"NodeWithArguments123":{"FunctionNode":[],"Node":[]},"ConsoleWriteLn":{"FunctionNode":[],"Node":[]},"NodeWithArguments122":{"FunctionNode":[],"Node":[]},"If":{"FunctionNode":[],"Node":[]},"NodeWithArguments121":{"FunctionNode":[],"Node":[]},"Try":{"FunctionNode":[],"Node":[]},"NodeWithArguments120":{"FunctionNode":[],"Node":[]},"EnvGet":{"FunctionNode":[],"Node":[]},"NodeWithArguments119":{"FunctionNode":[],"Node":[]},"Throw":{"FunctionNode":[],"Node":[]},"NodeWithArguments118":{"FunctionNode":[],"Node":[]},"HashMd5":{"FunctionNode":[],"Node":[]},"NodeWithArguments117":{"FunctionNode":[],"Node":[]},"HashSha1":{"FunctionNode":[],"Node":[]},"NodeWithArguments116":{"FunctionNode":[],"Node":[]},"HashSha256":{"FunctionNode":[],"Node":[]},"NodeWithArguments115":{"FunctionNode":[],"Node":[]},"HashSha512":{"FunctionNode":[],"Node":[]},"NodeWithArguments114":{"FunctionNode":[],"Node":[]},"ElementAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments113":{"FunctionNode":[],"Node":[]},"JsonDecode":{"FunctionNode":[],"Node":[]},"NodeWithArguments112":{"FunctionNode":[],"Node":[]},"JsonEncode":{"FunctionNode":[],"Node":[]},"NodeWithArguments111":{"FunctionNode":[],"Node":[]},"ListAll":{"FunctionNode":[],"Node":[]},"NodeWithArguments110":{"FunctionNode":[],"Node":[]},"ListAny":{"FunctionNode":[],"Node":[]},"NodeWithArguments109":{"FunctionNode":[],"Node":[]},"ListAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments108":{"FunctionNode":[],"Node":[]},"ListConcat":{"FunctionNode":[],"Node":[]},"NodeWithArguments107":{"FunctionNode":[],"Node":[]},"ListContains":{"FunctionNode":[],"Node":[]},"NodeWithArguments106":{"FunctionNode":[],"Node":[]},"ListDrop":{"FunctionNode":[],"Node":[]},"NodeWithArguments105":{"FunctionNode":[],"Node":[]},"ListFilled":{"FunctionNode":[],"Node":[]},"NodeWithArguments104":{"FunctionNode":[],"Node":[]},"ListFilter":{"FunctionNode":[],"Node":[]},"NodeWithArguments103":{"FunctionNode":[],"Node":[]},"ListFirst":{"FunctionNode":[],"Node":[]},"NodeWithArguments102":{"FunctionNode":[],"Node":[]},"ListIndexOf":{"FunctionNode":[],"Node":[]},"NodeWithArguments101":{"FunctionNode":[],"Node":[]},"ListInit":{"FunctionNode":[],"Node":[]},"NodeWithArguments100":{"FunctionNode":[],"Node":[]},"ListInsertEnd":{"FunctionNode":[],"Node":[]},"NodeWithArguments99":{"FunctionNode":[],"Node":[]},"ListInsertStart":{"FunctionNode":[],"Node":[]},"NodeWithArguments98":{"FunctionNode":[],"Node":[]},"ListIsEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments97":{"FunctionNode":[],"Node":[]},"ListIsNotEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments96":{"FunctionNode":[],"Node":[]},"ListJoin":{"FunctionNode":[],"Node":[]},"NodeWithArguments95":{"FunctionNode":[],"Node":[]},"ListLast":{"FunctionNode":[],"Node":[]},"NodeWithArguments94":{"FunctionNode":[],"Node":[]},"ListLength":{"FunctionNode":[],"Node":[]},"NodeWithArguments93":{"FunctionNode":[],"Node":[]},"ListMap":{"FunctionNode":[],"Node":[]},"NodeWithArguments92":{"FunctionNode":[],"Node":[]},"ListNone":{"FunctionNode":[],"Node":[]},"NodeWithArguments91":{"FunctionNode":[],"Node":[]},"ListReduce":{"FunctionNode":[],"Node":[]},"NodeWithArguments90":{"FunctionNode":[],"Node":[]},"ListRemove":{"FunctionNode":[],"Node":[]},"NodeWithArguments88":{"FunctionNode":[],"Node":[]},"ListRemoveAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments89":{"FunctionNode":[],"Node":[]},"ListRest":{"FunctionNode":[],"Node":[]},"NodeWithArguments87":{"FunctionNode":[],"Node":[]},"ListReverse":{"FunctionNode":[],"Node":[]},"NodeWithArguments86":{"FunctionNode":[],"Node":[]},"ListSet":{"FunctionNode":[],"Node":[]},"NodeWithArguments85":{"FunctionNode":[],"Node":[]},"ListSort":{"FunctionNode":[],"Node":[]},"NodeWithArguments84":{"FunctionNode":[],"Node":[]},"ListSublist":{"FunctionNode":[],"Node":[]},"NodeWithArguments83":{"FunctionNode":[],"Node":[]},"ListSwap":{"FunctionNode":[],"Node":[]},"NodeWithArguments82":{"FunctionNode":[],"Node":[]},"ListTake":{"FunctionNode":[],"Node":[]},"NodeWithArguments81":{"FunctionNode":[],"Node":[]},"ListZip":{"FunctionNode":[],"Node":[]},"NodeWithArguments80":{"FunctionNode":[],"Node":[]},"BoolAnd":{"FunctionNode":[],"Node":[]},"NodeWithArguments79":{"FunctionNode":[],"Node":[]},"BoolNot":{"FunctionNode":[],"Node":[]},"NodeWithArguments78":{"FunctionNode":[],"Node":[]},"BoolOr":{"FunctionNode":[],"Node":[]},"NodeWithArguments77":{"FunctionNode":[],"Node":[]},"BoolXor":{"FunctionNode":[],"Node":[]},"NodeWithArguments76":{"FunctionNode":[],"Node":[]},"MapAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments75":{"FunctionNode":[],"Node":[]},"MapContainsKey":{"FunctionNode":[],"Node":[]},"NodeWithArguments74":{"FunctionNode":[],"Node":[]},"MapIsEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments73":{"FunctionNode":[],"Node":[]},"MapIsNotEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments72":{"FunctionNode":[],"Node":[]},"MapKeys":{"FunctionNode":[],"Node":[]},"NodeWithArguments71":{"FunctionNode":[],"Node":[]},"MapLength":{"FunctionNode":[],"Node":[]},"NodeWithArguments70":{"FunctionNode":[],"Node":[]},"MapRemoveAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments69":{"FunctionNode":[],"Node":[]},"MapSet":{"FunctionNode":[],"Node":[]},"NodeWithArguments68":{"FunctionNode":[],"Node":[]},"MapValues":{"FunctionNode":[],"Node":[]},"NodeWithArguments67":{"FunctionNode":[],"Node":[]},"OperatorAdd":{"FunctionNode":[],"Node":[]},"NodeWithArguments66":{"FunctionNode":[],"Node":[]},"OperatorAnd":{"FunctionNode":[],"Node":[]},"NodeWithArguments65":{"FunctionNode":[],"Node":[]},"OperatorDiv":{"FunctionNode":[],"Node":[]},"NodeWithArguments64":{"FunctionNode":[],"Node":[]},"OperatorEq":{"FunctionNode":[],"Node":[]},"NodeWithArguments63":{"FunctionNode":[],"Node":[]},"OperatorGe":{"FunctionNode":[],"Node":[]},"NodeWithArguments62":{"FunctionNode":[],"Node":[]},"OperatorGt":{"FunctionNode":[],"Node":[]},"NodeWithArguments61":{"FunctionNode":[],"Node":[]},"OperatorLe":{"FunctionNode":[],"Node":[]},"NodeWithArguments60":{"FunctionNode":[],"Node":[]},"OperatorLt":{"FunctionNode":[],"Node":[]},"NodeWithArguments59":{"FunctionNode":[],"Node":[]},"OperatorMod":{"FunctionNode":[],"Node":[]},"NodeWithArguments58":{"FunctionNode":[],"Node":[]},"OperatorMul":{"FunctionNode":[],"Node":[]},"NodeWithArguments57":{"FunctionNode":[],"Node":[]},"OperatorNeq":{"FunctionNode":[],"Node":[]},"NodeWithArguments56":{"FunctionNode":[],"Node":[]},"OperatorNot":{"FunctionNode":[],"Node":[]},"NodeWithArguments55":{"FunctionNode":[],"Node":[]},"OperatorOr":{"FunctionNode":[],"Node":[]},"NodeWithArguments54":{"FunctionNode":[],"Node":[]},"OperatorSub":{"FunctionNode":[],"Node":[]},"NodeWithArguments53":{"FunctionNode":[],"Node":[]},"SetAdd":{"FunctionNode":[],"Node":[]},"NodeWithArguments52":{"FunctionNode":[],"Node":[]},"SetContains":{"FunctionNode":[],"Node":[]},"NodeWithArguments51":{"FunctionNode":[],"Node":[]},"SetIntersection":{"FunctionNode":[],"Node":[]},"NodeWithArguments50":{"FunctionNode":[],"Node":[]},"SetIsEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments49":{"FunctionNode":[],"Node":[]},"SetIsNotEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments48":{"FunctionNode":[],"Node":[]},"SetLength":{"FunctionNode":[],"Node":[]},"NodeWithArguments47":{"FunctionNode":[],"Node":[]},"SetNew":{"FunctionNode":[],"Node":[]},"NodeWithArguments46":{"FunctionNode":[],"Node":[]},"SetRemove":{"FunctionNode":[],"Node":[]},"NodeWithArguments45":{"FunctionNode":[],"Node":[]},"SetUnion":{"FunctionNode":[],"Node":[]},"NodeWithArguments44":{"FunctionNode":[],"Node":[]},"StrAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments43":{"FunctionNode":[],"Node":[]},"StrBytes":{"FunctionNode":[],"Node":[]},"NodeWithArguments42":{"FunctionNode":[],"Node":[]},"StrCompare":{"FunctionNode":[],"Node":[]},"NodeWithArguments41":{"FunctionNode":[],"Node":[]},"StrConcat":{"FunctionNode":[],"Node":[]},"NodeWithArguments40":{"FunctionNode":[],"Node":[]},"StrContains":{"FunctionNode":[],"Node":[]},"NodeWithArguments39":{"FunctionNode":[],"Node":[]},"StrDrop":{"FunctionNode":[],"Node":[]},"NodeWithArguments38":{"FunctionNode":[],"Node":[]},"StrEndsWith":{"FunctionNode":[],"Node":[]},"NodeWithArguments37":{"FunctionNode":[],"Node":[]},"StrFirst":{"FunctionNode":[],"Node":[]},"NodeWithArguments36":{"FunctionNode":[],"Node":[]},"StrIndexOf":{"FunctionNode":[],"Node":[]},"NodeWithArguments35":{"FunctionNode":[],"Node":[]},"StrInit":{"FunctionNode":[],"Node":[]},"NodeWithArguments34":{"FunctionNode":[],"Node":[]},"StrIsEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments33":{"FunctionNode":[],"Node":[]},"StrIsNotEmpty":{"FunctionNode":[],"Node":[]},"NodeWithArguments32":{"FunctionNode":[],"Node":[]},"StrLast":{"FunctionNode":[],"Node":[]},"NodeWithArguments31":{"FunctionNode":[],"Node":[]},"StrLength":{"FunctionNode":[],"Node":[]},"NodeWithArguments30":{"FunctionNode":[],"Node":[]},"StrLowercase":{"FunctionNode":[],"Node":[]},"NodeWithArguments29":{"FunctionNode":[],"Node":[]},"StrMatch":{"FunctionNode":[],"Node":[]},"NodeWithArguments28":{"FunctionNode":[],"Node":[]},"StrPadLeft":{"FunctionNode":[],"Node":[]},"NodeWithArguments27":{"FunctionNode":[],"Node":[]},"StrPadRight":{"FunctionNode":[],"Node":[]},"NodeWithArguments26":{"FunctionNode":[],"Node":[]},"StrRemoveAt":{"FunctionNode":[],"Node":[]},"NodeWithArguments25":{"FunctionNode":[],"Node":[]},"StrReplace":{"FunctionNode":[],"Node":[]},"NodeWithArguments24":{"FunctionNode":[],"Node":[]},"StrRest":{"FunctionNode":[],"Node":[]},"NodeWithArguments23":{"FunctionNode":[],"Node":[]},"StrReverse":{"FunctionNode":[],"Node":[]},"NodeWithArguments22":{"FunctionNode":[],"Node":[]},"StrSplit":{"FunctionNode":[],"Node":[]},"NodeWithArguments21":{"FunctionNode":[],"Node":[]},"StrStartsWith":{"FunctionNode":[],"Node":[]},"NodeWithArguments20":{"FunctionNode":[],"Node":[]},"StrSubstring":{"FunctionNode":[],"Node":[]},"NodeWithArguments19":{"FunctionNode":[],"Node":[]},"StrTake":{"FunctionNode":[],"Node":[]},"NodeWithArguments18":{"FunctionNode":[],"Node":[]},"StrTrim":{"FunctionNode":[],"Node":[]},"NodeWithArguments17":{"FunctionNode":[],"Node":[]},"StrUppercase":{"FunctionNode":[],"Node":[]},"NodeWithArguments16":{"FunctionNode":[],"Node":[]},"TimeCompare":{"FunctionNode":[],"Node":[]},"NodeWithArguments15":{"FunctionNode":[],"Node":[]},"TimeDay":{"FunctionNode":[],"Node":[]},"NodeWithArguments14":{"FunctionNode":[],"Node":[]},"TimeEpoch":{"FunctionNode":[],"Node":[]},"NodeWithArguments13":{"FunctionNode":[],"Node":[]},"TimeFromIso":{"FunctionNode":[],"Node":[]},"NodeWithArguments12":{"FunctionNode":[],"Node":[]},"TimeHour":{"FunctionNode":[],"Node":[]},"NodeWithArguments11":{"FunctionNode":[],"Node":[]},"TimeMillisecond":{"FunctionNode":[],"Node":[]},"NodeWithArguments10":{"FunctionNode":[],"Node":[]},"TimeMinute":{"FunctionNode":[],"Node":[]},"NodeWithArguments9":{"FunctionNode":[],"Node":[]},"TimeMonth":{"FunctionNode":[],"Node":[]},"NodeWithArguments8":{"FunctionNode":[],"Node":[]},"TimeNow":{"FunctionNode":[],"Node":[]},"TimeSecond":{"FunctionNode":[],"Node":[]},"NodeWithArguments7":{"FunctionNode":[],"Node":[]},"TimeToIso":{"FunctionNode":[],"Node":[]},"NodeWithArguments6":{"FunctionNode":[],"Node":[]},"TimeYear":{"FunctionNode":[],"Node":[]},"NodeWithArguments5":{"FunctionNode":[],"Node":[]},"VectorAdd":{"FunctionNode":[],"Node":[]},"NodeWithArguments4":{"FunctionNode":[],"Node":[]},"VectorAngle":{"FunctionNode":[],"Node":[]},"NodeWithArguments3":{"FunctionNode":[],"Node":[]},"VectorMagnitude":{"FunctionNode":[],"Node":[]},"NodeWithArguments2":{"FunctionNode":[],"Node":[]},"VectorNew":{"FunctionNode":[],"Node":[]},"NodeWithArguments1":{"FunctionNode":[],"Node":[]},"VectorNormalize":{"FunctionNode":[],"Node":[]},"NodeWithArguments0":{"FunctionNode":[],"Node":[]},"VectorSub":{"FunctionNode":[],"Node":[]},"NodeWithArguments":{"FunctionNode":[],"Node":[]},"BooleanType":{"Type":[]},"NumberType":{"Type":[]},"StringType":{"Type":[]},"TimestampType":{"Type":[]},"VectorType":{"Type":[]},"SetType":{"Type":[]},"ListType":{"Type":[]},"MapType":{"Type":[]},"FunctionCallType":{"Type":[]},"FunctionType":{"Type":[]},"AnyType":{"Type":[]},"LiteralNode":{"Node":[]},"NumberNode":{"LiteralNode":["num"],"Node":[],"LiteralNode.T":"num"},"StringNode":{"LiteralNode":["String"],"Node":[],"LiteralNode.T":"String"},"FunctionNode":{"Node":[]},"CustomFunctionNode":{"FunctionNode":[],"Node":[]},"BooleanNode":{"LiteralNode":["bool"],"Node":[],"LiteralNode.T":"bool"},"TimestampNode":{"LiteralNode":["DateTime"],"Node":[],"LiteralNode.T":"DateTime"},"ListNode":{"LiteralNode":["List<Node>"],"Node":[],"LiteralNode.T":"List<Node>"},"VectorNode":{"LiteralNode":["List<Node>"],"Node":[],"LiteralNode.T":"List<Node>"},"SetNode":{"LiteralNode":["Set<Node>"],"Node":[],"LiteralNode.T":"Set<Node>"},"MapNode":{"LiteralNode":["Map<Node,Node>"],"Node":[],"LiteralNode.T":"Map<Node,Node>"},"FreeVariableNode":{"Node":[]},"BoundedVariableNode":{"FreeVariableNode":[],"Node":[]},"CallNode":{"Node":[]},"NativeFunctionNode":{"FunctionNode":[],"Node":[]},"NativeFunctionNodeWithArguments":{"FunctionNode":[],"Node":[]},"Scanner":{"Analyzer":["String","List<Character>"],"Analyzer.I":"String"},"SemanticAnalyzer":{"Analyzer":["List<FunctionDefinition>","IntermediateCode"],"Analyzer.I":"List<FunctionDefinition>"},"LiteralExpression":{"Expression":[]},"BooleanExpression":{"LiteralExpression":["bool"],"Expression":[],"LiteralExpression.T":"bool"},"NumberExpression":{"LiteralExpression":["num"],"Expression":[],"LiteralExpression.T":"num"},"StringExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"ListExpression":{"LiteralExpression":["List<Expression>"],"Expression":[],"LiteralExpression.T":"List<Expression>"},"MapExpression":{"LiteralExpression":["Map<Expression,Expression>"],"Expression":[],"LiteralExpression.T":"Map<Expression,Expression>"},"IdentifierExpression":{"LiteralExpression":["String"],"Expression":[],"LiteralExpression.T":"String"},"CallExpression":{"Expression":[]},"SyntacticAnalyzer":{"Analyzer":["List<Token<@>>","List<FunctionDefinition>"],"Analyzer.I":"List<Token<@>>"},"InitState0":{"State":["Token<@>","~"],"State.I":"Token<@>","State.O":"~"},"FunctionNameState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNewParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionWithNextParametersState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"FunctionParametrizedState":{"State":["Token<@>","FunctionDefinition"],"State.I":"Token<@>","State.O":"FunctionDefinition"},"ResultState0":{"State":["~","FunctionDefinition"],"State.I":"~","State.O":"FunctionDefinition"},"SemanticWarning":{"GenericWarning":[]},"UnusedParameterWarning":{"GenericWarning":[]},"TypedDataBuffer":{"ListBase":["1"],"List":["1"],"EfficientLengthIterable":["1"],"Iterable":["1"]},"_IntBuffer":{"TypedDataBuffer":["int"],"ListBase":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"]},"Uint8Buffer":{"TypedDataBuffer":["int"],"ListBase":["int"],"List":["int"],"EfficientLengthIterable":["int"],"Iterable":["int"],"ListBase.E":"int","TypedDataBuffer.E":"int"}}'));
   A._Universe_addErasedTypes(init.typeUniverse, JSON.parse('{"EfficientLengthIterable":1,"NativeTypedArray":1,"_SetBase":1}'));
   var type$ = (function rtii() {
     var findType = A.findType;
@@ -16600,6 +17018,7 @@
     B.C_NumberType = new A.NumberType();
     B.C_OutOfMemoryError = new A.OutOfMemoryError();
     B.C_SentinelValue = new A.SentinelValue();
+    B.C_SetType = new A.SetType();
     B.C_StringType = new A.StringType();
     B.C_TimestampType = new A.TimestampType();
     B.C_Utf8Encoder = new A.Utf8Encoder();
