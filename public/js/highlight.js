@@ -45,6 +45,10 @@ const basicProperties = (withExtras) => {
     "Timestamp": "custom-type",
     "List": "custom-type",
     "Map": "custom-type",
+    "Set": "custom-type",
+    "Stack": "custom-type",
+    "Queue": "custom-type",
+    "Vector": "custom-type",
     "Error": "custom-type",
     "Any": "custom-type",
 
@@ -205,6 +209,16 @@ const basicProperties = (withExtras) => {
     "stack\\.length\\s*(?=\\()": "custom-native-function",
     "stack\\.reverse\\s*(?=\\()": "custom-native-function",
 
+    // queue
+    "queue\\.new\\s*(?=\\()": "custom-native-function",
+    "queue\\.enqueue\\s*(?=\\()": "custom-native-function",
+    "queue\\.dequeue\\s*(?=\\()": "custom-native-function",
+    "queue\\.peek\\s*(?=\\()": "custom-native-function",
+    "queue\\.isEmpty\\s*(?=\\()": "custom-native-function",
+    "queue\\.isNotEmpty\\s*(?=\\()": "custom-native-function",
+    "queue\\.length\\s*(?=\\()": "custom-native-function",
+    "queue\\.reverse\\s*(?=\\()": "custom-native-function",
+
     // vector
     "vector\\.new\\s*(?=\\()": "custom-native-function",
     "vector\\.normalize\\s*(?=\\()": "custom-native-function",
@@ -232,6 +246,7 @@ const basicProperties = (withExtras) => {
     "is\\.vector\\s*(\?=\\()": "custom-native-function",
     "is\\.set\\s*(\?=\\()": "custom-native-function",
     "is\\.stack\\s*(\?=\\()": "custom-native-function",
+    "is\\.queue\\s*(\?=\\()": "custom-native-function",
 
     // json
     "json\\.encode\\s*(\?=\\()": "custom-native-function",
