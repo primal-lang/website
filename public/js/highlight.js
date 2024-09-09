@@ -195,6 +195,16 @@ const basicProperties = (withExtras) => {
     "set\\.union\\s*(?=\\()": "custom-native-function",
     "set\\.intersection\\s*(?=\\()": "custom-native-function",
 
+    // stack
+    "stack\\.new\\s*(?=\\()": "custom-native-function",
+    "stack\\.push\\s*(?=\\()": "custom-native-function",
+    "stack\\.pop\\s*(?=\\()": "custom-native-function",
+    "stack\\.peek\\s*(?=\\()": "custom-native-function",
+    "stack\\.isEmpty\\s*(?=\\()": "custom-native-function",
+    "stack\\.isNotEmpty\\s*(?=\\()": "custom-native-function",
+    "stack\\.length\\s*(?=\\()": "custom-native-function",
+    "stack\\.reverse\\s*(?=\\()": "custom-native-function",
+
     // vector
     "vector\\.new\\s*(?=\\()": "custom-native-function",
     "vector\\.normalize\\s*(?=\\()": "custom-native-function",
@@ -220,6 +230,8 @@ const basicProperties = (withExtras) => {
     "is\\.list\\s*(\?=\\()": "custom-native-function",
     "is\\.map\\s*(\?=\\()": "custom-native-function",
     "is\\.vector\\s*(\?=\\()": "custom-native-function",
+    "is\\.set\\s*(\?=\\()": "custom-native-function",
+    "is\\.stack\\s*(\?=\\()": "custom-native-function",
 
     // json
     "json\\.encode\\s*(\?=\\()": "custom-native-function",
