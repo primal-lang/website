@@ -233,6 +233,7 @@ const basicProperties = (withExtras) => {
     "to\\.decimal\\s*(\?=\\()": "custom-native-function",
     "to\\.string\\s*(\?=\\()": "custom-native-function",
     "to\\.boolean\\s*(\?=\\()": "custom-native-function",
+    "to\\.list\\s*(\?=\\()": "custom-native-function",
 
     // checking
     "is\\.number\\s*(\?=\\()": "custom-native-function",
@@ -241,6 +242,8 @@ const basicProperties = (withExtras) => {
     "is\\.infinite\\s*(\?=\\()": "custom-native-function",
     "is\\.string\\s*(\?=\\()": "custom-native-function",
     "is\\.boolean\\s*(\?=\\()": "custom-native-function",
+    "is\\.timestamp\\s*(\?=\\()": "custom-native-function",
+    "is\\.function\\s*(\?=\\()": "custom-native-function",
     "is\\.list\\s*(\?=\\()": "custom-native-function",
     "is\\.map\\s*(\?=\\()": "custom-native-function",
     "is\\.vector\\s*(\?=\\()": "custom-native-function",

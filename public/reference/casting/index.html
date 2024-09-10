@@ -129,6 +129,21 @@
         </table>
         <div id="to.boolean" class="code-sample"></div>
 
+        <h5 class="text-white reference-title">To list</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">An argument of any type.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The argument converted to a list.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="to.list" class="code-sample"></div>
+
         <h5 class="text-white reference-title">Is number</h5>
         <table class="reference-table">
           <tbody>
@@ -218,6 +233,36 @@
           </tbody>
         </table>
         <div id="is.boolean" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Is timestamp</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">An argument of any type.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the argument is a timestamp. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="is.timestamp" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Is function</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">An argument of any type.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the argument is a function. False otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="is.function" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Is list</h5>
         <table class="reference-table">
@@ -325,12 +370,15 @@
     setSampleCode('to.decimal', 'to.decimal(a: Any): Number')
     setSampleCode('to.string', 'to.string(a: Any): String')
     setSampleCode('to.boolean', 'to.boolean(a: Any): Boolean')
+    setSampleCode('to.list', 'to.list(a: Any): Boolean')
     setSampleCode('is.number', 'is.number(a: Any): Boolean')
     setSampleCode('is.integer', 'is.integer(a: Any): Boolean')
     setSampleCode('is.decimal', 'is.decimal(a: Any): Boolean')
     setSampleCode('is.infinite', 'is.infinite(a: Any): Boolean')
     setSampleCode('is.string', 'is.string(a: Any): Boolean')
     setSampleCode('is.boolean', 'is.boolean(a: Any): Boolean')
+    setSampleCode('is.timestamp', 'is.timestamp(a: Any): Boolean')
+    setSampleCode('is.function', 'is.function(a: Any): Boolean')
     setSampleCode('is.list', 'is.list(a: Any): Boolean')
     setSampleCode('is.map', 'is.map(a: Any): Boolean')
     setSampleCode('is.vector', 'is.vector(a: Any): Boolean')
