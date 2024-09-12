@@ -13,6 +13,7 @@ getSample('samples/divisors.prm', 'divisors')
 getSample('samples/find_max.prm', 'findMax')
 getSample('samples/frequency.prm', 'frequency')
 getSample('samples/balanced_parenthesis.prm', 'balancedParenthesis')
+getSample('samples/binary_search.prm', 'binarySearch')
 
 const INPUTS = localStorage.getItem('consoleHistory') ? JSON.parse(localStorage.getItem('consoleHistory')) : []
 let inputIndex = (INPUTS.length > 0) ? INPUTS.length : -1
