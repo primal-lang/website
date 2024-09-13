@@ -227,6 +227,22 @@ const basicProperties = (withExtras) => {
     "vector\\.magnitude\\s*(?=\\()": "custom-native-function",
     "vector\\.angle\\s*(?=\\()": "custom-native-function",
 
+    // file
+    "file\\.fromPath\\s*(?=\\()": "custom-native-function",
+    "file\\.exists\\s*(?=\\()": "custom-native-function",
+    "file\\.read\\s*(?=\\()": "custom-native-function",
+    "file\\.write\\s*(?=\\()": "custom-native-function",
+    "file\\.length\\s*(?=\\()": "custom-native-function",
+    "file\\.create\\s*(?=\\()": "custom-native-function",
+    "file\\.delete\\s*(?=\\()": "custom-native-function",
+    "file\\.path\\s*(?=\\()": "custom-native-function",
+    "file\\.name\\s*(?=\\()": "custom-native-function",
+    "file\\.extension\\s*(?=\\()": "custom-native-function",
+    "file\\.copy\\s*(?=\\()": "custom-native-function",
+    "file\\.move\\s*(?=\\()": "custom-native-function",
+    "file\\.parent\\s*(?=\\()": "custom-native-function",
+    "file\\.rename\\s*(?=\\()": "custom-native-function",
+
     // casting
     "to\\.number\\s*(\?=\\()": "custom-native-function",
     "to\\.integer\\s*(\?=\\()": "custom-native-function",
