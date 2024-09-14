@@ -1,5 +1,12 @@
 const SAMPLES = {
-  'default': 'isBiggerThan10(n) = n > 10\n\nmain = isBiggerThan10(7)',
+  'default': `/*
+  Input: a positive number
+  Output: true if the number is bigger than 10, false otherwise
+*/
+
+isBiggerThan10(n) = n > 10
+
+main = isBiggerThan10(7)`,
 }
 
 getSample('samples/factorial.prm', 'factorial')
