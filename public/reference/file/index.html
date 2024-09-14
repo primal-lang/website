@@ -114,21 +114,6 @@
         </table>
         <div id="file.write" class="code-sample"></div>
 
-        <h5 class="text-white reference-title">Length</h5>
-        <table class="reference-table">
-          <tbody>
-            <tr>
-              <td class="border-bottom reference-table-title">Input</td>
-              <td class="border-bottom">A file.</td>
-            </tr>
-            <tr>
-              <td class="reference-table-title">Output</td>
-              <td>The length of the file in bytes.</td>
-            </tr>
-          </tbody>
-        </table>
-        <div id="file.length" class="code-sample"></div>
-
         <h5 class="text-white reference-title">Create</h5>
         <table class="reference-table">
           <tbody>
@@ -158,6 +143,66 @@
           </tbody>
         </table>
         <div id="file.delete" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Copy</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two files.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the file was copied, false otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="file.copy" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Move</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two files.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the file was moved, false otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="file.move" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Rename</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A file and the new name.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the file was renamed, false otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="file.rename" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Length</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A file.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The length of the file in bytes.</td>
+            </tr>
+          </tbody>
+        </table>
+        <div id="file.length" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Path</h5>
         <table class="reference-table">
@@ -204,36 +249,6 @@
         </table>
         <div id="file.extension" class="code-sample"></div>
 
-        <h5 class="text-white reference-title">Copy</h5>
-        <table class="reference-table">
-          <tbody>
-            <tr>
-              <td class="border-bottom reference-table-title">Input</td>
-              <td class="border-bottom">Two files.</td>
-            </tr>
-            <tr>
-              <td class="reference-table-title">Output</td>
-              <td>True if the file was copied, false otherwise.</td>
-            </tr>
-          </tbody>
-        </table>
-        <div id="file.copy" class="code-sample"></div>
-
-        <h5 class="text-white reference-title">Move</h5>
-        <table class="reference-table">
-          <tbody>
-            <tr>
-              <td class="border-bottom reference-table-title">Input</td>
-              <td class="border-bottom">Two files.</td>
-            </tr>
-            <tr>
-              <td class="reference-table-title">Output</td>
-              <td>True if the file was moved, false otherwise.</td>
-            </tr>
-          </tbody>
-        </table>
-        <div id="file.move" class="code-sample"></div>
-
         <h5 class="text-white reference-title">Parent</h5>
         <table class="reference-table">
           <tbody>
@@ -248,21 +263,6 @@
           </tbody>
         </table>
         <div id="file.parent" class="code-sample"></div>
-
-        <h5 class="text-white reference-title">Rename</h5>
-        <table class="reference-table">
-          <tbody>
-            <tr>
-              <td class="border-bottom reference-table-title">Input</td>
-              <td class="border-bottom">A file and the new name.</td>
-            </tr>
-            <tr>
-              <td class="reference-table-title">Output</td>
-              <td>True if the file was renamed, false otherwise.</td>
-            </tr>
-          </tbody>
-        </table>
-        <div id="file.rename" class="code-sample"></div>
 
         <br />
         <br />
@@ -279,16 +279,16 @@
     setSampleCode('file.exists', 'file.exists(a: File): Boolean')
     setSampleCode('file.read', 'file.read(a: File): String')
     setSampleCode('file.write', 'file.write(a: File, b: String): Boolean')
-    setSampleCode('file.length', 'file.length(a: File): Number')
     setSampleCode('file.create', 'file.create(a: File): Boolean')
     setSampleCode('file.delete', 'file.delete(a: File): Boolean')
+    setSampleCode('file.copy', 'file.copy(a: File, b: File): Boolean')
+    setSampleCode('file.move', 'file.move(a: File, b: File): Boolean')
+    setSampleCode('file.rename', 'file.rename(a: File, b: String): Boolean')
+    setSampleCode('file.length', 'file.length(a: File): Number')
     setSampleCode('file.path', 'file.path(a: File): String')
     setSampleCode('file.name', 'file.name(a: File): String')
     setSampleCode('file.extension', 'file.extension(a: File): String')
-    setSampleCode('file.copy', 'file.copy(a: File, b: File): Boolean')
-    setSampleCode('file.move', 'file.move(a: File, b: File): Boolean')
     setSampleCode('file.parent', 'file.parent(a: File): Directory')
-    setSampleCode('file.rename', 'file.rename(a: File, b: String): Boolean')
 
   </script>
 
