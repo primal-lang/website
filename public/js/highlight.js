@@ -49,6 +49,9 @@ const basicProperties = (withExtras) => {
     "Stack": "custom-type",
     "Queue": "custom-type",
     "Vector": "custom-type",
+    "File": "custom-type",
+    "Directory": "custom-type",
+    "HttpResponse": "custom-type",
     "Error": "custom-type",
     "Any": "custom-type",
 
@@ -242,6 +245,19 @@ const basicProperties = (withExtras) => {
     "file\\.move\\s*(?=\\()": "custom-native-function",
     "file\\.parent\\s*(?=\\()": "custom-native-function",
     "file\\.rename\\s*(?=\\()": "custom-native-function",
+
+    // directory
+    "directory\\.fromPath\\s*(?=\\()": "custom-native-function",
+    "directory\\.exists\\s*(?=\\()": "custom-native-function",
+    "directory\\.create\\s*(?=\\()": "custom-native-function",
+    "directory\\.delete\\s*(?=\\()": "custom-native-function",
+    "directory\\.copy\\s*(?=\\()": "custom-native-function",
+    "directory\\.move\\s*(?=\\()": "custom-native-function",
+    "directory\\.rename\\s*(?=\\()": "custom-native-function",
+    "directory\\.path\\s*(?=\\()": "custom-native-function",
+    "directory\\.name\\s*(?=\\()": "custom-native-function",
+    "directory\\.parent\\s*(?=\\()": "custom-native-function",
+    "directory\\.list\\s*(?=\\()": "custom-native-function",
 
     // casting
     "to\\.number\\s*(\?=\\()": "custom-native-function",
