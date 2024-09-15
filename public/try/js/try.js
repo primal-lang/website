@@ -9,6 +9,7 @@ isBiggerThan10(n) = n > 10
 main = isBiggerThan10(7)`,
 }
 
+getSample('samples/list_reverse.prm', 'listReverse')
 getSample('samples/factorial.prm', 'factorial')
 getSample('samples/fibonacci.prm', 'fibonacci')
 getSample('samples/is_prime.prm', 'isPrime')
