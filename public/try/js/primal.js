@@ -17689,7 +17689,7 @@
       return result;
     },
     checkNode$4$allFunctions$availableParameters$node$usedParameters(allFunctions, availableParameters, node, usedParameters) {
-      var callee, newArguments, t1, t2, _i, _this = this;
+      var callee, newArguments, t1, t2, _i, elements, _this = this;
       type$.List_String._as(availableParameters);
       type$.Set_String._as(usedParameters);
       type$.Map_String_FunctionNode._as(allFunctions);
@@ -17705,6 +17705,19 @@
         for (t1 = node.$arguments, t2 = t1.length, _i = 0; _i < t1.length; t1.length === t2 || (0, A.throwConcurrentModificationError)(t1), ++_i)
           B.JSArray_methods.add$1(newArguments, _this.checkNode$4$allFunctions$availableParameters$node$usedParameters(allFunctions, availableParameters, t1[_i], usedParameters));
         return new A.CallNode(callee, newArguments);
+      } else if (node instanceof A.ListNode) {
+        elements = A._setArrayType([], type$.JSArray_Node);
+        for (t1 = J.get$iterator$ax(node.value); t1.moveNext$0();)
+          B.JSArray_methods.add$1(elements, _this.checkNode$4$allFunctions$availableParameters$node$usedParameters(allFunctions, availableParameters, t1.get$current(), usedParameters));
+        return new A.ListNode(elements);
+      } else if (node instanceof A.MapNode) {
+        t1 = type$.Node;
+        elements = A.LinkedHashMap_LinkedHashMap$_empty(t1, t1);
+        for (t1 = node.value.get$entries(), t1 = t1.get$iterator(t1); t1.moveNext$0();) {
+          t2 = t1.get$current();
+          elements.$indexSet(0, t2.key, _this.checkNode$4$allFunctions$availableParameters$node$usedParameters(allFunctions, availableParameters, t2.value, usedParameters));
+        }
+        return new A.MapNode(elements);
       }
       return node;
     },
