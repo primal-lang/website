@@ -9,20 +9,20 @@ isBiggerThan10(n) = n > 10
 main = isBiggerThan10(7)`,
 }
 
-getSample('samples/list_reverse.prm', 'listReverse')
-getSample('samples/factorial.prm', 'factorial')
-getSample('samples/fibonacci.prm', 'fibonacci')
-getSample('samples/is_prime.prm', 'isPrime')
-getSample('samples/power.prm', 'power')
-getSample('samples/sum_of_digits.prm', 'sumOfDigits')
-getSample('samples/to_binary.prm', 'toBinary')
-getSample('samples/is_palindrome.prm', 'isPalindrome')
-getSample('samples/divisors.prm', 'divisors')
-getSample('samples/find_max.prm', 'findMax')
-getSample('samples/frequency.prm', 'frequency')
 getSample('samples/balanced_parenthesis.prm', 'balancedParenthesis')
 getSample('samples/binary_search.prm', 'binarySearch')
+getSample('samples/divisors.prm', 'divisors')
+getSample('samples/factorial.prm', 'factorial')
+getSample('samples/fibonacci.prm', 'fibonacci')
+getSample('samples/find_max.prm', 'findMax')
+getSample('samples/frequency.prm', 'frequency')
 getSample('samples/moving_averages.prm', 'movingAverages')
+getSample('samples/is_palindrome.prm', 'isPalindrome')
+getSample('samples/power.prm', 'power')
+getSample('samples/is_prime.prm', 'isPrime')
+getSample('samples/reverse_list.prm', 'reverseList')
+getSample('samples/sum_of_digits.prm', 'sumOfDigits')
+getSample('samples/to_binary.prm', 'toBinary')
 
 const INPUTS = localStorage.getItem('consoleHistory') ? JSON.parse(localStorage.getItem('consoleHistory')) : []
 let inputIndex = (INPUTS.length > 0) ? INPUTS.length : -1

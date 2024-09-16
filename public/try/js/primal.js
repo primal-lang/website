@@ -17715,7 +17715,7 @@
         elements = A.LinkedHashMap_LinkedHashMap$_empty(t1, t1);
         for (t1 = node.value.get$entries(), t1 = t1.get$iterator(t1); t1.moveNext$0();) {
           t2 = t1.get$current();
-          elements.$indexSet(0, t2.key, _this.checkNode$4$allFunctions$availableParameters$node$usedParameters(allFunctions, availableParameters, t2.value, usedParameters));
+          elements.$indexSet(0, _this.checkNode$4$allFunctions$availableParameters$node$usedParameters(allFunctions, availableParameters, t2.key, usedParameters), _this.checkNode$4$allFunctions$availableParameters$node$usedParameters(allFunctions, availableParameters, t2.value, usedParameters));
         }
         return new A.MapNode(elements);
       }
