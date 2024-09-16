@@ -2029,9 +2029,9 @@ svg {
 }
 
 .arrow-back:hover {
-  color: #d5ab79;
+  color: #7eb1eb;
 }
 
 .arrow-back:hover * {
-  fill: #d5ab79;
+  fill: #7eb1eb;
 }
