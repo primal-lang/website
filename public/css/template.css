@@ -1129,6 +1129,7 @@ textarea.form-control-lg {
 }
 
 .mb-4 {
+  margin-top: 3rem !important;
   margin-bottom: 1.5rem !important
 }
 
@@ -2015,4 +2016,22 @@ a {
   font-weight: bold;
   width: 6em;
   background-color: #c0c0c0;
+}
+
+.arrow-back {
+  display: flex;
+  align-items: center;
+}
+
+.arrow-back,
+svg {
+  margin-right: 0.3em;
+}
+
+.arrow-back:hover {
+  color: #d5ab79;
+}
+
+.arrow-back:hover * {
+  fill: #d5ab79;
 }
