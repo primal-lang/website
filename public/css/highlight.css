@@ -37,8 +37,6 @@
   color: #f1d086;
 }
 
-/********************************/
-
 /* Variable */
 .cm-s-dracula span.cm-variable {
   color: #7dc777;
@@ -53,8 +51,6 @@
 .cm-s-dracula span.cm-operator {
   color: #d46a60;
 }
-
-/* ============= Custom ============= */
 
 /* Operators */
 .cm-custom-marker {
@@ -71,14 +67,14 @@
   color: #5aa3df !important;
 }
 
-/* Type */
-.cm-custom-type {
-  color: #8ebcfc !important;
-}
-
 /* Parenthesis */
 .cm-custom-parenthesis {
   color: #dbffff !important;
+}
+
+/* Type */
+.cm-custom-type {
+  color: #8ebcfc !important;
 }
 
 /* ============= Unused ============= */
