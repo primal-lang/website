@@ -1129,7 +1129,6 @@ textarea.form-control-lg {
 }
 
 .mb-4 {
-  margin-top: 3rem !important;
   margin-bottom: 1.5rem !important
 }
 
@@ -2021,6 +2020,7 @@ a {
 .arrow-back {
   display: flex;
   align-items: center;
+  margin-bottom: 3em;
 }
 
 .arrow-back,
