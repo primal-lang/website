@@ -55,6 +55,15 @@ body {
 
 .btn-primary {
   background-color: #a0743e;
+  border: none;
+}
+
+.btn-primary:hover {
+  background-color: #815d30;
+}
+
+.btn-primary:active {
+  background-color: #815d30 !important;
 }
 
 .btn:disabled {
