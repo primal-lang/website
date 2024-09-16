@@ -138,7 +138,7 @@ const basicProperties = (withExtras) => {
     "str\\.contains\\s*(\?=\\()": "custom-native-function",
     "str\\.take\\s*(\?=\\()": "custom-native-function",
     "str\\.drop\\s*(\?=\\()": "custom-native-function",
-    "str\\.remove\\s*(\?=\\()": "custom-native-function",
+    "str\\.removeAt\\s*(\?=\\()": "custom-native-function",
     "str\\.reverse\\s*(\?=\\()": "custom-native-function",
     "str\\.bytes\\s*(\?=\\()": "custom-native-function",
     "str\\.indexOf\\s*(\?=\\()": "custom-native-function",
