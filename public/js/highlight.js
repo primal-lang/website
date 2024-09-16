@@ -51,6 +51,7 @@ const basicProperties = (withExtras) => {
     "Vector": "custom-type",
     "File": "custom-type",
     "Directory": "custom-type",
+    "Function": "custom-type",
     "HttpResponse": "custom-type",
     "Error": "custom-type",
     "Any": "custom-type",
