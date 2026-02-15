@@ -9,7 +9,7 @@ isBiggerThan10(n) = n > 10
 main = isBiggerThan10(7)`,
 }
 
-getSample('samples/balanced_parenthesis.prm', 'balancedParenthesis')
+getSample('samples/balanced_parentheses.prm', 'balancedParentheses')
 getSample('samples/binary_search.prm', 'binarySearch')
 getSample('samples/divisors.prm', 'divisors')
 getSample('samples/factorial.prm', 'factorial')
