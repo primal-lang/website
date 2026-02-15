@@ -63,7 +63,7 @@
         <a href=".." class="text-decoration-none arrow-back">
           <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px" fill="#e8eaed">
             <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
-          </svg>Reference</h1>
+          </svg>Reference
         </a>
 
         <h2 class="text-white mb-4">JSON</h2>
@@ -73,11 +73,11 @@
           <tbody>
             <tr>
               <td class="border-bottom reference-table-title">Input</td>
-              <td class="border-bottom">A string.</td>
+              <td class="border-bottom">A map.</td>
             </tr>
             <tr>
               <td class="reference-table-title">Output</td>
-              <td>A map resulting of parsing the string as JSON.</td>
+              <td>A string resulting from encoding the map as JSON.</td>
             </tr>
           </tbody>
         </table>
@@ -88,11 +88,11 @@
           <tbody>
             <tr>
               <td class="border-bottom reference-table-title">Input</td>
-              <td class="border-bottom">A map.</td>
+              <td class="border-bottom">A string.</td>
             </tr>
             <tr>
               <td class="reference-table-title">Output</td>
-              <td>A string resulting of encoding the map as JSON.</td>
+              <td>A map resulting from parsing the string as JSON.</td>
             </tr>
           </tbody>
         </table>
@@ -108,8 +108,8 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    setSampleCode('json.encode', 'json.decode(a: String): Map')
-    setSampleCode('json.decode', 'json.encode(a: Map): String')
+    setSampleCode('json.encode', 'json.encode(a: Map): String')
+    setSampleCode('json.decode', 'json.decode(a: String): Map')
 
   </script>
 
