@@ -527,7 +527,7 @@ textarea {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   transition: border-color var(--t-fast), box-shadow var(--t-fast)
 }
 
@@ -2161,7 +2161,7 @@ a {
   border-spacing: 0;
   font-size: 0.9rem;
   border: var(--border-card);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   overflow: hidden;
   margin-top: 0.6rem
 }
@@ -2197,7 +2197,7 @@ a {
   background-color: #0d1117;
   padding: 0.85rem 1.15rem;
   font-family: var(--font-code);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   margin-top: 0.6rem;
   margin-bottom: 1.5rem;
   font-size: 0.85rem;
@@ -2328,7 +2328,7 @@ a {
   text-decoration: none;
   background: var(--color-bg-elevated);
   border: var(--border-card);
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-sm);
   padding: 0.75rem 1rem;
   transition: all var(--t-base)
 }
