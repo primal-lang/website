@@ -2195,7 +2195,7 @@ a {
 /* --- Code blocks --- */
 .code-sample {
   background-color: #0d1117;
-  padding: 0.85rem 1.15rem;
+  padding: 0.5rem 0.75rem;
   font-family: var(--font-code);
   border-radius: var(--radius-sm);
   margin-top: 0.6rem;
