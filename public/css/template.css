@@ -2316,7 +2316,7 @@ a {
 /* --- Reference grid (hub page) --- */
 .reference-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(7, 1fr);
   gap: 0.75rem;
   margin-top: 1.5rem
 }
@@ -2329,7 +2329,7 @@ a {
   background: var(--color-bg-elevated);
   border: var(--border-card);
   border-radius: var(--radius-lg);
-  padding: 1rem 1.25rem;
+  padding: 0.75rem 1rem;
   transition: all var(--t-base)
 }
 
@@ -2342,15 +2342,16 @@ a {
 
 .reference-grid-item .mod-name {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   color: var(--color-text)
 }
 
 .reference-grid-item .mod-arrow {
   color: var(--color-text-3);
   transition: transform var(--t-fast), color var(--t-fast);
-  font-size: 1.5rem;
-  line-height: 1
+  font-size: 1.3rem;
+  line-height: 1;
+  margin-left: 0.5rem
 }
 
 .reference-grid-item:hover .mod-arrow {
