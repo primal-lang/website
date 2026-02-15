@@ -2238,8 +2238,8 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
-  min-height: 88vh;
-  padding: calc(var(--nav-h) + 2rem) 1.5rem 3rem;
+  min-height: 75vh;
+  padding: var(--nav-h) 1.5rem 3rem;
   background: var(--grad-hero-bg)
 }
 
@@ -2283,8 +2283,8 @@ a {
 
 /* --- Feature cards on landing --- */
 .features {
-  padding: 4.5rem 0;
-  border-top: var(--border-subtle)
+  padding: 0 0 4.5rem;
+  margin-top: -4rem
 }
 
 .feature-card {
