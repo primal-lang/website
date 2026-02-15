@@ -1,10 +1,13 @@
 .CodeMirror {
   height: auto;
+  font-size: 0.85rem;
+  line-height: 1.6;
 }
 
 .cm-s-dracula .CodeMirror-gutters,
 .cm-s-dracula.CodeMirror {
-  background-color: #1e1e1e !important;
+  background-color: #0d1117 !important;
+  border-radius: 0.875rem;
 }
 
 .CodeMirror-gutters {
