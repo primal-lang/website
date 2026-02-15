@@ -3,7 +3,7 @@
   Output: the Roman numeral representation of that number
 */
 
-toRoman(n) = if (n <= 0)
+toRoman(n) = if (n < 0)
                  error.throw(-1, "Cannot convert a non-positive number to Roman numerals")
              else if (n >= 1000)
                  "M" + toRoman(n - 1000)
@@ -34,4 +34,4 @@ toRoman(n) = if (n <= 0)
              else
                  ""
 
-main = toRoman(1994)
+main = toRoman(1984)
