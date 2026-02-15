@@ -2239,13 +2239,13 @@ a {
   justify-content: center;
   text-align: center;
   min-height: 75vh;
-  padding: var(--nav-h) 1.5rem 3rem;
+  padding: calc(var(--nav-h) + 3rem) 1.5rem 3rem;
   background: var(--grad-hero-bg)
 }
 
 .hero-logo {
-  width: 195px;
-  height: 195px;
+  width: 156px;
+  height: 156px;
   border-radius: 50%;
   border: 2.5px solid rgba(255,255,255,0.8);
   background: rgba(0,0,0,0.2);
