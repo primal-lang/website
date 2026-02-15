@@ -38,6 +38,7 @@ body {
   color: var(--color-text-2);
   font-size: 1.25rem;
   transition: color var(--t-fast);
+  transform: translateY(2px);
 }
 
 .nav-link:hover .navbar-icon {
