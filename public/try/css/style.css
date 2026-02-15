@@ -190,6 +190,10 @@ body {
   font-size: 0.875rem;
 }
 
+.toast .btn-close {
+  transform: scale(0.65);
+}
+
 /* --- Feedback modal --- */
 .modal-content {
   background-color: var(--color-bg);

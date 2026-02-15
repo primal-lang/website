@@ -160,6 +160,11 @@ function clearOutput() {
   }
 }
 
+function clearOutputManual() {
+  clearOutput()
+  showToast('toastOutputCleared')
+}
+
 function writeOutputWarning(text) {
   writeOutput(createOutputElement(text, 'output-warning'))
 }
