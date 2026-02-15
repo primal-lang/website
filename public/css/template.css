@@ -2349,7 +2349,8 @@ a {
 .reference-grid-item .mod-arrow {
   color: var(--color-text-3);
   transition: transform var(--t-fast), color var(--t-fast);
-  font-size: 1rem
+  font-size: 1.5rem;
+  line-height: 1
 }
 
 .reference-grid-item:hover .mod-arrow {
