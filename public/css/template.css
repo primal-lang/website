@@ -2,7 +2,8 @@
 
 @font-face {
   font-family: Dalek;
-  src: url(../fonts/dalek.ttf)
+  src: url(../fonts/dalek.woff2) format('woff2'),
+       url(../fonts/dalek.ttf) format('truetype')
 }
 
 @font-face {
@@ -43,7 +44,7 @@
   --color-gold-dim: #a0743e;
   --color-text: #ffffff;
   --color-text-2: rgba(255,255,255,0.72);
-  --color-text-3: rgba(255,255,255,0.42);
+  --color-text-3: rgba(255,255,255,0.6);
   --color-link: #7eb1eb;
   --color-link-hover: #a8ccf4;
 

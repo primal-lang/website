@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://primal-lang.org/sitemap.xml
