@@ -2347,15 +2347,13 @@ a {
 }
 
 .reference-grid-item .mod-arrow {
-  color: var(--color-text-3);
-  transition: transform var(--t-fast), color var(--t-fast);
-  font-size: 1.3rem;
-  line-height: 1;
+  fill: var(--color-text-3);
+  transition: transform var(--t-fast), fill var(--t-fast);
   margin-left: 0.5rem
 }
 
 .reference-grid-item:hover .mod-arrow {
-  color: var(--color-gold);
+  fill: var(--color-gold);
   transform: translateX(3px)
 }
 
