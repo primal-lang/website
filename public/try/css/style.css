@@ -49,6 +49,7 @@ body {
   color: var(--color-text-3);
   font-size: 0.78rem;
   letter-spacing: 0.03em;
+  margin-right: 8em;
 }
 
 /* --- Split panels --- */
