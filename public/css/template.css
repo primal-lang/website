@@ -2244,18 +2244,13 @@ a {
 }
 
 .hero-logo {
-  width: 130px;
-  height: 130px;
+  width: 195px;
+  height: 195px;
   border-radius: 50%;
-  border: 2px solid rgba(255,255,255,0.1);
+  border: 2.5px solid rgba(255,255,255,0.8);
   background: rgba(0,0,0,0.2);
   margin-bottom: 2.25rem;
-  box-shadow: var(--shadow-lg), 0 0 60px rgba(213,171,121,0.1);
-  transition: box-shadow var(--t-smooth)
-}
-
-.hero-logo:hover {
-  box-shadow: var(--shadow-lg), 0 0 80px rgba(213,171,121,0.18)
+  box-shadow: var(--shadow-lg), 0 0 60px rgba(213,171,121,0.1)
 }
 
 .hero-title {
@@ -2432,8 +2427,8 @@ a {
   }
 
   .hero-logo {
-    width: 100px;
-    height: 100px
+    width: 150px;
+    height: 150px
   }
 
   .hero-actions {
