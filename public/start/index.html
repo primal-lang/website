@@ -67,6 +67,25 @@
 
         <h2 class="text-white mb-4">Get started</h2>
 
+        <h4 class="text-white section-title">Installation</h4>
+
+        <p class="text-white justified-text">
+          To install <span class="tagged">Primal</span>, download the appropriate binary for your platform from the
+          <a href="https://github.com/primal-lang/sdk/releases" class="custom-link" target="_blank">GitHub releases</a>
+          page. Extract the archive and place the executable from the <code>bin</code> folder in a directory that is included in your system's <code>PATH</code>.
+        </p>
+
+        <p class="text-white justified-text">
+          To run a program, use the following command:
+        </p>
+
+        <div id="sampleRunProgram" class="code-sample"></div>
+
+        <p class="text-white justified-text">
+          If your program does not define a <span class="tagged">main</span> function, it will run in interactive mode,
+          where you can enter expressions and see the results of their evaluation.
+        </p>
+
         <h4 class="text-white section-title">Functions</h4>
 
         <p class="text-white justified-text">
@@ -111,6 +130,33 @@
         </ul>
 
         <p class="text-white justified-text">
+          Strings support the following escape sequences:
+        </p>
+
+        <table class="reference-table mb-4">
+          <thead>
+            <tr>
+              <th class="border-bottom text-white">Sequence</th>
+              <th class="border-bottom text-white">Description</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td class="border-bottom"><span class="tagged">\\</span></td><td class="border-bottom">Backslash</td></tr>
+            <tr><td class="border-bottom"><span class="tagged">\"</span></td><td class="border-bottom">Double quote</td></tr>
+            <tr><td class="border-bottom"><span class="tagged">\n</span></td><td class="border-bottom">Newline</td></tr>
+            <tr><td class="border-bottom"><span class="tagged">\r</span></td><td class="border-bottom">Carriage return</td></tr>
+            <tr><td><span class="tagged">\t</span></td><td>Tab</td></tr>
+          </tbody>
+        </table>
+
+        <p class="text-white justified-text">
+          Number literals can be written in several forms. Scientific notation is supported using <span class="tagged">e</span>
+          or <span class="tagged">E</span>. Underscores can be used as visual separators to improve readability:
+        </p>
+
+        <div id="sampleNumberLiterals" class="code-sample"></div>
+
+        <p class="text-white justified-text">
           Here is an example of a function with parameters:
         </p>
 
@@ -121,6 +167,13 @@
         </p>
 
         <div id="sampleFunctionWithoutParameters" class="code-sample"></div>
+
+        <p class="text-white justified-text">
+          Conditional expressions evaluate a condition and return one of two values. The <span class="tagged">else</span>
+          branch is required:
+        </p>
+
+        <div id="sampleConditional" class="code-sample"></div>
 
         <h4 class="text-white section-title">Main function</h4>
 
@@ -207,6 +260,9 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
+    setSampleCode('sampleRunProgram', 'primal program.prm')
+    setSampleCode('sampleNumberLiterals', '1_000_000\n3.14e-10')
+    setSampleCode('sampleConditional', 'abs(n) = if (n < 0) -n else n')
     setSampleCode('sampleFunctionWithParameters', 'cube(n) = pow(n, 3)')
     setSampleCode('sampleFunctionWithoutParameters', 'pi = 3.14159')
 

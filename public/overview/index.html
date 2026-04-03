@@ -113,9 +113,25 @@
             <li>Single threaded</li>
             <li>Interpreted</li>
             <li>Expression oriented</li>
+            <li>Immutable</li>
             <li>Garbage collected</li>
             <li>Interactive</li>
           </ul>
+
+          <h4 class="text-white section-title">Design principles</h4>
+
+          <p class="text-white justified-text">
+            <span class="tagged">Primal</span> treats functions as first-class citizens. This means that functions can be
+            passed as arguments to other functions, returned as values from functions, and assigned to variables. This
+            allows for powerful abstractions and enables functional programming patterns such as higher-order functions,
+            closures, and function composition.
+          </p>
+
+          <p class="text-white justified-text">
+            The language is designed around immutability. Once a value is created, it cannot be changed. This eliminates
+            a whole class of bugs related to unexpected state changes and makes programs easier to reason about. Instead
+            of modifying existing values, operations create new values, which the garbage collector handles efficiently.
+          </p>
 
         </div>
       </div>
