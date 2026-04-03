@@ -6,14 +6,6 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Static documentation website and interactive playground for the **Primal Programming Language** (a declarative, functional, lazy-evaluated, dynamically-typed language). Hosted at https://primal-lang.org via Firebase Hosting.
 
-## Deployment
-
-```bash
-./scripts/deploy.sh   # runs: firebase deploy --only hosting
-```
-
-No build step — this is a pure static site. All files under `public/` are served directly.
-
 ## Architecture
 
 - **`public/`** — Root served directory (Firebase hosting)
