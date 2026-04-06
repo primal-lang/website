@@ -87,7 +87,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="stack.new" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="stack.new.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Push</h5>
         <table class="reference-table">
@@ -102,7 +105,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="stack.push" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="stack.push.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Pop</h5>
         <table class="reference-table">
@@ -117,7 +123,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="stack.pop" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="stack.pop.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Peek</h5>
         <table class="reference-table">
@@ -132,7 +141,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="stack.peek" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="stack.peek.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Is Empty</h5>
         <table class="reference-table">
@@ -147,7 +159,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="stack.isEmpty" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="stack.isEmpty.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Is Not Empty</h5>
         <table class="reference-table">
@@ -162,7 +177,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="stack.isNotEmpty" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="stack.isNotEmpty.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Length</h5>
         <table class="reference-table">
@@ -177,7 +195,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="stack.length" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="stack.length.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Reverse</h5>
         <table class="reference-table">
@@ -192,7 +213,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="stack.reverse" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="stack.reverse.example" class="code-sample"></div>
 
       </div>
     </div>
@@ -205,13 +229,28 @@
 
   <script>
     setSampleCode('stack.new', 'stack.new(a: List): Stack')
+    setSampleCode('stack.new.example', 'stack.new([1, 2, 3]) // returns a stack with 3 at the top')
+
     setSampleCode('stack.push', 'stack.push(a: Stack, b: Any): Stack')
+    setSampleCode('stack.push.example', 'stack.push(stack.new([1, 2]), 3) // returns a stack with 3 at the top')
+
     setSampleCode('stack.pop', 'stack.pop(a: Stack): Stack')
+    setSampleCode('stack.pop.example', 'stack.pop(stack.new([1, 2, 3])) // returns a stack with 2 at the top')
+
     setSampleCode('stack.peek', 'stack.peek(a: Stack): Any')
+    setSampleCode('stack.peek.example', 'stack.peek(stack.new([1, 2, 3])) // returns 3')
+
     setSampleCode('stack.isEmpty', 'stack.isEmpty(a: Stack): Boolean')
+    setSampleCode('stack.isEmpty.example', 'stack.isEmpty(stack.new([])) // returns true')
+
     setSampleCode('stack.isNotEmpty', 'stack.isNotEmpty(a: Stack): Boolean')
+    setSampleCode('stack.isNotEmpty.example', 'stack.isNotEmpty(stack.new([1, 2])) // returns true')
+
     setSampleCode('stack.length', 'stack.length(a: Stack): Number')
+    setSampleCode('stack.length.example', 'stack.length(stack.new([1, 2, 3])) // returns 3')
+
     setSampleCode('stack.reverse', 'stack.reverse(a: Stack): Stack')
+    setSampleCode('stack.reverse.example', 'stack.reverse(stack.new([1, 2, 3])) // returns a stack with 1 at the top')
   </script>
 
   <script>
