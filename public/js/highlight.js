@@ -288,7 +288,7 @@ const basicProperties = (withExtras) => {
     "json\\.encode\\s*(\?=\\()": "custom-native-function",
     "json\\.decode\\s*(\?=\\()": "custom-native-function",
 
-    // hashing
+    // hash
     "hash\\.md5\\s*(\?=\\()": "custom-native-function",
     "hash\\.sha1\\s*(\?=\\()": "custom-native-function",
     "hash\\.sha256\\s*(\?=\\()": "custom-native-function",

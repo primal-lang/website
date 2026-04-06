@@ -48,7 +48,7 @@ For each module in `public/reference/*/index.html`:
 - Remove deprecated functions if any
 
 Available reference modules:
-- arithmetic, casting, comparison, console, control, directory, environment, error, file, hashing, json, list, logic, map, operators, queue, set, stack, string, timestamp, vector
+- arithmetic, casting, comparison, console, control, directory, environment, error, file, hash, json, list, logic, map, operators, queue, set, stack, string, timestamp, vector
 
 ## Verification
 
