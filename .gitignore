@@ -66,5 +66,6 @@ node_modules/
 .env
 
 # custom
+!.claude/
 !.vscode/
 !scripts/
