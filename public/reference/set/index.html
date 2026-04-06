@@ -87,7 +87,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="set.new" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="set.new.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Add</h5>
         <table class="reference-table">
@@ -102,7 +105,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="set.add" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="set.add.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Remove</h5>
         <table class="reference-table">
@@ -117,7 +123,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="set.remove" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="set.remove.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Contains</h5>
         <table class="reference-table">
@@ -132,7 +141,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="set.contains" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="set.contains.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Is Empty</h5>
         <table class="reference-table">
@@ -147,7 +159,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="set.isEmpty" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="set.isEmpty.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Is Not Empty</h5>
         <table class="reference-table">
@@ -162,7 +177,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="set.isNotEmpty" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="set.isNotEmpty.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Length</h5>
         <table class="reference-table">
@@ -177,7 +195,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="set.length" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="set.length.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Union</h5>
         <table class="reference-table">
@@ -192,7 +213,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="set.union" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="set.union.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Intersection</h5>
         <table class="reference-table">
@@ -207,7 +231,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="set.intersection" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="set.intersection.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Difference</h5>
         <table class="reference-table">
@@ -222,7 +249,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="set.difference" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="set.difference.example" class="code-sample"></div>
 
       </div>
     </div>
@@ -235,15 +265,34 @@
 
   <script>
     setSampleCode('set.new', 'set.new(a: List): Set')
+    setSampleCode('set.new.example', 'set.new([1, 2, 3]) // returns {1, 2, 3}')
+
     setSampleCode('set.add', 'set.add(a: Set, b: Any): Set')
+    setSampleCode('set.add.example', 'set.add(set.new([1, 2]), 3) // returns {1, 2, 3}')
+
     setSampleCode('set.remove', 'set.remove(a: Set, b: Any): Set')
+    setSampleCode('set.remove.example', 'set.remove(set.new([1, 2, 3]), 2) // returns {1, 3}')
+
     setSampleCode('set.contains', 'set.contains(a: Set, b: Any): Boolean')
+    setSampleCode('set.contains.example', 'set.contains(set.new([1, 2, 3]), 2) // returns true')
+
     setSampleCode('set.isEmpty', 'set.isEmpty(a: Set): Boolean')
+    setSampleCode('set.isEmpty.example', 'set.isEmpty(set.new([])) // returns true')
+
     setSampleCode('set.isNotEmpty', 'set.isNotEmpty(a: Set): Boolean')
+    setSampleCode('set.isNotEmpty.example', 'set.isNotEmpty(set.new([1, 2])) // returns true')
+
     setSampleCode('set.length', 'set.length(a: Set): Number')
+    setSampleCode('set.length.example', 'set.length(set.new([1, 2, 3])) // returns 3')
+
     setSampleCode('set.union', 'set.union(a: Set, b: Set): Set')
+    setSampleCode('set.union.example', 'set.union(set.new([1, 2]), set.new([2, 3])) // returns {1, 2, 3}')
+
     setSampleCode('set.intersection', 'set.intersection(a: Set, b: Set): Set')
+    setSampleCode('set.intersection.example', 'set.intersection(set.new([1, 2, 3]), set.new([2, 3, 4])) // returns {2, 3}')
+
     setSampleCode('set.difference', 'set.difference(a: Set, b: Set): Set')
+    setSampleCode('set.difference.example', 'set.difference(set.new([1, 2, 3]), set.new([2, 3])) // returns {1}')
   </script>
 
   <script>
