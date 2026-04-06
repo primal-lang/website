@@ -50,6 +50,13 @@ For each module in `public/reference/*/index.html`:
 Available reference modules:
 - arithmetic, casting, comparison, console, control, directory, environment, error, file, hash, json, list, logic, map, operators, queue, set, stack, string, timestamp, vector
 
+### 5. Verify JavaScript Bindings
+
+Read `../primal-sdk/lib/main/main_web.dart` and check that all JavaScript annotations (e.g., `@JS('NAME')`) are aligned with the corresponding functions in `public/try/js/try.js`.
+
+- If any annotations have changed or new ones were added, update `try.js` accordingly
+- Ensure function names in Dart match the JavaScript function names expected by the compiler
+
 ## Verification
 
 After syncing:

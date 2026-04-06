@@ -37,7 +37,7 @@ function compileCode(sourceCode) {
   const consoleInput = document.getElementById('consoleInput')
 
   try {
-    const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateCodeEmpty()
+    const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateRepresentationEmpty()
     const warnings = runtimeWarnings(intermediateCode)
 
     for (const warning of warnings) {
@@ -200,7 +200,7 @@ function evaluateConsoleInput() {
 
     try {
       const sourceCode = window.editor.getValue().trim()
-      const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateCodeEmpty()
+      const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateRepresentationEmpty()
       const expression = compileExpression(inputValue)
       const result = runtimeReduce(intermediateCode, expression)
       writeOutputSuccess(result)
