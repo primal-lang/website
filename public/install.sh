@@ -139,7 +139,7 @@ get_latest_version() {
 
 get_installed_version() {
     if [[ -x "${INSTALL_DIR}/${BINARY_NAME}" ]]; then
-        "${INSTALL_DIR}/${BINARY_NAME}" --version 2>/dev/null | head -1 || echo ""
+        "${INSTALL_DIR}/${BINARY_NAME}" --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || echo ""
     else
         echo ""
     fi
