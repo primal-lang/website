@@ -9,6 +9,43 @@ function setSampleCode(id, content) {
   })
 }
 
+// Add copy buttons to all code-sample elements
+document.addEventListener('DOMContentLoaded', function () {
+  const codeSamples = document.querySelectorAll('.code-sample');
+
+  codeSamples.forEach(function (sample) {
+    const copyBtn = document.createElement('button');
+    copyBtn.className = 'code-copy-btn';
+    copyBtn.setAttribute('aria-label', 'Copy code');
+    copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
+
+    copyBtn.addEventListener('click', function () {
+      // Try to get content from CodeMirror instance
+      const cmElement = sample.querySelector('.CodeMirror');
+      let text = '';
+
+      if (cmElement && cmElement.CodeMirror) {
+        text = cmElement.CodeMirror.getValue();
+      } else {
+        // Fallback to text content
+        text = sample.textContent || sample.innerText;
+      }
+
+      navigator.clipboard.writeText(text).then(function () {
+        copyBtn.classList.add('copied');
+        copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+
+        setTimeout(function () {
+          copyBtn.classList.remove('copied');
+          copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
+        }, 2000);
+      });
+    });
+
+    sample.appendChild(copyBtn);
+  });
+});
+
 // https://github.com/erosman/CodeMirror-plus/tree/main/addon/mode
 (function (mod) {
   if (typeof exports == "object" && typeof module == "object") // CommonJS

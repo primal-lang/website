@@ -781,6 +781,7 @@ a {
 
 /* --- Code blocks --- */
 .code-sample {
+  position: relative;
   background-color: #0d1117;
   padding: 0.5rem 0.75rem;
   font-family: var(--font-code);
@@ -790,6 +791,46 @@ a {
   font-size: 0.85rem;
   border: 1px solid rgba(255,255,255,0.05);
   overflow-x: auto
+}
+
+.code-copy-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius-sm);
+  padding: 0.35rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity var(--t-fast), background var(--t-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10
+}
+
+.code-sample:hover .code-copy-btn {
+  opacity: 1
+}
+
+.code-copy-btn:hover {
+  background: rgba(255,255,255,0.12)
+}
+
+.code-copy-btn svg {
+  width: 16px;
+  height: 16px;
+  fill: var(--color-text-2)
+}
+
+.code-copy-btn.copied {
+  background: rgba(213,171,121,0.15);
+  border-color: rgba(213,171,121,0.3)
+}
+
+.code-copy-btn.copied svg {
+  fill: var(--color-gold)
 }
 
 /* --- Back arrow --- */
