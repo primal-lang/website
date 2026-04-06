@@ -87,7 +87,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="vector.new" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="vector.new.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Normalize</h5>
         <table class="reference-table">
@@ -102,7 +105,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="vector.normalize" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="vector.normalize.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Add</h5>
         <table class="reference-table">
@@ -117,7 +123,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="vector.add" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="vector.add.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Subtract</h5>
         <table class="reference-table">
@@ -132,7 +141,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="vector.sub" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="vector.sub.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Magnitude</h5>
         <table class="reference-table">
@@ -147,7 +159,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="vector.magnitude" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="vector.magnitude.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Angle</h5>
         <table class="reference-table">
@@ -162,7 +177,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="vector.angle" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="vector.angle.example" class="code-sample"></div>
 
       </div>
     </div>
@@ -175,11 +193,22 @@
 
   <script>
     setSampleCode('vector.new', 'vector.new(a: List): Vector')
+    setSampleCode('vector.new.example', 'vector.new([1, 2, 3]) // returns <1, 2, 3>')
+
     setSampleCode('vector.normalize', 'vector.normalize(a: Vector): Vector')
+    setSampleCode('vector.normalize.example', 'vector.normalize(vector.new([3, 4])) // returns <0.6, 0.8>')
+
     setSampleCode('vector.add', 'vector.add(a: Vector, b: Vector): Vector')
+    setSampleCode('vector.add.example', 'vector.add(vector.new([1, 2]), vector.new([3, 4])) // returns <4, 6>')
+
     setSampleCode('vector.sub', 'vector.sub(a: Vector, b: Vector): Vector')
+    setSampleCode('vector.sub.example', 'vector.sub(vector.new([5, 7]), vector.new([2, 3])) // returns <3, 4>')
+
     setSampleCode('vector.magnitude', 'vector.magnitude(a: Vector): Number')
+    setSampleCode('vector.magnitude.example', 'vector.magnitude(vector.new([3, 4])) // returns 5')
+
     setSampleCode('vector.angle', 'vector.angle(a: Vector, b: Vector): Number')
+    setSampleCode('vector.angle.example', 'vector.angle(vector.new([1, 0]), vector.new([0, 1])) // returns 1.5708...')
   </script>
 
   <script>
