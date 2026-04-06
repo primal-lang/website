@@ -87,7 +87,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="queue.new" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="queue.new.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Enqueue</h5>
         <table class="reference-table">
@@ -102,7 +105,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="queue.enqueue" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="queue.enqueue.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Dequeue</h5>
         <table class="reference-table">
@@ -117,7 +123,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="queue.dequeue" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="queue.dequeue.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Peek</h5>
         <table class="reference-table">
@@ -132,7 +141,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="queue.peek" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="queue.peek.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Is Empty</h5>
         <table class="reference-table">
@@ -147,7 +159,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="queue.isEmpty" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="queue.isEmpty.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Is Not Empty</h5>
         <table class="reference-table">
@@ -162,7 +177,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="queue.isNotEmpty" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="queue.isNotEmpty.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Length</h5>
         <table class="reference-table">
@@ -177,7 +195,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="queue.length" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="queue.length.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Reverse</h5>
         <table class="reference-table">
@@ -192,7 +213,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="queue.reverse" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="queue.reverse.example" class="code-sample"></div>
 
       </div>
     </div>
@@ -205,13 +229,28 @@
 
   <script>
     setSampleCode('queue.new', 'queue.new(a: List): Queue')
+    setSampleCode('queue.new.example', 'queue.new([1, 2, 3]) // returns a queue with 1 at the front')
+
     setSampleCode('queue.enqueue', 'queue.enqueue(a: Queue, b: Any): Queue')
+    setSampleCode('queue.enqueue.example', 'queue.enqueue(queue.new([1, 2]), 3) // returns a queue [1, 2, 3]')
+
     setSampleCode('queue.dequeue', 'queue.dequeue(a: Queue): Queue')
+    setSampleCode('queue.dequeue.example', 'queue.dequeue(queue.new([1, 2, 3])) // returns a queue [2, 3]')
+
     setSampleCode('queue.peek', 'queue.peek(a: Queue): Any')
+    setSampleCode('queue.peek.example', 'queue.peek(queue.new([1, 2, 3])) // returns 1')
+
     setSampleCode('queue.isEmpty', 'queue.isEmpty(a: Queue): Boolean')
+    setSampleCode('queue.isEmpty.example', 'queue.isEmpty(queue.new([])) // returns true')
+
     setSampleCode('queue.isNotEmpty', 'queue.isNotEmpty(a: Queue): Boolean')
+    setSampleCode('queue.isNotEmpty.example', 'queue.isNotEmpty(queue.new([1, 2])) // returns true')
+
     setSampleCode('queue.length', 'queue.length(a: Queue): Number')
+    setSampleCode('queue.length.example', 'queue.length(queue.new([1, 2, 3])) // returns 3')
+
     setSampleCode('queue.reverse', 'queue.reverse(a: Queue): Queue')
+    setSampleCode('queue.reverse.example', 'queue.reverse(queue.new([1, 2, 3])) // returns a queue [3, 2, 1]')
   </script>
 
   <script>
