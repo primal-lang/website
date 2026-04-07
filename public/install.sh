@@ -260,7 +260,7 @@ install_binary() {
         binary_suffix=".exe"
     fi
 
-    download_url="https://github.com/${GITHUB_REPO}/raw/refs/tags/v${version}/bin/${BINARY_NAME}-${os}-${arch}${binary_suffix}"
+    download_url="https://github.com/${GITHUB_REPO}/raw/refs/tags/v${version}/bin/${BINARY_NAME}-${os}-${arch}"
 
     print_info "Downloading Primal v${version} for ${os}-${arch}..."
 
