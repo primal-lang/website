@@ -49,12 +49,12 @@ Options:
     --help                  Show this help message
     --version <version>     Install a specific version (e.g., 0.4.3)
     --install-dir <path>    Override default install location (~/.local/bin)
-    --uninstall             Remove primal binary and PATH entry
+    --uninstall             Remove Primal binary and PATH entry
 
 Examples:
     install.sh                      Install latest version
     install.sh --version 0.4.3      Install specific version
-    install.sh --uninstall          Uninstall primal
+    install.sh --uninstall          Uninstall Primal
 
 EOF
     exit 0
@@ -262,7 +262,7 @@ install_binary() {
 
     download_url="https://github.com/${GITHUB_REPO}/raw/refs/tags/v${version}/bin/${BINARY_NAME}-${os}-${arch}${binary_suffix}"
 
-    print_info "Downloading primal v${version} for ${os}-${arch}..."
+    print_info "Downloading Primal v${version} for ${os}-${arch}..."
 
     # Create temp file
     temp_file=$(mktemp)
@@ -367,7 +367,7 @@ main() {
     installed_version=$(get_installed_version)
 
     if [[ -n "$installed_version" ]]; then
-        print_info "Found primal ${installed_version} installed"
+        print_info "Found Primal ${installed_version} installed"
     fi
 
     # Determine target version
@@ -389,9 +389,9 @@ main() {
 
     # Install or update
     if [[ -n "$installed_version" ]]; then
-        print_info "Updating primal from ${installed_version} to ${target_version}..."
+        print_info "Updating Primal from ${installed_version} to ${target_version}..."
     else
-        print_info "Installing primal v${target_version}..."
+        print_info "Installing Primal v${target_version}..."
     fi
 
     install_binary "$target_version"
@@ -407,9 +407,9 @@ main() {
     if verify_installation; then
         echo ""
         if [[ -n "$installed_version" ]]; then
-            print_success "Successfully updated primal from ${installed_version} to ${target_version}!"
+            print_success "Successfully updated Primal from ${installed_version} to ${target_version}!"
         else
-            print_success "Successfully installed primal v${target_version}!"
+            print_success "Successfully installed Primal v${target_version}!"
         fi
         echo ""
         print_info "Installation directory: ${INSTALL_DIR}"
