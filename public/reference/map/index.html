@@ -87,7 +87,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="map.new" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="map.new.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Index</h5>
         <table class="reference-table">
@@ -102,7 +105,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="map.index" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="map.index.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">At</h5>
         <table class="reference-table">
@@ -117,7 +123,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="map.at" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="map.at.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Set</h5>
         <table class="reference-table">
@@ -132,7 +141,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="map.set" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="map.set.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Keys</h5>
         <table class="reference-table">
@@ -147,7 +159,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="map.keys" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="map.keys.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Values</h5>
         <table class="reference-table">
@@ -162,7 +177,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="map.values" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="map.values.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Contains key</h5>
         <table class="reference-table">
@@ -177,7 +195,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="map.containsKey" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="map.containsKey.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Is empty</h5>
         <table class="reference-table">
@@ -192,7 +213,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="map.isEmpty" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="map.isEmpty.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Is not empty</h5>
         <table class="reference-table">
@@ -207,7 +231,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="map.isNotEmpty" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="map.isNotEmpty.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Remove at</h5>
         <table class="reference-table">
@@ -222,7 +249,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="map.removeAt" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="map.removeAt.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Length</h5>
         <table class="reference-table">
@@ -237,7 +267,10 @@
             </tr>
           </tbody>
         </table>
+        <p class="reference-block-label">Signature</p>
         <div id="map.length" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="map.length.example" class="code-sample"></div>
 
       </div>
     </div>
@@ -250,17 +283,37 @@
 
   <script>
     setSampleCode('map.new', '{Any: Any, ...}: Map')
-    setSampleCode('map.index', 'Map[Any]: Any')
-    setSampleCode('map.at', 'map.at(a: Map, b: Any): Any')
-    setSampleCode('map.set', 'map.set(a: Map, b: Any, c: Any): Map')
-    setSampleCode('map.keys', 'map.keys(a: Map): List')
-    setSampleCode('map.values', 'map.values(a: Map): List')
-    setSampleCode('map.containsKey', 'map.containsKey(a: Map, b: Any): Boolean')
-    setSampleCode('map.isEmpty', 'map.isEmpty(a: Map): Boolean')
-    setSampleCode('map.isNotEmpty', 'map.isNotEmpty(a: Map): Boolean')
-    setSampleCode('map.removeAt', 'map.removeAt(a: Map, b: Any): Map')
-    setSampleCode('map.length', 'map.length(a: Map): Number')
+    setSampleCode('map.new.example', '{"name": "Alice", "age": 30} // returns {"name": "Alice", "age": 30}')
 
+    setSampleCode('map.index', 'Map[Any]: Any')
+    setSampleCode('map.index.example', '{"name": "Alice"}["name"] // returns "Alice"')
+
+    setSampleCode('map.at', 'map.at(a: Map, b: Any): Any')
+    setSampleCode('map.at.example', 'map.at({"name": "Alice"}, "name") // returns "Alice"')
+
+    setSampleCode('map.set', 'map.set(a: Map, b: Any, c: Any): Map')
+    setSampleCode('map.set.example', 'map.set({"a": 1}, "b", 2) // returns {"a": 1, "b": 2}')
+
+    setSampleCode('map.keys', 'map.keys(a: Map): List')
+    setSampleCode('map.keys.example', 'map.keys({"a": 1, "b": 2}) // returns ["a", "b"]')
+
+    setSampleCode('map.values', 'map.values(a: Map): List')
+    setSampleCode('map.values.example', 'map.values({"a": 1, "b": 2}) // returns [1, 2]')
+
+    setSampleCode('map.containsKey', 'map.containsKey(a: Map, b: Any): Boolean')
+    setSampleCode('map.containsKey.example', 'map.containsKey({"a": 1}, "a") // returns true')
+
+    setSampleCode('map.isEmpty', 'map.isEmpty(a: Map): Boolean')
+    setSampleCode('map.isEmpty.example', 'map.isEmpty({}) // returns true')
+
+    setSampleCode('map.isNotEmpty', 'map.isNotEmpty(a: Map): Boolean')
+    setSampleCode('map.isNotEmpty.example', 'map.isNotEmpty({"a": 1}) // returns true')
+
+    setSampleCode('map.removeAt', 'map.removeAt(a: Map, b: Any): Map')
+    setSampleCode('map.removeAt.example', 'map.removeAt({"a": 1, "b": 2}, "a") // returns {"b": 2}')
+
+    setSampleCode('map.length', 'map.length(a: Map): Number')
+    setSampleCode('map.length.example', 'map.length({"a": 1, "b": 2}) // returns 2')
   </script>
 
   <script>
