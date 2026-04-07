@@ -421,7 +421,11 @@ main() {
         fi
 
         echo ""
-        print_info "Run 'primal --version' to verify the installation."
+        if [[ "$(detect_os)" == "windows" ]]; then
+            print_info "Run 'primal.exe --version' to verify the installation."
+        else
+            print_info "Run 'primal --version' to verify the installation."
+        fi
     else
         error_exit "Installation verification failed. Please check the installation manually."
     fi
