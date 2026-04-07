@@ -95,9 +95,14 @@ download_file() {
     local output="$2"
 
     if has_command curl; then
-        curl -fsSL "$url" -o "$output"
+        # -f: fail on errors
+        # -L: follow redirects
+        # -#: show a simple progress bar
+        curl -fL --progress-bar "$url" -o "$output"
     elif has_command wget; then
-        wget -q "$url" -O "$output"
+        # --show-progress: forces wget to show the bar even if output is redirected
+        # -q: keeps other noise down so only the bar shows
+        wget -q --show-progress "$url" -O "$output"
     else
         error_exit "Neither curl nor wget found. Please install one of them."
     fi
