@@ -265,7 +265,8 @@
 
   <script>
     setSampleCode('sampleInstall', 'curl -fsSL https://primal-lang.org/install.sh | bash')
-    setSampleCode('sampleRunProgram', 'primal program.prm')
+    const isWin = typeof navigator !== 'undefined' && /Win/.test(navigator.platform);
+    setSampleCode('sampleRunProgram', isWin ? 'primal.exe program.prm' : 'primal program.prm')
     setSampleCode('sampleNumberLiterals', '1_000_000\n3.14e-10')
     setSampleCode('sampleConditional', 'abs(n) = if (n < 0) -n else n')
     setSampleCode('sampleFunctionWithParameters', 'cube(n) = pow(n, 3)')
