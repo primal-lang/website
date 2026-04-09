@@ -1,28 +1,29 @@
 function setSampleCode(id, content) {
-  document.addEventListener('DOMContentLoaded', function () {
+  document.addEventListener("DOMContentLoaded", function () {
     window.editor = CodeMirror(document.getElementById(id), {
       ...basicProperties(true),
       lineNumbers: false,
       value: content,
       readOnly: true,
-    })
-  })
+    });
+  });
 }
 
 // Add copy buttons to all code-sample elements
-document.addEventListener('DOMContentLoaded', function () {
-  const codeSamples = document.querySelectorAll('.code-sample');
+document.addEventListener("DOMContentLoaded", function () {
+  const codeSamples = document.querySelectorAll(".code-sample");
 
   codeSamples.forEach(function (sample) {
-    const copyBtn = document.createElement('button');
-    copyBtn.className = 'code-copy-btn';
-    copyBtn.setAttribute('aria-label', 'Copy code');
-    copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
+    const copyBtn = document.createElement("button");
+    copyBtn.className = "code-copy-btn";
+    copyBtn.setAttribute("aria-label", "Copy code");
+    copyBtn.innerHTML =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
 
-    copyBtn.addEventListener('click', function () {
+    copyBtn.addEventListener("click", function () {
       // Try to get content from CodeMirror instance
-      const cmElement = sample.querySelector('.CodeMirror');
-      let text = '';
+      const cmElement = sample.querySelector(".CodeMirror");
+      let text = "";
 
       if (cmElement && cmElement.CodeMirror) {
         text = cmElement.CodeMirror.getValue();
@@ -32,12 +33,14 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       navigator.clipboard.writeText(text).then(function () {
-        copyBtn.classList.add('copied');
-        copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+        copyBtn.classList.add("copied");
+        copyBtn.innerHTML =
+          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
 
         setTimeout(function () {
-          copyBtn.classList.remove('copied');
-          copyBtn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
+          copyBtn.classList.remove("copied");
+          copyBtn.innerHTML =
+            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
         }, 2000);
       });
     });
@@ -48,17 +51,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
 // https://github.com/erosman/CodeMirror-plus/tree/main/addon/mode
 (function (mod) {
-  if (typeof exports == "object" && typeof module == "object") // CommonJS
+  if (typeof exports == "object" && typeof module == "object")
+    // CommonJS
     mod(require("../../lib/codemirror"));
-  else if (typeof define == "function" && define.amd) // AMD
-    define(["../../lib/codemirror"], mod);
-  else // Plain browser env
-    mod(CodeMirror);
+  else if (typeof define == "function" && define.amd)
+    // AMD
+    define(["../../lib/codemirror"], mod); // Plain browser env
+  else mod(CodeMirror);
 })(function (CodeMirror) {
   CodeMirror.defineOption("keyword", {}, function (cm, val, prev) {
     if (prev == CodeMirror.Init) prev = false;
-    if (prev && !val)
-      cm.removeOverlay("keyword");
+    if (prev && !val) cm.removeOverlay("keyword");
     else if (!prev && val)
       cm.addOverlay({
         token: function (stream) {
@@ -69,29 +72,29 @@ document.addEventListener('DOMContentLoaded', function () {
           }
           stream.next();
         },
-        name: "keyword"
+        name: "keyword",
       });
   });
 });
 
 const basicProperties = (withExtras) => {
   const extras = {
-    "Boolean": "custom-type",
-    "Number": "custom-type",
-    "String": "custom-type",
-    "Timestamp": "custom-type",
-    "List": "custom-type",
-    "Map": "custom-type",
-    "Set": "custom-type",
-    "Stack": "custom-type",
-    "Queue": "custom-type",
-    "Vector": "custom-type",
-    "File": "custom-type",
-    "Directory": "custom-type",
-    "Function": "custom-type",
-    "HttpResponse": "custom-type",
-    "Error": "custom-type",
-    "Any": "custom-type",
+    Boolean: "custom-type",
+    Number: "custom-type",
+    String: "custom-type",
+    Timestamp: "custom-type",
+    List: "custom-type",
+    Map: "custom-type",
+    Set: "custom-type",
+    Stack: "custom-type",
+    Queue: "custom-type",
+    Vector: "custom-type",
+    File: "custom-type",
+    Directory: "custom-type",
+    Function: "custom-type",
+    HttpResponse: "custom-type",
+    Error: "custom-type",
+    Any: "custom-type",
 
     // main
     "main\\s": "custom-keyword",
@@ -99,6 +102,8 @@ const basicProperties = (withExtras) => {
     // control
     "if\\s*": "custom-keyword",
     "else\\s*": "custom-keyword",
+    "and\\s*": "custom-keyword",
+    "or\\s*": "custom-keyword",
     "try\\s*(\?=\\()": "custom-native-function",
 
     // error
@@ -352,11 +357,11 @@ const basicProperties = (withExtras) => {
 
     // environment
     "env\\.get\\s*(\?=\\()": "custom-native-function",
-  }
+  };
 
   return {
-    mode: 'javascript',
-    theme: 'dracula',
+    mode: "javascript",
+    theme: "dracula",
     keyword: {
       "\\(": "custom-parenthesis",
       "\\)": "custom-parenthesis",
@@ -367,7 +372,7 @@ const basicProperties = (withExtras) => {
 
       "=": "custom-marker",
 
-      ...withExtras && extras,
-    }
-  }
-}
+      ...(withExtras && extras),
+    },
+  };
+};
