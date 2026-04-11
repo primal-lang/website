@@ -48,6 +48,7 @@ For each module in `public/reference/*/index.html`:
 - Remove deprecated functions if any
 
 Available reference modules:
+
 - arithmetic, casting, comparison, console, control, directory, environment, error, file, hash, json, list, logic, map, operators, queue, set, stack, string, timestamp, vector
 
 ### 5. Verify JavaScript Bindings
@@ -57,9 +58,23 @@ Read `../primal-sdk/lib/main/main_web.dart` and check that all JavaScript annota
 - If any annotations have changed or new ones were added, update `try.js` accordingly
 - Ensure function names in Dart match the JavaScript function names expected by the compiler
 
+### 6. Sync Sample Programs
+
+Compare sample files between the SDK and the website:
+
+- SDK samples: `../primal-sdk/test/resource/samples/*.prm`
+- Website samples: `public/try/samples/*.prm`
+
+For each sample file in the website that has a matching filename in the SDK:
+
+- Copy the SDK version to replace the website version
+
+This ensures the playground samples stay in sync with the SDK's tested examples.
+
 ## Verification
 
 After syncing:
+
 1. Open `public/try/index.html` locally and verify the playground loads
 2. Test a simple Primal program to confirm the compiler works
 3. Review the versions page for correct changelog formatting
