@@ -77,6 +77,7 @@ function Write-Error {
 function Exit-WithError {
     param([string]$Message)
     Write-Error $Message
+    Read-Host "Press Enter to exit"
     exit 1
 }
 
@@ -334,4 +335,12 @@ function Main {
 }
 
 # Run main function
-Main
+try {
+    Main
+} catch {
+    Write-Error "An unexpected error occurred: $_"
+    Read-Host "Press Enter to exit"
+    exit 1
+}
+
+Read-Host "Press Enter to exit"
