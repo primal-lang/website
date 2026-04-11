@@ -74,7 +74,7 @@
 
         <h2 class="text-white mb-4">Logic</h2>
 
-        <h5 class="text-white reference-title">And</h5>
+        <h5 class="text-white reference-title">And (Short-Circuit)</h5>
         <table class="reference-table">
           <tbody>
             <tr>
@@ -82,8 +82,12 @@
               <td class="border-bottom">Two boolean arguments.</td>
             </tr>
             <tr>
-              <td class="reference-table-title">Output</td>
-              <td>True if both arguments are true. False otherwise.</td>
+              <td class="border-bottom reference-table-title">Output</td>
+              <td class="border-bottom">True if both arguments are true. False otherwise.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Evaluation</td>
+              <td>Short-circuit (lazy) - the second argument is only evaluated if the first is true.</td>
             </tr>
           </tbody>
         </table>
@@ -92,7 +96,7 @@
         <p class="reference-block-label">Example</p>
         <div id="bool.and.example" class="code-sample"></div>
 
-        <h5 class="text-white reference-title">Or</h5>
+        <h5 class="text-white reference-title">And (Strict)</h5>
         <table class="reference-table">
           <tbody>
             <tr>
@@ -100,8 +104,34 @@
               <td class="border-bottom">Two boolean arguments.</td>
             </tr>
             <tr>
-              <td class="reference-table-title">Output</td>
-              <td>True if at least one argument is true. False otherwise.</td>
+              <td class="border-bottom reference-table-title">Output</td>
+              <td class="border-bottom">True if both arguments are true. False otherwise.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Evaluation</td>
+              <td>Strict (eager) - both arguments are always evaluated.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="bool.andStrict" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="bool.andStrict.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Or (Short-Circuit)</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two boolean arguments.</td>
+            </tr>
+            <tr>
+              <td class="border-bottom reference-table-title">Output</td>
+              <td class="border-bottom">True if at least one argument is true. False otherwise.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Evaluation</td>
+              <td>Short-circuit (lazy) - the second argument is only evaluated if the first is false.</td>
             </tr>
           </tbody>
         </table>
@@ -109,6 +139,28 @@
         <div id="bool.or" class="code-sample"></div>
         <p class="reference-block-label">Example</p>
         <div id="bool.or.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Or (Strict)</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two boolean arguments.</td>
+            </tr>
+            <tr>
+              <td class="border-bottom reference-table-title">Output</td>
+              <td class="border-bottom">True if at least one argument is true. False otherwise.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Evaluation</td>
+              <td>Strict (eager) - both arguments are always evaluated.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="bool.orStrict" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="bool.orStrict.example" class="code-sample"></div>
 
         <h5 class="text-white reference-title">Xor</h5>
         <table class="reference-table">
@@ -157,8 +209,14 @@
     setSampleCode('bool.and', 'bool.and(a: Boolean, b: Boolean): Boolean')
     setSampleCode('bool.and.example', 'bool.and(true, false) // returns false')
 
+    setSampleCode('bool.andStrict', 'bool.andStrict(a: Boolean, b: Boolean): Boolean')
+    setSampleCode('bool.andStrict.example', 'bool.andStrict(true, false) // returns false')
+
     setSampleCode('bool.or', 'bool.or(a: Boolean, b: Boolean): Boolean')
     setSampleCode('bool.or.example', 'bool.or(true, false) // returns true')
+
+    setSampleCode('bool.orStrict', 'bool.orStrict(a: Boolean, b: Boolean): Boolean')
+    setSampleCode('bool.orStrict.example', 'bool.orStrict(true, false) // returns true')
 
     setSampleCode('bool.xor', 'bool.xor(a: Boolean, b: Boolean): Boolean')
     setSampleCode('bool.xor.example', 'bool.xor(true, false) // returns true')
