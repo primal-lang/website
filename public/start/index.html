@@ -75,9 +75,7 @@
 
         <div id="sampleInstall" class="code-sample"></div>
 
-        <p class="text-white justified-text">
-          This installs the <span class="tagged">primal</span> binary to <span class="tagged">~/.local/bin</span> and updates your shell configuration.
-        </p>
+        <p id="installNote" class="text-white justified-text"></p>
 
         <p class="text-white justified-text">
           To run a program, use the following command:
@@ -263,8 +261,18 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    setSampleCode('sampleInstall', 'curl -fsSL https://primal-lang.org/install.sh | bash')
+    // Platform detection
     const isWin = typeof navigator !== 'undefined' && /Win/.test(navigator.platform);
+
+    // Installation command based on platform
+    setSampleCode('sampleInstall', isWin
+      ? 'irm https://primal-lang.org/install.ps1 | iex'
+      : 'curl -fsSL https://primal-lang.org/install.sh | bash')
+
+    document.getElementById('installNote').innerHTML = isWin
+      ? 'This installs <span class="tagged">primal.exe</span> to <span class="tagged">%LOCALAPPDATA%\\Primal\\bin</span> and adds it to your PATH.'
+      : 'This installs the <span class="tagged">primal</span> binary to <span class="tagged">~/.local/bin</span> and updates your shell configuration.';
+
     setSampleCode('sampleRunProgram', isWin ? 'primal.exe program.prm' : 'primal program.prm')
     setSampleCode('sampleNumberLiterals', '1_000_000\n3.14e-10')
     setSampleCode('sampleConditional', 'abs(n) = if (n < 0) -n else n')
