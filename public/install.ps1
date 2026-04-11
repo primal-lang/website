@@ -187,7 +187,7 @@ function Install-Binary {
     param([string]$TargetVersion)
 
     $arch = Get-Architecture
-    $downloadUrl = "https://github.com/$script:GITHUB_REPO/raw/refs/tags/v$TargetVersion/bin/primal-windows-$arch.exe"
+    $downloadUrl = "https://github.com/$script:GITHUB_REPO/raw/refs/tags/v$TargetVersion/bin/primal-windows-$arch"
 
     Write-Info "Downloading Primal v$TargetVersion for windows-$arch..."
 
