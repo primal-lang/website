@@ -205,6 +205,9 @@ function Install-Binary {
         # Download with progress
         $ProgressPreference = 'Continue'
         Invoke-WebRequest -Uri $downloadUrl -OutFile $binaryPath -UseBasicParsing
+
+        # Unblock the file (Windows blocks downloaded executables)
+        Unblock-File -Path $binaryPath -ErrorAction SilentlyContinue
     }
     catch {
         Exit-WithError "Failed to download from $downloadUrl`n$_"
@@ -214,16 +217,24 @@ function Install-Binary {
 function Test-Installation {
     $binaryPath = Join-Path $script:INSTALL_DIR $script:BINARY_NAME
 
-    if (Test-Path $binaryPath) {
-        try {
-            $output = & $binaryPath --version 2>$null
-            return $null -ne $output
-        }
-        catch {
+    if (-not (Test-Path $binaryPath)) {
+        Write-Warning "Binary not found at $binaryPath"
+        return $false
+    }
+
+    try {
+        $output = & $binaryPath --version 2>&1
+        if ($LASTEXITCODE -ne 0) {
+            Write-Warning "Binary exited with code $LASTEXITCODE"
+            Write-Warning "Output: $output"
             return $false
         }
+        return $null -ne $output
     }
-    return $false
+    catch {
+        Write-Warning "Failed to run binary: $_"
+        return $false
+    }
 }
 
 # ============================================================================
