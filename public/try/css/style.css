@@ -39,6 +39,8 @@ body {
   font-size: 1.25rem;
   transition: color var(--t-fast);
   transform: translateY(2px);
+  margin-right: 0.35rem;
+  margin-bottom: 0.15rem;
 }
 
 .nav-link:hover .navbar-icon {
