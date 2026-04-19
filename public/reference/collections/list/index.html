@@ -1,0 +1,918 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description"
+        content="Primal list functions reference: map, filter, reduce, sort, flatten, and other list manipulation operations." />
+    <title>List Functions</title>
+    <link rel="canonical" href="https://primal-lang.org/reference/collections/list/" />
+
+    <link rel="icon" type="image/x-icon" href="../../../img/icon.png" />
+    <link rel="apple-touch-icon" href="../../../img/icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1a2c44" />
+    <meta name="author" content="Primal" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js"></script>
+
+    <link href="../../../css/highlight.css" rel="stylesheet" />
+    <link href="../../../css/template.css" rel="stylesheet" />
+
+    <script src="../../../js/highlight.js"></script>
+
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-7BCHJ87ZG7');
+    </script>
+
+</head>
+
+<body class="page-background page-wrapper">
+
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="../../../img/icon.png" alt="Primal" width="26" height="26" />
+                PRIMAL
+            </a>
+            <button class="navbar-toggler" onclick="this.nextElementSibling.classList.toggle('show')"
+                aria-label="Toggle navigation">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="4" y1="6" x2="20" y2="6" />
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <line x1="4" y1="18" x2="20" y2="18" />
+                </svg>
+            </button>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../../../overview">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../start">Get started</a></li>
+                <li class="nav-item"><a class="nav-link selected-menu" href="../../../reference">Reference</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../versions">Versions</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../feedback">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content page-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+
+                    <a href="../.." class="text-decoration-none arrow-back">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px"
+                            fill="#e8eaed">
+                            <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+                        </svg>Reference
+                    </a>
+
+                    <h2 class="text-white mb-4">List</h2>
+
+                    <h5 class="text-white reference-title">Constructor</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list of elements separated by comma.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A list containing all the elements.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.new" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.new.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Indexing</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and a number representing the index.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The element at the specified index in the list.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.index" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.index.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">At</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and a number representing the index.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The element at the specified index in the list.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.at" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.at.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Sublist</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and two numbers representing the start and end indices.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list from the start index to the end index.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.sublist" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.sublist.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Set</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list, a number, and any value.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with the value set at the specified index.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.set" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.set.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Join</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and a string.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A string that is the result of concatenating the list elements, separated by the
+                                    specified string.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.join" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.join.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Length</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The number of elements in the list.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.length" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.length.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Concatenation</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">Two lists.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list that is the result of concatenating the two lists.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.concat" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.concat.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Is empty</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>True if the list is empty. False otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.isEmpty" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.isEmpty.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Is not empty</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>True if the list is not empty. False otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.isNotEmpty" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.isNotEmpty.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Contains</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and any value.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>True if the list contains the specified value. False otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.contains" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.contains.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">First</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The first element of the list.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.first" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.first.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Last</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The last element of the list.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.last" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.last.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Init</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list containing all elements except the last one.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.init" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.init.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Rest</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list containing all elements except the first one.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.rest" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.rest.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Take</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and a number.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list containing the first n elements of the input list, where n is the
+                                    specified number.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.take" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.take.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Drop</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and a number.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list containing all elements except the first n elements, where n is the
+                                    specified number.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.drop" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.drop.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Insert start</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and any value.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with the value inserted at the start.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.insertStart" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.insertStart.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Insert end</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and any value.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with the value inserted at the end.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.insertEnd" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.insertEnd.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Remove</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and any value.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with all the occurrences of the value removed.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.remove" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.remove.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Remove at</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and a number.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with the element at the specified index removed.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.removeAt" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.removeAt.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Reverse</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with the elements in reverse order.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.reverse" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.reverse.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Filled</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A number and any value.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A list filled with the specified value, repeated the specified number of times.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.filled" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.filled.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Index of</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and any value.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The index of the first occurrence of the value in the list, or -1 if the value is
+                                    not found.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.indexOf" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.indexOf.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Swap</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and two numbers.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with the elements at the specified indices swapped.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.swap" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.swap.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Map</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">
+                                    A list and a function that takes an element of the list as input and returns a new
+                                    value.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with the function applied to each element of the input list.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.map" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.map.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Filter</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">
+                                    A list and a function that takes an element of the list as input and returns a
+                                    boolean.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list containing only the elements of the input list for which the function
+                                    returns true.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.filter" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.filter.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Reduce</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">
+                                    A list, an initial value, and a function that takes the current value and an element
+                                    of the list as
+                                    input
+                                    and returns a new value.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The result of applying the function to each element of the list, starting with the
+                                    initial value.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.reduce" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.reduce.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">All</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">
+                                    A list and a function that takes an element of the list as input and returns a
+                                    boolean.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>True if the function returns true for all elements of the list. False otherwise.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.all" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.all.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">None</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">
+                                    A list and a function that takes an element of the list as input and returns a
+                                    boolean.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>True if the function returns false for all elements of the list. False otherwise.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.none" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.none.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Any</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">
+                                    A list and a function that takes an element of the list as input and returns a
+                                    boolean.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>True if the function returns true for at least one element of the list. False
+                                    otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.any" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.any.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Zip</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">
+                                    Two lists and a function that takes an element from each list as input and returns a
+                                    new value.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with the function applied to each pair of elements from the input lists.
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.zip" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.zip.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Sort</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">
+                                    A list and a function that takes two elements of the list as input and compares
+                                    them.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with the elements sorted according to the function.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.sort" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.sort.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Chunk</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and a number representing the chunk size.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A list of lists, each containing at most n elements.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.chunk" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.chunk.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Count</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list and a predicate function.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The number of elements matching the predicate.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.count" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.count.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Distinct</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with duplicate elements removed, preserving order.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.distinct" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.distinct.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Flatten</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A list of lists.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A new list with nested lists flattened into a single list.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="list.flatten" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="list.flatten.example" class="code-sample"></div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        setSampleCode('list.new', '[Any, Any, Any, ...]: List')
+        setSampleCode('list.new.example', '[1, 2, 3] // returns [1, 2, 3]')
+
+        setSampleCode('list.index', 'List[Number]: Any')
+        setSampleCode('list.index.example', '[10, 20, 30][1] // returns 20')
+
+        setSampleCode('list.at', 'list.at(a: List, b: Number): Any')
+        setSampleCode('list.at.example', 'list.at([10, 20, 30], 1) // returns 20')
+
+        setSampleCode('list.sublist', 'list.sublist(a: List, b: Number, c: Number): List')
+        setSampleCode('list.sublist.example', 'list.sublist([10, 20, 30, 40], 1, 3) // returns [20, 30]')
+
+        setSampleCode('list.set', 'list.set(a: List, b: Number, c: Any): List')
+        setSampleCode('list.set.example', 'list.set([1, 2, 3], 1, 99) // returns [1, 99, 3]')
+
+        setSampleCode('list.join', 'list.join(a: List, b: String): String')
+        setSampleCode('list.join.example', 'list.join(["a", "b", "c"], ", ") // returns "a, b, c"')
+
+        setSampleCode('list.length', 'list.length(a: List): Number')
+        setSampleCode('list.length.example', 'list.length([1, 2, 3]) // returns 3')
+
+        setSampleCode('list.concat', 'list.concat(a: List, b: List): List')
+        setSampleCode('list.concat.example', 'list.concat([1, 2], [3, 4]) // returns [1, 2, 3, 4]')
+
+        setSampleCode('list.isEmpty', 'list.isEmpty(a: List): Boolean')
+        setSampleCode('list.isEmpty.example', 'list.isEmpty([]) // returns true')
+
+        setSampleCode('list.isNotEmpty', 'list.isNotEmpty(a: List): Boolean')
+        setSampleCode('list.isNotEmpty.example', 'list.isNotEmpty([1, 2]) // returns true')
+
+        setSampleCode('list.contains', 'list.contains(a: List, b: Any): Boolean')
+        setSampleCode('list.contains.example', 'list.contains([1, 2, 3], 2) // returns true')
+
+        setSampleCode('list.first', 'list.first(a: List): Any')
+        setSampleCode('list.first.example', 'list.first([10, 20, 30]) // returns 10')
+
+        setSampleCode('list.last', 'list.last(a: List): Any')
+        setSampleCode('list.last.example', 'list.last([10, 20, 30]) // returns 30')
+
+        setSampleCode('list.init', 'list.init(a: List): List')
+        setSampleCode('list.init.example', 'list.init([1, 2, 3]) // returns [1, 2]')
+
+        setSampleCode('list.rest', 'list.rest(a: List): List')
+        setSampleCode('list.rest.example', 'list.rest([1, 2, 3]) // returns [2, 3]')
+
+        setSampleCode('list.take', 'list.take(a: List, b: Number): List')
+        setSampleCode('list.take.example', 'list.take([1, 2, 3, 4], 2) // returns [1, 2]')
+
+        setSampleCode('list.drop', 'list.drop(a: List, b: Number): List')
+        setSampleCode('list.drop.example', 'list.drop([1, 2, 3, 4], 2) // returns [3, 4]')
+
+        setSampleCode('list.insertStart', 'list.insertStart(a: List, b: Any): List')
+        setSampleCode('list.insertStart.example', 'list.insertStart([2, 3], 1) // returns [1, 2, 3]')
+
+        setSampleCode('list.insertEnd', 'list.insertEnd(a: List, b: Any): List')
+        setSampleCode('list.insertEnd.example', 'list.insertEnd([1, 2], 3) // returns [1, 2, 3]')
+
+        setSampleCode('list.remove', 'list.remove(a: List, b: Any): List')
+        setSampleCode('list.remove.example', 'list.remove([1, 2, 3, 2], 2) // returns [1, 3]')
+
+        setSampleCode('list.removeAt', 'list.removeAt(a: List, b: Number): List')
+        setSampleCode('list.removeAt.example', 'list.removeAt([1, 2, 3], 1) // returns [1, 3]')
+
+        setSampleCode('list.reverse', 'list.reverse(a: List): List')
+        setSampleCode('list.reverse.example', 'list.reverse([1, 2, 3]) // returns [3, 2, 1]')
+
+        setSampleCode('list.filled', 'list.filled(b: Number, c: Any): List')
+        setSampleCode('list.filled.example', 'list.filled(3, 0) // returns [0, 0, 0]')
+
+        setSampleCode('list.indexOf', 'list.indexOf(a: List, b: Any): Number')
+        setSampleCode('list.indexOf.example', 'list.indexOf([10, 20, 30], 20) // returns 1')
+
+        setSampleCode('list.swap', 'list.swap(a: List, b: Number, c: Number): List')
+        setSampleCode('list.swap.example', 'list.swap([1, 2, 3], 0, 2) // returns [3, 2, 1]')
+
+        setSampleCode('list.map', 'list.map(a: List, b: Function): List')
+        setSampleCode('list.map.example', 'list.map([1, 2, 3], double) // returns [2, 4, 6]')
+
+        setSampleCode('list.filter', 'list.filter(a: List, b: Function): List')
+        setSampleCode('list.filter.example', 'list.filter([1, 2, 3, 4], isEven) // returns [2, 4]')
+
+        setSampleCode('list.reduce', 'list.reduce(a: List, b: Any, c: Function): Any')
+        setSampleCode('list.reduce.example', 'list.reduce([1, 2, 3], 0, num.add) // returns 6')
+
+        setSampleCode('list.all', 'list.all(a: List, b: Function): Boolean')
+        setSampleCode('list.all.example', 'list.all([2, 4, 6], num.isEven) // returns true')
+
+        setSampleCode('list.none', 'list.none(a: List, b: Function): Boolean')
+        setSampleCode('list.none.example', 'list.none([1, 3, 5], num.isEven) // returns true')
+
+        setSampleCode('list.any', 'list.any(a: List, b: Function): Boolean')
+        setSampleCode('list.any.example', 'list.any([1, 2, 3], num.isEven) // returns true')
+
+        setSampleCode('list.zip', 'list.zip(a: List, b: List, c: Function): List')
+        setSampleCode('list.zip.example', 'list.zip([1, 2], [3, 4], num.add) // returns [4, 6]')
+
+        setSampleCode('list.sort', 'list.sort(a: List, b: Function): List')
+        setSampleCode('list.sort.example', 'list.sort([3, 1, 2], num.compare) // returns [1, 2, 3]')
+
+        setSampleCode('list.chunk', 'list.chunk(a: List, b: Number): List')
+        setSampleCode('list.chunk.example', 'list.chunk([1, 2, 3, 4, 5], 2) // returns [[1, 2], [3, 4], [5]]')
+
+        setSampleCode('list.count', 'list.count(a: List, b: Function): Number')
+        setSampleCode('list.count.example', 'list.count([1, 2, 3, 4], num.isEven) // returns 2')
+
+        setSampleCode('list.distinct', 'list.distinct(a: List): List')
+        setSampleCode('list.distinct.example', 'list.distinct([1, 2, 2, 3, 1]) // returns [1, 2, 3]')
+
+        setSampleCode('list.flatten', 'list.flatten(a: List): List')
+        setSampleCode('list.flatten.example', 'list.flatten([[1, 2], [3, 4]]) // returns [1, 2, 3, 4]')
+    </script>
+
+    <script>
+        window.addEventListener('scroll', function () {
+            var n = document.querySelector('.navbar');
+            if (n) n.classList.toggle('scrolled', window.scrollY > 10);
+        });
+    </script>
+
+</body>
+
+</html>
