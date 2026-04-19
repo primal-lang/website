@@ -286,6 +286,204 @@
         <p class="reference-block-label">Example</p>
         <div id="time.compare.example" class="code-sample"></div>
 
+        <h5 class="text-white reference-title">Add</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A timestamp and a duration.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A new timestamp with the duration added.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="time.add" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="time.add.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Subtract</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A timestamp and a duration.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A new timestamp with the duration subtracted.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="time.subtract" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="time.subtract.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Between</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two timestamps.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The duration between the two timestamps.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="time.between" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="time.between.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Format</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A timestamp and a format pattern string.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A string representation of the timestamp in the specified format.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="time.format" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="time.format.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">From Epoch</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A number representing milliseconds since Unix epoch.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>A timestamp instance.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="time.fromEpoch" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="time.fromEpoch.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">To Epoch</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A timestamp instance.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The number of milliseconds since the Unix epoch.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="time.toEpoch" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="time.toEpoch.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Day of Week</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A timestamp instance.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The day of the week (1-7, where 1 is Monday).</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="time.dayOfWeek" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="time.dayOfWeek.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Day of Year</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A timestamp instance.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>The day of the year (1-366).</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="time.dayOfYear" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="time.dayOfYear.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Is After</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two timestamps.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the first timestamp is after the second, false otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="time.isAfter" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="time.isAfter.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Is Before</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">Two timestamps.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the first timestamp is before the second, false otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="time.isBefore" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="time.isBefore.example" class="code-sample"></div>
+
+        <h5 class="text-white reference-title">Is Leap Year</h5>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <td class="border-bottom reference-table-title">Input</td>
+              <td class="border-bottom">A timestamp instance.</td>
+            </tr>
+            <tr>
+              <td class="reference-table-title">Output</td>
+              <td>True if the year of the timestamp is a leap year, false otherwise.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="time.isLeapYear" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="time.isLeapYear.example" class="code-sample"></div>
+
       </div>
     </div>
   </div>
@@ -332,6 +530,39 @@
     time.fromIso("${new Date().toISOString()}"),
     time.fromIso("${new Date(Date.now() - (24 * 60 * 60 * 1000)).toISOString()}")
 ) // returns 1`)
+
+    setSampleCode('time.add', 'time.add(a: Timestamp, b: Duration): Timestamp')
+    setSampleCode('time.add.example', 'time.add(time.now(), duration.fromHours(2)) // returns timestamp 2 hours from now')
+
+    setSampleCode('time.subtract', 'time.subtract(a: Timestamp, b: Duration): Timestamp')
+    setSampleCode('time.subtract.example', 'time.subtract(time.now(), duration.fromDays(1)) // returns timestamp 1 day ago')
+
+    setSampleCode('time.between', 'time.between(a: Timestamp, b: Timestamp): Duration')
+    setSampleCode('time.between.example', 'time.between(t1, t2) // returns the duration between t1 and t2')
+
+    setSampleCode('time.format', 'time.format(a: Timestamp, b: String): String')
+    setSampleCode('time.format.example', 'time.format(time.now(), "yyyy-MM-dd") // returns "2024-01-15"')
+
+    setSampleCode('time.fromEpoch', 'time.fromEpoch(a: Number): Timestamp')
+    setSampleCode('time.fromEpoch.example', 'time.fromEpoch(1704067200000) // returns a timestamp')
+
+    setSampleCode('time.toEpoch', 'time.toEpoch(a: Timestamp): Number')
+    setSampleCode('time.toEpoch.example', 'time.toEpoch(time.now()) // returns the epoch time in milliseconds')
+
+    setSampleCode('time.dayOfWeek', 'time.dayOfWeek(a: Timestamp): Number')
+    setSampleCode('time.dayOfWeek.example', 'time.dayOfWeek(time.now()) // returns 1-7 (Monday=1)')
+
+    setSampleCode('time.dayOfYear', 'time.dayOfYear(a: Timestamp): Number')
+    setSampleCode('time.dayOfYear.example', 'time.dayOfYear(time.now()) // returns 1-366')
+
+    setSampleCode('time.isAfter', 'time.isAfter(a: Timestamp, b: Timestamp): Boolean')
+    setSampleCode('time.isAfter.example', 'time.isAfter(time.now(), yesterday) // returns true')
+
+    setSampleCode('time.isBefore', 'time.isBefore(a: Timestamp, b: Timestamp): Boolean')
+    setSampleCode('time.isBefore.example', 'time.isBefore(yesterday, time.now()) // returns true')
+
+    setSampleCode('time.isLeapYear', 'time.isLeapYear(a: Timestamp): Boolean')
+    setSampleCode('time.isLeapYear.example', 'time.isLeapYear(time.fromIso("2024-01-01T00:00:00Z")) // returns true')
   </script>
 
   <script>

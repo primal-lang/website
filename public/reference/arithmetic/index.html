@@ -706,6 +706,60 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.compare.example" class="code-sample"></div>
 
+                    <h5 class="text-white reference-title">Log Base</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">Two numbers (value and base).</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The logarithm of the value with the specified base.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="num.logBase" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="num.logBase.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Round To</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A number and the number of decimal places.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The number rounded to the specified decimal places.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="num.roundTo" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="num.roundTo.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Truncate</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A number.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The integer part of the number, discarding any fractional part.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="num.truncate" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="num.truncate.example" class="code-sample"></div>
+
                 </div>
             </div>
         </div>
@@ -818,6 +872,15 @@
 
         setSampleCode('num.compare', 'num.compare(a: Number, b: Number): Number')
         setSampleCode('num.compare.example', 'num.compare(5, 3) // returns 1')
+
+        setSampleCode('num.logBase', 'num.logBase(a: Number, b: Number): Number')
+        setSampleCode('num.logBase.example', 'num.logBase(8, 2) // returns 3')
+
+        setSampleCode('num.roundTo', 'num.roundTo(a: Number, b: Number): Number')
+        setSampleCode('num.roundTo.example', 'num.roundTo(3.14159, 2) // returns 3.14')
+
+        setSampleCode('num.truncate', 'num.truncate(a: Number): Number')
+        setSampleCode('num.truncate.example', 'num.truncate(3.7) // returns 3')
     </script>
 
     <script>

@@ -478,6 +478,24 @@
                     <p class="reference-block-label">Example</p>
                     <div id="is.directory.example" class="code-sample"></div>
 
+                    <h5 class="text-white reference-title">Is duration</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">An argument of any type.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>True if the argument is a duration. False otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="is.duration" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="is.duration.example" class="code-sample"></div>
+
                 </div>
             </div>
         </div>
@@ -551,6 +569,9 @@
 
         setSampleCode('is.directory', 'is.directory(a: Any): Boolean')
         setSampleCode('is.directory.example', 'is.directory(directory.fromPath("/home")) // returns true')
+
+        setSampleCode('is.duration', 'is.duration(a: Any): Boolean')
+        setSampleCode('is.duration.example', 'is.duration(duration.fromHours(2)) // returns true')
     </script>
 
     <script>

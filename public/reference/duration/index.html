@@ -5,9 +5,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description"
-        content="Primal file functions reference: read, write, append, delete, and other file system operations." />
-    <title>File Functions</title>
-    <link rel="canonical" href="https://primal-lang.org/reference/file/" />
+        content="Primal duration functions reference: create and manipulate time intervals with fromDays, fromHours, format, and other duration operations." />
+    <title>Duration Functions</title>
+    <link rel="canonical" href="https://primal-lang.org/reference/duration/" />
 
     <link rel="icon" type="image/x-icon" href="../../img/icon.png" />
     <link rel="apple-touch-icon" href="../../img/icon.png" />
@@ -80,299 +80,332 @@
                         </svg>Reference
                     </a>
 
-                    <h2 class="text-white mb-4">File</h2>
+                    <h2 class="text-white mb-4">Duration</h2>
 
-                    <p class="text-white">
-                        <b>Note:</b> File functions are not implemented on the web platform.
-                    </p>
-
-                    <h5 class="text-white reference-title">From path</h5>
+                    <h5 class="text-white reference-title">From</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A string.</td>
+                                <td class="border-bottom">Five numbers representing days, hours, minutes, seconds, and
+                                    milliseconds.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>A file pointing to the given path.</td>
+                                <td>A duration instance created from the specified components.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.fromPath" class="code-sample"></div>
+                    <div id="duration.from" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.fromPath.example" class="code-sample"></div>
+                    <div id="duration.from.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Exists</h5>
+                    <h5 class="text-white reference-title">From Days</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file.</td>
+                                <td class="border-bottom">A number representing the number of days.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>True if the file exists, false otherwise.</td>
+                                <td>A duration instance representing the specified number of days.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.exists" class="code-sample"></div>
+                    <div id="duration.fromDays" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.exists.example" class="code-sample"></div>
+                    <div id="duration.fromDays.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Read</h5>
+                    <h5 class="text-white reference-title">From Hours</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file.</td>
+                                <td class="border-bottom">A number representing the number of hours.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>The content of the file as a string.</td>
+                                <td>A duration instance representing the specified number of hours.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.read" class="code-sample"></div>
+                    <div id="duration.fromHours" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.read.example" class="code-sample"></div>
+                    <div id="duration.fromHours.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Write</h5>
+                    <h5 class="text-white reference-title">From Minutes</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file and a content.</td>
+                                <td class="border-bottom">A number representing the number of minutes.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>True if the file was written with the content, false otherwise.</td>
+                                <td>A duration instance representing the specified number of minutes.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.write" class="code-sample"></div>
+                    <div id="duration.fromMinutes" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.write.example" class="code-sample"></div>
+                    <div id="duration.fromMinutes.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Create</h5>
+                    <h5 class="text-white reference-title">From Seconds</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file.</td>
+                                <td class="border-bottom">A number representing the number of seconds.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>True if the file was created, false otherwise.</td>
+                                <td>A duration instance representing the specified number of seconds.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.create" class="code-sample"></div>
+                    <div id="duration.fromSeconds" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.create.example" class="code-sample"></div>
+                    <div id="duration.fromSeconds.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Delete</h5>
+                    <h5 class="text-white reference-title">From Milliseconds</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file.</td>
+                                <td class="border-bottom">A number representing the number of milliseconds.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>True if the file was deleted, false otherwise.</td>
+                                <td>A duration instance representing the specified number of milliseconds.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.delete" class="code-sample"></div>
+                    <div id="duration.fromMilliseconds" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.delete.example" class="code-sample"></div>
+                    <div id="duration.fromMilliseconds.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Copy</h5>
+                    <h5 class="text-white reference-title">Days</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">Two files.</td>
+                                <td class="border-bottom">A duration instance.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>True if the file was copied, false otherwise.</td>
+                                <td>The days component of the duration.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.copy" class="code-sample"></div>
+                    <div id="duration.days" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.copy.example" class="code-sample"></div>
+                    <div id="duration.days.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Move</h5>
+                    <h5 class="text-white reference-title">Hours</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">Two files.</td>
+                                <td class="border-bottom">A duration instance.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>True if the file was moved, false otherwise.</td>
+                                <td>The hours component of the duration (0-23).</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.move" class="code-sample"></div>
+                    <div id="duration.hours" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.move.example" class="code-sample"></div>
+                    <div id="duration.hours.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Rename</h5>
+                    <h5 class="text-white reference-title">Minutes</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file and the new name.</td>
+                                <td class="border-bottom">A duration instance.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>True if the file was renamed, false otherwise.</td>
+                                <td>The minutes component of the duration (0-59).</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.rename" class="code-sample"></div>
+                    <div id="duration.minutes" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.rename.example" class="code-sample"></div>
+                    <div id="duration.minutes.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Length</h5>
+                    <h5 class="text-white reference-title">Seconds</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file.</td>
+                                <td class="border-bottom">A duration instance.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>The length of the file in bytes.</td>
+                                <td>The seconds component of the duration (0-59).</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.length" class="code-sample"></div>
+                    <div id="duration.seconds" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.length.example" class="code-sample"></div>
+                    <div id="duration.seconds.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Path</h5>
+                    <h5 class="text-white reference-title">Milliseconds</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file.</td>
+                                <td class="border-bottom">A duration instance.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>The path of the file as a string.</td>
+                                <td>The milliseconds component of the duration (0-999).</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.path" class="code-sample"></div>
+                    <div id="duration.milliseconds" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.path.example" class="code-sample"></div>
+                    <div id="duration.milliseconds.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Name</h5>
+                    <h5 class="text-white reference-title">To Days</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file.</td>
+                                <td class="border-bottom">A duration instance.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>The name of the file as a string.</td>
+                                <td>The total duration converted to days.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.name" class="code-sample"></div>
+                    <div id="duration.toDays" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.name.example" class="code-sample"></div>
+                    <div id="duration.toDays.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Extension</h5>
+                    <h5 class="text-white reference-title">To Hours</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file.</td>
+                                <td class="border-bottom">A duration instance.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>The extension of the file as a string.</td>
+                                <td>The total duration converted to hours.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.extension" class="code-sample"></div>
+                    <div id="duration.toHours" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.extension.example" class="code-sample"></div>
+                    <div id="duration.toHours.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Parent</h5>
+                    <h5 class="text-white reference-title">To Minutes</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file.</td>
+                                <td class="border-bottom">A duration instance.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>The parent directory of the file.</td>
+                                <td>The total duration converted to minutes.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.parent" class="code-sample"></div>
+                    <div id="duration.toMinutes" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.parent.example" class="code-sample"></div>
+                    <div id="duration.toMinutes.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Append</h5>
+                    <h5 class="text-white reference-title">To Seconds</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file and content to append.</td>
+                                <td class="border-bottom">A duration instance.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>True if the content was appended, false otherwise.</td>
+                                <td>The total duration converted to seconds.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.append" class="code-sample"></div>
+                    <div id="duration.toSeconds" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.append.example" class="code-sample"></div>
+                    <div id="duration.toSeconds.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Last Modified</h5>
+                    <h5 class="text-white reference-title">To Milliseconds</h5>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A file.</td>
+                                <td class="border-bottom">A duration instance.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>The timestamp of when the file was last modified.</td>
+                                <td>The total duration converted to milliseconds.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.lastModified" class="code-sample"></div>
+                    <div id="duration.toMilliseconds" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.lastModified.example" class="code-sample"></div>
+                    <div id="duration.toMilliseconds.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Format</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">A duration instance.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>A human-readable string representation of the duration.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="duration.format" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="duration.format.example" class="code-sample"></div>
+
+                    <h5 class="text-white reference-title">Compare</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">Two duration instances.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>1 if the first duration is longer, -1 if shorter, 0 if equal.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="duration.compare" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="duration.compare.example" class="code-sample"></div>
 
                 </div>
             </div>
@@ -382,53 +415,59 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        setSampleCode('file.fromPath', 'file.fromPath(a: String): File')
-        setSampleCode('file.fromPath.example', 'file.fromPath("/home/user/data.txt") // returns a file object')
+        setSampleCode('duration.from', 'duration.from(days: Number, hours: Number, minutes: Number, seconds: Number, milliseconds: Number): Duration')
+        setSampleCode('duration.from.example', 'duration.from(1, 2, 30, 0, 0) // returns a duration of 1 day, 2 hours, 30 minutes')
 
-        setSampleCode('file.exists', 'file.exists(a: File): Boolean')
-        setSampleCode('file.exists.example', 'file.exists(file.fromPath("data.txt")) // returns true if it exists')
+        setSampleCode('duration.fromDays', 'duration.fromDays(a: Number): Duration')
+        setSampleCode('duration.fromDays.example', 'duration.fromDays(7) // returns a duration of 7 days')
 
-        setSampleCode('file.read', 'file.read(a: File): String')
-        setSampleCode('file.read.example', 'file.read(file.fromPath("data.txt")) // returns the file contents')
+        setSampleCode('duration.fromHours', 'duration.fromHours(a: Number): Duration')
+        setSampleCode('duration.fromHours.example', 'duration.fromHours(24) // returns a duration of 24 hours')
 
-        setSampleCode('file.write', 'file.write(a: File, b: String): Boolean')
-        setSampleCode('file.write.example', 'file.write(file.fromPath("data.txt"), "hello") // returns true if successful')
+        setSampleCode('duration.fromMinutes', 'duration.fromMinutes(a: Number): Duration')
+        setSampleCode('duration.fromMinutes.example', 'duration.fromMinutes(90) // returns a duration of 90 minutes')
 
-        setSampleCode('file.create', 'file.create(a: File): Boolean')
-        setSampleCode('file.create.example', 'file.create(file.fromPath("new.txt")) // returns true if successful')
+        setSampleCode('duration.fromSeconds', 'duration.fromSeconds(a: Number): Duration')
+        setSampleCode('duration.fromSeconds.example', 'duration.fromSeconds(3600) // returns a duration of 3600 seconds')
 
-        setSampleCode('file.delete', 'file.delete(a: File): Boolean')
-        setSampleCode('file.delete.example', 'file.delete(file.fromPath("old.txt")) // returns true if successful')
+        setSampleCode('duration.fromMilliseconds', 'duration.fromMilliseconds(a: Number): Duration')
+        setSampleCode('duration.fromMilliseconds.example', 'duration.fromMilliseconds(5000) // returns a duration of 5000 milliseconds')
 
-        setSampleCode('file.copy', 'file.copy(a: File, b: File): Boolean')
-        setSampleCode('file.copy.example', 'file.copy(file.fromPath("a.txt"), file.fromPath("b.txt")) // returns true if successful')
+        setSampleCode('duration.days', 'duration.days(a: Duration): Number')
+        setSampleCode('duration.days.example', 'duration.days(duration.from(2, 5, 30, 0, 0)) // returns 2')
 
-        setSampleCode('file.move', 'file.move(a: File, b: File): Boolean')
-        setSampleCode('file.move.example', 'file.move(file.fromPath("old.txt"), file.fromPath("new.txt")) // returns true if successful')
+        setSampleCode('duration.hours', 'duration.hours(a: Duration): Number')
+        setSampleCode('duration.hours.example', 'duration.hours(duration.from(1, 12, 0, 0, 0)) // returns 12')
 
-        setSampleCode('file.rename', 'file.rename(a: File, b: String): Boolean')
-        setSampleCode('file.rename.example', 'file.rename(file.fromPath("old.txt"), "new.txt") // returns true if successful')
+        setSampleCode('duration.minutes', 'duration.minutes(a: Duration): Number')
+        setSampleCode('duration.minutes.example', 'duration.minutes(duration.from(0, 1, 45, 0, 0)) // returns 45')
 
-        setSampleCode('file.length', 'file.length(a: File): Number')
-        setSampleCode('file.length.example', 'file.length(file.fromPath("data.txt")) // returns the file size in bytes')
+        setSampleCode('duration.seconds', 'duration.seconds(a: Duration): Number')
+        setSampleCode('duration.seconds.example', 'duration.seconds(duration.from(0, 0, 1, 30, 0)) // returns 30')
 
-        setSampleCode('file.path', 'file.path(a: File): String')
-        setSampleCode('file.path.example', 'file.path(file.fromPath("/home/user/data.txt")) // returns "/home/user/data.txt"')
+        setSampleCode('duration.milliseconds', 'duration.milliseconds(a: Duration): Number')
+        setSampleCode('duration.milliseconds.example', 'duration.milliseconds(duration.from(0, 0, 0, 1, 500)) // returns 500')
 
-        setSampleCode('file.name', 'file.name(a: File): String')
-        setSampleCode('file.name.example', 'file.name(file.fromPath("/home/user/data.txt")) // returns "data.txt"')
+        setSampleCode('duration.toDays', 'duration.toDays(a: Duration): Number')
+        setSampleCode('duration.toDays.example', 'duration.toDays(duration.fromHours(48)) // returns 2')
 
-        setSampleCode('file.extension', 'file.extension(a: File): String')
-        setSampleCode('file.extension.example', 'file.extension(file.fromPath("data.txt")) // returns "txt"')
+        setSampleCode('duration.toHours', 'duration.toHours(a: Duration): Number')
+        setSampleCode('duration.toHours.example', 'duration.toHours(duration.fromDays(1)) // returns 24')
 
-        setSampleCode('file.parent', 'file.parent(a: File): Directory')
-        setSampleCode('file.parent.example', 'file.parent(file.fromPath("/home/user/data.txt")) // returns the "/home/user" directory')
+        setSampleCode('duration.toMinutes', 'duration.toMinutes(a: Duration): Number')
+        setSampleCode('duration.toMinutes.example', 'duration.toMinutes(duration.fromHours(2)) // returns 120')
 
-        setSampleCode('file.append', 'file.append(a: File, b: String): Boolean')
-        setSampleCode('file.append.example', 'file.append(file.fromPath("log.txt"), "new line") // returns true if successful')
+        setSampleCode('duration.toSeconds', 'duration.toSeconds(a: Duration): Number')
+        setSampleCode('duration.toSeconds.example', 'duration.toSeconds(duration.fromMinutes(5)) // returns 300')
 
-        setSampleCode('file.lastModified', 'file.lastModified(a: File): Timestamp')
-        setSampleCode('file.lastModified.example', 'file.lastModified(file.fromPath("data.txt")) // returns the modification timestamp')
+        setSampleCode('duration.toMilliseconds', 'duration.toMilliseconds(a: Duration): Number')
+        setSampleCode('duration.toMilliseconds.example', 'duration.toMilliseconds(duration.fromSeconds(2)) // returns 2000')
+
+        setSampleCode('duration.format', 'duration.format(a: Duration): String')
+        setSampleCode('duration.format.example', 'duration.format(duration.from(1, 2, 30, 0, 0)) // returns "1d 2h 30m"')
+
+        setSampleCode('duration.compare', 'duration.compare(a: Duration, b: Duration): Number')
+        setSampleCode('duration.compare.example', 'duration.compare(duration.fromHours(2), duration.fromHours(1)) // returns 1')
     </script>
 
     <script>

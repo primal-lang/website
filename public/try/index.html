@@ -1,236 +1,250 @@
 <html lang="en" data-bs-theme="dark">
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Primal Playground</title>
-  <meta name="description" content="Write and run Primal code directly in your browser. Interactive playground with syntax highlighting, sample programs, and a built-in console." />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Primal Playground</title>
+    <meta name="description"
+        content="Write and run Primal code directly in your browser. Interactive playground with syntax highlighting, sample programs, and a built-in console." />
 
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-    crossorigin="anonymous"></script>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+        crossorigin="anonymous"></script>
 
-  <!-- JQuery -->
-  <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-    integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <!-- JQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
 
-  <!-- CodeMirror -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js"></script>
+    <!-- CodeMirror -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js"></script>
 
-  <!-- Google Fonts -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro" rel="stylesheet">
 
-  <!-- Material Symbols -->
-  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- Material Symbols -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
 
-  <link rel="icon" href="../img/icon.png" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="../img/icon.png" />
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#1a2c44" />
-  <meta name="author" content="Primal" />
+    <link rel="icon" href="../img/icon.png" type="image/x-icon" />
+    <link rel="apple-touch-icon" href="../img/icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1a2c44" />
+    <meta name="author" content="Primal" />
 
-  <link rel="stylesheet" href="../css/template.css">
-  <link rel="stylesheet" href="../css/highlight.css">
-  <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="../css/template.css">
+    <link rel="stylesheet" href="../css/highlight.css">
+    <link rel="stylesheet" href="css/style.css">
 
-  <script type="text/javascript" src="js/primal.js"></script>
-  <script type="text/javascript" src="js/try.js"></script>
-  <script type="text/javascript" src="../js/highlight.js"></script>
+    <script type="text/javascript" src="js/primal.js"></script>
+    <script type="text/javascript" src="js/try.js"></script>
+    <script type="text/javascript" src="../js/highlight.js"></script>
 
-  <script type="text/javascript" src="https://unpkg.com/split.js@1.6.5/dist/split.min.js"></script>
+    <script type="text/javascript" src="https://unpkg.com/split.js@1.6.5/dist/split.min.js"></script>
 
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-7BCHJ87ZG7');
-  </script>
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-7BCHJ87ZG7');
+    </script>
 
 </head>
 
 <body onload="recompile()">
 
-  <div class="layout">
+    <div class="layout">
 
-    <nav class="navbar navbar-expand-lg navbar-container">
-      <div class="container-fluid">
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item">
-            <a class="nav-link active" href="javascript:onLoadFile()" title="Load file"><span
-                class="material-symbols-outlined navbar-icon">upload_file</span> Load</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="javascript:sendFeedback()" title="Feedback"><span
-                class="material-symbols-outlined navbar-icon">comment</span> Feedback</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="../reference" target="_blank" title="Reference"><span
-                class="material-symbols-outlined navbar-icon">description</span> Reference</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a class="nav-link" href="" data-bs-toggle="dropdown" title="Samples">
-              <span class="material-symbols-outlined navbar-icon">library_add</span> Samples
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="javascript:loadSample('balancedParentheses')">Balanced Parentheses</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('binarySearch')">Binary Search</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('divisors')">Divisors</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('factorial')">Factorial</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('fibonacci')">Fibonacci</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('findMax')">Find Max</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('flatten')">Flatten</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('frequency')">Frequency</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('gcdLcm')">GCD & LCM</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('isPalindrome')">Is palindrome</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('isPrime')">Is prime</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('matrixMultiply')">Matrix Multiply</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('movingAverages')">Moving Averages</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('piEstimate')">Pi Estimation</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('power')">Power</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('quicksort')">Quicksort</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('reverseList')">Reverse List</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('sumOfDigits')">Sum of Digits</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('toBinary')">To Binary</a></li>
-              <li><a class="dropdown-item" href="javascript:loadSample('romanNumerals')">To Roman Numerals</a></li>
-            </ul>
-          </li>
-        </ul>
+        <nav class="navbar navbar-expand-lg navbar-container">
+            <div class="container-fluid">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="javascript:onLoadFile()" title="Load file"><span
+                                class="material-symbols-outlined navbar-icon">upload_file</span> Load</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="javascript:sendFeedback()" title="Feedback"><span
+                                class="material-symbols-outlined navbar-icon">comment</span> Feedback</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="../reference" target="_blank" title="Reference"><span
+                                class="material-symbols-outlined navbar-icon">description</span> Reference</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link" href="" data-bs-toggle="dropdown" title="Samples">
+                            <span class="material-symbols-outlined navbar-icon">library_add</span> Samples
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="javascript:loadSample('balancedParentheses')">Balanced
+                                    Parentheses</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('binarySearch')">Binary Search</a>
+                            </li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('divisors')">Divisors</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('factorial')">Factorial</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('fibonacci')">Fibonacci</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('findMax')">Find Max</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('flatten')">Flatten</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('frequency')">Frequency</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('gcdLcm')">GCD & LCM</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('isPalindrome')">Is palindrome</a>
+                            </li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('isPrime')">Is prime</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('matrixMultiply')">Matrix
+                                    Multiply</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('movingAverages')">Moving
+                                    Averages</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('piEstimate')">Pi Estimation</a>
+                            </li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('power')">Power</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('quicksort')">Quicksort</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('reverseList')">Reverse List</a>
+                            </li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('sumOfDigits')">Sum of Digits</a>
+                            </li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('toBinary')">To Binary</a></li>
+                            <li><a class="dropdown-item" href="javascript:loadSample('romanNumerals')">To Roman
+                                    Numerals</a></li>
+                        </ul>
+                    </li>
+                </ul>
 
-        <ul class="navbar-nav me-auto">
-          <li class="nav-item navbar-title">
-            v0.4.3 (Copper Chisel)
-          </li>
-        </ul>
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item navbar-title">
+                        v0.5.0 (Bronze Axe)
+                    </li>
+                </ul>
 
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link active" href="javascript:clearOutputManual()" title="Clear"><span
-                class="material-symbols-outlined navbar-icon">mop</span> Clear</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="javascript:copySourceCode()" title="Copy"><span
-                class="material-symbols-outlined navbar-icon">content_copy</span> Copy</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link active" href="javascript:share()" title="Share"><span
-                class="material-symbols-outlined navbar-icon">share</span> Share</a>
-          </li>
-        </ul>
-      </div>
-    </nav>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="javascript:clearOutputManual()" title="Clear"><span
+                                class="material-symbols-outlined navbar-icon">mop</span> Clear</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="javascript:copySourceCode()" title="Copy"><span
+                                class="material-symbols-outlined navbar-icon">content_copy</span> Copy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="javascript:share()" title="Share"><span
+                                class="material-symbols-outlined navbar-icon">share</span> Share</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-    <div class="split content">
-      <div id="split-0">
-        <div id="sourceCode"></div>
-      </div>
-      <div id="split-1">
-        <div id="output" class="console"></div>
-        <input id="consoleInput" type="text" class="console-input" placeholder=">" />
-      </div>
-    </div>
-
-  </div>
-  <input class="form-control" type="file" id="loadFile" onchange="onFileLoaded(this)" style="display: none">
-
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="toastOutputCleared" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body">Output cleared</div>
-        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
-
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="toastTextCopied" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body">Source code copied to clipboard</div>
-        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
-
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="toastUrlCopied" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body">URL copied to clipboard</div>
-        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
-
-  <div class="toast-container position-fixed bottom-0 end-0 p-3">
-    <div id="toastFeedbackSent" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
-      <div class="d-flex">
-        <div class="toast-body">Feedback sent</div>
-        <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-      </div>
-    </div>
-  </div>
-
-  <div class="modal fade" id="feedbackModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h6 class="modal-title" id="exampleModalLabel">Feedback</h6>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-            onclick="onFeedbackModalClosed()"></button>
+        <div class="split content">
+            <div id="split-0">
+                <div id="sourceCode"></div>
+            </div>
+            <div id="split-1">
+                <div id="output" class="console"></div>
+                <input id="consoleInput" type="text" class="console-input" placeholder=">" />
+            </div>
         </div>
-        <div class="modal-body">
-          <textarea class="form-control" id="feedbackText" rows="5" oninput="onFeedbackInputChange()"></textarea>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-primary" id="sendFeedbackButton" disabled
-            onclick="onSendFeedback()">Send</button>
-        </div>
-      </div>
+
     </div>
-  </div>
+    <input class="form-control" type="file" id="loadFile" onchange="onFileLoaded(this)" style="display: none">
 
-  <script>
-    Split(['#split-0', '#split-1'], {
-      minSize: 500,
-      gutterAlign: 'end',
-      snapOffset: 0,
-    })
-  </script>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastOutputCleared" class="toast align-items-center" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">Output cleared</div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      window.editor = CodeMirror(document.getElementById('sourceCode'), {
-        ...basicProperties(true),
-        lineNumbers: true,
-        value: localStorage.getItem('sourceCode') ? localStorage.getItem('sourceCode') : SAMPLES['default'],
-      })
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastTextCopied" class="toast align-items-center" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">Source code copied to clipboard</div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 
-      window.editor.on('change', function () {
-        onInputChange()
-      })
-    })
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastUrlCopied" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">URL copied to clipboard</div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
 
-    document.getElementById('consoleInput').addEventListener('keydown', function (event) {
-      if (event.key === 'Enter') {
-        event.preventDefault()
-        evaluateConsoleInput()
-      } else if (event.key === 'ArrowUp') {
-        event.preventDefault()
-        showInputBefore()
-      } else if (event.key === 'ArrowDown') {
-        event.preventDefault()
-        showInputAfter()
-      }
-    })
-  </script>
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="toastFeedbackSent" class="toast align-items-center" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">Feedback sent</div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h6 class="modal-title" id="exampleModalLabel">Feedback</h6>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        onclick="onFeedbackModalClosed()"></button>
+                </div>
+                <div class="modal-body">
+                    <textarea class="form-control" id="feedbackText" rows="5"
+                        oninput="onFeedbackInputChange()"></textarea>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary" id="sendFeedbackButton" disabled
+                        onclick="onSendFeedback()">Send</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        Split(['#split-0', '#split-1'], {
+            minSize: 500,
+            gutterAlign: 'end',
+            snapOffset: 0,
+        })
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            window.editor = CodeMirror(document.getElementById('sourceCode'), {
+                ...basicProperties(true),
+                lineNumbers: true,
+                value: localStorage.getItem('sourceCode') ? localStorage.getItem('sourceCode') : SAMPLES['default'],
+            })
+
+            window.editor.on('change', function () {
+                onInputChange()
+            })
+        })
+
+        document.getElementById('consoleInput').addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault()
+                evaluateConsoleInput()
+            } else if (event.key === 'ArrowUp') {
+                event.preventDefault()
+                showInputBefore()
+            } else if (event.key === 'ArrowDown') {
+                event.preventDefault()
+                showInputAfter()
+            }
+        })
+    </script>
 
 </body>
 
