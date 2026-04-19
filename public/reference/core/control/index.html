@@ -105,6 +105,24 @@
                     <p class="reference-block-label">Example</p>
                     <div id="control.ifelse.example" class="code-sample"></div>
 
+                    <h5 class="text-white reference-title">Let</h5>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom reference-table-title">Input</td>
+                                <td class="border-bottom">One or more bindings and a body expression.</td>
+                            </tr>
+                            <tr>
+                                <td class="reference-table-title">Output</td>
+                                <td>The result of evaluating the body with bindings in scope.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="control.let" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="control.let.example" class="code-sample"></div>
+
                     <h5 class="text-white reference-title">Try-catch</h5>
                     <table class="reference-table">
                         <tbody>
@@ -142,6 +160,13 @@ else
 else
     "no"
 // returns "yes"`)
+
+        setSampleCode('control.let', 'let name1 = expr1, name2 = expr2, ... in body')
+        setSampleCode('control.let.example', `let
+    a = 5,
+    b = 1
+in
+    a + b // returns 6`)
 
         setSampleCode('control.trycatch', 'try(a: Any, b: Any): Any')
         setSampleCode('control.trycatch.example', 'try(num.div(10, 0), "Division by zero") // returns "Division by zero"')
