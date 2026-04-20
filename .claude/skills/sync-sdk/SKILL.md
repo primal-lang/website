@@ -60,6 +60,16 @@ Each function in the SDK markdown has these fields that must be copied exactly:
 - For Input/Output: copy the description text after the colon
 - For Example: copy the code inside the code block (without the ``` markers)
 
+**Sync Functions:**
+
+For each module, compare functions between SDK and website:
+
+1. **Function in SDK but NOT in website** → Add the function to the website HTML following the existing format (heading, table for Input/Output, code blocks for Signature and Example)
+
+2. **Function in website but NOT in SDK** → Remove the function from the website HTML (delete its heading, table, and code blocks)
+
+3. **Function in both** → Update the Signature, Input, Output, and Example fields with exact text from SDK
+
 **Module Directory Mapping:**
 
 | SDK Path                                         | Website Path                    |
