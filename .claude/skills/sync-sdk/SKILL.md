@@ -40,11 +40,28 @@ Search for the old version pattern (e.g., `0.4.1`) and replace with the new vers
 
 ### 4. Update Reference Documentation
 
-For each module in `public/reference/*/index.html`, sync with the corresponding SDK markdown file in `../primal-sdk/docs/lang/reference/`.
+**IMPORTANT:** To minimize context window usage, spawn **parallel subagents** for each reference module. Each subagent only reads and processes ONE folder pair.
 
-**Field Mapping (copy text exactly from SDK docs):**
+**Spawn 6 parallel subagents** using the Task tool with `subagent_type: "general-purpose"`:
 
-Each function in the SDK markdown has these fields that must be copied exactly:
+| Subagent | SDK Docs Path                                    | Website Path                    |
+| -------- | ------------------------------------------------ | ------------------------------- |
+| 1        | `../primal-sdk/docs/lang/reference/core/`        | `public/reference/core/`        |
+| 2        | `../primal-sdk/docs/lang/reference/collections/` | `public/reference/collections/` |
+| 3        | `../primal-sdk/docs/lang/reference/encoding/`    | `public/reference/encoding/`    |
+| 4        | `../primal-sdk/docs/lang/reference/io/`          | `public/reference/io/`          |
+| 5        | `../primal-sdk/docs/lang/reference/primitives/`  | `public/reference/primitives/`  |
+| 6        | `../primal-sdk/docs/lang/reference/time/`        | `public/reference/time/`        |
+
+**Prompt template for each subagent:**
+
+````
+Sync the reference documentation for the "{MODULE}" module.
+
+1. Read all markdown files from: {SDK_PATH}
+2. Read all HTML files from: {WEBSITE_PATH}
+
+For each function, sync these fields (copy text EXACTLY from SDK docs):
 
 | SDK Markdown Field        | Website HTML Location                       |
 | ------------------------- | ------------------------------------------- |
@@ -53,33 +70,21 @@ Each function in the SDK markdown has these fields that must be copied exactly:
 | `**Output:** ...`         | Table cell after "Output" label             |
 | `**Example:**` code block | Code block with `id="functionName.example"` |
 
-**Important:**
-
-- Copy the **exact text** from these fields - do not paraphrase or modify
-- For Signature: extract only the content inside the backticks (e.g., `to.number(a: Any): Number`)
+Rules:
+- Copy the EXACT text from these fields - do not paraphrase or modify
+- For Signature: extract only the content inside the backticks
 - For Input/Output: copy the description text after the colon
-- For Example: copy the code inside the code block (without the ``` markers)
+- For Example: copy the code inside the code block (without ``` markers)
 
-**Sync Functions:**
+Sync logic:
+- Function in SDK but NOT in website → Add it following existing HTML format
+- Function in website but NOT in SDK → Remove it from website HTML
+- Function in both → Update Signature, Input, Output, Example with SDK text
 
-For each module, compare functions between SDK and website:
+Edit the website HTML files directly to apply changes.
+````
 
-1. **Function in SDK but NOT in website** → Add the function to the website HTML following the existing format (heading, table for Input/Output, code blocks for Signature and Example)
-
-2. **Function in website but NOT in SDK** → Remove the function from the website HTML (delete its heading, table, and code blocks)
-
-3. **Function in both** → Update the Signature, Input, Output, and Example fields with exact text from SDK
-
-**Module Directory Mapping:**
-
-| SDK Path                                         | Website Path                    |
-| ------------------------------------------------ | ------------------------------- |
-| `../primal-sdk/docs/lang/reference/core/`        | `public/reference/core/`        |
-| `../primal-sdk/docs/lang/reference/collections/` | `public/reference/collections/` |
-| `../primal-sdk/docs/lang/reference/encoding/`    | `public/reference/encoding/`    |
-| `../primal-sdk/docs/lang/reference/io/`          | `public/reference/io/`          |
-| `../primal-sdk/docs/lang/reference/primitives/`  | `public/reference/primitives/`  |
-| `../primal-sdk/docs/lang/reference/time/`        | `public/reference/time/`        |
+**Run all 6 subagents in parallel** (single message with multiple Task tool calls).
 
 ### 5. Verify JavaScript Bindings
 
