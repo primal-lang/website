@@ -18,7 +18,7 @@ Ensure the `../primal-sdk/` directory exists and contains the SDK.
 Read the following from the SDK repository to understand changes:
 
 - `../primal-sdk/CHANGELOG.md` — Extract the latest version number and release notes
-- `../primal-sdk/docs/` — Documentation for each module (used to update reference pages)
+- `../primal-sdk/docs/lang/reference` — Documentation for each module (used to update reference pages)
 - `../primal-sdk/lib/` — Source files to understand function signatures if needed
 
 ### 2. Update the Compiled Compiler
@@ -40,16 +40,36 @@ Search for the old version pattern (e.g., `0.4.1`) and replace with the new vers
 
 ### 4. Update Reference Documentation
 
-For each module in `public/reference/*/index.html`:
+For each module in `public/reference/*/index.html`, sync with the corresponding SDK markdown file in `../primal-sdk/docs/lang/reference/`.
 
-- Compare with corresponding SDK docs in `../primal-sdk/docs/`
-- Add any new functions introduced in this release
-- Update function signatures or descriptions if changed
-- Remove deprecated functions if any
+**Field Mapping (copy text exactly from SDK docs):**
 
-Available reference modules:
+Each function in the SDK markdown has these fields that must be copied exactly:
 
-- arithmetic, casting, comparison, console, control, directory, environment, error, file, hash, json, list, logic, map, operators, queue, set, stack, string, timestamp, vector
+| SDK Markdown Field        | Website HTML Location                       |
+| ------------------------- | ------------------------------------------- |
+| `**Signature:** \`...\``  | Code block with `id="functionName"`         |
+| `**Input:** ...`          | Table cell after "Input" label              |
+| `**Output:** ...`         | Table cell after "Output" label             |
+| `**Example:**` code block | Code block with `id="functionName.example"` |
+
+**Important:**
+
+- Copy the **exact text** from these fields - do not paraphrase or modify
+- For Signature: extract only the content inside the backticks (e.g., `to.number(a: Any): Number`)
+- For Input/Output: copy the description text after the colon
+- For Example: copy the code inside the code block (without the ``` markers)
+
+**Module Directory Mapping:**
+
+| SDK Path                                         | Website Path                    |
+| ------------------------------------------------ | ------------------------------- |
+| `../primal-sdk/docs/lang/reference/core/`        | `public/reference/core/`        |
+| `../primal-sdk/docs/lang/reference/collections/` | `public/reference/collections/` |
+| `../primal-sdk/docs/lang/reference/encoding/`    | `public/reference/encoding/`    |
+| `../primal-sdk/docs/lang/reference/io/`          | `public/reference/io/`          |
+| `../primal-sdk/docs/lang/reference/primitives/`  | `public/reference/primitives/`  |
+| `../primal-sdk/docs/lang/reference/time/`        | `public/reference/time/`        |
 
 ### 5. Verify JavaScript Bindings
 
