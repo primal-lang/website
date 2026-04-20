@@ -159,7 +159,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A list of path segments.</td>
+                                <td class="border-bottom">Two path segments.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -210,8 +210,8 @@
         setSampleCode('path.isAbsolute', 'path.isAbsolute(a: String): Boolean')
         setSampleCode('path.isAbsolute.example', 'path.isAbsolute("/home/user") // returns true')
 
-        setSampleCode('path.join', 'path.join(a: List): String')
-        setSampleCode('path.join.example', 'path.join(["home", "user", "file.txt"]) // returns "home/user/file.txt"')
+        setSampleCode('path.join', 'path.join(a: String, b: String): String')
+        setSampleCode('path.join.example', 'path.join("home/user", "file.txt") // returns "home/user/file.txt"')
 
         setSampleCode('path.normalize', 'path.normalize(a: String): String')
         setSampleCode('path.normalize.example', 'path.normalize("/home//user/../user/file.txt") // returns "/home/user/file.txt"')

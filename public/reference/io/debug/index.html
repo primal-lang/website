@@ -87,11 +87,11 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">An argument of any type.</td>
+                                <td class="border-bottom">A label string and a value of any type.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>Prints the value with type information to the console and returns the value.</td>
+                                <td>Prints the label and value to the console in the format `[debug] label: value` and returns the fully-evaluated value. For collections, all nested elements are recursively evaluated before printing and returning.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -108,8 +108,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        setSampleCode('debug', 'debug(a: Any): Any')
-        setSampleCode('debug.example', 'debug([1, 2, 3]) // prints "[1, 2, 3] : List" and returns [1, 2, 3]')
+        setSampleCode('debug', 'debug(a: String, b: Any): Any')
+        setSampleCode('debug.example', 'debug("myList", [1, 2, 3]) // prints "[debug] myList: [1, 2, 3]" and returns [1, 2, 3]')
     </script>
 
     <script>

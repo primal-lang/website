@@ -87,7 +87,7 @@
                         <tbody>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>A timestamp instance with current date and time in the UTC time.</td>
+                                <td>A timestamp instance with the current local date and time.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -355,7 +355,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A number representing milliseconds since Unix epoch.</td>
+                                <td class="border-bottom">The number of milliseconds since the Unix epoch.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -463,11 +463,11 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A timestamp instance.</td>
+                                <td class="border-bottom">A year as a number.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>True if the year of the timestamp is a leap year, false otherwise.</td>
+                                <td>True if the year is a leap year, false otherwise.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -485,40 +485,37 @@
 
     <script>
         setSampleCode('time.now', 'time.now(): Timestamp')
-        setSampleCode('time.now.example', `time.now() // returns the current timestamp (e.g. ${new Date().toISOString()})`)
+        setSampleCode('time.now.example', 'time.now() // returns the current timestamp')
 
         setSampleCode('time.toIso', 'time.toIso(a: Timestamp): String')
-        setSampleCode('time.toIso.example', `time.toIso(time.now()) // returns "${new Date().toISOString()}"`)
+        setSampleCode('time.toIso.example', 'time.toIso(time.now()) // returns the ISO 8601 string')
 
         setSampleCode('time.fromIso', 'time.fromIso(a: String): Timestamp')
-        setSampleCode('time.fromIso.example', `time.fromIso("${new Date().toISOString()}") // returns the timestamp ${new Date().toISOString()}`)
+        setSampleCode('time.fromIso.example', 'time.fromIso("2024-01-15T10:30:00.000Z") // returns a timestamp')
 
         setSampleCode('time.year', 'time.year(a: Timestamp): Number')
-        setSampleCode('time.year.example', `time.year(time.fromIso("${new Date().toISOString()}")) // returns ${new Date().getUTCFullYear()}`)
+        setSampleCode('time.year.example', 'time.year(time.fromIso("2024-01-15T10:30:00.000Z")) // returns 2024')
 
         setSampleCode('time.month', 'time.month(a: Timestamp): Number')
-        setSampleCode('time.month.example', `time.month(time.fromIso("${new Date().toISOString()}")) // returns ${new Date().getUTCMonth() + 1}`)
+        setSampleCode('time.month.example', 'time.month(time.fromIso("2024-01-15T10:30:00.000Z")) // returns 1')
 
         setSampleCode('time.day', 'time.day(a: Timestamp): Number')
-        setSampleCode('time.day.example', `time.day(time.fromIso("${new Date().toISOString()}")) // returns ${new Date().getUTCDate()}`)
+        setSampleCode('time.day.example', 'time.day(time.fromIso("2024-01-15T10:30:00.000Z")) // returns 15')
 
         setSampleCode('time.hour', 'time.hour(a: Timestamp): Number')
-        setSampleCode('time.hour.example', `time.hour(time.fromIso("${new Date().toISOString()}")) // returns ${new Date().getUTCHours()}`)
+        setSampleCode('time.hour.example', 'time.hour(time.fromIso("2024-01-15T10:30:00.000Z")) // returns 10')
 
         setSampleCode('time.minute', 'time.minute(a: Timestamp): Number')
-        setSampleCode('time.minute.example', `time.minute(time.fromIso("${new Date().toISOString()}")) // returns ${new Date().getUTCMinutes()}`)
+        setSampleCode('time.minute.example', 'time.minute(time.fromIso("2024-01-15T10:30:00.000Z")) // returns 30')
 
         setSampleCode('time.second', 'time.second(a: Timestamp): Number')
-        setSampleCode('time.second.example', `time.second(time.fromIso("${new Date().toISOString()}")) // returns ${new Date().getUTCSeconds()}`)
+        setSampleCode('time.second.example', 'time.second(time.fromIso("2024-01-15T10:30:45.000Z")) // returns 45')
 
         setSampleCode('time.millisecond', 'time.millisecond(a: Timestamp): Number')
-        setSampleCode('time.millisecond.example', `time.millisecond(time.fromIso("${new Date().toISOString()}")) // returns ${new Date().getUTCMilliseconds()}`)
+        setSampleCode('time.millisecond.example', 'time.millisecond(time.fromIso("2024-01-15T10:30:00.500Z")) // returns 500')
 
         setSampleCode('time.compare', 'time.compare(a: Timestamp, b: Timestamp): Number')
-        setSampleCode('time.compare.example', `time.compare(
-    time.fromIso("${new Date().toISOString()}"),
-    time.fromIso("${new Date(Date.now() - (24 * 60 * 60 * 1000)).toISOString()}")
-) // returns 1`)
+        setSampleCode('time.compare.example', 'time.compare(time.fromIso("2024-02-01T00:00:00Z"), time.fromIso("2024-01-01T00:00:00Z")) // returns 1')
 
         setSampleCode('time.add', 'time.add(a: Timestamp, b: Duration): Timestamp')
         setSampleCode('time.add.example', 'time.add(time.now(), duration.fromHours(2)) // returns timestamp 2 hours from now')
@@ -550,8 +547,8 @@
         setSampleCode('time.isBefore', 'time.isBefore(a: Timestamp, b: Timestamp): Boolean')
         setSampleCode('time.isBefore.example', 'time.isBefore(yesterday, time.now()) // returns true')
 
-        setSampleCode('time.isLeapYear', 'time.isLeapYear(a: Timestamp): Boolean')
-        setSampleCode('time.isLeapYear.example', 'time.isLeapYear(time.fromIso("2024-01-01T00:00:00Z")) // returns true')
+        setSampleCode('time.isLeapYear', 'time.isLeapYear(a: Number): Boolean')
+        setSampleCode('time.isLeapYear.example', 'time.isLeapYear(2024) // returns true')
     </script>
 
     <script>
