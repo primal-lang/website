@@ -2,288 +2,341 @@
 <html lang="en">
 
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-  <meta name="description" content="Get started with Primal. Learn the syntax, functions, typing system, and runtime of this declarative functional programming language." />
-  <title>Get Started</title>
-  <link rel="canonical" href="https://primal-lang.org/start/" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description"
+        content="Get started with Primal. Learn the syntax, functions, typing system, and runtime of this declarative functional programming language." />
+    <title>Get Started</title>
+    <link rel="canonical" href="https://primal-lang.org/start/" />
 
-  <link rel="icon" type="image/x-icon" href="../img/icon.png" />
-  <link rel="apple-touch-icon" href="../img/icon.png" />
-  <link rel="manifest" href="/manifest.json" />
-  <meta name="theme-color" content="#1a2c44" />
-  <meta name="author" content="Primal" />
+    <link rel="icon" type="image/x-icon" href="../img/icon.png" />
+    <link rel="apple-touch-icon" href="../img/icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1a2c44" />
+    <meta name="author" content="Primal" />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js"></script>
 
-  <link href="../css/highlight.css" rel="stylesheet" />
-  <link href="../css/template.css" rel="stylesheet" />
+    <link href="../css/highlight.css" rel="stylesheet" />
+    <link href="../css/template.css" rel="stylesheet" />
 
-  <script src="../js/highlight.js"></script>
+    <script src="../js/highlight.js"></script>
 
-  <link rel="preconnect" href="https://www.googletagmanager.com" />
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-7BCHJ87ZG7');
-  </script>
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-7BCHJ87ZG7');
+    </script>
 
 </head>
 
 <body class="page-background page-wrapper">
 
-  <nav class="navbar">
-    <div class="container">
-      <a class="navbar-brand" href="/">
-        <img src="../img/icon.png" alt="Primal" width="26" height="26" />
-        PRIMAL
-      </a>
-      <button class="navbar-toggler" onclick="this.nextElementSibling.classList.toggle('show')" aria-label="Toggle navigation">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></svg>
-      </button>
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="../overview">Overview</a></li>
-        <li class="nav-item"><a class="nav-link selected-menu" href="../start">Get started</a></li>
-        <li class="nav-item"><a class="nav-link" href="../reference">Reference</a></li>
-        <li class="nav-item"><a class="nav-link" href="../versions">Versions</a></li>
-        <li class="nav-item"><a class="nav-link" href="../feedback">Feedback</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <main class="main-content page-content"><div class="container">
-    <div class="row justify-content-center">
-      <div class="col-lg-8">
-
-        <h2 class="text-white mb-4">Get started</h2>
-
-        <h4 class="text-white section-title">Installation</h4>
-
-        <p class="text-white justified-text">
-          Run this command to install the latest version:
-        </p>
-
-        <div id="sampleInstall" class="code-sample"></div>
-
-        <p id="installNote" class="text-white justified-text"></p>
-
-        <p class="text-white justified-text">
-          To run a program, use the following command:
-        </p>
-
-        <div id="sampleRunProgram" class="code-sample"></div>
-
-        <p class="text-white justified-text">
-          If your program does not define a <span class="tagged">main</span> function, it will run in interactive mode,
-          where you can enter expressions and see the results of their evaluation.
-        </p>
-
-        <h4 class="text-white section-title">Functions</h4>
-
-        <p class="text-white justified-text">
-          Everything in <span class="tagged">Primal</span> is a function, which can be combined to create more complex
-          functions. Functions cannot be overloaded (i.e. only one function with a given name can exist in a program).
-          The language includes a comprehensive set of over 200 core functions, providing developers with a wide range
-          of useful tools. The full list can be found in the <a href="../reference" class="custom-link">reference</a>
-          page.
-        </p>
-
-        <p class="text-white justified-text">
-          Being a functional language, <span class="tagged">Primal</span> does not have loop constructions. Instead, it
-          uses recursion to perform repetitive tasks, allowing for a more declarative style of programming.
-        </p>
-
-        <h4 class="text-white section-title">Syntax</h4>
-
-        <p class="text-white justified-text">
-          The syntax is designed to be simple and easy to read and consists of function declarations that are evaluated
-          to produce a result.
-        </p>
-
-        <p class="text-white justified-text">
-          A function declaration is composed of:
-        </p>
-
-        <ul class="text-white justified-text">
-          <li><b>Name:</b> which must match the regular expression <span class="tagged">[a-zA-Z][\w\.]*</span>
-          </li>
-          <li><b>Parameters (optional):</b> a list of identifiers, each matching the regular expression
-            <span class="tagged">[a-zA-Z][\w\.]*</span>
-          </li>
-          <li><b>Body:</b> an expression which consist of combinations of:</li>
-          <ul class="text-white justified-text">
-            <li>Constants: <span class="tagged">"Hello"</span>, <span class="tagged">42</span>, <span
-                class="tagged">true</span>, <span class="tagged">[1, 2, 3]</span>, etc</li>
-            <li>Operations: <span class="tagged">foo + 3</span>, <span class="tagged">!foo</span>, <span
-                class="tagged">foo >= bar</span>, etc</li>
-            <li>Function calls: <span class="tagged">foo(x)</span>, <span class="tagged">bar(10)</span>, etc</li>
-            <li>Conditionals: <span class="tagged">if (foo) bar else baz</span></li>
-          </ul>
-        </ul>
-
-        <p class="text-white justified-text">
-          Strings support the following escape sequences:
-        </p>
-
-        <table class="reference-table mb-4">
-          <thead>
-            <tr>
-              <th class="border-bottom text-white">Sequence</th>
-              <th class="border-bottom text-white">Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="border-bottom"><span class="tagged">\\</span></td><td class="border-bottom">Backslash</td></tr>
-            <tr><td class="border-bottom"><span class="tagged">\"</span></td><td class="border-bottom">Double quote</td></tr>
-            <tr><td class="border-bottom"><span class="tagged">\n</span></td><td class="border-bottom">Newline</td></tr>
-            <tr><td class="border-bottom"><span class="tagged">\r</span></td><td class="border-bottom">Carriage return</td></tr>
-            <tr><td><span class="tagged">\t</span></td><td>Tab</td></tr>
-          </tbody>
-        </table>
-
-        <p class="text-white justified-text">
-          Number literals can be written in several forms. Scientific notation is supported using <span class="tagged">e</span>
-          or <span class="tagged">E</span>. Underscores can be used as visual separators to improve readability:
-        </p>
-
-        <div id="sampleNumberLiterals" class="code-sample"></div>
-
-        <p class="text-white justified-text">
-          Here is an example of a function with parameters:
-        </p>
-
-        <div id="sampleFunctionWithParameters" class="code-sample"></div>
-
-        <p class="text-white justified-text">
-          And here is an example of a function without parameters:
-        </p>
-
-        <div id="sampleFunctionWithoutParameters" class="code-sample"></div>
-
-        <p class="text-white justified-text">
-          Conditional expressions evaluate a condition and return one of two values. The <span class="tagged">else</span>
-          branch is required:
-        </p>
-
-        <div id="sampleConditional" class="code-sample"></div>
-
-        <h4 class="text-white section-title">Main function</h4>
-
-        <p class="text-white justified-text">
-          There is a special function in the language called <span class="tagged">main</span>, which serves as the entry
-          point of a program when it is run. The main function is optional and can be declared with any number of
-          parameters, including none. If present, it can call other functions and perform computations to produce a
-          result.
-        </p>
-
-        <p class="text-white justified-text">
-          If the main function is not present, the program will still run, but no computations will be performed. In
-          this case, the program will run in <span class="tagged">interactive mode</span>, where the user can enter
-          expressions and see the results of their evaluation.
-        </p>
-
-        <h4 class="text-white section-title">Typing system</h4>
-
-        <p class="text-white justified-text">
-          <span class="tagged">Primal</span> has a dynamic runtime type checking. This means that users cannot
-          explicitly declare types for parameters or return values in the code. Instead, the system performs type checks
-          during execution to ensure that values match the expected types when passed to functions.
-        </p>
-
-        <p class="text-white justified-text">
-          This approach offers flexibility and ease of use but relies on runtime checks to catch type-related
-          issues, which can lead to errors that are only caught during execution.
-        </p>
-
-        <p class="text-white justified-text">
-          These are the available types at runtime:
-        </p>
-
-        <div class="type-categories">
-          <div>
-            <div class="type-category-label">Primitives</div>
-            <div class="type-pills">
-              <span class="type-pill">Boolean</span>
-              <span class="type-pill">Number</span>
-              <span class="type-pill">String</span>
-            </div>
-          </div>
-          <div>
-            <div class="type-category-label">Collections</div>
-            <div class="type-pills">
-              <span class="type-pill">List</span>
-              <span class="type-pill">Map</span>
-              <span class="type-pill">Set</span>
-              <span class="type-pill">Stack</span>
-              <span class="type-pill">Queue</span>
-              <span class="type-pill">Vector</span>
-            </div>
-          </div>
-          <div>
-            <div class="type-category-label">System</div>
-            <div class="type-pills">
-              <span class="type-pill">File</span>
-              <span class="type-pill">Directory</span>
-              <span class="type-pill">Timestamp</span>
-              <span class="type-pill">Function</span>
-            </div>
-          </div>
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="../img/icon.png" alt="Primal" width="26" height="26" />
+                PRIMAL
+            </a>
+            <button class="navbar-toggler" onclick="this.nextElementSibling.classList.toggle('show')"
+                aria-label="Toggle navigation">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="4" y1="6" x2="20" y2="6" />
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <line x1="4" y1="18" x2="20" y2="18" />
+                </svg>
+            </button>
+            <ul class="navbar-nav">
+                <li class="nav-item"><a class="nav-link" href="../overview">Overview</a></li>
+                <li class="nav-item"><a class="nav-link selected-menu" href="../start">Get started</a></li>
+                <li class="nav-item"><a class="nav-link" href="../reference">Reference</a></li>
+                <li class="nav-item"><a class="nav-link" href="../versions">Versions</a></li>
+                <li class="nav-item"><a class="nav-link" href="../feedback">Feedback</a></li>
+            </ul>
         </div>
+    </nav>
 
-        <h4 class="text-white section-title">Runtime</h4>
+    <main class="main-content page-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
 
-        <p class="text-white justified-text">
-          <span class="tagged">Primal</span> is an interpreted language. The compiler translates the source code into an
-          intermediate representation that is then executed by the interpreter. The interpreter is responsible for
-          executing the intermediate representation and producing the output of the program.
-        </p>
+                    <h2 class="text-white mb-4">Get started</h2>
 
-        <p class="text-white justified-text">
-          This allows for fast
-          development and testing cycles since changes to the source code can be quickly compiled and executed without
-          the need for a separate build step.
-        </p>
+                    <h4 class="text-white section-title">Installation</h4>
 
-      </div>
-    </div>
-  </div></main>
+                    <p class="text-white justified-text">
+                        Run this command to install the latest version:
+                    </p>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+                    <div id="sampleInstall" class="code-sample"></div>
 
-  <script>
-    // Platform detection
-    const isWin = typeof navigator !== 'undefined' && /Win/.test(navigator.platform);
+                    <p id="installNote" class="text-white justified-text"></p>
 
-    // Installation command based on platform (plain text, no syntax highlighting)
-    document.getElementById('sampleInstall').textContent = isWin
-      ? 'irm https://primal-lang.org/install.ps1 | iex'
-      : 'curl -fsSL https://primal-lang.org/install.sh | bash';
+                    <p class="text-white justified-text">
+                        To run a program, use the following command:
+                    </p>
 
-    document.getElementById('installNote').innerHTML = isWin
-      ? 'This installs <span class="tagged">primal.exe</span> to <span class="tagged">%LOCALAPPDATA%\\Primal\\bin</span> and adds it to your PATH.'
-      : 'This installs the <span class="tagged">primal</span> binary to <span class="tagged">~/.local/bin</span> and updates your shell configuration.';
+                    <div id="sampleRunProgram" class="code-sample"></div>
 
-    setSampleCode('sampleRunProgram', isWin ? 'primal.exe program.prm' : 'primal program.prm')
-    setSampleCode('sampleNumberLiterals', '1_000_000\n3.14e-10')
-    setSampleCode('sampleConditional', 'abs(n) = if (n < 0) -n else n')
-    setSampleCode('sampleFunctionWithParameters', 'cube(n) = pow(n, 3)')
-    setSampleCode('sampleFunctionWithoutParameters', 'pi = 3.14159')
+                    <p class="text-white justified-text">
+                        If your program does not define a <span class="tagged">main</span> function, it will run in
+                        interactive mode,
+                        where you can enter expressions and see the results of their evaluation.
+                    </p>
 
-    window.addEventListener('scroll', function() {
-      var n = document.querySelector('.navbar');
-      if (n) n.classList.toggle('scrolled', window.scrollY > 10);
-    });
-  </script>
+                    <h4 class="text-white section-title">Functions</h4>
+
+                    <p class="text-white justified-text">
+                        Everything in <span class="tagged">Primal</span> is a function, which can be combined to create
+                        more complex
+                        functions. Functions cannot be overloaded (i.e. only one function with a given name can exist in
+                        a program).
+                        The language includes a comprehensive set of over 200 core functions, providing developers with
+                        a wide range
+                        of useful tools. The full list can be found in the <a href="../reference"
+                            class="custom-link">reference</a>
+                        page.
+                    </p>
+
+                    <p class="text-white justified-text">
+                        Being a functional language, <span class="tagged">Primal</span> does not have loop
+                        constructions. Instead, it
+                        uses recursion to perform repetitive tasks, allowing for a more declarative style of
+                        programming.
+                    </p>
+
+                    <h4 class="text-white section-title">Syntax</h4>
+
+                    <p class="text-white justified-text">
+                        The syntax is designed to be simple and easy to read and consists of function declarations that
+                        are evaluated
+                        to produce a result.
+                    </p>
+
+                    <p class="text-white justified-text">
+                        A function declaration is composed of:
+                    </p>
+
+                    <ul class="text-white justified-text">
+                        <li><b>Name:</b> which must match the regular expression <span
+                                class="tagged">[a-zA-Z][\w\.]*</span>
+                        </li>
+                        <li><b>Parameters (optional):</b> a list of identifiers, each matching the regular expression
+                            <span class="tagged">[a-zA-Z][\w\.]*</span>
+                        </li>
+                        <li><b>Body:</b> an expression which consist of combinations of:</li>
+                        <ul class="text-white justified-text">
+                            <li>Constants: <span class="tagged">"Hello"</span>, <span class="tagged">42</span>, <span
+                                    class="tagged">true</span>, <span class="tagged">[1, 2, 3]</span>, etc</li>
+                            <li>Operations: <span class="tagged">foo + 3</span>, <span class="tagged">!foo</span>, <span
+                                    class="tagged">foo >= bar</span>, etc</li>
+                            <li>Function calls: <span class="tagged">foo(x)</span>, <span class="tagged">bar(10)</span>,
+                                etc</li>
+                            <li>Conditionals: <span class="tagged">if (foo) bar else baz</span></li>
+                        </ul>
+                    </ul>
+
+                    <p class="text-white justified-text">
+                        Strings support the following escape sequences:
+                    </p>
+
+                    <table class="reference-table mb-4">
+                        <thead>
+                            <tr>
+                                <th class="border-bottom text-white">Sequence</th>
+                                <th class="border-bottom text-white">Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="border-bottom"><span class="tagged">\\</span></td>
+                                <td class="border-bottom">Backslash</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom"><span class="tagged">\"</span></td>
+                                <td class="border-bottom">Double quote</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom"><span class="tagged">\n</span></td>
+                                <td class="border-bottom">Newline</td>
+                            </tr>
+                            <tr>
+                                <td class="border-bottom"><span class="tagged">\r</span></td>
+                                <td class="border-bottom">Carriage return</td>
+                            </tr>
+                            <tr>
+                                <td><span class="tagged">\t</span></td>
+                                <td>Tab</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <p class="text-white justified-text">
+                        Number literals can be written in several forms. Scientific notation is supported using <span
+                            class="tagged">e</span>
+                        or <span class="tagged">E</span>. Underscores can be used as visual separators to improve
+                        readability:
+                    </p>
+
+                    <div id="sampleNumberLiterals" class="code-sample"></div>
+
+                    <p class="text-white justified-text">
+                        Here is an example of a function with parameters:
+                    </p>
+
+                    <div id="sampleFunctionWithParameters" class="code-sample"></div>
+
+                    <p class="text-white justified-text">
+                        And here is an example of a function without parameters:
+                    </p>
+
+                    <div id="sampleFunctionWithoutParameters" class="code-sample"></div>
+
+                    <p class="text-white justified-text">
+                        Conditional expressions evaluate a condition and return one of two values. The <span
+                            class="tagged">else</span>
+                        branch is required:
+                    </p>
+
+                    <div id="sampleConditional" class="code-sample"></div>
+
+                    <h4 class="text-white section-title">Main function</h4>
+
+                    <p class="text-white justified-text">
+                        There is a special function in the language called <span class="tagged">main</span>, which
+                        serves as the entry
+                        point of a program when it is run. The main function is optional and can be declared with any
+                        number of
+                        parameters, including none. If present, it can call other functions and perform computations to
+                        produce a
+                        result.
+                    </p>
+
+                    <p class="text-white justified-text">
+                        If the main function is not present, the program will still run, but no computations will be
+                        performed. In
+                        this case, the program will run in <span class="tagged">interactive mode</span>, where the user
+                        can enter
+                        expressions and see the results of their evaluation.
+                    </p>
+
+                    <h4 class="text-white section-title">Typing system</h4>
+
+                    <p class="text-white justified-text">
+                        <span class="tagged">Primal</span> has a dynamic runtime type checking. This means that users
+                        cannot
+                        explicitly declare types for parameters or return values in the code. Instead, the system
+                        performs type checks
+                        during execution to ensure that values match the expected types when passed to functions.
+                    </p>
+
+                    <p class="text-white justified-text">
+                        This approach offers flexibility and ease of use but relies on runtime checks to catch
+                        type-related
+                        issues, which can lead to errors that are only caught during execution.
+                    </p>
+
+                    <p class="text-white justified-text">
+                        These are the available types at runtime:
+                    </p>
+
+                    <div class="type-categories">
+                        <div>
+                            <div class="type-category-label">Primitives</div>
+                            <div class="type-pills">
+                                <span class="type-pill">Boolean</span>
+                                <span class="type-pill">Number</span>
+                                <span class="type-pill">String</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="type-category-label">Collections</div>
+                            <div class="type-pills">
+                                <span class="type-pill">List</span>
+                                <span class="type-pill">Map</span>
+                                <span class="type-pill">Set</span>
+                                <span class="type-pill">Stack</span>
+                                <span class="type-pill">Queue</span>
+                                <span class="type-pill">Vector</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="type-category-label">Temporal</div>
+                            <div class="type-pills">
+                                <span class="type-pill">Timestamp</span>
+                                <span class="type-pill">Duration</span>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="type-category-label">Filesystem</div>
+                            <div class="type-pills">
+                                <span class="type-pill">File</span>
+                                <span class="type-pill">Directory</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4 class="text-white section-title">Runtime</h4>
+
+                    <p class="text-white justified-text">
+                        <span class="tagged">Primal</span> is an interpreted language. The compiler translates the
+                        source code into an
+                        intermediate representation that is then executed by the interpreter. The interpreter is
+                        responsible for
+                        executing the intermediate representation and producing the output of the program.
+                    </p>
+
+                    <p class="text-white justified-text">
+                        This allows for fast
+                        development and testing cycles since changes to the source code can be quickly compiled and
+                        executed without
+                        the need for a separate build step.
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <script>
+        // Platform detection
+        const isWin = typeof navigator !== 'undefined' && /Win/.test(navigator.platform);
+
+        // Installation command based on platform (plain text, no syntax highlighting)
+        document.getElementById('sampleInstall').textContent = isWin
+            ? 'irm https://primal-lang.org/install.ps1 | iex'
+            : 'curl -fsSL https://primal-lang.org/install.sh | bash';
+
+        document.getElementById('installNote').innerHTML = isWin
+            ? 'This installs <span class="tagged">primal.exe</span> to <span class="tagged">%LOCALAPPDATA%\\Primal\\bin</span> and adds it to your PATH.'
+            : 'This installs the <span class="tagged">primal</span> binary to <span class="tagged">~/.local/bin</span> and updates your shell configuration.';
+
+        setSampleCode('sampleRunProgram', isWin ? 'primal.exe program.prm' : 'primal program.prm')
+        setSampleCode('sampleNumberLiterals', '1_000_000\n3.14e-10')
+        setSampleCode('sampleConditional', 'abs(n) = if (n < 0) -n else n')
+        setSampleCode('sampleFunctionWithParameters', 'cube(n) = pow(n, 3)')
+        setSampleCode('sampleFunctionWithoutParameters', 'pi = 3.14159')
+
+        window.addEventListener('scroll', function () {
+            var n = document.querySelector('.navbar');
+            if (n) n.classList.toggle('scrolled', window.scrollY > 10);
+        });
+    </script>
 
 </body>
 
