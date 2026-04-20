@@ -270,7 +270,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A list and any value.</td>
+                                <td class="border-bottom">A list and an equatable value.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -434,7 +434,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A list and any value.</td>
+                                <td class="border-bottom">A list and an equatable value.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -506,7 +506,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A list and any value.</td>
+                                <td class="border-bottom">A list and an equatable value.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -824,7 +824,7 @@
         setSampleCode('list.isNotEmpty', 'list.isNotEmpty(a: List): Boolean')
         setSampleCode('list.isNotEmpty.example', 'list.isNotEmpty([1, 2]) // returns true')
 
-        setSampleCode('list.contains', 'list.contains(a: List, b: Any): Boolean')
+        setSampleCode('list.contains', 'list.contains(a: List, b: Equatable): Boolean')
         setSampleCode('list.contains.example', 'list.contains([1, 2, 3], 2) // returns true')
 
         setSampleCode('list.first', 'list.first(a: List): Any')
@@ -851,7 +851,7 @@
         setSampleCode('list.insertEnd', 'list.insertEnd(a: List, b: Any): List')
         setSampleCode('list.insertEnd.example', 'list.insertEnd([1, 2], 3) // returns [1, 2, 3]')
 
-        setSampleCode('list.remove', 'list.remove(a: List, b: Any): List')
+        setSampleCode('list.remove', 'list.remove(a: List, b: Equatable): List')
         setSampleCode('list.remove.example', 'list.remove([1, 2, 3, 2], 2) // returns [1, 3]')
 
         setSampleCode('list.removeAt', 'list.removeAt(a: List, b: Number): List')
@@ -860,10 +860,10 @@
         setSampleCode('list.reverse', 'list.reverse(a: List): List')
         setSampleCode('list.reverse.example', 'list.reverse([1, 2, 3]) // returns [3, 2, 1]')
 
-        setSampleCode('list.filled', 'list.filled(b: Number, c: Any): List')
+        setSampleCode('list.filled', 'list.filled(a: Number, b: Any): List')
         setSampleCode('list.filled.example', 'list.filled(3, 0) // returns [0, 0, 0]')
 
-        setSampleCode('list.indexOf', 'list.indexOf(a: List, b: Any): Number')
+        setSampleCode('list.indexOf', 'list.indexOf(a: List, b: Equatable): Number')
         setSampleCode('list.indexOf.example', 'list.indexOf([10, 20, 30], 20) // returns 1')
 
         setSampleCode('list.swap', 'list.swap(a: List, b: Number, c: Number): List')

@@ -123,7 +123,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A map and a key.</td>
+                                <td class="border-bottom">A map and a hashable key.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -141,7 +141,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A map, a key, and a value.</td>
+                                <td class="border-bottom">A map, a hashable key, and a value.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -195,7 +195,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A map and a key.</td>
+                                <td class="border-bottom">A map and a hashable key.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -249,7 +249,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">A map and a key.</td>
+                                <td class="border-bottom">A map and a hashable key.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -307,7 +307,7 @@
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
-                                <td>A new map containing all key-value pairs from both maps.</td>
+                                <td>A new map containing all key-value pairs from both maps. When both maps contain the same key, the value from the second map takes precedence.</td>
                             </tr>
                         </tbody>
                     </table>
@@ -330,10 +330,10 @@
         setSampleCode('map.index', 'Map[Any]: Any')
         setSampleCode('map.index.example', '{"name": "Alice"}["name"] // returns "Alice"')
 
-        setSampleCode('map.at', 'map.at(a: Map, b: Any): Any')
+        setSampleCode('map.at', 'map.at(a: Map, b: Hashable): Any')
         setSampleCode('map.at.example', 'map.at({"name": "Alice"}, "name") // returns "Alice"')
 
-        setSampleCode('map.set', 'map.set(a: Map, b: Any, c: Any): Map')
+        setSampleCode('map.set', 'map.set(a: Map, b: Hashable, c: Any): Map')
         setSampleCode('map.set.example', 'map.set({"a": 1}, "b", 2) // returns {"a": 1, "b": 2}')
 
         setSampleCode('map.keys', 'map.keys(a: Map): List')
@@ -342,7 +342,7 @@
         setSampleCode('map.values', 'map.values(a: Map): List')
         setSampleCode('map.values.example', 'map.values({"a": 1, "b": 2}) // returns [1, 2]')
 
-        setSampleCode('map.containsKey', 'map.containsKey(a: Map, b: Any): Boolean')
+        setSampleCode('map.containsKey', 'map.containsKey(a: Map, b: Hashable): Boolean')
         setSampleCode('map.containsKey.example', 'map.containsKey({"a": 1}, "a") // returns true')
 
         setSampleCode('map.isEmpty', 'map.isEmpty(a: Map): Boolean')
@@ -351,7 +351,7 @@
         setSampleCode('map.isNotEmpty', 'map.isNotEmpty(a: Map): Boolean')
         setSampleCode('map.isNotEmpty.example', 'map.isNotEmpty({"a": 1}) // returns true')
 
-        setSampleCode('map.removeAt', 'map.removeAt(a: Map, b: Any): Map')
+        setSampleCode('map.removeAt', 'map.removeAt(a: Map, b: Hashable): Map')
         setSampleCode('map.removeAt.example', 'map.removeAt({"a": 1, "b": 2}, "a") // returns {"b": 2}')
 
         setSampleCode('map.length', 'map.length(a: Map): Number')

@@ -87,7 +87,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">Two arguments of any type.</td>
+                                <td class="border-bottom">Two equatable arguments (numbers, strings, booleans, timestamps, durations, lists, maps, sets, vectors, stacks, or queues).</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -105,7 +105,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">Two arguments of any type.</td>
+                                <td class="border-bottom">Two equatable arguments (numbers, strings, booleans, timestamps, durations, lists, maps, sets, vectors, stacks, or queues).</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -123,7 +123,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">Two numbers or two strings.</td>
+                                <td class="border-bottom">Two numbers, two strings, two timestamps, or two durations.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -141,7 +141,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">Two numbers or two strings.</td>
+                                <td class="border-bottom">Two numbers, two strings, two timestamps, or two durations.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -159,7 +159,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">Two numbers or two strings.</td>
+                                <td class="border-bottom">Two numbers, two strings, two timestamps, or two durations.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -178,7 +178,7 @@
                         <tbody>
                             <tr>
                                 <td class="border-bottom reference-table-title">Input</td>
-                                <td class="border-bottom">Two numbers or two strings.</td>
+                                <td class="border-bottom">Two numbers, two strings, two timestamps, or two durations.</td>
                             </tr>
                             <tr>
                                 <td class="reference-table-title">Output</td>
@@ -200,22 +200,22 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
-        setSampleCode('comp.eq', 'comp.eq(a: Any, b: Any): Boolean')
+        setSampleCode('comp.eq', 'comp.eq(a: Equatable, b: Equatable): Boolean')
         setSampleCode('comp.eq.example', 'comp.eq(5, 5) // returns true')
 
-        setSampleCode('comp.neq', 'comp.neq(a: Any, b: Any): Boolean')
+        setSampleCode('comp.neq', 'comp.neq(a: Equatable, b: Equatable): Boolean')
         setSampleCode('comp.neq.example', 'comp.neq(5, 3) // returns true')
 
-        setSampleCode('comp.gt', 'comp.gt(a: Any, b: Any): Boolean')
+        setSampleCode('comp.gt', 'comp.gt(a: Ordered, b: Ordered): Boolean')
         setSampleCode('comp.gt.example', 'comp.gt(5, 3) // returns true')
 
-        setSampleCode('comp.lt', 'comp.lt(a: Any, b: Any): Boolean')
+        setSampleCode('comp.lt', 'comp.lt(a: Ordered, b: Ordered): Boolean')
         setSampleCode('comp.lt.example', 'comp.lt(3, 5) // returns true')
 
-        setSampleCode('comp.ge', 'comp.ge(a: Any, b: Any): Boolean')
+        setSampleCode('comp.ge', 'comp.ge(a: Ordered, b: Ordered): Boolean')
         setSampleCode('comp.ge.example', 'comp.ge(5, 5) // returns true')
 
-        setSampleCode('comp.le', 'comp.le(a: Any, b: Any): Boolean')
+        setSampleCode('comp.le', 'comp.le(a: Ordered, b: Ordered): Boolean')
         setSampleCode('comp.le.example', 'comp.le(3, 5) // returns true')
     </script>
 
