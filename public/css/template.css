@@ -913,6 +913,15 @@ a {
   fill: var(--color-gold)
 }
 
+.code-copy-btn.copy-failed {
+  background: rgba(240,163,163,0.15);
+  border-color: rgba(240,163,163,0.3)
+}
+
+.code-copy-btn.copy-failed svg {
+  fill: var(--color-danger)
+}
+
 /* --- Back arrow --- */
 .arrow-back {
   display: inline-flex;
@@ -1181,15 +1190,5 @@ a {
 
   .page-content {
     padding-top: calc(var(--nav-h) + 2rem)
-  }
-
-  .site-footer .row > div {
-    margin-bottom: 1.5rem
-  }
-
-  .footer-links {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 0.5rem 1.25rem
   }
 }

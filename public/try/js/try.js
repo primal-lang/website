@@ -30,7 +30,19 @@ getSample('samples/to_roman_numerals.prm', 'romanNumerals')
 getSample('samples/sum_of_digits.prm', 'sumOfDigits')
 getSample('samples/to_binary.prm', 'toBinary')
 
-const INPUTS = localStorage.getItem('consoleHistory') ? JSON.parse(localStorage.getItem('consoleHistory')) : []
+// A corrupt entry must not take the whole playground down, so an unreadable
+// history is simply treated as an empty one.
+function readConsoleHistory() {
+  try {
+    const stored = JSON.parse(localStorage.getItem('consoleHistory'))
+
+    return Array.isArray(stored) ? stored : []
+  } catch (e) {
+    return []
+  }
+}
+
+const INPUTS = readConsoleHistory()
 let inputIndex = (INPUTS.length > 0) ? INPUTS.length : -1
 
 function compileCode(sourceCode) {
@@ -98,14 +110,30 @@ function loadSample(name) {
   }
 }
 
+// The Clipboard API is missing outside secure contexts and can still reject when
+// present, so the confirmation toast only appears once the write has succeeded.
+function copyToClipboard(text, successToast) {
+  if (!navigator.clipboard) {
+    showToast('toastCopyFailed')
+
+    return
+  }
+
+  navigator.clipboard.writeText(text)
+    .then(function () {
+      showToast(successToast)
+    })
+    .catch(function () {
+      showToast('toastCopyFailed')
+    })
+}
+
 function copySourceCode() {
-  navigator.clipboard.writeText(window.editor.getValue())
-  showToast('toastTextCopied')
+  copyToClipboard(window.editor.getValue(), 'toastTextCopied')
 }
 
 function share() {
-  navigator.clipboard.writeText(window.location.href)
-  showToast('toastUrlCopied')
+  copyToClipboard(window.location.href, 'toastUrlCopied')
 }
 
 function showToast(name) {

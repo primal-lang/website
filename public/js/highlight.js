@@ -37,6 +37,34 @@ window.addEventListener("load", function () {
   }
 });
 
+const COPY_ICON =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
+const COPIED_ICON =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+const COPY_FAILED_ICON =
+  '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
+
+// The icon carries the outcome visually and the label carries it to assistive
+// technology, so neither state depends on colour alone.
+function setCopyButtonState(button, styleClass, icon, label) {
+  button.classList.remove("copied", "copy-failed");
+
+  if (styleClass) {
+    button.classList.add(styleClass);
+  }
+
+  button.innerHTML = icon;
+  button.setAttribute("aria-label", label);
+}
+
+function flashCopyButtonState(button, styleClass, icon, label) {
+  setCopyButtonState(button, styleClass, icon, label);
+
+  setTimeout(function () {
+    setCopyButtonState(button, null, COPY_ICON, "Copy code");
+  }, 2000);
+}
+
 // Add copy buttons to all code-sample elements
 document.addEventListener("DOMContentLoaded", function () {
   const codeSamples = document.querySelectorAll(".code-sample");
@@ -44,9 +72,9 @@ document.addEventListener("DOMContentLoaded", function () {
   codeSamples.forEach(function (sample) {
     const copyBtn = document.createElement("button");
     copyBtn.className = "code-copy-btn";
+    copyBtn.type = "button";
     copyBtn.setAttribute("aria-label", "Copy code");
-    copyBtn.innerHTML =
-      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
+    copyBtn.innerHTML = COPY_ICON;
 
     copyBtn.addEventListener("click", function () {
       // Try to get content from CodeMirror instance
@@ -60,17 +88,22 @@ document.addEventListener("DOMContentLoaded", function () {
         text = sample.textContent || sample.innerText;
       }
 
-      navigator.clipboard.writeText(text).then(function () {
-        copyBtn.classList.add("copied");
-        copyBtn.innerHTML =
-          '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>';
+      // The Clipboard API is missing outside secure contexts and can reject even
+      // where it exists, so the tick only appears once the copy has succeeded.
+      if (!navigator.clipboard) {
+        flashCopyButtonState(copyBtn, "copy-failed", COPY_FAILED_ICON, "Copy failed");
 
-        setTimeout(function () {
-          copyBtn.classList.remove("copied");
-          copyBtn.innerHTML =
-            '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>';
-        }, 2000);
-      });
+        return;
+      }
+
+      navigator.clipboard
+        .writeText(text)
+        .then(function () {
+          flashCopyButtonState(copyBtn, "copied", COPIED_ICON, "Code copied");
+        })
+        .catch(function () {
+          flashCopyButtonState(copyBtn, "copy-failed", COPY_FAILED_ICON, "Copy failed");
+        });
     });
 
     sample.appendChild(copyBtn);

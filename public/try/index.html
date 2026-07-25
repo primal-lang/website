@@ -43,10 +43,12 @@
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-    <!-- Material Symbols -->
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <!-- Material Symbols. Icons are ligatures, so display=block hides the raw
+         glyph names ("upload_file") that swap would flash in the toolbar. -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&display=block"
+        rel="stylesheet" />
 
     <link rel="icon" href="../img/icon.png" type="image/x-icon" />
     <link rel="apple-touch-icon" href="../img/icon.png" />
@@ -221,6 +223,15 @@
             </div>
         </div>
 
+        <div id="toastCopyFailed" class="toast align-items-center" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">Nothing copied. Your browser blocked access to the clipboard.</div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+
         <div id="toastFeedbackSent" class="toast align-items-center" role="alert" aria-live="assertive"
             aria-atomic="true">
             <div class="d-flex">
@@ -249,8 +260,8 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <textarea class="form-control" id="feedbackText" rows="5" required
-                        aria-describedby="feedbackModalHint"></textarea>
+                    <label class="visually-hidden" for="feedbackText">Your feedback</label>
+                    <textarea class="form-control" id="feedbackText" rows="5" required></textarea>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-primary" id="sendFeedbackButton"
