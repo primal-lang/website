@@ -1,10 +1,26 @@
+<!DOCTYPE html>
 <html lang="en" data-bs-theme="dark">
 
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Primal Playground</title>
+    <title>Playground - Primal</title>
     <meta name="description"
+        content="Write and run Primal code directly in your browser. Interactive playground with syntax highlighting, sample programs, and a built-in console." />
+    <link rel="canonical" href="https://primal-lang.org/try/" />
+    <meta property="og:site_name" content="Primal" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Playground - Primal" />
+    <meta property="og:description"
+        content="Write and run Primal code directly in your browser. Interactive playground with syntax highlighting, sample programs, and a built-in console." />
+    <meta property="og:url" content="https://primal-lang.org/try/" />
+    <meta property="og:image" content="https://primal-lang.org/img/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Primal - a declarative, functional programming language" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Playground - Primal" />
+    <meta name="twitter:description"
         content="Write and run Primal code directly in your browser. Interactive playground with syntax highlighting, sample programs, and a built-in console." />
 
     <!-- Bootstrap -->
@@ -12,17 +28,17 @@
         integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
-        crossorigin="anonymous"></script>
-
-    <!-- JQuery -->
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+        crossorigin="anonymous" defer></script>
 
     <!-- CodeMirror -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
+        crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
+        crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
+        crossorigin="anonymous" defer></script>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,11 +58,13 @@
     <link rel="stylesheet" href="../css/highlight.css">
     <link rel="stylesheet" href="css/style.css">
 
-    <script type="text/javascript" src="js/primal.js"></script>
-    <script type="text/javascript" src="js/try.js"></script>
-    <script type="text/javascript" src="../js/highlight.js"></script>
+    <script src="https://unpkg.com/split.js@1.6.5/dist/split.min.js" integrity="sha384-q2ksSc8z6Q4ZUnxlfZj9AXZLpSdWmD3q/YrId1twTeNHh56fNh98YbJSpppzGUvL"
+        crossorigin="anonymous" defer></script>
 
-    <script type="text/javascript" src="https://unpkg.com/split.js@1.6.5/dist/split.min.js"></script>
+    <script src="js/primal.js" defer></script>
+    <script src="../js/highlight.js" defer></script>
+    <script src="../js/feedback.js" defer></script>
+    <script src="js/try.js" defer></script>
 
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -59,7 +77,13 @@
 
 </head>
 
-<body onload="recompile()">
+<body>
+
+    <noscript>
+        <p class="noscript-note">The playground compiles and runs Primal in your browser, so it needs JavaScript
+            enabled. The <a href="../start" class="custom-link">getting started guide</a> covers running Primal
+            locally instead.</p>
+    </noscript>
 
     <div class="layout">
 
@@ -67,47 +91,57 @@
             <div class="container-fluid">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="javascript:onLoadFile()" title="Load file"><span
-                                class="material-symbols-outlined navbar-icon">upload_file</span> Load</a>
+                        <button type="button" class="nav-link active" data-action="load"><span
+                                class="material-symbols-outlined navbar-icon" aria-hidden="true">upload_file</span>
+                            Load</button>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="../reference" target="_blank" title="Reference"><span
-                                class="material-symbols-outlined navbar-icon">description</span> Reference</a>
+                        <a class="nav-link active" href="../reference" target="_blank" rel="noopener noreferrer"><span
+                                class="material-symbols-outlined navbar-icon" aria-hidden="true">description</span>
+                            Reference</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link" href="" data-bs-toggle="dropdown" title="Samples">
-                            <span class="material-symbols-outlined navbar-icon">library_add</span> Samples
-                        </a>
+                        <button type="button" class="nav-link" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="material-symbols-outlined navbar-icon" aria-hidden="true">library_add</span>
+                            Samples
+                        </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="javascript:loadSample('balancedParentheses')">Balanced
-                                    Parentheses</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('binarySearch')">Binary Search</a>
+                            <li><button type="button" class="dropdown-item" data-sample="balancedParentheses">Balanced
+                                    Parentheses</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="binarySearch">Binary
+                                    Search</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="divisors">Divisors</button>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('divisors')">Divisors</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('factorial')">Factorial</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('fibonacci')">Fibonacci</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('findMax')">Find Max</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('flatten')">Flatten</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('frequency')">Frequency</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('gcdLcm')">GCD & LCM</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('isPalindrome')">Is palindrome</a>
+                            <li><button type="button" class="dropdown-item" data-sample="factorial">Factorial</button>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('isPrime')">Is prime</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('matrixMultiply')">Matrix
-                                    Multiply</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('movingAverages')">Moving
-                                    Averages</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('piEstimate')">Pi Estimation</a>
+                            <li><button type="button" class="dropdown-item" data-sample="fibonacci">Fibonacci</button>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('power')">Power</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('quicksort')">Quicksort</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('reverseList')">Reverse List</a>
+                            <li><button type="button" class="dropdown-item" data-sample="findMax">Find Max</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="flatten">Flatten</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="frequency">Frequency</button>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('sumOfDigits')">Sum of Digits</a>
+                            <li><button type="button" class="dropdown-item" data-sample="gcdLcm">GCD &amp; LCM</button>
                             </li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('toBinary')">To Binary</a></li>
-                            <li><a class="dropdown-item" href="javascript:loadSample('romanNumerals')">To Roman
-                                    Numerals</a></li>
+                            <li><button type="button" class="dropdown-item" data-sample="isPalindrome">Is
+                                    palindrome</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="isPrime">Is prime</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="matrixMultiply">Matrix
+                                    Multiply</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="movingAverages">Moving
+                                    Averages</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="piEstimate">Pi
+                                    Estimation</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="power">Power</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="quicksort">Quicksort</button>
+                            </li>
+                            <li><button type="button" class="dropdown-item" data-sample="reverseList">Reverse
+                                    List</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="sumOfDigits">Sum of
+                                    Digits</button></li>
+                            <li><button type="button" class="dropdown-item" data-sample="toBinary">To Binary</button>
+                            </li>
+                            <li><button type="button" class="dropdown-item" data-sample="romanNumerals">To Roman
+                                    Numerals</button></li>
                         </ul>
                     </li>
                 </ul>
@@ -120,20 +154,24 @@
 
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link active" href="javascript:clearOutputManual()" title="Clear"><span
-                                class="material-symbols-outlined navbar-icon">mop</span> Clear</a>
+                        <button type="button" class="nav-link active" data-action="clear"><span
+                                class="material-symbols-outlined navbar-icon" aria-hidden="true">mop</span>
+                            Clear</button>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="javascript:copySourceCode()" title="Copy"><span
-                                class="material-symbols-outlined navbar-icon">content_copy</span> Copy</a>
+                        <button type="button" class="nav-link active" data-action="copy"><span
+                                class="material-symbols-outlined navbar-icon" aria-hidden="true">content_copy</span>
+                            Copy</button>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="javascript:share()" title="Share"><span
-                                class="material-symbols-outlined navbar-icon">share</span> Share</a>
+                        <button type="button" class="nav-link active" data-action="share"><span
+                                class="material-symbols-outlined navbar-icon" aria-hidden="true">share</span>
+                            Share</button>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="javascript:sendFeedback()" title="Feedback"><span
-                                class="material-symbols-outlined navbar-icon">comment</span> Feedback</a>
+                        <button type="button" class="nav-link active" data-action="feedback"><span
+                                class="material-symbols-outlined navbar-icon" aria-hidden="true">comment</span>
+                            Feedback</button>
                     </li>
                 </ul>
             </div>
@@ -141,110 +179,86 @@
 
         <div class="split content">
             <div id="split-0">
+                <h1 class="visually-hidden">Primal playground</h1>
                 <div id="sourceCode"></div>
             </div>
             <div id="split-1">
-                <div id="output" class="console"></div>
-                <input id="consoleInput" type="text" class="console-input" placeholder=">" />
+                <div id="output" class="console" role="log" aria-live="polite" aria-label="Program output"></div>
+                <label class="visually-hidden" for="consoleInput">Evaluate an expression</label>
+                <input id="consoleInput" type="text" class="console-input" placeholder=">" autocomplete="off"
+                    autocapitalize="off" spellcheck="false" />
             </div>
         </div>
 
     </div>
-    <input class="form-control" type="file" id="loadFile" onchange="onFileLoaded(this)" style="display: none">
+    <input class="form-control" type="file" id="loadFile" accept=".prm,text/plain" hidden>
 
     <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="toastOutputCleared" class="toast align-items-center" role="alert" aria-live="assertive"
             aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">Output cleared</div>
-                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
             </div>
         </div>
-    </div>
 
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="toastTextCopied" class="toast align-items-center" role="alert" aria-live="assertive"
             aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">Source code copied to clipboard</div>
-                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
             </div>
         </div>
-    </div>
 
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
-        <div id="toastUrlCopied" class="toast align-items-center" role="alert" aria-live="assertive" aria-atomic="true">
+        <div id="toastUrlCopied" class="toast align-items-center" role="alert" aria-live="assertive"
+            aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">URL copied to clipboard</div>
-                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
             </div>
         </div>
-    </div>
 
-    <div class="toast-container position-fixed bottom-0 end-0 p-3">
         <div id="toastFeedbackSent" class="toast align-items-center" role="alert" aria-live="assertive"
             aria-atomic="true">
             <div class="d-flex">
                 <div class="toast-body">Feedback sent</div>
-                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div id="toastFeedbackFailed" class="toast align-items-center" role="alert" aria-live="assertive"
+            aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">Feedback not sent. Check your connection and try again.</div>
+                <button type="button" class="btn-close me-2 m-auto" data-bs-dismiss="toast"
+                    aria-label="Close"></button>
             </div>
         </div>
     </div>
 
-    <div class="modal fade" id="feedbackModal" tabindex="-1" aria-hidden="true">
+    <div class="modal fade" id="feedbackModal" tabindex="-1" role="dialog"
+        aria-labelledby="feedbackModalTitle" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h6 class="modal-title" id="exampleModalLabel">Feedback</h6>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
-                        onclick="onFeedbackModalClosed()"></button>
+                    <h2 class="modal-title h6" id="feedbackModalTitle">Feedback</h2>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <textarea class="form-control" id="feedbackText" rows="5"
-                        oninput="onFeedbackInputChange()"></textarea>
+                    <textarea class="form-control" id="feedbackText" rows="5" required
+                        aria-describedby="feedbackModalHint"></textarea>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-primary" id="sendFeedbackButton" disabled
-                        onclick="onSendFeedback()">Send</button>
+                    <button type="button" class="btn btn-primary" id="sendFeedbackButton"
+                        data-action="send-feedback" disabled>Send</button>
                 </div>
             </div>
         </div>
     </div>
-
-    <script>
-        Split(['#split-0', '#split-1'], {
-            minSize: 500,
-            gutterAlign: 'end',
-            snapOffset: 0,
-        })
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            window.editor = CodeMirror(document.getElementById('sourceCode'), {
-                ...basicProperties(true),
-                lineNumbers: true,
-                value: localStorage.getItem('sourceCode') ? localStorage.getItem('sourceCode') : SAMPLES['default'],
-            })
-
-            window.editor.on('change', function () {
-                onInputChange()
-            })
-        })
-
-        document.getElementById('consoleInput').addEventListener('keydown', function (event) {
-            if (event.key === 'Enter') {
-                event.preventDefault()
-                evaluateConsoleInput()
-            } else if (event.key === 'ArrowUp') {
-                event.preventDefault()
-                showInputBefore()
-            } else if (event.key === 'ArrowDown') {
-                event.preventDefault()
-                showInputAfter()
-            }
-        })
-    </script>
 
 </body>
 

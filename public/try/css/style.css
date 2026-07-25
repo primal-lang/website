@@ -16,8 +16,19 @@ body {
 /* --- Full-height flex layout --- */
 .layout {
   height: 100vh;
+  height: 100dvh;
   display: flex;
   flex-direction: column;
+}
+
+.noscript-note {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  font-family: var(--bs-body-font-family);
+  font-size: 0.95rem;
+  color: var(--color-text-2);
+  background: rgba(213,171,121,0.08);
+  border-bottom: 1px solid rgba(213,171,121,0.2);
 }
 
 /* --- Toolbar navbar (override template.css fixed positioning) --- */
@@ -32,6 +43,17 @@ body {
 
 .navbar.navbar-container .navbar-nav {
   margin-left: 0 !important;
+}
+
+/* Toolbar entries that perform an action are buttons; these strip the native
+   button chrome so they read identically to the links beside them. */
+button.nav-link {
+  background: none;
+  border: 0;
+  font-family: inherit;
+  font-size: 0.875rem;
+  line-height: inherit;
+  cursor: pointer;
 }
 
 .navbar-icon {

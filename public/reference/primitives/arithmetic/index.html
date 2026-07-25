@@ -3,11 +3,44 @@
 
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
         content="Primal arithmetic functions reference: abs, ceil, floor, round, pow, sqrt, min, max, and more mathematical operations." />
-    <title>Arithmetic Functions</title>
+    <title>Arithmetic Functions - Primal</title>
     <link rel="canonical" href="https://primal-lang.org/reference/primitives/arithmetic/" />
+    <meta property="og:site_name" content="Primal" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Arithmetic Functions - Primal" />
+    <meta property="og:description" content="Primal arithmetic functions reference: abs, ceil, floor, round, pow, sqrt, min, max, and more mathematical operations." />
+    <meta property="og:url" content="https://primal-lang.org/reference/primitives/arithmetic/" />
+    <meta property="og:image" content="https://primal-lang.org/img/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Primal - a declarative, functional programming language" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Arithmetic Functions - Primal" />
+    <meta name="twitter:description" content="Primal arithmetic functions reference: abs, ceil, floor, round, pow, sqrt, min, max, and more mathematical operations." />
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Reference",
+              "item": "https://primal-lang.org/reference/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Arithmetic",
+              "item": "https://primal-lang.org/reference/primitives/arithmetic/"
+            }
+          ]
+        }
+    </script>
 
     <link rel="icon" type="image/x-icon" href="../../../img/icon.png" />
     <link rel="apple-touch-icon" href="../../../img/icon.png" />
@@ -21,13 +54,19 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
+        crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
+        crossorigin="anonymous"></script>
 
     <link href="../../../css/highlight.css" rel="stylesheet" />
     <link href="../../../css/template.css" rel="stylesheet" />
+
+    <script src="../../../js/site.js" defer></script>
 
     <script src="../../../js/highlight.js"></script>
 
@@ -50,18 +89,18 @@
                 <img src="../../../img/icon.png" alt="Primal" width="26" height="26" />
                 PRIMAL
             </a>
-            <button class="navbar-toggler" onclick="this.nextElementSibling.classList.toggle('show')"
-                aria-label="Toggle navigation">
+            <button type="button" class="navbar-toggler" aria-label="Toggle navigation"
+                aria-expanded="false" aria-controls="primary-nav">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
                     <line x1="4" y1="6" x2="20" y2="6" />
                     <line x1="4" y1="12" x2="20" y2="12" />
                     <line x1="4" y1="18" x2="20" y2="18" />
                 </svg>
             </button>
-            <ul class="navbar-nav">
+            <ul class="navbar-nav" id="primary-nav">
                 <li class="nav-item"><a class="nav-link" href="../../../overview">Overview</a></li>
                 <li class="nav-item"><a class="nav-link" href="../../../start">Get started</a></li>
-                <li class="nav-item"><a class="nav-link selected-menu" href="../../../reference">Reference</a></li>
+                <li class="nav-item"><a class="nav-link selected-menu" aria-current="page" href="../../../reference">Reference</a></li>
                 <li class="nav-item"><a class="nav-link" href="../../../versions">Versions</a></li>
                 <li class="nav-item"><a class="nav-link" href="../../../feedback">Feedback</a></li>
             </ul>
@@ -80,17 +119,22 @@
                         </svg>Reference
                     </a>
 
-                    <h2 class="text-white mb-4">Arithmetic</h2>
+                    <h1 class="text-white mb-4 page-title">Arithmetic</h1>
 
-                    <h5 class="text-white reference-title">Absolute</h5>
+                    <noscript>
+                        <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
+                            see the signatures and examples.</p>
+                    </noscript>
+
+                    <h2 class="text-white reference-title">Absolute</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">One number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The absolute value of the number</td>
                             </tr>
                         </tbody>
@@ -100,15 +144,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.abs.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Negative</h5>
+                    <h2 class="text-white reference-title">Negative</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">One number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The negative of the absolute value of the number. Always returns a non-positive
                                     number.</td>
                             </tr>
@@ -119,15 +163,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.negative.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Increment</h5>
+                    <h2 class="text-white reference-title">Increment</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">One number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The number incremented by one</td>
                             </tr>
                         </tbody>
@@ -137,15 +181,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.inc.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Decrement</h5>
+                    <h2 class="text-white reference-title">Decrement</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">One number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The number decremented by one</td>
                             </tr>
                         </tbody>
@@ -155,15 +199,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.dec.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Add</h5>
+                    <h2 class="text-white reference-title">Add</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The sum of the numbers</td>
                             </tr>
                         </tbody>
@@ -173,15 +217,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.add.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Sum</h5>
+                    <h2 class="text-white reference-title">Sum</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The sum of the numbers</td>
                             </tr>
                         </tbody>
@@ -191,15 +235,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.sum.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Subtract</h5>
+                    <h2 class="text-white reference-title">Subtract</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The difference of the numbers</td>
                             </tr>
                         </tbody>
@@ -209,15 +253,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.sub.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Multiply</h5>
+                    <h2 class="text-white reference-title">Multiply</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The product of the numbers</td>
                             </tr>
                         </tbody>
@@ -227,15 +271,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.mul.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Divide</h5>
+                    <h2 class="text-white reference-title">Divide</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The division of the numbers</td>
                             </tr>
                         </tbody>
@@ -245,15 +289,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.div.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Modulo</h5>
+                    <h2 class="text-white reference-title">Modulo</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The remainder of the division of the numbers</td>
                             </tr>
                         </tbody>
@@ -263,15 +307,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.mod.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Power</h5>
+                    <h2 class="text-white reference-title">Power</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The first number raised to the power of the second number</td>
                             </tr>
                         </tbody>
@@ -281,15 +325,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.pow.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Square root</h5>
+                    <h2 class="text-white reference-title">Square root</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">One number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The square root of the number</td>
                             </tr>
                         </tbody>
@@ -299,15 +343,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.sqrt.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Minimum</h5>
+                    <h2 class="text-white reference-title">Minimum</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The smallest of the numbers</td>
                             </tr>
                         </tbody>
@@ -317,15 +361,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.min.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Maximum</h5>
+                    <h2 class="text-white reference-title">Maximum</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The largest of the numbers</td>
                             </tr>
                         </tbody>
@@ -335,15 +379,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.max.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Round</h5>
+                    <h2 class="text-white reference-title">Round</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">One number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The number rounded to the nearest integer</td>
                             </tr>
                         </tbody>
@@ -353,15 +397,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.round.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Floor</h5>
+                    <h2 class="text-white reference-title">Floor</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">One number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The largest integer less than or equal to the number</td>
                             </tr>
                         </tbody>
@@ -371,15 +415,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.floor.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Ceiling</h5>
+                    <h2 class="text-white reference-title">Ceiling</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">One number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The smallest integer greater than or equal to the number</td>
                             </tr>
                         </tbody>
@@ -389,15 +433,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.ceil.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Sine</h5>
+                    <h2 class="text-white reference-title">Sine</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number (in radians)</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The sine of the number</td>
                             </tr>
                         </tbody>
@@ -407,15 +451,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.sin.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Cosine</h5>
+                    <h2 class="text-white reference-title">Cosine</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number (in radians)</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The cosine of the number</td>
                             </tr>
                         </tbody>
@@ -425,15 +469,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.cos.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Tangent</h5>
+                    <h2 class="text-white reference-title">Tangent</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number (in radians)</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The tangent of the number</td>
                             </tr>
                         </tbody>
@@ -443,15 +487,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.tan.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Logarithm</h5>
+                    <h2 class="text-white reference-title">Logarithm</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The natural logarithm of the number</td>
                             </tr>
                         </tbody>
@@ -461,15 +505,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.log.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Is negative</h5>
+                    <h2 class="text-white reference-title">Is negative</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>True if the number is negative. False otherwise.</td>
                             </tr>
                         </tbody>
@@ -479,15 +523,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.isNegative.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Is positive</h5>
+                    <h2 class="text-white reference-title">Is positive</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>True if the number is positive. False otherwise.</td>
                             </tr>
                         </tbody>
@@ -497,15 +541,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.isPositive.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Is zero</h5>
+                    <h2 class="text-white reference-title">Is zero</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>True if the number is zero. False otherwise.</td>
                             </tr>
                         </tbody>
@@ -515,15 +559,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.isZero.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Is even</h5>
+                    <h2 class="text-white reference-title">Is even</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>True if the number is even. False otherwise.</td>
                             </tr>
                         </tbody>
@@ -533,15 +577,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.isEven.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Is odd</h5>
+                    <h2 class="text-white reference-title">Is odd</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>True if the number is odd. False otherwise.</td>
                             </tr>
                         </tbody>
@@ -551,15 +595,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.isOdd.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">As radians</h5>
+                    <h2 class="text-white reference-title">As radians</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">An angle in degrees</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The angle converted to radians</td>
                             </tr>
                         </tbody>
@@ -569,15 +613,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.asRadians.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">As degrees</h5>
+                    <h2 class="text-white reference-title">As degrees</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">An angle in radians</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The angle converted to degrees</td>
                             </tr>
                         </tbody>
@@ -587,15 +631,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.asDegrees.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Infinity</h5>
+                    <h2 class="text-white reference-title">Infinity</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">None</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>Positive infinity</td>
                             </tr>
                         </tbody>
@@ -605,15 +649,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.infinity.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Fractional part</h5>
+                    <h2 class="text-white reference-title">Fractional part</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The fractional part of the number</td>
                             </tr>
                         </tbody>
@@ -623,15 +667,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.fraction.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Clamp</h5>
+                    <h2 class="text-white reference-title">Clamp</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Three numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The first number clamped to be in the range of the second and third number</td>
                             </tr>
                         </tbody>
@@ -641,15 +685,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.clamp.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Sign of a number</h5>
+                    <h2 class="text-white reference-title">Sign of a number</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>1 if the number is positive. -1 if the number is negative. 0 if the number is zero.
                                 </td>
                             </tr>
@@ -660,15 +704,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.sign.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Random integer</h5>
+                    <h2 class="text-white reference-title">Random integer</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>A random integer between the two numbers (inclusive)</td>
                             </tr>
                         </tbody>
@@ -678,15 +722,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.integerRandom.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Random decimal</h5>
+                    <h2 class="text-white reference-title">Random decimal</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">None</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>A random decimal number between 0 and 1</td>
                             </tr>
                         </tbody>
@@ -696,15 +740,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.decimalRandom.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Compare</h5>
+                    <h2 class="text-white reference-title">Compare</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>1 if the first number is bigger than the second. -1 if it is the smaller. 0 if they
                                     are equal.</td>
                             </tr>
@@ -715,15 +759,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.compare.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Log Base</h5>
+                    <h2 class="text-white reference-title">Log Base</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">Two numbers (value and base)</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The logarithm of the value with the specified base</td>
                             </tr>
                         </tbody>
@@ -733,15 +777,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.logBase.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Round To</h5>
+                    <h2 class="text-white reference-title">Round To</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number and the number of decimal places</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The number rounded to the specified decimal places</td>
                             </tr>
                         </tbody>
@@ -751,15 +795,15 @@
                     <p class="reference-block-label">Example</p>
                     <div id="num.roundTo.example" class="code-sample"></div>
 
-                    <h5 class="text-white reference-title">Truncate</h5>
+                    <h2 class="text-white reference-title">Truncate</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
-                                <td class="border-bottom reference-table-title">Input</td>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
                                 <td class="border-bottom">A number</td>
                             </tr>
                             <tr>
-                                <td class="reference-table-title">Output</td>
+                                <th scope="row" class="reference-table-title">Output</th>
                                 <td>The integer part of the number, discarding any fractional part</td>
                             </tr>
                         </tbody>
@@ -773,8 +817,6 @@
             </div>
         </div>
     </main>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
 
     <script>
         setSampleCode('num.abs', 'num.abs(a: Number): Number')
@@ -890,13 +932,6 @@
 
         setSampleCode('num.truncate', 'num.truncate(a: Number): Number')
         setSampleCode('num.truncate.example', 'num.truncate(3.7) // returns 3')
-    </script>
-
-    <script>
-        window.addEventListener('scroll', function () {
-            var n = document.querySelector('.navbar');
-            if (n) n.classList.toggle('scrolled', window.scrollY > 10);
-        });
     </script>
 
 </body>

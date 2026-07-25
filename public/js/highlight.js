@@ -9,6 +9,34 @@ function setSampleCode(id, content) {
   });
 }
 
+// Code samples are rendered by CodeMirror after the document is parsed, which pushes
+// any deep-link target far down the page after the browser has already jumped to it.
+// Re-align once every sample has its final height.
+window.addEventListener("load", function () {
+  if (!location.hash) {
+    return;
+  }
+
+  let target;
+
+  try {
+    target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+  } catch (e) {
+    return;
+  }
+
+  if (!target) {
+    return;
+  }
+
+  const box = target.getBoundingClientRect();
+
+  // Leaves the page alone if the reader is already looking at the target.
+  if (box.top < 0 || box.top >= window.innerHeight) {
+    target.scrollIntoView();
+  }
+});
+
 // Add copy buttons to all code-sample elements
 document.addEventListener("DOMContentLoaded", function () {
   const codeSamples = document.querySelectorAll(".code-sample");

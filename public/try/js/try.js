@@ -109,20 +109,40 @@ function share() {
 }
 
 function showToast(name) {
-  const toastTextCopied = document.getElementById(name)
-  bootstrap.Toast.Default.delay = 2000
-  bootstrap.Toast.getOrCreateInstance(toastTextCopied).show()
+  const toast = document.getElementById(name)
+  bootstrap.Toast.getOrCreateInstance(toast, { delay: 2000 }).show()
+}
+
+function feedbackModal() {
+  return bootstrap.Modal.getOrCreateInstance(document.getElementById('feedbackModal'))
 }
 
 function sendFeedback() {
-  $('#feedbackModal').modal('show')
+  feedbackModal().show()
 }
 
 function onSendFeedback() {
   const feedbackText = document.getElementById('feedbackText')
-  sendFeedbackMessage(feedbackText.value)
-  $('#feedbackModal').modal('hide')
-  onFeedbackModalClosed()
+  const message = feedbackText.value.trim()
+
+  if (!message) {
+    return
+  }
+
+  const sendFeedbackButton = document.getElementById('sendFeedbackButton')
+  sendFeedbackButton.disabled = true
+
+  sendFeedbackMessage(message)
+    .then(function () {
+      feedbackModal().hide()
+      onFeedbackModalClosed()
+      showToast('toastFeedbackSent')
+    })
+    .catch(function () {
+      // The message stays in the box so nothing has to be retyped.
+      sendFeedbackButton.disabled = false
+      showToast('toastFeedbackFailed')
+    })
 }
 
 function onFeedbackModalClosed() {
@@ -136,19 +156,6 @@ function onFeedbackInputChange() {
   const sendFeedbackButton = document.getElementById('sendFeedbackButton')
   const feedbackText = document.getElementById('feedbackText')
   sendFeedbackButton.disabled = feedbackText.value.trim() == ''
-}
-
-function sendFeedbackMessage(message) {
-  const settings = {
-    async: true,
-    crossDomain: true,
-    url: `https://script.google.com/macros/s/AKfycbyC85weq4p2Ra2zbfyGrA4wC41s3ev-UumQek7xJMUtRmr-qGuXip6NN9m1k1GFCiT-/exec?message=${message}`,
-    method: 'GET',
-  }
-
-  $.ajax(settings)
-
-  showToast('toastFeedbackSent')
 }
 
 function createOutputElement(text, styleClass) {
@@ -245,7 +252,78 @@ function showInputHistory() {
 }
 
 function getSample(url, name) {
-  $.get(url, function (data) {
-    SAMPLES[name] = data
-  })
+  fetch(url)
+    .then(function (response) {
+      if (!response.ok) {
+        throw new Error(`Could not load ${url}`)
+      }
+
+      return response.text()
+    })
+    .then(function (data) {
+      SAMPLES[name] = data
+    })
+    .catch(function (error) {
+      console.error(error)
+    })
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+  Split(['#split-0', '#split-1'], {
+    minSize: 500,
+    gutterAlign: 'end',
+    snapOffset: 0,
+  })
+
+  window.editor = CodeMirror(document.getElementById('sourceCode'), {
+    ...basicProperties(true),
+    lineNumbers: true,
+    value: localStorage.getItem('sourceCode') ? localStorage.getItem('sourceCode') : SAMPLES['default'],
+  })
+
+  window.editor.on('change', onInputChange)
+
+  const actions = {
+    'load': onLoadFile,
+    'clear': clearOutputManual,
+    'copy': copySourceCode,
+    'share': share,
+    'feedback': sendFeedback,
+    'send-feedback': onSendFeedback,
+  }
+
+  document.querySelectorAll('[data-action]').forEach(function (button) {
+    button.addEventListener('click', actions[button.dataset.action])
+  })
+
+  document.querySelectorAll('[data-sample]').forEach(function (button) {
+    button.addEventListener('click', function () {
+      loadSample(button.dataset.sample)
+    })
+  })
+
+  document.getElementById('loadFile').addEventListener('change', function () {
+    onFileLoaded(this)
+  })
+
+  document.getElementById('feedbackText').addEventListener('input', onFeedbackInputChange)
+
+  // Covers every way out of the modal: the close button, Escape and the backdrop.
+  document.getElementById('feedbackModal')
+    .addEventListener('hidden.bs.modal', onFeedbackModalClosed)
+
+  document.getElementById('consoleInput').addEventListener('keydown', function (event) {
+    if (event.key === 'Enter') {
+      event.preventDefault()
+      evaluateConsoleInput()
+    } else if (event.key === 'ArrowUp') {
+      event.preventDefault()
+      showInputBefore()
+    } else if (event.key === 'ArrowDown') {
+      event.preventDefault()
+      showInputAfter()
+    }
+  })
+
+  recompile()
+})
