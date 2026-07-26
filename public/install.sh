@@ -73,12 +73,16 @@ detect_os() {
     esac
 }
 
+# Each release ships exactly one binary per operating system, so the
+# architecture follows from the operating system rather than from 'uname -m'.
 detect_arch() {
-    local arch
-    arch="$(uname -m)"
-    case "$arch" in
-        x86_64|amd64) echo "x86-64" ;;
-        *) error_exit "Unsupported architecture: $arch. Only x86-64 is currently supported." ;;
+    local os="$1"
+
+    case "$os" in
+        linux)   echo "x86-64" ;;
+        macos)   echo "arm64" ;;
+        windows) echo "x86-64" ;;
+        *) error_exit "Unsupported operating system: $os" ;;
     esac
 }
 
@@ -254,7 +258,7 @@ install_binary() {
     local temp_file
 
     os=$(detect_os)
-    arch=$(detect_arch)
+    arch=$(detect_arch "$os")
 
     if [[ "$os" == "windows" ]]; then
         binary_suffix=".exe"
