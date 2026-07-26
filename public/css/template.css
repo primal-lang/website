@@ -1173,6 +1173,12 @@ a {
     width: 100%
   }
 
+  /* The playground is a split-pane editor that needs a desktop viewport,
+     so the hero drops its entry point and keeps a single mobile CTA. */
+  .hero-actions .btn-outline {
+    display: none
+  }
+
   .reference-grid {
     grid-template-columns: 1fr
   }
