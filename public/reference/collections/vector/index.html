@@ -144,24 +144,6 @@
                     <p class="reference-block-label">Example</p>
                     <div id="vector.new.example" class="code-sample"></div>
 
-                    <h2 class="text-white reference-title">Normalize</h2>
-                    <table class="reference-table">
-                        <tbody>
-                            <tr>
-                                <th scope="row" class="border-bottom reference-table-title">Input</th>
-                                <td class="border-bottom">A vector.</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="reference-table-title">Output</th>
-                                <td>A vector with the same direction but with a magnitude of 1.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="reference-block-label">Signature</p>
-                    <div id="vector.normalize" class="code-sample"></div>
-                    <p class="reference-block-label">Example</p>
-                    <div id="vector.normalize.example" class="code-sample"></div>
-
                     <h2 class="text-white reference-title">Add</h2>
                     <table class="reference-table">
                         <tbody>
@@ -197,6 +179,42 @@
                     <div id="vector.sub" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
                     <div id="vector.sub.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Normalize</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">A vector.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>A vector with the same direction but with a magnitude of 1.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="vector.normalize" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="vector.normalize.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Scale</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">A vector and a scalar.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>A vector scaled by the given scalar.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="vector.scale" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="vector.scale.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Magnitude</h2>
                     <table class="reference-table">
@@ -234,24 +252,6 @@
                     <p class="reference-block-label">Example</p>
                     <div id="vector.angle.example" class="code-sample"></div>
 
-                    <h2 class="text-white reference-title">Distance</h2>
-                    <table class="reference-table">
-                        <tbody>
-                            <tr>
-                                <th scope="row" class="border-bottom reference-table-title">Input</th>
-                                <td class="border-bottom">Two vectors.</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="reference-table-title">Output</th>
-                                <td>The Euclidean distance between the two vectors.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="reference-block-label">Signature</p>
-                    <div id="vector.distance" class="code-sample"></div>
-                    <p class="reference-block-label">Example</p>
-                    <div id="vector.distance.example" class="code-sample"></div>
-
                     <h2 class="text-white reference-title">Dot</h2>
                     <table class="reference-table">
                         <tbody>
@@ -270,23 +270,23 @@
                     <p class="reference-block-label">Example</p>
                     <div id="vector.dot.example" class="code-sample"></div>
 
-                    <h2 class="text-white reference-title">Scale</h2>
+                    <h2 class="text-white reference-title">Distance</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
                                 <th scope="row" class="border-bottom reference-table-title">Input</th>
-                                <td class="border-bottom">A vector and a scalar.</td>
+                                <td class="border-bottom">Two vectors.</td>
                             </tr>
                             <tr>
                                 <th scope="row" class="reference-table-title">Output</th>
-                                <td>A vector scaled by the given scalar.</td>
+                                <td>The Euclidean distance between the two vectors.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="vector.scale" class="code-sample"></div>
+                    <div id="vector.distance" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="vector.scale.example" class="code-sample"></div>
+                    <div id="vector.distance.example" class="code-sample"></div>
 
                 </div>
             </div>
@@ -297,14 +297,17 @@
         setSampleCode('vector.new', 'vector.new(a: List): Vector')
         setSampleCode('vector.new.example', 'vector.new([1, 2, 3]) // returns <1, 2, 3>')
 
-        setSampleCode('vector.normalize', 'vector.normalize(a: Vector): Vector')
-        setSampleCode('vector.normalize.example', 'vector.normalize(vector.new([3, 4])) // returns <0.6, 0.8>')
-
         setSampleCode('vector.add', 'vector.add(a: Vector, b: Vector): Vector')
         setSampleCode('vector.add.example', 'vector.add(vector.new([1, 2]), vector.new([3, 4])) // returns <4, 6>')
 
         setSampleCode('vector.sub', 'vector.sub(a: Vector, b: Vector): Vector')
         setSampleCode('vector.sub.example', 'vector.sub(vector.new([5, 7]), vector.new([2, 3])) // returns <3, 4>')
+
+        setSampleCode('vector.normalize', 'vector.normalize(a: Vector): Vector')
+        setSampleCode('vector.normalize.example', 'vector.normalize(vector.new([3, 4])) // returns <0.6, 0.8>')
+
+        setSampleCode('vector.scale', 'vector.scale(a: Vector, b: Number): Vector')
+        setSampleCode('vector.scale.example', 'vector.scale(vector.new([1, 2]), 3) // returns <3, 6>')
 
         setSampleCode('vector.magnitude', 'vector.magnitude(a: Vector): Number')
         setSampleCode('vector.magnitude.example', 'vector.magnitude(vector.new([3, 4])) // returns 5')
@@ -312,14 +315,11 @@
         setSampleCode('vector.angle', 'vector.angle(a: Vector, b: Vector): Number')
         setSampleCode('vector.angle.example', 'vector.angle(vector.new([1, 0]), vector.new([0, 1])) // returns 1.5708...')
 
-        setSampleCode('vector.distance', 'vector.distance(a: Vector, b: Vector): Number')
-        setSampleCode('vector.distance.example', 'vector.distance(vector.new([0, 0]), vector.new([3, 4])) // returns 5')
-
         setSampleCode('vector.dot', 'vector.dot(a: Vector, b: Vector): Number')
         setSampleCode('vector.dot.example', 'vector.dot(vector.new([1, 2]), vector.new([3, 4])) // returns 11')
 
-        setSampleCode('vector.scale', 'vector.scale(a: Vector, b: Number): Vector')
-        setSampleCode('vector.scale.example', 'vector.scale(vector.new([1, 2]), 3) // returns <3, 6>')
+        setSampleCode('vector.distance', 'vector.distance(a: Vector, b: Vector): Number')
+        setSampleCode('vector.distance.example', 'vector.distance(vector.new([0, 0]), vector.new([3, 4])) // returns 5')
     </script>
 
 </body>

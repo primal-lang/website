@@ -148,24 +148,6 @@
                     <p class="reference-block-label">Example</p>
                     <div id="directory.fromPath.example" class="code-sample"></div>
 
-                    <h2 class="text-white reference-title">Exists</h2>
-                    <table class="reference-table">
-                        <tbody>
-                            <tr>
-                                <th scope="row" class="border-bottom reference-table-title">Input</th>
-                                <td class="border-bottom">A directory.</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="reference-table-title">Output</th>
-                                <td>True if the directory exists, false otherwise.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="reference-block-label">Signature</p>
-                    <div id="directory.exists" class="code-sample"></div>
-                    <p class="reference-block-label">Example</p>
-                    <div id="directory.exists.example" class="code-sample"></div>
-
                     <h2 class="text-white reference-title">Create</h2>
                     <table class="reference-table">
                         <tbody>
@@ -183,6 +165,24 @@
                     <div id="directory.create" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
                     <div id="directory.create.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Exists</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">A directory.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>True if the directory exists, false otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="directory.exists" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="directory.exists.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Delete</h2>
                     <table class="reference-table">
@@ -256,6 +256,24 @@
                     <p class="reference-block-label">Example</p>
                     <div id="directory.rename.example" class="code-sample"></div>
 
+                    <h2 class="text-white reference-title">List</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">A directory.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>A list of directories and files in the directory.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="directory.list" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="directory.list.example" class="code-sample"></div>
+
                     <h2 class="text-white reference-title">Path</h2>
                     <table class="reference-table">
                         <tbody>
@@ -310,24 +328,6 @@
                     <p class="reference-block-label">Example</p>
                     <div id="directory.parent.example" class="code-sample"></div>
 
-                    <h2 class="text-white reference-title">List</h2>
-                    <table class="reference-table">
-                        <tbody>
-                            <tr>
-                                <th scope="row" class="border-bottom reference-table-title">Input</th>
-                                <td class="border-bottom">A directory.</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="reference-table-title">Output</th>
-                                <td>A list of directories and files in the directory.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="reference-block-label">Signature</p>
-                    <div id="directory.list" class="code-sample"></div>
-                    <p class="reference-block-label">Example</p>
-                    <div id="directory.list.example" class="code-sample"></div>
-
                 </div>
             </div>
         </div>
@@ -337,11 +337,11 @@
         setSampleCode('directory.fromPath', 'directory.fromPath(a: String): Directory')
         setSampleCode('directory.fromPath.example', 'directory.fromPath("/home/user") // returns a directory object')
 
-        setSampleCode('directory.exists', 'directory.exists(a: Directory): Boolean')
-        setSampleCode('directory.exists.example', 'directory.exists(directory.fromPath("/home/user")) // returns true if it exists')
-
         setSampleCode('directory.create', 'directory.create(a: Directory): Boolean')
         setSampleCode('directory.create.example', 'directory.create(directory.fromPath("/home/user/new")) // returns true if successful')
+
+        setSampleCode('directory.exists', 'directory.exists(a: Directory): Boolean')
+        setSampleCode('directory.exists.example', 'directory.exists(directory.fromPath("/home/user")) // returns true if it exists')
 
         setSampleCode('directory.delete', 'directory.delete(a: Directory): Boolean')
         setSampleCode('directory.delete.example', 'directory.delete(directory.fromPath("/home/user/old")) // returns true if successful')
@@ -361,6 +361,9 @@
         setSampleCode('directory.rename', 'directory.rename(a: Directory, b: String): Boolean')
         setSampleCode('directory.rename.example', 'directory.rename(directory.fromPath("old"), "new") // returns true if successful')
 
+        setSampleCode('directory.list', 'directory.list(a: Directory): List')
+        setSampleCode('directory.list.example', 'directory.list(directory.fromPath("/home/user")) // returns [file1, file2, ...]')
+
         setSampleCode('directory.path', 'directory.path(a: Directory): String')
         setSampleCode('directory.path.example', 'directory.path(directory.fromPath("/home/user")) // returns "/home/user"')
 
@@ -369,9 +372,6 @@
 
         setSampleCode('directory.parent', 'directory.parent(a: Directory): Directory')
         setSampleCode('directory.parent.example', 'directory.parent(directory.fromPath("/home/user")) // returns "/home" directory')
-
-        setSampleCode('directory.list', 'directory.list(a: Directory): List')
-        setSampleCode('directory.list.example', 'directory.list(directory.fromPath("/home/user")) // returns [file1, file2, ...]')
     </script>
 
 </body>

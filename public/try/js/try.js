@@ -6,7 +6,7 @@ const SAMPLES = {
 
 isBiggerThan10(n) = n > 10
 
-main = isBiggerThan10(7)`,
+main() = isBiggerThan10(7)`,
 }
 
 getSample('samples/balanced_parentheses.prm', 'balancedParentheses')
@@ -47,9 +47,13 @@ let inputIndex = (INPUTS.length > 0) ? INPUTS.length : -1
 
 function compileCode(sourceCode) {
   const consoleInput = document.getElementById('consoleInput')
+  // The compiler holds every compiled program in a registry keyed by this id,
+  // so it has to be released once the compilation is done. Ids start at 0, which
+  // is why the guard below checks against null instead of relying on truthiness.
+  let intermediateCode = null
 
   try {
-    const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateRepresentationEmpty()
+    intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateRepresentationEmpty()
     const warnings = runtimeWarnings(intermediateCode)
 
     for (const warning of warnings) {
@@ -70,6 +74,10 @@ function compileCode(sourceCode) {
 
     consoleInput.disabled = true
     consoleInput.placeholder = ''
+  } finally {
+    if (intermediateCode !== null) {
+      disposeCode(intermediateCode)
+    }
   }
 }
 
@@ -233,14 +241,25 @@ function evaluateConsoleInput() {
     inputIndex = INPUTS.length
     inputElement.value = ''
 
+    let intermediateCode = null
+    let expression = null
+
     try {
       const sourceCode = window.editor.getValue().trim()
-      const intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateRepresentationEmpty()
-      const expression = compileExpression(inputValue)
+      intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateRepresentationEmpty()
+      expression = compileExpression(inputValue)
       const result = runtimeReduce(intermediateCode, expression)
       writeOutputSuccess(result)
     } catch (e) {
       writeOutputError(e)
+    } finally {
+      if (intermediateCode !== null) {
+        disposeCode(intermediateCode)
+      }
+
+      if (expression !== null) {
+        disposeExpression(expression)
+      }
     }
 
     const consoleElement = document.getElementById('output')

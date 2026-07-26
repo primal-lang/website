@@ -180,24 +180,6 @@
                     <p class="reference-block-label">Example</p>
                     <div id="map.at.example" class="code-sample"></div>
 
-                    <h2 class="text-white reference-title">Set</h2>
-                    <table class="reference-table">
-                        <tbody>
-                            <tr>
-                                <th scope="row" class="border-bottom reference-table-title">Input</th>
-                                <td class="border-bottom">A map, a hashable key, and a value.</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="reference-table-title">Output</th>
-                                <td>A new map containing the new key-value pair.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="reference-block-label">Signature</p>
-                    <div id="map.set" class="code-sample"></div>
-                    <p class="reference-block-label">Example</p>
-                    <div id="map.set.example" class="code-sample"></div>
-
                     <h2 class="text-white reference-title">Keys</h2>
                     <table class="reference-table">
                         <tbody>
@@ -233,6 +215,78 @@
                     <div id="map.values" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
                     <div id="map.values.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Entries</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">A map.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>A list of key-value pairs as two-element lists.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="map.entries" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="map.entries.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Set</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">A map, a hashable key, and a value.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>A new map containing the new key-value pair.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="map.set" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="map.set.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Merge</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">Two maps.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>A new map containing all key-value pairs from both maps. When both maps contain the same key, the value from the second map takes precedence.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="map.merge" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="map.merge.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Remove at</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">A map and a hashable key.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>A new map with the key removed.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="map.removeAt" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="map.removeAt.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Contains key</h2>
                     <table class="reference-table">
@@ -288,24 +342,6 @@
                     <p class="reference-block-label">Example</p>
                     <div id="map.isNotEmpty.example" class="code-sample"></div>
 
-                    <h2 class="text-white reference-title">Remove at</h2>
-                    <table class="reference-table">
-                        <tbody>
-                            <tr>
-                                <th scope="row" class="border-bottom reference-table-title">Input</th>
-                                <td class="border-bottom">A map and a hashable key.</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="reference-table-title">Output</th>
-                                <td>A new map with the key removed.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="reference-block-label">Signature</p>
-                    <div id="map.removeAt" class="code-sample"></div>
-                    <p class="reference-block-label">Example</p>
-                    <div id="map.removeAt.example" class="code-sample"></div>
-
                     <h2 class="text-white reference-title">Length</h2>
                     <table class="reference-table">
                         <tbody>
@@ -324,42 +360,6 @@
                     <p class="reference-block-label">Example</p>
                     <div id="map.length.example" class="code-sample"></div>
 
-                    <h2 class="text-white reference-title">Entries</h2>
-                    <table class="reference-table">
-                        <tbody>
-                            <tr>
-                                <th scope="row" class="border-bottom reference-table-title">Input</th>
-                                <td class="border-bottom">A map.</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="reference-table-title">Output</th>
-                                <td>A list of key-value pairs as two-element lists.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="reference-block-label">Signature</p>
-                    <div id="map.entries" class="code-sample"></div>
-                    <p class="reference-block-label">Example</p>
-                    <div id="map.entries.example" class="code-sample"></div>
-
-                    <h2 class="text-white reference-title">Merge</h2>
-                    <table class="reference-table">
-                        <tbody>
-                            <tr>
-                                <th scope="row" class="border-bottom reference-table-title">Input</th>
-                                <td class="border-bottom">Two maps.</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="reference-table-title">Output</th>
-                                <td>A new map containing all key-value pairs from both maps. When both maps contain the same key, the value from the second map takes precedence.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="reference-block-label">Signature</p>
-                    <div id="map.merge" class="code-sample"></div>
-                    <p class="reference-block-label">Example</p>
-                    <div id="map.merge.example" class="code-sample"></div>
-
                 </div>
             </div>
         </div>
@@ -375,14 +375,23 @@
         setSampleCode('map.at', 'map.at(a: Map, b: Hashable): Any')
         setSampleCode('map.at.example', 'map.at({"name": "Alice"}, "name") // returns "Alice"')
 
-        setSampleCode('map.set', 'map.set(a: Map, b: Hashable, c: Any): Map')
-        setSampleCode('map.set.example', 'map.set({"a": 1}, "b", 2) // returns {"a": 1, "b": 2}')
-
         setSampleCode('map.keys', 'map.keys(a: Map): List')
         setSampleCode('map.keys.example', 'map.keys({"a": 1, "b": 2}) // returns ["a", "b"]')
 
         setSampleCode('map.values', 'map.values(a: Map): List')
         setSampleCode('map.values.example', 'map.values({"a": 1, "b": 2}) // returns [1, 2]')
+
+        setSampleCode('map.entries', 'map.entries(a: Map): List')
+        setSampleCode('map.entries.example', 'map.entries({"a": 1, "b": 2}) // returns [["a", 1], ["b", 2]]')
+
+        setSampleCode('map.set', 'map.set(a: Map, b: Hashable, c: Any): Map')
+        setSampleCode('map.set.example', 'map.set({"a": 1}, "b", 2) // returns {"a": 1, "b": 2}')
+
+        setSampleCode('map.merge', 'map.merge(a: Map, b: Map): Map')
+        setSampleCode('map.merge.example', 'map.merge({"a": 1}, {"b": 2}) // returns {"a": 1, "b": 2}')
+
+        setSampleCode('map.removeAt', 'map.removeAt(a: Map, b: Hashable): Map')
+        setSampleCode('map.removeAt.example', 'map.removeAt({"a": 1, "b": 2}, "a") // returns {"b": 2}')
 
         setSampleCode('map.containsKey', 'map.containsKey(a: Map, b: Hashable): Boolean')
         setSampleCode('map.containsKey.example', 'map.containsKey({"a": 1}, "a") // returns true')
@@ -393,17 +402,8 @@
         setSampleCode('map.isNotEmpty', 'map.isNotEmpty(a: Map): Boolean')
         setSampleCode('map.isNotEmpty.example', 'map.isNotEmpty({"a": 1}) // returns true')
 
-        setSampleCode('map.removeAt', 'map.removeAt(a: Map, b: Hashable): Map')
-        setSampleCode('map.removeAt.example', 'map.removeAt({"a": 1, "b": 2}, "a") // returns {"b": 2}')
-
         setSampleCode('map.length', 'map.length(a: Map): Number')
         setSampleCode('map.length.example', 'map.length({"a": 1, "b": 2}) // returns 2')
-
-        setSampleCode('map.entries', 'map.entries(a: Map): List')
-        setSampleCode('map.entries.example', 'map.entries({"a": 1, "b": 2}) // returns [["a", 1], ["b", 2]]')
-
-        setSampleCode('map.merge', 'map.merge(a: Map, b: Map): Map')
-        setSampleCode('map.merge.example', 'map.merge({"a": 1}, {"b": 2}) // returns {"a": 1, "b": 2}')
     </script>
 
 </body>

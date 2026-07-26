@@ -196,10 +196,13 @@ const basicProperties = (withExtras) => {
     "num\\.round\\s*(\?=\\()": "custom-native-function",
     "num\\.floor\\s*(\?=\\()": "custom-native-function",
     "num\\.ceil\\s*(\?=\\()": "custom-native-function",
+    "num\\.truncate\\s*(\?=\\()": "custom-native-function",
+    "num\\.roundTo\\s*(\?=\\()": "custom-native-function",
     "num\\.sin\\s*(\?=\\()": "custom-native-function",
     "num\\.cos\\s*(\?=\\()": "custom-native-function",
     "num\\.tan\\s*(\?=\\()": "custom-native-function",
     "num\\.log\\s*(\?=\\()": "custom-native-function",
+    "num\\.logBase\\s*(\?=\\()": "custom-native-function",
     "num\\.isNegative\\s*(\?=\\()": "custom-native-function",
     "num\\.isPositive\\s*(\?=\\()": "custom-native-function",
     "num\\.isZero\\s*(\?=\\()": "custom-native-function",
@@ -217,7 +220,9 @@ const basicProperties = (withExtras) => {
 
     // logic
     "bool\\.and\\s*(\?=\\()": "custom-native-function",
+    "bool\\.andStrict\\s*(\?=\\()": "custom-native-function",
     "bool\\.or\\s*(\?=\\()": "custom-native-function",
+    "bool\\.orStrict\\s*(\?=\\()": "custom-native-function",
     "bool\\.xor\\s*(\?=\\()": "custom-native-function",
     "bool\\.not\\s*(\?=\\()": "custom-native-function",
 
@@ -250,6 +255,20 @@ const basicProperties = (withExtras) => {
     "str\\.padRight\\s*(\?=\\()": "custom-native-function",
     "str\\.split\\s*(\?=\\()": "custom-native-function",
     "str\\.compare\\s*(\?=\\()": "custom-native-function",
+    "str\\.trimLeft\\s*(\?=\\()": "custom-native-function",
+    "str\\.trimRight\\s*(\?=\\()": "custom-native-function",
+    "str\\.capitalize\\s*(\?=\\()": "custom-native-function",
+    "str\\.repeat\\s*(\?=\\()": "custom-native-function",
+    "str\\.lines\\s*(\?=\\()": "custom-native-function",
+    "str\\.lastIndexOf\\s*(\?=\\()": "custom-native-function",
+    "str\\.count\\s*(\?=\\()": "custom-native-function",
+    "str\\.isBlank\\s*(\?=\\()": "custom-native-function",
+    "str\\.isUppercase\\s*(\?=\\()": "custom-native-function",
+    "str\\.isLowercase\\s*(\?=\\()": "custom-native-function",
+    "str\\.isAlpha\\s*(\?=\\()": "custom-native-function",
+    "str\\.isNumeric\\s*(\?=\\()": "custom-native-function",
+    "str\\.isAlphaNumeric\\s*(\?=\\()": "custom-native-function",
+    "str\\.fromBytes\\s*(\?=\\()": "custom-native-function",
 
     // list
     "list\\.sublist\\s*(?=\\()": "custom-native-function",
@@ -283,6 +302,10 @@ const basicProperties = (withExtras) => {
     "list\\.any\\s*(?=\\()": "custom-native-function",
     "list\\.zip\\s*(?=\\()": "custom-native-function",
     "list\\.sort\\s*(?=\\()": "custom-native-function",
+    "list\\.flatten\\s*(?=\\()": "custom-native-function",
+    "list\\.distinct\\s*(?=\\()": "custom-native-function",
+    "list\\.chunk\\s*(?=\\()": "custom-native-function",
+    "list\\.count\\s*(?=\\()": "custom-native-function",
 
     // map
     "map\\.at\\s*(?=\\()": "custom-native-function",
@@ -294,6 +317,8 @@ const basicProperties = (withExtras) => {
     "map\\.isNotEmpty\\s*(?=\\()": "custom-native-function",
     "map\\.removeAt\\s*(?=\\()": "custom-native-function",
     "map\\.length\\s*(?=\\()": "custom-native-function",
+    "map\\.entries\\s*(?=\\()": "custom-native-function",
+    "map\\.merge\\s*(?=\\()": "custom-native-function",
 
     // set
     "set\\.new\\s*(?=\\()": "custom-native-function",
@@ -305,6 +330,10 @@ const basicProperties = (withExtras) => {
     "set\\.length\\s*(?=\\()": "custom-native-function",
     "set\\.union\\s*(?=\\()": "custom-native-function",
     "set\\.intersection\\s*(?=\\()": "custom-native-function",
+    "set\\.difference\\s*(?=\\()": "custom-native-function",
+    "set\\.isDisjoint\\s*(?=\\()": "custom-native-function",
+    "set\\.isSubset\\s*(?=\\()": "custom-native-function",
+    "set\\.isSuperset\\s*(?=\\()": "custom-native-function",
 
     // stack
     "stack\\.new\\s*(?=\\()": "custom-native-function",
@@ -333,6 +362,9 @@ const basicProperties = (withExtras) => {
     "vector\\.sub\\s*(?=\\()": "custom-native-function",
     "vector\\.magnitude\\s*(?=\\()": "custom-native-function",
     "vector\\.angle\\s*(?=\\()": "custom-native-function",
+    "vector\\.scale\\s*(?=\\()": "custom-native-function",
+    "vector\\.dot\\s*(?=\\()": "custom-native-function",
+    "vector\\.distance\\s*(?=\\()": "custom-native-function",
 
     // file
     "file\\.fromPath\\s*(?=\\()": "custom-native-function",
@@ -349,6 +381,8 @@ const basicProperties = (withExtras) => {
     "file\\.move\\s*(?=\\()": "custom-native-function",
     "file\\.parent\\s*(?=\\()": "custom-native-function",
     "file\\.rename\\s*(?=\\()": "custom-native-function",
+    "file\\.append\\s*(?=\\()": "custom-native-function",
+    "file\\.lastModified\\s*(?=\\()": "custom-native-function",
 
     // directory
     "directory\\.fromPath\\s*(?=\\()": "custom-native-function",
@@ -362,6 +396,14 @@ const basicProperties = (withExtras) => {
     "directory\\.name\\s*(?=\\()": "custom-native-function",
     "directory\\.parent\\s*(?=\\()": "custom-native-function",
     "directory\\.list\\s*(?=\\()": "custom-native-function",
+
+    // path
+    "path\\.basename\\s*(?=\\()": "custom-native-function",
+    "path\\.dirname\\s*(?=\\()": "custom-native-function",
+    "path\\.extension\\s*(?=\\()": "custom-native-function",
+    "path\\.isAbsolute\\s*(?=\\()": "custom-native-function",
+    "path\\.join\\s*(?=\\()": "custom-native-function",
+    "path\\.normalize\\s*(?=\\()": "custom-native-function",
 
     // casting
     "to\\.number\\s*(\?=\\()": "custom-native-function",
@@ -386,6 +428,15 @@ const basicProperties = (withExtras) => {
     "is\\.set\\s*(\?=\\()": "custom-native-function",
     "is\\.stack\\s*(\?=\\()": "custom-native-function",
     "is\\.queue\\s*(\?=\\()": "custom-native-function",
+    "is\\.file\\s*(\?=\\()": "custom-native-function",
+    "is\\.directory\\s*(\?=\\()": "custom-native-function",
+    "is\\.duration\\s*(\?=\\()": "custom-native-function",
+
+    // introspection
+    "type\\.of\\s*(\?=\\()": "custom-native-function",
+    "function\\.name\\s*(\?=\\()": "custom-native-function",
+    "function\\.arity\\s*(\?=\\()": "custom-native-function",
+    "function\\.parameters\\s*(\?=\\()": "custom-native-function",
 
     // json
     "json\\.encode\\s*(\?=\\()": "custom-native-function",
@@ -396,6 +447,13 @@ const basicProperties = (withExtras) => {
     "hash\\.sha1\\s*(\?=\\()": "custom-native-function",
     "hash\\.sha256\\s*(\?=\\()": "custom-native-function",
     "hash\\.sha512\\s*(\?=\\()": "custom-native-function",
+
+    // base64
+    "base64\\.encode\\s*(\?=\\()": "custom-native-function",
+    "base64\\.decode\\s*(\?=\\()": "custom-native-function",
+
+    // uuid
+    "uuid\\.v4\\s*(\?=\\()": "custom-native-function",
 
     // timestamp
     "time\\.now\\s*(\?=\\()": "custom-native-function",
@@ -408,16 +466,50 @@ const basicProperties = (withExtras) => {
     "time\\.minute\\s*(\?=\\()": "custom-native-function",
     "time\\.second\\s*(\?=\\()": "custom-native-function",
     "time\\.millisecond\\s*(\?=\\()": "custom-native-function",
-    "time\\.epoch\\s*(\?=\\()": "custom-native-function",
+    "time\\.toEpoch\\s*(\?=\\()": "custom-native-function",
+    "time\\.fromEpoch\\s*(\?=\\()": "custom-native-function",
+    "time\\.format\\s*(\?=\\()": "custom-native-function",
+    "time\\.dayOfWeek\\s*(\?=\\()": "custom-native-function",
+    "time\\.dayOfYear\\s*(\?=\\()": "custom-native-function",
     "time\\.compare\\s*(\?=\\()": "custom-native-function",
+    "time\\.isBefore\\s*(\?=\\()": "custom-native-function",
+    "time\\.isAfter\\s*(\?=\\()": "custom-native-function",
+    "time\\.add\\s*(\?=\\()": "custom-native-function",
+    "time\\.subtract\\s*(\?=\\()": "custom-native-function",
+    "time\\.between\\s*(\?=\\()": "custom-native-function",
+    "time\\.isLeapYear\\s*(\?=\\()": "custom-native-function",
+
+    // duration
+    "duration\\.fromMilliseconds\\s*(\?=\\()": "custom-native-function",
+    "duration\\.fromSeconds\\s*(\?=\\()": "custom-native-function",
+    "duration\\.fromMinutes\\s*(\?=\\()": "custom-native-function",
+    "duration\\.fromHours\\s*(\?=\\()": "custom-native-function",
+    "duration\\.fromDays\\s*(\?=\\()": "custom-native-function",
+    "duration\\.from\\s*(\?=\\()": "custom-native-function",
+    "duration\\.toMilliseconds\\s*(\?=\\()": "custom-native-function",
+    "duration\\.toSeconds\\s*(\?=\\()": "custom-native-function",
+    "duration\\.toMinutes\\s*(\?=\\()": "custom-native-function",
+    "duration\\.toHours\\s*(\?=\\()": "custom-native-function",
+    "duration\\.toDays\\s*(\?=\\()": "custom-native-function",
+    "duration\\.milliseconds\\s*(\?=\\()": "custom-native-function",
+    "duration\\.seconds\\s*(\?=\\()": "custom-native-function",
+    "duration\\.minutes\\s*(\?=\\()": "custom-native-function",
+    "duration\\.hours\\s*(\?=\\()": "custom-native-function",
+    "duration\\.days\\s*(\?=\\()": "custom-native-function",
+    "duration\\.compare\\s*(\?=\\()": "custom-native-function",
+    "duration\\.format\\s*(\?=\\()": "custom-native-function",
 
     // console
     "console\\.write\\s*(\?=\\()": "custom-native-function",
     "console\\.writeLn\\s*(\?=\\()": "custom-native-function",
     "console\\.read\\s*(\?=\\()": "custom-native-function",
 
+    // debug
+    "debug\\s*(\?=\\()": "custom-native-function",
+
     // environment
     "env\\.get\\s*(\?=\\()": "custom-native-function",
+    "env\\.has\\s*(\?=\\()": "custom-native-function",
   };
 
   return {

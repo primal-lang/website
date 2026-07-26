@@ -191,6 +191,24 @@
         <p class="reference-block-label">Example</p>
         <div id="queue.peek.example" class="code-sample"></div>
 
+        <h2 class="text-white reference-title">Reverse</h2>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <th scope="row" class="border-bottom reference-table-title">Input</th>
+              <td class="border-bottom">A queue.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="reference-table-title">Output</th>
+              <td>A new queue with the elements in reverse order.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Signature</p>
+        <div id="queue.reverse" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="queue.reverse.example" class="code-sample"></div>
+
         <h2 class="text-white reference-title">Is Empty</h2>
         <table class="reference-table">
           <tbody>
@@ -245,24 +263,6 @@
         <p class="reference-block-label">Example</p>
         <div id="queue.length.example" class="code-sample"></div>
 
-        <h2 class="text-white reference-title">Reverse</h2>
-        <table class="reference-table">
-          <tbody>
-            <tr>
-              <th scope="row" class="border-bottom reference-table-title">Input</th>
-              <td class="border-bottom">A queue.</td>
-            </tr>
-            <tr>
-              <th scope="row" class="reference-table-title">Output</th>
-              <td>A new queue with the elements in reverse order.</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="reference-block-label">Signature</p>
-        <div id="queue.reverse" class="code-sample"></div>
-        <p class="reference-block-label">Example</p>
-        <div id="queue.reverse.example" class="code-sample"></div>
-
       </div>
     </div>
   </div>
@@ -281,6 +281,9 @@
     setSampleCode('queue.peek', 'queue.peek(a: Queue): Any')
     setSampleCode('queue.peek.example', 'queue.peek(queue.new([1, 2, 3])) // returns 1')
 
+    setSampleCode('queue.reverse', 'queue.reverse(a: Queue): Queue')
+    setSampleCode('queue.reverse.example', 'queue.reverse(queue.new([1, 2, 3])) // returns a queue [3, 2, 1]')
+
     setSampleCode('queue.isEmpty', 'queue.isEmpty(a: Queue): Boolean')
     setSampleCode('queue.isEmpty.example', 'queue.isEmpty(queue.new([])) // returns true')
 
@@ -289,9 +292,6 @@
 
     setSampleCode('queue.length', 'queue.length(a: Queue): Number')
     setSampleCode('queue.length.example', 'queue.length(queue.new([1, 2, 3])) // returns 3')
-
-    setSampleCode('queue.reverse', 'queue.reverse(a: Queue): Queue')
-    setSampleCode('queue.reverse.example', 'queue.reverse(queue.new([1, 2, 3])) // returns a queue [3, 2, 1]')
   </script>
 
 </body>

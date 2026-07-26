@@ -148,7 +148,7 @@
                     <p class="reference-block-label">Example</p>
                     <div id="file.fromPath.example" class="code-sample"></div>
 
-                    <h2 class="text-white reference-title">Exists</h2>
+                    <h2 class="text-white reference-title">Create</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
@@ -157,14 +157,14 @@
                             </tr>
                             <tr>
                                 <th scope="row" class="reference-table-title">Output</th>
-                                <td>True if the file exists, false otherwise.</td>
+                                <td>True if the file was created, false otherwise.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.exists" class="code-sample"></div>
+                    <div id="file.create" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.exists.example" class="code-sample"></div>
+                    <div id="file.create.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Read</h2>
                     <table class="reference-table">
@@ -202,7 +202,25 @@
                     <p class="reference-block-label">Example</p>
                     <div id="file.write.example" class="code-sample"></div>
 
-                    <h2 class="text-white reference-title">Create</h2>
+                    <h2 class="text-white reference-title">Append</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">A file and content to append.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>True if the content was appended, false otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="file.append" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="file.append.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Exists</h2>
                     <table class="reference-table">
                         <tbody>
                             <tr>
@@ -211,14 +229,14 @@
                             </tr>
                             <tr>
                                 <th scope="row" class="reference-table-title">Output</th>
-                                <td>True if the file was created, false otherwise.</td>
+                                <td>True if the file exists, false otherwise.</td>
                             </tr>
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="file.create" class="code-sample"></div>
+                    <div id="file.exists" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="file.create.example" class="code-sample"></div>
+                    <div id="file.exists.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Delete</h2>
                     <table class="reference-table">
@@ -382,24 +400,6 @@
                     <p class="reference-block-label">Example</p>
                     <div id="file.parent.example" class="code-sample"></div>
 
-                    <h2 class="text-white reference-title">Append</h2>
-                    <table class="reference-table">
-                        <tbody>
-                            <tr>
-                                <th scope="row" class="border-bottom reference-table-title">Input</th>
-                                <td class="border-bottom">A file and content to append.</td>
-                            </tr>
-                            <tr>
-                                <th scope="row" class="reference-table-title">Output</th>
-                                <td>True if the content was appended, false otherwise.</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                    <p class="reference-block-label">Signature</p>
-                    <div id="file.append" class="code-sample"></div>
-                    <p class="reference-block-label">Example</p>
-                    <div id="file.append.example" class="code-sample"></div>
-
                     <h2 class="text-white reference-title">Last Modified</h2>
                     <table class="reference-table">
                         <tbody>
@@ -427,8 +427,8 @@
         setSampleCode('file.fromPath', 'file.fromPath(a: String): File')
         setSampleCode('file.fromPath.example', 'file.fromPath("/home/user/data.txt") // returns a file object')
 
-        setSampleCode('file.exists', 'file.exists(a: File): Boolean')
-        setSampleCode('file.exists.example', 'file.exists(file.fromPath("data.txt")) // returns true if it exists')
+        setSampleCode('file.create', 'file.create(a: File): Boolean')
+        setSampleCode('file.create.example', 'file.create(file.fromPath("new.txt")) // returns true if successful')
 
         setSampleCode('file.read', 'file.read(a: File): String')
         setSampleCode('file.read.example', 'file.read(file.fromPath("data.txt")) // returns the file contents')
@@ -436,8 +436,11 @@
         setSampleCode('file.write', 'file.write(a: File, b: String): Boolean')
         setSampleCode('file.write.example', 'file.write(file.fromPath("data.txt"), "hello") // returns true if successful')
 
-        setSampleCode('file.create', 'file.create(a: File): Boolean')
-        setSampleCode('file.create.example', 'file.create(file.fromPath("new.txt")) // returns true if successful')
+        setSampleCode('file.append', 'file.append(a: File, b: String): Boolean')
+        setSampleCode('file.append.example', 'file.append(file.fromPath("log.txt"), "new line") // returns true if successful')
+
+        setSampleCode('file.exists', 'file.exists(a: File): Boolean')
+        setSampleCode('file.exists.example', 'file.exists(file.fromPath("data.txt")) // returns true if it exists')
 
         setSampleCode('file.delete', 'file.delete(a: File): Boolean')
         setSampleCode('file.delete.example', 'file.delete(file.fromPath("old.txt")) // returns true if successful')
@@ -465,9 +468,6 @@
 
         setSampleCode('file.parent', 'file.parent(a: File): Directory')
         setSampleCode('file.parent.example', 'file.parent(file.fromPath("/home/user/data.txt")) // returns the "/home/user" directory')
-
-        setSampleCode('file.append', 'file.append(a: File, b: String): Boolean')
-        setSampleCode('file.append.example', 'file.append(file.fromPath("log.txt"), "new line") // returns true if successful')
 
         setSampleCode('file.lastModified', 'file.lastModified(a: File): Timestamp')
         setSampleCode('file.lastModified.example', 'file.lastModified(file.fromPath("data.txt")) // returns the modification timestamp')
