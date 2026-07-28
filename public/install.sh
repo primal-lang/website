@@ -446,8 +446,9 @@ get_latest_version() {
     if has_command jq; then
         version=$(echo "$response" | jq -r '.tag_name' | sed 's/^v//')
     else
-        # Fallback: extract tag_name using grep/sed (handles both with and without 'v' prefix)
-        version=$(echo "$response" | grep -o '"tag_name"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed 's/.*"tag_name"[[:space:]]*:[[:space:]]*"v\?\([^"]*\)".*/\1/')
+        # Fallback: extract tag_name using grep/sed (handles both with and without
+        # 'v' prefix). '-E' because BSD sed, which macOS ships, has no '\?'.
+        version=$(echo "$response" | grep -o '"tag_name"[[:space:]]*:[[:space:]]*"[^"]*"' | head -1 | sed -E 's/.*"v?([^"]*)"$/\1/')
     fi
 
     echo "$version"
@@ -749,7 +750,9 @@ main() {
     else
         rail_step "Latest release"
         target_version=$(get_latest_version)
-        if [[ -z "$target_version" ]]; then
+        # Anything that is not a version number would end up pasted into the
+        # download URL, so a failed parse is caught here rather than by curl.
+        if [[ ! "$target_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
             error_exit "Failed to determine latest version"
         fi
         rail_step_done
