@@ -822,7 +822,10 @@ function Main {
     } else {
         Write-RailStep "Latest release"
         $targetVersion = Get-LatestVersion
-        if (-not $targetVersion) {
+        # Anything that is not a version number would end up pasted into the
+        # download URL, so a failed parse is caught here rather than by the
+        # download itself.
+        if ($targetVersion -notmatch '^\d+\.\d+\.\d+') {
             Exit-WithError "Failed to determine latest version"
         }
         Close-RailStep
