@@ -7,36 +7,188 @@ GITHUB_REPO="primal-lang/sdk"
 BINARY_NAME="primal"
 PATH_WAS_MODIFIED=false
 
-# Colors for output
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-BLUE='\033[1;94m'
-NC='\033[0m' # No Color
-
 # ============================================================================
-# Helper Functions
+# Output Capabilities
 # ============================================================================
 
-print_info() {
-    echo -e "${BLUE}$1${NC}"
+# Colors and in-place redrawing only make sense on an interactive terminal.
+# Everything the installer prints goes to stderr, so the rail stays in one
+# piece even when the caller redirects stdout.
+if [[ -t 2 ]]; then
+    IS_TTY=true
+else
+    IS_TTY=false
+fi
+
+RED=''
+GREEN=''
+DIM=''
+BOLD=''
+NC=''
+
+if [[ "$IS_TTY" == true ]]; then
+    RED='\033[0;31m'
+    GREEN='\033[0;32m'
+    DIM='\033[2m'
+    BOLD='\033[1m'
+    NC='\033[0m' # No Color
+fi
+
+# The rail is drawn with box characters, which only render correctly under a
+# UTF-8 locale. Anything else falls back to ASCII.
+if [[ "${LC_ALL}${LC_CTYPE}${LANG}" == *[Uu][Tt][Ff]* ]] || \
+   [[ "$(locale charmap 2>/dev/null)" == *[Uu][Tt][Ff]* ]]; then
+    GLYPH_TOP='┌'
+    GLYPH_BAR='│'
+    GLYPH_END='└'
+    GLYPH_PENDING='◇'
+    GLYPH_DONE='◆'
+    GLYPH_FILL='█'
+    GLYPH_TRACK='░'
+    GLYPH_ARROW='→'
+else
+    GLYPH_TOP='+'
+    GLYPH_BAR='|'
+    GLYPH_END='`'
+    GLYPH_PENDING='o'
+    GLYPH_DONE='+'
+    GLYPH_FILL='#'
+    GLYPH_TRACK='.'
+    GLYPH_ARROW='->'
+fi
+
+# ============================================================================
+# Rail Output
+# ============================================================================
+
+RAIL_STARTED=false
+RAIL_STEP_OPEN=false
+RAIL_STEP_LABEL=""
+FAILURE_SUMMARY="Installation failed"
+
+rail_start() {
+    printf '%b%s%b  %b%s%b\n' "$DIM" "$GLYPH_TOP" "$NC" "$BOLD" "$1" "$NC" >&2
+    RAIL_STARTED=true
 }
 
-print_success() {
-    echo -e "${GREEN}$1${NC}"
+rail_gap() {
+    printf '%b%s%b\n' "$DIM" "$GLYPH_BAR" "$NC" >&2
 }
 
-print_warning() {
-    echo -e "${YELLOW}$1${NC}"
+# Opens a step. On a terminal the node is drawn hollow right away so the user
+# can see which step is running; the line is then rewritten in place once the
+# outcome is known. Without a terminal nothing is printed until it settles.
+rail_step() {
+    RAIL_STEP_LABEL="$1"
+    RAIL_STEP_OPEN=true
+
+    if [[ "$IS_TTY" == true ]]; then
+        printf '%b%s%b  %s' "$DIM" "$GLYPH_PENDING" "$NC" "$RAIL_STEP_LABEL" >&2
+    fi
 }
 
-print_error() {
-    echo -e "${RED}Error: $1${NC}" >&2
+# Closes the open step, filling in its node with the color of the outcome.
+rail_step_settle() {
+    local color="$1"
+
+    if [[ "$IS_TTY" == true ]]; then
+        printf '\r\033[K' >&2
+    fi
+
+    printf '%b%s%b  %s\n' "$color" "$GLYPH_DONE" "$NC" "$RAIL_STEP_LABEL" >&2
+    RAIL_STEP_OPEN=false
 }
 
+rail_step_done() {
+    rail_step_settle "$GREEN"
+}
+
+rail_step_failed() {
+    rail_step_settle "$RED"
+}
+
+rail_detail_in() {
+    printf '%b%s%b  %b%s%b\n' "$DIM" "$GLYPH_BAR" "$NC" "$1" "$2" "$NC" >&2
+}
+
+# The result of a step, printed underneath its node.
+rail_detail() {
+    rail_detail_in "$DIM" "$1"
+}
+
+# Same shape as rail_detail, but highlighted because it explains a failure
+# rather than a result.
+rail_error_detail() {
+    rail_detail_in "$RED" "$1"
+}
+
+rail_close() {
+    printf '%b%s%b  %s\n' "$1" "$GLYPH_END" "$NC" "$2" >&2
+}
+
+rail_end() {
+    rail_close "$GREEN" "$1"
+}
+
+rail_end_failed() {
+    rail_close "$RED" "$1"
+}
+
+# Suggestions printed after the rail has closed. The first line is labelled and
+# the rest are aligned underneath it.
+print_next_steps() {
+    local line
+    local first=true
+
+    printf '\n' >&2
+
+    for line in "$@"; do
+        if [[ "$first" == true ]]; then
+            printf '   %bNext%b  %s\n' "$BOLD" "$NC" "$line" >&2
+            first=false
+        else
+            printf '         %s\n' "$line" >&2
+        fi
+    done
+}
+
+# Aborts the installer. The first argument states the failure and any further
+# arguments are printed underneath it as context. Once the rail is open the
+# failure is reported as part of it, so the output always ends with a closed rail.
 error_exit() {
-    print_error "$1"
+    local message="$1"
+    local line
+    shift
+
+    if [[ "$RAIL_STARTED" == true ]]; then
+        if [[ "$RAIL_STEP_OPEN" == true ]]; then
+            rail_step_failed
+        fi
+        rail_error_detail "$message"
+    else
+        printf '%bError: %s%b\n' "$RED" "$message" "$NC" >&2
+    fi
+
+    for line in "$@"; do
+        if [[ -n "$line" ]]; then
+            if [[ "$RAIL_STARTED" == true ]]; then
+                rail_detail "$line"
+            else
+                printf '%s\n' "$line" >&2
+            fi
+        fi
+    done
+
+    if [[ "$RAIL_STARTED" == true ]]; then
+        rail_end_failed "$FAILURE_SUMMARY"
+    fi
+
     exit 1
+}
+
+# Shortens paths under the home directory so the rail stays narrow.
+display_path() {
+    printf '%s' "${1/#$HOME/\~}"
 }
 
 show_help() {
@@ -90,8 +242,83 @@ detect_arch() {
 # Download Utilities
 # ============================================================================
 
+# Whatever the downloader wrote to stderr, kept so a failure can be explained.
+DOWNLOAD_ERROR_LOG=""
+
 has_command() {
     command -v "$1" >/dev/null 2>&1
+}
+
+progress_bar() {
+    local percent="$1"
+    local width=20
+    local filled=$(( percent * width / 100 ))
+    local bar=""
+    local i
+
+    for (( i = 0; i < width; i++ )); do
+        if (( i < filled )); then
+            bar+="$GLYPH_FILL"
+        else
+            bar+="$GLYPH_TRACK"
+        fi
+    done
+
+    printf '%s' "$bar"
+}
+
+# Redraws the open step with a progress bar appended to it, in place.
+render_download_progress() {
+    local percent="$1"
+
+    if [[ "$IS_TTY" != true ]]; then
+        return 0
+    fi
+
+    printf '\r\033[K%b%s%b  %s  %s %3d%%' \
+        "$DIM" "$GLYPH_PENDING" "$NC" "$RAIL_STEP_LABEL" "$(progress_bar "$percent")" "$percent" >&2
+}
+
+# The completed download, kept as a detail under its node.
+download_summary() {
+    printf '%s 100%%   %s' "$(progress_bar 100)" "$1"
+}
+
+# curl reports progress on stderr as carriage-return separated updates. Reading
+# those updates lets the percentage be redrawn inside the rail, instead of
+# letting curl paint its own full-width bar across it.
+download_with_curl() {
+    local url="$1"
+    local output="$2"
+    local line
+
+    # -f: fail on errors
+    # -L: follow redirects
+    # --progress-bar: report progress instead of the full statistics table
+    curl -fL --progress-bar "$url" -o "$output" 2>&1 |
+        while IFS= read -r -d $'\r' line || [[ -n "$line" ]]; do
+            if [[ "$line" =~ ([0-9]+)\.[0-9]+% ]]; then
+                render_download_progress "${BASH_REMATCH[1]}"
+            elif [[ -n "${line//[[:space:]]/}" ]]; then
+                printf '%s\n' "$line" >> "$DOWNLOAD_ERROR_LOG"
+            fi
+        done
+
+    return "${PIPESTATUS[0]}"
+}
+
+# wget's progress output is not stable enough to parse, so the step just shows
+# that a download is in flight.
+download_with_wget() {
+    local url="$1"
+    local output="$2"
+
+    if [[ "$IS_TTY" == true ]]; then
+        printf '\r\033[K%b%s%b  %s  %bdownloading...%b' \
+            "$DIM" "$GLYPH_PENDING" "$NC" "$RAIL_STEP_LABEL" "$DIM" "$NC" >&2
+    fi
+
+    wget -q "$url" -O "$output" 2>> "$DOWNLOAD_ERROR_LOG"
 }
 
 download_file() {
@@ -99,14 +326,9 @@ download_file() {
     local output="$2"
 
     if has_command curl; then
-        # -f: fail on errors
-        # -L: follow redirects
-        # -#: show a simple progress bar
-        curl -fL --progress-bar "$url" -o "$output"
+        download_with_curl "$url" "$output"
     elif has_command wget; then
-        # --show-progress: forces wget to show the bar even if output is redirected
-        # -q: keeps other noise down so only the bar shows
-        wget -q --show-progress "$url" -O "$output"
+        download_with_wget "$url" "$output"
     else
         error_exit "Neither curl nor wget found. Please install one of them."
     fi
@@ -137,6 +359,20 @@ get_http_status() {
     fi
 }
 
+# Human readable size of a downloaded file. 'wc -c' is used because 'stat'
+# takes different flags on Linux and macOS.
+format_file_size() {
+    local bytes
+
+    bytes=$(wc -c < "$1" 2>/dev/null | tr -d '[:space:]') || bytes=0
+
+    awk -v bytes="${bytes:-0}" 'BEGIN {
+        if (bytes >= 1048576) printf "%.1f MB", bytes / 1048576
+        else if (bytes >= 1024) printf "%.1f KB", bytes / 1024
+        else printf "%d B", bytes
+    }'
+}
+
 # ============================================================================
 # Version Management
 # ============================================================================
@@ -150,12 +386,14 @@ github_api_error_exit() {
 
     case "$status" in
         403|429)
-            print_error "GitHub API rate limit exceeded (HTTP ${status})."
-            print_warning "Unauthenticated requests are limited to 60 per hour per IP address."
-            echo "" >&2
-            echo "  - Wait for the limit to reset, then run the installer again" >&2
-            echo "  - Or install a specific version: install.sh --version <version>" >&2
-            echo "    Available versions: https://github.com/${GITHUB_REPO}/releases" >&2
+            rail_step_failed
+            rail_error_detail "GitHub API rate limit exceeded (HTTP ${status})"
+            rail_detail "Unauthenticated requests are limited to 60 per hour per IP address."
+            rail_gap
+            rail_detail "Wait for the limit to reset, or install a specific version:"
+            rail_detail "  install.sh --version <version>"
+            rail_detail "  https://github.com/${GITHUB_REPO}/releases"
+            rail_end_failed "$FAILURE_SUMMARY"
             exit 1
             ;;
         404)
@@ -265,77 +503,88 @@ add_to_path() {
         echo "$path_export_line" >> "$config_file"
     fi
 
-    print_info "Added ${INSTALL_DIR} to PATH in ${config_file}"
     PATH_WAS_MODIFIED=true
 }
 
+# Returns non-zero when there was no shell config file to clean up.
 remove_from_path() {
     local config_file
     config_file="$(get_shell_config_file)"
 
-    if [[ -f "$config_file" ]]; then
-        # Create a temporary file
-        local temp_file
-        temp_file=$(mktemp)
-
-        # Remove the Primal PATH entries (using fixed string matching for exactness)
-        grep -vF "# Added by Primal SDK installer" "$config_file" | \
-        grep -vF "export PATH=\"${INSTALL_DIR}:\$PATH\"" | \
-        grep -vF "set -gx PATH \"${INSTALL_DIR}\" \$PATH" > "$temp_file" || true
-
-        mv "$temp_file" "$config_file"
-
-        print_info "Removed PATH entry from ${config_file}"
+    if [[ ! -f "$config_file" ]]; then
+        return 1
     fi
+
+    # Create a temporary file
+    local temp_file
+    temp_file=$(mktemp)
+
+    # Remove the Primal PATH entries (using fixed string matching for exactness)
+    grep -vF "# Added by Primal SDK installer" "$config_file" | \
+    grep -vF "export PATH=\"${INSTALL_DIR}:\$PATH\"" | \
+    grep -vF "set -gx PATH \"${INSTALL_DIR}\" \$PATH" > "$temp_file" || true
+
+    mv "$temp_file" "$config_file"
 }
 
 # ============================================================================
 # Installation Functions
 # ============================================================================
 
-install_binary() {
-    local version="$1"
-    local os
-    local arch
-    local binary_suffix=""
-    local download_url
-    local temp_file
+# The freshly downloaded binary and its size, shared between the download step
+# and the install step that follows it.
+DOWNLOAD_FILE=""
+DOWNLOAD_SIZE=""
 
-    os=$(detect_os)
-    arch=$(detect_arch "$os")
+download_binary() {
+    local version="$1"
+    local os="$2"
+    local arch="$3"
+    local download_url="https://github.com/${GITHUB_REPO}/raw/refs/tags/v${version}/bin/${BINARY_NAME}-${os}-${arch}"
+    local reason=""
+
+    DOWNLOAD_FILE=$(mktemp)
+    DOWNLOAD_ERROR_LOG=$(mktemp)
+
+    if ! download_file "$download_url" "$DOWNLOAD_FILE"; then
+        # The downloader's own last words, if it had any, explain the failure
+        # far better than the URL alone does.
+        reason=$(grep -v '^[[:space:]]*$' "$DOWNLOAD_ERROR_LOG" 2>/dev/null | tail -1)
+        rm -f "$DOWNLOAD_FILE" "$DOWNLOAD_ERROR_LOG"
+        error_exit "Failed to download from ${download_url}" "$reason"
+    fi
+
+    rm -f "$DOWNLOAD_ERROR_LOG"
+    DOWNLOAD_SIZE=$(format_file_size "$DOWNLOAD_FILE")
+}
+
+install_binary() {
+    local os="$1"
+    local binary_suffix=""
 
     if [[ "$os" == "windows" ]]; then
         binary_suffix=".exe"
-    fi
-
-    download_url="https://github.com/${GITHUB_REPO}/raw/refs/tags/v${version}/bin/${BINARY_NAME}-${os}-${arch}"
-
-    print_info "Downloading Primal v${version} for ${os}-${arch}..."
-
-    # Create temp file
-    temp_file=$(mktemp)
-
-    # Download binary
-    if ! download_file "$download_url" "$temp_file"; then
-        rm -f "$temp_file"
-        error_exit "Failed to download from ${download_url}"
     fi
 
     # Create install directory if it doesn't exist
     mkdir -p "${INSTALL_DIR}"
 
     # Move binary to install location
-    mv "$temp_file" "${INSTALL_DIR}/${BINARY_NAME}${binary_suffix}"
+    mv "$DOWNLOAD_FILE" "${INSTALL_DIR}/${BINARY_NAME}${binary_suffix}"
 
     # Set executable permission
     chmod +x "${INSTALL_DIR}/${BINARY_NAME}${binary_suffix}"
+
+    echo "${INSTALL_DIR}/${BINARY_NAME}${binary_suffix}"
 }
+
+# What the installed binary reports about itself, used as proof it runs.
+VERIFIED_VERSION=""
 
 verify_installation() {
     if [[ -x "${INSTALL_DIR}/${BINARY_NAME}" ]]; then
-        local installed_version
-        installed_version=$("${INSTALL_DIR}/${BINARY_NAME}" --version 2>/dev/null | head -1) || true
-        if [[ -n "$installed_version" ]]; then
+        VERIFIED_VERSION=$("${INSTALL_DIR}/${BINARY_NAME}" --version 2>/dev/null | head -1) || true
+        if [[ -n "$VERIFIED_VERSION" ]]; then
             return 0
         fi
     fi
@@ -347,21 +596,38 @@ verify_installation() {
 # ============================================================================
 
 uninstall() {
-    print_info "Uninstalling Primal SDK..."
-
     local binary_path="${INSTALL_DIR}/${BINARY_NAME}"
+    local config_file
+    config_file=$(get_shell_config_file)
 
+    FAILURE_SUMMARY="Uninstall failed"
+
+    rail_start "Primal SDK"
+    rail_gap
+
+    rail_step "Binary"
     if [[ -f "$binary_path" ]]; then
         rm -f "$binary_path"
-        print_success "Removed ${binary_path}"
+        rail_step_done
+        rail_detail "removed $(display_path "$binary_path")"
     else
-        print_warning "Binary not found at ${binary_path}"
+        rail_step_failed
+        rail_error_detail "not found at $(display_path "$binary_path")"
     fi
+    rail_gap
 
-    remove_from_path
+    rail_step "Shell PATH"
+    if remove_from_path; then
+        rail_step_done
+        rail_detail "entry removed from $(display_path "$config_file")"
+    else
+        rail_step_failed
+        rail_error_detail "no shell config file at $(display_path "$config_file")"
+    fi
+    rail_gap
 
-    print_success "Primal SDK has been uninstalled."
-    print_info "Please restart your shell or source your shell config file."
+    rail_end "Primal SDK uninstalled"
+    print_next_steps "restart your shell to drop the PATH entry"
 
     exit 0
 }
@@ -373,6 +639,12 @@ uninstall() {
 main() {
     local target_version=""
     local do_uninstall=false
+    local os
+    local arch
+    local installed_version
+    local installed_path
+    local config_file
+    local next_steps=()
 
     # Parse command line arguments
     while [[ $# -gt 0 ]]; do
@@ -409,74 +681,103 @@ main() {
         uninstall
     fi
 
-    # Check for existing installation
-    print_info "Checking for existing installation..."
-    local installed_version
-    installed_version=$(get_installed_version)
+    os=$(detect_os)
+    arch=$(detect_arch "$os")
+    config_file=$(get_shell_config_file)
 
+    rail_start "Primal SDK"
+    rail_gap
+
+    # Check for existing installation
+    rail_step "Existing installation"
+    installed_version=$(get_installed_version)
+    rail_step_done
     if [[ -n "$installed_version" ]]; then
-        print_info "Found Primal ${installed_version} installed"
+        rail_detail "v${installed_version}"
+    else
+        rail_detail "none found"
     fi
+    rail_gap
 
     # Determine target version
-    if [[ -z "$target_version" ]]; then
-        print_info "Fetching latest version..."
+    if [[ -n "$target_version" ]]; then
+        rail_step "Requested release"
+        rail_step_done
+    else
+        rail_step "Latest release"
         target_version=$(get_latest_version)
         if [[ -z "$target_version" ]]; then
             error_exit "Failed to determine latest version"
         fi
+        rail_step_done
     fi
-
-    print_info "Target version: ${target_version}"
+    rail_detail "v${target_version}"
+    rail_gap
 
     # Check if already up to date
     if [[ "$installed_version" == "$target_version" ]]; then
-        print_success "Already up to date (v${target_version})"
+        rail_end "Already up to date (v${target_version})"
         exit 0
     fi
 
-    # Install or update
-    if [[ -n "$installed_version" ]]; then
-        print_info "Updating Primal from ${installed_version} to ${target_version}..."
-    else
-        print_info "Installing Primal v${target_version}..."
-    fi
+    # Download
+    rail_step "Downloading ${BINARY_NAME}-${os}-${arch}"
+    download_binary "$target_version" "$os" "$arch"
+    rail_step_done
+    rail_detail "$(download_summary "$DOWNLOAD_SIZE")"
+    rail_gap
 
-    install_binary "$target_version"
+    # Install
+    rail_step "Installed"
+    installed_path=$(install_binary "$os")
+    rail_step_done
+    rail_detail "$(display_path "$installed_path")"
 
     # Update PATH if needed (only on fresh install)
     if [[ -z "$installed_version" ]]; then
-        if ! path_contains_install_dir; then
+        rail_gap
+        rail_step "Shell PATH"
+        if path_contains_install_dir; then
+            rail_step_done
+            rail_detail "already contains $(display_path "$INSTALL_DIR")"
+        else
             add_to_path
+            rail_step_done
+            if [[ "$PATH_WAS_MODIFIED" == true ]]; then
+                rail_detail "added to $(display_path "$config_file")"
+            else
+                rail_detail "already configured in $(display_path "$config_file")"
+            fi
         fi
     fi
 
     # Verify installation
-    if verify_installation; then
-        echo ""
-        if [[ -n "$installed_version" ]]; then
-            print_success "Successfully updated Primal from ${installed_version} to ${target_version}!"
-        else
-            print_success "Successfully installed Primal v${target_version}!"
-        fi
-        echo ""
-        print_info "Installation directory: ${INSTALL_DIR}"
-
-        if [[ "$PATH_WAS_MODIFIED" == true ]]; then
-            echo ""
-            print_warning "Please restart your shell or run:"
-            echo "  source $(get_shell_config_file)"
-        fi
-
-        echo ""
-        if [[ "$(detect_os)" == "windows" ]]; then
-            print_info "Run 'primal.exe --version' to verify the installation."
-        else
-            print_info "Run 'primal --version' to verify the installation."
-        fi
-    else
+    rail_gap
+    rail_step "Verified"
+    if ! verify_installation; then
         error_exit "Installation verification failed. Please check the installation manually."
     fi
+    rail_step_done
+    rail_detail "$VERIFIED_VERSION"
+    rail_gap
+
+    if [[ -n "$installed_version" ]]; then
+        rail_end "Primal v${installed_version} ${GLYPH_ARROW} v${target_version}"
+    else
+        rail_end "Primal v${target_version} ready"
+    fi
+
+    if [[ "$PATH_WAS_MODIFIED" == true ]]; then
+        next_steps+=("source $(display_path "$config_file")")
+    fi
+
+    if [[ "$os" == "windows" ]]; then
+        next_steps+=("${BINARY_NAME}.exe --version")
+    else
+        next_steps+=("${BINARY_NAME} --version")
+    fi
+
+    print_next_steps "${next_steps[@]}"
 }
 
 main "$@"
