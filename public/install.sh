@@ -157,17 +157,22 @@ rail_end_failed() {
     rail_close "$RED" "$1"
 }
 
-# The closing suggestions, drawn as the rail's last node so they stay attached
-# to it. Not a step: there is nothing here to succeed or fail, so the node is
-# simply filled in like a completed one. The commands themselves are left at
-# normal weight, since they are meant to be read and typed.
+# A plain filled node: a row that states something rather than reporting the
+# outcome of a step, so there is nothing here to succeed or fail.
+rail_node() {
+    printf '%b%s%b  %s\n' "$GREEN" "$GLYPH_DONE" "$NC" "$1" >&2
+}
+
+# Closes the rail with the follow-up commands listed underneath it. They sit
+# outside the rail, so they are indented to the same column instead of hanging
+# off a bar.
 rail_next_steps() {
     local line
 
-    printf '%b%s%b  %s\n' "$GREEN" "$GLYPH_DONE" "$NC" "Next" >&2
+    rail_close "$GREEN" "Next"
 
     for line in "$@"; do
-        rail_detail_in "" "$line"
+        printf '   %b%s%b\n' "$DIM" "$line" "$NC" >&2
     done
 }
 
@@ -646,10 +651,10 @@ uninstall() {
     fi
     rail_gap
 
-    rail_next_steps "restart your shell to drop the PATH entry"
+    rail_node "Primal SDK uninstalled"
     rail_gap
 
-    rail_end "Primal SDK uninstalled"
+    rail_next_steps "restart your shell to drop the PATH entry"
 
     exit 0
 }
@@ -799,14 +804,14 @@ main() {
         next_steps+=("${BINARY_NAME} --version")
     fi
 
-    rail_next_steps "${next_steps[@]}"
+    if [[ -n "$installed_version" ]]; then
+        rail_node "Primal v${installed_version} ${GLYPH_ARROW} v${target_version}"
+    else
+        rail_node "Primal v${target_version} ready"
+    fi
     rail_gap
 
-    if [[ -n "$installed_version" ]]; then
-        rail_end "Primal v${installed_version} ${GLYPH_ARROW} v${target_version}"
-    else
-        rail_end "Primal v${target_version} ready"
-    fi
+    rail_next_steps "${next_steps[@]}"
 }
 
 main "$@"
