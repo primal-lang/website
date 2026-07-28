@@ -249,14 +249,35 @@ detect_os() {
     esac
 }
 
+# A shell running under Rosetta on an Apple Silicon Mac is reported as x86_64
+# by 'uname -m', so that answer alone cannot tell the two Macs apart. The CPU
+# is asked about directly to settle it: the flag is absent on Intel Macs, where
+# sysctl fails and nothing is printed.
+is_apple_silicon() {
+    if [[ "$(uname -m)" == "arm64" ]]; then
+        return 0
+    fi
+
+    [[ "$(sysctl -n hw.optional.arm64 2>/dev/null)" == "1" ]]
+}
+
 # Each release ships exactly one binary per operating system, so the
 # architecture follows from the operating system rather than from 'uname -m'.
+# The single macOS binary is built for Apple Silicon, so an Intel Mac has
+# nothing to install and is turned away here rather than handed a binary it
+# cannot execute.
 detect_arch() {
     local os="$1"
 
     case "$os" in
         linux)   echo "x86-64" ;;
-        macos)   echo "arm64" ;;
+        macos)
+            if ! is_apple_silicon; then
+                error_exit "Intel Macs are not supported" \
+                    "The macOS binary is built for Apple Silicon (arm64) only."
+            fi
+            echo "arm64"
+            ;;
         windows) echo "x86-64" ;;
         *) error_exit "Unsupported operating system: $os" ;;
     esac

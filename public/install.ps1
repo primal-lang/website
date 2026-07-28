@@ -292,10 +292,20 @@ function Write-RailNextSteps {
     }
 }
 
-# Aborts the installer. The message states the failure and any details are
-# printed underneath it as context. Once the rail is open the failure is
-# reported as part of it, so the output always ends with a closed rail.
-function Exit-WithError {
+# Ends the run. The documented command pipes this script into iex, which runs
+# it in the caller's session rather than as a script of its own, and `exit`
+# there closes their console window along with whatever the installer just
+# printed. Unwinding by throw leaves the session alone.
+$script:EXIT_SENTINEL = "PrimalInstallerExit"
+
+function Stop-Installer {
+    throw $script:EXIT_SENTINEL
+}
+
+# Reports a failure. The message states it and any details are printed
+# underneath as context. Once the rail is open the failure is reported as part
+# of it, so the output always ends with a closed rail.
+function Write-Failure {
     param(
         [Parameter(Mandatory = $true)][string]$Message,
         [string[]]$Detail = @()
@@ -324,8 +334,17 @@ function Exit-WithError {
     if ($script:RAIL_STARTED) {
         Close-Rail -Message $script:FAILURE_SUMMARY -Failed
     }
+}
 
-    exit 1
+# Reports a failure and aborts.
+function Exit-WithError {
+    param(
+        [Parameter(Mandatory = $true)][string]$Message,
+        [string[]]$Detail = @()
+    )
+
+    Write-Failure -Message $Message -Detail $Detail
+    Stop-Installer
 }
 
 # Shortens paths under the home directory so the rail stays narrow.
@@ -359,7 +378,7 @@ Examples:
 
 '@
 
-    exit 0
+    Stop-Installer
 }
 
 # ============================================================================
@@ -539,7 +558,7 @@ function Exit-GitHubApiError {
             Write-RailDetail "  install.ps1 -Version <version>"
             Write-RailDetail "  https://github.com/$script:GITHUB_REPO/releases"
             Close-Rail -Message $script:FAILURE_SUMMARY -Failed
-            exit 1
+            Stop-Installer
         }
         404 {
             Exit-WithError "No releases found for $script:GITHUB_REPO (HTTP 404)"
@@ -779,7 +798,7 @@ function Uninstall-Primal {
 
     Write-RailNextSteps "restart your terminal to drop the PATH entry"
 
-    exit 0
+    Stop-Installer
 }
 
 # ============================================================================
@@ -836,7 +855,7 @@ function Main {
     # Check if already up to date
     if ($installedVersion -eq $targetVersion) {
         Close-Rail -Message "Already up to date (v$targetVersion)"
-        exit 0
+        Stop-Installer
     }
 
     # Download
@@ -904,7 +923,12 @@ try {
     Main
 }
 catch {
-    Exit-WithError "An unexpected error occurred: $_"
+    # Anything Stop-Installer threw has already reported itself and is only
+    # here to unwind. Write-Failure rather than Exit-WithError: throwing again
+    # from inside a catch block would escape as an unhandled error.
+    if ($_.Exception.Message -ne $script:EXIT_SENTINEL) {
+        Write-Failure "An unexpected error occurred: $_"
+    }
 }
 finally {
     if ($script:ORIGINAL_OUTPUT_ENCODING) {
