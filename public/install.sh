@@ -163,13 +163,13 @@ rail_node() {
     printf '%b%s%b  %s\n' "$GREEN" "$GLYPH_DONE" "$NC" "$1" >&2
 }
 
-# Closes the rail with the follow-up commands listed underneath it. They sit
-# outside the rail, so they are indented to the same column instead of hanging
-# off a bar.
+# The rail's last row: the follow-up commands, listed underneath it. Nothing
+# follows them, so they are indented to the same column instead of hanging off
+# a bar.
 rail_next_steps() {
     local line
 
-    rail_close "$GREEN" "Next"
+    rail_node "Next"
 
     for line in "$@"; do
         printf '   %b%s%b\n' "$DIM" "$line" "$NC" >&2
