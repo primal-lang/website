@@ -623,7 +623,12 @@ verify_installation() {
 uninstall() {
     local binary_path="${INSTALL_DIR}/${BINARY_NAME}"
     local config_file
+    local removed_version
+
     config_file=$(get_shell_config_file)
+
+    # Read before the binary goes away, so the summary can name what was removed.
+    removed_version=$(get_installed_version)
 
     FAILURE_SUMMARY="Uninstall failed"
 
@@ -652,6 +657,11 @@ uninstall() {
     rail_gap
 
     rail_node "Primal SDK uninstalled"
+    if [[ -n "$removed_version" ]]; then
+        rail_detail "v${removed_version} removed from $(display_path "$INSTALL_DIR")"
+    else
+        rail_detail "nothing was installed in $(display_path "$INSTALL_DIR")"
+    fi
     rail_gap
 
     rail_next_steps "restart your shell to drop the PATH entry"
@@ -806,8 +816,10 @@ main() {
 
     if [[ -n "$installed_version" ]]; then
         rail_node "Primal v${installed_version} ${GLYPH_ARROW} v${target_version}"
+        rail_detail "updated in $(display_path "$INSTALL_DIR")"
     else
         rail_node "Primal v${target_version} ready"
+        rail_detail "installed to $(display_path "$INSTALL_DIR")"
     fi
     rail_gap
 
