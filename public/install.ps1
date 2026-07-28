@@ -385,15 +385,32 @@ Examples:
 # Platform Detection
 # ============================================================================
 
-# Each release ships exactly one binary per operating system, and for Windows
-# that binary is x86-64 only.
+# A 32-bit PowerShell running on 64-bit Windows is reported as x86 by
+# PROCESSOR_ARCHITECTURE, so that answer alone cannot tell the two Windows
+# apart. PROCESSOR_ARCHITEW6432 settles it: it carries the machine's real
+# architecture inside such a host, and is absent everywhere else.
+function Get-ProcessorArchitecture {
+    $architecture = [System.Environment]::GetEnvironmentVariable("PROCESSOR_ARCHITEW6432")
+
+    if ($architecture) {
+        return $architecture
+    }
+
+    return [System.Environment]::GetEnvironmentVariable("PROCESSOR_ARCHITECTURE")
+}
+
+# Each release ships exactly one binary per operating system, and the single
+# Windows binary is built for x86-64. Anything that cannot execute it has
+# nothing to install and is turned away here rather than handed a binary it
+# cannot run.
 function Get-Architecture {
-    $architecture = [System.Environment]::GetEnvironmentVariable("PROCESSOR_ARCHITECTURE")
+    $architecture = Get-ProcessorArchitecture
+    $detail = "The Windows binary is built for x86-64 only."
 
     switch ($architecture) {
         "AMD64" { return "x86-64" }
-        "x86" { Exit-WithError "32-bit Windows is not supported. Only x86-64 is currently supported." }
-        default { Exit-WithError "Unsupported architecture: $architecture. Only x86-64 is currently supported." }
+        "x86" { Exit-WithError "32-bit Windows is not supported" $detail }
+        default { Exit-WithError "Unsupported architecture: $architecture" $detail }
     }
 }
 
@@ -899,14 +916,6 @@ function Main {
     Write-RailDetail $script:VERIFIED_VERSION
     Write-RailGap
 
-    $nextSteps = @()
-
-    if ($script:PATH_WAS_MODIFIED) {
-        $nextSteps += "restart your terminal to pick up the PATH entry"
-    }
-
-    $nextSteps += "$script:BINARY_FILE --version"
-
     if ($installedVersion) {
         Write-RailNode "Primal v$installedVersion $script:GLYPH_ARROW v$targetVersion"
         Write-RailDetail "updated in $(Get-DisplayPath $script:INSTALL_DIR)"
@@ -916,7 +925,10 @@ function Main {
     }
     Write-RailGap
 
-    Write-RailNextSteps $nextSteps
+    # Unlike the shell installer, which runs in a subshell and can only ask the
+    # caller to source their config, Add-ToPath has already updated this
+    # session's PATH, so there is nothing to do before running the binary.
+    Write-RailNextSteps "$script:BINARY_FILE --version"
 }
 
 try {
