@@ -124,16 +124,60 @@ fetch_url() {
     fi
 }
 
+# Reports the HTTP status code returned by a URL, or an empty string / "000" if
+# the request could not be made at all. Unlike fetch_url, an error response is
+# not treated as a failure, so callers can react to a specific status.
+get_http_status() {
+    local url="$1"
+
+    if has_command curl; then
+        curl -sSL -o /dev/null -w '%{http_code}' "$url" 2>/dev/null
+    elif has_command wget; then
+        wget --spider --server-response "$url" 2>&1 | grep -oE 'HTTP/[0-9.]+ [0-9]{3}' | tail -1 | grep -oE '[0-9]{3}$'
+    fi
+}
+
 # ============================================================================
 # Version Management
 # ============================================================================
+
+# Explains why a GitHub API request failed, based on the status it responds with.
+github_api_error_exit() {
+    local url="$1"
+    local status
+
+    status=$(get_http_status "$url") || true
+
+    case "$status" in
+        403|429)
+            print_error "GitHub API rate limit exceeded (HTTP ${status})."
+            print_warning "Unauthenticated requests are limited to 60 per hour per IP address."
+            echo "" >&2
+            echo "  - Wait for the limit to reset, then run the installer again" >&2
+            echo "  - Or install a specific version: install.sh --version <version>" >&2
+            echo "    Available versions: https://github.com/${GITHUB_REPO}/releases" >&2
+            exit 1
+            ;;
+        404)
+            error_exit "No releases found for ${GITHUB_REPO} (HTTP 404)"
+            ;;
+        000|"")
+            error_exit "Could not reach GitHub. Please check your internet connection."
+            ;;
+        *)
+            error_exit "Failed to fetch latest release information from GitHub (HTTP ${status})"
+            ;;
+    esac
+}
 
 get_latest_version() {
     local api_url="https://api.github.com/repos/${GITHUB_REPO}/releases/latest"
     local response
     local version
 
-    response=$(fetch_url "$api_url") || error_exit "Failed to fetch latest release information from GitHub"
+    if ! response=$(fetch_url "$api_url"); then
+        github_api_error_exit "$api_url"
+    fi
 
     # Extract tag_name from JSON response using jq if available, otherwise fall back to grep/sed
     if has_command jq; then
