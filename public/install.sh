@@ -63,6 +63,7 @@ fi
 
 RAIL_STARTED=false
 RAIL_STEP_OPEN=false
+RAIL_PROGRESS_OPEN=false
 RAIL_STEP_LABEL=""
 FAILURE_SUMMARY="Installation failed"
 
@@ -87,16 +88,38 @@ rail_step() {
     fi
 }
 
-# Closes the open step, filling in its node with the color of the outcome.
+# Opens a line underneath the current step for a progress bar to live on. The
+# node line above it is finished, so it can only be revisited by moving the
+# cursor back up when the step settles.
+rail_progress_open() {
+    RAIL_PROGRESS_OPEN=true
+
+    if [[ "$IS_TTY" == true ]]; then
+        printf '\n' >&2
+    fi
+}
+
+# Closes the open step, filling in its node with the color of the outcome. When
+# a progress line was opened underneath, the cursor steps back up to the node
+# and the progress line is blanked so the step's detail can take its place.
 rail_step_settle() {
     local color="$1"
 
     if [[ "$IS_TTY" == true ]]; then
+        if [[ "$RAIL_PROGRESS_OPEN" == true ]]; then
+            printf '\033[1A' >&2
+        fi
         printf '\r\033[K' >&2
     fi
 
     printf '%b%s%b  %s\n' "$color" "$GLYPH_DONE" "$NC" "$RAIL_STEP_LABEL" >&2
+
+    if [[ "$IS_TTY" == true && "$RAIL_PROGRESS_OPEN" == true ]]; then
+        printf '\r\033[K' >&2
+    fi
+
     RAIL_STEP_OPEN=false
+    RAIL_PROGRESS_OPEN=false
 }
 
 rail_step_done() {
@@ -267,7 +290,8 @@ progress_bar() {
     printf '%s' "$bar"
 }
 
-# Redraws the open step with a progress bar appended to it, in place.
+# Redraws the progress line underneath the open step, in place. The bar is
+# indented to sit directly below the step's label.
 render_download_progress() {
     local percent="$1"
 
@@ -275,8 +299,7 @@ render_download_progress() {
         return 0
     fi
 
-    printf '\r\033[K%b%s%b  %s  %s %3d%%' \
-        "$DIM" "$GLYPH_PENDING" "$NC" "$RAIL_STEP_LABEL" "$(progress_bar "$percent")" "$percent" >&2
+    printf '\r\033[K   %s %3d%%' "$(progress_bar "$percent")" "$percent" >&2
 }
 
 # The completed download, kept as a detail under its node.
@@ -314,8 +337,7 @@ download_with_wget() {
     local output="$2"
 
     if [[ "$IS_TTY" == true ]]; then
-        printf '\r\033[K%b%s%b  %s  %bdownloading...%b' \
-            "$DIM" "$GLYPH_PENDING" "$NC" "$RAIL_STEP_LABEL" "$DIM" "$NC" >&2
+        printf '\r\033[K   %bdownloading...%b' "$DIM" "$NC" >&2
     fi
 
     wget -q "$url" -O "$output" 2>> "$DOWNLOAD_ERROR_LOG"
@@ -326,8 +348,10 @@ download_file() {
     local output="$2"
 
     if has_command curl; then
+        rail_progress_open
         download_with_curl "$url" "$output"
     elif has_command wget; then
+        rail_progress_open
         download_with_wget "$url" "$output"
     else
         error_exit "Neither curl nor wget found. Please install one of them."
@@ -679,6 +703,12 @@ main() {
     # Handle uninstall
     if [[ "$do_uninstall" == true ]]; then
         uninstall
+    fi
+
+    # Checked once up front: reporting it from inside a step would nest the
+    # failure in a command substitution and close the rail twice.
+    if ! has_command curl && ! has_command wget; then
+        error_exit "Neither curl nor wget found. Please install one of them."
     fi
 
     os=$(detect_os)
