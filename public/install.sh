@@ -157,21 +157,17 @@ rail_end_failed() {
     rail_close "$RED" "$1"
 }
 
-# Suggestions printed after the rail has closed. The first line is labelled and
-# the rest are aligned underneath it.
-print_next_steps() {
+# The closing suggestions, drawn as the rail's last node so they stay attached
+# to it. Not a step: there is nothing here to succeed or fail, so the node is
+# simply filled in like a completed one. The commands themselves are left at
+# normal weight, since they are meant to be read and typed.
+rail_next_steps() {
     local line
-    local first=true
 
-    printf '\n' >&2
+    printf '%b%s%b  %s\n' "$GREEN" "$GLYPH_DONE" "$NC" "Next" >&2
 
     for line in "$@"; do
-        if [[ "$first" == true ]]; then
-            printf '   %bNext%b  %s\n' "$BOLD" "$NC" "$line" >&2
-            first=false
-        else
-            printf '         %s\n' "$line" >&2
-        fi
+        rail_detail_in "" "$line"
     done
 }
 
@@ -650,8 +646,10 @@ uninstall() {
     fi
     rail_gap
 
+    rail_next_steps "restart your shell to drop the PATH entry"
+    rail_gap
+
     rail_end "Primal SDK uninstalled"
-    print_next_steps "restart your shell to drop the PATH entry"
 
     exit 0
 }
@@ -791,12 +789,6 @@ main() {
     rail_detail "$VERIFIED_VERSION"
     rail_gap
 
-    if [[ -n "$installed_version" ]]; then
-        rail_end "Primal v${installed_version} ${GLYPH_ARROW} v${target_version}"
-    else
-        rail_end "Primal v${target_version} ready"
-    fi
-
     if [[ "$PATH_WAS_MODIFIED" == true ]]; then
         next_steps+=("source $(display_path "$config_file")")
     fi
@@ -807,7 +799,14 @@ main() {
         next_steps+=("${BINARY_NAME} --version")
     fi
 
-    print_next_steps "${next_steps[@]}"
+    rail_next_steps "${next_steps[@]}"
+    rail_gap
+
+    if [[ -n "$installed_version" ]]; then
+        rail_end "Primal v${installed_version} ${GLYPH_ARROW} v${target_version}"
+    else
+        rail_end "Primal v${target_version} ready"
+    fi
 }
 
 main "$@"
