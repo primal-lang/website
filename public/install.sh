@@ -269,6 +269,23 @@ detect_arch() {
     esac
 }
 
+# Where the installed binary lives. Windows needs the '.exe' suffix for the file
+# to be executable, so what is installed is not always named after the binary
+# alone. Settled once, after the install directory is final, so that everything
+# looking for an installed binary agrees on where it is.
+BINARY_PATH=""
+
+resolve_binary_path() {
+    local os="$1"
+    local suffix=""
+
+    if [[ "$os" == "windows" ]]; then
+        suffix=".exe"
+    fi
+
+    BINARY_PATH="${INSTALL_DIR}/${BINARY_NAME}${suffix}"
+}
+
 # ============================================================================
 # Download Utilities
 # ============================================================================
@@ -457,8 +474,8 @@ get_latest_version() {
 }
 
 get_installed_version() {
-    if [[ -x "${INSTALL_DIR}/${BINARY_NAME}" ]]; then
-        "${INSTALL_DIR}/${BINARY_NAME}" --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || echo ""
+    if [[ -x "$BINARY_PATH" ]]; then
+        "$BINARY_PATH" --version 2>/dev/null | grep -oE '[0-9]+\.[0-9]+\.[0-9]+' | head -1 || echo ""
     else
         echo ""
     fi
@@ -588,31 +605,22 @@ download_binary() {
 }
 
 install_binary() {
-    local os="$1"
-    local binary_suffix=""
-
-    if [[ "$os" == "windows" ]]; then
-        binary_suffix=".exe"
-    fi
-
     # Create install directory if it doesn't exist
     mkdir -p "${INSTALL_DIR}"
 
     # Move binary to install location
-    mv "$DOWNLOAD_FILE" "${INSTALL_DIR}/${BINARY_NAME}${binary_suffix}"
+    mv "$DOWNLOAD_FILE" "$BINARY_PATH"
 
     # Set executable permission
-    chmod +x "${INSTALL_DIR}/${BINARY_NAME}${binary_suffix}"
-
-    echo "${INSTALL_DIR}/${BINARY_NAME}${binary_suffix}"
+    chmod +x "$BINARY_PATH"
 }
 
 # What the installed binary reports about itself, used as proof it runs.
 VERIFIED_VERSION=""
 
 verify_installation() {
-    if [[ -x "${INSTALL_DIR}/${BINARY_NAME}" ]]; then
-        VERIFIED_VERSION=$("${INSTALL_DIR}/${BINARY_NAME}" --version 2>/dev/null | head -1) || true
+    if [[ -x "$BINARY_PATH" ]]; then
+        VERIFIED_VERSION=$("$BINARY_PATH" --version 2>/dev/null | head -1) || true
         if [[ -n "$VERIFIED_VERSION" ]]; then
             return 0
         fi
@@ -625,7 +633,6 @@ verify_installation() {
 # ============================================================================
 
 uninstall() {
-    local binary_path="${INSTALL_DIR}/${BINARY_NAME}"
     local config_file
     local removed_version
 
@@ -640,13 +647,13 @@ uninstall() {
     rail_gap
 
     rail_step "Binary"
-    if [[ -f "$binary_path" ]]; then
-        rm -f "$binary_path"
+    if [[ -f "$BINARY_PATH" ]]; then
+        rm -f "$BINARY_PATH"
         rail_step_done
-        rail_detail "removed $(display_path "$binary_path")"
+        rail_detail "removed $(display_path "$BINARY_PATH")"
     else
         rail_step_failed
-        rail_error_detail "not found at $(display_path "$binary_path")"
+        rail_error_detail "not found at $(display_path "$BINARY_PATH")"
     fi
     rail_gap
 
@@ -683,7 +690,6 @@ main() {
     local os
     local arch
     local installed_version
-    local installed_path
     local config_file
     local next_step
 
@@ -717,6 +723,11 @@ main() {
         esac
     done
 
+    # Settled before anything looks for an installed binary, and only once the
+    # options are parsed because --install-dir moves where it lives.
+    os=$(detect_os)
+    resolve_binary_path "$os"
+
     # Handle uninstall
     if [[ "$do_uninstall" == true ]]; then
         uninstall
@@ -728,7 +739,6 @@ main() {
         error_exit "Neither curl nor wget found. Please install one of them."
     fi
 
-    os=$(detect_os)
     arch=$(detect_arch "$os")
     config_file=$(get_shell_config_file)
 
@@ -766,7 +776,7 @@ main() {
     # Check if already up to date
     if [[ "$installed_version" == "$target_version" ]]; then
         rail_node "Already up to date (v${target_version})"
-        rail_last_detail "$(display_path "${INSTALL_DIR}/${BINARY_NAME}")"
+        rail_last_detail "$(display_path "$BINARY_PATH")"
         exit 0
     fi
 
@@ -779,9 +789,9 @@ main() {
 
     # Install
     rail_step "Installed"
-    installed_path=$(install_binary "$os")
+    install_binary
     rail_step_done
-    rail_detail "$(display_path "$installed_path")"
+    rail_detail "$(display_path "$BINARY_PATH")"
 
     # Update PATH if needed (only on fresh install)
     if [[ -z "$installed_version" ]]; then
@@ -805,17 +815,13 @@ main() {
     rail_gap
     rail_step "Verified"
     if ! verify_installation; then
-        error_exit "Installation verification failed" "check $(display_path "${INSTALL_DIR}/${BINARY_NAME}")"
+        error_exit "Installation verification failed" "check $(display_path "$BINARY_PATH")"
     fi
     rail_step_done
     rail_detail "$VERIFIED_VERSION"
     rail_gap
 
-    if [[ "$os" == "windows" ]]; then
-        next_step="${BINARY_NAME}.exe --version"
-    else
-        next_step="${BINARY_NAME} --version"
-    fi
+    next_step="$(basename "$BINARY_PATH") --version"
 
     # Sourcing the shell config is only worth suggesting when the installer
     # just changed it, and is chained onto the version check so the rail's last
