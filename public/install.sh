@@ -65,6 +65,9 @@ RAIL_PROGRESS_OPEN=false
 RAIL_STEP_LABEL=""
 FAILURE_SUMMARY="Installation failed"
 
+# Where a failure the installer cannot suggest a way out of sends the user.
+FAILURE_HINT="https://github.com/primal-lang/sdk/issues/new"
+
 rail_start() {
     printf '%b%s%b  %b%s%b\n' "$DIM" "$GLYPH_TOP" "$NC" "$BOLD" "$1" "$NC" >&2
     RAIL_STARTED=true
@@ -172,9 +175,12 @@ rail_next_steps() {
 
 # Aborts the installer, stating why. Once the rail is open the failure is
 # reported as part of it: the step that was running settles as failed, the
-# message becomes its detail, and the rail ends on a row stating the outcome.
+# message becomes its detail, and the rail ends on a row stating the outcome
+# with the way out underneath it. Callers that know of a way out better than
+# reporting the failure pass it as the second argument.
 error_exit() {
     local message="$1"
+    local hint="${2:-$FAILURE_HINT}"
 
     if [[ "$RAIL_STARTED" == true ]]; then
         if [[ "$RAIL_STEP_OPEN" == true ]]; then
@@ -183,6 +189,7 @@ error_exit() {
         rail_error_detail "$message"
         rail_gap
         rail_node_failed "$FAILURE_SUMMARY"
+        rail_last_detail "$hint"
     else
         printf '%bError: %s%b\n' "$RED" "$message" "$NC" >&2
     fi
@@ -414,21 +421,16 @@ github_api_error_exit() {
 
     case "$status" in
         403|429)
-            rail_step_failed
-            rail_error_detail "GitHub API rate limit exceeded (HTTP ${status})"
-            rail_gap
-            rail_node_failed "$FAILURE_SUMMARY"
-            rail_last_detail "retry later"
-            exit 1
+            error_exit "GitHub API rate limit exceeded (HTTP ${status})" "retry later"
             ;;
         404)
             error_exit "No releases found for ${GITHUB_REPO} (HTTP 404)"
             ;;
         000|"")
-            error_exit "Could not reach GitHub. Please check your internet connection."
+            error_exit "Could not reach GitHub" "check your internet connection"
             ;;
         *)
-            error_exit "Failed to fetch latest release information from GitHub (HTTP ${status})"
+            error_exit "Failed to fetch latest release information from GitHub (HTTP ${status})" "retry later"
             ;;
     esac
 }
@@ -578,7 +580,7 @@ download_binary() {
         # leave nothing behind, hence the fallback.
         reason=$(grep -v '^[[:space:]]*$' "$DOWNLOAD_ERROR_LOG" 2>/dev/null | tail -1)
         rm -f "$DOWNLOAD_FILE" "$DOWNLOAD_ERROR_LOG"
-        error_exit "${reason:-Failed to download v${version}}"
+        error_exit "${reason:-Failed to download v${version}}" "retry, or pick a release with --version"
     fi
 
     rm -f "$DOWNLOAD_ERROR_LOG"
@@ -754,7 +756,7 @@ main() {
         # Anything that is not a version number would end up pasted into the
         # download URL, so a failed parse is caught here rather than by curl.
         if [[ ! "$target_version" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
-            error_exit "Failed to determine latest version"
+            error_exit "Failed to determine latest version" "install a specific release with --version"
         fi
         rail_step_done
     fi
@@ -803,7 +805,7 @@ main() {
     rail_gap
     rail_step "Verified"
     if ! verify_installation; then
-        error_exit "Installation verification failed. Please check the installation manually."
+        error_exit "Installation verification failed" "check $(display_path "${INSTALL_DIR}/${BINARY_NAME}")"
     fi
     rail_step_done
     rail_detail "$VERIFIED_VERSION"
