@@ -104,24 +104,18 @@
                         Run this command to install the latest version:
                     </p>
 
-                    <div class="code-sample" data-os="unix">curl -fsSL https://primal-lang.org/install.sh | bash</div>
-                    <div class="code-sample" data-os="windows">irm https://primal-lang.org/install.ps1 | iex</div>
+                    <div class="code-sample">curl -fsSL https://primal-lang.org/install.sh | bash</div>
 
-                    <p class="text-white justified-text" data-os="unix">This installs the
+                    <p class="text-white justified-text">This installs the
                         <span class="tagged">primal</span> binary to <span class="tagged">~/.local/bin</span> and
                         updates your shell configuration.
-                    </p>
-                    <p class="text-white justified-text" data-os="windows">This installs
-                        <span class="tagged">primal.exe</span> to
-                        <span class="tagged">%LOCALAPPDATA%\Primal\bin</span> and adds it to your PATH.
                     </p>
 
                     <p class="text-white justified-text">
                         To run a program, use the following command:
                     </p>
 
-                    <div id="sampleRunProgramUnix" class="code-sample" data-os="unix"></div>
-                    <div id="sampleRunProgramWindows" class="code-sample" data-os="windows"></div>
+                    <div id="sampleRunProgram" class="code-sample"></div>
 
                     <p class="text-white justified-text">
                         If your program does not define a <span class="tagged">main</span> function, it will run in
@@ -347,24 +341,7 @@
     </main>
 
     <script type="module">
-        // navigator.platform is deprecated and misreports iPadOS as a desktop Mac, so prefer
-        // UA-Client-Hints and fall back to the user agent string. Both install paths are in the
-        // markup, so with JavaScript disabled the reader simply sees them all.
-        const currentOs = (function () {
-            const hints = navigator.userAgentData;
-            const platform = hints && typeof hints.platform === 'string'
-                ? hints.platform
-                : navigator.userAgent;
-
-            return /Win/i.test(platform) ? 'windows' : 'unix';
-        })();
-
-        document.querySelectorAll('[data-os]').forEach(function (element) {
-            element.hidden = element.dataset.os !== currentOs;
-        });
-
-        setSampleCode('sampleRunProgramUnix', 'primal program.prm')
-        setSampleCode('sampleRunProgramWindows', 'primal.exe program.prm')
+        setSampleCode('sampleRunProgram', 'primal program.prm')
         setSampleCode('sampleNumberLiterals', '1_000_000\n3.14e-10')
         setSampleCode('sampleConditional', 'abs(n) = if (n < 0) -n else n')
         setSampleCode('sampleFunctionWithParameters', 'cube(n) = pow(n, 3)')
