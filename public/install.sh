@@ -764,6 +764,7 @@ main() {
     # Check if already up to date
     if [[ "$installed_version" == "$target_version" ]]; then
         rail_node "Already up to date (v${target_version})"
+        rail_last_detail "$(display_path "${INSTALL_DIR}/${BINARY_NAME}")"
         exit 0
     fi
 
