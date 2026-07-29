@@ -248,16 +248,25 @@ is_apple_silicon() {
     [[ "$(sysctl -n hw.optional.arm64 2>/dev/null)" == "1" ]]
 }
 
-# Each release ships exactly one binary per operating system, so the
-# architecture follows from the operating system rather than from 'uname -m'.
-# The single macOS binary is built for Apple Silicon, so an Intel Mac has
-# nothing to install and is turned away here rather than handed a binary it
-# cannot execute.
+# Each release ships exactly one binary per operating system, so there is no
+# choice of artifact to make here. The only question is whether this machine can
+# run the one binary its operating system gets: the Linux binary is x86-64 and
+# the macOS one is arm64. A machine that cannot has nothing to install and is
+# turned away here, before anything is downloaded, rather than being handed a
+# binary it cannot execute and finding out at the verification step.
 detect_arch() {
     local os="$1"
+    local machine
 
     case "$os" in
-        linux)   echo "x86-64" ;;
+        linux)
+            machine="$(uname -m)"
+
+            case "$machine" in
+                x86_64|amd64) echo "x86-64" ;;
+                *) error_exit "Unsupported architecture: ${machine} (the Linux binary is x86-64 only)" ;;
+            esac
+            ;;
         macos)
             if ! is_apple_silicon; then
                 error_exit "Intel Macs are not supported (the macOS binary is arm64 only)"
