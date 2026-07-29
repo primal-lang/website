@@ -40,7 +40,6 @@ if [[ "${LC_ALL}${LC_CTYPE}${LANG}" == *[Uu][Tt][Ff]* ]] || \
    [[ "$(locale charmap 2>/dev/null)" == *[Uu][Tt][Ff]* ]]; then
     GLYPH_TOP='┌'
     GLYPH_BAR='│'
-    GLYPH_END='└'
     GLYPH_PENDING='◇'
     GLYPH_DONE='◆'
     GLYPH_FILL='█'
@@ -49,7 +48,6 @@ if [[ "${LC_ALL}${LC_CTYPE}${LANG}" == *[Uu][Tt][Ff]* ]] || \
 else
     GLYPH_TOP='+'
     GLYPH_BAR='|'
-    GLYPH_END='`'
     GLYPH_PENDING='o'
     GLYPH_DONE='+'
     GLYPH_FILL='#'
@@ -145,66 +143,48 @@ rail_error_detail() {
     rail_detail_in "$RED" "$1"
 }
 
-rail_close() {
-    printf '%b%s%b  %s\n' "$1" "$GLYPH_END" "$NC" "$2" >&2
+# The detail of the rail's last row. Nothing follows it, so it is indented to
+# the same column instead of hanging off a bar.
+rail_last_detail() {
+    printf '   %b%s%b\n' "$DIM" "$1" "$NC" >&2
 }
 
-rail_end() {
-    rail_close "$GREEN" "$1"
-}
-
-rail_end_failed() {
-    rail_close "$RED" "$1"
+rail_node_in() {
+    printf '%b%s%b  %s\n' "$1" "$GLYPH_DONE" "$NC" "$2" >&2
 }
 
 # A plain filled node: a row that states something rather than reporting the
 # outcome of a step, so there is nothing here to succeed or fail.
 rail_node() {
-    printf '%b%s%b  %s\n' "$GREEN" "$GLYPH_DONE" "$NC" "$1" >&2
+    rail_node_in "$GREEN" "$1"
 }
 
-# The rail's last row: the follow-up commands, listed underneath it. Nothing
-# follows them, so they are indented to the same column instead of hanging off
-# a bar.
+# The row the rail ends on when the installer gives up.
+rail_node_failed() {
+    rail_node_in "$RED" "$1"
+}
+
+# The rail's last row: the command to run next, printed underneath it.
 rail_next_steps() {
-    local line
-
     rail_node "Next"
-
-    for line in "$@"; do
-        printf '   %b%s%b\n' "$DIM" "$line" "$NC" >&2
-    done
+    rail_last_detail "$1"
 }
 
-# Aborts the installer. The first argument states the failure and any further
-# arguments are printed underneath it as context. Once the rail is open the
-# failure is reported as part of it, so the output always ends with a closed rail.
+# Aborts the installer, stating why. Once the rail is open the failure is
+# reported as part of it: the step that was running settles as failed, the
+# message becomes its detail, and the rail ends on a row stating the outcome.
 error_exit() {
     local message="$1"
-    local line
-    shift
 
     if [[ "$RAIL_STARTED" == true ]]; then
         if [[ "$RAIL_STEP_OPEN" == true ]]; then
             rail_step_failed
         fi
         rail_error_detail "$message"
+        rail_gap
+        rail_node_failed "$FAILURE_SUMMARY"
     else
         printf '%bError: %s%b\n' "$RED" "$message" "$NC" >&2
-    fi
-
-    for line in "$@"; do
-        if [[ -n "$line" ]]; then
-            if [[ "$RAIL_STARTED" == true ]]; then
-                rail_detail "$line"
-            else
-                printf '%s\n' "$line" >&2
-            fi
-        fi
-    done
-
-    if [[ "$RAIL_STARTED" == true ]]; then
-        rail_end_failed "$FAILURE_SUMMARY"
     fi
 
     exit 1
@@ -273,8 +253,7 @@ detect_arch() {
         linux)   echo "x86-64" ;;
         macos)
             if ! is_apple_silicon; then
-                error_exit "Intel Macs are not supported" \
-                    "The macOS binary is built for Apple Silicon (arm64) only."
+                error_exit "Intel Macs are not supported (the macOS binary is arm64 only)"
             fi
             echo "arm64"
             ;;
@@ -380,11 +359,14 @@ download_file() {
     fi
 }
 
+# Downloaders are kept silent about their own failures: a message of theirs
+# would be printed straight into the middle of the rail, over the step that is
+# still open. Callers report the failure themselves once the step is settled.
 fetch_url() {
     local url="$1"
 
     if has_command curl; then
-        curl -fsSL "$url"
+        curl -fsL "$url"
     elif has_command wget; then
         wget -qO- "$url"
     else
@@ -434,12 +416,9 @@ github_api_error_exit() {
         403|429)
             rail_step_failed
             rail_error_detail "GitHub API rate limit exceeded (HTTP ${status})"
-            rail_detail "Unauthenticated requests are limited to 60 per hour per IP address."
             rail_gap
-            rail_detail "Wait for the limit to reset, or install a specific version:"
-            rail_detail "  install.sh --version <version>"
-            rail_detail "  https://github.com/${GITHUB_REPO}/releases"
-            rail_end_failed "$FAILURE_SUMMARY"
+            rail_node_failed "$FAILURE_SUMMARY"
+            rail_last_detail "retry later"
             exit 1
             ;;
         404)
@@ -595,10 +574,11 @@ download_binary() {
 
     if ! download_file "$download_url" "$DOWNLOAD_FILE"; then
         # The downloader's own last words, if it had any, explain the failure
-        # far better than the URL alone does.
+        # far better than a generic message does. wget is run quietly and can
+        # leave nothing behind, hence the fallback.
         reason=$(grep -v '^[[:space:]]*$' "$DOWNLOAD_ERROR_LOG" 2>/dev/null | tail -1)
         rm -f "$DOWNLOAD_FILE" "$DOWNLOAD_ERROR_LOG"
-        error_exit "Failed to download from ${download_url}" "$reason"
+        error_exit "${reason:-Failed to download v${version}}"
     fi
 
     rm -f "$DOWNLOAD_ERROR_LOG"
@@ -703,7 +683,7 @@ main() {
     local installed_version
     local installed_path
     local config_file
-    local next_steps=()
+    local next_step
 
     # Parse command line arguments
     while [[ $# -gt 0 ]]; do
@@ -783,7 +763,7 @@ main() {
 
     # Check if already up to date
     if [[ "$installed_version" == "$target_version" ]]; then
-        rail_end "Already up to date (v${target_version})"
+        rail_node "Already up to date (v${target_version})"
         exit 0
     fi
 
@@ -828,14 +808,17 @@ main() {
     rail_detail "$VERIFIED_VERSION"
     rail_gap
 
-    if [[ "$PATH_WAS_MODIFIED" == true ]]; then
-        next_steps+=("source $(display_path "$config_file")")
+    if [[ "$os" == "windows" ]]; then
+        next_step="${BINARY_NAME}.exe --version"
+    else
+        next_step="${BINARY_NAME} --version"
     fi
 
-    if [[ "$os" == "windows" ]]; then
-        next_steps+=("${BINARY_NAME}.exe --version")
-    else
-        next_steps+=("${BINARY_NAME} --version")
+    # Sourcing the shell config is only worth suggesting when the installer
+    # just changed it, and is chained onto the version check so the rail's last
+    # row stays a single line.
+    if [[ "$PATH_WAS_MODIFIED" == true ]]; then
+        next_step="source $(display_path "$config_file") && ${next_step}"
     fi
 
     if [[ -n "$installed_version" ]]; then
@@ -847,7 +830,7 @@ main() {
     fi
     rail_gap
 
-    rail_next_steps "${next_steps[@]}"
+    rail_next_steps "$next_step"
 }
 
 main "$@"
