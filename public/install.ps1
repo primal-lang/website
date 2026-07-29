@@ -165,6 +165,9 @@ $script:RAIL_PROGRESS_OPEN = $false
 $script:RAIL_STEP_LABEL = ""
 $script:FAILURE_SUMMARY = "Installation failed"
 
+# Where a failure the installer cannot suggest a way out of sends the user.
+$script:FAILURE_HINT = "https://github.com/primal-lang/sdk/issues/new"
+
 function Start-Rail {
     param([string]$Title)
 
@@ -299,11 +302,18 @@ function Stop-Installer {
 
 # Reports a failure, stating why. Once the rail is open the failure is reported
 # as part of it: the step that was running settles as failed, the message
-# becomes its detail, and the rail ends on a row stating the outcome.
+# becomes its detail, and the rail ends on a row stating the outcome with the
+# way out underneath it. Callers that know of a way out better than reporting
+# the failure pass it as the hint.
 function Write-Failure {
     param(
-        [Parameter(Mandatory = $true)][string]$Message
+        [Parameter(Mandatory = $true)][string]$Message,
+        [string]$Hint
     )
+
+    if (-not $Hint) {
+        $Hint = $script:FAILURE_HINT
+    }
 
     if ($script:RAIL_STARTED) {
         if ($script:RAIL_STEP_OPEN) {
@@ -313,6 +323,7 @@ function Write-Failure {
         Write-RailErrorDetail $Message
         Write-RailGap
         Write-RailNode $script:FAILURE_SUMMARY -Failed
+        Write-RailLastDetail $Hint
     } else {
         Write-Host "Error: $Message" -ForegroundColor $script:COLOR_RED
     }
@@ -321,10 +332,11 @@ function Write-Failure {
 # Reports a failure and aborts.
 function Exit-WithError {
     param(
-        [Parameter(Mandatory = $true)][string]$Message
+        [Parameter(Mandatory = $true)][string]$Message,
+        [string]$Hint
     )
 
-    Write-Failure -Message $Message
+    Write-Failure -Message $Message -Hint $Hint
     Stop-Installer
 }
 
@@ -547,21 +559,16 @@ function Exit-GitHubApiError {
 
     switch ($Status) {
         { $_ -eq 403 -or $_ -eq 429 } {
-            Close-RailStep -Failed
-            Write-RailErrorDetail "GitHub API rate limit exceeded (HTTP $Status)"
-            Write-RailGap
-            Write-RailNode $script:FAILURE_SUMMARY -Failed
-            Write-RailLastDetail "retry later"
-            Stop-Installer
+            Exit-WithError "GitHub API rate limit exceeded (HTTP $Status)" -Hint "retry later"
         }
         404 {
             Exit-WithError "No releases found for $script:GITHUB_REPO (HTTP 404)"
         }
         0 {
-            Exit-WithError "Could not reach GitHub. Please check your internet connection."
+            Exit-WithError "Could not reach GitHub" -Hint "check your internet connection"
         }
         default {
-            Exit-WithError "Failed to fetch latest release information from GitHub (HTTP $Status)"
+            Exit-WithError "Failed to fetch latest release information from GitHub (HTTP $Status)" -Hint "retry later"
         }
     }
 }
@@ -693,7 +700,7 @@ function Save-Binary {
     # generic message does.
     if ($reason) {
         Remove-Item $script:DOWNLOAD_FILE -Force -ErrorAction SilentlyContinue
-        Exit-WithError $reason
+        Exit-WithError $reason -Hint "retry, or pick a release with -Version"
     }
 
     $script:DOWNLOAD_SIZE = Format-FileSize ((Get-Item $script:DOWNLOAD_FILE).Length)
@@ -841,7 +848,7 @@ function Main {
         # download URL, so a failed parse is caught here rather than by the
         # download itself.
         if ($targetVersion -notmatch '^\d+\.\d+\.\d+') {
-            Exit-WithError "Failed to determine latest version"
+            Exit-WithError "Failed to determine latest version" -Hint "install a specific release with -Version"
         }
         Close-RailStep
     }
@@ -851,6 +858,7 @@ function Main {
     # Check if already up to date
     if ($installedVersion -eq $targetVersion) {
         Write-RailNode "Already up to date (v$targetVersion)"
+        Write-RailLastDetail (Get-DisplayPath (Join-Path $script:INSTALL_DIR $script:BINARY_FILE))
         Stop-Installer
     }
 
@@ -889,7 +897,7 @@ function Main {
     Write-RailGap
     Write-RailStep "Verified"
     if (-not (Test-Installation)) {
-        Exit-WithError "Installation verification failed. Please check the installation manually."
+        Exit-WithError "Installation verification failed" -Hint "check $(Get-DisplayPath (Join-Path $script:INSTALL_DIR $script:BINARY_FILE))"
     }
     Close-RailStep
     Write-RailDetail $script:VERIFIED_VERSION
