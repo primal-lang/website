@@ -489,37 +489,73 @@ path_contains_install_dir() {
     echo "$PATH" | tr ':' '\n' | grep -q "^${INSTALL_DIR}$"
 }
 
-get_shell_config_file() {
-    local shell_name
-    shell_name="$(basename "$SHELL")"
+# The user's shell, the file its PATH entry belongs in, and the syntax that file
+# needs. Settled once, after the install directory is final, so that everything
+# reading or writing the entry agrees on which file it lives in. Picking a file
+# the shell never reads would leave the installer reporting a PATH change that
+# never takes effect, so the shell's actual startup order decides, not the name
+# of its rc file.
+SHELL_NAME=""
+SHELL_CONFIG_FILE=""
+SHELL_CONFIG_KIND=""
 
-    case "$shell_name" in
+resolve_shell_config_file() {
+    local os="$1"
+    local candidate
+
+    SHELL_NAME="$(basename "$SHELL")"
+    SHELL_CONFIG_KIND="posix"
+
+    case "$SHELL_NAME" in
         bash)
-            if [[ -f "${HOME}/.bashrc" ]]; then
-                echo "${HOME}/.bashrc"
-            elif [[ -f "${HOME}/.bash_profile" ]]; then
-                echo "${HOME}/.bash_profile"
+            # A macOS terminal starts a login shell, which reads the first of
+            # .bash_profile, .bash_login and .profile that exists and never
+            # touches .bashrc. Everywhere else a terminal starts an interactive
+            # non-login shell, which reads .bashrc alone, so that is the file to
+            # write even when it has to be created.
+            if [[ "$os" == "macos" ]]; then
+                SHELL_CONFIG_FILE="${HOME}/.bash_profile"
+
+                for candidate in .bash_profile .bash_login .profile; do
+                    if [[ -f "${HOME}/${candidate}" ]]; then
+                        SHELL_CONFIG_FILE="${HOME}/${candidate}"
+                        break
+                    fi
+                done
             else
-                echo "${HOME}/.bashrc"
+                SHELL_CONFIG_FILE="${HOME}/.bashrc"
             fi
             ;;
         zsh)
-            echo "${HOME}/.zshrc"
+            # zsh takes its startup files from ZDOTDIR when that is set, so
+            # ~/.zshrc is not always the file it will look at.
+            SHELL_CONFIG_FILE="${ZDOTDIR:-$HOME}/.zshrc"
             ;;
         fish)
-            echo "${HOME}/.config/fish/config.fish"
+            SHELL_CONFIG_FILE="${HOME}/.config/fish/config.fish"
+            SHELL_CONFIG_KIND="fish"
+            ;;
+        csh|tcsh)
+            # The csh family reads neither .profile nor POSIX 'export' syntax,
+            # so there is nothing here this installer can usefully write. The
+            # line is reported for the user to add instead of being written
+            # somewhere it would silently do nothing.
+            SHELL_CONFIG_FILE="${HOME}/.${SHELL_NAME}rc"
+            SHELL_CONFIG_KIND="unsupported"
             ;;
         *)
-            echo "${HOME}/.profile"
+            # sh, dash, ksh and the like: .profile is read and 'export' parses.
+            SHELL_CONFIG_FILE="${HOME}/.profile"
             ;;
     esac
 }
 
+# The line a shell this installer cannot configure needs instead.
+csh_export_line() {
+    printf 'setenv PATH "%s:$PATH"' "$INSTALL_DIR"
+}
+
 add_to_path() {
-    local config_file
-    config_file="$(get_shell_config_file)"
-    local shell_name
-    shell_name="$(basename "$SHELL")"
     local path_export_line
     local fish_export_line
 
@@ -528,24 +564,24 @@ add_to_path() {
     fish_export_line="set -gx PATH \"${INSTALL_DIR}\" \$PATH"
 
     # Check if our exact PATH entry already exists in config file
-    if [[ -f "$config_file" ]]; then
-        if grep -qF "$path_export_line" "$config_file" 2>/dev/null || \
-           grep -qF "$fish_export_line" "$config_file" 2>/dev/null; then
+    if [[ -f "$SHELL_CONFIG_FILE" ]]; then
+        if grep -qF "$path_export_line" "$SHELL_CONFIG_FILE" 2>/dev/null || \
+           grep -qF "$fish_export_line" "$SHELL_CONFIG_FILE" 2>/dev/null; then
             return 0
         fi
     fi
 
     # Create config file directory if needed (for fish)
-    mkdir -p "$(dirname "$config_file")"
+    mkdir -p "$(dirname "$SHELL_CONFIG_FILE")"
 
     # Add PATH entry based on shell type
-    echo "" >> "$config_file"
-    echo "# Added by Primal SDK installer" >> "$config_file"
+    echo "" >> "$SHELL_CONFIG_FILE"
+    echo "# Added by Primal SDK installer" >> "$SHELL_CONFIG_FILE"
 
-    if [[ "$shell_name" == "fish" ]]; then
-        echo "$fish_export_line" >> "$config_file"
+    if [[ "$SHELL_CONFIG_KIND" == "fish" ]]; then
+        echo "$fish_export_line" >> "$SHELL_CONFIG_FILE"
     else
-        echo "$path_export_line" >> "$config_file"
+        echo "$path_export_line" >> "$SHELL_CONFIG_FILE"
     fi
 
     PATH_WAS_MODIFIED=true
@@ -553,10 +589,7 @@ add_to_path() {
 
 # Returns non-zero when there was no shell config file to clean up.
 remove_from_path() {
-    local config_file
-    config_file="$(get_shell_config_file)"
-
-    if [[ ! -f "$config_file" ]]; then
+    if [[ ! -f "$SHELL_CONFIG_FILE" ]]; then
         return 1
     fi
 
@@ -565,11 +598,11 @@ remove_from_path() {
     temp_file=$(mktemp)
 
     # Remove the Primal PATH entries (using fixed string matching for exactness)
-    grep -vF "# Added by Primal SDK installer" "$config_file" | \
+    grep -vF "# Added by Primal SDK installer" "$SHELL_CONFIG_FILE" | \
     grep -vF "export PATH=\"${INSTALL_DIR}:\$PATH\"" | \
     grep -vF "set -gx PATH \"${INSTALL_DIR}\" \$PATH" > "$temp_file" || true
 
-    mv "$temp_file" "$config_file"
+    mv "$temp_file" "$SHELL_CONFIG_FILE"
 }
 
 # ============================================================================
@@ -633,10 +666,7 @@ verify_installation() {
 # ============================================================================
 
 uninstall() {
-    local config_file
     local removed_version
-
-    config_file=$(get_shell_config_file)
 
     # Read before the binary goes away, so the summary can name what was removed.
     removed_version=$(get_installed_version)
@@ -660,10 +690,10 @@ uninstall() {
     rail_step "Shell PATH"
     if remove_from_path; then
         rail_step_done
-        rail_detail "entry removed from $(display_path "$config_file")"
+        rail_detail "entry removed from $(display_path "$SHELL_CONFIG_FILE")"
     else
         rail_step_failed
-        rail_error_detail "no shell config file at $(display_path "$config_file")"
+        rail_error_detail "no shell config file at $(display_path "$SHELL_CONFIG_FILE")"
     fi
     rail_gap
 
@@ -690,7 +720,6 @@ main() {
     local os
     local arch
     local installed_version
-    local config_file
     local next_step
 
     # Parse command line arguments
@@ -723,10 +752,12 @@ main() {
         esac
     done
 
-    # Settled before anything looks for an installed binary, and only once the
-    # options are parsed because --install-dir moves where it lives.
+    # Settled before anything looks for an installed binary or its PATH entry,
+    # and only once the options are parsed because --install-dir moves where both
+    # of them live.
     os=$(detect_os)
     resolve_binary_path "$os"
+    resolve_shell_config_file "$os"
 
     # Handle uninstall
     if [[ "$do_uninstall" == true ]]; then
@@ -740,7 +771,6 @@ main() {
     fi
 
     arch=$(detect_arch "$os")
-    config_file=$(get_shell_config_file)
 
     rail_start "Primal SDK"
     rail_gap
@@ -793,21 +823,29 @@ main() {
     rail_step_done
     rail_detail "$(display_path "$BINARY_PATH")"
 
-    # Update PATH if needed (only on fresh install)
-    if [[ -z "$installed_version" ]]; then
-        rail_gap
-        rail_step "Shell PATH"
-        if path_contains_install_dir; then
-            rail_step_done
-            rail_detail "already contains $(display_path "$INSTALL_DIR")"
+    # Update PATH if needed. Checked on upgrades too, not just fresh installs: an
+    # entry that never persisted, or that the user removed, is repaired here
+    # rather than staying broken until the next fresh install. Nothing is written
+    # when the directory is already reachable or the line is already in the file.
+    rail_gap
+    rail_step "Shell PATH"
+    if path_contains_install_dir; then
+        rail_step_done
+        rail_detail "already contains $(display_path "$INSTALL_DIR")"
+    elif [[ "$SHELL_CONFIG_KIND" == "unsupported" ]]; then
+        # Only this step failed, so the rail carries on to report the install
+        # that did succeed. What the installer could not do is left as
+        # instructions rather than written somewhere the shell would ignore.
+        rail_step_failed
+        rail_error_detail "${SHELL_NAME} needs this line in $(display_path "$SHELL_CONFIG_FILE"):"
+        rail_error_detail "$(csh_export_line)"
+    else
+        add_to_path
+        rail_step_done
+        if [[ "$PATH_WAS_MODIFIED" == true ]]; then
+            rail_detail "added to $(display_path "$SHELL_CONFIG_FILE")"
         else
-            add_to_path
-            rail_step_done
-            if [[ "$PATH_WAS_MODIFIED" == true ]]; then
-                rail_detail "added to $(display_path "$config_file")"
-            else
-                rail_detail "already configured in $(display_path "$config_file")"
-            fi
+            rail_detail "already configured in $(display_path "$SHELL_CONFIG_FILE")"
         fi
     fi
 
@@ -827,7 +865,7 @@ main() {
     # just changed it, and is chained onto the version check so the rail's last
     # row stays a single line.
     if [[ "$PATH_WAS_MODIFIED" == true ]]; then
-        next_step="source $(display_path "$config_file") && ${next_step}"
+        next_step="source $(display_path "$SHELL_CONFIG_FILE") && ${next_step}"
     fi
 
     if [[ -n "$installed_version" ]]; then
