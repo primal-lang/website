@@ -104,7 +104,6 @@ catch {
 if ($script:GLYPH_UNICODE) {
     $script:GLYPH_TOP = [string][char]0x250C     # top left corner
     $script:GLYPH_BAR = [string][char]0x2502     # vertical bar
-    $script:GLYPH_END = [string][char]0x2514     # bottom left corner
     $script:GLYPH_PENDING = [string][char]0x25C7 # hollow diamond
     $script:GLYPH_DONE = [string][char]0x25C6    # filled diamond
     $script:GLYPH_FILL = [string][char]0x2588    # full block
@@ -113,7 +112,6 @@ if ($script:GLYPH_UNICODE) {
 } else {
     $script:GLYPH_TOP = "+"
     $script:GLYPH_BAR = "|"
-    $script:GLYPH_END = "``"
     $script:GLYPH_PENDING = "o"
     $script:GLYPH_DONE = "+"
     $script:GLYPH_FILL = "#"
@@ -258,38 +256,35 @@ function Write-RailErrorDetail {
     Write-RailDetailLine -Text $Text -Color $script:COLOR_RED
 }
 
-function Close-Rail {
+# The detail of the rail's last row. Nothing follows it, so it is indented to
+# the same column instead of hanging off a bar.
+function Write-RailLastDetail {
+    param([string]$Text)
+
+    Write-Host "   $Text" -ForegroundColor $script:COLOR_DIM
+}
+
+# A plain filled node: a row that states something rather than reporting the
+# outcome of a step, so there is nothing here to succeed or fail. The failed
+# form is the row the rail ends on when the installer gives up.
+function Write-RailNode {
     param(
-        [string]$Message,
+        [string]$Text,
         [switch]$Failed
     )
 
     $color = if ($Failed) { $script:COLOR_RED } else { $script:COLOR_GREEN }
 
-    Write-Host $script:GLYPH_END -ForegroundColor $color -NoNewline
-    Write-Host "  $Message"
-}
-
-# A plain filled node: a row that states something rather than reporting the
-# outcome of a step, so there is nothing here to succeed or fail.
-function Write-RailNode {
-    param([string]$Text)
-
-    Write-Host $script:GLYPH_DONE -ForegroundColor $script:COLOR_GREEN -NoNewline
+    Write-Host $script:GLYPH_DONE -ForegroundColor $color -NoNewline
     Write-Host "  $Text"
 }
 
-# The rail's last row: the follow-up commands, listed underneath it. Nothing
-# follows them, so they are indented to the same column instead of hanging off
-# a bar.
+# The rail's last row: the command to run next, printed underneath it.
 function Write-RailNextSteps {
-    param([string[]]$Steps)
+    param([string]$Step)
 
     Write-RailNode "Next"
-
-    foreach ($step in $Steps) {
-        Write-Host "   $step" -ForegroundColor $script:COLOR_DIM
-    }
+    Write-RailLastDetail $Step
 }
 
 # Ends the run. The documented command pipes this script into iex, which runs
@@ -302,13 +297,12 @@ function Stop-Installer {
     throw $script:EXIT_SENTINEL
 }
 
-# Reports a failure. The message states it and any details are printed
-# underneath as context. Once the rail is open the failure is reported as part
-# of it, so the output always ends with a closed rail.
+# Reports a failure, stating why. Once the rail is open the failure is reported
+# as part of it: the step that was running settles as failed, the message
+# becomes its detail, and the rail ends on a row stating the outcome.
 function Write-Failure {
     param(
-        [Parameter(Mandatory = $true)][string]$Message,
-        [string[]]$Detail = @()
+        [Parameter(Mandatory = $true)][string]$Message
     )
 
     if ($script:RAIL_STARTED) {
@@ -317,33 +311,20 @@ function Write-Failure {
         }
 
         Write-RailErrorDetail $Message
+        Write-RailGap
+        Write-RailNode $script:FAILURE_SUMMARY -Failed
     } else {
         Write-Host "Error: $Message" -ForegroundColor $script:COLOR_RED
-    }
-
-    foreach ($line in $Detail) {
-        if ($line) {
-            if ($script:RAIL_STARTED) {
-                Write-RailDetail $line
-            } else {
-                Write-Host $line
-            }
-        }
-    }
-
-    if ($script:RAIL_STARTED) {
-        Close-Rail -Message $script:FAILURE_SUMMARY -Failed
     }
 }
 
 # Reports a failure and aborts.
 function Exit-WithError {
     param(
-        [Parameter(Mandatory = $true)][string]$Message,
-        [string[]]$Detail = @()
+        [Parameter(Mandatory = $true)][string]$Message
     )
 
-    Write-Failure -Message $Message -Detail $Detail
+    Write-Failure -Message $Message
     Stop-Installer
 }
 
@@ -405,12 +386,11 @@ function Get-ProcessorArchitecture {
 # cannot run.
 function Get-Architecture {
     $architecture = Get-ProcessorArchitecture
-    $detail = "The Windows binary is built for x86-64 only."
 
     switch ($architecture) {
         "AMD64" { return "x86-64" }
-        "x86" { Exit-WithError "32-bit Windows is not supported" $detail }
-        default { Exit-WithError "Unsupported architecture: $architecture" $detail }
+        "x86" { Exit-WithError "32-bit Windows is not supported (the Windows binary is x86-64 only)" }
+        default { Exit-WithError "Unsupported architecture: $architecture (the Windows binary is x86-64 only)" }
     }
 }
 
@@ -569,12 +549,9 @@ function Exit-GitHubApiError {
         { $_ -eq 403 -or $_ -eq 429 } {
             Close-RailStep -Failed
             Write-RailErrorDetail "GitHub API rate limit exceeded (HTTP $Status)"
-            Write-RailDetail "Unauthenticated requests are limited to 60 per hour per IP address."
             Write-RailGap
-            Write-RailDetail "Wait for the limit to reset, or install a specific version:"
-            Write-RailDetail "  install.ps1 -Version <version>"
-            Write-RailDetail "  https://github.com/$script:GITHUB_REPO/releases"
-            Close-Rail -Message $script:FAILURE_SUMMARY -Failed
+            Write-RailNode $script:FAILURE_SUMMARY -Failed
+            Write-RailLastDetail "retry later"
             Stop-Installer
         }
         404 {
@@ -712,9 +689,11 @@ function Save-Binary {
 
     $reason = Invoke-Download -Url $downloadUrl -OutFile $script:DOWNLOAD_FILE
 
+    # The downloader's own last words explain the failure far better than a
+    # generic message does.
     if ($reason) {
         Remove-Item $script:DOWNLOAD_FILE -Force -ErrorAction SilentlyContinue
-        Exit-WithError "Failed to download from $downloadUrl" $reason
+        Exit-WithError $reason
     }
 
     $script:DOWNLOAD_SIZE = Format-FileSize ((Get-Item $script:DOWNLOAD_FILE).Length)
@@ -871,7 +850,7 @@ function Main {
 
     # Check if already up to date
     if ($installedVersion -eq $targetVersion) {
-        Close-Rail -Message "Already up to date (v$targetVersion)"
+        Write-RailNode "Already up to date (v$targetVersion)"
         Stop-Installer
     }
 
