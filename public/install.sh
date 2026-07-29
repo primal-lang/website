@@ -623,6 +623,17 @@ remove_from_path() {
 DOWNLOAD_FILE=""
 DOWNLOAD_SIZE=""
 
+# The download lands in the install directory rather than a temporary one, so
+# anything that ends the installer before the move would leave it sitting next
+# to the binary. Once the move has happened there is nothing left to remove.
+cleanup_download() {
+    if [[ -n "$DOWNLOAD_FILE" ]]; then
+        rm -f "$DOWNLOAD_FILE"
+    fi
+}
+
+trap cleanup_download EXIT
+
 download_binary() {
     local version="$1"
     local os="$2"
@@ -630,7 +641,20 @@ download_binary() {
     local download_url="https://github.com/${GITHUB_REPO}/raw/refs/tags/v${version}/bin/${BINARY_NAME}-${os}-${arch}"
     local reason=""
 
-    DOWNLOAD_FILE=$(mktemp)
+    # Downloaded into the install directory so that installing the binary is a
+    # rename within one filesystem, which is atomic. A move across filesystems
+    # copies over the destination instead, leaving a window in which the binary
+    # is missing or half written — and 'primal --update' opens that window over
+    # a working installation, since the binary being replaced is the one running
+    # the installer. GNU mv survives that case by unlinking the destination and
+    # retrying; an implementation that does not fails outright against a running
+    # binary with "Text file busy". mkdir's own complaint would be printed into
+    # the middle of the open step, so it is silenced and reported as the step's
+    # failure.
+    mkdir -p "$INSTALL_DIR" 2>/dev/null ||
+        error_exit "Could not create $(display_path "$INSTALL_DIR")"
+
+    DOWNLOAD_FILE=$(mktemp "${INSTALL_DIR}/.${BINARY_NAME}.XXXXXX")
     DOWNLOAD_ERROR_LOG=$(mktemp)
 
     if ! download_file "$download_url" "$DOWNLOAD_FILE"; then
@@ -647,10 +671,9 @@ download_binary() {
 }
 
 install_binary() {
-    # Create install directory if it doesn't exist
-    mkdir -p "${INSTALL_DIR}"
-
-    # Move binary to install location
+    # A rename inside the install directory, which the download step has already
+    # created: the binary it replaces is swapped out in one step, never emptied
+    # and refilled.
     mv "$DOWNLOAD_FILE" "$BINARY_PATH"
 
     # Set executable permission
