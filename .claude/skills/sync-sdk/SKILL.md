@@ -47,7 +47,47 @@ The version string appears as `<version> (<codename>)` in exactly two places:
 
 Search for the old version pattern (e.g. `0.4.0`) and replace with the new one. Note that `versions/index.html` does **not** contain a changelog list — it only links to the changelog on GitHub, so there are no release notes to add there.
 
-### 4. Update Reference Documentation
+### 4. Sync Narrative Pages
+
+`README.md` is the upstream copy for the two prose pages. Nothing generates them, so they drift as
+silently as the highlighting map. Do this yourself rather than in a subagent — it needs judgement
+about which differences are deliberate.
+
+| README section     | Website section                                      |
+| ------------------ | ---------------------------------------------------- |
+| Overview           | `public/overview/index.html` — "What is Primal?"     |
+| Goal               | `public/overview/index.html` — "Goal"                |
+| Technical envelope | `public/overview/index.html` — "Technical envelope"  |
+| Philosophy         | `public/overview/index.html` — "Design principles"   |
+| Getting started    | `public/start/index.html` — "Installation"           |
+| Syntax             | `public/start/index.html` — "Syntax"                 |
+| Main function      | `public/start/index.html` — "Main function"          |
+| Typing system      | `public/start/index.html` — "Typing system"          |
+| Runtime            | `public/start/index.html` — "Runtime"                |
+
+RULES:
+
+- Sync **substance, not wording or markup**. The pages have their own conventions: sentence-case
+  headings, the language name wrapped as `<span class="tagged">Primal</span>`, links as
+  `<a class="custom-link">`, and code shown through `setSampleCode('sampleX', '...')` at the bottom
+  of the file (same escaping rules as the reference pages) instead of fenced blocks. Never
+  restructure a page to match the README's shape.
+- The website is deliberately a **superset** in places — "Technical envelope" lists `Lazy evaluated`
+  and `Immutable` which the README omits, and `start` has a website-only "Functions" section. Do not
+  delete page content just because the README lacks it; report it instead.
+- Closed lists **must** match: the runtime types under "Typing system" have to equal the README's
+  set, since a release is where types get added. The `Primitives / Collections / Temporal /
+  Filesystem` grouping is a website convention, so only the set of types matters — and confirm a
+  type is real (SDK source or playground) before adding it, rather than trusting the README.
+- Installation: the curl command must match what `public/install.sh` actually does — the site hosts
+  the installer the README points at. If the README documents installer behaviour the page omits
+  (today: `primal --update` / `primal --uninstall`), verify it against `public/install.sh` and add it.
+- Where a README example and the page disagree (e.g. `pi() = 3.14159;` vs `pi = 3.14159`), do not
+  just copy — run both in the playground and keep whichever compiles on the new release.
+- Do not touch `<head>`, meta tags, JSON-LD, or the navbar. The three cards on `public/index.html`
+  are website-authored, not README-derived — leave them alone.
+
+### 5. Update Reference Documentation
 
 **IMPORTANT:** To minimize context window usage, spawn **parallel subagents** for each reference module. Each subagent only reads and processes ONE folder pair.
 
@@ -142,7 +182,7 @@ yourself rather than in a subagent, and exclude it from that subagent's scope to
    positioned to match the module order in `../primal-sdk/docs/lang/index.md`.
 3. Add a `<url>` entry to `public/sitemap.xml`.
 
-### 5. Sync Syntax Highlighting
+### 6. Sync Syntax Highlighting
 
 `public/js/highlight.js` contains a hardcoded regex map (`extras`) of every native function, used
 for syntax highlighting in both the playground and every reference code sample. It is **not**
@@ -161,7 +201,7 @@ shadow a longer one (`bool.and` will not swallow `bool.andStrict`).
 
 The only non-function keys are the language keywords `and`, `else`, `if`, `main`, `or`.
 
-### 6. Verify JavaScript Bindings
+### 7. Verify JavaScript Bindings
 
 Read `../primal-sdk/lib/main/main_web.dart` and check that all JavaScript annotations (e.g., `@JS('NAME')`) are aligned with the corresponding functions in `public/try/js/try.js`.
 
@@ -172,7 +212,7 @@ Read `../primal-sdk/lib/main/main_web.dart` and check that all JavaScript annota
   called in a `finally` to release it — otherwise the playground leaks on every keystroke.
   Registry ids start at `0`, so guard with `!== null`, never with truthiness.
 
-### 7. Sync Sample Programs
+### 8. Sync Sample Programs
 
 Compare sample files between the SDK and the website:
 
@@ -203,8 +243,10 @@ cd public && python3 -m http.server 8777
    (that exercises the second dispose call site).
 4. Edit the source many times in a row and confirm results stay correct with disposal active.
 5. Open a reference page for a newly added module and confirm the signature and example blocks
-   render with syntax highlighting (unhighlighted text means step 5 was missed).
-6. Check the browser console for errors.
+   render with syntax highlighting (unhighlighted text means step 6 was missed).
+6. Open `/overview/` and `/start/` and check them against the README, then paste each `start` code
+   sample into the playground to confirm it still compiles.
+7. Check the browser console for errors.
 
 A good scripted cross-check: parse every `**Signature:**` / `**Input:** `/ `**Output:** `/
 `**Example:**` from the SDK markdown, parse the `setSampleCode()` calls and Input/Output cells from
