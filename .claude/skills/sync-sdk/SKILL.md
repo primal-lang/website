@@ -17,6 +17,9 @@ Ensure the `../primal-sdk/` directory exists and contains the SDK.
 
 Read the following from the SDK repository to understand changes:
 
+- `../primal-sdk/README.md` — Upstream prose for the narrative pages: its sections map to
+  `public/overview/index.html` (Overview, Goal, Technical envelope, Philosophy → "Design principles")
+  and `public/start/index.html` (Getting started, Syntax, Main function, Typing system, Runtime)
 - `../primal-sdk/CHANGELOG.md` — Extract the latest version number and release notes
 - `../primal-sdk/docs/lang/reference` — Documentation for each module (used to update reference pages)
 - `../primal-sdk/lib/` — Source files to understand function signatures if needed
@@ -40,11 +43,9 @@ cp ../primal-sdk/output/primal.js public/try/js/primal.js
 The version string appears as `<version> (<codename>)` in exactly two places:
 
 - `public/versions/index.html` — inside the "The latest release of Primal is version ..." paragraph
-- `public/try/index.html` — the playground navbar title (`v0.5.1 (Bronze Axe)`)
+- `public/try/index.html` — the playground navbar title (`v0.5.0 (Bronze Axe)`)
 
-Search for the old version pattern (e.g. `0.5.0`) and replace with the new one. Note that
-`versions/index.html` does **not** contain a changelog list — it only links to the changelog on
-GitHub, so there are no release notes to add there.
+Search for the old version pattern (e.g. `0.4.0`) and replace with the new one. Note that `versions/index.html` does **not** contain a changelog list — it only links to the changelog on GitHub, so there are no release notes to add there.
 
 ### 4. Update Reference Documentation
 
