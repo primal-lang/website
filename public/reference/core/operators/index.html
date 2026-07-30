@@ -407,6 +407,24 @@
         <p class="reference-block-label">Example</p>
         <div id="operators.not.example" class="code-sample"></div>
 
+        <h2 class="text-white reference-title">Element at</h2>
+        <table class="reference-table">
+          <tbody>
+            <tr>
+              <th scope="row" class="border-bottom reference-table-title">Input</th>
+              <td class="border-bottom">An indexable argument (String, List or Map) and a hashable argument.</td>
+            </tr>
+            <tr>
+              <th scope="row" class="reference-table-title">Output</th>
+              <td>The element at the given position or key.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p class="reference-block-label">Symbol</p>
+        <div id="operators.at" class="code-sample"></div>
+        <p class="reference-block-label">Example</p>
+        <div id="operators.at.example" class="code-sample"></div>
+
       </div>
     </div>
   </div>
@@ -460,6 +478,11 @@
 
     setSampleCode('operators.not', '! // alias: not')
     setSampleCode('operators.not.example', '!true // returns false')
+
+    setSampleCode('operators.at', '@ // alias: a[b]')
+    setSampleCode('operators.at.example', `[10, 20, 30] @ 1 // returns 20
+"abc"[2] // returns "c"
+{"name": "Alice"}["name"] // returns "Alice"`)
   </script>
 
 </body>

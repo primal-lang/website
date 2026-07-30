@@ -123,6 +123,23 @@
                         where you can enter expressions and see the results of their evaluation.
                     </p>
 
+                    <p class="text-white justified-text">
+                        An installed binary maintains itself. To install the latest release over the current one:
+                    </p>
+
+                    <div id="sampleUpdate" class="code-sample"></div>
+
+                    <p class="text-white justified-text">
+                        To remove <span class="tagged">Primal</span> and its PATH entry:
+                    </p>
+
+                    <div id="sampleUninstall" class="code-sample"></div>
+
+                    <p class="text-white justified-text">
+                        Both flags must be used on their own, and require <span class="tagged">bash</span> to be
+                        available.
+                    </p>
+
                     <h2 class="text-white section-title">Functions</h2>
 
                     <p class="text-white justified-text">
@@ -174,6 +191,7 @@
                                 <li>Function calls: <span class="tagged">foo(x)</span>, <span
                                         class="tagged">bar(10)</span>, etc</li>
                                 <li>Conditionals: <span class="tagged">if (foo) bar else baz</span></li>
+                                <li>Let expressions: <span class="tagged">let x = 1 in x + 1</span></li>
                             </ul>
                         </li>
                     </ul>
@@ -316,6 +334,12 @@
                                 <span class="type-pill">Directory</span>
                             </div>
                         </div>
+                        <div>
+                            <div class="type-category-label">Functions</div>
+                            <div class="type-pills">
+                                <span class="type-pill">Function</span>
+                            </div>
+                        </div>
                     </div>
 
                     <h2 class="text-white section-title">Runtime</h2>
@@ -335,6 +359,11 @@
                         the need for a separate build step.
                     </p>
 
+                    <p class="text-white justified-text">
+                        The interpreter manages memory automatically through garbage collection, freeing developers from
+                        manual memory management.
+                    </p>
+
                 </div>
             </div>
         </div>
@@ -342,10 +371,12 @@
 
     <script type="module">
         setSampleCode('sampleRunProgram', 'primal program.prm')
+        setSampleCode('sampleUpdate', 'primal --update')
+        setSampleCode('sampleUninstall', 'primal --uninstall')
         setSampleCode('sampleNumberLiterals', '1_000_000\n3.14e-10')
         setSampleCode('sampleConditional', 'abs(n) = if (n < 0) -n else n')
-        setSampleCode('sampleFunctionWithParameters', 'cube(n) = pow(n, 3)')
-        setSampleCode('sampleFunctionWithoutParameters', 'pi = 3.14159')
+        setSampleCode('sampleFunctionWithParameters', 'cube(n) = num.pow(n, 3)')
+        setSampleCode('sampleFunctionWithoutParameters', 'pi() = 3.14159')
     </script>
 
 </body>

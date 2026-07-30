@@ -144,6 +144,7 @@ const basicProperties = (withExtras) => {
     Number: "custom-type",
     String: "custom-type",
     Timestamp: "custom-type",
+    Duration: "custom-type",
     List: "custom-type",
     Map: "custom-type",
     Set: "custom-type",
@@ -156,6 +157,9 @@ const basicProperties = (withExtras) => {
     HttpResponse: "custom-type",
     Error: "custom-type",
     Any: "custom-type",
+    Equatable: "custom-type",
+    Hashable: "custom-type",
+    Ordered: "custom-type",
 
     // main
     "main\\s": "custom-keyword",
@@ -169,6 +173,13 @@ const basicProperties = (withExtras) => {
 
     // error
     "error\\.throw\\s*(\?=\\()": "custom-native-function",
+
+    // assert
+    "assert\\.equal\\s*(\?=\\()": "custom-native-function",
+    "assert\\.notEqual\\s*(\?=\\()": "custom-native-function",
+    "assert\\.true\\s*(\?=\\()": "custom-native-function",
+    "assert\\.false\\s*(\?=\\()": "custom-native-function",
+    "assert\\.throws\\s*(\?=\\()": "custom-native-function",
 
     // comparison
     "comp\\.eq\\s*(\?=\\()": "custom-native-function",

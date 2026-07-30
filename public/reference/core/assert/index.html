@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description"
+        content="Primal assertion functions reference: write tests with assert.equal, assert.notEqual, assert.true, assert.false, and assert.throws." />
+    <title>Assertion Functions - Primal</title>
+    <link rel="canonical" href="https://primal-lang.org/reference/core/assert/" />
+    <meta property="og:site_name" content="Primal" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Assertion Functions - Primal" />
+    <meta property="og:description" content="Primal assertion functions reference: write tests with assert.equal, assert.notEqual, assert.true, assert.false, and assert.throws." />
+    <meta property="og:url" content="https://primal-lang.org/reference/core/assert/" />
+    <meta property="og:image" content="https://primal-lang.org/img/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Primal - a declarative, functional programming language" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Assertion Functions - Primal" />
+    <meta name="twitter:description" content="Primal assertion functions reference: write tests with assert.equal, assert.notEqual, assert.true, assert.false, and assert.throws." />
+
+    <script type="application/ld+json">
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Reference",
+              "item": "https://primal-lang.org/reference/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Assert",
+              "item": "https://primal-lang.org/reference/core/assert/"
+            }
+          ]
+        }
+    </script>
+
+    <link rel="icon" type="image/x-icon" href="../../../img/icon.png" />
+    <link rel="apple-touch-icon" href="../../../img/icon.png" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1a2c44" />
+    <meta name="author" content="Primal" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
+        crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
+        crossorigin="anonymous" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
+        crossorigin="anonymous" defer></script>
+
+    <link href="../../../css/highlight.css" rel="stylesheet" />
+    <link href="../../../css/template.css" rel="stylesheet" />
+
+    <script src="../../../js/site.js" defer></script>
+
+    <script src="../../../js/highlight.js" defer></script>
+
+    <link rel="preconnect" href="https://www.googletagmanager.com" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+        gtag('config', 'G-7BCHJ87ZG7');
+    </script>
+
+</head>
+
+<body class="page-background page-wrapper">
+
+    <nav class="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="../../../img/icon.png" alt="Primal" width="26" height="26" />
+                PRIMAL
+            </a>
+            <button type="button" class="navbar-toggler" aria-label="Toggle navigation"
+                aria-expanded="false" aria-controls="primary-nav">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                    <line x1="4" y1="6" x2="20" y2="6" />
+                    <line x1="4" y1="12" x2="20" y2="12" />
+                    <line x1="4" y1="18" x2="20" y2="18" />
+                </svg>
+            </button>
+            <ul class="navbar-nav" id="primary-nav">
+                <li class="nav-item"><a class="nav-link" href="../../../overview">Overview</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../start">Get started</a></li>
+                <li class="nav-item"><a class="nav-link selected-menu" aria-current="page" href="../../../reference">Reference</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../versions">Versions</a></li>
+                <li class="nav-item"><a class="nav-link" href="../../../feedback">Feedback</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content page-content">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+
+                    <a href="../.." class="text-decoration-none arrow-back">
+                        <svg xmlns="http://www.w3.org/2000/svg" height="16px" viewBox="0 -960 960 960" width="16px"
+                            fill="#e8eaed">
+                            <path d="M400-80 0-480l400-400 71 71-329 329 329 329-71 71Z" />
+                        </svg>Reference
+                    </a>
+
+                    <h1 class="text-white mb-4 page-title">Assert</h1>
+
+                    <noscript>
+                        <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
+                            see the signatures and examples.</p>
+                    </noscript>
+
+                    <h2 class="text-white reference-title">Assert equal</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">The actual value and the expected value.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>True if the two values are equal. Throws an assertion error otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="assert.equal" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="assert.equal.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Assert not equal</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">The actual value and the value it must differ from.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>True if the two values differ. Throws an assertion error otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="assert.notEqual" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="assert.notEqual.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Assert true</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">A boolean condition.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>True if the condition is true. Throws an assertion error otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="assert.true" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="assert.true.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Assert false</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">A boolean condition.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>True if the condition is false. Throws an assertion error otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="assert.false" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="assert.false.example" class="code-sample"></div>
+
+                    <h2 class="text-white reference-title">Assert throws</h2>
+                    <table class="reference-table">
+                        <tbody>
+                            <tr>
+                                <th scope="row" class="border-bottom reference-table-title">Input</th>
+                                <td class="border-bottom">An expression expected to raise an error.</td>
+                            </tr>
+                            <tr>
+                                <th scope="row" class="reference-table-title">Output</th>
+                                <td>True if evaluating the expression raises a runtime error. Throws an assertion error
+                                    otherwise.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <p class="reference-block-label">Signature</p>
+                    <div id="assert.throws" class="code-sample"></div>
+                    <p class="reference-block-label">Example</p>
+                    <div id="assert.throws.example" class="code-sample"></div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script type="module">
+        setSampleCode('assert.equal', 'assert.equal(a: Equatable, b: Equatable): Boolean')
+        setSampleCode('assert.equal.example', 'assert.equal(1 + 1, 2) // returns true\nassert.equal(3, 2)     // Assertion error: "assert.equal" failed: expected 2, actual 3')
+
+        setSampleCode('assert.notEqual', 'assert.notEqual(a: Equatable, b: Equatable): Boolean')
+        setSampleCode('assert.notEqual.example', 'assert.notEqual(1, 2) // returns true\nassert.notEqual(1, 1) // Assertion error: "assert.notEqual" failed: expected not 1, actual 1')
+
+        setSampleCode('assert.true', 'assert.true(a: Boolean): Boolean')
+        setSampleCode('assert.true.example', 'assert.true(str.startsWith("abc", "a")) // returns true\nassert.true(false)                      // Assertion error: "assert.true" failed: expected true, actual false')
+
+        setSampleCode('assert.false', 'assert.false(a: Boolean): Boolean')
+        setSampleCode('assert.false.example', 'assert.false(str.isEmpty("abc")) // returns true\nassert.false(true)               // Assertion error: "assert.false" failed: expected false, actual true')
+
+        setSampleCode('assert.throws', 'assert.throws(a: Any): Boolean')
+        setSampleCode('assert.throws.example', 'assert.throws(to.number("not a number")) // returns true\nassert.throws(42)                        // Assertion error: "assert.throws" failed: expected a thrown error, actual 42')
+    </script>
+
+</body>
+
+</html>
