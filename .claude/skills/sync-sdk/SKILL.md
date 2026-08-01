@@ -181,7 +181,8 @@ Read `../primal-sdk/lib/main/main_web.dart` and check that all JavaScript annota
 
 - If any annotations have changed or new ones were added, update `try.js` accordingly
 - Ensure function names in Dart match the JavaScript function names expected by the compiler
-- Check that every binding is actually _called_. `compileInput` / `intermediateRepresentationEmpty` allocate an entry in a compiler-side registry, and `disposeCode` / `disposeExpression` must be called in a `finally` to release it — otherwise the playground leaks on every keystroke. Registry ids start at `0`, so guard with `!== null`, never with truthiness.
+- Check that every binding is actually _called_. `compileInput` / `intermediateRepresentationEmpty` allocate an entry in a compiler-side registry, and `disposeCode` / `disposeExpression` must be called in a `finally` to release it — otherwise the playground leaks on every keystroke. Registry ids start at `0`, so guard with `!== null`, never with truthiness. `try.js` also keeps the last successful compile alive on purpose, for the console to evaluate against; that one is released when the next compile replaces it, not in a `finally`.
+- Confirm compiler errors still carry their position as `at [row, column]`. `GenericError` has no location field, so `try.js` reads the position out of the message text with the `ERROR_LOCATION` pattern to underline the offending token. Check `../primal-sdk/lib/compiler/models/location.dart` still formats as `[$row, $column]`, and that `lexical_error.dart` / `syntactic_error.dart` still interpolate a `Location` or a `Token` into their messages. A rewording here does not break anything loudly — the markers just stop appearing.
 
 ### 8. Sync Sample Programs
 
@@ -212,6 +213,7 @@ cd public && python3 -m http.server 8777
 4. Edit the source many times in a row and confirm results stay correct with disposal active.
 5. Open a reference page for a newly added module and confirm the signature and example blocks render with syntax highlighting. A new function showing as plain identifier-coloured text means step 6 was missed. **Hard-reload (Ctrl+Shift+R)** — Chrome caches `highlight.css` and the palette it imports aggressively on localhost, and a stale stylesheet looks exactly like broken highlighting.
 6. Open `/overview/` and `/start/` and check them against the README, then paste each `start` code sample into the playground to confirm it still compiles.
-7. Check the browser console for errors.
+7. Type a program with a bad token (`main() = 1 $ 2`) and confirm the offending token is underlined and its gutter line marked. No marker means the message wording changed and step 7's location check was missed.
+8. Check the browser console for errors.
 
 A good scripted cross-check: parse every `**Signature:**` / `**Input:** `/ `**Output:** `/ `**Example:**` from the SDK markdown, parse the `<div class="code-sample">` blocks and Input/Output cells from each page, and diff them keyed by function name (not by position — some pages carry extra literal-syntax sections such as `list_new` that have no SDK signature).

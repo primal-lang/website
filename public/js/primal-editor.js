@@ -6,11 +6,16 @@
  * selection, undo and IME behaviour stay native. The other two layers are
  * decoration and are scrolled to match it.
  *
- * It exposes the slice of the CodeMirror API the playground actually used —
- * getValue, setValue and on('change') — so try.js did not need reworking.
+ * Edits are announced twice: 'change' on every input for listeners cheap enough
+ * to run per keystroke, and 'settle' once typing pauses, for anything that is
+ * not — compiling the program, above all.
  */
 
 const PRIMAL_EDITOR_INDENT = '    ';
+
+// Long enough that a normal typing run produces one 'settle', short enough that
+// a deliberate pause does not feel like waiting.
+const PRIMAL_EDITOR_SETTLE_DELAY = 200;
 
 function createPrimalEditor(container, options) {
   const settings = options || {};
@@ -45,7 +50,10 @@ function createPrimalEditor(container, options) {
   container.appendChild(surface);
 
   const changeListeners = [];
+  const settleListeners = [];
   let renderQueued = false;
+  let settleTimer = null;
+  let errorMark = null;
 
   function syncScroll() {
     highlight.scrollTop = input.scrollTop;
@@ -57,16 +65,20 @@ function createPrimalEditor(container, options) {
     renderQueued = false;
 
     const value = input.value;
-    code.innerHTML = primalRender(value, 'primal');
+    code.innerHTML = primalRender(value, 'primal', { error: errorMark });
 
     const lineCount = value.split('\n').length;
-    const numbers = [];
+    const errorRow = errorMark !== null ? errorMark.row : 0;
+    const lines = [];
 
+    // One element per line rather than one text node, so the line an error was
+    // reported on can carry a marker without disturbing the others.
     for (let line = 1; line <= lineCount; line++) {
-      numbers.push(line);
+      const marker = line === errorRow ? ' editor-gutter-error' : '';
+      lines.push('<div class="editor-gutter-line' + marker + '">' + line + '</div>');
     }
 
-    gutter.textContent = numbers.join('\n');
+    gutter.innerHTML = lines.join('');
     syncScroll();
   }
 
@@ -82,10 +94,30 @@ function createPrimalEditor(container, options) {
     requestAnimationFrame(renderNow);
   }
 
+  function cancelSettle() {
+    if (settleTimer !== null) {
+      clearTimeout(settleTimer);
+      settleTimer = null;
+    }
+  }
+
+  function emitSettle() {
+    settleTimer = null;
+
+    settleListeners.forEach(function (listener) {
+      listener();
+    });
+  }
+
   function emitChange() {
     changeListeners.forEach(function (listener) {
       listener();
     });
+
+    // Restarted by every keystroke, so 'settle' fires once after a typing run
+    // rather than once per character.
+    cancelSettle();
+    settleTimer = setTimeout(emitSettle, PRIMAL_EDITOR_SETTLE_DELAY);
   }
 
   // insertText keeps the browser's own undo stack intact; assigning to .value
@@ -179,15 +211,32 @@ function createPrimalEditor(container, options) {
       return input.value;
     },
 
-    setValue: function (text) {
+    // A silent setValue announces nothing: callers replacing the whole program
+    // compile it themselves, and a settle still pending from earlier typing
+    // belongs to text that no longer exists either way.
+    setValue: function (text, options) {
       input.value = text;
       render();
-      emitChange();
+      cancelSettle();
+
+      if (!options || !options.silent) {
+        emitChange();
+      }
+    },
+
+    // Errors are held as the compiler reports them — a 1-based row and column —
+    // and resolved to a token on every render, so the marker tracks the text
+    // instead of going stale against a saved offset. Passing null clears it.
+    setError: function (mark) {
+      errorMark = mark || null;
+      render();
     },
 
     on: function (event, listener) {
       if (event === 'change') {
         changeListeners.push(listener);
+      } else if (event === 'settle') {
+        settleListeners.push(listener);
       }
     },
 

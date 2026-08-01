@@ -11,6 +11,7 @@
   --code-line-number: #3b4261;
   --code-caret: #c0caf5;
   --code-selection: #283457;
+  --code-error: #f7768e;
 
   /* Tokens */
   --tok-comment: #565f89;

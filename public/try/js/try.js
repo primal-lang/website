@@ -45,12 +45,40 @@ function readConsoleHistory() {
 const INPUTS = readConsoleHistory()
 let inputIndex = (INPUTS.length > 0) ? INPUTS.length : -1
 
+// The compiler holds every compiled program in a registry keyed by an id, so an
+// id has to be released once nothing refers to it. The last program to compile
+// is deliberately kept alive for the console to evaluate against, which makes
+// releasing the one it replaces this module's job. Ids start at 0, which is why
+// the guards below check against null instead of relying on truthiness.
+let compiledCode = null
+let compiledSource = null
+
+function releaseCompiledCode() {
+  if (compiledCode !== null) {
+    disposeCode(compiledCode)
+  }
+
+  compiledCode = null
+  compiledSource = null
+}
+
+// A compiler error carries no structured position: the location is interpolated
+// into the message text, and only by some error classes. So this is best effort
+// — a message without one, which is every semantic error including the undefined
+// identifier, still reports in the console with nothing to point at.
+const ERROR_LOCATION = /\bat \[(\d+), (\d+)\]/
+
+function errorLocation(error) {
+  const match = ERROR_LOCATION.exec(String(error))
+
+  return match ? { row: Number(match[1]), column: Number(match[2]) } : null
+}
+
 function compileCode(sourceCode) {
   const consoleInput = document.getElementById('consoleInput')
-  // The compiler holds every compiled program in a registry keyed by this id,
-  // so it has to be released once the compilation is done. Ids start at 0, which
-  // is why the guard below checks against null instead of relying on truthiness.
   let intermediateCode = null
+
+  releaseCompiledCode()
 
   try {
     intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateRepresentationEmpty()
@@ -67,11 +95,18 @@ function compileCode(sourceCode) {
 
     localStorage.setItem('sourceCode', sourceCode)
 
+    // Ownership passes to the cache, so the release below must not take it back.
+    compiledCode = intermediateCode
+    compiledSource = sourceCode
+    intermediateCode = null
+
+    window.editor.setError(null)
     consoleInput.disabled = false
     consoleInput.placeholder = '>'
   } catch (e) {
     writeOutputError(e)
 
+    window.editor.setError(errorLocation(e))
     consoleInput.disabled = true
     consoleInput.placeholder = ''
   } finally {
@@ -81,7 +116,15 @@ function compileCode(sourceCode) {
   }
 }
 
+// Compiling runs the whole program, so it waits for a pause in typing rather
+// than happening per keystroke. The console evaluates against that compiled
+// program and must not lag behind it, so it is disabled the moment the source
+// changes and only comes back when the settled compile succeeds.
 function onInputChange() {
+  document.getElementById('consoleInput').disabled = true
+}
+
+function onInputSettle() {
   recompile()
 }
 
@@ -106,7 +149,9 @@ function onFileLoaded(e) {
 }
 
 function replaceSourceCode(text) {
-  window.editor.setValue(text)
+  // Silent, because the compile below is the one that should run; announcing the
+  // change would schedule a second compile of the very same text.
+  window.editor.setValue(text, { silent: true })
   recompile()
 }
 
@@ -243,17 +288,26 @@ function evaluateConsoleInput() {
 
     let intermediateCode = null
     let expression = null
+    let reused = false
 
     try {
-      const sourceCode = window.editor.getValue().trim()
-      intermediateCode = sourceCode ? compileInput(sourceCode) : intermediateRepresentationEmpty()
+      const sourceCode = window.editor.getValue()
+
+      // The last compile is reused while it still matches the source, so typing
+      // an expression evaluates it instead of recompiling the whole program.
+      reused = (compiledCode !== null) && (compiledSource === sourceCode)
+      intermediateCode = reused
+        ? compiledCode
+        : (sourceCode ? compileInput(sourceCode) : intermediateRepresentationEmpty())
+
       expression = compileExpression(inputValue)
       const result = runtimeReduce(intermediateCode, expression)
       writeOutputSuccess(result)
     } catch (e) {
       writeOutputError(e)
     } finally {
-      if (intermediateCode !== null) {
+      // A reused program stays registered: the cache, not this call, owns it.
+      if ((intermediateCode !== null) && !reused) {
         disposeCode(intermediateCode)
       }
 
@@ -328,6 +382,7 @@ document.addEventListener('DOMContentLoaded', function () {
   })
 
   window.editor.on('change', onInputChange)
+  window.editor.on('settle', onInputSettle)
 
   const actions = {
     'load': onLoadFile,
