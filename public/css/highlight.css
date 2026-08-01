@@ -1,81 +1,92 @@
-.CodeMirror {
-  height: auto;
+/* ============================================================================
+   ACTIVE PALETTE
+
+   This one line switches every code surface on the site: documentation samples,
+   the playground editor and the playground console. The alternatives sit beside
+   it in css/palettes/ — dracula, monokai, solarized-dark, gruvbox-dark,
+   tomorrow-night, nord, one-dark, tokyo-night, catppuccin-mocha.
+   ============================================================================ */
+
+@import url("palettes/dracula.css");
+
+/* ----------------------------------------------------------------------------
+   Code samples
+
+   The box itself — padding, radius, copy button — belongs to template.css.
+   Everything here is what goes inside it.
+   -------------------------------------------------------------------------- */
+
+.code-sample pre {
+  margin: 0;
+  overflow-x: auto;
+}
+
+.code-sample code {
+  display: block;
+  font-family: var(--font-code), monospace;
   font-size: 0.85rem;
   line-height: 1.6;
+  color: var(--code-fg);
+  white-space: pre;
+  tab-size: 4;
 }
 
-.cm-s-dracula .CodeMirror-gutters,
-.cm-s-dracula.CodeMirror {
-  background-color: #0d1117 !important;
-  border-radius: 0.875rem;
+/* ----------------------------------------------------------------------------
+   Tokens
+
+   Thirteen roles the tokenizer distinguishes. A palette with fewer hues than
+   roles points several at one value; definition/binding and native/type are the
+   pairs that most often collapse.
+   -------------------------------------------------------------------------- */
+
+.tok-comment {
+  color: var(--tok-comment);
 }
 
-.CodeMirror-gutters {
-  padding-right: 15px;
+.tok-string {
+  color: var(--tok-string);
 }
 
-/* Line number */
-.cm-s-dracula .CodeMirror-linenumber {
-  color: #606060;
+.tok-number {
+  color: var(--tok-number);
 }
 
-/* Comment */
-.cm-s-dracula span.cm-comment {
-  color: #a9b7c6;
+.tok-boolean {
+  color: var(--tok-boolean);
 }
 
-/* String */
-.cm-s-dracula span.cm-string,
-.cm-s-dracula span.cm-string-2 {
-  color: #f1d086;
+.tok-keyword {
+  color: var(--tok-keyword);
 }
 
-/* Number */
-.cm-s-dracula span.cm-number {
-  color: #f1d086;
+.tok-operator {
+  color: var(--tok-operator);
 }
 
-/* Boolean  */
-.cm-s-dracula span.cm-atom {
-  color: #f1d086;
+.tok-punctuation {
+  color: var(--tok-punctuation);
 }
 
-/* Variable */
-.cm-s-dracula span.cm-variable {
-  color: #7dc777;
+.tok-native {
+  color: var(--tok-native);
 }
 
-/* Variable */
-.cm-s-dracula span.cm-keyword {
-  color: #7dc777;
+.tok-definition {
+  color: var(--tok-definition);
 }
 
-/* Operators */
-.cm-s-dracula span.cm-operator {
-  color: #d46a60;
+.tok-param {
+  color: var(--tok-param);
 }
 
-/* Operators */
-.cm-custom-marker {
-  color: #d46a60 !important;
+.tok-binding {
+  color: var(--tok-binding);
 }
 
-/* Keyword */
-.cm-custom-keyword {
-  color: #d381cc !important;
+.tok-identifier {
+  color: var(--tok-identifier);
 }
 
-/* Native function */
-.cm-custom-native-function {
-  color: #5aa3df !important;
-}
-
-/* Parenthesis */
-.cm-custom-parenthesis {
-  color: #dbffff !important;
-}
-
-/* Type */
-.cm-custom-type {
-  color: #ceb078 !important;
+.tok-type {
+  color: var(--tok-type);
 }

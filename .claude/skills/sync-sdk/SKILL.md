@@ -63,7 +63,7 @@ Search for the old version pattern (e.g. `0.4.0`) and replace with the new one. 
 
 RULES:
 
-- Sync **substance, not wording or markup**. The pages have their own conventions: sentence-case headings, the language name wrapped as `<span class="tagged">Primal</span>`, links as `<a class="custom-link">`, and code shown through `setSampleCode('sampleX', '...')` at the bottom of the file (same escaping rules as the reference pages) instead of fenced blocks. Never restructure a page to match the README's shape.
+- Sync **substance, not wording or markup**. The pages have their own conventions: sentence-case headings, the language name wrapped as `<span class="tagged">Primal</span>`, links as `<a class="custom-link">`, and code shown as static `<div class="code-sample" data-lang="...">` blocks in the body (same escaping rules as the reference pages) instead of fenced blocks. Never restructure a page to match the README's shape.
 - The website is deliberately a **superset** in places — "Technical envelope" lists `Lazy evaluated` and `Immutable` which the README omits, and `start` has a website-only "Functions" section. Do not delete page content just because the README lacks it; report it instead.
 - Closed lists **must** match: the runtime types under "Typing system" have to equal the README's set, since a release is where types get added. The `Primitives / Collections / Temporal / Filesystem` grouping is a website convention, so only the set of types matters — and confirm a type is real (SDK source or playground) before adding it, rather than trusting the README.
 - Installation: the curl command must match what `public/install.sh` actually does — the site hosts the installer the README points at. If the README documents installer behaviour the page omits (today: `primal --update` / `primal --uninstall`), verify it against `public/install.sh` and add it.
@@ -93,9 +93,8 @@ Sync the reference documentation for the "{MODULE}" module.
 1. Read all markdown files from: {SDK_PATH}
 2. Read all HTML files from: {WEBSITE_PATH} (`<name>.md` maps to `<name>/index.html`)
 
-FIELD MAPPING — each function appears in TWO places on the website page:
+FIELD MAPPING — each function occupies ONE block in the <main> body:
 
-(A) In the <main> body:
     <h2 class="text-white reference-title">Human Readable Name</h2>
     <table class="reference-table">
         <tbody>
@@ -110,33 +109,33 @@ FIELD MAPPING — each function appears in TWO places on the website page:
         </tbody>
     </table>
     <p class="reference-block-label">Signature</p>
-    <div id="fn.name" class="code-sample"></div>
+    <div id="fn.name" class="code-sample" data-lang="signature"><pre><code>SIGNATURE TEXT</code></pre></div>
     <p class="reference-block-label">Example</p>
-    <div id="fn.name.example" class="code-sample"></div>
+    <div id="fn.name.example" class="code-sample" data-lang="primal"><pre><code>EXAMPLE CODE</code></pre></div>
 
-(B) At the bottom of the file, inside <script type="module">:
-    setSampleCode('fn.name', 'SIGNATURE TEXT')
-    setSampleCode('fn.name.example', 'EXAMPLE CODE')
-
-The divs in (A) are EMPTY placeholders — CodeMirror fills them at runtime. The actual signature
-and example text lives ONLY in the setSampleCode() calls in (B). Keep both places consistent.
+The code lives directly in the markup — there is no script block and nothing is filled in at
+runtime. js/primal-highlight.js tokenises whatever is already inside <code> on page load.
 
 Map SDK markdown fields as follows:
-- `**Signature:** ` + "`X`" -> setSampleCode('fn.name', 'X'), X being the content inside the backticks
+- `**Signature:** ` + "`X`" -> the data-lang="signature" block, X being the content inside the backticks
 - `**Input:** X`            -> the Input row <td>
 - `**Output:** X`           -> the Output row <td>
-- `**Example:**` fenced block -> setSampleCode('fn.name.example', 'CODE'), without the ``` markers
+- `**Example:**` fenced block -> the data-lang="primal" block, without the ``` markers
 
 RULES:
 - Copy text EXACTLY from the SDK docs. Do not paraphrase, reword, or "improve" anything.
+- `data-lang` picks the tokenizer: `signature` for the type-annotated signature line, `primal`
+  for runnable example code, `text` for anything that is not Primal at all (shell commands).
+- Content inside <code> is literal: no indentation may be added, and the opening <code> and
+  closing </code> must sit flush against the first and last characters of the sample.
 - HEADINGS: the SDK uses Title Case (`### To Number`); the website deliberately uses sentence
   case ("To number"). This is a site-wide convention, NOT drift. Do NOT rewrite existing <h2>
   text to match the SDK. Use the SDK heading only to identify WHICH function a section is, and
   to derive a title for a genuinely NEW function — converted to sentence case.
 - Trailing periods: the website ends Input/Output text with a period, the SDK is inconsistent.
   Copy the SDK wording but ensure it ends with exactly one period.
-- setSampleCode uses single-quoted JS strings — escape single quotes as \' and escape backslashes
-  (a literal `\n` inside an example must be written `\\n`).
+- Samples are plain HTML text now, so quotes and backslashes are written literally — a literal
+  `\n` inside an example is just `\n`. Only `&`, `<` and `>` need escaping.
 - HTML-escape the Input/Output text where needed (& -> &amp;, < -> &lt;, > -> &gt;).
 - Ignore `**Purity:**`, `**Constraints:**` and similar fields — the page template has no slot
   for them. Where a page already folds `**Evaluation:**` or `**Alias:**` into the Output cell or
@@ -144,12 +143,12 @@ RULES:
 - Where the SDK says `**Input:** None.`, the website omits the Input row entirely.
 
 SYNC LOGIC:
-- Function in SDK but NOT on the website -> add both the (A) body block and the (B) setSampleCode
-  lines, matching the exact HTML shape and indentation of its neighbours.
-- Function on the website but NOT in the SDK -> remove both its (A) block and its (B) lines.
+- Function in SDK but NOT on the website -> add its body block, matching the exact HTML shape and
+  indentation of its neighbours.
+- Function on the website but NOT in the SDK -> remove its body block.
 - Function in both -> update Input, Output, signature, and example.
 - Keep function ORDER on the page matching the SDK document order.
-- Do NOT touch <head>, meta tags, JSON-LD, navbar, the back-arrow link, or the <noscript> note.
+- Do NOT touch <head>, meta tags, JSON-LD, navbar, or the back-arrow link.
 
 Report concisely per file what you added / removed / changed, or "no changes needed".
 ````
@@ -164,17 +163,17 @@ Report concisely per file what you added / removed / changed, or "no changes nee
 
 ### 6. Sync Syntax Highlighting
 
-`public/js/highlight.js` contains a hardcoded regex map (`extras`) of every native function, used for syntax highlighting in both the playground and every reference code sample. It is **not** generated, so it silently drifts — verify it on every sync:
+The native function list used by the highlighter is generated from the SDK, so it cannot drift the way the old hand-maintained map did. Regenerate it:
 
 ```
-cd ../primal-sdk/docs/lang/reference && grep -rhoP '(?<=\*\*Signature:\*\* `)[a-zA-Z][a-zA-Z0-9._]*(?=\()' . | sort -u
+scripts/gen-natives.sh
 ```
 
-Compare that against the map's keys and add anything missing, grouped under the existing `// module` comments and matching the neighbouring entries' style. Also check for **renamed** functions — a stale key (e.g. `time_epoch` after it became `time_toEpoch`) highlights nothing.
+That rewrites `public/js/primal-natives.js` from `../primal-sdk/lib/compiler/library/**/*.dart`, where each native declares itself as `name: 'some_function',`. The script fails loudly if the count drops below 250, which is the signal that the SDK changed how natives are declared and the extraction pattern needs updating — do not "fix" that by lowering the threshold.
 
-Entry order does not matter: every pattern ends in a `(?=\()` lookahead, so a shorter name cannot shadow a longer one (`bool_and` will not swallow `bool_andStrict`).
+Commit the regenerated file; a diff here is the reliable record of which natives the release added or renamed.
 
-The only non-function keys are the language keywords `and`, `else`, `if`, `main`, `or`.
+Language keywords (`if`, `else`, `let`, `in`, `and`, `or`, `not`) are **not** in that list. They live in `PRIMAL_KEYWORDS` in `public/js/primal-highlight.js` and only change if the language grammar does — check `../primal-sdk/lib/compiler/lexical/lexical_analyzer.dart` if the release touched the lexer.
 
 ### 7. Verify JavaScript Bindings
 
@@ -211,8 +210,8 @@ cd public && python3 -m http.server 8777
 2. Clear `localStorage` and hard-reload to check the first-visit default program compiles.
 3. Run a program using the release's new functions, and evaluate one in the REPL console (that exercises the second dispose call site).
 4. Edit the source many times in a row and confirm results stay correct with disposal active.
-5. Open a reference page for a newly added module and confirm the signature and example blocks render with syntax highlighting (unhighlighted text means step 6 was missed).
+5. Open a reference page for a newly added module and confirm the signature and example blocks render with syntax highlighting. A new function showing as plain identifier-coloured text means step 6 was missed. **Hard-reload (Ctrl+Shift+R)** — Chrome caches `highlight.css` and the palette it imports aggressively on localhost, and a stale stylesheet looks exactly like broken highlighting.
 6. Open `/overview/` and `/start/` and check them against the README, then paste each `start` code sample into the playground to confirm it still compiles.
 7. Check the browser console for errors.
 
-A good scripted cross-check: parse every `**Signature:**` / `**Input:** `/ `**Output:** `/ `**Example:**` from the SDK markdown, parse the `setSampleCode()` calls and Input/Output cells from each page, and diff them keyed by function name (not by position — some pages carry extra literal-syntax sections such as `list_new` that have no SDK signature).
+A good scripted cross-check: parse every `**Signature:**` / `**Input:** `/ `**Output:** `/ `**Example:**` from the SDK markdown, parse the `<div class="code-sample">` blocks and Input/Output cells from each page, and diff them keyed by function name (not by position — some pages carry extra literal-syntax sections such as `list_new` that have no SDK signature).

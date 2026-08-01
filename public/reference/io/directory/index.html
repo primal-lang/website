@@ -54,21 +54,13 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
     <link href="../../../css/highlight.css" rel="stylesheet" />
     <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-    <script src="../../../js/highlight.js" defer></script>
+    <script src="../../../js/primal-natives.js" defer></script>
+    <script src="../../../js/primal-highlight.js" defer></script>
 
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -121,10 +113,6 @@
 
                     <h1 class="text-white mb-4 page-title">Directory</h1>
 
-                    <noscript>
-                        <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                            see the signatures and examples.</p>
-                    </noscript>
 
                     <p class="text-white">
                         <b>Note:</b> Directory functions are not implemented on the web platform.
@@ -144,9 +132,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="directory_fromPath" class="code-sample"></div>
+                    <div id="directory_fromPath" class="code-sample" data-lang="signature"><pre><code>directory_fromPath(a: String): Directory</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="directory_fromPath.example" class="code-sample"></div>
+                    <div id="directory_fromPath.example" class="code-sample" data-lang="primal"><pre><code>directory_fromPath("/home/user") // returns a directory object</code></pre></div>
 
                     <h2 class="text-white reference-title">Create</h2>
                     <table class="reference-table">
@@ -162,9 +150,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="directory_create" class="code-sample"></div>
+                    <div id="directory_create" class="code-sample" data-lang="signature"><pre><code>directory_create(a: Directory): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="directory_create.example" class="code-sample"></div>
+                    <div id="directory_create.example" class="code-sample" data-lang="primal"><pre><code>directory_create(directory_fromPath("/home/user/new")) // returns true if successful</code></pre></div>
 
                     <h2 class="text-white reference-title">Exists</h2>
                     <table class="reference-table">
@@ -180,9 +168,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="directory_exists" class="code-sample"></div>
+                    <div id="directory_exists" class="code-sample" data-lang="signature"><pre><code>directory_exists(a: Directory): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="directory_exists.example" class="code-sample"></div>
+                    <div id="directory_exists.example" class="code-sample" data-lang="primal"><pre><code>directory_exists(directory_fromPath("/home/user")) // returns true if it exists</code></pre></div>
 
                     <h2 class="text-white reference-title">Delete</h2>
                     <table class="reference-table">
@@ -198,9 +186,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="directory_delete" class="code-sample"></div>
+                    <div id="directory_delete" class="code-sample" data-lang="signature"><pre><code>directory_delete(a: Directory): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="directory_delete.example" class="code-sample"></div>
+                    <div id="directory_delete.example" class="code-sample" data-lang="primal"><pre><code>directory_delete(directory_fromPath("/home/user/old")) // returns true if successful</code></pre></div>
 
                     <h2 class="text-white reference-title">Copy</h2>
                     <table class="reference-table">
@@ -216,9 +204,12 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="directory_copy" class="code-sample"></div>
+                    <div id="directory_copy" class="code-sample" data-lang="signature"><pre><code>directory_copy(a: Directory, b: Directory): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="directory_copy.example" class="code-sample"></div>
+                    <div id="directory_copy.example" class="code-sample" data-lang="primal"><pre><code>directory_copy(
+    directory_fromPath("src"),
+    directory_fromPath("backup")
+) // returns true if successful</code></pre></div>
 
                     <h2 class="text-white reference-title">Move</h2>
                     <table class="reference-table">
@@ -234,9 +225,12 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="directory_move" class="code-sample"></div>
+                    <div id="directory_move" class="code-sample" data-lang="signature"><pre><code>directory_move(a: Directory, b: Directory): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="directory_move.example" class="code-sample"></div>
+                    <div id="directory_move.example" class="code-sample" data-lang="primal"><pre><code>directory_move(
+    directory_fromPath("old"),
+    directory_fromPath("new")
+) // returns true if successful</code></pre></div>
 
                     <h2 class="text-white reference-title">Rename</h2>
                     <table class="reference-table">
@@ -252,9 +246,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="directory_rename" class="code-sample"></div>
+                    <div id="directory_rename" class="code-sample" data-lang="signature"><pre><code>directory_rename(a: Directory, b: String): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="directory_rename.example" class="code-sample"></div>
+                    <div id="directory_rename.example" class="code-sample" data-lang="primal"><pre><code>directory_rename(directory_fromPath("old"), "new") // returns true if successful</code></pre></div>
 
                     <h2 class="text-white reference-title">List</h2>
                     <table class="reference-table">
@@ -270,9 +264,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="directory_list" class="code-sample"></div>
+                    <div id="directory_list" class="code-sample" data-lang="signature"><pre><code>directory_list(a: Directory): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="directory_list.example" class="code-sample"></div>
+                    <div id="directory_list.example" class="code-sample" data-lang="primal"><pre><code>directory_list(directory_fromPath("/home/user")) // returns [file1, file2, ...]</code></pre></div>
 
                     <h2 class="text-white reference-title">Path</h2>
                     <table class="reference-table">
@@ -288,9 +282,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="directory_path" class="code-sample"></div>
+                    <div id="directory_path" class="code-sample" data-lang="signature"><pre><code>directory_path(a: Directory): String</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="directory_path.example" class="code-sample"></div>
+                    <div id="directory_path.example" class="code-sample" data-lang="primal"><pre><code>directory_path(directory_fromPath("/home/user")) // returns "/home/user"</code></pre></div>
 
                     <h2 class="text-white reference-title">Name</h2>
                     <table class="reference-table">
@@ -306,9 +300,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="directory_name" class="code-sample"></div>
+                    <div id="directory_name" class="code-sample" data-lang="signature"><pre><code>directory_name(a: Directory): String</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="directory_name.example" class="code-sample"></div>
+                    <div id="directory_name.example" class="code-sample" data-lang="primal"><pre><code>directory_name(directory_fromPath("/home/user")) // returns "user"</code></pre></div>
 
                     <h2 class="text-white reference-title">Parent</h2>
                     <table class="reference-table">
@@ -324,55 +318,15 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="directory_parent" class="code-sample"></div>
+                    <div id="directory_parent" class="code-sample" data-lang="signature"><pre><code>directory_parent(a: Directory): Directory</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="directory_parent.example" class="code-sample"></div>
+                    <div id="directory_parent.example" class="code-sample" data-lang="primal"><pre><code>directory_parent(directory_fromPath("/home/user")) // returns "/home" directory</code></pre></div>
 
                 </div>
             </div>
         </div>
     </main>
 
-    <script type="module">
-        setSampleCode('directory_fromPath', 'directory_fromPath(a: String): Directory')
-        setSampleCode('directory_fromPath.example', 'directory_fromPath("/home/user") // returns a directory object')
-
-        setSampleCode('directory_create', 'directory_create(a: Directory): Boolean')
-        setSampleCode('directory_create.example', 'directory_create(directory_fromPath("/home/user/new")) // returns true if successful')
-
-        setSampleCode('directory_exists', 'directory_exists(a: Directory): Boolean')
-        setSampleCode('directory_exists.example', 'directory_exists(directory_fromPath("/home/user")) // returns true if it exists')
-
-        setSampleCode('directory_delete', 'directory_delete(a: Directory): Boolean')
-        setSampleCode('directory_delete.example', 'directory_delete(directory_fromPath("/home/user/old")) // returns true if successful')
-
-        setSampleCode('directory_copy', 'directory_copy(a: Directory, b: Directory): Boolean')
-        setSampleCode('directory_copy.example', `directory_copy(
-    directory_fromPath("src"),
-    directory_fromPath("backup")
-) // returns true if successful`)
-
-        setSampleCode('directory_move', 'directory_move(a: Directory, b: Directory): Boolean')
-        setSampleCode('directory_move.example', `directory_move(
-    directory_fromPath("old"),
-    directory_fromPath("new")
-) // returns true if successful`)
-
-        setSampleCode('directory_rename', 'directory_rename(a: Directory, b: String): Boolean')
-        setSampleCode('directory_rename.example', 'directory_rename(directory_fromPath("old"), "new") // returns true if successful')
-
-        setSampleCode('directory_list', 'directory_list(a: Directory): List')
-        setSampleCode('directory_list.example', 'directory_list(directory_fromPath("/home/user")) // returns [file1, file2, ...]')
-
-        setSampleCode('directory_path', 'directory_path(a: Directory): String')
-        setSampleCode('directory_path.example', 'directory_path(directory_fromPath("/home/user")) // returns "/home/user"')
-
-        setSampleCode('directory_name', 'directory_name(a: Directory): String')
-        setSampleCode('directory_name.example', 'directory_name(directory_fromPath("/home/user")) // returns "user"')
-
-        setSampleCode('directory_parent', 'directory_parent(a: Directory): Directory')
-        setSampleCode('directory_parent.example', 'directory_parent(directory_fromPath("/home/user")) // returns "/home" directory')
-    </script>
 
 </body>
 

@@ -1,0 +1,37 @@
+/*
+ * Gruvbox Dark — Pavel Pertsev.
+ * Canonical values, not adjusted to fit the site.
+ */
+
+:root {
+  /* Code surface */
+  --code-bg: #282828;
+  --code-fg: #ebdbb2;
+  --code-border: rgba(235, 219, 178, 0.1);
+  --code-line-number: #7c6f64;
+  --code-caret: #ebdbb2;
+  --code-selection: #3c3836;
+
+  /* Tokens */
+  --tok-comment: #928374;
+  --tok-string: #b8bb26;
+  --tok-number: #d3869b;
+  --tok-boolean: #d3869b;
+  --tok-keyword: #fb4934;
+  --tok-operator: #fe8019;
+  --tok-punctuation: #ebdbb2;
+  --tok-native: #8ec07c;
+  --tok-definition: #fabd2f;
+  --tok-param: #83a598;
+  --tok-binding: #fabd2f;
+  --tok-identifier: #ebdbb2;
+  --tok-type: #fabd2f;
+
+  /* Playground console */
+  --console-bg: #1d2021;
+  --console-input-bg: #3c3836;
+  --console-border: rgba(235, 219, 178, 0.1);
+  --output-error: #fb4934;
+  --output-warning: #fabd2f;
+  --output-success: #ebdbb2;
+}

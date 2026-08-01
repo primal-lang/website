@@ -1,0 +1,37 @@
+/*
+ * Catppuccin Mocha — https://catppuccin.com
+ * Canonical values, not adjusted to fit the site.
+ */
+
+:root {
+  /* Code surface */
+  --code-bg: #1e1e2e;
+  --code-fg: #cdd6f4;
+  --code-border: rgba(205, 214, 244, 0.1);
+  --code-line-number: #6c7086;
+  --code-caret: #f5e0dc;
+  --code-selection: #45475a;
+
+  /* Tokens */
+  --tok-comment: #6c7086;
+  --tok-string: #a6e3a1;
+  --tok-number: #fab387;
+  --tok-boolean: #fab387;
+  --tok-keyword: #cba6f7;
+  --tok-operator: #89dceb;
+  --tok-punctuation: #9399b2;
+  --tok-native: #74c7ec;
+  --tok-definition: #89b4fa;
+  --tok-param: #eba0ac;
+  --tok-binding: #f9e2af;
+  --tok-identifier: #cdd6f4;
+  --tok-type: #f9e2af;
+
+  /* Playground console */
+  --console-bg: #181825;
+  --console-input-bg: #313244;
+  --console-border: rgba(205, 214, 244, 0.1);
+  --output-error: #f38ba8;
+  --output-warning: #f9e2af;
+  --output-success: #cdd6f4;
+}

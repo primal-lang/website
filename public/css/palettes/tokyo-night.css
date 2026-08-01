@@ -1,0 +1,37 @@
+/*
+ * Tokyo Night — enkia.
+ * Canonical values, not adjusted to fit the site.
+ */
+
+:root {
+  /* Code surface */
+  --code-bg: #1a1b26;
+  --code-fg: #a9b1d6;
+  --code-border: rgba(169, 177, 214, 0.1);
+  --code-line-number: #3b4261;
+  --code-caret: #c0caf5;
+  --code-selection: #283457;
+
+  /* Tokens */
+  --tok-comment: #565f89;
+  --tok-string: #9ece6a;
+  --tok-number: #ff9e64;
+  --tok-boolean: #ff9e64;
+  --tok-keyword: #bb9af7;
+  --tok-operator: #89ddff;
+  --tok-punctuation: #a9b1d6;
+  --tok-native: #7dcfff;
+  --tok-definition: #7aa2f7;
+  --tok-param: #e0af68;
+  --tok-binding: #73daca;
+  --tok-identifier: #c0caf5;
+  --tok-type: #2ac3de;
+
+  /* Playground console */
+  --console-bg: #16161e;
+  --console-input-bg: #292e42;
+  --console-border: rgba(169, 177, 214, 0.1);
+  --output-error: #f7768e;
+  --output-warning: #e0af68;
+  --output-success: #a9b1d6;
+}

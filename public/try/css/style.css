@@ -87,19 +87,84 @@ button.nav-link {
   flex: 1;
 }
 
-/* --- Editor panel --- */
+/* --- Editor panel ---
+   A textarea with transparent text sits exactly on top of a highlighted <pre>,
+   so the caret, selection, undo stack and IME are all the browser's own. The two
+   layers only line up while they share every metric that moves a glyph, which is
+   why font, size, line height, tab size and padding are set on both at once. */
 #sourceCode {
   height: 100%;
 }
 
-#sourceCode .CodeMirror {
-  height: 100% !important;
-  border-radius: 0;
+.editor {
+  display: flex;
+  height: 100%;
+  overflow: hidden;
+  background-color: var(--code-bg);
 }
 
-#sourceCode .cm-s-dracula .CodeMirror-gutters,
-#sourceCode .cm-s-dracula.CodeMirror {
-  border-radius: 0;
+.editor-gutter,
+.editor-highlight,
+.editor-highlight code,
+.editor-input {
+  font-family: var(--font-code), monospace;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  tab-size: 4;
+  /* body sets letter-spacing: 0.015em, which the <pre> inherits but the
+     textarea does not — form controls opt out. Left alone, the two layers drift
+     apart by a fraction of a pixel per character, which is invisible on a short
+     line and badly misaligned by the end of a long one. */
+  letter-spacing: normal;
+}
+
+.editor-gutter {
+  flex-shrink: 0;
+  padding: 0.75rem 0.75rem 0.75rem 1rem;
+  overflow: hidden;
+  text-align: right;
+  white-space: pre;
+  color: var(--code-line-number);
+  user-select: none;
+}
+
+.editor-surface {
+  position: relative;
+  flex: 1;
+  overflow: hidden;
+}
+
+.editor-highlight,
+.editor-input {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0.75rem 0.75rem 0.75rem 0;
+  border: 0;
+  white-space: pre;
+}
+
+.editor-highlight {
+  overflow: hidden;
+  pointer-events: none;
+  color: var(--code-fg);
+}
+
+.editor-highlight code {
+  font-family: inherit;
+}
+
+.editor-input {
+  overflow: auto;
+  resize: none;
+  background-color: transparent;
+  color: transparent;
+  caret-color: var(--code-caret);
+  outline: none;
+}
+
+.editor-input::selection {
+  background-color: var(--code-selection);
 }
 
 /* --- Console panel --- */
@@ -112,7 +177,7 @@ button.nav-link {
   flex: 1;
   width: 100%;
   overflow-y: auto;
-  background-color: #0c1929;
+  background-color: var(--console-bg);
 }
 
 .console-input {
@@ -120,33 +185,35 @@ button.nav-link {
   height: 2.5em;
   flex-shrink: 0;
   border: none;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background-color: var(--color-bg-elevated);
+  border-top: 1px solid var(--console-border);
+  background-color: var(--console-input-bg);
   padding: 0.5rem 0.8rem;
-  color: var(--color-text);
+  color: var(--code-fg);
   font-family: var(--font-code), monospace;
   font-size: 0.85rem;
   transition: background-color var(--t-fast), border-color var(--t-fast);
 }
 
 .console-input::placeholder {
-  color: var(--color-text-3);
+  color: var(--code-line-number);
 }
 
+/* The border is the whole focus indicator here, so it takes the palette's most
+   saturated token colour rather than a tint of the background. */
 .console-input:focus {
-  background-color: #243a56;
-  border-top-color: rgba(213, 171, 121, 0.3);
+  background-color: var(--code-selection);
+  border-top-color: var(--tok-native);
   outline: none;
 }
 
 .console-input:disabled {
-  background-color: #0c1929;
-  color: var(--color-text-3);
+  background-color: var(--console-bg);
+  color: var(--code-line-number);
 }
 
 /* --- Gutter (Split.js divider) --- */
 .gutter {
-  background-color: var(--color-bg-deep);
+  background-color: var(--console-bg);
   background-repeat: no-repeat;
   background-position: 50%;
   transition: background-color var(--t-fast);
@@ -163,22 +230,22 @@ button.nav-link {
 
 /* --- Output messages --- */
 .base-output {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  border-bottom: 1px solid var(--console-border);
   padding: 0.5rem 0.8rem;
   font-size: 0.85rem;
   line-height: 1.5;
 }
 
 .output-warning {
-  color: var(--color-gold-light);
+  color: var(--output-warning);
 }
 
 .output-error {
-  color: #f35858;
+  color: var(--output-error);
 }
 
 .output-success {
-  color: var(--color-text);
+  color: var(--output-success);
 }
 
 /* --- Dropdown (samples menu) --- */

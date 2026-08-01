@@ -52,21 +52,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
   <link href="../../../css/highlight.css" rel="stylesheet" />
   <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-  <script src="../../../js/highlight.js" defer></script>
+  <script src="../../../js/primal-natives.js" defer></script>
+  <script src="../../../js/primal-highlight.js" defer></script>
 
   <link rel="preconnect" href="https://www.googletagmanager.com" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -114,10 +106,6 @@
 
         <h1 class="text-white mb-4 page-title">Logic</h1>
 
-        <noscript>
-            <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                see the signatures and examples.</p>
-        </noscript>
 
         <h2 class="text-white reference-title">And (Short-Circuit)</h2>
         <table class="reference-table">
@@ -137,9 +125,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="bool_and" class="code-sample"></div>
+        <div id="bool_and" class="code-sample" data-lang="signature"><pre><code>bool_and(a: Boolean, b: Boolean): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="bool_and.example" class="code-sample"></div>
+        <div id="bool_and.example" class="code-sample" data-lang="primal"><pre><code>bool_and(true, false) // returns false</code></pre></div>
 
         <h2 class="text-white reference-title">And (Strict)</h2>
         <table class="reference-table">
@@ -159,9 +147,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="bool_andStrict" class="code-sample"></div>
+        <div id="bool_andStrict" class="code-sample" data-lang="signature"><pre><code>bool_andStrict(a: Boolean, b: Boolean): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="bool_andStrict.example" class="code-sample"></div>
+        <div id="bool_andStrict.example" class="code-sample" data-lang="primal"><pre><code>bool_andStrict(true, false) // returns false</code></pre></div>
 
         <h2 class="text-white reference-title">Or (Short-Circuit)</h2>
         <table class="reference-table">
@@ -181,9 +169,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="bool_or" class="code-sample"></div>
+        <div id="bool_or" class="code-sample" data-lang="signature"><pre><code>bool_or(a: Boolean, b: Boolean): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="bool_or.example" class="code-sample"></div>
+        <div id="bool_or.example" class="code-sample" data-lang="primal"><pre><code>bool_or(true, false) // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Or (Strict)</h2>
         <table class="reference-table">
@@ -203,9 +191,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="bool_orStrict" class="code-sample"></div>
+        <div id="bool_orStrict" class="code-sample" data-lang="signature"><pre><code>bool_orStrict(a: Boolean, b: Boolean): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="bool_orStrict.example" class="code-sample"></div>
+        <div id="bool_orStrict.example" class="code-sample" data-lang="primal"><pre><code>bool_orStrict(true, false) // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Xor</h2>
         <table class="reference-table">
@@ -221,9 +209,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="bool_xor" class="code-sample"></div>
+        <div id="bool_xor" class="code-sample" data-lang="signature"><pre><code>bool_xor(a: Boolean, b: Boolean): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="bool_xor.example" class="code-sample"></div>
+        <div id="bool_xor.example" class="code-sample" data-lang="primal"><pre><code>bool_xor(true, false) // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Not</h2>
         <table class="reference-table">
@@ -239,34 +227,15 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="bool_not" class="code-sample"></div>
+        <div id="bool_not" class="code-sample" data-lang="signature"><pre><code>bool_not(a: Boolean): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="bool_not.example" class="code-sample"></div>
+        <div id="bool_not.example" class="code-sample" data-lang="primal"><pre><code>bool_not(true) // returns false</code></pre></div>
 
       </div>
     </div>
   </div>
   </main>
 
-  <script type="module">
-    setSampleCode('bool_and', 'bool_and(a: Boolean, b: Boolean): Boolean')
-    setSampleCode('bool_and.example', 'bool_and(true, false) // returns false')
-
-    setSampleCode('bool_andStrict', 'bool_andStrict(a: Boolean, b: Boolean): Boolean')
-    setSampleCode('bool_andStrict.example', 'bool_andStrict(true, false) // returns false')
-
-    setSampleCode('bool_or', 'bool_or(a: Boolean, b: Boolean): Boolean')
-    setSampleCode('bool_or.example', 'bool_or(true, false) // returns true')
-
-    setSampleCode('bool_orStrict', 'bool_orStrict(a: Boolean, b: Boolean): Boolean')
-    setSampleCode('bool_orStrict.example', 'bool_orStrict(true, false) // returns true')
-
-    setSampleCode('bool_xor', 'bool_xor(a: Boolean, b: Boolean): Boolean')
-    setSampleCode('bool_xor.example', 'bool_xor(true, false) // returns true')
-
-    setSampleCode('bool_not', 'bool_not(a: Boolean): Boolean')
-    setSampleCode('bool_not.example', 'bool_not(true) // returns false')
-  </script>
 
 </body>
 

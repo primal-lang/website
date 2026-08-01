@@ -54,21 +54,13 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
     <link href="../../../css/highlight.css" rel="stylesheet" />
     <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-    <script src="../../../js/highlight.js" defer></script>
+    <script src="../../../js/primal-natives.js" defer></script>
+    <script src="../../../js/primal-highlight.js" defer></script>
 
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -121,10 +113,6 @@
 
                     <h1 class="text-white mb-4 page-title">Duration</h1>
 
-                    <noscript>
-                        <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                            see the signatures and examples.</p>
-                    </noscript>
 
                     <h2 class="text-white reference-title">From Milliseconds</h2>
                     <table class="reference-table">
@@ -140,9 +128,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_fromMilliseconds" class="code-sample"></div>
+                    <div id="duration_fromMilliseconds" class="code-sample" data-lang="signature"><pre><code>duration_fromMilliseconds(a: Number): Duration</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_fromMilliseconds.example" class="code-sample"></div>
+                    <div id="duration_fromMilliseconds.example" class="code-sample" data-lang="primal"><pre><code>duration_fromMilliseconds(5000) // returns a duration of 5000 milliseconds</code></pre></div>
 
                     <h2 class="text-white reference-title">From Seconds</h2>
                     <table class="reference-table">
@@ -158,9 +146,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_fromSeconds" class="code-sample"></div>
+                    <div id="duration_fromSeconds" class="code-sample" data-lang="signature"><pre><code>duration_fromSeconds(a: Number): Duration</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_fromSeconds.example" class="code-sample"></div>
+                    <div id="duration_fromSeconds.example" class="code-sample" data-lang="primal"><pre><code>duration_fromSeconds(3600) // returns a duration of 3600 seconds</code></pre></div>
 
                     <h2 class="text-white reference-title">From Minutes</h2>
                     <table class="reference-table">
@@ -176,9 +164,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_fromMinutes" class="code-sample"></div>
+                    <div id="duration_fromMinutes" class="code-sample" data-lang="signature"><pre><code>duration_fromMinutes(a: Number): Duration</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_fromMinutes.example" class="code-sample"></div>
+                    <div id="duration_fromMinutes.example" class="code-sample" data-lang="primal"><pre><code>duration_fromMinutes(90) // returns a duration of 90 minutes</code></pre></div>
 
                     <h2 class="text-white reference-title">From Hours</h2>
                     <table class="reference-table">
@@ -194,9 +182,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_fromHours" class="code-sample"></div>
+                    <div id="duration_fromHours" class="code-sample" data-lang="signature"><pre><code>duration_fromHours(a: Number): Duration</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_fromHours.example" class="code-sample"></div>
+                    <div id="duration_fromHours.example" class="code-sample" data-lang="primal"><pre><code>duration_fromHours(24) // returns a duration of 24 hours</code></pre></div>
 
                     <h2 class="text-white reference-title">From Days</h2>
                     <table class="reference-table">
@@ -212,9 +200,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_fromDays" class="code-sample"></div>
+                    <div id="duration_fromDays" class="code-sample" data-lang="signature"><pre><code>duration_fromDays(a: Number): Duration</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_fromDays.example" class="code-sample"></div>
+                    <div id="duration_fromDays.example" class="code-sample" data-lang="primal"><pre><code>duration_fromDays(7) // returns a duration of 7 days</code></pre></div>
 
                     <h2 class="text-white reference-title">From</h2>
                     <table class="reference-table">
@@ -230,9 +218,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_from" class="code-sample"></div>
+                    <div id="duration_from" class="code-sample" data-lang="signature"><pre><code>duration_from(a: Number, b: Number, c: Number, d: Number, e: Number): Duration</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_from.example" class="code-sample"></div>
+                    <div id="duration_from.example" class="code-sample" data-lang="primal"><pre><code>duration_from(1, 2, 30, 0, 0) // returns a duration of 1 day, 2 hours, 30 minutes</code></pre></div>
 
                     <h2 class="text-white reference-title">To Milliseconds</h2>
                     <table class="reference-table">
@@ -248,9 +236,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_toMilliseconds" class="code-sample"></div>
+                    <div id="duration_toMilliseconds" class="code-sample" data-lang="signature"><pre><code>duration_toMilliseconds(a: Duration): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_toMilliseconds.example" class="code-sample"></div>
+                    <div id="duration_toMilliseconds.example" class="code-sample" data-lang="primal"><pre><code>duration_toMilliseconds(duration_fromSeconds(2)) // returns 2000</code></pre></div>
 
                     <h2 class="text-white reference-title">To Seconds</h2>
                     <table class="reference-table">
@@ -266,9 +254,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_toSeconds" class="code-sample"></div>
+                    <div id="duration_toSeconds" class="code-sample" data-lang="signature"><pre><code>duration_toSeconds(a: Duration): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_toSeconds.example" class="code-sample"></div>
+                    <div id="duration_toSeconds.example" class="code-sample" data-lang="primal"><pre><code>duration_toSeconds(duration_fromMinutes(5)) // returns 300</code></pre></div>
 
                     <h2 class="text-white reference-title">To Minutes</h2>
                     <table class="reference-table">
@@ -284,9 +272,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_toMinutes" class="code-sample"></div>
+                    <div id="duration_toMinutes" class="code-sample" data-lang="signature"><pre><code>duration_toMinutes(a: Duration): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_toMinutes.example" class="code-sample"></div>
+                    <div id="duration_toMinutes.example" class="code-sample" data-lang="primal"><pre><code>duration_toMinutes(duration_fromHours(2)) // returns 120</code></pre></div>
 
                     <h2 class="text-white reference-title">To Hours</h2>
                     <table class="reference-table">
@@ -302,9 +290,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_toHours" class="code-sample"></div>
+                    <div id="duration_toHours" class="code-sample" data-lang="signature"><pre><code>duration_toHours(a: Duration): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_toHours.example" class="code-sample"></div>
+                    <div id="duration_toHours.example" class="code-sample" data-lang="primal"><pre><code>duration_toHours(duration_fromDays(1)) // returns 24</code></pre></div>
 
                     <h2 class="text-white reference-title">To Days</h2>
                     <table class="reference-table">
@@ -320,9 +308,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_toDays" class="code-sample"></div>
+                    <div id="duration_toDays" class="code-sample" data-lang="signature"><pre><code>duration_toDays(a: Duration): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_toDays.example" class="code-sample"></div>
+                    <div id="duration_toDays.example" class="code-sample" data-lang="primal"><pre><code>duration_toDays(duration_fromHours(48)) // returns 2</code></pre></div>
 
                     <h2 class="text-white reference-title">Milliseconds</h2>
                     <table class="reference-table">
@@ -338,9 +326,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_milliseconds" class="code-sample"></div>
+                    <div id="duration_milliseconds" class="code-sample" data-lang="signature"><pre><code>duration_milliseconds(a: Duration): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_milliseconds.example" class="code-sample"></div>
+                    <div id="duration_milliseconds.example" class="code-sample" data-lang="primal"><pre><code>duration_milliseconds(duration_from(0, 0, 0, 1, 500)) // returns 500</code></pre></div>
 
                     <h2 class="text-white reference-title">Seconds</h2>
                     <table class="reference-table">
@@ -356,9 +344,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_seconds" class="code-sample"></div>
+                    <div id="duration_seconds" class="code-sample" data-lang="signature"><pre><code>duration_seconds(a: Duration): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_seconds.example" class="code-sample"></div>
+                    <div id="duration_seconds.example" class="code-sample" data-lang="primal"><pre><code>duration_seconds(duration_from(0, 0, 1, 30, 0)) // returns 30</code></pre></div>
 
                     <h2 class="text-white reference-title">Minutes</h2>
                     <table class="reference-table">
@@ -374,9 +362,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_minutes" class="code-sample"></div>
+                    <div id="duration_minutes" class="code-sample" data-lang="signature"><pre><code>duration_minutes(a: Duration): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_minutes.example" class="code-sample"></div>
+                    <div id="duration_minutes.example" class="code-sample" data-lang="primal"><pre><code>duration_minutes(duration_from(0, 1, 45, 0, 0)) // returns 45</code></pre></div>
 
                     <h2 class="text-white reference-title">Hours</h2>
                     <table class="reference-table">
@@ -392,9 +380,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_hours" class="code-sample"></div>
+                    <div id="duration_hours" class="code-sample" data-lang="signature"><pre><code>duration_hours(a: Duration): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_hours.example" class="code-sample"></div>
+                    <div id="duration_hours.example" class="code-sample" data-lang="primal"><pre><code>duration_hours(duration_from(1, 12, 0, 0, 0)) // returns 12</code></pre></div>
 
                     <h2 class="text-white reference-title">Days</h2>
                     <table class="reference-table">
@@ -410,9 +398,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_days" class="code-sample"></div>
+                    <div id="duration_days" class="code-sample" data-lang="signature"><pre><code>duration_days(a: Duration): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_days.example" class="code-sample"></div>
+                    <div id="duration_days.example" class="code-sample" data-lang="primal"><pre><code>duration_days(duration_from(2, 5, 30, 0, 0)) // returns 2</code></pre></div>
 
                     <h2 class="text-white reference-title">Compare</h2>
                     <table class="reference-table">
@@ -428,9 +416,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_compare" class="code-sample"></div>
+                    <div id="duration_compare" class="code-sample" data-lang="signature"><pre><code>duration_compare(a: Duration, b: Duration): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_compare.example" class="code-sample"></div>
+                    <div id="duration_compare.example" class="code-sample" data-lang="primal"><pre><code>duration_compare(duration_fromHours(2), duration_fromHours(1)) // returns 1</code></pre></div>
 
                     <h2 class="text-white reference-title">Format</h2>
                     <table class="reference-table">
@@ -446,70 +434,15 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="duration_format" class="code-sample"></div>
+                    <div id="duration_format" class="code-sample" data-lang="signature"><pre><code>duration_format(a: Duration, b: String): String</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="duration_format.example" class="code-sample"></div>
+                    <div id="duration_format.example" class="code-sample" data-lang="primal"><pre><code>duration_format(duration_from(1, 2, 30, 0, 0), "d:HH:mm:ss") // returns "1:02:30:00"</code></pre></div>
 
                 </div>
             </div>
         </div>
     </main>
 
-    <script type="module">
-        setSampleCode('duration_fromMilliseconds', 'duration_fromMilliseconds(a: Number): Duration')
-        setSampleCode('duration_fromMilliseconds.example', 'duration_fromMilliseconds(5000) // returns a duration of 5000 milliseconds')
-
-        setSampleCode('duration_fromSeconds', 'duration_fromSeconds(a: Number): Duration')
-        setSampleCode('duration_fromSeconds.example', 'duration_fromSeconds(3600) // returns a duration of 3600 seconds')
-
-        setSampleCode('duration_fromMinutes', 'duration_fromMinutes(a: Number): Duration')
-        setSampleCode('duration_fromMinutes.example', 'duration_fromMinutes(90) // returns a duration of 90 minutes')
-
-        setSampleCode('duration_fromHours', 'duration_fromHours(a: Number): Duration')
-        setSampleCode('duration_fromHours.example', 'duration_fromHours(24) // returns a duration of 24 hours')
-
-        setSampleCode('duration_fromDays', 'duration_fromDays(a: Number): Duration')
-        setSampleCode('duration_fromDays.example', 'duration_fromDays(7) // returns a duration of 7 days')
-
-        setSampleCode('duration_from', 'duration_from(a: Number, b: Number, c: Number, d: Number, e: Number): Duration')
-        setSampleCode('duration_from.example', 'duration_from(1, 2, 30, 0, 0) // returns a duration of 1 day, 2 hours, 30 minutes')
-
-        setSampleCode('duration_toMilliseconds', 'duration_toMilliseconds(a: Duration): Number')
-        setSampleCode('duration_toMilliseconds.example', 'duration_toMilliseconds(duration_fromSeconds(2)) // returns 2000')
-
-        setSampleCode('duration_toSeconds', 'duration_toSeconds(a: Duration): Number')
-        setSampleCode('duration_toSeconds.example', 'duration_toSeconds(duration_fromMinutes(5)) // returns 300')
-
-        setSampleCode('duration_toMinutes', 'duration_toMinutes(a: Duration): Number')
-        setSampleCode('duration_toMinutes.example', 'duration_toMinutes(duration_fromHours(2)) // returns 120')
-
-        setSampleCode('duration_toHours', 'duration_toHours(a: Duration): Number')
-        setSampleCode('duration_toHours.example', 'duration_toHours(duration_fromDays(1)) // returns 24')
-
-        setSampleCode('duration_toDays', 'duration_toDays(a: Duration): Number')
-        setSampleCode('duration_toDays.example', 'duration_toDays(duration_fromHours(48)) // returns 2')
-
-        setSampleCode('duration_milliseconds', 'duration_milliseconds(a: Duration): Number')
-        setSampleCode('duration_milliseconds.example', 'duration_milliseconds(duration_from(0, 0, 0, 1, 500)) // returns 500')
-
-        setSampleCode('duration_seconds', 'duration_seconds(a: Duration): Number')
-        setSampleCode('duration_seconds.example', 'duration_seconds(duration_from(0, 0, 1, 30, 0)) // returns 30')
-
-        setSampleCode('duration_minutes', 'duration_minutes(a: Duration): Number')
-        setSampleCode('duration_minutes.example', 'duration_minutes(duration_from(0, 1, 45, 0, 0)) // returns 45')
-
-        setSampleCode('duration_hours', 'duration_hours(a: Duration): Number')
-        setSampleCode('duration_hours.example', 'duration_hours(duration_from(1, 12, 0, 0, 0)) // returns 12')
-
-        setSampleCode('duration_days', 'duration_days(a: Duration): Number')
-        setSampleCode('duration_days.example', 'duration_days(duration_from(2, 5, 30, 0, 0)) // returns 2')
-
-        setSampleCode('duration_compare', 'duration_compare(a: Duration, b: Duration): Number')
-        setSampleCode('duration_compare.example', 'duration_compare(duration_fromHours(2), duration_fromHours(1)) // returns 1')
-
-        setSampleCode('duration_format', 'duration_format(a: Duration, b: String): String')
-        setSampleCode('duration_format.example', 'duration_format(duration_from(1, 2, 30, 0, 0), "d:HH:mm:ss") // returns "1:02:30:00"')
-    </script>
 
 </body>
 

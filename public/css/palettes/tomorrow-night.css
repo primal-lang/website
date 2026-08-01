@@ -1,0 +1,37 @@
+/*
+ * Tomorrow Night — Chris Kempson.
+ * Canonical values, not adjusted to fit the site.
+ */
+
+:root {
+  /* Code surface */
+  --code-bg: #1d1f21;
+  --code-fg: #c5c8c6;
+  --code-border: rgba(197, 200, 198, 0.1);
+  --code-line-number: #4b4e55;
+  --code-caret: #c5c8c6;
+  --code-selection: #373b41;
+
+  /* Tokens */
+  --tok-comment: #969896;
+  --tok-string: #b5bd68;
+  --tok-number: #de935f;
+  --tok-boolean: #de935f;
+  --tok-keyword: #b294bb;
+  --tok-operator: #8abeb7;
+  --tok-punctuation: #c5c8c6;
+  --tok-native: #81a2be;
+  --tok-definition: #f0c674;
+  --tok-param: #cc6666;
+  --tok-binding: #f0c674;
+  --tok-identifier: #c5c8c6;
+  --tok-type: #f0c674;
+
+  /* Playground console */
+  --console-bg: #161719;
+  --console-input-bg: #282a2e;
+  --console-border: rgba(197, 200, 198, 0.1);
+  --output-error: #cc6666;
+  --output-warning: #f0c674;
+  --output-success: #c5c8c6;
+}

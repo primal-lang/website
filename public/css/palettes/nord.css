@@ -1,0 +1,37 @@
+/*
+ * Nord — Arctic Ice Studio.
+ * Canonical values, not adjusted to fit the site.
+ */
+
+:root {
+  /* Code surface */
+  --code-bg: #2e3440;
+  --code-fg: #d8dee9;
+  --code-border: rgba(216, 222, 233, 0.1);
+  --code-line-number: #4c566a;
+  --code-caret: #d8dee9;
+  --code-selection: #434c5e;
+
+  /* Tokens */
+  --tok-comment: #616e88;
+  --tok-string: #a3be8c;
+  --tok-number: #b48ead;
+  --tok-boolean: #b48ead;
+  --tok-keyword: #81a1c1;
+  --tok-operator: #81a1c1;
+  --tok-punctuation: #eceff4;
+  --tok-native: #8fbcbb;
+  --tok-definition: #88c0d0;
+  --tok-param: #d08770;
+  --tok-binding: #ebcb8b;
+  --tok-identifier: #d8dee9;
+  --tok-type: #8fbcbb;
+
+  /* Playground console */
+  --console-bg: #272c36;
+  --console-input-bg: #3b4252;
+  --console-border: rgba(216, 222, 233, 0.1);
+  --output-error: #bf616a;
+  --output-warning: #ebcb8b;
+  --output-success: #d8dee9;
+}

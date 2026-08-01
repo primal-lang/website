@@ -322,9 +322,8 @@ document.addEventListener('DOMContentLoaded', function () {
     snapOffset: 0,
   })
 
-  window.editor = CodeMirror(document.getElementById('sourceCode'), {
-    ...basicProperties(true),
-    lineNumbers: true,
+  window.editor = createPrimalEditor(document.getElementById('sourceCode'), {
+    label: 'Primal source code',
     value: localStorage.getItem('sourceCode') ? localStorage.getItem('sourceCode') : SAMPLES['default'],
   })
 

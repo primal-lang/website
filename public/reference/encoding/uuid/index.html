@@ -53,21 +53,13 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
     <link href="../../../css/highlight.css" rel="stylesheet" />
     <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-    <script src="../../../js/highlight.js" defer></script>
+    <script src="../../../js/primal-natives.js" defer></script>
+    <script src="../../../js/primal-highlight.js" defer></script>
 
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -120,10 +112,6 @@
 
                     <h1 class="text-white mb-4 page-title">UUID</h1>
 
-                    <noscript>
-                        <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                            see the signatures and examples.</p>
-                    </noscript>
 
                     <h2 class="text-white reference-title">V4</h2>
                     <table class="reference-table">
@@ -135,19 +123,15 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="uuid_v4" class="code-sample"></div>
+                    <div id="uuid_v4" class="code-sample" data-lang="signature"><pre><code>uuid_v4(): String</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="uuid_v4.example" class="code-sample"></div>
+                    <div id="uuid_v4.example" class="code-sample" data-lang="primal"><pre><code>uuid_v4() // returns "550e8400-e29b-41d4-a716-446655440000" (random)</code></pre></div>
 
                 </div>
             </div>
         </div>
     </main>
 
-    <script type="module">
-        setSampleCode('uuid_v4', 'uuid_v4(): String')
-        setSampleCode('uuid_v4.example', 'uuid_v4() // returns "550e8400-e29b-41d4-a716-446655440000" (random)')
-    </script>
 
 </body>
 

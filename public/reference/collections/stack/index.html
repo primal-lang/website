@@ -52,21 +52,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
   <link href="../../../css/highlight.css" rel="stylesheet" />
   <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-  <script src="../../../js/highlight.js" defer></script>
+  <script src="../../../js/primal-natives.js" defer></script>
+  <script src="../../../js/primal-highlight.js" defer></script>
 
   <link rel="preconnect" href="https://www.googletagmanager.com" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -114,10 +106,6 @@
 
         <h1 class="text-white mb-4 page-title">Stack</h1>
 
-        <noscript>
-            <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                see the signatures and examples.</p>
-        </noscript>
 
         <h2 class="text-white reference-title">New</h2>
         <table class="reference-table">
@@ -133,9 +121,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="stack_new" class="code-sample"></div>
+        <div id="stack_new" class="code-sample" data-lang="signature"><pre><code>stack_new(a: List): Stack</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="stack_new.example" class="code-sample"></div>
+        <div id="stack_new.example" class="code-sample" data-lang="primal"><pre><code>stack_new([1, 2, 3]) // returns a stack with 3 at the top</code></pre></div>
 
         <h2 class="text-white reference-title">Push</h2>
         <table class="reference-table">
@@ -151,9 +139,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="stack_push" class="code-sample"></div>
+        <div id="stack_push" class="code-sample" data-lang="signature"><pre><code>stack_push(a: Stack, b: Any): Stack</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="stack_push.example" class="code-sample"></div>
+        <div id="stack_push.example" class="code-sample" data-lang="primal"><pre><code>stack_push(stack_new([1, 2]), 3) // returns a stack with 3 at the top</code></pre></div>
 
         <h2 class="text-white reference-title">Pop</h2>
         <table class="reference-table">
@@ -169,9 +157,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="stack_pop" class="code-sample"></div>
+        <div id="stack_pop" class="code-sample" data-lang="signature"><pre><code>stack_pop(a: Stack): Stack</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="stack_pop.example" class="code-sample"></div>
+        <div id="stack_pop.example" class="code-sample" data-lang="primal"><pre><code>stack_pop(stack_new([1, 2, 3])) // returns a stack with 2 at the top</code></pre></div>
 
         <h2 class="text-white reference-title">Peek</h2>
         <table class="reference-table">
@@ -187,9 +175,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="stack_peek" class="code-sample"></div>
+        <div id="stack_peek" class="code-sample" data-lang="signature"><pre><code>stack_peek(a: Stack): Any</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="stack_peek.example" class="code-sample"></div>
+        <div id="stack_peek.example" class="code-sample" data-lang="primal"><pre><code>stack_peek(stack_new([1, 2, 3])) // returns 3</code></pre></div>
 
         <h2 class="text-white reference-title">Reverse</h2>
         <table class="reference-table">
@@ -205,9 +193,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="stack_reverse" class="code-sample"></div>
+        <div id="stack_reverse" class="code-sample" data-lang="signature"><pre><code>stack_reverse(a: Stack): Stack</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="stack_reverse.example" class="code-sample"></div>
+        <div id="stack_reverse.example" class="code-sample" data-lang="primal"><pre><code>stack_reverse(stack_new([1, 2, 3])) // returns a stack with 1 at the top</code></pre></div>
 
         <h2 class="text-white reference-title">Is Empty</h2>
         <table class="reference-table">
@@ -223,9 +211,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="stack_isEmpty" class="code-sample"></div>
+        <div id="stack_isEmpty" class="code-sample" data-lang="signature"><pre><code>stack_isEmpty(a: Stack): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="stack_isEmpty.example" class="code-sample"></div>
+        <div id="stack_isEmpty.example" class="code-sample" data-lang="primal"><pre><code>stack_isEmpty(stack_new([])) // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Is Not Empty</h2>
         <table class="reference-table">
@@ -241,9 +229,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="stack_isNotEmpty" class="code-sample"></div>
+        <div id="stack_isNotEmpty" class="code-sample" data-lang="signature"><pre><code>stack_isNotEmpty(a: Stack): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="stack_isNotEmpty.example" class="code-sample"></div>
+        <div id="stack_isNotEmpty.example" class="code-sample" data-lang="primal"><pre><code>stack_isNotEmpty(stack_new([1, 2])) // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Length</h2>
         <table class="reference-table">
@@ -259,40 +247,15 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="stack_length" class="code-sample"></div>
+        <div id="stack_length" class="code-sample" data-lang="signature"><pre><code>stack_length(a: Stack): Number</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="stack_length.example" class="code-sample"></div>
+        <div id="stack_length.example" class="code-sample" data-lang="primal"><pre><code>stack_length(stack_new([1, 2, 3])) // returns 3</code></pre></div>
 
       </div>
     </div>
   </div>
   </main>
 
-  <script type="module">
-    setSampleCode('stack_new', 'stack_new(a: List): Stack')
-    setSampleCode('stack_new.example', 'stack_new([1, 2, 3]) // returns a stack with 3 at the top')
-
-    setSampleCode('stack_push', 'stack_push(a: Stack, b: Any): Stack')
-    setSampleCode('stack_push.example', 'stack_push(stack_new([1, 2]), 3) // returns a stack with 3 at the top')
-
-    setSampleCode('stack_pop', 'stack_pop(a: Stack): Stack')
-    setSampleCode('stack_pop.example', 'stack_pop(stack_new([1, 2, 3])) // returns a stack with 2 at the top')
-
-    setSampleCode('stack_peek', 'stack_peek(a: Stack): Any')
-    setSampleCode('stack_peek.example', 'stack_peek(stack_new([1, 2, 3])) // returns 3')
-
-    setSampleCode('stack_reverse', 'stack_reverse(a: Stack): Stack')
-    setSampleCode('stack_reverse.example', 'stack_reverse(stack_new([1, 2, 3])) // returns a stack with 1 at the top')
-
-    setSampleCode('stack_isEmpty', 'stack_isEmpty(a: Stack): Boolean')
-    setSampleCode('stack_isEmpty.example', 'stack_isEmpty(stack_new([])) // returns true')
-
-    setSampleCode('stack_isNotEmpty', 'stack_isNotEmpty(a: Stack): Boolean')
-    setSampleCode('stack_isNotEmpty.example', 'stack_isNotEmpty(stack_new([1, 2])) // returns true')
-
-    setSampleCode('stack_length', 'stack_length(a: Stack): Number')
-    setSampleCode('stack_length.example', 'stack_length(stack_new([1, 2, 3])) // returns 3')
-  </script>
 
 </body>
 

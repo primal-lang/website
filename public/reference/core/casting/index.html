@@ -54,21 +54,13 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
     <link href="../../../css/highlight.css" rel="stylesheet" />
     <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-    <script src="../../../js/highlight.js" defer></script>
+    <script src="../../../js/primal-natives.js" defer></script>
+    <script src="../../../js/primal-highlight.js" defer></script>
 
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -121,10 +113,6 @@
 
                     <h1 class="text-white mb-4 page-title">Casting</h1>
 
-                    <noscript>
-                        <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                            see the signatures and examples.</p>
-                    </noscript>
 
                     <h2 class="text-white reference-title">To number</h2>
                     <table class="reference-table">
@@ -140,9 +128,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="to_number" class="code-sample"></div>
+                    <div id="to_number" class="code-sample" data-lang="signature"><pre><code>to_number(a: Any): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="to_number.example" class="code-sample"></div>
+                    <div id="to_number.example" class="code-sample" data-lang="primal"><pre><code>to_number("42") // returns 42</code></pre></div>
 
                     <h2 class="text-white reference-title">To integer</h2>
                     <table class="reference-table">
@@ -158,9 +146,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="to_integer" class="code-sample"></div>
+                    <div id="to_integer" class="code-sample" data-lang="signature"><pre><code>to_integer(a: Any): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="to_integer.example" class="code-sample"></div>
+                    <div id="to_integer.example" class="code-sample" data-lang="primal"><pre><code>to_integer(3.7) // returns 3</code></pre></div>
 
                     <h2 class="text-white reference-title">To decimal</h2>
                     <table class="reference-table">
@@ -176,9 +164,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="to_decimal" class="code-sample"></div>
+                    <div id="to_decimal" class="code-sample" data-lang="signature"><pre><code>to_decimal(a: Any): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="to_decimal.example" class="code-sample"></div>
+                    <div id="to_decimal.example" class="code-sample" data-lang="primal"><pre><code>to_decimal("3.14") // returns 3.14</code></pre></div>
 
                     <h2 class="text-white reference-title">To string</h2>
                     <table class="reference-table">
@@ -194,9 +182,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="to_string" class="code-sample"></div>
+                    <div id="to_string" class="code-sample" data-lang="signature"><pre><code>to_string(a: Any): String</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="to_string.example" class="code-sample"></div>
+                    <div id="to_string.example" class="code-sample" data-lang="primal"><pre><code>to_string(42) // returns "42"</code></pre></div>
 
                     <h2 class="text-white reference-title">To boolean</h2>
                     <table class="reference-table">
@@ -212,9 +200,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="to_boolean" class="code-sample"></div>
+                    <div id="to_boolean" class="code-sample" data-lang="signature"><pre><code>to_boolean(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="to_boolean.example" class="code-sample"></div>
+                    <div id="to_boolean.example" class="code-sample" data-lang="primal"><pre><code>to_boolean(1) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">To list</h2>
                     <table class="reference-table">
@@ -230,9 +218,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="to_list" class="code-sample"></div>
+                    <div id="to_list" class="code-sample" data-lang="signature"><pre><code>to_list(a: Any): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="to_list.example" class="code-sample"></div>
+                    <div id="to_list.example" class="code-sample" data-lang="primal"><pre><code>to_list(set_new([1, 2, 3])) // returns [1, 2, 3]</code></pre></div>
 
                     <h2 class="text-white reference-title">Is number</h2>
                     <table class="reference-table">
@@ -248,9 +236,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_number" class="code-sample"></div>
+                    <div id="is_number" class="code-sample" data-lang="signature"><pre><code>is_number(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_number.example" class="code-sample"></div>
+                    <div id="is_number.example" class="code-sample" data-lang="primal"><pre><code>is_number(42) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is integer</h2>
                     <table class="reference-table">
@@ -266,9 +254,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_integer" class="code-sample"></div>
+                    <div id="is_integer" class="code-sample" data-lang="signature"><pre><code>is_integer(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_integer.example" class="code-sample"></div>
+                    <div id="is_integer.example" class="code-sample" data-lang="primal"><pre><code>is_integer(3) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is decimal</h2>
                     <table class="reference-table">
@@ -284,9 +272,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_decimal" class="code-sample"></div>
+                    <div id="is_decimal" class="code-sample" data-lang="signature"><pre><code>is_decimal(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_decimal.example" class="code-sample"></div>
+                    <div id="is_decimal.example" class="code-sample" data-lang="primal"><pre><code>is_decimal(3.14) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is infinite</h2>
                     <table class="reference-table">
@@ -302,9 +290,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_infinite" class="code-sample"></div>
+                    <div id="is_infinite" class="code-sample" data-lang="signature"><pre><code>is_infinite(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_infinite.example" class="code-sample"></div>
+                    <div id="is_infinite.example" class="code-sample" data-lang="primal"><pre><code>is_infinite(num_infinity()) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is string</h2>
                     <table class="reference-table">
@@ -320,9 +308,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_string" class="code-sample"></div>
+                    <div id="is_string" class="code-sample" data-lang="signature"><pre><code>is_string(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_string.example" class="code-sample"></div>
+                    <div id="is_string.example" class="code-sample" data-lang="primal"><pre><code>is_string("hello") // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is boolean</h2>
                     <table class="reference-table">
@@ -338,9 +326,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_boolean" class="code-sample"></div>
+                    <div id="is_boolean" class="code-sample" data-lang="signature"><pre><code>is_boolean(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_boolean.example" class="code-sample"></div>
+                    <div id="is_boolean.example" class="code-sample" data-lang="primal"><pre><code>is_boolean(true) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is timestamp</h2>
                     <table class="reference-table">
@@ -356,9 +344,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_timestamp" class="code-sample"></div>
+                    <div id="is_timestamp" class="code-sample" data-lang="signature"><pre><code>is_timestamp(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_timestamp.example" class="code-sample"></div>
+                    <div id="is_timestamp.example" class="code-sample" data-lang="primal"><pre><code>is_timestamp(time_now()) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is function</h2>
                     <table class="reference-table">
@@ -374,9 +362,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_function" class="code-sample"></div>
+                    <div id="is_function" class="code-sample" data-lang="signature"><pre><code>is_function(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_function.example" class="code-sample"></div>
+                    <div id="is_function.example" class="code-sample" data-lang="primal"><pre><code>is_function(num_add) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is list</h2>
                     <table class="reference-table">
@@ -392,9 +380,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_list" class="code-sample"></div>
+                    <div id="is_list" class="code-sample" data-lang="signature"><pre><code>is_list(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_list.example" class="code-sample"></div>
+                    <div id="is_list.example" class="code-sample" data-lang="primal"><pre><code>is_list([1, 2, 3]) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is map</h2>
                     <table class="reference-table">
@@ -410,9 +398,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_map" class="code-sample"></div>
+                    <div id="is_map" class="code-sample" data-lang="signature"><pre><code>is_map(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_map.example" class="code-sample"></div>
+                    <div id="is_map.example" class="code-sample" data-lang="primal"><pre><code>is_map({"a": 1}) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is vector</h2>
                     <table class="reference-table">
@@ -428,9 +416,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_vector" class="code-sample"></div>
+                    <div id="is_vector" class="code-sample" data-lang="signature"><pre><code>is_vector(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_vector.example" class="code-sample"></div>
+                    <div id="is_vector.example" class="code-sample" data-lang="primal"><pre><code>is_vector(vector_new([1, 2])) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is set</h2>
                     <table class="reference-table">
@@ -446,9 +434,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_set" class="code-sample"></div>
+                    <div id="is_set" class="code-sample" data-lang="signature"><pre><code>is_set(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_set.example" class="code-sample"></div>
+                    <div id="is_set.example" class="code-sample" data-lang="primal"><pre><code>is_set(set_new([1, 2])) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is stack</h2>
                     <table class="reference-table">
@@ -464,9 +452,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_stack" class="code-sample"></div>
+                    <div id="is_stack" class="code-sample" data-lang="signature"><pre><code>is_stack(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_stack.example" class="code-sample"></div>
+                    <div id="is_stack.example" class="code-sample" data-lang="primal"><pre><code>is_stack(stack_new([1, 2])) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is queue</h2>
                     <table class="reference-table">
@@ -482,9 +470,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_queue" class="code-sample"></div>
+                    <div id="is_queue" class="code-sample" data-lang="signature"><pre><code>is_queue(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_queue.example" class="code-sample"></div>
+                    <div id="is_queue.example" class="code-sample" data-lang="primal"><pre><code>is_queue(queue_new([1, 2])) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is file</h2>
                     <table class="reference-table">
@@ -500,9 +488,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_file" class="code-sample"></div>
+                    <div id="is_file" class="code-sample" data-lang="signature"><pre><code>is_file(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_file.example" class="code-sample"></div>
+                    <div id="is_file.example" class="code-sample" data-lang="primal"><pre><code>is_file(file_fromPath("data.txt")) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is directory</h2>
                     <table class="reference-table">
@@ -518,9 +506,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_directory" class="code-sample"></div>
+                    <div id="is_directory" class="code-sample" data-lang="signature"><pre><code>is_directory(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_directory.example" class="code-sample"></div>
+                    <div id="is_directory.example" class="code-sample" data-lang="primal"><pre><code>is_directory(directory_fromPath("/home")) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is duration</h2>
                     <table class="reference-table">
@@ -536,85 +524,15 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="is_duration" class="code-sample"></div>
+                    <div id="is_duration" class="code-sample" data-lang="signature"><pre><code>is_duration(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="is_duration.example" class="code-sample"></div>
+                    <div id="is_duration.example" class="code-sample" data-lang="primal"><pre><code>is_duration(duration_fromHours(2)) // returns true</code></pre></div>
 
                 </div>
             </div>
         </div>
     </main>
 
-    <script type="module">
-        setSampleCode('to_number', 'to_number(a: Any): Number')
-        setSampleCode('to_number.example', 'to_number("42") // returns 42')
-
-        setSampleCode('to_integer', 'to_integer(a: Any): Number')
-        setSampleCode('to_integer.example', 'to_integer(3.7) // returns 3')
-
-        setSampleCode('to_decimal', 'to_decimal(a: Any): Number')
-        setSampleCode('to_decimal.example', 'to_decimal("3.14") // returns 3.14')
-
-        setSampleCode('to_string', 'to_string(a: Any): String')
-        setSampleCode('to_string.example', 'to_string(42) // returns "42"')
-
-        setSampleCode('to_boolean', 'to_boolean(a: Any): Boolean')
-        setSampleCode('to_boolean.example', 'to_boolean(1) // returns true')
-
-        setSampleCode('to_list', 'to_list(a: Any): List')
-        setSampleCode('to_list.example', 'to_list(set_new([1, 2, 3])) // returns [1, 2, 3]')
-
-        setSampleCode('is_number', 'is_number(a: Any): Boolean')
-        setSampleCode('is_number.example', 'is_number(42) // returns true')
-
-        setSampleCode('is_integer', 'is_integer(a: Any): Boolean')
-        setSampleCode('is_integer.example', 'is_integer(3) // returns true')
-
-        setSampleCode('is_decimal', 'is_decimal(a: Any): Boolean')
-        setSampleCode('is_decimal.example', 'is_decimal(3.14) // returns true')
-
-        setSampleCode('is_infinite', 'is_infinite(a: Any): Boolean')
-        setSampleCode('is_infinite.example', 'is_infinite(num_infinity()) // returns true')
-
-        setSampleCode('is_string', 'is_string(a: Any): Boolean')
-        setSampleCode('is_string.example', 'is_string("hello") // returns true')
-
-        setSampleCode('is_boolean', 'is_boolean(a: Any): Boolean')
-        setSampleCode('is_boolean.example', 'is_boolean(true) // returns true')
-
-        setSampleCode('is_timestamp', 'is_timestamp(a: Any): Boolean')
-        setSampleCode('is_timestamp.example', 'is_timestamp(time_now()) // returns true')
-
-        setSampleCode('is_function', 'is_function(a: Any): Boolean')
-        setSampleCode('is_function.example', 'is_function(num_add) // returns true')
-
-        setSampleCode('is_list', 'is_list(a: Any): Boolean')
-        setSampleCode('is_list.example', 'is_list([1, 2, 3]) // returns true')
-
-        setSampleCode('is_map', 'is_map(a: Any): Boolean')
-        setSampleCode('is_map.example', 'is_map({"a": 1}) // returns true')
-
-        setSampleCode('is_vector', 'is_vector(a: Any): Boolean')
-        setSampleCode('is_vector.example', 'is_vector(vector_new([1, 2])) // returns true')
-
-        setSampleCode('is_set', 'is_set(a: Any): Boolean')
-        setSampleCode('is_set.example', 'is_set(set_new([1, 2])) // returns true')
-
-        setSampleCode('is_stack', 'is_stack(a: Any): Boolean')
-        setSampleCode('is_stack.example', 'is_stack(stack_new([1, 2])) // returns true')
-
-        setSampleCode('is_queue', 'is_queue(a: Any): Boolean')
-        setSampleCode('is_queue.example', 'is_queue(queue_new([1, 2])) // returns true')
-
-        setSampleCode('is_file', 'is_file(a: Any): Boolean')
-        setSampleCode('is_file.example', 'is_file(file_fromPath("data.txt")) // returns true')
-
-        setSampleCode('is_directory', 'is_directory(a: Any): Boolean')
-        setSampleCode('is_directory.example', 'is_directory(directory_fromPath("/home")) // returns true')
-
-        setSampleCode('is_duration', 'is_duration(a: Any): Boolean')
-        setSampleCode('is_duration.example', 'is_duration(duration_fromHours(2)) // returns true')
-    </script>
 
 </body>
 

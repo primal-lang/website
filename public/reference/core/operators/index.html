@@ -52,21 +52,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
   <link href="../../../css/highlight.css" rel="stylesheet" />
   <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-  <script src="../../../js/highlight.js" defer></script>
+  <script src="../../../js/primal-natives.js" defer></script>
+  <script src="../../../js/primal-highlight.js" defer></script>
 
   <link rel="preconnect" href="https://www.googletagmanager.com" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -114,10 +106,6 @@
 
         <h1 class="text-white mb-4 page-title">Operators</h1>
 
-        <noscript>
-            <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                see the signatures and examples.</p>
-        </noscript>
 
         <h2 class="text-white reference-title">Equality</h2>
         <table class="reference-table">
@@ -133,9 +121,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.eq" class="code-sample"></div>
+        <div id="operators.eq" class="code-sample" data-lang="primal"><pre><code>==</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.eq.example" class="code-sample"></div>
+        <div id="operators.eq.example" class="code-sample" data-lang="primal"><pre><code>5 == 5 // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Inequality</h2>
         <table class="reference-table">
@@ -151,9 +139,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.neq" class="code-sample"></div>
+        <div id="operators.neq" class="code-sample" data-lang="primal"><pre><code>!=</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.neq.example" class="code-sample"></div>
+        <div id="operators.neq.example" class="code-sample" data-lang="primal"><pre><code>5 != 3 // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Greater than</h2>
         <table class="reference-table">
@@ -169,9 +157,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.gt" class="code-sample"></div>
+        <div id="operators.gt" class="code-sample" data-lang="primal"><pre><code>&gt;</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.gt.example" class="code-sample"></div>
+        <div id="operators.gt.example" class="code-sample" data-lang="primal"><pre><code>5 &gt; 3 // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Less than</h2>
         <table class="reference-table">
@@ -187,9 +175,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.lt" class="code-sample"></div>
+        <div id="operators.lt" class="code-sample" data-lang="primal"><pre><code>&lt;</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.lt.example" class="code-sample"></div>
+        <div id="operators.lt.example" class="code-sample" data-lang="primal"><pre><code>3 &lt; 5 // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Greater than or equal</h2>
         <table class="reference-table">
@@ -205,9 +193,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.ge" class="code-sample"></div>
+        <div id="operators.ge" class="code-sample" data-lang="primal"><pre><code>&gt;=</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.ge.example" class="code-sample"></div>
+        <div id="operators.ge.example" class="code-sample" data-lang="primal"><pre><code>5 &gt;= 5 // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Less than or equal</h2>
         <table class="reference-table">
@@ -223,9 +211,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.le" class="code-sample"></div>
+        <div id="operators.le" class="code-sample" data-lang="primal"><pre><code>&lt;=</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.le.example" class="code-sample"></div>
+        <div id="operators.le.example" class="code-sample" data-lang="primal"><pre><code>3 &lt;= 5 // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Addition</h2>
         <table class="reference-table">
@@ -241,9 +229,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.add" class="code-sample"></div>
+        <div id="operators.add" class="code-sample" data-lang="primal"><pre><code>+</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.add.example" class="code-sample"></div>
+        <div id="operators.add.example" class="code-sample" data-lang="primal"><pre><code>3 + 4 // returns 7</code></pre></div>
 
         <h2 class="text-white reference-title">Subtraction</h2>
         <table class="reference-table">
@@ -259,9 +247,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.sub" class="code-sample"></div>
+        <div id="operators.sub" class="code-sample" data-lang="primal"><pre><code>-</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.sub.example" class="code-sample"></div>
+        <div id="operators.sub.example" class="code-sample" data-lang="primal"><pre><code>10 - 3 // returns 7</code></pre></div>
 
         <h2 class="text-white reference-title">Multiplication</h2>
         <table class="reference-table">
@@ -277,9 +265,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.mul" class="code-sample"></div>
+        <div id="operators.mul" class="code-sample" data-lang="primal"><pre><code>*</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.mul.example" class="code-sample"></div>
+        <div id="operators.mul.example" class="code-sample" data-lang="primal"><pre><code>3 * 4 // returns 12</code></pre></div>
 
         <h2 class="text-white reference-title">Division</h2>
         <table class="reference-table">
@@ -295,9 +283,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.div" class="code-sample"></div>
+        <div id="operators.div" class="code-sample" data-lang="primal"><pre><code>/</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.div.example" class="code-sample"></div>
+        <div id="operators.div.example" class="code-sample" data-lang="primal"><pre><code>10 / 2 // returns 5</code></pre></div>
 
         <h2 class="text-white reference-title">Modulo</h2>
         <table class="reference-table">
@@ -313,9 +301,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.mod" class="code-sample"></div>
+        <div id="operators.mod" class="code-sample" data-lang="primal"><pre><code>%</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.mod.example" class="code-sample"></div>
+        <div id="operators.mod.example" class="code-sample" data-lang="primal"><pre><code>10 % 3 // returns 1</code></pre></div>
 
         <h2 class="text-white reference-title">And (short-circuit)</h2>
         <table class="reference-table">
@@ -331,9 +319,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.and.sc" class="code-sample"></div>
+        <div id="operators.and.sc" class="code-sample" data-lang="primal"><pre><code>&amp;&amp; // alias: and</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.and.sc.example" class="code-sample"></div>
+        <div id="operators.and.sc.example" class="code-sample" data-lang="primal"><pre><code>true &amp;&amp; false // returns false</code></pre></div>
 
         <h2 class="text-white reference-title">And (strict)</h2>
         <table class="reference-table">
@@ -349,9 +337,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.and.strict" class="code-sample"></div>
+        <div id="operators.and.strict" class="code-sample" data-lang="primal"><pre><code>&amp;</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.and.strict.example" class="code-sample"></div>
+        <div id="operators.and.strict.example" class="code-sample" data-lang="primal"><pre><code>true &amp; false // returns false</code></pre></div>
 
         <h2 class="text-white reference-title">Or (short-circuit)</h2>
         <table class="reference-table">
@@ -367,9 +355,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.or.sc" class="code-sample"></div>
+        <div id="operators.or.sc" class="code-sample" data-lang="primal"><pre><code>|| // alias: or</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.or.sc.example" class="code-sample"></div>
+        <div id="operators.or.sc.example" class="code-sample" data-lang="primal"><pre><code>true || false // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Or (strict)</h2>
         <table class="reference-table">
@@ -385,9 +373,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.or.strict" class="code-sample"></div>
+        <div id="operators.or.strict" class="code-sample" data-lang="primal"><pre><code>|</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.or.strict.example" class="code-sample"></div>
+        <div id="operators.or.strict.example" class="code-sample" data-lang="primal"><pre><code>true | false // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Not</h2>
         <table class="reference-table">
@@ -403,9 +391,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.not" class="code-sample"></div>
+        <div id="operators.not" class="code-sample" data-lang="primal"><pre><code>! // alias: not</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.not.example" class="code-sample"></div>
+        <div id="operators.not.example" class="code-sample" data-lang="primal"><pre><code>!true // returns false</code></pre></div>
 
         <h2 class="text-white reference-title">Element at</h2>
         <table class="reference-table">
@@ -421,69 +409,17 @@
           </tbody>
         </table>
         <p class="reference-block-label">Symbol</p>
-        <div id="operators.at" class="code-sample"></div>
+        <div id="operators.at" class="code-sample" data-lang="primal"><pre><code>@ // alias: a[b]</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="operators.at.example" class="code-sample"></div>
+        <div id="operators.at.example" class="code-sample" data-lang="primal"><pre><code>[10, 20, 30] @ 1 // returns 20
+"abc"[2] // returns "c"
+{"name": "Alice"}["name"] // returns "Alice"</code></pre></div>
 
       </div>
     </div>
   </div>
   </main>
 
-  <script type="module">
-    setSampleCode('operators.eq', '==')
-    setSampleCode('operators.eq.example', '5 == 5 // returns true')
-
-    setSampleCode('operators.neq', '!=')
-    setSampleCode('operators.neq.example', '5 != 3 // returns true')
-
-    setSampleCode('operators.gt', '>')
-    setSampleCode('operators.gt.example', '5 > 3 // returns true')
-
-    setSampleCode('operators.lt', '<')
-    setSampleCode('operators.lt.example', '3 < 5 // returns true')
-
-    setSampleCode('operators.ge', '>=')
-    setSampleCode('operators.ge.example', '5 >= 5 // returns true')
-
-    setSampleCode('operators.le', '<=')
-    setSampleCode('operators.le.example', '3 <= 5 // returns true')
-
-    setSampleCode('operators.add', '+')
-    setSampleCode('operators.add.example', '3 + 4 // returns 7')
-
-    setSampleCode('operators.sub', '-')
-    setSampleCode('operators.sub.example', '10 - 3 // returns 7')
-
-    setSampleCode('operators.mul', '*')
-    setSampleCode('operators.mul.example', '3 * 4 // returns 12')
-
-    setSampleCode('operators.div', '/')
-    setSampleCode('operators.div.example', '10 / 2 // returns 5')
-
-    setSampleCode('operators.mod', '%')
-    setSampleCode('operators.mod.example', '10 % 3 // returns 1')
-
-    setSampleCode('operators.and.sc', '&& // alias: and')
-    setSampleCode('operators.and.sc.example', 'true && false // returns false')
-
-    setSampleCode('operators.and.strict', '&')
-    setSampleCode('operators.and.strict.example', 'true & false // returns false')
-
-    setSampleCode('operators.or.sc', '|| // alias: or')
-    setSampleCode('operators.or.sc.example', 'true || false // returns true')
-
-    setSampleCode('operators.or.strict', '|')
-    setSampleCode('operators.or.strict.example', 'true | false // returns true')
-
-    setSampleCode('operators.not', '! // alias: not')
-    setSampleCode('operators.not.example', '!true // returns false')
-
-    setSampleCode('operators.at', '@ // alias: a[b]')
-    setSampleCode('operators.at.example', `[10, 20, 30] @ 1 // returns 20
-"abc"[2] // returns "c"
-{"name": "Alice"}["name"] // returns "Alice"`)
-  </script>
 
 </body>
 

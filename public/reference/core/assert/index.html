@@ -54,21 +54,13 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
     <link href="../../../css/highlight.css" rel="stylesheet" />
     <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-    <script src="../../../js/highlight.js" defer></script>
+    <script src="../../../js/primal-natives.js" defer></script>
+    <script src="../../../js/primal-highlight.js" defer></script>
 
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -121,10 +113,6 @@
 
                     <h1 class="text-white mb-4 page-title">Assert</h1>
 
-                    <noscript>
-                        <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                            see the signatures and examples.</p>
-                    </noscript>
 
                     <h2 class="text-white reference-title">Assert equal</h2>
                     <table class="reference-table">
@@ -140,9 +128,10 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="assert_equal" class="code-sample"></div>
+                    <div id="assert_equal" class="code-sample" data-lang="signature"><pre><code>assert_equal(a: Equatable, b: Equatable): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="assert_equal.example" class="code-sample"></div>
+                    <div id="assert_equal.example" class="code-sample" data-lang="primal"><pre><code>assert_equal(1 + 1, 2) // returns true
+assert_equal(3, 2)     // Assertion error: "assert_equal" failed: expected 2, actual 3</code></pre></div>
 
                     <h2 class="text-white reference-title">Assert not equal</h2>
                     <table class="reference-table">
@@ -158,9 +147,10 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="assert_notEqual" class="code-sample"></div>
+                    <div id="assert_notEqual" class="code-sample" data-lang="signature"><pre><code>assert_notEqual(a: Equatable, b: Equatable): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="assert_notEqual.example" class="code-sample"></div>
+                    <div id="assert_notEqual.example" class="code-sample" data-lang="primal"><pre><code>assert_notEqual(1, 2) // returns true
+assert_notEqual(1, 1) // Assertion error: "assert_notEqual" failed: expected not 1, actual 1</code></pre></div>
 
                     <h2 class="text-white reference-title">Assert true</h2>
                     <table class="reference-table">
@@ -176,9 +166,10 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="assert_true" class="code-sample"></div>
+                    <div id="assert_true" class="code-sample" data-lang="signature"><pre><code>assert_true(a: Boolean): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="assert_true.example" class="code-sample"></div>
+                    <div id="assert_true.example" class="code-sample" data-lang="primal"><pre><code>assert_true(str_startsWith("abc", "a")) // returns true
+assert_true(false)                      // Assertion error: "assert_true" failed: expected true, actual false</code></pre></div>
 
                     <h2 class="text-white reference-title">Assert false</h2>
                     <table class="reference-table">
@@ -194,9 +185,10 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="assert_false" class="code-sample"></div>
+                    <div id="assert_false" class="code-sample" data-lang="signature"><pre><code>assert_false(a: Boolean): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="assert_false.example" class="code-sample"></div>
+                    <div id="assert_false.example" class="code-sample" data-lang="primal"><pre><code>assert_false(str_isEmpty("abc")) // returns true
+assert_false(true)               // Assertion error: "assert_false" failed: expected false, actual true</code></pre></div>
 
                     <h2 class="text-white reference-title">Assert throws</h2>
                     <table class="reference-table">
@@ -213,31 +205,16 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="assert_throws" class="code-sample"></div>
+                    <div id="assert_throws" class="code-sample" data-lang="signature"><pre><code>assert_throws(a: Any): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="assert_throws.example" class="code-sample"></div>
+                    <div id="assert_throws.example" class="code-sample" data-lang="primal"><pre><code>assert_throws(to_number("not a number")) // returns true
+assert_throws(42)                        // Assertion error: "assert_throws" failed: expected a thrown error, actual 42</code></pre></div>
 
                 </div>
             </div>
         </div>
     </main>
 
-    <script type="module">
-        setSampleCode('assert_equal', 'assert_equal(a: Equatable, b: Equatable): Boolean')
-        setSampleCode('assert_equal.example', 'assert_equal(1 + 1, 2) // returns true\nassert_equal(3, 2)     // Assertion error: "assert_equal" failed: expected 2, actual 3')
-
-        setSampleCode('assert_notEqual', 'assert_notEqual(a: Equatable, b: Equatable): Boolean')
-        setSampleCode('assert_notEqual.example', 'assert_notEqual(1, 2) // returns true\nassert_notEqual(1, 1) // Assertion error: "assert_notEqual" failed: expected not 1, actual 1')
-
-        setSampleCode('assert_true', 'assert_true(a: Boolean): Boolean')
-        setSampleCode('assert_true.example', 'assert_true(str_startsWith("abc", "a")) // returns true\nassert_true(false)                      // Assertion error: "assert_true" failed: expected true, actual false')
-
-        setSampleCode('assert_false', 'assert_false(a: Boolean): Boolean')
-        setSampleCode('assert_false.example', 'assert_false(str_isEmpty("abc")) // returns true\nassert_false(true)               // Assertion error: "assert_false" failed: expected false, actual true')
-
-        setSampleCode('assert_throws', 'assert_throws(a: Any): Boolean')
-        setSampleCode('assert_throws.example', 'assert_throws(to_number("not a number")) // returns true\nassert_throws(42)                        // Assertion error: "assert_throws" failed: expected a thrown error, actual 42')
-    </script>
 
 </body>
 

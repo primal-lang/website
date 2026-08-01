@@ -54,21 +54,13 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
     <link href="../../../css/highlight.css" rel="stylesheet" />
     <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-    <script src="../../../js/highlight.js" defer></script>
+    <script src="../../../js/primal-natives.js" defer></script>
+    <script src="../../../js/primal-highlight.js" defer></script>
 
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -121,10 +113,6 @@
 
                     <h1 class="text-white mb-4 page-title">Comparison</h1>
 
-                    <noscript>
-                        <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                            see the signatures and examples.</p>
-                    </noscript>
 
                     <h2 class="text-white reference-title">Equality</h2>
                     <table class="reference-table">
@@ -140,9 +128,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="comp_eq" class="code-sample"></div>
+                    <div id="comp_eq" class="code-sample" data-lang="signature"><pre><code>comp_eq(a: Equatable, b: Equatable): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="comp_eq.example" class="code-sample"></div>
+                    <div id="comp_eq.example" class="code-sample" data-lang="primal"><pre><code>comp_eq(5, 5) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Inequality</h2>
                     <table class="reference-table">
@@ -158,9 +146,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="comp_neq" class="code-sample"></div>
+                    <div id="comp_neq" class="code-sample" data-lang="signature"><pre><code>comp_neq(a: Equatable, b: Equatable): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="comp_neq.example" class="code-sample"></div>
+                    <div id="comp_neq.example" class="code-sample" data-lang="primal"><pre><code>comp_neq(5, 3) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Greater than</h2>
                     <table class="reference-table">
@@ -176,9 +164,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="comp_gt" class="code-sample"></div>
+                    <div id="comp_gt" class="code-sample" data-lang="signature"><pre><code>comp_gt(a: Ordered, b: Ordered): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="comp_gt.example" class="code-sample"></div>
+                    <div id="comp_gt.example" class="code-sample" data-lang="primal"><pre><code>comp_gt(5, 3) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Less than</h2>
                     <table class="reference-table">
@@ -194,9 +182,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="comp_lt" class="code-sample"></div>
+                    <div id="comp_lt" class="code-sample" data-lang="signature"><pre><code>comp_lt(a: Ordered, b: Ordered): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="comp_lt.example" class="code-sample"></div>
+                    <div id="comp_lt.example" class="code-sample" data-lang="primal"><pre><code>comp_lt(3, 5) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Greater than or equal</h2>
                     <table class="reference-table">
@@ -213,9 +201,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="comp_ge" class="code-sample"></div>
+                    <div id="comp_ge" class="code-sample" data-lang="signature"><pre><code>comp_ge(a: Ordered, b: Ordered): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="comp_ge.example" class="code-sample"></div>
+                    <div id="comp_ge.example" class="code-sample" data-lang="primal"><pre><code>comp_ge(5, 5) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Less than or equal</h2>
                     <table class="reference-table">
@@ -232,34 +220,15 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="comp_le" class="code-sample"></div>
+                    <div id="comp_le" class="code-sample" data-lang="signature"><pre><code>comp_le(a: Ordered, b: Ordered): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="comp_le.example" class="code-sample"></div>
+                    <div id="comp_le.example" class="code-sample" data-lang="primal"><pre><code>comp_le(3, 5) // returns true</code></pre></div>
 
                 </div>
             </div>
         </div>
     </main>
 
-    <script type="module">
-        setSampleCode('comp_eq', 'comp_eq(a: Equatable, b: Equatable): Boolean')
-        setSampleCode('comp_eq.example', 'comp_eq(5, 5) // returns true')
-
-        setSampleCode('comp_neq', 'comp_neq(a: Equatable, b: Equatable): Boolean')
-        setSampleCode('comp_neq.example', 'comp_neq(5, 3) // returns true')
-
-        setSampleCode('comp_gt', 'comp_gt(a: Ordered, b: Ordered): Boolean')
-        setSampleCode('comp_gt.example', 'comp_gt(5, 3) // returns true')
-
-        setSampleCode('comp_lt', 'comp_lt(a: Ordered, b: Ordered): Boolean')
-        setSampleCode('comp_lt.example', 'comp_lt(3, 5) // returns true')
-
-        setSampleCode('comp_ge', 'comp_ge(a: Ordered, b: Ordered): Boolean')
-        setSampleCode('comp_ge.example', 'comp_ge(5, 5) // returns true')
-
-        setSampleCode('comp_le', 'comp_le(a: Ordered, b: Ordered): Boolean')
-        setSampleCode('comp_le.example', 'comp_le(3, 5) // returns true')
-    </script>
 
 </body>
 

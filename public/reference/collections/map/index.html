@@ -54,21 +54,13 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
     <link href="../../../css/highlight.css" rel="stylesheet" />
     <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-    <script src="../../../js/highlight.js" defer></script>
+    <script src="../../../js/primal-natives.js" defer></script>
+    <script src="../../../js/primal-highlight.js" defer></script>
 
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -121,10 +113,6 @@
 
                     <h1 class="text-white mb-4 page-title">Map</h1>
 
-                    <noscript>
-                        <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                            see the signatures and examples.</p>
-                    </noscript>
 
                     <h2 class="text-white reference-title">Constructor</h2>
                     <table class="reference-table">
@@ -140,9 +128,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map.new" class="code-sample"></div>
+                    <div id="map.new" class="code-sample" data-lang="signature"><pre><code>{Any: Any, ...}: Map</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map.new.example" class="code-sample"></div>
+                    <div id="map.new.example" class="code-sample" data-lang="primal"><pre><code>{"name": "Alice", "age": 30} // returns {"name": "Alice", "age": 30}</code></pre></div>
 
                     <h2 class="text-white reference-title">Index</h2>
                     <table class="reference-table">
@@ -158,9 +146,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map.index" class="code-sample"></div>
+                    <div id="map.index" class="code-sample" data-lang="signature"><pre><code>Map[Any]: Any</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map.index.example" class="code-sample"></div>
+                    <div id="map.index.example" class="code-sample" data-lang="primal"><pre><code>{"name": "Alice"}["name"] // returns "Alice"</code></pre></div>
 
                     <h2 class="text-white reference-title">At</h2>
                     <table class="reference-table">
@@ -176,9 +164,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map_at" class="code-sample"></div>
+                    <div id="map_at" class="code-sample" data-lang="signature"><pre><code>map_at(a: Map, b: Hashable): Any</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map_at.example" class="code-sample"></div>
+                    <div id="map_at.example" class="code-sample" data-lang="primal"><pre><code>map_at({"name": "Alice"}, "name") // returns "Alice"</code></pre></div>
 
                     <h2 class="text-white reference-title">Keys</h2>
                     <table class="reference-table">
@@ -194,9 +182,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map_keys" class="code-sample"></div>
+                    <div id="map_keys" class="code-sample" data-lang="signature"><pre><code>map_keys(a: Map): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map_keys.example" class="code-sample"></div>
+                    <div id="map_keys.example" class="code-sample" data-lang="primal"><pre><code>map_keys({"a": 1, "b": 2}) // returns ["a", "b"]</code></pre></div>
 
                     <h2 class="text-white reference-title">Values</h2>
                     <table class="reference-table">
@@ -212,9 +200,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map_values" class="code-sample"></div>
+                    <div id="map_values" class="code-sample" data-lang="signature"><pre><code>map_values(a: Map): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map_values.example" class="code-sample"></div>
+                    <div id="map_values.example" class="code-sample" data-lang="primal"><pre><code>map_values({"a": 1, "b": 2}) // returns [1, 2]</code></pre></div>
 
                     <h2 class="text-white reference-title">Entries</h2>
                     <table class="reference-table">
@@ -230,9 +218,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map_entries" class="code-sample"></div>
+                    <div id="map_entries" class="code-sample" data-lang="signature"><pre><code>map_entries(a: Map): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map_entries.example" class="code-sample"></div>
+                    <div id="map_entries.example" class="code-sample" data-lang="primal"><pre><code>map_entries({"a": 1, "b": 2}) // returns [["a", 1], ["b", 2]]</code></pre></div>
 
                     <h2 class="text-white reference-title">Set</h2>
                     <table class="reference-table">
@@ -248,9 +236,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map_set" class="code-sample"></div>
+                    <div id="map_set" class="code-sample" data-lang="signature"><pre><code>map_set(a: Map, b: Hashable, c: Any): Map</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map_set.example" class="code-sample"></div>
+                    <div id="map_set.example" class="code-sample" data-lang="primal"><pre><code>map_set({"a": 1}, "b", 2) // returns {"a": 1, "b": 2}</code></pre></div>
 
                     <h2 class="text-white reference-title">Merge</h2>
                     <table class="reference-table">
@@ -266,9 +254,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map_merge" class="code-sample"></div>
+                    <div id="map_merge" class="code-sample" data-lang="signature"><pre><code>map_merge(a: Map, b: Map): Map</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map_merge.example" class="code-sample"></div>
+                    <div id="map_merge.example" class="code-sample" data-lang="primal"><pre><code>map_merge({"a": 1}, {"b": 2}) // returns {"a": 1, "b": 2}</code></pre></div>
 
                     <h2 class="text-white reference-title">Remove at</h2>
                     <table class="reference-table">
@@ -284,9 +272,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map_removeAt" class="code-sample"></div>
+                    <div id="map_removeAt" class="code-sample" data-lang="signature"><pre><code>map_removeAt(a: Map, b: Hashable): Map</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map_removeAt.example" class="code-sample"></div>
+                    <div id="map_removeAt.example" class="code-sample" data-lang="primal"><pre><code>map_removeAt({"a": 1, "b": 2}, "a") // returns {"b": 2}</code></pre></div>
 
                     <h2 class="text-white reference-title">Contains key</h2>
                     <table class="reference-table">
@@ -302,9 +290,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map_containsKey" class="code-sample"></div>
+                    <div id="map_containsKey" class="code-sample" data-lang="signature"><pre><code>map_containsKey(a: Map, b: Hashable): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map_containsKey.example" class="code-sample"></div>
+                    <div id="map_containsKey.example" class="code-sample" data-lang="primal"><pre><code>map_containsKey({"a": 1}, "a") // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is empty</h2>
                     <table class="reference-table">
@@ -320,9 +308,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map_isEmpty" class="code-sample"></div>
+                    <div id="map_isEmpty" class="code-sample" data-lang="signature"><pre><code>map_isEmpty(a: Map): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map_isEmpty.example" class="code-sample"></div>
+                    <div id="map_isEmpty.example" class="code-sample" data-lang="primal"><pre><code>map_isEmpty({}) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is not empty</h2>
                     <table class="reference-table">
@@ -338,9 +326,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map_isNotEmpty" class="code-sample"></div>
+                    <div id="map_isNotEmpty" class="code-sample" data-lang="signature"><pre><code>map_isNotEmpty(a: Map): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map_isNotEmpty.example" class="code-sample"></div>
+                    <div id="map_isNotEmpty.example" class="code-sample" data-lang="primal"><pre><code>map_isNotEmpty({"a": 1}) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Length</h2>
                     <table class="reference-table">
@@ -356,55 +344,15 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="map_length" class="code-sample"></div>
+                    <div id="map_length" class="code-sample" data-lang="signature"><pre><code>map_length(a: Map): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="map_length.example" class="code-sample"></div>
+                    <div id="map_length.example" class="code-sample" data-lang="primal"><pre><code>map_length({"a": 1, "b": 2}) // returns 2</code></pre></div>
 
                 </div>
             </div>
         </div>
     </main>
 
-    <script type="module">
-        setSampleCode('map.new', '{Any: Any, ...}: Map')
-        setSampleCode('map.new.example', '{"name": "Alice", "age": 30} // returns {"name": "Alice", "age": 30}')
-
-        setSampleCode('map.index', 'Map[Any]: Any')
-        setSampleCode('map.index.example', '{"name": "Alice"}["name"] // returns "Alice"')
-
-        setSampleCode('map_at', 'map_at(a: Map, b: Hashable): Any')
-        setSampleCode('map_at.example', 'map_at({"name": "Alice"}, "name") // returns "Alice"')
-
-        setSampleCode('map_keys', 'map_keys(a: Map): List')
-        setSampleCode('map_keys.example', 'map_keys({"a": 1, "b": 2}) // returns ["a", "b"]')
-
-        setSampleCode('map_values', 'map_values(a: Map): List')
-        setSampleCode('map_values.example', 'map_values({"a": 1, "b": 2}) // returns [1, 2]')
-
-        setSampleCode('map_entries', 'map_entries(a: Map): List')
-        setSampleCode('map_entries.example', 'map_entries({"a": 1, "b": 2}) // returns [["a", 1], ["b", 2]]')
-
-        setSampleCode('map_set', 'map_set(a: Map, b: Hashable, c: Any): Map')
-        setSampleCode('map_set.example', 'map_set({"a": 1}, "b", 2) // returns {"a": 1, "b": 2}')
-
-        setSampleCode('map_merge', 'map_merge(a: Map, b: Map): Map')
-        setSampleCode('map_merge.example', 'map_merge({"a": 1}, {"b": 2}) // returns {"a": 1, "b": 2}')
-
-        setSampleCode('map_removeAt', 'map_removeAt(a: Map, b: Hashable): Map')
-        setSampleCode('map_removeAt.example', 'map_removeAt({"a": 1, "b": 2}, "a") // returns {"b": 2}')
-
-        setSampleCode('map_containsKey', 'map_containsKey(a: Map, b: Hashable): Boolean')
-        setSampleCode('map_containsKey.example', 'map_containsKey({"a": 1}, "a") // returns true')
-
-        setSampleCode('map_isEmpty', 'map_isEmpty(a: Map): Boolean')
-        setSampleCode('map_isEmpty.example', 'map_isEmpty({}) // returns true')
-
-        setSampleCode('map_isNotEmpty', 'map_isNotEmpty(a: Map): Boolean')
-        setSampleCode('map_isNotEmpty.example', 'map_isNotEmpty({"a": 1}) // returns true')
-
-        setSampleCode('map_length', 'map_length(a: Map): Number')
-        setSampleCode('map_length.example', 'map_length({"a": 1, "b": 2}) // returns 2')
-    </script>
 
 </body>
 

@@ -54,21 +54,13 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
     <link href="../../../css/highlight.css" rel="stylesheet" />
     <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-    <script src="../../../js/highlight.js" defer></script>
+    <script src="../../../js/primal-natives.js" defer></script>
+    <script src="../../../js/primal-highlight.js" defer></script>
 
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -121,10 +113,6 @@
 
                     <h1 class="text-white mb-4 page-title">Set</h1>
 
-                    <noscript>
-                        <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                            see the signatures and examples.</p>
-                    </noscript>
 
                     <h2 class="text-white reference-title">New</h2>
                     <table class="reference-table">
@@ -140,9 +128,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_new" class="code-sample"></div>
+                    <div id="set_new" class="code-sample" data-lang="signature"><pre><code>set_new(a: List): Set</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_new.example" class="code-sample"></div>
+                    <div id="set_new.example" class="code-sample" data-lang="primal"><pre><code>set_new([1, 2, 3]) // returns {1, 2, 3}</code></pre></div>
 
                     <h2 class="text-white reference-title">Add</h2>
                     <table class="reference-table">
@@ -158,9 +146,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_add" class="code-sample"></div>
+                    <div id="set_add" class="code-sample" data-lang="signature"><pre><code>set_add(a: Set, b: Hashable): Set</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_add.example" class="code-sample"></div>
+                    <div id="set_add.example" class="code-sample" data-lang="primal"><pre><code>set_add(set_new([1, 2]), 3) // returns {1, 2, 3}</code></pre></div>
 
                     <h2 class="text-white reference-title">Remove</h2>
                     <table class="reference-table">
@@ -176,9 +164,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_remove" class="code-sample"></div>
+                    <div id="set_remove" class="code-sample" data-lang="signature"><pre><code>set_remove(a: Set, b: Hashable): Set</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_remove.example" class="code-sample"></div>
+                    <div id="set_remove.example" class="code-sample" data-lang="primal"><pre><code>set_remove(set_new([1, 2, 3]), 2) // returns {1, 3}</code></pre></div>
 
                     <h2 class="text-white reference-title">Union</h2>
                     <table class="reference-table">
@@ -194,9 +182,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_union" class="code-sample"></div>
+                    <div id="set_union" class="code-sample" data-lang="signature"><pre><code>set_union(a: Set, b: Set): Set</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_union.example" class="code-sample"></div>
+                    <div id="set_union.example" class="code-sample" data-lang="primal"><pre><code>set_union(set_new([1, 2]), set_new([2, 3])) // returns {1, 2, 3}</code></pre></div>
 
                     <h2 class="text-white reference-title">Intersection</h2>
                     <table class="reference-table">
@@ -212,9 +200,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_intersection" class="code-sample"></div>
+                    <div id="set_intersection" class="code-sample" data-lang="signature"><pre><code>set_intersection(a: Set, b: Set): Set</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_intersection.example" class="code-sample"></div>
+                    <div id="set_intersection.example" class="code-sample" data-lang="primal"><pre><code>set_intersection(set_new([1, 2, 3]), set_new([2, 3, 4])) // returns {2, 3}</code></pre></div>
 
                     <h2 class="text-white reference-title">Difference</h2>
                     <table class="reference-table">
@@ -231,9 +219,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_difference" class="code-sample"></div>
+                    <div id="set_difference" class="code-sample" data-lang="signature"><pre><code>set_difference(a: Set, b: Set): Set</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_difference.example" class="code-sample"></div>
+                    <div id="set_difference.example" class="code-sample" data-lang="primal"><pre><code>set_difference(set_new([1, 2, 3]), set_new([2, 3])) // returns {1}</code></pre></div>
 
                     <h2 class="text-white reference-title">Contains</h2>
                     <table class="reference-table">
@@ -249,9 +237,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_contains" class="code-sample"></div>
+                    <div id="set_contains" class="code-sample" data-lang="signature"><pre><code>set_contains(a: Set, b: Hashable): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_contains.example" class="code-sample"></div>
+                    <div id="set_contains.example" class="code-sample" data-lang="primal"><pre><code>set_contains(set_new([1, 2, 3]), 2) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is Disjoint</h2>
                     <table class="reference-table">
@@ -267,9 +255,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_isDisjoint" class="code-sample"></div>
+                    <div id="set_isDisjoint" class="code-sample" data-lang="signature"><pre><code>set_isDisjoint(a: Set, b: Set): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_isDisjoint.example" class="code-sample"></div>
+                    <div id="set_isDisjoint.example" class="code-sample" data-lang="primal"><pre><code>set_isDisjoint(set_new([1, 2]), set_new([3, 4])) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is Empty</h2>
                     <table class="reference-table">
@@ -285,9 +273,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_isEmpty" class="code-sample"></div>
+                    <div id="set_isEmpty" class="code-sample" data-lang="signature"><pre><code>set_isEmpty(a: Set): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_isEmpty.example" class="code-sample"></div>
+                    <div id="set_isEmpty.example" class="code-sample" data-lang="primal"><pre><code>set_isEmpty(set_new([])) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is Not Empty</h2>
                     <table class="reference-table">
@@ -303,9 +291,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_isNotEmpty" class="code-sample"></div>
+                    <div id="set_isNotEmpty" class="code-sample" data-lang="signature"><pre><code>set_isNotEmpty(a: Set): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_isNotEmpty.example" class="code-sample"></div>
+                    <div id="set_isNotEmpty.example" class="code-sample" data-lang="primal"><pre><code>set_isNotEmpty(set_new([1, 2])) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is Subset</h2>
                     <table class="reference-table">
@@ -321,9 +309,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_isSubset" class="code-sample"></div>
+                    <div id="set_isSubset" class="code-sample" data-lang="signature"><pre><code>set_isSubset(a: Set, b: Set): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_isSubset.example" class="code-sample"></div>
+                    <div id="set_isSubset.example" class="code-sample" data-lang="primal"><pre><code>set_isSubset(set_new([1, 2]), set_new([1, 2, 3])) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is Superset</h2>
                     <table class="reference-table">
@@ -339,9 +327,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_isSuperset" class="code-sample"></div>
+                    <div id="set_isSuperset" class="code-sample" data-lang="signature"><pre><code>set_isSuperset(a: Set, b: Set): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_isSuperset.example" class="code-sample"></div>
+                    <div id="set_isSuperset.example" class="code-sample" data-lang="primal"><pre><code>set_isSuperset(set_new([1, 2, 3]), set_new([1, 2])) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Length</h2>
                     <table class="reference-table">
@@ -357,55 +345,15 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="set_length" class="code-sample"></div>
+                    <div id="set_length" class="code-sample" data-lang="signature"><pre><code>set_length(a: Set): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="set_length.example" class="code-sample"></div>
+                    <div id="set_length.example" class="code-sample" data-lang="primal"><pre><code>set_length(set_new([1, 2, 3])) // returns 3</code></pre></div>
 
                 </div>
             </div>
         </div>
     </main>
 
-    <script type="module">
-        setSampleCode('set_new', 'set_new(a: List): Set')
-        setSampleCode('set_new.example', 'set_new([1, 2, 3]) // returns {1, 2, 3}')
-
-        setSampleCode('set_add', 'set_add(a: Set, b: Hashable): Set')
-        setSampleCode('set_add.example', 'set_add(set_new([1, 2]), 3) // returns {1, 2, 3}')
-
-        setSampleCode('set_remove', 'set_remove(a: Set, b: Hashable): Set')
-        setSampleCode('set_remove.example', 'set_remove(set_new([1, 2, 3]), 2) // returns {1, 3}')
-
-        setSampleCode('set_union', 'set_union(a: Set, b: Set): Set')
-        setSampleCode('set_union.example', 'set_union(set_new([1, 2]), set_new([2, 3])) // returns {1, 2, 3}')
-
-        setSampleCode('set_intersection', 'set_intersection(a: Set, b: Set): Set')
-        setSampleCode('set_intersection.example', 'set_intersection(set_new([1, 2, 3]), set_new([2, 3, 4])) // returns {2, 3}')
-
-        setSampleCode('set_difference', 'set_difference(a: Set, b: Set): Set')
-        setSampleCode('set_difference.example', 'set_difference(set_new([1, 2, 3]), set_new([2, 3])) // returns {1}')
-
-        setSampleCode('set_contains', 'set_contains(a: Set, b: Hashable): Boolean')
-        setSampleCode('set_contains.example', 'set_contains(set_new([1, 2, 3]), 2) // returns true')
-
-        setSampleCode('set_isDisjoint', 'set_isDisjoint(a: Set, b: Set): Boolean')
-        setSampleCode('set_isDisjoint.example', 'set_isDisjoint(set_new([1, 2]), set_new([3, 4])) // returns true')
-
-        setSampleCode('set_isEmpty', 'set_isEmpty(a: Set): Boolean')
-        setSampleCode('set_isEmpty.example', 'set_isEmpty(set_new([])) // returns true')
-
-        setSampleCode('set_isNotEmpty', 'set_isNotEmpty(a: Set): Boolean')
-        setSampleCode('set_isNotEmpty.example', 'set_isNotEmpty(set_new([1, 2])) // returns true')
-
-        setSampleCode('set_isSubset', 'set_isSubset(a: Set, b: Set): Boolean')
-        setSampleCode('set_isSubset.example', 'set_isSubset(set_new([1, 2]), set_new([1, 2, 3])) // returns true')
-
-        setSampleCode('set_isSuperset', 'set_isSuperset(a: Set, b: Set): Boolean')
-        setSampleCode('set_isSuperset.example', 'set_isSuperset(set_new([1, 2, 3]), set_new([1, 2])) // returns true')
-
-        setSampleCode('set_length', 'set_length(a: Set): Number')
-        setSampleCode('set_length.example', 'set_length(set_new([1, 2, 3])) // returns 3')
-    </script>
 
 </body>
 

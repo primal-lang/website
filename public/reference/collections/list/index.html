@@ -54,21 +54,13 @@
         rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
     <link href="../../../css/highlight.css" rel="stylesheet" />
     <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-    <script src="../../../js/highlight.js" defer></script>
+    <script src="../../../js/primal-natives.js" defer></script>
+    <script src="../../../js/primal-highlight.js" defer></script>
 
     <link rel="preconnect" href="https://www.googletagmanager.com" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -121,10 +113,6 @@
 
                     <h1 class="text-white mb-4 page-title">List</h1>
 
-                    <noscript>
-                        <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                            see the signatures and examples.</p>
-                    </noscript>
 
                     <h2 class="text-white reference-title">Constructor</h2>
                     <table class="reference-table">
@@ -140,9 +128,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list.new" class="code-sample"></div>
+                    <div id="list.new" class="code-sample" data-lang="signature"><pre><code>[Any, Any, Any, ...]: List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list.new.example" class="code-sample"></div>
+                    <div id="list.new.example" class="code-sample" data-lang="primal"><pre><code>[1, 2, 3] // returns [1, 2, 3]</code></pre></div>
 
                     <h2 class="text-white reference-title">Indexing</h2>
                     <table class="reference-table">
@@ -158,9 +146,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list.index" class="code-sample"></div>
+                    <div id="list.index" class="code-sample" data-lang="signature"><pre><code>List[Number]: Any</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list.index.example" class="code-sample"></div>
+                    <div id="list.index.example" class="code-sample" data-lang="primal"><pre><code>[10, 20, 30][1] // returns 20</code></pre></div>
 
                     <h2 class="text-white reference-title">Filled</h2>
                     <table class="reference-table">
@@ -176,9 +164,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_filled" class="code-sample"></div>
+                    <div id="list_filled" class="code-sample" data-lang="signature"><pre><code>list_filled(a: Number, b: Any): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_filled.example" class="code-sample"></div>
+                    <div id="list_filled.example" class="code-sample" data-lang="primal"><pre><code>list_filled(3, 0) // returns [0, 0, 0]</code></pre></div>
 
                     <h2 class="text-white reference-title">At</h2>
                     <table class="reference-table">
@@ -194,9 +182,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_at" class="code-sample"></div>
+                    <div id="list_at" class="code-sample" data-lang="signature"><pre><code>list_at(a: List, b: Number): Any</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_at.example" class="code-sample"></div>
+                    <div id="list_at.example" class="code-sample" data-lang="primal"><pre><code>list_at([10, 20, 30], 1) // returns 20</code></pre></div>
 
                     <h2 class="text-white reference-title">First</h2>
                     <table class="reference-table">
@@ -212,9 +200,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_first" class="code-sample"></div>
+                    <div id="list_first" class="code-sample" data-lang="signature"><pre><code>list_first(a: List): Any</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_first.example" class="code-sample"></div>
+                    <div id="list_first.example" class="code-sample" data-lang="primal"><pre><code>list_first([10, 20, 30]) // returns 10</code></pre></div>
 
                     <h2 class="text-white reference-title">Last</h2>
                     <table class="reference-table">
@@ -230,9 +218,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_last" class="code-sample"></div>
+                    <div id="list_last" class="code-sample" data-lang="signature"><pre><code>list_last(a: List): Any</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_last.example" class="code-sample"></div>
+                    <div id="list_last.example" class="code-sample" data-lang="primal"><pre><code>list_last([10, 20, 30]) // returns 30</code></pre></div>
 
                     <h2 class="text-white reference-title">Sublist</h2>
                     <table class="reference-table">
@@ -249,9 +237,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_sublist" class="code-sample"></div>
+                    <div id="list_sublist" class="code-sample" data-lang="signature"><pre><code>list_sublist(a: List, b: Number, c: Number): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_sublist.example" class="code-sample"></div>
+                    <div id="list_sublist.example" class="code-sample" data-lang="primal"><pre><code>list_sublist([10, 20, 30, 40], 1, 3) // returns [20, 30]</code></pre></div>
 
                     <h2 class="text-white reference-title">Init</h2>
                     <table class="reference-table">
@@ -267,9 +255,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_init" class="code-sample"></div>
+                    <div id="list_init" class="code-sample" data-lang="signature"><pre><code>list_init(a: List): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_init.example" class="code-sample"></div>
+                    <div id="list_init.example" class="code-sample" data-lang="primal"><pre><code>list_init([1, 2, 3]) // returns [1, 2]</code></pre></div>
 
                     <h2 class="text-white reference-title">Rest</h2>
                     <table class="reference-table">
@@ -285,9 +273,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_rest" class="code-sample"></div>
+                    <div id="list_rest" class="code-sample" data-lang="signature"><pre><code>list_rest(a: List): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_rest.example" class="code-sample"></div>
+                    <div id="list_rest.example" class="code-sample" data-lang="primal"><pre><code>list_rest([1, 2, 3]) // returns [2, 3]</code></pre></div>
 
                     <h2 class="text-white reference-title">Take</h2>
                     <table class="reference-table">
@@ -304,9 +292,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_take" class="code-sample"></div>
+                    <div id="list_take" class="code-sample" data-lang="signature"><pre><code>list_take(a: List, b: Number): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_take.example" class="code-sample"></div>
+                    <div id="list_take.example" class="code-sample" data-lang="primal"><pre><code>list_take([1, 2, 3, 4], 2) // returns [1, 2]</code></pre></div>
 
                     <h2 class="text-white reference-title">Drop</h2>
                     <table class="reference-table">
@@ -323,9 +311,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_drop" class="code-sample"></div>
+                    <div id="list_drop" class="code-sample" data-lang="signature"><pre><code>list_drop(a: List, b: Number): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_drop.example" class="code-sample"></div>
+                    <div id="list_drop.example" class="code-sample" data-lang="primal"><pre><code>list_drop([1, 2, 3, 4], 2) // returns [3, 4]</code></pre></div>
 
                     <h2 class="text-white reference-title">Set</h2>
                     <table class="reference-table">
@@ -341,9 +329,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_set" class="code-sample"></div>
+                    <div id="list_set" class="code-sample" data-lang="signature"><pre><code>list_set(a: List, b: Number, c: Any): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_set.example" class="code-sample"></div>
+                    <div id="list_set.example" class="code-sample" data-lang="primal"><pre><code>list_set([1, 2, 3], 1, 99) // returns [1, 99, 3]</code></pre></div>
 
                     <h2 class="text-white reference-title">Concatenation</h2>
                     <table class="reference-table">
@@ -359,9 +347,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_concat" class="code-sample"></div>
+                    <div id="list_concat" class="code-sample" data-lang="signature"><pre><code>list_concat(a: List, b: List): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_concat.example" class="code-sample"></div>
+                    <div id="list_concat.example" class="code-sample" data-lang="primal"><pre><code>list_concat([1, 2], [3, 4]) // returns [1, 2, 3, 4]</code></pre></div>
 
                     <h2 class="text-white reference-title">Insert start</h2>
                     <table class="reference-table">
@@ -377,9 +365,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_insertStart" class="code-sample"></div>
+                    <div id="list_insertStart" class="code-sample" data-lang="signature"><pre><code>list_insertStart(a: List, b: Any): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_insertStart.example" class="code-sample"></div>
+                    <div id="list_insertStart.example" class="code-sample" data-lang="primal"><pre><code>list_insertStart([2, 3], 1) // returns [1, 2, 3]</code></pre></div>
 
                     <h2 class="text-white reference-title">Insert end</h2>
                     <table class="reference-table">
@@ -395,9 +383,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_insertEnd" class="code-sample"></div>
+                    <div id="list_insertEnd" class="code-sample" data-lang="signature"><pre><code>list_insertEnd(a: List, b: Any): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_insertEnd.example" class="code-sample"></div>
+                    <div id="list_insertEnd.example" class="code-sample" data-lang="primal"><pre><code>list_insertEnd([1, 2], 3) // returns [1, 2, 3]</code></pre></div>
 
                     <h2 class="text-white reference-title">Remove</h2>
                     <table class="reference-table">
@@ -413,9 +401,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_remove" class="code-sample"></div>
+                    <div id="list_remove" class="code-sample" data-lang="signature"><pre><code>list_remove(a: List, b: Equatable): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_remove.example" class="code-sample"></div>
+                    <div id="list_remove.example" class="code-sample" data-lang="primal"><pre><code>list_remove([1, 2, 3, 2], 2) // returns [1, 3]</code></pre></div>
 
                     <h2 class="text-white reference-title">Remove at</h2>
                     <table class="reference-table">
@@ -431,9 +419,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_removeAt" class="code-sample"></div>
+                    <div id="list_removeAt" class="code-sample" data-lang="signature"><pre><code>list_removeAt(a: List, b: Number): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_removeAt.example" class="code-sample"></div>
+                    <div id="list_removeAt.example" class="code-sample" data-lang="primal"><pre><code>list_removeAt([1, 2, 3], 1) // returns [1, 3]</code></pre></div>
 
                     <h2 class="text-white reference-title">Reverse</h2>
                     <table class="reference-table">
@@ -449,9 +437,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_reverse" class="code-sample"></div>
+                    <div id="list_reverse" class="code-sample" data-lang="signature"><pre><code>list_reverse(a: List): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_reverse.example" class="code-sample"></div>
+                    <div id="list_reverse.example" class="code-sample" data-lang="primal"><pre><code>list_reverse([1, 2, 3]) // returns [3, 2, 1]</code></pre></div>
 
                     <h2 class="text-white reference-title">Flatten</h2>
                     <table class="reference-table">
@@ -467,9 +455,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_flatten" class="code-sample"></div>
+                    <div id="list_flatten" class="code-sample" data-lang="signature"><pre><code>list_flatten(a: List): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_flatten.example" class="code-sample"></div>
+                    <div id="list_flatten.example" class="code-sample" data-lang="primal"><pre><code>list_flatten([[1, 2], [3, 4]]) // returns [1, 2, 3, 4]</code></pre></div>
 
                     <h2 class="text-white reference-title">Distinct</h2>
                     <table class="reference-table">
@@ -485,9 +473,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_distinct" class="code-sample"></div>
+                    <div id="list_distinct" class="code-sample" data-lang="signature"><pre><code>list_distinct(a: List): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_distinct.example" class="code-sample"></div>
+                    <div id="list_distinct.example" class="code-sample" data-lang="primal"><pre><code>list_distinct([1, 2, 2, 3, 1]) // returns [1, 2, 3]</code></pre></div>
 
                     <h2 class="text-white reference-title">Chunk</h2>
                     <table class="reference-table">
@@ -503,9 +491,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_chunk" class="code-sample"></div>
+                    <div id="list_chunk" class="code-sample" data-lang="signature"><pre><code>list_chunk(a: List, b: Number): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_chunk.example" class="code-sample"></div>
+                    <div id="list_chunk.example" class="code-sample" data-lang="primal"><pre><code>list_chunk([1, 2, 3, 4, 5], 2) // returns [[1, 2], [3, 4], [5]]</code></pre></div>
 
                     <h2 class="text-white reference-title">Swap</h2>
                     <table class="reference-table">
@@ -521,9 +509,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_swap" class="code-sample"></div>
+                    <div id="list_swap" class="code-sample" data-lang="signature"><pre><code>list_swap(a: List, b: Number, c: Number): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_swap.example" class="code-sample"></div>
+                    <div id="list_swap.example" class="code-sample" data-lang="primal"><pre><code>list_swap([1, 2, 3], 0, 2) // returns [3, 2, 1]</code></pre></div>
 
                     <h2 class="text-white reference-title">Join</h2>
                     <table class="reference-table">
@@ -541,9 +529,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_join" class="code-sample"></div>
+                    <div id="list_join" class="code-sample" data-lang="signature"><pre><code>list_join(a: List, b: String): String</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_join.example" class="code-sample"></div>
+                    <div id="list_join.example" class="code-sample" data-lang="primal"><pre><code>list_join(["a", "b", "c"], ", ") // returns "a, b, c"</code></pre></div>
 
                     <h2 class="text-white reference-title">Length</h2>
                     <table class="reference-table">
@@ -559,9 +547,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_length" class="code-sample"></div>
+                    <div id="list_length" class="code-sample" data-lang="signature"><pre><code>list_length(a: List): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_length.example" class="code-sample"></div>
+                    <div id="list_length.example" class="code-sample" data-lang="primal"><pre><code>list_length([1, 2, 3]) // returns 3</code></pre></div>
 
                     <h2 class="text-white reference-title">Is empty</h2>
                     <table class="reference-table">
@@ -577,9 +565,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_isEmpty" class="code-sample"></div>
+                    <div id="list_isEmpty" class="code-sample" data-lang="signature"><pre><code>list_isEmpty(a: List): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_isEmpty.example" class="code-sample"></div>
+                    <div id="list_isEmpty.example" class="code-sample" data-lang="primal"><pre><code>list_isEmpty([]) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Is not empty</h2>
                     <table class="reference-table">
@@ -595,9 +583,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_isNotEmpty" class="code-sample"></div>
+                    <div id="list_isNotEmpty" class="code-sample" data-lang="signature"><pre><code>list_isNotEmpty(a: List): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_isNotEmpty.example" class="code-sample"></div>
+                    <div id="list_isNotEmpty.example" class="code-sample" data-lang="primal"><pre><code>list_isNotEmpty([1, 2]) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Contains</h2>
                     <table class="reference-table">
@@ -613,9 +601,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_contains" class="code-sample"></div>
+                    <div id="list_contains" class="code-sample" data-lang="signature"><pre><code>list_contains(a: List, b: Equatable): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_contains.example" class="code-sample"></div>
+                    <div id="list_contains.example" class="code-sample" data-lang="primal"><pre><code>list_contains([1, 2, 3], 2) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Index of</h2>
                     <table class="reference-table">
@@ -632,9 +620,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_indexOf" class="code-sample"></div>
+                    <div id="list_indexOf" class="code-sample" data-lang="signature"><pre><code>list_indexOf(a: List, b: Equatable): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_indexOf.example" class="code-sample"></div>
+                    <div id="list_indexOf.example" class="code-sample" data-lang="primal"><pre><code>list_indexOf([10, 20, 30], 20) // returns 1</code></pre></div>
 
                     <h2 class="text-white reference-title">Map</h2>
                     <table class="reference-table">
@@ -653,9 +641,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_map" class="code-sample"></div>
+                    <div id="list_map" class="code-sample" data-lang="signature"><pre><code>list_map(a: List, b: Function): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_map.example" class="code-sample"></div>
+                    <div id="list_map.example" class="code-sample" data-lang="primal"><pre><code>list_map([1, 2, 3], double) // returns [2, 4, 6]</code></pre></div>
 
                     <h2 class="text-white reference-title">Filter</h2>
                     <table class="reference-table">
@@ -675,9 +663,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_filter" class="code-sample"></div>
+                    <div id="list_filter" class="code-sample" data-lang="signature"><pre><code>list_filter(a: List, b: Function): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_filter.example" class="code-sample"></div>
+                    <div id="list_filter.example" class="code-sample" data-lang="primal"><pre><code>list_filter([1, 2, 3, 4], isEven) // returns [2, 4]</code></pre></div>
 
                     <h2 class="text-white reference-title">Count</h2>
                     <table class="reference-table">
@@ -693,9 +681,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_count" class="code-sample"></div>
+                    <div id="list_count" class="code-sample" data-lang="signature"><pre><code>list_count(a: List, b: Function): Number</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_count.example" class="code-sample"></div>
+                    <div id="list_count.example" class="code-sample" data-lang="primal"><pre><code>list_count([1, 2, 3, 4], num_isEven) // returns 2</code></pre></div>
 
                     <h2 class="text-white reference-title">Reduce</h2>
                     <table class="reference-table">
@@ -717,9 +705,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_reduce" class="code-sample"></div>
+                    <div id="list_reduce" class="code-sample" data-lang="signature"><pre><code>list_reduce(a: List, b: Any, c: Function): Any</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_reduce.example" class="code-sample"></div>
+                    <div id="list_reduce.example" class="code-sample" data-lang="primal"><pre><code>list_reduce([1, 2, 3], 0, num_add) // returns 6</code></pre></div>
 
                     <h2 class="text-white reference-title">All</h2>
                     <table class="reference-table">
@@ -739,9 +727,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_all" class="code-sample"></div>
+                    <div id="list_all" class="code-sample" data-lang="signature"><pre><code>list_all(a: List, b: Function): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_all.example" class="code-sample"></div>
+                    <div id="list_all.example" class="code-sample" data-lang="primal"><pre><code>list_all([2, 4, 6], num_isEven) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">None</h2>
                     <table class="reference-table">
@@ -761,9 +749,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_none" class="code-sample"></div>
+                    <div id="list_none" class="code-sample" data-lang="signature"><pre><code>list_none(a: List, b: Function): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_none.example" class="code-sample"></div>
+                    <div id="list_none.example" class="code-sample" data-lang="primal"><pre><code>list_none([1, 3, 5], num_isEven) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Any</h2>
                     <table class="reference-table">
@@ -783,9 +771,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_any" class="code-sample"></div>
+                    <div id="list_any" class="code-sample" data-lang="signature"><pre><code>list_any(a: List, b: Function): Boolean</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_any.example" class="code-sample"></div>
+                    <div id="list_any.example" class="code-sample" data-lang="primal"><pre><code>list_any([1, 2, 3], num_isEven) // returns true</code></pre></div>
 
                     <h2 class="text-white reference-title">Zip</h2>
                     <table class="reference-table">
@@ -805,9 +793,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_zip" class="code-sample"></div>
+                    <div id="list_zip" class="code-sample" data-lang="signature"><pre><code>list_zip(a: List, b: List, c: Function): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_zip.example" class="code-sample"></div>
+                    <div id="list_zip.example" class="code-sample" data-lang="primal"><pre><code>list_zip([1, 2], [3, 4], num_add) // returns [4, 6]</code></pre></div>
 
                     <h2 class="text-white reference-title">Sort</h2>
                     <table class="reference-table">
@@ -826,127 +814,15 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="list_sort" class="code-sample"></div>
+                    <div id="list_sort" class="code-sample" data-lang="signature"><pre><code>list_sort(a: List, b: Function): List</code></pre></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="list_sort.example" class="code-sample"></div>
+                    <div id="list_sort.example" class="code-sample" data-lang="primal"><pre><code>list_sort([3, 1, 2], num_compare) // returns [1, 2, 3]</code></pre></div>
 
                 </div>
             </div>
         </div>
     </main>
 
-    <script type="module">
-        setSampleCode('list.new', '[Any, Any, Any, ...]: List')
-        setSampleCode('list.new.example', '[1, 2, 3] // returns [1, 2, 3]')
-
-        setSampleCode('list.index', 'List[Number]: Any')
-        setSampleCode('list.index.example', '[10, 20, 30][1] // returns 20')
-
-        setSampleCode('list_filled', 'list_filled(a: Number, b: Any): List')
-        setSampleCode('list_filled.example', 'list_filled(3, 0) // returns [0, 0, 0]')
-
-        setSampleCode('list_at', 'list_at(a: List, b: Number): Any')
-        setSampleCode('list_at.example', 'list_at([10, 20, 30], 1) // returns 20')
-
-        setSampleCode('list_first', 'list_first(a: List): Any')
-        setSampleCode('list_first.example', 'list_first([10, 20, 30]) // returns 10')
-
-        setSampleCode('list_last', 'list_last(a: List): Any')
-        setSampleCode('list_last.example', 'list_last([10, 20, 30]) // returns 30')
-
-        setSampleCode('list_sublist', 'list_sublist(a: List, b: Number, c: Number): List')
-        setSampleCode('list_sublist.example', 'list_sublist([10, 20, 30, 40], 1, 3) // returns [20, 30]')
-
-        setSampleCode('list_init', 'list_init(a: List): List')
-        setSampleCode('list_init.example', 'list_init([1, 2, 3]) // returns [1, 2]')
-
-        setSampleCode('list_rest', 'list_rest(a: List): List')
-        setSampleCode('list_rest.example', 'list_rest([1, 2, 3]) // returns [2, 3]')
-
-        setSampleCode('list_take', 'list_take(a: List, b: Number): List')
-        setSampleCode('list_take.example', 'list_take([1, 2, 3, 4], 2) // returns [1, 2]')
-
-        setSampleCode('list_drop', 'list_drop(a: List, b: Number): List')
-        setSampleCode('list_drop.example', 'list_drop([1, 2, 3, 4], 2) // returns [3, 4]')
-
-        setSampleCode('list_set', 'list_set(a: List, b: Number, c: Any): List')
-        setSampleCode('list_set.example', 'list_set([1, 2, 3], 1, 99) // returns [1, 99, 3]')
-
-        setSampleCode('list_concat', 'list_concat(a: List, b: List): List')
-        setSampleCode('list_concat.example', 'list_concat([1, 2], [3, 4]) // returns [1, 2, 3, 4]')
-
-        setSampleCode('list_insertStart', 'list_insertStart(a: List, b: Any): List')
-        setSampleCode('list_insertStart.example', 'list_insertStart([2, 3], 1) // returns [1, 2, 3]')
-
-        setSampleCode('list_insertEnd', 'list_insertEnd(a: List, b: Any): List')
-        setSampleCode('list_insertEnd.example', 'list_insertEnd([1, 2], 3) // returns [1, 2, 3]')
-
-        setSampleCode('list_remove', 'list_remove(a: List, b: Equatable): List')
-        setSampleCode('list_remove.example', 'list_remove([1, 2, 3, 2], 2) // returns [1, 3]')
-
-        setSampleCode('list_removeAt', 'list_removeAt(a: List, b: Number): List')
-        setSampleCode('list_removeAt.example', 'list_removeAt([1, 2, 3], 1) // returns [1, 3]')
-
-        setSampleCode('list_reverse', 'list_reverse(a: List): List')
-        setSampleCode('list_reverse.example', 'list_reverse([1, 2, 3]) // returns [3, 2, 1]')
-
-        setSampleCode('list_flatten', 'list_flatten(a: List): List')
-        setSampleCode('list_flatten.example', 'list_flatten([[1, 2], [3, 4]]) // returns [1, 2, 3, 4]')
-
-        setSampleCode('list_distinct', 'list_distinct(a: List): List')
-        setSampleCode('list_distinct.example', 'list_distinct([1, 2, 2, 3, 1]) // returns [1, 2, 3]')
-
-        setSampleCode('list_chunk', 'list_chunk(a: List, b: Number): List')
-        setSampleCode('list_chunk.example', 'list_chunk([1, 2, 3, 4, 5], 2) // returns [[1, 2], [3, 4], [5]]')
-
-        setSampleCode('list_swap', 'list_swap(a: List, b: Number, c: Number): List')
-        setSampleCode('list_swap.example', 'list_swap([1, 2, 3], 0, 2) // returns [3, 2, 1]')
-
-        setSampleCode('list_join', 'list_join(a: List, b: String): String')
-        setSampleCode('list_join.example', 'list_join(["a", "b", "c"], ", ") // returns "a, b, c"')
-
-        setSampleCode('list_length', 'list_length(a: List): Number')
-        setSampleCode('list_length.example', 'list_length([1, 2, 3]) // returns 3')
-
-        setSampleCode('list_isEmpty', 'list_isEmpty(a: List): Boolean')
-        setSampleCode('list_isEmpty.example', 'list_isEmpty([]) // returns true')
-
-        setSampleCode('list_isNotEmpty', 'list_isNotEmpty(a: List): Boolean')
-        setSampleCode('list_isNotEmpty.example', 'list_isNotEmpty([1, 2]) // returns true')
-
-        setSampleCode('list_contains', 'list_contains(a: List, b: Equatable): Boolean')
-        setSampleCode('list_contains.example', 'list_contains([1, 2, 3], 2) // returns true')
-
-        setSampleCode('list_indexOf', 'list_indexOf(a: List, b: Equatable): Number')
-        setSampleCode('list_indexOf.example', 'list_indexOf([10, 20, 30], 20) // returns 1')
-
-        setSampleCode('list_map', 'list_map(a: List, b: Function): List')
-        setSampleCode('list_map.example', 'list_map([1, 2, 3], double) // returns [2, 4, 6]')
-
-        setSampleCode('list_filter', 'list_filter(a: List, b: Function): List')
-        setSampleCode('list_filter.example', 'list_filter([1, 2, 3, 4], isEven) // returns [2, 4]')
-
-        setSampleCode('list_count', 'list_count(a: List, b: Function): Number')
-        setSampleCode('list_count.example', 'list_count([1, 2, 3, 4], num_isEven) // returns 2')
-
-        setSampleCode('list_reduce', 'list_reduce(a: List, b: Any, c: Function): Any')
-        setSampleCode('list_reduce.example', 'list_reduce([1, 2, 3], 0, num_add) // returns 6')
-
-        setSampleCode('list_all', 'list_all(a: List, b: Function): Boolean')
-        setSampleCode('list_all.example', 'list_all([2, 4, 6], num_isEven) // returns true')
-
-        setSampleCode('list_none', 'list_none(a: List, b: Function): Boolean')
-        setSampleCode('list_none.example', 'list_none([1, 3, 5], num_isEven) // returns true')
-
-        setSampleCode('list_any', 'list_any(a: List, b: Function): Boolean')
-        setSampleCode('list_any.example', 'list_any([1, 2, 3], num_isEven) // returns true')
-
-        setSampleCode('list_zip', 'list_zip(a: List, b: List, c: Function): List')
-        setSampleCode('list_zip.example', 'list_zip([1, 2], [3, 4], num_add) // returns [4, 6]')
-
-        setSampleCode('list_sort', 'list_sort(a: List, b: Function): List')
-        setSampleCode('list_sort.example', 'list_sort([3, 1, 2], num_compare) // returns [1, 2, 3]')
-    </script>
 
 </body>
 

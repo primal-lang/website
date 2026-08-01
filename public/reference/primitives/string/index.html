@@ -52,21 +52,13 @@
   <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.css" integrity="sha384-zaeBlB/vwYsDRSlFajnDd7OydJ0cWk+c2OWybl3eSUf6hW2EbhlCsQPqKr3gkznT"
-        crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/theme/dracula.min.css" integrity="sha384-ccdJwIIg/K0Ab6aXF4MPACh7ckk61tvQFTrfkhXZEALgAETURNZIAuQLcS/aPbrM"
-        crossorigin="anonymous">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/codemirror.min.js" integrity="sha384-C7K/Pjo6rtJFtYWv792/hBOrCLhjcAa319ZhwjrDE8zCMEWglI7+S1CUEKD+q6uF"
-        crossorigin="anonymous" defer></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.20/mode/javascript/javascript.min.js" integrity="sha384-g0o+WW9mdIxA7LaaCKTkRm0M5TVT+Bb4s9eocxPsI2G0Xm0POG9iD6G6qP1IIsfS"
-        crossorigin="anonymous" defer></script>
-
   <link href="../../../css/highlight.css" rel="stylesheet" />
   <link href="../../../css/template.css" rel="stylesheet" />
 
     <script src="../../../js/site.js" defer></script>
 
-  <script src="../../../js/highlight.js" defer></script>
+  <script src="../../../js/primal-natives.js" defer></script>
+  <script src="../../../js/primal-highlight.js" defer></script>
 
   <link rel="preconnect" href="https://www.googletagmanager.com" />
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7BCHJ87ZG7"></script>
@@ -114,10 +106,6 @@
 
         <h1 class="text-white mb-4 page-title">String</h1>
 
-        <noscript>
-            <p class="noscript-note">Code samples on this page are rendered with JavaScript. Enable it to
-                see the signatures and examples.</p>
-        </noscript>
 
         <h2 class="text-white reference-title">Constructor</h2>
         <table class="reference-table">
@@ -133,9 +121,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str.new" class="code-sample"></div>
+        <div id="str.new" class="code-sample" data-lang="signature"><pre><code>"Lorem ipsum dolor sit amet": String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str.new.example" class="code-sample"></div>
+        <div id="str.new.example" class="code-sample" data-lang="primal"><pre><code>"Hello, world!"</code></pre></div>
 
         <h2 class="text-white reference-title">Indexing</h2>
         <table class="reference-table">
@@ -151,9 +139,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str.index" class="code-sample"></div>
+        <div id="str.index" class="code-sample" data-lang="signature"><pre><code>String[Number]: String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str.index.example" class="code-sample"></div>
+        <div id="str.index.example" class="code-sample" data-lang="primal"><pre><code>"hello"[0] // returns "h"</code></pre></div>
 
         <h2 class="text-white reference-title">At</h2>
         <table class="reference-table">
@@ -169,9 +157,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_at" class="code-sample"></div>
+        <div id="str_at" class="code-sample" data-lang="signature"><pre><code>str_at(a: String, b: Number): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_at.example" class="code-sample"></div>
+        <div id="str_at.example" class="code-sample" data-lang="primal"><pre><code>str_at("hello", 1) // returns "e"</code></pre></div>
 
         <h2 class="text-white reference-title">First</h2>
         <table class="reference-table">
@@ -187,9 +175,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_first" class="code-sample"></div>
+        <div id="str_first" class="code-sample" data-lang="signature"><pre><code>str_first(a: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_first.example" class="code-sample"></div>
+        <div id="str_first.example" class="code-sample" data-lang="primal"><pre><code>str_first("hello") // returns "h"</code></pre></div>
 
         <h2 class="text-white reference-title">Last</h2>
         <table class="reference-table">
@@ -205,9 +193,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_last" class="code-sample"></div>
+        <div id="str_last" class="code-sample" data-lang="signature"><pre><code>str_last(a: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_last.example" class="code-sample"></div>
+        <div id="str_last.example" class="code-sample" data-lang="primal"><pre><code>str_last("hello") // returns "o"</code></pre></div>
 
         <h2 class="text-white reference-title">Substring</h2>
         <table class="reference-table">
@@ -223,9 +211,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_substring" class="code-sample"></div>
+        <div id="str_substring" class="code-sample" data-lang="signature"><pre><code>str_substring(a: String, b: Number, c: Number): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_substring.example" class="code-sample"></div>
+        <div id="str_substring.example" class="code-sample" data-lang="primal"><pre><code>str_substring("hello", 1, 4) // returns "ell"</code></pre></div>
 
         <h2 class="text-white reference-title">Init</h2>
         <table class="reference-table">
@@ -241,9 +229,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_init" class="code-sample"></div>
+        <div id="str_init" class="code-sample" data-lang="signature"><pre><code>str_init(a: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_init.example" class="code-sample"></div>
+        <div id="str_init.example" class="code-sample" data-lang="primal"><pre><code>str_init("hello") // returns "hell"</code></pre></div>
 
         <h2 class="text-white reference-title">Rest</h2>
         <table class="reference-table">
@@ -259,9 +247,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_rest" class="code-sample"></div>
+        <div id="str_rest" class="code-sample" data-lang="signature"><pre><code>str_rest(a: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_rest.example" class="code-sample"></div>
+        <div id="str_rest.example" class="code-sample" data-lang="primal"><pre><code>str_rest("hello") // returns "ello"</code></pre></div>
 
         <h2 class="text-white reference-title">Take</h2>
         <table class="reference-table">
@@ -277,9 +265,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_take" class="code-sample"></div>
+        <div id="str_take" class="code-sample" data-lang="signature"><pre><code>str_take(a: String, b: Number): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_take.example" class="code-sample"></div>
+        <div id="str_take.example" class="code-sample" data-lang="primal"><pre><code>str_take("hello", 3) // returns "hel"</code></pre></div>
 
         <h2 class="text-white reference-title">Drop</h2>
         <table class="reference-table">
@@ -295,9 +283,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_drop" class="code-sample"></div>
+        <div id="str_drop" class="code-sample" data-lang="signature"><pre><code>str_drop(a: String, b: Number): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_drop.example" class="code-sample"></div>
+        <div id="str_drop.example" class="code-sample" data-lang="primal"><pre><code>str_drop("hello", 2) // returns "llo"</code></pre></div>
 
         <h2 class="text-white reference-title">Concat</h2>
         <table class="reference-table">
@@ -313,9 +301,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_concat" class="code-sample"></div>
+        <div id="str_concat" class="code-sample" data-lang="signature"><pre><code>str_concat(a: String, b: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_concat.example" class="code-sample"></div>
+        <div id="str_concat.example" class="code-sample" data-lang="primal"><pre><code>str_concat("hello", " world") // returns "hello world"</code></pre></div>
 
         <h2 class="text-white reference-title">Replace</h2>
         <table class="reference-table">
@@ -331,9 +319,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_replace" class="code-sample"></div>
+        <div id="str_replace" class="code-sample" data-lang="signature"><pre><code>str_replace(a: String, b: String, c: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_replace.example" class="code-sample"></div>
+        <div id="str_replace.example" class="code-sample" data-lang="primal"><pre><code>str_replace("hello world", "world", "there") // returns "hello there"</code></pre></div>
 
         <h2 class="text-white reference-title">Uppercase</h2>
         <table class="reference-table">
@@ -349,9 +337,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_uppercase" class="code-sample"></div>
+        <div id="str_uppercase" class="code-sample" data-lang="signature"><pre><code>str_uppercase(a: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_uppercase.example" class="code-sample"></div>
+        <div id="str_uppercase.example" class="code-sample" data-lang="primal"><pre><code>str_uppercase("hello") // returns "HELLO"</code></pre></div>
 
         <h2 class="text-white reference-title">Lowercase</h2>
         <table class="reference-table">
@@ -367,9 +355,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_lowercase" class="code-sample"></div>
+        <div id="str_lowercase" class="code-sample" data-lang="signature"><pre><code>str_lowercase(a: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_lowercase.example" class="code-sample"></div>
+        <div id="str_lowercase.example" class="code-sample" data-lang="primal"><pre><code>str_lowercase("HELLO") // returns "hello"</code></pre></div>
 
         <h2 class="text-white reference-title">Trim</h2>
         <table class="reference-table">
@@ -385,9 +373,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_trim" class="code-sample"></div>
+        <div id="str_trim" class="code-sample" data-lang="signature"><pre><code>str_trim(a: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_trim.example" class="code-sample"></div>
+        <div id="str_trim.example" class="code-sample" data-lang="primal"><pre><code>str_trim("  hello  ") // returns "hello"</code></pre></div>
 
         <h2 class="text-white reference-title">Trim Left</h2>
         <table class="reference-table">
@@ -403,9 +391,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_trimLeft" class="code-sample"></div>
+        <div id="str_trimLeft" class="code-sample" data-lang="signature"><pre><code>str_trimLeft(a: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_trimLeft.example" class="code-sample"></div>
+        <div id="str_trimLeft.example" class="code-sample" data-lang="primal"><pre><code>str_trimLeft("  hello") // returns "hello"</code></pre></div>
 
         <h2 class="text-white reference-title">Trim Right</h2>
         <table class="reference-table">
@@ -421,9 +409,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_trimRight" class="code-sample"></div>
+        <div id="str_trimRight" class="code-sample" data-lang="signature"><pre><code>str_trimRight(a: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_trimRight.example" class="code-sample"></div>
+        <div id="str_trimRight.example" class="code-sample" data-lang="primal"><pre><code>str_trimRight("hello  ") // returns "hello"</code></pre></div>
 
         <h2 class="text-white reference-title">Capitalize</h2>
         <table class="reference-table">
@@ -439,9 +427,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_capitalize" class="code-sample"></div>
+        <div id="str_capitalize" class="code-sample" data-lang="signature"><pre><code>str_capitalize(a: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_capitalize.example" class="code-sample"></div>
+        <div id="str_capitalize.example" class="code-sample" data-lang="primal"><pre><code>str_capitalize("hello") // returns "Hello"</code></pre></div>
 
         <h2 class="text-white reference-title">Repeat</h2>
         <table class="reference-table">
@@ -457,9 +445,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_repeat" class="code-sample"></div>
+        <div id="str_repeat" class="code-sample" data-lang="signature"><pre><code>str_repeat(a: String, b: Number): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_repeat.example" class="code-sample"></div>
+        <div id="str_repeat.example" class="code-sample" data-lang="primal"><pre><code>str_repeat("ab", 3) // returns "ababab"</code></pre></div>
 
         <h2 class="text-white reference-title">Remove at</h2>
         <table class="reference-table">
@@ -475,9 +463,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_removeAt" class="code-sample"></div>
+        <div id="str_removeAt" class="code-sample" data-lang="signature"><pre><code>str_removeAt(a: String, b: Number): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_removeAt.example" class="code-sample"></div>
+        <div id="str_removeAt.example" class="code-sample" data-lang="primal"><pre><code>str_removeAt("hello", 1) // returns "hllo"</code></pre></div>
 
         <h2 class="text-white reference-title">Reverse</h2>
         <table class="reference-table">
@@ -493,9 +481,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_reverse" class="code-sample"></div>
+        <div id="str_reverse" class="code-sample" data-lang="signature"><pre><code>str_reverse(a: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_reverse.example" class="code-sample"></div>
+        <div id="str_reverse.example" class="code-sample" data-lang="primal"><pre><code>str_reverse("hello") // returns "olleh"</code></pre></div>
 
         <h2 class="text-white reference-title">Pad left</h2>
         <table class="reference-table">
@@ -511,9 +499,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_padLeft" class="code-sample"></div>
+        <div id="str_padLeft" class="code-sample" data-lang="signature"><pre><code>str_padLeft(a: String, b: Number, c: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_padLeft.example" class="code-sample"></div>
+        <div id="str_padLeft.example" class="code-sample" data-lang="primal"><pre><code>str_padLeft("42", 5, "0") // returns "00042"</code></pre></div>
 
         <h2 class="text-white reference-title">Pad right</h2>
         <table class="reference-table">
@@ -529,9 +517,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_padRight" class="code-sample"></div>
+        <div id="str_padRight" class="code-sample" data-lang="signature"><pre><code>str_padRight(a: String, b: Number, c: String): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_padRight.example" class="code-sample"></div>
+        <div id="str_padRight.example" class="code-sample" data-lang="primal"><pre><code>str_padRight("hi", 5, ".") // returns "hi..."</code></pre></div>
 
         <h2 class="text-white reference-title">Split</h2>
         <table class="reference-table">
@@ -547,9 +535,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_split" class="code-sample"></div>
+        <div id="str_split" class="code-sample" data-lang="signature"><pre><code>str_split(a: String, b: String): List</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_split.example" class="code-sample"></div>
+        <div id="str_split.example" class="code-sample" data-lang="primal"><pre><code>str_split("a,b,c", ",") // returns ["a", "b", "c"]</code></pre></div>
 
         <h2 class="text-white reference-title">Lines</h2>
         <table class="reference-table">
@@ -565,9 +553,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_lines" class="code-sample"></div>
+        <div id="str_lines" class="code-sample" data-lang="signature"><pre><code>str_lines(a: String): List</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_lines.example" class="code-sample"></div>
+        <div id="str_lines.example" class="code-sample" data-lang="primal"><pre><code>str_lines("a\nb\nc") // returns ["a", "b", "c"]</code></pre></div>
 
         <h2 class="text-white reference-title">Contains</h2>
         <table class="reference-table">
@@ -583,9 +571,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_contains" class="code-sample"></div>
+        <div id="str_contains" class="code-sample" data-lang="signature"><pre><code>str_contains(a: String, b: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_contains.example" class="code-sample"></div>
+        <div id="str_contains.example" class="code-sample" data-lang="primal"><pre><code>str_contains("hello world", "world") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Starts with</h2>
         <table class="reference-table">
@@ -601,9 +589,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_startsWith" class="code-sample"></div>
+        <div id="str_startsWith" class="code-sample" data-lang="signature"><pre><code>str_startsWith(a: String, b: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_startsWith.example" class="code-sample"></div>
+        <div id="str_startsWith.example" class="code-sample" data-lang="primal"><pre><code>str_startsWith("hello", "hel") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Ends with</h2>
         <table class="reference-table">
@@ -619,9 +607,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_endsWith" class="code-sample"></div>
+        <div id="str_endsWith" class="code-sample" data-lang="signature"><pre><code>str_endsWith(a: String, b: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_endsWith.example" class="code-sample"></div>
+        <div id="str_endsWith.example" class="code-sample" data-lang="primal"><pre><code>str_endsWith("hello", "llo") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Match</h2>
         <table class="reference-table">
@@ -637,9 +625,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_match" class="code-sample"></div>
+        <div id="str_match" class="code-sample" data-lang="signature"><pre><code>str_match(a: String, b: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_match.example" class="code-sample"></div>
+        <div id="str_match.example" class="code-sample" data-lang="primal"><pre><code>str_match("hello123", "[a-z]+[0-9]+") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Index of</h2>
         <table class="reference-table">
@@ -655,9 +643,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_indexOf" class="code-sample"></div>
+        <div id="str_indexOf" class="code-sample" data-lang="signature"><pre><code>str_indexOf(a: String, b: String): Number</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_indexOf.example" class="code-sample"></div>
+        <div id="str_indexOf.example" class="code-sample" data-lang="primal"><pre><code>str_indexOf("hello", "l") // returns 2</code></pre></div>
 
         <h2 class="text-white reference-title">Last Index Of</h2>
         <table class="reference-table">
@@ -673,9 +661,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_lastIndexOf" class="code-sample"></div>
+        <div id="str_lastIndexOf" class="code-sample" data-lang="signature"><pre><code>str_lastIndexOf(a: String, b: String): Number</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_lastIndexOf.example" class="code-sample"></div>
+        <div id="str_lastIndexOf.example" class="code-sample" data-lang="primal"><pre><code>str_lastIndexOf("hello", "l") // returns 3</code></pre></div>
 
         <h2 class="text-white reference-title">Count</h2>
         <table class="reference-table">
@@ -691,9 +679,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_count" class="code-sample"></div>
+        <div id="str_count" class="code-sample" data-lang="signature"><pre><code>str_count(a: String, b: String): Number</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_count.example" class="code-sample"></div>
+        <div id="str_count.example" class="code-sample" data-lang="primal"><pre><code>str_count("banana", "a") // returns 3</code></pre></div>
 
         <h2 class="text-white reference-title">Length</h2>
         <table class="reference-table">
@@ -709,9 +697,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_length" class="code-sample"></div>
+        <div id="str_length" class="code-sample" data-lang="signature"><pre><code>str_length(a: String): Number</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_length.example" class="code-sample"></div>
+        <div id="str_length.example" class="code-sample" data-lang="primal"><pre><code>str_length("hello") // returns 5</code></pre></div>
 
         <h2 class="text-white reference-title">Is empty</h2>
         <table class="reference-table">
@@ -727,9 +715,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_isEmpty" class="code-sample"></div>
+        <div id="str_isEmpty" class="code-sample" data-lang="signature"><pre><code>str_isEmpty(a: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_isEmpty.example" class="code-sample"></div>
+        <div id="str_isEmpty.example" class="code-sample" data-lang="primal"><pre><code>str_isEmpty("") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Is not empty</h2>
         <table class="reference-table">
@@ -745,9 +733,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_isNotEmpty" class="code-sample"></div>
+        <div id="str_isNotEmpty" class="code-sample" data-lang="signature"><pre><code>str_isNotEmpty(a: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_isNotEmpty.example" class="code-sample"></div>
+        <div id="str_isNotEmpty.example" class="code-sample" data-lang="primal"><pre><code>str_isNotEmpty("hello") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Is Blank</h2>
         <table class="reference-table">
@@ -763,9 +751,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_isBlank" class="code-sample"></div>
+        <div id="str_isBlank" class="code-sample" data-lang="signature"><pre><code>str_isBlank(a: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_isBlank.example" class="code-sample"></div>
+        <div id="str_isBlank.example" class="code-sample" data-lang="primal"><pre><code>str_isBlank("   ") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Is Uppercase</h2>
         <table class="reference-table">
@@ -781,9 +769,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_isUppercase" class="code-sample"></div>
+        <div id="str_isUppercase" class="code-sample" data-lang="signature"><pre><code>str_isUppercase(a: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_isUppercase.example" class="code-sample"></div>
+        <div id="str_isUppercase.example" class="code-sample" data-lang="primal"><pre><code>str_isUppercase("HELLO") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Is Lowercase</h2>
         <table class="reference-table">
@@ -799,9 +787,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_isLowercase" class="code-sample"></div>
+        <div id="str_isLowercase" class="code-sample" data-lang="signature"><pre><code>str_isLowercase(a: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_isLowercase.example" class="code-sample"></div>
+        <div id="str_isLowercase.example" class="code-sample" data-lang="primal"><pre><code>str_isLowercase("hello") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Is Alpha</h2>
         <table class="reference-table">
@@ -817,9 +805,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_isAlpha" class="code-sample"></div>
+        <div id="str_isAlpha" class="code-sample" data-lang="signature"><pre><code>str_isAlpha(a: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_isAlpha.example" class="code-sample"></div>
+        <div id="str_isAlpha.example" class="code-sample" data-lang="primal"><pre><code>str_isAlpha("hello") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Is Numeric</h2>
         <table class="reference-table">
@@ -835,9 +823,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_isNumeric" class="code-sample"></div>
+        <div id="str_isNumeric" class="code-sample" data-lang="signature"><pre><code>str_isNumeric(a: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_isNumeric.example" class="code-sample"></div>
+        <div id="str_isNumeric.example" class="code-sample" data-lang="primal"><pre><code>str_isNumeric("12345") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Is Alphanumeric</h2>
         <table class="reference-table">
@@ -853,9 +841,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_isAlphaNumeric" class="code-sample"></div>
+        <div id="str_isAlphaNumeric" class="code-sample" data-lang="signature"><pre><code>str_isAlphaNumeric(a: String): Boolean</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_isAlphaNumeric.example" class="code-sample"></div>
+        <div id="str_isAlphaNumeric.example" class="code-sample" data-lang="primal"><pre><code>str_isAlphaNumeric("hello123") // returns true</code></pre></div>
 
         <h2 class="text-white reference-title">Bytes</h2>
         <table class="reference-table">
@@ -871,9 +859,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_bytes" class="code-sample"></div>
+        <div id="str_bytes" class="code-sample" data-lang="signature"><pre><code>str_bytes(a: String): List</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_bytes.example" class="code-sample"></div>
+        <div id="str_bytes.example" class="code-sample" data-lang="primal"><pre><code>str_bytes("AB") // returns [65, 66]</code></pre></div>
 
         <h2 class="text-white reference-title">From Bytes</h2>
         <table class="reference-table">
@@ -889,9 +877,9 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_fromBytes" class="code-sample"></div>
+        <div id="str_fromBytes" class="code-sample" data-lang="signature"><pre><code>str_fromBytes(a: List): String</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_fromBytes.example" class="code-sample"></div>
+        <div id="str_fromBytes.example" class="code-sample" data-lang="primal"><pre><code>str_fromBytes([72, 105]) // returns "Hi"</code></pre></div>
 
         <h2 class="text-white reference-title">Compare</h2>
         <table class="reference-table">
@@ -907,148 +895,15 @@
           </tbody>
         </table>
         <p class="reference-block-label">Signature</p>
-        <div id="str_compare" class="code-sample"></div>
+        <div id="str_compare" class="code-sample" data-lang="signature"><pre><code>str_compare(a: String, b: String): Number</code></pre></div>
         <p class="reference-block-label">Example</p>
-        <div id="str_compare.example" class="code-sample"></div>
+        <div id="str_compare.example" class="code-sample" data-lang="primal"><pre><code>str_compare("apple", "banana") // returns -1</code></pre></div>
 
       </div>
     </div>
   </div>
   </main>
 
-  <script type="module">
-    setSampleCode('str.new', '"Lorem ipsum dolor sit amet": String')
-    setSampleCode('str.new.example', '"Hello, world!"')
-
-    setSampleCode('str.index', 'String[Number]: String')
-    setSampleCode('str.index.example', '"hello"[0] // returns "h"')
-
-    setSampleCode('str_at', 'str_at(a: String, b: Number): String')
-    setSampleCode('str_at.example', 'str_at("hello", 1) // returns "e"')
-
-    setSampleCode('str_first', 'str_first(a: String): String')
-    setSampleCode('str_first.example', 'str_first("hello") // returns "h"')
-
-    setSampleCode('str_last', 'str_last(a: String): String')
-    setSampleCode('str_last.example', 'str_last("hello") // returns "o"')
-
-    setSampleCode('str_substring', 'str_substring(a: String, b: Number, c: Number): String')
-    setSampleCode('str_substring.example', 'str_substring("hello", 1, 4) // returns "ell"')
-
-    setSampleCode('str_init', 'str_init(a: String): String')
-    setSampleCode('str_init.example', 'str_init("hello") // returns "hell"')
-
-    setSampleCode('str_rest', 'str_rest(a: String): String')
-    setSampleCode('str_rest.example', 'str_rest("hello") // returns "ello"')
-
-    setSampleCode('str_take', 'str_take(a: String, b: Number): String')
-    setSampleCode('str_take.example', 'str_take("hello", 3) // returns "hel"')
-
-    setSampleCode('str_drop', 'str_drop(a: String, b: Number): String')
-    setSampleCode('str_drop.example', 'str_drop("hello", 2) // returns "llo"')
-
-    setSampleCode('str_concat', 'str_concat(a: String, b: String): String')
-    setSampleCode('str_concat.example', 'str_concat("hello", " world") // returns "hello world"')
-
-    setSampleCode('str_replace', 'str_replace(a: String, b: String, c: String): String')
-    setSampleCode('str_replace.example', 'str_replace("hello world", "world", "there") // returns "hello there"')
-
-    setSampleCode('str_uppercase', 'str_uppercase(a: String): String')
-    setSampleCode('str_uppercase.example', 'str_uppercase("hello") // returns "HELLO"')
-
-    setSampleCode('str_lowercase', 'str_lowercase(a: String): String')
-    setSampleCode('str_lowercase.example', 'str_lowercase("HELLO") // returns "hello"')
-
-    setSampleCode('str_trim', 'str_trim(a: String): String')
-    setSampleCode('str_trim.example', 'str_trim("  hello  ") // returns "hello"')
-
-    setSampleCode('str_trimLeft', 'str_trimLeft(a: String): String')
-    setSampleCode('str_trimLeft.example', 'str_trimLeft("  hello") // returns "hello"')
-
-    setSampleCode('str_trimRight', 'str_trimRight(a: String): String')
-    setSampleCode('str_trimRight.example', 'str_trimRight("hello  ") // returns "hello"')
-
-    setSampleCode('str_capitalize', 'str_capitalize(a: String): String')
-    setSampleCode('str_capitalize.example', 'str_capitalize("hello") // returns "Hello"')
-
-    setSampleCode('str_repeat', 'str_repeat(a: String, b: Number): String')
-    setSampleCode('str_repeat.example', 'str_repeat("ab", 3) // returns "ababab"')
-
-    setSampleCode('str_removeAt', 'str_removeAt(a: String, b: Number): String')
-    setSampleCode('str_removeAt.example', 'str_removeAt("hello", 1) // returns "hllo"')
-
-    setSampleCode('str_reverse', 'str_reverse(a: String): String')
-    setSampleCode('str_reverse.example', 'str_reverse("hello") // returns "olleh"')
-
-    setSampleCode('str_padLeft', 'str_padLeft(a: String, b: Number, c: String): String')
-    setSampleCode('str_padLeft.example', 'str_padLeft("42", 5, "0") // returns "00042"')
-
-    setSampleCode('str_padRight', 'str_padRight(a: String, b: Number, c: String): String')
-    setSampleCode('str_padRight.example', 'str_padRight("hi", 5, ".") // returns "hi..."')
-
-    setSampleCode('str_split', 'str_split(a: String, b: String): List')
-    setSampleCode('str_split.example', 'str_split("a,b,c", ",") // returns ["a", "b", "c"]')
-
-    setSampleCode('str_lines', 'str_lines(a: String): List')
-    setSampleCode('str_lines.example', 'str_lines("a\\nb\\nc") // returns ["a", "b", "c"]')
-
-    setSampleCode('str_contains', 'str_contains(a: String, b: String): Boolean')
-    setSampleCode('str_contains.example', 'str_contains("hello world", "world") // returns true')
-
-    setSampleCode('str_startsWith', 'str_startsWith(a: String, b: String): Boolean')
-    setSampleCode('str_startsWith.example', 'str_startsWith("hello", "hel") // returns true')
-
-    setSampleCode('str_endsWith', 'str_endsWith(a: String, b: String): Boolean')
-    setSampleCode('str_endsWith.example', 'str_endsWith("hello", "llo") // returns true')
-
-    setSampleCode('str_match', 'str_match(a: String, b: String): Boolean')
-    setSampleCode('str_match.example', 'str_match("hello123", "[a-z]+[0-9]+") // returns true')
-
-    setSampleCode('str_indexOf', 'str_indexOf(a: String, b: String): Number')
-    setSampleCode('str_indexOf.example', 'str_indexOf("hello", "l") // returns 2')
-
-    setSampleCode('str_lastIndexOf', 'str_lastIndexOf(a: String, b: String): Number')
-    setSampleCode('str_lastIndexOf.example', 'str_lastIndexOf("hello", "l") // returns 3')
-
-    setSampleCode('str_count', 'str_count(a: String, b: String): Number')
-    setSampleCode('str_count.example', 'str_count("banana", "a") // returns 3')
-
-    setSampleCode('str_length', 'str_length(a: String): Number')
-    setSampleCode('str_length.example', 'str_length("hello") // returns 5')
-
-    setSampleCode('str_isEmpty', 'str_isEmpty(a: String): Boolean')
-    setSampleCode('str_isEmpty.example', 'str_isEmpty("") // returns true')
-
-    setSampleCode('str_isNotEmpty', 'str_isNotEmpty(a: String): Boolean')
-    setSampleCode('str_isNotEmpty.example', 'str_isNotEmpty("hello") // returns true')
-
-    setSampleCode('str_isBlank', 'str_isBlank(a: String): Boolean')
-    setSampleCode('str_isBlank.example', 'str_isBlank("   ") // returns true')
-
-    setSampleCode('str_isUppercase', 'str_isUppercase(a: String): Boolean')
-    setSampleCode('str_isUppercase.example', 'str_isUppercase("HELLO") // returns true')
-
-    setSampleCode('str_isLowercase', 'str_isLowercase(a: String): Boolean')
-    setSampleCode('str_isLowercase.example', 'str_isLowercase("hello") // returns true')
-
-    setSampleCode('str_isAlpha', 'str_isAlpha(a: String): Boolean')
-    setSampleCode('str_isAlpha.example', 'str_isAlpha("hello") // returns true')
-
-    setSampleCode('str_isNumeric', 'str_isNumeric(a: String): Boolean')
-    setSampleCode('str_isNumeric.example', 'str_isNumeric("12345") // returns true')
-
-    setSampleCode('str_isAlphaNumeric', 'str_isAlphaNumeric(a: String): Boolean')
-    setSampleCode('str_isAlphaNumeric.example', 'str_isAlphaNumeric("hello123") // returns true')
-
-    setSampleCode('str_bytes', 'str_bytes(a: String): List')
-    setSampleCode('str_bytes.example', 'str_bytes("AB") // returns [65, 66]')
-
-    setSampleCode('str_fromBytes', 'str_fromBytes(a: List): String')
-    setSampleCode('str_fromBytes.example', 'str_fromBytes([72, 105]) // returns "Hi"')
-
-    setSampleCode('str_compare', 'str_compare(a: String, b: String): Number')
-    setSampleCode('str_compare.example', 'str_compare("apple", "banana") // returns -1')
-  </script>
 
 </body>
 

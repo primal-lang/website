@@ -1,0 +1,37 @@
+/*
+ * Dracula — https://draculatheme.com
+ * Canonical values, not adjusted to fit the site.
+ */
+
+:root {
+  /* Code surface */
+  --code-bg: #282a36;
+  --code-fg: #f8f8f2;
+  --code-border: rgba(248, 248, 242, 0.08);
+  --code-line-number: #6272a4;
+  --code-caret: #f8f8f2;
+  --code-selection: #44475a;
+
+  /* Tokens */
+  --tok-comment: #6272a4;
+  --tok-string: #f1fa8c;
+  --tok-number: #bd93f9;
+  --tok-boolean: #bd93f9;
+  --tok-keyword: #ff79c6;
+  --tok-operator: #ff79c6;
+  --tok-punctuation: #f8f8f2;
+  --tok-native: #8be9fd;
+  --tok-definition: #50fa7b;
+  --tok-param: #ffb86c;
+  --tok-binding: #50fa7b;
+  --tok-identifier: #f8f8f2;
+  --tok-type: #8be9fd;
+
+  /* Playground console */
+  --console-bg: #21222c;
+  --console-input-bg: #343746;
+  --console-border: rgba(248, 248, 242, 0.08);
+  --output-error: #ff5555;
+  --output-warning: #ffb86c;
+  --output-success: #f8f8f2;
+}

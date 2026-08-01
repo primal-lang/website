@@ -862,14 +862,15 @@ a {
 /* --- Code blocks --- */
 .code-sample {
   position: relative;
-  background-color: #0d1117;
+  background-color: var(--code-bg);
   padding: 0.5rem 0.75rem;
   font-family: var(--font-code);
+  color: var(--code-fg);
   border-radius: var(--radius-sm);
   margin-top: 0.6rem;
   margin-bottom: 1.5rem;
   font-size: 0.85rem;
-  border: 1px solid rgba(255,255,255,0.05);
+  border: 1px solid var(--code-border);
   overflow-x: auto
 }
 

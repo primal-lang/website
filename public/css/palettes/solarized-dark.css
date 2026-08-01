@@ -1,0 +1,38 @@
+/*
+ * Solarized Dark — Ethan Schoonover.
+ * Canonical values, not adjusted to fit the site. Note that Solarized's comment
+ * tone (base01 on base03) is low contrast by design and does not reach WCAG AA.
+ */
+
+:root {
+  /* Code surface */
+  --code-bg: #002b36;
+  --code-fg: #839496;
+  --code-border: rgba(131, 148, 150, 0.14);
+  --code-line-number: #586e75;
+  --code-caret: #93a1a1;
+  --code-selection: #073642;
+
+  /* Tokens */
+  --tok-comment: #586e75;
+  --tok-string: #2aa198;
+  --tok-number: #d33682;
+  --tok-boolean: #d33682;
+  --tok-keyword: #859900;
+  --tok-operator: #859900;
+  --tok-punctuation: #839496;
+  --tok-native: #268bd2;
+  --tok-definition: #b58900;
+  --tok-param: #cb4b16;
+  --tok-binding: #6c71c4;
+  --tok-identifier: #93a1a1;
+  --tok-type: #268bd2;
+
+  /* Playground console */
+  --console-bg: #012029;
+  --console-input-bg: #073642;
+  --console-border: rgba(131, 148, 150, 0.14);
+  --output-error: #dc322f;
+  --output-warning: #b58900;
+  --output-success: #93a1a1;
+}

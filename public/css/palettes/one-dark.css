@@ -1,0 +1,37 @@
+/*
+ * One Dark — Atom.
+ * Canonical values, not adjusted to fit the site.
+ */
+
+:root {
+  /* Code surface */
+  --code-bg: #282c34;
+  --code-fg: #abb2bf;
+  --code-border: rgba(171, 178, 191, 0.1);
+  --code-line-number: #4b5263;
+  --code-caret: #528bff;
+  --code-selection: #3e4451;
+
+  /* Tokens */
+  --tok-comment: #5c6370;
+  --tok-string: #98c379;
+  --tok-number: #d19a66;
+  --tok-boolean: #d19a66;
+  --tok-keyword: #c678dd;
+  --tok-operator: #56b6c2;
+  --tok-punctuation: #abb2bf;
+  --tok-native: #61afef;
+  --tok-definition: #e5c07b;
+  --tok-param: #e06c75;
+  --tok-binding: #e5c07b;
+  --tok-identifier: #abb2bf;
+  --tok-type: #e5c07b;
+
+  /* Playground console */
+  --console-bg: #21252b;
+  --console-input-bg: #2c313c;
+  --console-border: rgba(171, 178, 191, 0.1);
+  --output-error: #e06c75;
+  --output-warning: #e5c07b;
+  --output-success: #abb2bf;
+}

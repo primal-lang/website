@@ -1,0 +1,37 @@
+/*
+ * Monokai — Wimer Hazenberg's original, as shipped by Sublime Text.
+ * Canonical values, not adjusted to fit the site.
+ */
+
+:root {
+  /* Code surface */
+  --code-bg: #272822;
+  --code-fg: #f8f8f2;
+  --code-border: rgba(248, 248, 242, 0.08);
+  --code-line-number: #90908a;
+  --code-caret: #f8f8f0;
+  --code-selection: #49483e;
+
+  /* Tokens */
+  --tok-comment: #75715e;
+  --tok-string: #e6db74;
+  --tok-number: #ae81ff;
+  --tok-boolean: #ae81ff;
+  --tok-keyword: #f92672;
+  --tok-operator: #f92672;
+  --tok-punctuation: #f8f8f2;
+  --tok-native: #66d9ef;
+  --tok-definition: #a6e22e;
+  --tok-param: #fd971f;
+  --tok-binding: #a6e22e;
+  --tok-identifier: #f8f8f2;
+  --tok-type: #66d9ef;
+
+  /* Playground console */
+  --console-bg: #1e1f1c;
+  --console-input-bg: #34352f;
+  --console-border: rgba(248, 248, 242, 0.08);
+  --output-error: #f92672;
+  --output-warning: #fd971f;
+  --output-success: #f8f8f2;
+}
