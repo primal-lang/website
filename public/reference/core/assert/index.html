@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-        content="Primal assertion functions reference: write tests with assert.equal, assert.notEqual, assert.true, assert.false, and assert.throws." />
+        content="Primal assertion functions reference: write tests with assert_equal, assert_notEqual, assert_true, assert_false, and assert_throws." />
     <title>Assertion Functions - Primal</title>
     <link rel="canonical" href="https://primal-lang.org/reference/core/assert/" />
     <meta property="og:site_name" content="Primal" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Assertion Functions - Primal" />
-    <meta property="og:description" content="Primal assertion functions reference: write tests with assert.equal, assert.notEqual, assert.true, assert.false, and assert.throws." />
+    <meta property="og:description" content="Primal assertion functions reference: write tests with assert_equal, assert_notEqual, assert_true, assert_false, and assert_throws." />
     <meta property="og:url" content="https://primal-lang.org/reference/core/assert/" />
     <meta property="og:image" content="https://primal-lang.org/img/og.png" />
     <meta property="og:image:width" content="1200" />
@@ -19,7 +19,7 @@
     <meta property="og:image:alt" content="Primal - a declarative, functional programming language" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Assertion Functions - Primal" />
-    <meta name="twitter:description" content="Primal assertion functions reference: write tests with assert.equal, assert.notEqual, assert.true, assert.false, and assert.throws." />
+    <meta name="twitter:description" content="Primal assertion functions reference: write tests with assert_equal, assert_notEqual, assert_true, assert_false, and assert_throws." />
 
     <script type="application/ld+json">
         {
@@ -140,9 +140,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="assert.equal" class="code-sample"></div>
+                    <div id="assert_equal" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="assert.equal.example" class="code-sample"></div>
+                    <div id="assert_equal.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Assert not equal</h2>
                     <table class="reference-table">
@@ -158,9 +158,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="assert.notEqual" class="code-sample"></div>
+                    <div id="assert_notEqual" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="assert.notEqual.example" class="code-sample"></div>
+                    <div id="assert_notEqual.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Assert true</h2>
                     <table class="reference-table">
@@ -176,9 +176,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="assert.true" class="code-sample"></div>
+                    <div id="assert_true" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="assert.true.example" class="code-sample"></div>
+                    <div id="assert_true.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Assert false</h2>
                     <table class="reference-table">
@@ -194,9 +194,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="assert.false" class="code-sample"></div>
+                    <div id="assert_false" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="assert.false.example" class="code-sample"></div>
+                    <div id="assert_false.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Assert throws</h2>
                     <table class="reference-table">
@@ -213,9 +213,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="assert.throws" class="code-sample"></div>
+                    <div id="assert_throws" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="assert.throws.example" class="code-sample"></div>
+                    <div id="assert_throws.example" class="code-sample"></div>
 
                 </div>
             </div>
@@ -223,20 +223,20 @@
     </main>
 
     <script type="module">
-        setSampleCode('assert.equal', 'assert.equal(a: Equatable, b: Equatable): Boolean')
-        setSampleCode('assert.equal.example', 'assert.equal(1 + 1, 2) // returns true\nassert.equal(3, 2)     // Assertion error: "assert.equal" failed: expected 2, actual 3')
+        setSampleCode('assert_equal', 'assert_equal(a: Equatable, b: Equatable): Boolean')
+        setSampleCode('assert_equal.example', 'assert_equal(1 + 1, 2) // returns true\nassert_equal(3, 2)     // Assertion error: "assert_equal" failed: expected 2, actual 3')
 
-        setSampleCode('assert.notEqual', 'assert.notEqual(a: Equatable, b: Equatable): Boolean')
-        setSampleCode('assert.notEqual.example', 'assert.notEqual(1, 2) // returns true\nassert.notEqual(1, 1) // Assertion error: "assert.notEqual" failed: expected not 1, actual 1')
+        setSampleCode('assert_notEqual', 'assert_notEqual(a: Equatable, b: Equatable): Boolean')
+        setSampleCode('assert_notEqual.example', 'assert_notEqual(1, 2) // returns true\nassert_notEqual(1, 1) // Assertion error: "assert_notEqual" failed: expected not 1, actual 1')
 
-        setSampleCode('assert.true', 'assert.true(a: Boolean): Boolean')
-        setSampleCode('assert.true.example', 'assert.true(str.startsWith("abc", "a")) // returns true\nassert.true(false)                      // Assertion error: "assert.true" failed: expected true, actual false')
+        setSampleCode('assert_true', 'assert_true(a: Boolean): Boolean')
+        setSampleCode('assert_true.example', 'assert_true(str_startsWith("abc", "a")) // returns true\nassert_true(false)                      // Assertion error: "assert_true" failed: expected true, actual false')
 
-        setSampleCode('assert.false', 'assert.false(a: Boolean): Boolean')
-        setSampleCode('assert.false.example', 'assert.false(str.isEmpty("abc")) // returns true\nassert.false(true)               // Assertion error: "assert.false" failed: expected false, actual true')
+        setSampleCode('assert_false', 'assert_false(a: Boolean): Boolean')
+        setSampleCode('assert_false.example', 'assert_false(str_isEmpty("abc")) // returns true\nassert_false(true)               // Assertion error: "assert_false" failed: expected false, actual true')
 
-        setSampleCode('assert.throws', 'assert.throws(a: Any): Boolean')
-        setSampleCode('assert.throws.example', 'assert.throws(to.number("not a number")) // returns true\nassert.throws(42)                        // Assertion error: "assert.throws" failed: expected a thrown error, actual 42')
+        setSampleCode('assert_throws', 'assert_throws(a: Any): Boolean')
+        setSampleCode('assert_throws.example', 'assert_throws(to_number("not a number")) // returns true\nassert_throws(42)                        // Assertion error: "assert_throws" failed: expected a thrown error, actual 42')
     </script>
 
 </body>

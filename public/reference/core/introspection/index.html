@@ -5,13 +5,13 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description"
-        content="Primal introspection functions reference: inspect values and functions at runtime with type.of, function.name, function.arity, and function.parameters." />
+        content="Primal introspection functions reference: inspect values and functions at runtime with type_of, function_name, function_arity, and function_parameters." />
     <title>Introspection Functions - Primal</title>
     <link rel="canonical" href="https://primal-lang.org/reference/core/introspection/" />
     <meta property="og:site_name" content="Primal" />
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Introspection Functions - Primal" />
-    <meta property="og:description" content="Primal introspection functions reference: inspect values and functions at runtime with type.of, function.name, function.arity, and function.parameters." />
+    <meta property="og:description" content="Primal introspection functions reference: inspect values and functions at runtime with type_of, function_name, function_arity, and function_parameters." />
     <meta property="og:url" content="https://primal-lang.org/reference/core/introspection/" />
     <meta property="og:image" content="https://primal-lang.org/img/og.png" />
     <meta property="og:image:width" content="1200" />
@@ -19,7 +19,7 @@
     <meta property="og:image:alt" content="Primal - a declarative, functional programming language" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Introspection Functions - Primal" />
-    <meta name="twitter:description" content="Primal introspection functions reference: inspect values and functions at runtime with type.of, function.name, function.arity, and function.parameters." />
+    <meta name="twitter:description" content="Primal introspection functions reference: inspect values and functions at runtime with type_of, function_name, function_arity, and function_parameters." />
 
     <script type="application/ld+json">
         {
@@ -140,9 +140,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="type.of" class="code-sample"></div>
+                    <div id="type_of" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="type.of.example" class="code-sample"></div>
+                    <div id="type_of.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Function name</h2>
                     <table class="reference-table">
@@ -158,9 +158,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="function.name" class="code-sample"></div>
+                    <div id="function_name" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="function.name.example" class="code-sample"></div>
+                    <div id="function_name.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Function arity</h2>
                     <table class="reference-table">
@@ -176,9 +176,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="function.arity" class="code-sample"></div>
+                    <div id="function_arity" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="function.arity.example" class="code-sample"></div>
+                    <div id="function_arity.example" class="code-sample"></div>
 
                     <h2 class="text-white reference-title">Function parameters</h2>
                     <table class="reference-table">
@@ -194,9 +194,9 @@
                         </tbody>
                     </table>
                     <p class="reference-block-label">Signature</p>
-                    <div id="function.parameters" class="code-sample"></div>
+                    <div id="function_parameters" class="code-sample"></div>
                     <p class="reference-block-label">Example</p>
-                    <div id="function.parameters.example" class="code-sample"></div>
+                    <div id="function_parameters.example" class="code-sample"></div>
 
                 </div>
             </div>
@@ -204,17 +204,17 @@
     </main>
 
     <script type="module">
-        setSampleCode('type.of', 'type.of(a: Any): String')
-        setSampleCode('type.of.example', 'type.of([1, 2, 3]) // returns "List"')
+        setSampleCode('type_of', 'type_of(a: Any): String')
+        setSampleCode('type_of.example', 'type_of([1, 2, 3]) // returns "List"')
 
-        setSampleCode('function.name', 'function.name(a: Function): String')
-        setSampleCode('function.name.example', 'function.name(num.add) // returns "num.add"')
+        setSampleCode('function_name', 'function_name(a: Function): String')
+        setSampleCode('function_name.example', 'function_name(num_add) // returns "num_add"')
 
-        setSampleCode('function.arity', 'function.arity(a: Function): Number')
-        setSampleCode('function.arity.example', 'function.arity(num.add) // returns 2')
+        setSampleCode('function_arity', 'function_arity(a: Function): Number')
+        setSampleCode('function_arity.example', 'function_arity(num_add) // returns 2')
 
-        setSampleCode('function.parameters', 'function.parameters(a: Function): List')
-        setSampleCode('function.parameters.example', 'function.parameters(num.add) // returns ["a", "b"]')
+        setSampleCode('function_parameters', 'function_parameters(a: Function): List')
+        setSampleCode('function_parameters.example', 'function_parameters(num_add) // returns ["a", "b"]')
     </script>
 
 </body>

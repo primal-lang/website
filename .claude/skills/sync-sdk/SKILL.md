@@ -170,9 +170,9 @@ Report concisely per file what you added / removed / changed, or "no changes nee
 cd ../primal-sdk/docs/lang/reference && grep -rhoP '(?<=\*\*Signature:\*\* `)[a-zA-Z][a-zA-Z0-9._]*(?=\()' . | sort -u
 ```
 
-Compare that against the map's keys and add anything missing, grouped under the existing `// module` comments and matching the neighbouring entries' style. Also check for **renamed** functions — a stale key (e.g. `time.epoch` after it became `time.toEpoch`) highlights nothing.
+Compare that against the map's keys and add anything missing, grouped under the existing `// module` comments and matching the neighbouring entries' style. Also check for **renamed** functions — a stale key (e.g. `time_epoch` after it became `time_toEpoch`) highlights nothing.
 
-Entry order does not matter: every pattern ends in a `(?=\()` lookahead, so a shorter name cannot shadow a longer one (`bool.and` will not swallow `bool.andStrict`).
+Entry order does not matter: every pattern ends in a `(?=\()` lookahead, so a shorter name cannot shadow a longer one (`bool_and` will not swallow `bool_andStrict`).
 
 The only non-function keys are the language keywords `and`, `else`, `if`, `main`, `or`.
 
@@ -215,4 +215,4 @@ cd public && python3 -m http.server 8777
 6. Open `/overview/` and `/start/` and check them against the README, then paste each `start` code sample into the playground to confirm it still compiles.
 7. Check the browser console for errors.
 
-A good scripted cross-check: parse every `**Signature:**` / `**Input:** `/ `**Output:** `/ `**Example:**` from the SDK markdown, parse the `setSampleCode()` calls and Input/Output cells from each page, and diff them keyed by function name (not by position — some pages carry extra literal-syntax sections such as `list.new` that have no SDK signature).
+A good scripted cross-check: parse every `**Signature:**` / `**Input:** `/ `**Output:** `/ `**Example:**` from the SDK markdown, parse the `setSampleCode()` calls and Input/Output cells from each page, and diff them keyed by function name (not by position — some pages carry extra literal-syntax sections such as `list_new` that have no SDK signature).
