@@ -335,3 +335,9 @@ button.nav-link {
 .modal-footer {
   border-top: var(--border-subtle);
 }
+
+/* template.css pins .btn to the site body font, which this page never loads,
+   so the button would fall back to the browser default. Follow the playground. */
+.modal .btn {
+  font-family: inherit;
+}
