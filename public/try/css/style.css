@@ -174,9 +174,14 @@ button.nav-link {
   white-space: pre;
 }
 
+/* The <pre> comes first in the DOM but paints last, so the textarea's selection
+   rectangle lands behind the coloured glyphs instead of hiding them — the same
+   order a real editor draws in. Clicks still reach the textarea underneath
+   because this layer takes no pointer events. */
 .editor-highlight {
   overflow: hidden;
   pointer-events: none;
+  z-index: 1;
   color: var(--code-fg);
 }
 
