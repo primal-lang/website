@@ -517,12 +517,15 @@ resolve_shell_config_file() {
 
     case "$SHELL_NAME" in
         bash)
-            # A macOS terminal starts a login shell, which reads the first of
-            # .bash_profile, .bash_login and .profile that exists and never
-            # touches .bashrc. Everywhere else a terminal starts an interactive
-            # non-login shell, which reads .bashrc alone, so that is the file to
-            # write even when it has to be created.
-            if [[ "$os" == "macos" ]]; then
+            # A macOS terminal and Git Bash both start a login shell, which reads
+            # the first of .bash_profile, .bash_login and .profile that exists and
+            # never touches .bashrc. Git for Windows hides that difference by
+            # generating a .bash_profile that sources .bashrc, but only for a user
+            # who has none of the three, so .bashrc is not a file this installer
+            # can count on being read there. Everywhere else a terminal starts an
+            # interactive non-login shell, which reads .bashrc alone, so that is
+            # the file to write even when it has to be created.
+            if [[ "$os" == "macos" || "$os" == "windows" ]]; then
                 SHELL_CONFIG_FILE="${HOME}/.bash_profile"
 
                 for candidate in .bash_profile .bash_login .profile; do
