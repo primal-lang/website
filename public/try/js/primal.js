@@ -7874,9 +7874,10 @@ s=r[0].h(0)
 if(1>=r.length)return A.c(r,1)
 return new A.k(!A.aC(s,r[1].h(0),this).a)}}
 A.f4.prototype={
-j(a){t.P.a(a)
-new A.tF().dJ()
-return void 1}}
+j(a){var s
+t.P.a(a)
+s=new A.tF().dJ()
+return new A.j(s)}}
 A.f5.prototype={
 j(a){return new A.nR(t.P.a(a),this.a,this.b)}}
 A.nR.prototype={
