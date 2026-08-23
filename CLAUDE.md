@@ -17,9 +17,9 @@ Static documentation website and interactive playground for the **Primal Program
   - **`js/primal-natives.js`** — Generated native function list (do not edit; see `scripts/gen-natives.sh`)
   - **`js/primal-editor.js`** — Playground editor: a textarea layered over a highlighted `<pre>`
   - **`reference/`** — API documentation, one subdirectory per module (arithmetic, list, string, etc.), each with its own `index.html`
-  - **`try/`** — Interactive IDE/playground
+  - **`playground/`** — Interactive IDE/playground
     - **`js/primal.js`** — Dart-compiled Primal compiler (~12.6k lines, do not manually edit)
-    - **`js/try.js`** — IDE logic (editor, console, sample loading, localStorage persistence)
+    - **`js/playground.js`** — IDE logic (editor, console, sample loading, localStorage persistence)
     - **`samples/`** — `.prm` sample programs loaded by the IDE
   - **`overview/`**, **`start/`**, **`versions/`**, **`feedback/`** — Other site sections
 - **`scripts/gen-natives.sh`** — Regenerates `primal-natives.js` from `../primal-sdk/`; run by the `sync-sdk` skill

@@ -33,7 +33,7 @@ cd ../primal-sdk && git log --oneline -8 -- docs/lang/reference/
 Copy the compiled Primal compiler:
 
 ```
-cp ../primal-sdk/output/primal.js public/try/js/primal.js
+cp ../primal-sdk/output/primal.js public/playground/js/primal.js
 ```
 
 ### 3. Update Version References
@@ -41,7 +41,7 @@ cp ../primal-sdk/output/primal.js public/try/js/primal.js
 The version string appears as `<version> (<codename>)` in exactly two places:
 
 - `public/versions/index.html` — inside the "The latest release of Primal is version ..." paragraph
-- `public/try/index.html` — the playground navbar title (`v0.5.0 (Bronze Axe)`)
+- `public/playground/index.html` — the playground navbar title (`v0.5.0 (Bronze Axe)`)
 
 Search for the old version pattern (e.g. `0.4.0`) and replace with the new one. Note that `versions/index.html` does **not** contain a changelog list — it only links to the changelog on GitHub, so there are no release notes to add there.
 
@@ -177,19 +177,19 @@ Language keywords (`if`, `else`, `let`, `in`, `and`, `or`, `not`) are **not** in
 
 ### 7. Verify JavaScript Bindings
 
-Read `../primal-sdk/lib/main/main_web.dart` and check that all JavaScript annotations (e.g., `@JS('NAME')`) are aligned with the corresponding functions in `public/try/js/try.js`.
+Read `../primal-sdk/lib/main/main_web.dart` and check that all JavaScript annotations (e.g., `@JS('NAME')`) are aligned with the corresponding functions in `public/playground/js/playground.js`.
 
-- If any annotations have changed or new ones were added, update `try.js` accordingly
+- If any annotations have changed or new ones were added, update `playground.js` accordingly
 - Ensure function names in Dart match the JavaScript function names expected by the compiler
-- Check that every binding is actually _called_. `compileInput` / `intermediateRepresentationEmpty` allocate an entry in a compiler-side registry, and `disposeCode` / `disposeExpression` must be called in a `finally` to release it — otherwise the playground leaks on every keystroke. Registry ids start at `0`, so guard with `!== null`, never with truthiness. `try.js` also keeps the last successful compile alive on purpose, for the console to evaluate against; that one is released when the next compile replaces it, not in a `finally`.
-- Confirm compiler errors still carry their position as `at [row, column]`. `GenericError` has no location field, so `try.js` reads the position out of the message text with the `ERROR_LOCATION` pattern to underline the offending token. Check `../primal-sdk/lib/compiler/models/location.dart` still formats as `[$row, $column]`, and that `lexical_error.dart` / `syntactic_error.dart` still interpolate a `Location` or a `Token` into their messages. A rewording here does not break anything loudly — the markers just stop appearing.
+- Check that every binding is actually _called_. `compileInput` / `intermediateRepresentationEmpty` allocate an entry in a compiler-side registry, and `disposeCode` / `disposeExpression` must be called in a `finally` to release it — otherwise the playground leaks on every keystroke. Registry ids start at `0`, so guard with `!== null`, never with truthiness. `playground.js` also keeps the last successful compile alive on purpose, for the console to evaluate against; that one is released when the next compile replaces it, not in a `finally`.
+- Confirm compiler errors still carry their position as `at [row, column]`. `GenericError` has no location field, so `playground.js` reads the position out of the message text with the `ERROR_LOCATION` pattern to underline the offending token. Check `../primal-sdk/lib/compiler/models/location.dart` still formats as `[$row, $column]`, and that `lexical_error.dart` / `syntactic_error.dart` still interpolate a `Location` or a `Token` into their messages. A rewording here does not break anything loudly — the markers just stop appearing.
 
 ### 8. Sync Sample Programs
 
 Compare sample files between the SDK and the website:
 
 - SDK samples: `../primal-sdk/test/resources/samples/*.prm`
-- Website samples: `public/try/samples/*.prm`
+- Website samples: `public/playground/samples/*.prm`
 
 For each sample file in the website that has a matching filename in the SDK:
 
@@ -197,7 +197,7 @@ For each sample file in the website that has a matching filename in the SDK:
 
 This ensures the playground samples stay in sync with the SDK's tested examples.
 
-**Also check the inline default program**: `SAMPLES['default']` at the top of `public/try/js/try.js` is the program every first-time visitor sees, and it is NOT covered by the `.prm` sync above, so it rots silently whenever the language syntax changes. Compile it and confirm it still runs.
+**Also check the inline default program**: `SAMPLES['default']` at the top of `public/playground/js/playground.js` is the program every first-time visitor sees, and it is NOT covered by the `.prm` sync above, so it rots silently whenever the language syntax changes. Compile it and confirm it still runs.
 
 ## Verification
 
@@ -207,7 +207,7 @@ Serve the site and exercise it for real — do not rely on the subagents' self-r
 cd public && python3 -m http.server 8777
 ```
 
-1. Open `http://localhost:8777/try/` and confirm the navbar shows the new version.
+1. Open `http://localhost:8777/playground/` and confirm the navbar shows the new version.
 2. Clear `localStorage` and hard-reload to check the first-visit default program compiles.
 3. Run a program using the release's new functions, and evaluate one in the REPL console (that exercises the second dispose call site).
 4. Edit the source many times in a row and confirm results stay correct with disposal active.
