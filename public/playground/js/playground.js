@@ -1,12 +1,15 @@
 const SAMPLES = {
   'default': `/*
   Input: a positive number
-  Output: true if the number is bigger than 10, false otherwise
+  Output: the factorial of that number
 */
 
-isBiggerThan10(n) = n > 10
+factorial(n) = if (n == 0)
+                   1
+               else
+                   n * factorial(n - 1)
 
-main() = isBiggerThan10(7)`,
+main() = factorial(5)`,
 }
 
 getSample('samples/balanced_parentheses.prm', 'balancedParentheses')
