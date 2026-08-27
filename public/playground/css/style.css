@@ -269,6 +269,8 @@ button.nav-link {
   padding: 0.5rem 0.8rem;
   font-size: 0.85rem;
   line-height: 1.5;
+  /* Results keep the newlines and runs of spaces the program produced. */
+  white-space: pre-wrap;
 }
 
 .output-warning {
