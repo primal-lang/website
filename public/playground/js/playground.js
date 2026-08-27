@@ -30,6 +30,7 @@ getSample('samples/is_prime.prm', 'isPrime')
 getSample('samples/quicksort.prm', 'quicksort')
 getSample('samples/reverse_list.prm', 'reverseList')
 getSample('samples/to_roman_numerals.prm', 'romanNumerals')
+getSample('samples/sudoku.prm', 'sudoku')
 getSample('samples/sum_of_digits.prm', 'sumOfDigits')
 getSample('samples/to_binary.prm', 'toBinary')
 
