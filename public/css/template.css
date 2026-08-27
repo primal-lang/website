@@ -1035,13 +1035,13 @@ a {
 /* --- Reference directory (hub page) --- */
 .reference-directory {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   margin-top: 2.5rem
 }
 
 .reference-directory-column {
   min-width: 0;
-  padding: 0 2rem;
+  padding: 0 1rem;
   border-left: 1px solid rgba(255,255,255,0.07)
 }
 
@@ -1052,20 +1052,6 @@ a {
 
 .reference-directory-column:last-child {
   padding-right: 0
-}
-
-@supports (grid-template-rows:subgrid) {
-  @media (min-width:992px) {
-    .reference-directory-column {
-      display: grid;
-      grid-row: span 2;
-      grid-template-rows: subgrid
-    }
-  }
-}
-
-.reference-directory-section + .reference-directory-section {
-  margin-top: 2.75rem
 }
 
 .reference-directory-list {
@@ -1101,10 +1087,6 @@ a {
 
   .reference-directory-column {
     display: contents
-  }
-
-  .reference-directory-section + .reference-directory-section {
-    margin-top: 0
   }
 }
 
