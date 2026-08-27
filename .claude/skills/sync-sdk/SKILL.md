@@ -158,7 +158,7 @@ Report concisely per file what you added / removed / changed, or "no changes nee
 **If the SDK added a whole new module** (a `.md` file with no matching website directory), handle it yourself rather than in a subagent, and exclude it from that subagent's scope to avoid a race:
 
 1. Create `public/reference/<group>/<module>/index.html` by copying an existing sibling page and replacing the title, meta description, canonical/og/twitter URLs, JSON-LD breadcrumb, and content.
-2. Add a `reference-grid-item` tile to the right category in `public/reference/index.html`, positioned to match the module order in `../primal-sdk/docs/lang/index.md`.
+2. Add an `<li><a class="reference-directory-link">...</a></li>` entry to the matching `reference-directory-list` in `public/reference/index.html`, positioned to match the module order in `../primal-sdk/docs/lang/index.md`.
 3. Add a `<url>` entry to `public/sitemap.xml`.
 
 ### 6. Sync Syntax Highlighting

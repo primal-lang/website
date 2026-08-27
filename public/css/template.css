@@ -784,8 +784,9 @@ a {
 .reference-category-title {
   font-size: 1rem;
   font-weight: 700;
-  margin-top: 2.5rem;
-  margin-bottom: 0.25rem;
+  margin: 0 0 0.75rem;
+  padding-bottom: 0.65rem;
+  border-bottom: 1px solid rgba(213,171,121,0.22);
   color: var(--color-gold);
   letter-spacing: 0
 }
@@ -1031,48 +1032,80 @@ a {
   margin: 0
 }
 
-/* --- Reference grid (hub page) --- */
-.reference-grid {
+/* --- Reference directory (hub page) --- */
+.reference-directory {
   display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 0.75rem;
-  margin-top: 0.8rem
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 2.5rem
 }
 
-.reference-grid-item {
+.reference-directory-column {
+  min-width: 0;
+  padding: 0 2rem;
+  border-left: 1px solid rgba(255,255,255,0.07)
+}
+
+.reference-directory-column:first-child {
+  padding-left: 0;
+  border-left: 0
+}
+
+.reference-directory-column:last-child {
+  padding-right: 0
+}
+
+@supports (grid-template-rows:subgrid) {
+  @media (min-width:992px) {
+    .reference-directory-column {
+      display: grid;
+      grid-row: span 2;
+      grid-template-rows: subgrid
+    }
+  }
+}
+
+.reference-directory-section + .reference-directory-section {
+  margin-top: 2.75rem
+}
+
+.reference-directory-list {
+  padding: 0;
+  margin: 0;
+  list-style: none
+}
+
+.reference-directory-link {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  text-decoration: none;
-  background: var(--color-bg-elevated);
-  border: var(--border-card);
-  border-radius: var(--radius-sm);
-  padding: 0.75rem 1rem;
-  transition: all var(--t-base)
-}
-
-.reference-grid-item:hover {
-  border-color: rgba(213,171,121,0.22);
-  transform: translateY(-2px);
-  box-shadow: var(--shadow-gold-glow);
-  color: var(--color-text)
-}
-
-.reference-grid-item .mod-name {
+  min-height: 2.25rem;
+  padding: 0.35rem 0.25rem 0.35rem 0;
+  font-size: 0.92rem;
   font-weight: 600;
-  font-size: 0.82rem;
+  color: var(--color-text-2);
+  text-decoration: none;
+  transition: color var(--t-fast)
+}
+
+.reference-directory-link:hover,
+.reference-directory-link:focus-visible {
   color: var(--color-text)
 }
 
-.reference-grid-item .mod-arrow {
-  fill: var(--color-text-3);
-  transition: transform var(--t-fast), fill var(--t-fast);
-  margin-left: 0.5rem
-}
+@media (max-width:991.98px) {
+  .reference-directory {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 3rem;
+    row-gap: 2.5rem
+  }
 
-.reference-grid-item:hover .mod-arrow {
-  fill: var(--color-gold);
-  transform: translateX(3px)
+  .reference-directory-column {
+    display: contents
+  }
+
+  .reference-directory-section + .reference-directory-section {
+    margin-top: 0
+  }
 }
 
 /* --- Type display variants --- */
@@ -1182,8 +1215,9 @@ a {
     display: none
   }
 
-  .reference-grid {
-    grid-template-columns: 1fr
+  .reference-directory {
+    grid-template-columns: 1fr;
+    row-gap: 2.25rem
   }
 
   .reference-table td,
